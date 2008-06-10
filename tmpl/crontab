@@ -1,0 +1,32 @@
+#-------------------------------------------------------------------------
+## crontab pour Eole/Amon version 2 revue le 10/05/2006
+#par samuel morin <samuel.morin@ac-dijon.fr>
+#-------------------------------------------------------------------------
+
+
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=""
+HOME=/
+
+# run-parts
+01 * * * * root run-parts /etc/cron.hourly
+02 4 * * * root run-parts /etc/cron.daily
+22 4 * * 0 root run-parts /etc/cron.weekly
+42 4 1 * * root run-parts /etc/cron.monthly
+#Zephir
+*/10 * * * *    root    /usr/share/zephir/scripts/cron-zephir.sh
+## rotation des logs pour l'ead
+50 23 * * 1-6 www-data /usr/share/ead/cron-soir.sh >/dev/null 2>&1
+50 23 * * 7   www-data /usr/share/ead/cron-dimanche.sh >/dev/null 2>&1
+# Mise à jour des backlists toutes les nuits
+00 00 * * * root /usr/share/eole/lance-Maj-blacklist.sh >/dev/null 2>&1
+# rrdtools
+*/5 * * * *    root    /usr/share/eole/recup-rrd.sh >/dev/null 2>&1
+# Fwlogwatch
+#00 1 * * 7 root /usr/share/eole/lance-fwlogwatch 
+%if %%install_rvp == 'oui'
+# test du rvp
+*/10 * * * *    root    /usr/share/eole/magic-rvp >/dev/null 2>&1
+%end if
+

@@ -1,0 +1,55 @@
+#-------------------------------------------------------------------------------
+## sudoers pour Eole/Amon version 2.0 
+##  Eole <eole@ac-dijon.fr>
+#-------------------------------------------------------------------------------
+# sudoers file.
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# See the sudoers man page for the details on how to write a sudoers file.
+#
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+# User privilege specification
+root	ALL=(ALL) ALL
+
+www-data ALL=NOPASSWD : /etc/init.d/*
+www-data ALL=NOPASSWD : /sbin/halt
+www-data ALL=NOPASSWD : /sbin/reboot
+www-data ALL=NOPASSWD : /bin/cat /var/log/squid/access.log 
+www-data ALL=NOPASSWD : /bin/cat /var/log/squidGuard/refus.log
+www-data ALL=NOPASSWD : /bin/zcat /var/log/squid/access.log.1.gz
+www-data ALL=NOPASSWD : /usr/bin/crontab -u amon /tmp/maj
+www-data ALL=NOPASSWD : /usr/bin/crontab -u amon -r
+www-data ALL=NOPASSWD : /usr/bin/tail
+www-data ALL=NOPASSWD : /usr/sbin/fping
+www-data ALL=NOPASSWD : /usr/bin/Maj-Auto
+www-data ALL=NOPASSWD : /usr/bin/Query-Auto
+www-data ALL=NOPASSWD : /usr/bin/reconfigure
+www-data ALL=NOPASSWD : /usr/share/eole/test-rvp
+www-data ALL=NOPASSWD : /usr/share/eole/ajout_filtres.sh
+www-data ALL=NOPASSWD : /usr/share/eole/Maj-blacklist.sh
+www-data ALL=NOPASSWD : /usr/share/ead/filtrage-contenu.sh
+www-data ALL=NOPASSWD : /usr/share/ead/dans_log.py
+www-data ALL=NOPASSWD : /usr/share/ead/config_dans.py
+www-data ALL=NOPASSWD : /usr/share/ead/test-serv.sh
+www-data ALL=NOPASSWD : /var/www/ead/logparser/logparser
+
+amon ALL=NOPASSWD : /usr/bin/diagnose
+amon ALL=NOPASSWD : /usr/share/eole/ControlRpm-Cd
+amon ALL=NOPASSWD : /usr/share/eole/ControlRpm-Net
+amon ALL=NOPASSWD : /usr/bin/Maj-Cd
+amon ALL=NOPASSWD : /usr/bin/Maj-Auto
+amon ALL=NOPASSWD : /usr/sbin/fping
+amon ALL=NOPASSWD : /usr/bin/reconfigure
+amon ALL=NOPASSWD : /sbin/halt
+amon ALL=NOPASSWD : /usr/share/eole/test-rvp
+amon ALL=NOPASSWD : /usr/share/eole/Maj-blacklist.sh
+amon ALL=NOPASSWD : /usr/bin/Query-Auto
+
+uucp	ALL=NOPASSWD :  /usr/share/zephir/scripts/*.zephir
+

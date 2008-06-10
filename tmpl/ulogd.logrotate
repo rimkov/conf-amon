@@ -1,0 +1,12 @@
+/var/log/ulog/*.log {
+    weekly
+    rotate 52
+    copytruncate
+    compress
+    missingok
+    sharedscripts
+    create 640 root adm
+    postrotate
+	/etc/init.d/ulogd reload
+    endscript
+}

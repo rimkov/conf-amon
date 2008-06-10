@@ -1,0 +1,19 @@
+#!/bin/bash
+if [ -f /usr/share/era/modeles/${type_amon}.xml ]; then
+    ## on change la politique par defaut du nat
+    /sbin/iptables -t nat -P PREROUTING ACCEPT
+    /sbin/iptables -t nat -P POSTROUTING ACCEPT
+    ## lancement du script de generation du firewall
+    /usr/share/era/bastion.sh
+    if [ $? -eq 0 ]; then
+    	log_begin_msg "Parefeu en fonction : modèle \"${type_amon}\" appliqué"
+	return 0
+    else
+	log_begin_msg "Regles du parefeu non appliquées !"
+	return 1
+    fi
+else
+    log_begin_msg "Fichier ${type_amon}.xml non trouvé !"
+    return 1
+fi
+

@@ -1,0 +1,83 @@
+#! /bin/bash
+#
+# rvp          Start/Stop le Reseau Virtuel Privé (VPN) 
+#
+# chkconfig: 2345 35 60
+# description:  Lance IPSEC si Configuration Eole OK
+# $Id: rvp,v 1.1.1.1 2004/01/05 10:16:50 eole Exp $
+# config: /etc/rvp
+
+
+RETVAL=0
+
+. /lib/lsb/init-functions
+
+prog="rvp"
+
+if  [ ! -x "/usr/share/eole/test-rvp" ] 
+then
+	echo "Réseau Virtuel Privé Non Configuré"
+	exit 0
+fi
+
+start() {
+	log_begin_msg "Lancement du Reseau Virtuel Privé " 
+	/etc/init.d/ipsec start >/dev/null 2>&1
+	RETVAL=$?
+	/usr/share/eole/gen_ipsec-policy
+	log_end_msg $RETVAL
+	[ $RETVAL -eq 0 ] && touch /var/lock/rvp
+	return $RETVAL
+}
+
+stop() {
+	log_begin_msg "Arret du Reseau Virtuel Privé "
+	/etc/init.d/ipsec stop >/dev/null 2>&1
+	RETVAL=$?
+	log_end_msg $RETVAL
+	[ $RETVAL -eq 0 ] && rm -f /var/lock/rvp
+	return $RETVAL
+}
+
+
+restart() {
+	stop
+	sleep 3
+	start
+}
+
+reload() {
+	 log_begin_msg "Rechargement Reseau Virtuel Privé " 
+	/etc/init.d/ipsec restart >/dev/null 2>&1
+	RETVAL=$?
+	log_end_msg $RETVAL
+	[ $RETVAL -eq 0 ] && touch /var/lock/rvp
+	return $RETVAL
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart)
+	restart
+	;;
+  reload)
+	reload
+	;;
+  status)
+	/etc/init.d/ipsec status
+	[ -x /usr/share/eole/test-rvp ] && /usr/share/eole/test-rvp 
+	;;
+  condrestart)
+	[ -f /var/lock/rvp ] && restart || :
+	;;
+  *)
+	echo "Usage: %s {start|stop|status|reload|restart|condrestart}\n" "$0"
+	exit 1
+esac
+
+exit $?

@@ -1,0 +1,44 @@
+#!/bin/bash
+
+log_begin_msg "Parefeu en mode forteresse"
+## Reinitialisation des chaines
+/sbin/iptables -F 
+/sbin/iptables -t nat -F 
+## on vide les regles utilisateurs
+/sbin/iptables -X
+## mise en place de la politique par defaut
+/sbin/iptables -P INPUT DROP
+/sbin/iptables -P OUTPUT ACCEPT
+/sbin/iptables -P FORWARD DROP
+## lo ok
+/sbin/iptables -t nat -A PREROUTING -i lo -j ACCEPT
+/sbin/iptables -A INPUT -i lo -j ACCEPT
+/sbin/iptables -t nat -A POSTROUTING -o lo -j ACCEPT
+##
+# On interdit le postrouting 
+/sbin/iptables -t nat -A POSTROUTING -j DROP
+%if %%ssh_eth0 == "oui"
+%for res_eth0 in %%ip_ssh_eth0 
+/sbin/iptables -t nat -A PREROUTING -m state --state NEW -s %%res_eth0/%%res_eth0.netmask_ssh_eth0 -p tcp --dport 22 --syn -j ACCEPT
+%end for
+%end if
+%if %%ssh_eth1 == "oui"
+%for res_eth1 in %%ip_ssh_eth1 
+/sbin/iptables -t nat -A PREROUTING -m state --state NEW -s %%res_eth1/%%res_eth1.netmask_ssh_eth1 -p tcp --dport 22 --syn -j ACCEPT
+%end for
+%end if
+# on enterdit le prerouting 
+/sbin/iptables -t nat -A PREROUTING -j DROP
+%if %%ssh_eth0 == "oui"
+%for res_eth0 in %%ip_ssh_eth0 
+/sbin/iptables -A INPUT -m state --state NEW -p tcp -s %%res_eth0/%%res_eth0.netmask_ssh_eth0 --syn --dport 22 -j ACCEPT
+/sbin/iptables -A INPUT -m state -s %%res_eth0/%%res_eth0.netmask_ssh_eth0 -p tcp --dport 22 --state ESTABLISHED,RELATED -j ACCEPT
+%end for
+%end if
+%if %%ssh_eth1 == "oui"
+%for res_eth1 in %%ip_ssh_eth1 
+/sbin/iptables -A INPUT -m state --state NEW -p tcp -s %%res_eth1/%%res_eth1.netmask_ssh_eth1 --syn --dport 22 -j ACCEPT
+/sbin/iptables -A INPUT -m state -s %%res_eth1/%%res_eth1.netmask_ssh_eth1 -p tcp --dport 22 --state ESTABLISHED,RELATED -j ACCEPT
+%end for
+%end if
+

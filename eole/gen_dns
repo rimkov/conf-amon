@@ -1,0 +1,37 @@
+#!/bin/bash
+###########################################################
+# gen_dns
+# generation de named.conf et des fichiers de zone pour bind
+############################################################
+
+# appel des fonctions Eole
+. ParseDico
+
+## Correction bug si nom_domaine_local == local
+if [ -e /etc/bind/db.local ]
+then
+	rm -f /etc/bind/db.local
+fi
+##
+NAMEDCONF=/etc/bind/named.conf
+
+declare -i I Max nb_int 
+cd /etc/bind
+Cmd="/usr/share/eole/h2n -h $nom_machine -d $nom_domaine_local -s $nom_machine.$nom_domaine_local" 
+Max=`expr $nombre_interfaces - 1`
+I=0
+while [ $I -le $Max ]
+do
+	Master=dns_master_eth${I} 
+	if [ ${!Master}  == "oui" ]
+	then
+	   Network=adresse_network_eth${I}
+	   Netmask=adresse_netmask_eth${I}
+           Cmd=$Cmd" -n ${!Network}:${!Netmask} " 
+	fi
+	I=$I+1
+done
+
+Cmd=$Cmd" -M -v 8 -y -b $NAMEDCONF"
+
+exec $Cmd

@@ -1,0 +1,29 @@
+/var/log/squid/access.log {
+    weekly
+    rotate 52
+    copytruncate
+    compress
+    notifempty
+    missingok
+    postrotate
+    /usr/sbin/squid -k reconfigure
+    endscript
+}
+/var/log/squid/cache.log {
+    weekly
+    rotate 10
+    copytruncate
+    compress
+    notifempty
+    missingok
+}
+
+/var/log/squid/store.log {
+    weekly
+    rotate 5
+    copytruncate
+    compress
+    notifempty
+    missingok
+}
+

@@ -1,0 +1,200 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+##
+auto eth0
+%if %%eth0_method == "statique"
+iface eth0 inet static
+address %%adresse_ip_eth0
+netmask %%adresse_netmask_eth0
+broadcast %%adresse_broadcast_eth0
+network %%adresse_network_eth0
+%if %%debit_carte_eth0 != ""
+up ethtool -s eth0 %%debit_carte_eth0
+%end if
+%else if %%eth0_method == "dhcp"
+iface eth0 inet dhcp
+%end if
+##
+%if %%valeur_mtu_eth0 != ""
+mtu %%valeur_mtu_eth0
+%end if
+gateway %%adresse_ip_gw
+##
+%if %%alias_eth0 == "oui"
+%for %%alias_addr_eth0 in %%alias_ip_eth0
+auto eth0:%%alias_addr_eth0.index
+iface eth0:%%alias_addr_eth0.index inet static
+address %%alias_addr_eth0 
+netmask %%alias_addr_eth0.alias_netmask_eth0
+broadcast %%alias_addr_eth0.alias_broadcast_eth0
+network %%alias_addr_eth0.alias_network_eth0
+%end for
+%end if
+##
+%if %%vlan_eth0 == "oui"
+%for vlan0 in %%id_vlan_eth0
+auto eth0.%%vlan0
+iface eth0.%%vlan0 inet static
+address %%vlan0.adresse_ip_vlan_eth0
+netmask %%vlan0.adresse_netmask_vlan_eth0
+network %%vlan0.adresse_network_vlan_eth0
+broadcast %%vlan0.adresse_broadcast_vlan_eth0
+%end for
+%end if
+##
+%if %%nombre_interfaces >= "2" 
+auto eth1
+%if %%eth1_method == "statique"
+iface eth1 inet static
+address %%adresse_ip_eth1
+netmask %%adresse_netmask_eth1
+broadcast %%adresse_broadcast_eth1
+network %%adresse_network_eth1
+%if %%debit_carte_eth1 != ""
+up ethtool -s eth1 %%debit_carte_eth1
+%end if
+%else if %%eth1_method == "dhcp"
+iface eth0 inet dhcp
+%end if
+##
+%if %%alias_ip_eth1 != ""
+%for %%alias_eth1 in %%alias_ip_eth1
+auto eth1:%%alias_eth1.index
+iface eth1:%%alias_eth1.index inet static
+address %%alias_eth1 
+netmask %%adresse_netmask_eth1
+broadcast %%adresse_broadcast_eth1
+network %%adresse_network_eth1
+%end for
+%end if
+##
+%if %%vlan_eth1 == "oui"
+%for vlan1 in %%id_vlan_eth1
+auto eth1.%%vlan1
+iface eth1.%%vlan1 inet static
+address %%vlan1.adresse_ip_vlan_eth1
+netmask %%vlan1.adresse_netmask_vlan_eth1
+network %%vlan1.adresse_network_vlan_eth1
+broadcast %%vlan1.adresse_broadcast_vlan_eth1
+%end for
+%end if
+%end if
+##
+%if %%nombre_interfaces >= "3" 
+auto eth2
+%if %%eth2_method == "statique"
+iface eth2 inet static
+address %%adresse_ip_eth2
+netmask %%adresse_netmask_eth2
+broadcast %%adresse_broadcast_eth2
+network %%adresse_network_eth2
+%if %%debit_carte_eth2 != ""
+up ethtool -s eth2 %%debit_carte_eth2
+%end if
+%else if %%eth2_method == "dhcp"
+iface eth0 inet dhcp
+%end if
+##
+%if %%alias_ip_eth2 != ""
+%for %%alias_eth2 in %%alias_ip_eth2
+auto eth2:%%alias_eth2.index
+iface eth2:%%alias_eth2.index inet static
+address %%alias_eth2 
+netmask %%adresse_netmask_eth2
+broadcast %%adresse_broadcast_eth2
+network %%adresse_network_eth2
+%end for
+%end if
+##
+%if %%vlan_eth2 == "oui"
+%for vlan2 in %%id_vlan_eth2
+auto eth2.%%vlan2
+iface eth2.%%vlan2 inet static
+address %%vlan2.adresse_ip_vlan_eth2
+netmask %%vlan2.adresse_netmask_vlan_eth2
+network %%vlan2.adresse_network_vlan_eth2
+broadcast %%vlan2.adresse_broadcast_vlan_eth2
+%end for
+%end if
+%end if
+##
+%if %%nombre_interfaces >= "4" 
+auto eth3
+%if %%eth3_method == "statique"
+iface eth3 inet static
+address %%adresse_ip_eth3
+netmask %%adresse_netmask_eth3
+broadcast %%adresse_broadcast_eth3
+network %%adresse_network_eth3
+%if %%debit_carte_eth3 != ""
+up ethtool -s eth3 %%debit_carte_eth3
+%end if
+%else if %%eth3_method == "dhcp"
+iface eth0 inet dhcp
+%end if
+##
+%if %%alias_ip_eth3 != ""
+%for %%alias_eth3 in %%alias_ip_eth3
+auto eth3:%%alias_eth3.index
+iface eth3:%%alias_eth3.index inet static
+address %%alias_eth3 
+netmask %%adresse_netmask_eth3
+broadcast %%adresse_broadcast_eth3
+network %%adresse_network_eth3
+%end for
+%end if
+##
+%if %%vlan_eth3 == "oui"
+%for vlan3 in %%id_vlan_eth3
+auto eth3.%%vlan3
+iface eth3.%%vlan3 inet static
+address %%vlan3.adresse_ip_vlan_eth3
+netmask %%vlan3.adresse_netmask_vlan_eth3
+network %%vlan3.adresse_network_vlan_eth3
+broadcast %%vlan3.adresse_broadcast_vlan_eth3
+%end for
+%end if
+%end if
+##
+%if %%nombre_interfaces == "5"
+auto eth4
+%if %%eth4_method == "statique"
+iface eth4 inet static
+address %%adresse_ip_eth4
+netmask %%adresse_netmask_eth4
+broadcast %%adresse_broadcast_eth4
+network %%adresse_network_eth4
+%if %%debit_carte_eth4 != ""
+up ethtool -s eth4 %%debit_carte_eth4
+%end if
+%else if %%eth4_method == "dhcp"
+iface eth0 inet dhcp
+%end if
+##
+%if %%alias_ip_eth4 != ""
+%for %%alias_eth4 in %%alias_ip_eth4
+auto eth4:%%alias_eth4.index
+iface eth4:%%alias_eth4.index inet static
+address %%alias_eth4 
+netmask %%adresse_netmask_eth4
+broadcast %%adresse_broadcast_eth4
+network %%adresse_network_eth4
+%end for
+%end if
+##
+%if %%vlan_eth4 == "oui"
+%for vlan4 in %%id_vlan_eth4
+auto eth4.%%vlan4
+iface eth4.%%vlan4 inet static
+address %%vlan4.adresse_ip_vlan_eth4
+netmask %%vlan4.adresse_netmask_vlan_eth4
+network %%vlan4.adresse_network_vlan_eth4
+broadcast %%vlan4.adresse_broadcast_vlan_eth4
+%end for
+%end if
+%end if
+##

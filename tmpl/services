@@ -1,0 +1,27 @@
+syslog-ng
+networking
+cron
+bastion
+rvp
+ssh
+%if %%activer_bacula == 'oui'
+bacula-fd
+%end if
+bind9
+squid
+dansguardian
+%if %%activer_dhcprelay == 'oui'
+dhcp3-relay
+%end if
+ead-server
+%if %%ead_web == 'oui'
+ead-web
+%end if
+killp2p
+ulogd
+ntp
+%if %%active_nufw == 'oui'
+nuauth
+nufw
+%end if
+z_stats

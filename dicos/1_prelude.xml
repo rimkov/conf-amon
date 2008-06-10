@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<creole>
+	<files>
+	  <file name='/etc/prelude/default/client.conf' source='prelude-client.conf'/>
+	  <file name='/etc/prelude/default/global.conf' source='prelude-global.conf'/>
+	  <file name='/etc/samhain/samhainrc' />
+	  <file name='/etc/snort/snort.conf' />
+          <file name='/etc/snort/snort.debian.conf' />
+          <file name='/etc/ssmtp/ssmtp.conf' />
+	</files>
+<!--************************************************************************************************* -->
+	<variables>
+		<family name='prelude' mode='expert'>
+			<variable name='administrateur_email' type='string' description="Adresse courriel de contact"/>
+                        <variable name='passerelle_smtp' type='string' description="Passerelle SMTP"/>
+                        <variable name='adresse_ip_prelude_manager' type='ip' description="Adresse ip du serveur prelude-manager "/>
+		</family>
+	</variables>
+<!--************************************************************************************************* -->	
+	<constraints>
+	</constraints>
+<!--************************************************************************************************* -->	
+	<help>
+	</help>
+</creole>

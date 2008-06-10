@@ -1,0 +1,380 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<creole>
+        <files>
+		<file name='/etc/squid/squid.conf'/>
+        </files>
+        <variables>
+            <family name='squid' mode='expert'>
+            <variable name='http_port' type='string' description='' multi='True'>
+              	<value>127.0.0.1:8080</value>
+            </variable>
+            <variable name='https_port' type='string' description=''>
+		<value/>
+            </variable>
+            <variable name='ssl_unclean_shutdown' type='string' description=''>
+              	<value>off</value>
+            </variable>
+            <variable name='icp_port' type='number' description=''>
+              	<value>3130</value>
+            </variable>
+            <variable name='htcp_port' type='number' description=''>
+              	<value>4827</value>
+            </variable>
+            <variable name='mcast_groups' type='string' description=''>
+		<value/>
+            </variable>
+            <variable name='tcp_outgoing_address' type='string' description=''>
+		    <value>255.255.255.255</value>
+            </variable>
+            <variable name='udp_incoming_address' type='string' description=''>
+		    <value>0.0.0.0</value>
+            </variable>
+            <variable name='udp_outgoing_address' type='string' description=''>
+		    <value>255.255.255.255</value>
+            </variable>
+            <variable name='cache_peer' type='string' description='' multi='True'>
+		    <value></value>
+            </variable>
+            <variable name='cache_peer_domain' type='string' description='' multi='True'>
+		    <value></value>
+            </variable>
+            <variable name='icp_query_timeout' type='number' description='en msec'>
+              	<value>0</value>
+            </variable>
+            <variable name='maximum_icp_query_timeout' type='number' description='en msec'>
+              	<value>2000</value>
+            </variable>
+            <variable name='mcast_icp_query_timeout' type='number' description='en msec'>
+              	<value>2000</value>
+            </variable>
+            <variable name='dead_peer_timeout' type='number' description='en sec'>
+              	<value>10</value>
+            </variable>
+            <variable name='hierarchy_stoplist' type='string' description=''>
+              	<value>cgi-bin ?</value>
+            </variable>
+            <variable name='cache_vary' type='string' description=''>
+              	<value>on</value>
+            </variable>
+            <variable name='cache_mem' type='number' description='en KB'>
+              	<value>16</value>
+            </variable>
+            <variable name='cache_swap_low' type='number' description=''>
+              	<value>90</value>
+            </variable>
+            <variable name='cache_swap_high' type='number' description=''>
+              	<value>95</value>
+            </variable>
+            <variable name='minimum_object_size' type='number' description='en KB'>
+              	<value>0</value>
+            </variable>
+            <variable name='maximum_object_size' type='number' description='en KB'>
+              	<value>32768</value>
+            </variable>
+            <variable name='maximum_object_size_in_memory' type='number' description='en KB'>
+              	<value>16</value>
+            </variable>
+            <variable name='ipcache_size' type='number' description='en nombre dentrees'>
+              	<value>1024</value>
+            </variable>
+            <variable name='ipcache_low' type='number' description='en %'>
+              	<value>90</value>
+            </variable>
+            <variable name='ipcache_high' type='number' description='en %'>
+              	<value>95</value>
+            </variable>
+            <variable name='fqdncache_size' type='number' description='en nombre d entree'>
+              	<value>1024</value>
+            </variable>
+            <variable name='cache_replacement_policy' type='string' description=''>
+              	<value>lru</value>
+            </variable>
+            <variable name='memory_replacement_policy' type='string' description=''>
+              	<value>lru</value>
+            </variable>
+            <variable name='cache_dir' type='string' description='' multi='True'>
+		    <value>/var/spool/squid</value>
+            </variable>
+            <variable name='cache_dir_type' type='string' description=''>
+		    <value>ufs</value>
+            </variable>
+            <variable name='cache_dir_disk_space' type='string' description='en MBytes'>
+		    <value>1000</value>
+            </variable>
+            <variable name='cache_dir_firstLevel' type='string' description=''>
+		    <value>16</value>
+            </variable>
+            <variable name='cache_dir_secondLevel' type='string' description=''>
+		    <value>256</value>
+            </variable>
+            <variable name='emulate_httpd_log' type='string' description=''>
+		    <value>off</value>
+            </variable>
+            <variable name='log_ip_on_direct' type='string' description=''>
+		    <value>on</value>
+            </variable>
+            <variable name='log_mime_hdrs' type='string' description=''>
+		    <value>off</value>
+            </variable>
+            <variable name='debug_options' type='string' description=''>
+		    <value>ALL,1</value>
+            </variable>
+            <variable name='log_fqdn' type='string' description=''>
+		    <value>off</value>
+            </variable>
+            <variable name='client_netmask' type='netmask' description=''>
+		    <value>255.255.255.255</value>
+            </variable>
+            <variable name='ftp_user' type='string' description=''>
+		    <value>ftp</value>
+            </variable>
+            <variable name='ftp_list_width' type='number' description=''>
+              	<value>32</value>
+            </variable>
+            <variable name='ftp_passive' type='string' description=''>
+		    <value>on</value>
+            </variable>
+            <variable name='ftp_sanitycheck' type='string' description=''>
+		    <value>on</value>
+            </variable>
+            <variable name='ftp_telnet_protocol' type='string' description=''>
+		    <value>on</value>
+            </variable>
+            <variable name='check_hostname' type='string' description=''>
+		    <value>on</value>
+            </variable>
+            <variable name='allow_underscore' type='string' description=''>
+		    <value>on</value>
+            </variable>
+            <variable name='cache_dns_program' type='string' description=''>
+		    <value>/usr/lib/squid/dnsserver</value>
+            </variable>
+            <variable name='dns_children' type='number' description=''>
+              	<value>5</value>
+            </variable>
+            <variable name='dns_retransmit_interval' type='number' description='en secondes'>
+              	<value>5</value>
+            </variable>
+            <variable name='dns_timeout' type='number' description='en minutes'>
+              	<value>2</value>
+            </variable>
+            <variable name='dns_defnames' type='string' description=''>
+		    <value>off</value>
+            </variable>
+            <variable name='dns_nameservers' type='string' description='' multi='True'>
+		    <value></value>
+            </variable>
+            <variable name='hosts_file' type='string' description=''>
+		    <value>/etc/hosts</value>
+            </variable>
+            <variable name='wais_relay_host' type='string' description=''>
+		    <value></value>
+            </variable>
+            <variable name='wais_relay_port' type='number' description=''>
+		    <value>0</value>
+            </variable>
+            <variable name='request_header_max_size' type='number' description='en KB'>
+		    <value>20</value>
+            </variable>
+            <variable name='request_body_max_size' type='number' description='en MB'>
+		    <value>10</value>
+            </variable>
+            <variable name='quick_abort_min' type='number' description='en KB'>
+		    <value>16</value>
+            </variable>
+            <variable name='quick_abort_max' type='number' description='en KB'>
+		    <value>16</value>
+            </variable>
+            <variable name='quick_abort_pct' type='number' description='en %'>
+		    <value>95</value>
+            </variable>
+            <variable name='read_ahead_gap' type='number' description='en KB'>
+		    <value>16</value>
+            </variable>
+            <variable name='negative_ttl' type='number' description='en min'>
+		    <value>5</value>
+            </variable>
+            <variable name='positive_dns_ttl' type='number' description='en heure'>
+		    <value>6</value>
+            </variable>
+            <variable name='negative_dns_ttl' type='number' description='en min'>
+		    <value>1</value>
+            </variable>
+            <variable name='range_offset_limit' type='number' description='en KB'>
+		    <value>0</value>
+            </variable>
+            <variable name='collapsed_forwarding' type='string' description=''>
+		    <value>off</value>
+            </variable>
+            <variable name='refresh_stale_hit' type='number' description='en secondes'>
+		    <value>0</value>
+            </variable>
+            <variable name='forward_timeout' type='number' description='en min'>
+		    <value>4</value>
+            </variable>
+            <variable name='connect_timeout' type='number' description='en min'>
+		    <value>1</value>
+            </variable>
+            <variable name='peer_connect_timeout' type='number' description='en sec'>
+		    <value>30</value>
+            </variable>
+            <variable name='read_timeout' type='number' description='en min'>
+		    <value>15</value>
+            </variable>
+            <variable name='request_timeout' type='number' description='en min'>
+		    <value>5</value>
+            </variable>
+            <variable name='persistent_request_timeout' type='number' description='en min'>
+		    <value>1</value>
+            </variable>
+            <variable name='client_lifetime' type='number' description='en min'>
+		    <value>120</value>
+            </variable>
+            <variable name='half_closed_clients' type='string' description=''>
+		    <value>on</value>
+            </variable>
+            <variable name='pconn_timeout' type='number' description='en sec'>
+		    <value>120</value>
+            </variable>
+            <variable name='ident_timeout' type='number' description='en sec'>
+		    <value>10</value>
+            </variable>
+            <variable name='shutdown_lifetime' type='number' description='en sec'>
+		    <value>30</value>
+            </variable>
+            <variable name='number_of_children' type='number' description="nombre d'instance du module d'authentification">
+		    <value>5</value>
+            </variable>
+            </family>
+        </variables>
+        <constraints>
+          <check name='obligatoire' target='http_port'/>
+          <check name='obligatoire' target='ssl_unclean_shutdown'/>
+          <check name='obligatoire' target='icp_port'/>
+          <check name='obligatoire' target='htcp_port'/>
+          <check name='obligatoire' target='tcp_outgoing_address'/>
+          <check name='obligatoire' target='udp_incoming_address'/>
+          <check name='obligatoire' target='udp_outgoing_address'/>
+          <check name='obligatoire' target='icp_query_timeout'/>
+          <check name='obligatoire' target='maximum_icp_query_timeout'/>
+          <check name='obligatoire' target='mcast_icp_query_timeout'/>
+          <check name='obligatoire' target='dead_peer_timeout'/>
+          <check name='obligatoire' target='hierarchy_stoplist'/>
+          <check name='obligatoire' target='cache_vary'/>
+          <check name='obligatoire' target='cache_mem'/>
+          <check name='obligatoire' target='cache_swap_low'/>
+          <check name='obligatoire' target='cache_swap_high'/>
+          <check name='obligatoire' target='minimum_object_size'/>
+          <check name='obligatoire' target='maximum_object_size'/>
+          <check name='obligatoire' target='maximum_object_size_in_memory'/>
+          <check name='obligatoire' target='ipcache_size'/>
+          <check name='obligatoire' target='ipcache_low'/>
+          <check name='obligatoire' target='ipcache_high'/>
+          <check name='obligatoire' target='fqdncache_size'/>
+          <check name='obligatoire' target='cache_replacement_policy'/>
+          <check name='obligatoire' target='memory_replacement_policy'/>
+          <check name='obligatoire' target='cache_dir'/>
+          <check name='obligatoire' target='cache_dir_disk_space'/>
+          <check name='obligatoire' target='cache_dir_firstLevel'/>
+          <check name='obligatoire' target='cache_dir_secondLevel'/>
+          <check name='obligatoire' target='emulate_httpd_log'/>
+          <check name='obligatoire' target='log_ip_on_direct'/>
+          <check name='obligatoire' target='log_mime_hdrs'/>
+          <check name='obligatoire' target='debug_options'/>
+          <check name='obligatoire' target='log_fqdn'/>
+          <check name='obligatoire' target='client_netmask'/>
+          <check name='obligatoire' target='ftp_user'/>
+          <check name='obligatoire' target='ftp_list_width'/>
+          <check name='obligatoire' target='cache_dns_program'/>
+          <check name='obligatoire' target='dns_children'/>
+          <check name='obligatoire' target='dns_retransmit_interval'/>
+          <check name='obligatoire' target='dns_timeout'/>
+          <check name='obligatoire' target='dns_defnames'/>
+          <check name='obligatoire' target='hosts_file'/>
+          <check name='obligatoire' target='wais_relay_port'/>
+          <check name='obligatoire' target='request_header_max_size'/>
+          <check name='obligatoire' target='request_body_max_size'/>
+          <check name='obligatoire' target='quick_abort_min'/>
+          <check name='obligatoire' target='quick_abort_max'/>
+          <check name='obligatoire' target='quick_abort_pct'/>
+          <check name='obligatoire' target='negative_ttl'/>
+          <check name='obligatoire' target='positive_dns_ttl'/>
+          <check name='obligatoire' target='negative_dns_ttl'/>
+          <check name='obligatoire' target='range_offset_limit'/>
+          <check name='obligatoire' target='collapsed_forwarding'/>
+          <check name='obligatoire' target='refresh_stale_hit'/>
+          <check name='obligatoire' target='forward_timeout'/>
+          <check name='obligatoire' target='connect_timeout'/>
+          <check name='obligatoire' target='peer_connect_timeout'/>
+          <check name='obligatoire' target='read_timeout'/>
+          <check name='obligatoire' target='request_timeout'/>
+          <check name='obligatoire' target='persistent_request_timeout'/>
+          <check name='obligatoire' target='client_lifetime'/>
+          <check name='obligatoire' target='half_closed_clients'/>
+          <check name='obligatoire' target='pconn_timeout'/>
+          <check name='obligatoire' target='ident_timeout'/>
+          <check name='obligatoire' target='shutdown_lifetime'/>
+          <check name="valid_enum" target='ssl_unclean_shutdown'>
+                <param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='emulate_httpd_log'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='log_ip_on_direct'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='log_mime_hdrs'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='log_fqdn'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='cache_vary'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='dns_defnames'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='half_closed_clients'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target="cache_replacement_policy">
+ 		<param>['lru','heap GDSF','heap LFUDA','heap LRU']</param>
+          </check>
+							  
+	  <check name="valid_enum" target="memory_replacement_policy">
+ 		<param>['lru','heap GDSF','heap LFUDA','heap LRU']</param>
+          </check>
+	  <check name="valid_enum" target="cache_dir_type">
+ 		<param>['ufs']</param>
+          </check>
+	  <check name="valid_enum" target='ftp_passive'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='ftp_sanitycheck'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='ftp_telnet_protocol'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='check_hostname'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='allow_underscore'>
+ 		<param>['on','off']</param>
+          </check>
+	  <check name="valid_enum" target='collapsed_forwarding'>
+ 		<param>['on','off']</param>
+          </check>
+	<group master='cache_dir'>
+        	<slave>cache_dir_type</slave>
+        	<slave>cache_dir_disk_space</slave>
+        	<slave>cache_dir_firstLevel</slave>
+        	<slave>cache_dir_secondLevel</slave>
+        </group>
+        </constraints>
+        <help>
+        </help>
+
+</creole>

@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# pre-instance pour Amon
+
+# accès Ead aux log de squid
+chmod o+rx /var/log/squid
+touch /var/log/squid/access.log
+chown proxy.proxy /var/log/squid/access.log
+chmod o+r  /var/log/squid/access.log
+
+echo "Mise en place de la configuration dansguardian"
+
+# suppression des données dans /etc/dansguardian/
+etcdanspath='/etc/dansguardian'
+mkdir -p $etcdanspath
+rm -rf $etcdanspath/*
+
+danspath="/usr/share/eole/dansguardian"
+# remplacement du script d'init (2 instances)
+cp -f $danspath/init/dansguardian /etc/init.d/dansguardian
+# mise à niveau de la configuration
+$danspath/init_dans.py
+
+
+# Creation d'un utilisateur amon2 pour la configuration de la zone 2
+id amon &>/dev/null
+if [ $? -eq 0 ]
+then
+  id amon2 &>/dev/null
+  if [ $? -ne 0 ]
+  then
+        echo ""
+        echo "############################################################"
+        echo "#     Création d'un deuxième compte local ead2 (amon2)     #"
+        echo "############################################################"
+        useradd 'amon2'
+        res=1
+        while [ $res -ne 0 ]
+        do
+                passwd amon2
+                res=$?
+        done
+	echo
+  fi
+fi
+exit 0

@@ -1,0 +1,6 @@
+%if %%ssh_eth2 == "oui"
+adm_eth2
+%end if
+%if %%active_nufw == "oui"
+auth_nufw
+%end if

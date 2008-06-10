@@ -1,0 +1,11 @@
+%if %%active_nufw == 'oui'
+#This is to set PAM-LDAP, modify to suit your needs!
+auth    required      /lib/security/pam_env.so
+auth    sufficient    /lib/security/pam_ldap.so
+auth    required      /lib/security/pam_deny.so
+
+account required      /lib/security/pam_ldap.so
+
+session required      /lib/security/pam_limits.so
+session optional      /lib/security/pam_ldap.so
+%end if

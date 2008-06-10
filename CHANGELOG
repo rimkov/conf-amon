@@ -1,0 +1,281 @@
+Conf-AmonNG
+
+09/06/2008
+- squid.conf: ajout d'un deuxieme fichiers (utilisateur) pour les noauth et nocache
+- prereconf: ajout d'un touch vers les deux fichiers domaines_noauth_user et domaines_nocache_user
+
+6/06/2008
+- magic_rvp.py: /etc/init.d/rvp restart au lieu de service rvp restart
+
+3/06/08 (sam)
+hosts : correction bug cosmetique -> pas d'alias lorsqu'on utilise des domaines supplémentaires car ils existent déjà dans le domaine principal
+
+30/05/2008
+- ajout de template en fonction du mode (défaut, modérateur, interdit, liste blanche) avec couleur en concordance avec l'EAD2
+
+28/05/2008
+- hosts : ajout d'un alias si le serveur d'authentification NTLM et ScribeDMZ sont la même machine renseignée avec un nom différent (nom machine et nom machine SMB) + ajout possibilite d'un domaine local supplémentaire
+- firewall.stop : pb regle prerouting et postrouting. Politique par defaut en DROP !
+- bug 571 : un seul manage-amon
+- StartQos.sh : suppression du flush des tables mangle
+
+27/05/08 (sam, k)
+- killp2p : "exit 0" a la place de "exit 1" dans "start" si p2p est desactive
+- magic-rvp : correction bug 858
+
+26/05/08 (j)
+ - bug 863 : correction de gen_ipsec-policy avec plusieurs vlans
+
+21/05/08 (sam)
+dico + interface : ajout de paramètres en mode expert pour prendre en compte le débit et le type de negociation au niveau des interfaces (bug 801)
+
+20/05/2008 (j)
+- 1_authentification.xml : variables NTLM en multi + modif squid.conf et hosts
+
+16/05/08 (sam, k)
+- squid.conf : ajout d'acls permettant de de ne pas authentifier et/ou cacher certains sites. Acl lu dans 2 fichiers (nouvellement créé) domaines_noauth et domaines_nocache
+- squid.conf : activation de l'authentification sur pedago ET admin avec NTLM multi-serveur
+
+13/05/08 (sam, k)
+- sshd_config : correction bug 843. Pb sur sftp.
+- amon.xml : re-correction du bug 717
+
+29/04/08
+ - correction coquille dans squid.conf
+
+07/04/08
+ - utilisation de ~.bash_profil pour lancer manage_$MODULE
+
+02/04/08 (sam)
+ - dico : correction bug 807 (type variable adresse_netmask_zone_rvp à ip au lieu de netmask)
+
+31/03/08
+ - presinstance : creation d'un utilisateur amon2 pour l'acces a la configuration de la zone 2
+
+25/03/08
+ - prelude.xml : famille en mode expert
+
+13/03/08 (sam)
+Maj-blacklits: touch sur urls et domains dans eole plus dans db (modification dansguardian)
+squid.conf : report correction bug 741
+
+07/03/2008
+ - standardisation du certificat SSL
+
+26/02/2008:
+- ajout de la variable num_dansguardian_instance dans 0_amon.xml
+
+25/02/2008
+- report des corrections 2.0
+	- gen_dns : bug 766
+	- spcl : bugs 670/764
+	- squid : bug 741
+- ajout des variables dansguardian pour chaque eth dans 0_amon.xml
+
+20/02/2008
+- correction bug 760 (pas d'index sur les dns des zones de forward)
+
+07/02/2008
+- squid.conf : ssl_unclean_shutdown -> deprecated ?
+- squid.conf : report bug 743 (suppr -d dans ntlm)
+
+14/01/08 (bruno +sam)
+- dansguardian-template.html : suppression du .fr pour l'adresse de cachemaster
+- dico : nom_domaine_academique avec le suffixe (.fr)
+
+10/01/07
+- modification des variables utilisées pour le test dans "hosts"
+
+28/12/07 (sam)
+- squid.conf : modification auth ldap. Remplacement du base dn écrit en dure (ou=education, o=gouv,c=fr) par une variable du dico (ldap_base_dn)
+- authentification.xml : ajout variable ldap_base_dn avec comme valeur par defaut ou=education, o=gouv,c=fr.
+
+19/12/2007
+- ajout du service ntp
+
+03/12/2007
+- magic_rvp.py : correction pour eole NG (utilisation de ipsec status au lieu de ipsec eroute)
+
+29/11/2007
+- diagnose : remplacement de TestService par TestWeb (dem 589)
+
+08/11/07 (jc)
+- résolution bug 617 : code sur l'activation rvp a l'instance
+
+22/10/07 (sam)
+Correction dico révision 11100 qui était fireuse et qui a écrasée les modifs effectuées avant ...
+
+- amon.xml : -alias eth0 prend par default la valeur netmask de eth0
+             -ajout d'un parametre pour specifier la valeur du mtu pour eth0
+             -ajout parametre path mtu discovery qui avait encore disparu !!!!!!
+             -pmtu discovery désactivé par defaut ....
+- interface : parametre pour gerer le mtu sur eth0
+
+22/10/07 (jc)
+- diagnose : RVP inactif si test-rvp absent
+
+19/10/07 (sam)
+- modification de la gestion des alias pour eth0 (on demande l'adresse reseau, netmask et broadcast) pour permettre le multi-routeur
+
+11/10/07(luc)
+
+- Ajout des questions relatives à NuFw (activation generale, annuaire, ouverture du port NuAuth par zone)
+- AMON une carte ! (FiXme jerome?)
+- Modif dansguardian : Pluggins AUTH non actif à cause du Bug HTTPS
+- Limite de pondÃ©ration remontÃ©e Ã  100 (Old Children!)
+
+5/10/07 (sam)
+- ajout d'un nouveau parametre dans le dico et dans sysctl.conf pour activer ou non le path mtu discovery (active par defaut)
+
+27/09/07 (sam)
+-squid.conf : ajout d'acl pour permettre l'acces aux sites de maj eole sans authentification
+
+19/09/07 (luc)
+- Ajout /usr/bin/era  pour lancer ERA en ssh ou en console
+
+17/09/07 (sam)
+-resolv.conf : condition sur le dns
+-servcice ajout bacula-fd
+-dico ajout question concernant l'activation de bacula
+
+13/09/07 (sam)
+- squid.conf : ajout des ports 8443 8753 dans SSL_ports
+- dico : correction du libellÃ© serveur_ref
+- spcl.options + dico : le forward dns general est rendu facultatif
+
+12/09/07
+- correction bug 548 : import parsedico dans recup_config
+
+11/09/07 (jc)
+- demande n° 549 : ajout test RVP dans diagnose
+
+03/09/07 (sam)
+- agriates.zones : ajout d'une academie manquante
+
+27/07/07
+- bug 530 : prise en compte du cache_pere dans le diagnose
+
+10/07/07 (sam + bruno)
+ajout script gen_ipsec-policy.py qui permet de de generer le script ipsec-spd_policy + modif script init rvp pour qu'il lance gen_ipsec-policy.py
+suppression du template ipsec-spd_policy
+
+05/07/07 (sam)
+
+correction bug nÂ° 521 : erreur dans squid.conf si 5 cartes (manque d'un %% pour vlan_eth4) et dans spcl.options erreur sur le nom de l'interface (eth5 au lieu de eth4)
+02/07/07 (sam)
+- squid.conf : ajout d'un purge_list sur la variable nom_cache pere_zone pour que le for n'ajoute q'une ligne si la liste comporte plusieurs fois la mÃªme adresse
+
+25/06/07 (luc)
+- services : Lancement de ead-server
+
+25/06/07 (sam)
+- ajout template pour rÃ©soudre les pb liÃ© au vpn et au reseau 10.0.0.0
+- modif du script d'init rvp pour prise en compte du template ipsec-spd_policy
+- modif de l'utilisation des hosts
+
+22/06/07 (sam)
+- syctl.conf : desactivation d'une option relative Ã  grsec
+
+21/06/2007 (luc)
+- diagnose : test Ead 2
+19/06/2007 (sam)
+- dico : ajout d'un deuxieme serveur de maj + ajout question concernant les zones dns + possibilite ajout hosts dans le dns
+- gen_dns : generation des zones en fonction du dico
+- hosts : ajout des hosts depuis le dico
+
+11/06/07 (jc)
+- toilettage manage-amon et ajout de Maj-blacklists pour amon dans sudoers
+
+08/06/07 (sam)
+- agriates.zones : correction d'une coquille sur une zone
+
+07/06/07
+- ajout du mode liste blanche
+
+31/05/07 (jsoyer)
+- reajout de winbind dans les services a lancer
+
+31/05/07 (sam)
+- suppression de winbind dans les services a lancer
+
+30/05/07 (sam)
+- firewall.stop : tout autoriser pour lo (pb arret bind en cas de reboot ou d'arret de la machine)
+
+29/05/07 (sam)
+- squid.conf : changement de la methode d'authentification avec ntlm. Plus de Winbind. + Le nombre d'instance des modules d'authentification est dans le dico.
+
+24/05/07 (sam)
+- lance-Maj-blacklist.sh : correction chemin du spool de at
+- crontab : redirection des commandes vers dev/null + plus de maito vers root
+
+23/05/07 (sam)
+hosts : suppression des tests sur les interfaces "statiques"
+
+22/05/07 (sam)
+- Ajout des conf logrotate pour dansguardian, syslog-ng et ulogd
+
+4/05/07 (sam)
+- dico + squid.conf + spcl.options : modification des proxy peres, et du forward dns (plus rattachÃ©s au rvp)
+
+23/04/07 (sam)
+- dico : ajout question concernant l'utilisation d'agriates + ajout script firewall.stop
+- ajout fichier agriates.zones
+-spcl.options: inclusion de agriates.zones si amon membre agriates
+
+19/04/07
+- ajout killp2p dans "services" + modification du service pour les restart
+
+16/04/07 (sam)
+- interfaces : ajouts des paramÃ¨tres netmask, network et broadcast pour les ip alias
+spcl.options : prise en compte des vlans
+
+12/04/07 (sam)
+Maj-blacklist : modif de la variable permettant de recuperer les blacklists. Ajout d'une variable specifique dans le dico (url_maj_blacklist)
+
+11/04/07 (sam)
+- squid.conf : ajout test active-rvp ==oui + modif nom variable vlan
+- interface : correction coquilles au niveau des alias et des vlans
+
+5/04/07 (sam)
+- active_rvp : plus de Recup-crl ...
+
+3/04/07 (sam)
+- active_rvp : remplacement de /mnt par /media ...
+
+2/04/07 (sam)
+- ajout scripts permettant de lancer et d'arreter le firewall (firewall.start et firewall.stop)
+
+30/03/07 (sam)
+- squid.conf : ajout port 631 dans les ssl_ports
+- spcl.option : suppression de la variable autoriser_dns_via_rvp.
+- hosts : nom_machine plutot que nom_machine_eth0 pour l'int eth0
+- dico : suppression des variables nom_machine_eth0 et autoriser_dns_via_rvp.
+
+23/03/2007
+- Ajout de type_maj dans le dico
+
+14/02/2007 (jojo)
+- nouvelle gestion des scripts firewall
+- sudoers : suppr bastion.sh
+- /usr/share/era/lib/bastion.sh =>  /usr/share/era/bastion.sh
+
+21/02/2007 (jojo)
+- corrections era/bastion
+- restauration filres-opt
+- FIXME suppression de killp2p de la liste des services !
+- correction balcklists et filtres
+
+20/02/2007 (jojo)
+- ajout des scripts de preinstance et prereconf pour la copie de bastion.xml
+- templates non disponibles commentes dans amon.xml [FIXME]
+- correction des %if foireux dans hosts et squid.conf
+
+19/02/2007 (jojo)
+- amon.sh lien ssl.load pour apache
+
+07/02/2007 (jojo)
+- suppression de l'accent fatal dans squid.conf
+- changement des variables contenant int3 en eth3
+
+30/01/07 (bruno)
+- changement des variables contenant int0 (1,2) en eth0

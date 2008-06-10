@@ -1,0 +1,67 @@
+#!/bin/bash
+. /usr/share/eole/FonctionsEoleNg
+. /usr/bin/ParseDico
+tput bold
+echo "*** Controle des services"
+tput sgr0
+echo "# Services Locaux"
+TestService DNS localhost:53    	
+TestService "Proxy"  127.0.0.1:8080    	
+TestService "EAD2 " localhost:4201   
+Cpt=0;
+while [ $Cpt -lt $nombre_interfaces ]; do
+   Var1="\$adresse_ip_eth$Cpt"
+   Var2="\$ssh_eth$Cpt"
+   Eth="eth$Cpt"
+   Adresse=`eval echo $Var1`
+   Actif=`eval echo $Var2`
+   if [  $Actif ==  "oui" ]
+   then
+	echo "Sur l'interface réseau $Eth"
+	TestService "SSH" $Adresse:22    
+	if [ $ead_web == 'oui' ];then
+		TestService "EAD-Web" $Adresse:4200   
+	else
+		Inactif "EAD-Web"
+	fi
+   else
+	echo "Sur l'interface réseau $Eth"
+        Inactif "SSH"
+        Inactif "EAD-Web"
+   fi
+   let Cpt=Cpt+1 
+done
+echo "Sur $nom_machine_eth1"
+TestService "Filtre Web" $adresse_ip_eth1:3128
+if [ $nombre_interfaces -gt 2 ]
+then
+echo "$nom_machine_eth2"
+TestService "Filtre Web" $adresse_ip_eth2:3128
+fi
+
+# test du RVP si configuré
+echo
+echo "# Réseau virtuel privé"
+if [ -x "/usr/share/eole/test-rvp" ]
+then
+	printf ".  %16s => " "RVP"
+	/usr/share/eole/test-rvp 2>&1 >/dev/null
+	if [ $? -eq 0 ]
+	then
+		EchoVert " Ok"
+	else
+		EchoRouge " Erreur"
+	fi
+else
+	Inactif "RVP"
+fi
+
+echo
+echo "# Services Distants"
+for dns in $adresse_ip_dns 
+do
+TestService "DNS-DISTANT ($dns)"  $dns:53    	
+done
+TestWeb "WEB-DISTANT " eole.ac-dijon.fr
+echo
+exit 0

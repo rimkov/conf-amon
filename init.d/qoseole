@@ -1,0 +1,75 @@
+#! /bin/bash
+#
+# qoseole          Start/Stop le script activant la qos sur Amon
+#
+# description:  lance StartQos.sh si fichier conf trouvé dans /etc.
+# $Id
+# config:
+
+
+RETVAL=0
+
+. /lib/lsb/init-functions
+
+prog="qoseole"
+
+start() {
+	if [ -e /etc/qoseole.conf ]
+	then
+		log_begin_msg  "Activation de la QOS   " 
+		/usr/bin/StartQos.sh 2>&1 > /dev/null
+	       	RETVAL=$?
+		log_end_msg $RETVAL
+		[ $RETVAL -eq 0 ] && touch /var/lock/qoseole
+		return $RETVAL
+	else
+		exit 1
+	fi
+}
+
+stop() {
+	if [ -e /etc/qoseole.conf ]
+	then
+		log_begin_msg  "Arret  de la QOS   " 
+		/usr/bin/StopQos.sh  2>&1 > /dev/null
+		RETVAL=$?
+		log_end_msg $RETVAL
+		echo
+		[ $RETVAL -eq 0 ] && rm -f /var/lock/qoseole
+		return $RETVAL
+	else
+		exit 1
+	fi
+}	
+
+
+restart() {
+  	stop
+	start
+}	
+
+case "$1" in
+  start)
+  	start
+	;;
+  stop)
+  	stop
+	;;
+  restart)
+  	restart
+	;;
+  reload)
+  	restart
+	;;
+  status)
+        /usr/bin/StatusQos.sh
+	;;
+  condrestart)
+  	[ -f /var/lock/qoseole ] && restart || :
+	;;
+  *)
+	printf "Usage: %s {start|stop|status|reload|restart|condrestart}\n" "$0"
+	exit 1
+esac
+
+exit $?

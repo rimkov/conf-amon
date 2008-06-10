@@ -1,0 +1,14 @@
+#Change to "true" for Nufw to be started
+%if %%active_nufw == 'oui'
+NUAUTH_START="true"
+%else
+NUAUTH_START="false"
+%end if
+
+#Add "v"s so nufw gets more verbose
+NUAUTH_VERBOSITY=%echo '"' + ('v' * int(%%nuauth_verbosity)) + '"'
+
+#User nuauth runs on. Change this to some entry existing in /etc/passwd
+NUAUTH_USER="nuauth"
+
+#EDIT /etc/nuauth/nuauth.conf for other options!

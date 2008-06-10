@@ -1,0 +1,86 @@
+#!/bin/bash
+#
+# chkconfig: 2345 85 15
+# description: ipp2p is a program which detect and prevent P2P.
+# processname: ipp2
+# pidfile: /var/run/ipp2p.pid
+
+
+RETVAL=0
+
+. /lib/lsb/init-functions
+
+prog="ipp2p"
+module="ipt_ipp2p"
+
+start() {
+	log_begin_msg "Starting ipp2p"
+        /sbin/modprobe $module
+	/sbin/iptables -L -n |grep ipp2p >/dev/null
+	if [ $? == "0" ]
+	then
+		/sbin/iptables -D FORWARD -m limit --limit 12/min -p tcp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
+		/sbin/iptables -D FORWARD -m limit --limit 12/min -p udp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
+		/sbin/iptables -D FORWARD -p tcp -m ipp2p --ipp2p -j DROP
+		/sbin/iptables -D FORWARD -p udp -m ipp2p --ipp2p -j DROP
+		echo
+		rm -f /var/lock/ipp2p
+	fi
+	/sbin/iptables -I FORWARD 1 -m limit --limit 12/min -p tcp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
+	/sbin/iptables -I FORWARD 2 -m limit --limit 12/min -p udp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
+	/sbin/iptables -I FORWARD 3 -p tcp -m ipp2p --ipp2p -j DROP
+	/sbin/iptables -I FORWARD 4 -p udp -m ipp2p --ipp2p -j DROP
+	RETVAL=$?
+	log_end_msg $RETVAL
+	[ $RETVAL -eq 0 ] && touch /var/lock/ipp2p
+	return $RETVAL
+
+}
+
+stop() {
+	log_begin_msg "Stop ipp2p"
+	/sbin/iptables -D FORWARD -m limit --limit 12/min -p tcp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
+	/sbin/iptables -D FORWARD -m limit --limit 12/min -p udp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
+	/sbin/iptables -D FORWARD -p tcp -m ipp2p --ipp2p -j DROP
+	/sbin/iptables -D FORWARD -p udp -m ipp2p --ipp2p -j DROP
+        /sbin/rmmod $module
+	RETVAL=$?
+	log_end_msg $RETVAL
+	echo
+	[ $RETVAL -eq 0 ] && rm -f /var/lock/ipp2p
+	return $RETVAL
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart|reload)
+	/sbin/iptables -L -n |grep ipp2p >/dev/null
+	if [ $? == "0" ]
+	then
+        	stop
+	fi
+        start
+        RETVAL=$?
+        ;;
+  condrestart)
+        if [ -f /var/lock/ipp2p ]; then
+            stop
+            start
+            RETVAL=$?
+        fi
+        ;;
+  status)
+  	/sbin/iptables -L -n |grep "ipp2p"
+        RETVAL=$?
+        ;;
+  *)
+        gprintf "Usage: %s {start|stop|restart|condrestart|status}\n" "$0"
+        exit 1
+esac
+
+exit $RETVAL

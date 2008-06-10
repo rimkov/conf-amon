@@ -1,0 +1,86 @@
+#! /bin/bash
+#
+# killp2p          Start/Stop le filtrage p2p  
+#
+# chkconfig: 2345 35 60
+# description:  lance p2p si activé depuis l'ead
+# $Id
+# config:
+
+
+RETVAL=0
+
+. /lib/lsb/init-functions
+  
+prog="killp2p"
+
+start() {
+	if [ -e /var/www/ead/tmp/kill-p2p ]
+	then
+		log_begin_msg "Lancement du filtrage P2P " 
+		/etc/init.d/ipp2p start >/dev/null 2>&1
+	       	RETVAL=$?
+		log_end_msg $RETVAL
+		[ $RETVAL -eq 0 ] && touch /var/lock/killp2p
+		return $RETVAL
+	else
+		exit 0
+	fi
+}
+
+stop() {
+	if [ -e /var/lock/killp2p ]
+	then
+		log_begin_msg "Arret du filtrage P2P " 
+		/etc/init.d/ipp2p stop >/dev/null 2>&1
+		#RETVAL=$?
+		#log_end_msg $RETVAL
+		#[ $RETVAL -eq 0 ] && rm -f /var/lock/killp2p
+		rm -f /var/lock/killp2p
+		log_end_msg 0
+        # éviter les sorties différentes de 0 pour le restart ! 
+	# 	return $RETVAL
+	#else
+	#	exit 1	
+	fi
+}	
+
+
+restart() {
+  	stop
+	start
+}	
+
+case "$1" in
+  start)
+  	start
+	;;
+  stop)
+  	stop
+	;;
+  restart)
+  	restart
+	;;
+  reload)
+  	restart
+	;;
+  status)
+        /etc/init.d/ipp2p status >/dev/null 2>&1
+	if [ $? == "0" ]
+	then
+		echo -e "\n Service de filtrage du p2p actif \n"
+		exit 0
+	else
+		echo -e "\n Service de filtrage du p2p inactif \n"
+		exit 1
+	fi
+	;;
+  condrestart)
+  	[ -f /var/lock/killp2p ] && restart || :
+	;;
+  *)
+	echo "Usage: %s {start|stop|status|reload|restart|condrestart}\n" "$0"
+	exit 1
+esac
+
+exit $?

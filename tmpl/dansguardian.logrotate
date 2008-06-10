@@ -1,0 +1,13 @@
+/var/log/dansguardian/*.log {
+  rotate 365
+  daily
+  sharedscripts
+  prerotate
+    killall dansguardian > /dev/null
+    sleep 5
+  endscript
+
+  postrotate
+    /etc/init.d/dansguardian start > /dev/null
+  endscript
+}

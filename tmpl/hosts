@@ -1,0 +1,50 @@
+127.0.0.1		localhost.localdomain localhost
+%%adresse_ip_eth0		%%nom_machine.%%nom_domaine_local %%nom_machine
+%%adresse_ip_eth1		%%nom_machine_eth1.%%nom_domaine_local %%nom_machine_eth1
+%if %%nom_domaine_local_supp != ['']
+%for %%domaines in %%nom_domaine_local_supp
+%%adresse_ip_eth0		%%nom_machine.%%domaines 
+%%adresse_ip_eth1		%%nom_machine_eth1.%%domaines 
+%end for
+%end if
+%if %%nombre_interfaces >= "3" 
+%%adresse_ip_eth2		%%nom_machine_eth2.%%nom_domaine_local %%nom_machine_eth2
+%if %%nom_domaine_local_supp != ['']
+%for %%domaines in %%nom_domaine_local_supp
+%%adresse_ip_eth2		%%nom_machine_eth2.%%domaines 
+%end for
+%end if
+%end if
+%if %%nombre_interfaces >= "4" 
+%%adresse_ip_eth3		%%nom_machine_eth3.%%nom_domaine_local %%nom_machine_eth3
+%if %%nom_domaine_local_supp != ['']
+%for %%domaines in %%nom_domaine_local_supp
+%%adresse_ip_eth3		%%nom_machine_eth3.%%domaines 
+%end for
+%end if
+%end if
+%if %%nombre_interfaces == "5" 
+%%adresse_ip_eth4		%%nom_machine_eth4.%%nom_domaine_local %%nom_machine_eth4
+%if %%nom_domaine_local_supp != ['']
+%for %%domaines in %%nom_domaine_local_supp
+%%adresse_ip_eth4		%%nom_machine_eth4.%%domaines 
+%end for
+%end if
+%end if
+
+%if %%activer_squid_auth == 'oui' and %%type_squid_auth == 'NTLM/SMB'
+# Si ScribeDMZ et le serveur d'authentification sont le même serveur mais renseignés avec des noms différents, ajouter un alias
+ %for %%smb in %%nom_serveur_smb
+  %if %%smb.ip_serveur_smb == %%ip_serveur_scribe_dmz and %%install_scribe_dmz == 'oui'
+%%smb.ip_serveur_smb            %%smb.%%nom_domaine_local %%smb %%nom_serveur_scribe_dmz
+  %else
+%%smb.ip_serveur_smb		%%smb.%%nom_domaine_local %%smb
+  %end if
+ %end for
+%else if %%install_scribe_dmz == 'oui'
+ %%ip_serveur_scribe_dmz		%%nom_serveur_scribe_dmz.%%nom_domaine_local %%nom_serveur_scribe_dmz
+%end if
+
+%for %%hosts in %%nom_host_dns
+%%hosts.ip_host_dns		%%hosts
+%end for

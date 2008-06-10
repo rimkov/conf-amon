@@ -1,0 +1,446 @@
+	 pid-file "/var/run/bind/run/named.pid";
+        /*
+         * If there is a firewall between you and nameservers you want
+         * to talk to, you might need to uncomment the query-source
+         * directive below.  Previous versions of BIND always asked
+         * questions using port 53, but BIND 8.1 uses an unprivileged
+         * port by default.
+         */
+	version "MyVersion";
+        // query-source address * port 53;
+        // ***   DNS EXTERNE 
+%if %%adresse_ip_dns != ['']
+        forwarders {
+%for %%variable_iter in %%adresse_ip_dns
+                %%variable_iter;
+%end for
+                };
+        forward only;
+%end if
+
+listen-on {intra;};
+allow-notify {none;};
+allow-recursion {localnets;};
+allow-transfer {none;};
+allow-query {localnets;};
+
+};
+
+acl "intra" {
+	127.0.0.1;
+	%%adresse_ip_eth1;
+%if %%nombre_interfaces >= "3"
+	%%adresse_ip_eth2;
+%if %%vlan_eth2 == "oui"
+%for %%vlan2 in %%id_vlan_eth2
+	%%vlan2.adresse_ip_vlan_eth2;
+%end for
+%end if 
+%end if
+%if %%nombre_interfaces >= "4"
+	%%adresse_ip_eth3;
+%if %%vlan_eth3 == "oui"
+%for %%vlan3 in %%id_vlan_eth3
+	%%vlan3.adresse_ip_vlan_eth3;
+%end for
+%end if 
+%end if
+%if %%nombre_interfaces >= "5"
+	%%adresse_ip_eth4;
+%if %%vlan_eth4 == "oui"
+%for %%vlan4 in %%id_vlan_eth4
+	%%vlan4.adresse_ip_vlan_eth4;
+%end for
+%end if 
+%end if
+%if %%vlan_eth0 == "oui"
+%for %%vlan0 in %%id_vlan_eth0
+	%%vlan0.adresse_ip_vlan_eth0;
+%end for
+%end if 
+%if %%vlan_eth1 == "oui"
+%for %%vlan1 in %%id_vlan_eth1
+	%%vlan1.adresse_ip_vlan_eth1;
+%end for
+%end if 
+};
+
+acl "reseaueth1" {
+	%%adresse_network_eth1/%%calc_classe(%%adresse_netmask_eth1);
+%if %%agriates_member == "oui" and %%adresse_dns_agriates != "" and %%is_file("/etc/bind/agriates.zones")
+};
+
+// include "/etc/bind/agriates.zones"
+
+// Academie d'Aix-Marseille
+zone "in.ac-aix-marseille.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie d Amiens
+zone "in.ac-amiens.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Besancon
+zone "in.ac-besancon.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Bordeaux
+zone "in.ac-bordeaux.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Caen
+zone "in.ac-caen.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Clermont-Ferrand
+zone "in.ac-clermont.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Corse
+zone "in.ac-corse.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Creteil
+zone "in.ac-creteil.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Dijon
+zone "in.ac-dijon.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Grenoble
+zone "in.ac-grenoble.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de la Guadeloupe
+zone "in.ac-guadeloupe.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Guyane
+zone "in.ac-guyane.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Lille
+zone "in.ac-lille.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Limoges
+zone "in.ac-limoges.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Lyon
+zone "in.ac-lyon.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Martinique
+zone "in.ac-martinique.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Mayotte
+zone "in.ac-mayotte.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Montpellier
+zone "in.ac-montpellier.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Nancy-Metz
+zone "in.ac-nancy-metz.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Nantes
+zone "in.ac-nantes.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Nice
+zone "in.ac-nice.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de nouvelle caledonie
+zone "in.ac-noumea.nc" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Orleans-Tours
+zone "in.ac-orleans-tours.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Paris
+zone "in.ac-paris.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Poitiers
+zone "in.ac-poitiers.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Polynesie
+zone "in.ac-polynesie.pf" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Reims
+zone "in.ac-reims.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Rennes
+zone "in.ac-rennes.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Reunion
+zone "in.ac-reunion.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Rouen
+zone "in.ac-rouen.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Strasbourg
+zone "in.ac-strasbourg.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Toulouse
+zone "in.ac-toulouse.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie de Versailles
+zone "in.ac-versailles.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Academie Virtuelle
+zone "in.acv.orion.education.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// administration centrale
+zone "in.adc.education.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Ader
+zone "ader.gouv.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// Orion
+zone "in.orion.education.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// intranet pleiade
+zone "intranet.pleiade.education.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+};
+
+// publication pleiade
+zone "publication.pleiade.education.fr" in {
+	type forward; 
+	forwarders { 
+	%%adresse_dns_agriates;
+	}; 
+	forward only;
+%end if
+%if %%ip_dns_zone_forward != ""
+};
+%for %%zone in %%nom_zone_forward
+%if %%zone.index != %%len(%%nom_zone_forward)-1
+zone "%%zone" in {
+	type forward; 
+	forwarders { 
+	%%zone.ip_dns_zone_forward;
+	}; 
+	forward only;
+};
+%else
+zone "%%zone" in {
+	type forward; 
+	forwarders { 
+	%%zone.ip_dns_zone_forward;
+	}; 
+	forward only;
+%end if
+%end for
+%end if
+

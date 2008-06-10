@@ -1,0 +1,33 @@
+/var/log/ead/error_engine.log {
+    weekly
+    rotate 8
+    copytruncate
+    compress
+    notifempty
+    missingok
+}
+/var/log/ead/login.log {
+    weekly
+    rotate 8
+    copytruncate
+    compress
+    notifempty
+    missingok
+}
+/var/log/ead/service.log {
+    weekly
+    rotate 8
+    copytruncate
+    compress
+    notifempty
+    missingok
+}
+/var/log/ead/warning.log {
+    weekly
+    rotate 8
+    copytruncate
+    compress
+    notifempty
+    missingok
+}
+

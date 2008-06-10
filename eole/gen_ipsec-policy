@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+###########################################################################
+# Eole NG - 2007  
+# Copyright Pole de Competence Eole  (Ministere Education - Academie Dijon)
+# Licence CeCill  cf /root/LicenceEole.txt
+# eole@ac-dijon.fr 
+#  
+# gen_ipsec-policy.py
+#  
+# script de generation du fichier ipsec-spd-policy pour strongswan
+#       
+###########################################################################
+import os
+from creole.parsedico import parse_dico
+from creole.eosfunc import calc_classe
+
+dico = parse_dico()
+Reseau = []
+data = ["""#!/usr/sbin/setkey -f
+
+#exécute les opérations indiquées jusqu'à EOF 
+"""]
+for interface in range(int(dico['nombre_interfaces'])):
+    Reseau.append("%s/%s" % (dico['adresse_network_eth%d' % interface],
+                             calc_classe(dico['adresse_netmask_eth%d' % interface])))
+    if dico['vlan_eth%d' % interface] == "oui" :
+        for vlan in range(len(dico['adresse_network_vlan_eth%d' % interface])):
+            Reseau.append("%s/%s" % (dico['adresse_network_vlan_eth%d' % interface][vlan],
+                           calc_classe(dico['adresse_netmask_vlan_eth%d'% interface][vlan])))
+for res1 in Reseau :
+    for res2 in Reseau :
+        data.append('spdadd %s %s any -P in none;' % (res1, res2)) 
+        data.append('spdadd %s %s any -P out none;' % (res1, res2)) 
+        data.append('spdadd %s %s any -P fwd none;' % (res1, res2)) 
+fic = file('/etc/freeswan/ipsec-spd_policy','w')
+fic.write("\n".join(data))
+fic.close()
+os.system('/usr/sbin/setkey -PF')
+os.system('chmod u+x /etc/freeswan/ipsec-spd_policy')
+os.system('/etc/freeswan/ipsec-spd_policy >/dev/null')
