@@ -1,3 +1,10 @@
+conf-amon (2.2-eole2) eole-2.2; urgency=low
+
+  * Import du projet conf-amon-2.2
+  * mkdir Eole2.2/amon/conf-amon
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 11 Jun 2008 11:01:44 +0200
+
 conf-amon (2.2-eole1) eole-2.2; urgency=low
 
   * passage en hardy
