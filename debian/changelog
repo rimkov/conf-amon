@@ -1,3 +1,9 @@
+conf-amon (2.2-eole3) eole-2.2; urgency=low
+
+  * Changement du numero de version
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 12 Jun 2008 10:48:52 +0200
+
 conf-amon (2.2-eole2) eole-2.2; urgency=low
 
   * Import du projet conf-amon-2.2
