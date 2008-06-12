@@ -43,8 +43,9 @@ then
 	echo
 fi
 
+# FIXME : plus utilisé sur 2.2
 # creation base rrdtools
-/usr/share/eole/create-rrd.sh
+#/usr/share/eole/create-rrd.sh
 
 # Utilisation manage-amon comme shell pour amon
 id amon &>/dev/null

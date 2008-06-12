@@ -14,6 +14,7 @@
 sleep 2
 }
 
+# FIXME : plus utilisé sur 2.2
 # on relance le create-rrd (sans casser les bases !)
-/usr/share/eole/create-rrd.sh
+#/usr/share/eole/create-rrd.sh
 echo
