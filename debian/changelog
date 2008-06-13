@@ -1,3 +1,10 @@
+conf-amon (2.2-eole4) eole-2.2; urgency=low
+
+  * fix squid.conf
+  * create-rrd plus utilise
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 13 Jun 2008 10:41:11 +0200
+
 conf-amon (2.2-eole3) eole-2.2; urgency=low
 
   * Changement du numero de version
