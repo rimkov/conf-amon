@@ -1,3 +1,13 @@
+conf-amon (2.2-eole5) eole-2.2; urgency=low
+
+  * Ajout des fichiers relatifs a rsyslog
+  * Suppression des fichiers relatifs a syslog-ng
+  * changement de syslog-ng par rsyslog
+  * ajout du dictionnaire 1_logs.xml
+  * conf-amon 2.2: domaine_noauth ajout de .pool.ntp.org
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 15 Jul 2008 14:56:32 +0200
+
 conf-amon (2.2-eole4) eole-2.2; urgency=low
 
   * fix squid.conf
