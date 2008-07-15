@@ -72,6 +72,8 @@
 			</variable>
 			<!-- <variable name='adresse_ip_zephirlogs' type='ip' description='Adresse ip du serveur de log central zephirlogs' /> -->
                         <variable name='activater_log_distant' type='string' description='Gestion des logs centralisés' />
+                                <value>non</value>
+                        </variable>
  			<variable name='activer_squid_auth' type='string' description="Activation de l'authentification squid" >
  				<value>non</value>
  			</variable>
