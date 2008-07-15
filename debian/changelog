@@ -1,3 +1,9 @@
+conf-amon (2.2-eole6) eole-2.2; urgency=low
+
+  * Corrections typo
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 15 Jul 2008 15:19:26 +0200
+
 conf-amon (2.2-eole5) eole-2.2; urgency=low
 
   * Ajout des fichiers relatifs a rsyslog
