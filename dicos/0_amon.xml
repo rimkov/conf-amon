@@ -19,14 +19,14 @@
 	<file name='/etc/logrotate.d/ead'/>
 	<file name='/etc/logrotate.d/dansguardian' source='dansguardian.logrotate'/>
 	<file name='/etc/logrotate.d/squid' source='squid.logrotate'/>
-	<file name='/etc/logrotate.d/syslog-ng' source='syslog-ng.logrotate'/>
+	<file name='/etc/logrotate.d/rsyslog' source='rsyslog.logrotate'/>
 	<file name='/etc/logrotate.d/ulogd' source='ulogd.logrotate'/>
 	<file name='/etc/network/interfaces'/>
 	<file name='/etc/pam.d/squid' source='squid.pam'/>
 	<file name='/etc/ssh/ssh_config'/>
 	<file name='/etc/ssh/sshd_config'/>
 	<file name='/etc/squid/squid.conf'/>
-	<file name='/etc/syslog-ng/syslog-ng.conf'/>
+	<file name='/etc/rsyslog.conf'/>
 	<file name='/usr/share/dansguardian/languages/french/template.html' source='dansguardian-template.html'/>
 	<file name='/usr/share/dansguardian/languages/french/template-liste_blanche.html' source='dansguardian-template-liste_blanche.html'/>
 	<file name='/usr/share/dansguardian/languages/french/template-moderateur.html' source='dansguardian-template-moderateur.html'/>
@@ -70,7 +70,8 @@
 			<variable name='serveur_ntp' type='string' description='adresse serveur NTP' >
 				<value>pool.ntp.org</value>
 			</variable>
-			<variable name='adresse_ip_zephirlogs' type='ip' description='Adresse ip du serveur de log central zephirlogs' />
+			<!-- <variable name='adresse_ip_zephirlogs' type='ip' description='Adresse ip du serveur de log central zephirlogs' /> -->
+                        <variable name='activater_log_distant' type='string' description='Gestion des logs centralisés' />
  			<variable name='activer_squid_auth' type='string' description="Activation de l'authentification squid" >
  				<value>non</value>
  			</variable>
@@ -594,6 +595,9 @@
 		<check name="valid_enum" target="activer_squid_auth">
                   <param>['oui','non']</param>
                 </check>
+                <check name="valid_enum" target="activer_log_distant">
+                  <param>['oui','non']</param>
+                </check>
                 <check name="valid_enum" target="install_rvp">
                   <param>['oui','non']</param>
                 </check>
@@ -729,19 +733,19 @@
                 </check>
 	        <check name='valid_enum' target='debit_carte_eth0'>
                 	<param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-                </check>		
+                </check>
 	        <check name='valid_enum' target='debit_carte_eth1'>
                 	<param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-                </check>		
+                </check>
 	        <check name='valid_enum' target='debit_carte_eth2'>
                 	<param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-                </check>		
+                </check>
 	        <check name='valid_enum' target='debit_carte_eth3'>
                 	<param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-                </check>		
+                </check>
 	        <check name='valid_enum' target='debit_carte_eth4'>
                 	<param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-                </check>		
+                </check>
 	<!-- **** Conditions **** -->
 		<condition name='hidden_if_in' source='eole_module'>
 			<param>amonecole</param>
@@ -772,6 +776,10 @@
                 <condition name='hidden_if_in' source='activer_squid_auth'>
                 	<param>non</param>
 			<target type='family'>Authentification</target>
+		</condition>
+                <condition name='hidden_if_in' source='activer_log_distant'>
+                	<param>non</param>
+			<target type='family'>Logs</target>
 		</condition>
                 <condition name='hidden_if_in' source='install_rvp'>
                 	<param>non</param>

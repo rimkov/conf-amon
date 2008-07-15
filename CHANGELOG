@@ -1,5 +1,9 @@
 Conf-AmonNG
 
+15/07/2008
+- changement de syslog-ng par rsyslog
+- ajout du dictionnaire 1_logs.xml
+
 09/06/2008
 - squid.conf: ajout d'un deuxieme fichiers (utilisateur) pour les noauth et nocache
 - prereconf: ajout d'un touch vers les deux fichiers domaines_noauth_user et domaines_nocache_user
