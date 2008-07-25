@@ -2,8 +2,10 @@ rsyslog
 networking
 cron
 bastion
-rvp
 ssh
+%if %%install_rvp == 'oui'
+rvp
+%end if
 %if %%activer_bacula == 'oui'
 bacula-fd
 %end if
@@ -21,7 +23,6 @@ killp2p
 ulogd
 ntp
 %if %%active_nufw == 'oui'
-nuauth
 nufw
 %end if
 z_stats

@@ -3,6 +3,31 @@
 
 import os, sys, shutil
 
+LISTE_FICHIERS=[
+        '/etc/squid/filtres-users',
+        '/var/www/ead/tmp/',
+        '/var/www/ead/serialize_btn.srz',
+        '/usr/share/ead/perso/',
+        '/usr/share/ead2/backend/config/roles_local.ini',
+        '/usr/share/ead2/backend/config/perm_local.ini',
+        '/usr/share/ead2/backend/tmp/ipset_group0.txt',
+        '/usr/share/ead2/backend/tmp/ipset_schedules0.pickle',
+        '/usr/share/ead2/backend/tmp/ipset_group1.txt',
+        '/usr/share/ead2/backend/tmp/ipset_schedules1.pickle',
+        '/usr/share/ead2/backend/tmp/regles.csv',
+        '/usr/share/ead2/backend/tmp/poste_all0.txt',
+        '/usr/share/ead2/backend/tmp/poste_all1.txt',
+        '/usr/share/ead2/backend/tmp/horaire_ip0.txt',
+        '/usr/share/ead2/backend/tmp/horaire_ip1.txt',
+        '/usr/share/ead2/backend/tmp/dest_interdites0.txt',
+        '/usr/share/ead2/backend/tmp/dest_interdites1.txt',
+        '/usr/share/ead2/backend/tmp/filtrage-contenu0',
+        '/usr/share/ead2/backend/tmp/filtrage-contenu1',
+        '/var/lib/blacklists/dansguardian0/',
+        '/var/lib/blacklists/dansguardian1/',
+        '/var/www/ead/tmp/kill-p2p'
+]
+
 def copie_fich(repsauv):
     #Définition de la liste des fichiers :
       #Bases optionelles
@@ -10,21 +35,7 @@ def copie_fich(repsauv):
       #postes interdits (par tranche horaire)
       #règles optionelles
       #sous-résseaux interdits (service => securité perso)
-      #horaires personnalisées
-      #scripts personnalisés
-      #scripts personnalisés (répertoire)
-      #kill-p2p
-      #base perso, utilisateurs interdits et modérateurs
-    LISTE_FICHIERS=['/etc/squid/filtres-users',
-    '/var/www/ead/tmp/filtrage-contenu',
-    '/var/www/ead/tmp/horaires_ip.txt',
-    '/var/www/ead/tmp/regles.csv',
-    '/var/www/ead/tmp/poste.txt',
-    '/var/www/ead/tmp/horaires.txt',
-    '/var/www/ead/serialize_btn.srz',
-    '/usr/share/ead/perso/',
-    '/var/www/ead/tmp/kill-p2p',
-    '/var/lib/blacklists/db/local/']
+
     for i in LISTE_FICHIERS:
         if os.path.isdir(repsauv+i):
             os.system('cp -Rf '+repsauv+i+'/* '+i)
@@ -34,19 +45,17 @@ def copie_fich(repsauv):
 def copy_modele_parefeu(repsauv):
     os.system('cp -f %s /usr/share/era/modeles/'%os.path.join(repsauv,'*.xml'))
 
-def lance_commandes():
-    os.system('/usr/share/ead/engine-ajout_filtres.sh')
-    if os.path.isfile('/var/www/ead/tmp/filtrage-contenu'):
-        type_filtrage = file('/var/www/ead/tmp/filtrage-contenu').readline().strip()
-        type_filtrage_dico = { '0':'--desactive_contenu', '1':'--active_meta', '2':'--active_contenu' }
-        os.system('/usr/share/ead/config_dans.py '+type_filtrage_dico[type_filtrage])
+def lance_commandes(init_dans=False):
     if os.path.isfile('/var/www/ead/tmp/kill-p2p'):
-        os.system('/etc/init.d/kill-p2p restart')
+        os.system('/etc/init.d/killp2p restart')
+    if init_dans:
+        os.system('/usr/share/eole/prereconf/config >/dev/null 2>&1')
+        os.system('/etc/init.d/bastion restart')
 
 def main(repsauv):
     copie_fich(repsauv)
     copy_modele_parefeu(repsauv)
-    lance_commandes()
+    lance_commandes(True)
 
 if __name__ == '__main__':
     try:

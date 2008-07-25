@@ -34,7 +34,6 @@ stop() {
 		/usr/bin/StopQos.sh  2>&1 > /dev/null
 		RETVAL=$?
 		log_end_msg $RETVAL
-		echo
 		[ $RETVAL -eq 0 ] && rm -f /var/lock/qoseole
 		return $RETVAL
 	else

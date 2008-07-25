@@ -42,7 +42,7 @@ fi
 # test du RVP si configuré
 echo
 echo "# Réseau virtuel privé"
-if [ -x "/usr/share/eole/test-rvp" ]
+if [ $install_rvp == 'oui' -a -x "/usr/share/eole/test-rvp" ]
 then
 	printf ".  %16s => " "RVP"
 	/usr/share/eole/test-rvp 2>&1 >/dev/null
