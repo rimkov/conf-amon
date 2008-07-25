@@ -1,3 +1,9 @@
+conf-amon (2.2-eole9) eole-2.2; urgency=low
+
+  * report des modifs 2.1 (squid, nuauth, rvp, dico...)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 25 Jul 2008 16:56:39 +0200
+
 conf-amon (2.2-eole8) eole-2.2; urgency=low
 
   * Fix typo
