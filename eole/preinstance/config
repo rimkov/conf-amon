@@ -25,6 +25,9 @@ $danspath/init_dans.py
 touch "/etc/squid/domaines_noauth_user"
 touch "/etc/squid/domaines_nocache_user"
 
+# FIX pour nuauth
+chmod 600 /etc/nufw/certs/nuauth-key.pem
+
 # Creation d'un utilisateur amon2 pour la configuration de la zone 2
 id amon &>/dev/null
 if [ $? -eq 0 ]
