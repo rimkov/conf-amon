@@ -1,3 +1,10 @@
+conf-amon (2.2-eole10) eole-2.2; urgency=low
+
+  * amon : fix droits sur nuauth-key.pem
+  * amon : valeur par defaut pour nuauth_nss_ldap_dn
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 20 Aug 2008 14:50:27 +0200
+
 conf-amon (2.2-eole9) eole-2.2; urgency=low
 
   * report des modifs 2.1 (squid, nuauth, rvp, dico...)
