@@ -8,7 +8,7 @@ LANG="fr_FR.UTF-8" # dates en français
 META_PATH="/var/lib/blacklists/meta/"
 DB_PATH="/var/lib/blacklists"
 # fichier de log spécifique EAD
-F_LOG="/var/www/ead/tmp/blacklist-date.txt"
+F_LOG="/usr/share/ead2/backend/tmp/blacklist-date.txt"
 
 echo -n "Mise à jour le " > $F_LOG
 date '+%x :' >> $F_LOG
