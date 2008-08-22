@@ -1,3 +1,10 @@
+conf-amon (2.2-eole12) eole-2.2; urgency=low
+
+  * Maj-blacklists : deplacement du fichier de log vers
+    /usr/share/ead2/backend/tmp
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 22 Aug 2008 10:16:41 +0200
+
 conf-amon (2.2-eole11) eole-2.2; urgency=low
 
   * amon2.2 : maj diagnose
