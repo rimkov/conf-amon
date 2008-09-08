@@ -1,4 +1,7 @@
 Conf-AmonNG
+8/09/08 (sam)
+- interface : 	- ajout paramètres gateway au niveau vlan et alias eth0 pour multi-routeur
+		- alias interface completement parametrable
 
 15/07/2008
 - changement de syslog-ng par rsyslog

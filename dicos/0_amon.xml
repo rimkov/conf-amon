@@ -99,7 +99,7 @@
 				<value>eoleng.ac-dijon.fr</value>
 			</variable>
 			<variable name='serveur_maj2' type='string' description='Second serveur de mise à jour' >
-				<value>eoleng.ac-dijon.fr</value>
+				<value>ftp.crihan.fr</value>
 			</variable>
 			<variable name='type_maj' type='string' description='Niveau de mise à jour' >
 				<value>minimum</value>
@@ -145,6 +145,7 @@
 			</variable>
 			<variable name='alias_network_eth0' type='ip' description="Adresse reseau correspondant a cet alias" />
 			<variable name='alias_broadcast_eth0' type='ip' description="Adresse broadcast correspondant a cet alias" />
+			<variable name='alias_gw_eth0' type='ip' description="Adresse de la passerelle pour cet alias (optionnelle, uniquement si multi-routeur)" />
 			<variable name='vlan_eth0' type='string' description="Activer le support des vlan sur l'interface" >
 				<value>non</value>
 			</variable>
@@ -155,6 +156,7 @@
 			</variable>
             		<variable name='adresse_network_vlan_eth0' type='ip' description="Adresse réseau de l'interface dans ce vlan" />
 			<variable name='adresse_broadcast_vlan_eth0' type='ip' description="Adresse de broadcast de l'interface dans ce vlan" />
+			<variable name='adresse_gw_vlan_eth0' type='ip' description="Adresse de la passerelle pour ce vlan (optionnelle, uniquement si multi-routeur)" />
 			<variable name='dns_master_eth0' type='string' description="Amon master dns de cette zone ?" >
 				<value>non</value>
 			</variable>
@@ -179,7 +181,14 @@
 			</variable>
 			<variable name='ip_ssh_eth1' type='ip' description="Adresse ip reseau autorise à se connecter a l'interface interne 1" multi='True' />
 			<variable name='netmask_ssh_eth1' type='netmask' description="Masque du sous reseau associe a l'ip" />
+			<variable name='alias_eth1' type='string' description="Ajouter des ip alias sur l'interface" >
+				<value>non</value>
+			</variable>
 			<variable name='alias_ip_eth1' type='ip' description="Adresse ip Alias pour l'interface interne 1 (ou rien)" multi='True' />
+			<variable name='alias_netmask_eth1' type='netmask' description="Masque de sous reseau correspondant a cet alias" >
+			</variable>
+			<variable name='alias_network_eth1' type='ip' description="Adresse reseau correspondant a cet alias" />
+			<variable name='alias_broadcast_eth1' type='ip' description="Adresse broadcast correspondant a cet alias" />
 			<variable name='vlan_eth1' type='string' description="Activer le support des vlan sur l'interface" >
 				<value>non</value>
 			</variable>
@@ -221,7 +230,14 @@
 			</variable>
 			<variable name='ip_ssh_eth2' type='ip' description="Adresse ip reseau autorise à se connecter a l'interface" multi='True' />
 			<variable name='netmask_ssh_eth2' type='netmask' description="Masque du sous reseau associe a l'ip" />
+			<variable name='alias_eth2' type='string' description="Ajouter des ip alias sur l'interface" >
+				<value>non</value>
+			</variable>
 			<variable name='alias_ip_eth2' type='ip' description="Adresse ip Alias pour l'interface (ou rien)" multi='True' />
+			<variable name='alias_netmask_eth2' type='netmask' description="Masque de sous reseau correspondant a cet alias" >
+			</variable>
+			<variable name='alias_network_eth2' type='ip' description="Adresse reseau correspondant a cet alias" />
+			<variable name='alias_broadcast_eth2' type='ip' description="Adresse broadcast correspondant a cet alias" />
 			<variable name='vlan_eth2' type='string' description="Activer le support des vlan sur l'interface" >
 				<value>non</value>
 			</variable>
@@ -263,7 +279,14 @@
 			</variable>
 			<variable name='ip_ssh_eth3' type='ip' description="Adresse ip reseau autorise à se connecter a l'interface" multi='True' />
 			<variable name='netmask_ssh_eth3' type='netmask' description="Masque du sous reseau associe a l'ip" />
+			<variable name='alias_eth3' type='string' description="Ajouter des ip alias sur l'interface" >
+				<value>non</value>
+			</variable>
 			<variable name='alias_ip_eth3' type='ip' description="Adresse ip Alias pour l'interface (ou rien)" multi='True' />
+			<variable name='alias_netmask_eth3' type='netmask' description="Masque de sous reseau correspondant a cet alias" >
+			</variable>
+			<variable name='alias_network_eth3' type='ip' description="Adresse reseau correspondant a cet alias" />
+			<variable name='alias_broadcast_eth3' type='ip' description="Adresse broadcast correspondant a cet alias" />
 			<variable name='vlan_eth3' type='string' description="Activer le support des vlan sur l'interface" >
 				<value>non</value>
 			</variable>
@@ -305,7 +328,14 @@
 			</variable>
 			<variable name='ip_ssh_eth4' type='ip' description="Adresse ip reseau autorise à se connecter a l'interface" multi='True' />
 			<variable name='netmask_ssh_eth4' type='netmask' description="Masque du sous reseau associe a l'ip" />
+			<variable name='alias_eth4' type='string' description="Ajouter des ip alias sur l'interface" >
+				<value>non</value>
+			</variable>
 			<variable name='alias_ip_eth4' type='ip' description="Adresse ip Alias pour l'interface (ou rien)" multi='True' />
+			<variable name='alias_netmask_eth4' type='netmask' description="Masque de sous reseau correspondant a cet alias" >
+			</variable>
+			<variable name='alias_network_eth4' type='ip' description="Adresse reseau correspondant a cet alias" />
+			<variable name='alias_broadcast_eth4' type='ip' description="Adresse broadcast correspondant a cet alias" />
 			<variable name='vlan_eth4' type='string' description="Activer le support des vlan sur l'interface" >
 				<value>non</value>
 			</variable>
@@ -467,6 +497,22 @@
 			<param type='eole' name='ip'>alias_ip_eth0</param>
 			<param type='eole' name='netmask'>alias_netmask_eth0</param>
 		</fill>
+		<fill name='calc_network' target='alias_network_eth1'>
+			<param type='eole' name='ip'>alias_ip_eth1</param>
+			<param type='eole' name='netmask'>alias_netmask_eth1</param>
+		</fill>
+		<fill name='calc_network' target='alias_network_eth2'>
+			<param type='eole' name='ip'>alias_ip_eth2</param>
+			<param type='eole' name='netmask'>alias_netmask_eth2</param>
+		</fill>
+		<fill name='calc_network' target='alias_network_eth3'>
+			<param type='eole' name='ip'>alias_ip_eth3</param>
+			<param type='eole' name='netmask'>alias_netmask_eth3</param>
+		</fill>
+		<fill name='calc_network' target='alias_network_eth4'>
+			<param type='eole' name='ip'>alias_ip_eth4</param>
+			<param type='eole' name='netmask'>alias_netmask_eth4</param>
+		</fill>
 		<fill name='calc_network' target='adresse_network_vlan_eth0'>
 			<param type='eole' name='ip'>adresse_ip_vlan_eth0</param>
 			<param type='eole' name='netmask'>adresse_netmask_vlan_eth0</param>
@@ -511,6 +557,22 @@
 			<param type='eole' name='ip'>alias_ip_eth0</param>
 			<param type='eole' name='netmask'>alias_netmask_eth0</param>
 		</fill>
+		<fill name='calc_broadcast' target='alias_broadcast_eth1'>
+			<param type='eole' name='ip'>alias_ip_eth1</param>
+			<param type='eole' name='netmask'>alias_netmask_eth1</param>
+		</fill>
+		<fill name='calc_broadcast' target='alias_broadcast_eth2'>
+			<param type='eole' name='ip'>alias_ip_eth2</param>
+			<param type='eole' name='netmask'>alias_netmask_eth2</param>
+		</fill>
+		<fill name='calc_broadcast' target='alias_broadcast_eth3'>
+			<param type='eole' name='ip'>alias_ip_eth3</param>
+			<param type='eole' name='netmask'>alias_netmask_eth3</param>
+		</fill>
+		<fill name='calc_broadcast' target='alias_broadcast_eth4'>
+			<param type='eole' name='ip'>alias_ip_eth4</param>
+			<param type='eole' name='netmask'>alias_netmask_eth4</param>
+		</fill>
 		<fill name='calc_broadcast' target='adresse_broadcast_vlan_eth0'>
 			<param type='eole' name='ip'>adresse_ip_vlan_eth0</param>
 			<param type='eole' name='netmask'>adresse_netmask_vlan_eth0</param>
@@ -533,6 +595,18 @@
 		</fill>
 		<fill name='calc_val' target='alias_netmask_eth0'>
 			<param type='eole' name='valeur'>adresse_netmask_eth0</param>
+		</fill>
+		<fill name='calc_val' target='alias_netmask_eth1'>
+			<param type='eole' name='valeur'>adresse_netmask_eth1</param>
+		</fill>
+		<fill name='calc_val' target='alias_netmask_eth2'>
+			<param type='eole' name='valeur'>adresse_netmask_eth2</param>
+		</fill>
+		<fill name='calc_val' target='alias_netmask_eth3'>
+			<param type='eole' name='valeur'>adresse_netmask_eth3</param>
+		</fill>
+		<fill name='calc_val' target='alias_netmask_eth4'>
+			<param type='eole' name='valeur'>adresse_netmask_eth4</param>
 		</fill>
 		<auto name='auto_module' target='eole_module'/>
 		<auto name='auto_eth' target='adresse_ip_eth0'>
@@ -643,6 +717,9 @@
 		<check name="valid_enum" target='ssh_eth1'>
 			<param>['oui','non']</param>
 		</check>
+		<check name="valid_enum" target='alias_eth1'>
+			<param>['oui','non']</param>
+		</check>
 		<check name="valid_enum" target='vlan_eth1'>
 			<param>['oui','non']</param>
 		</check>
@@ -660,6 +737,9 @@
                   <param>['statique']</param>
                 </check>
 		<check name="valid_enum" target='ssh_eth2'>
+			<param>['oui','non']</param>
+		</check>
+		<check name="valid_enum" target='alias_eth2'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='vlan_eth2'>
@@ -681,6 +761,9 @@
 		<check name="valid_enum" target='ssh_eth3'>
 			<param>['oui','non']</param>
 		</check>
+		<check name="valid_enum" target='alias_eth3'>
+			<param>['oui','non']</param>
+		</check>
 		<check name="valid_enum" target='vlan_eth3'>
 			<param>['oui','non']</param>
 		</check>
@@ -698,6 +781,9 @@
                   <param>['statique']</param>
                 </check>
 		<check name="valid_enum" target='ssh_eth4'>
+			<param>['oui','non']</param>
+		</check>
+		<check name="valid_enum" target='alias_eth4'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='vlan_eth4'>
@@ -816,6 +902,7 @@
                 	<target type='variable'>alias_netmask_eth0</target>
                 	<target type='variable'>alias_network_eth0</target>
                 	<target type='variable'>alias_broadcast_eth0</target>
+                	<target type='variable'>alias_gw_eth0</target>
 		</condition>
 		<condition name='hidden_if_in' source='vlan_eth0'>
 			<param>non</param>
@@ -824,6 +911,7 @@
                 	<target type='variable'>adresse_netmask_vlan_eth0</target>
                 	<target type='variable'>adresse_network_vlan_eth0</target>
                 	<target type='variable'>adresse_broadcast_vlan_eth0</target>
+                	<target type='variable'>adresse_gw_vlan_eth0</target>
 		</condition>
 		<condition name='hidden_if_in' source='eth1_method'>
 	                <param>dhcp</param>
@@ -836,6 +924,13 @@
 			<param>non</param>
 			<target type='variable'>ip_ssh_eth1</target>
 			<target type='variable'>netmask_ssh_eth1</target>
+		</condition>
+		<condition name='hidden_if_in' source='alias_eth1'>
+			<param>non</param>
+                	<target type='variable'>alias_ip_eth1</target>
+                	<target type='variable'>alias_netmask_eth1</target>
+                	<target type='variable'>alias_network_eth1</target>
+                	<target type='variable'>alias_broadcast_eth1</target>
 		</condition>
 		<condition name='hidden_if_in' source='vlan_eth1'>
 			<param>non</param>
@@ -857,6 +952,13 @@
 			<target type='variable'>ip_ssh_eth2</target>
 			<target type='variable'>netmask_ssh_eth2</target>
 		</condition>
+		<condition name='hidden_if_in' source='alias_eth2'>
+			<param>non</param>
+                	<target type='variable'>alias_ip_eth2</target>
+                	<target type='variable'>alias_netmask_eth2</target>
+                	<target type='variable'>alias_network_eth2</target>
+                	<target type='variable'>alias_broadcast_eth2</target>
+		</condition>
 		<condition name='hidden_if_in' source='vlan_eth2'>
 			<param>non</param>
                 	<target type='variable'>id_vlan_eth2</target>
@@ -877,6 +979,13 @@
 			<target type='variable'>ip_ssh_eth3</target>
 			<target type='variable'>netmask_ssh_eth3</target>
 		</condition>
+		<condition name='hidden_if_in' source='alias_eth3'>
+			<param>non</param>
+                	<target type='variable'>alias_ip_eth3</target>
+                	<target type='variable'>alias_netmask_eth3</target>
+                	<target type='variable'>alias_network_eth3</target>
+                	<target type='variable'>alias_broadcast_eth3</target>
+		</condition>
 		<condition name='hidden_if_in' source='vlan_eth3'>
 			<param>non</param>
                 	<target type='variable'>id_vlan_eth3</target>
@@ -896,6 +1005,13 @@
 			<param>non</param>
 			<target type='variable'>ip_ssh_eth4</target>
 			<target type='variable'>netmask_ssh_eth4</target>
+		</condition>
+		<condition name='hidden_if_in' source='alias_eth4'>
+			<param>non</param>
+                	<target type='variable'>alias_ip_eth4</target>
+                	<target type='variable'>alias_netmask_eth4</target>
+                	<target type='variable'>alias_network_eth4</target>
+                	<target type='variable'>alias_broadcast_eth4</target>
 		</condition>
 		<condition name='hidden_if_in' source='vlan_eth4'>
 			<param>non</param>
@@ -926,15 +1042,22 @@
                         <slave>alias_netmask_eth0</slave>
                         <slave>alias_network_eth0</slave>
                         <slave>alias_broadcast_eth0</slave>
+                        <slave>alias_gw_eth0</slave>
                  </group>
 		 <group master='id_vlan_eth0'>
                         <slave>adresse_ip_vlan_eth0</slave>
                         <slave>adresse_netmask_vlan_eth0</slave>
                         <slave>adresse_network_vlan_eth0</slave>
                         <slave>adresse_broadcast_vlan_eth0</slave>
+                        <slave>adresse_gw_vlan_eth0</slave>
                  </group>
 		 <group master='ip_ssh_eth1'>
                         <slave>netmask_ssh_eth1</slave>
+                 </group>
+		 <group master='alias_ip_eth1'>
+                        <slave>alias_netmask_eth1</slave>
+                        <slave>alias_network_eth1</slave>
+                        <slave>alias_broadcast_eth1</slave>
                  </group>
 		 <group master='id_vlan_eth1'>
                         <slave>adresse_ip_vlan_eth1</slave>
@@ -945,6 +1068,11 @@
 		 <group master='ip_ssh_eth2'>
                         <slave>netmask_ssh_eth2</slave>
                  </group>
+		 <group master='alias_ip_eth2'>
+                        <slave>alias_netmask_eth2</slave>
+                        <slave>alias_network_eth2</slave>
+                        <slave>alias_broadcast_eth2</slave>
+                 </group>
 		 <group master='id_vlan_eth2'>
                         <slave>adresse_ip_vlan_eth2</slave>
                         <slave>adresse_netmask_vlan_eth2</slave>
@@ -954,6 +1082,11 @@
 		 <group master='ip_ssh_eth3'>
                         <slave>netmask_ssh_eth3</slave>
                  </group>
+		 <group master='alias_ip_eth3'>
+                        <slave>alias_netmask_eth3</slave>
+                        <slave>alias_network_eth3</slave>
+                        <slave>alias_broadcast_eth3</slave>
+                 </group>
 		 <group master='id_vlan_eth3'>
                         <slave>adresse_ip_vlan_eth3</slave>
                         <slave>adresse_netmask_vlan_eth3</slave>
@@ -962,6 +1095,11 @@
                  </group>
 		 <group master='ip_ssh_eth4'>
                         <slave>netmask_ssh_eth4</slave>
+                 </group>
+		 <group master='alias_ip_eth4'>
+                        <slave>alias_netmask_eth4</slave>
+                        <slave>alias_network_eth4</slave>
+                        <slave>alias_broadcast_eth4</slave>
                  </group>
 		 <group master='id_vlan_eth4'>
                         <slave>adresse_ip_vlan_eth4</slave>

@@ -32,6 +32,9 @@ address %%alias_addr_eth0
 netmask %%alias_addr_eth0.alias_netmask_eth0
 broadcast %%alias_addr_eth0.alias_broadcast_eth0
 network %%alias_addr_eth0.alias_network_eth0
+%if %%alias_addr_eth0.alias_gw_eth0 != ""
+gateway %%alias_addr_eth0.alias_gw_eth0
+%end if
 %end for
 %end if
 ##
@@ -43,6 +46,9 @@ address %%vlan0.adresse_ip_vlan_eth0
 netmask %%vlan0.adresse_netmask_vlan_eth0
 network %%vlan0.adresse_network_vlan_eth0
 broadcast %%vlan0.adresse_broadcast_vlan_eth0
+%if %%vlan0.adresse_gw_vlan_eth0 != ""
+gateway %%vlan0.adresse_gw_vlan_eth0
+%end if
 %end for
 %end if
 ##
@@ -61,14 +67,14 @@ up ethtool -s eth1 %%debit_carte_eth1
 iface eth0 inet dhcp
 %end if
 ##
-%if %%alias_ip_eth1 != ""
-%for %%alias_eth1 in %%alias_ip_eth1
-auto eth1:%%alias_eth1.index
-iface eth1:%%alias_eth1.index inet static
-address %%alias_eth1 
-netmask %%adresse_netmask_eth1
-broadcast %%adresse_broadcast_eth1
-network %%adresse_network_eth1
+%if %%alias_eth1 == "oui"
+%for %%alias_addr_eth1 in %%alias_ip_eth1
+auto eth1:%%alias_addr_eth1.index
+iface eth1:%%alias_addr_eth1.index inet static
+address %%alias_addr_eth1 
+netmask %%alias_addr_eth1.alias_netmask_eth1
+broadcast %%alias_addr_eth1.alias_broadcast_eth1
+network %%alias_addr_eth1.alias_network_eth1
 %end for
 %end if
 ##
@@ -99,14 +105,14 @@ up ethtool -s eth2 %%debit_carte_eth2
 iface eth0 inet dhcp
 %end if
 ##
-%if %%alias_ip_eth2 != ""
-%for %%alias_eth2 in %%alias_ip_eth2
-auto eth2:%%alias_eth2.index
-iface eth2:%%alias_eth2.index inet static
-address %%alias_eth2 
-netmask %%adresse_netmask_eth2
-broadcast %%adresse_broadcast_eth2
-network %%adresse_network_eth2
+%if %%alias_eth2 == "oui"
+%for %%alias_addr_eth2 in %%alias_ip_eth2
+auto eth2:%%alias_addr_eth2.index
+iface eth2:%%alias_addr_eth2.index inet static
+address %%alias_addr_eth2 
+netmask %%alias_addr_eth2.alias_netmask_eth2
+broadcast %%alias_addr_eth2.alias_broadcast_eth2
+network %%alias_addr_eth2.alias_network_eth2
 %end for
 %end if
 ##
@@ -137,14 +143,14 @@ up ethtool -s eth3 %%debit_carte_eth3
 iface eth0 inet dhcp
 %end if
 ##
-%if %%alias_ip_eth3 != ""
-%for %%alias_eth3 in %%alias_ip_eth3
-auto eth3:%%alias_eth3.index
-iface eth3:%%alias_eth3.index inet static
-address %%alias_eth3 
-netmask %%adresse_netmask_eth3
-broadcast %%adresse_broadcast_eth3
-network %%adresse_network_eth3
+%if %%alias_eth3 == "oui"
+%for %%alias_addr_eth3 in %%alias_ip_eth3
+auto eth3:%%alias_addr_eth3.index
+iface eth3:%%alias_addr_eth3.index inet static
+address %%alias_addr_eth3 
+netmask %%alias_addr_eth3.alias_netmask_eth3
+broadcast %%alias_addr_eth3.alias_broadcast_eth3
+network %%alias_addr_eth3.alias_network_eth3
 %end for
 %end if
 ##
@@ -175,14 +181,14 @@ up ethtool -s eth4 %%debit_carte_eth4
 iface eth0 inet dhcp
 %end if
 ##
-%if %%alias_ip_eth4 != ""
-%for %%alias_eth4 in %%alias_ip_eth4
-auto eth4:%%alias_eth4.index
-iface eth4:%%alias_eth4.index inet static
-address %%alias_eth4 
-netmask %%adresse_netmask_eth4
-broadcast %%adresse_broadcast_eth4
-network %%adresse_network_eth4
+%if %%alias_eth4 == "oui"
+%for %%alias_addr_eth4 in %%alias_ip_eth4
+auto eth4:%%alias_addr_eth4.index
+iface eth4:%%alias_addr_eth4.index inet static
+address %%alias_addr_eth4 
+netmask %%alias_addr_eth4.alias_netmask_eth4
+broadcast %%alias_addr_eth4.alias_broadcast_eth4
+network %%alias_addr_eth4.alias_network_eth4
 %end for
 %end if
 ##
