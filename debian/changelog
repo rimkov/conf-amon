@@ -1,3 +1,10 @@
+conf-amon (2.2-eole13) eole-2.2; urgency=low
+
+  * amelioration gestion des alias ip + prise en compte plusieurs gw sur
+    eth0
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 10 Sep 2008 10:55:23 +0200
+
 conf-amon (2.2-eole12) eole-2.2; urgency=low
 
   * Maj-blacklists : deplacement du fichier de log vers
