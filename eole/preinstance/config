@@ -8,19 +8,6 @@ touch /var/log/squid/access.log
 chown proxy.proxy /var/log/squid/access.log
 chmod o+r  /var/log/squid/access.log
 
-echo "Mise en place de la configuration dansguardian"
-
-# suppression des données dans /etc/dansguardian/
-etcdanspath='/etc/dansguardian'
-mkdir -p $etcdanspath
-rm -rf $etcdanspath/*
-
-danspath="/usr/share/eole/dansguardian"
-# remplacement du script d'init (2 instances)
-cp -f $danspath/init/dansguardian /etc/init.d/dansguardian
-# mise à niveau de la configuration
-$danspath/init_dans.py
-
 # nouveaux fichiers squid
 touch "/etc/squid/domaines_noauth_user"
 touch "/etc/squid/domaines_nocache_user"

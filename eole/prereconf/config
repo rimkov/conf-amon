@@ -1,18 +1,6 @@
 #!/bin/bash
 
 # pre-reconfiguration pour Amon
-
-echo "Mise en place de la configuration dansguardian"
-# suppression des données dans /etc/dansguardian/
-/etc/init.d/dansguardian stop > /dev/null
-etcdanspath='/etc/dansguardian'
-rm -rf $etcdanspath/*
-danspath="/usr/share/eole/dansguardian"
-# remplacement du script d'init (2 instances)
-cp -f $danspath/init/dansguardian /etc/init.d/dansguardian
-# mise à niveau de la configuration
-$danspath/init_dans.py
-
 touch "/etc/squid/domaines_noauth_user"
 touch "/etc/squid/domaines_nocache_user"
 

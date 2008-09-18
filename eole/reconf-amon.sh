@@ -17,4 +17,17 @@ sleep 2
 # FIXME : plus utilisé sur 2.2
 # on relance le create-rrd (sans casser les bases !)
 #/usr/share/eole/create-rrd.sh
+
+echo "Mise en place de la configuration dansguardian"
+# suppression des données dans /etc/dansguardian/
+/etc/init.d/dansguardian stop > /dev/null
+etcdanspath='/etc/dansguardian'
+rm -rf $etcdanspath/*
+
+danspath="/usr/share/eole/dansguardian"
+# remplacement du script d'init (2 instances)
+cp -f $danspath/init/dansguardian /etc/init.d/dansguardian
+# mise à niveau de la configuration
+$danspath/init_dans.py
+
 echo

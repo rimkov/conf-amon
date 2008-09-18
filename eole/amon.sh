@@ -46,6 +46,19 @@ fi
 # FIXME : plus utilisé sur 2.2
 # creation base rrdtools
 #/usr/share/eole/create-rrd.sh
+echo "Mise en place de la configuration dansguardian"
+
+# suppression des données dans /etc/dansguardian/
+etcdanspath='/etc/dansguardian'
+mkdir -p $etcdanspath
+rm -rf $etcdanspath/*
+
+danspath="/usr/share/eole/dansguardian"
+# remplacement du script d'init (2 instances)
+cp -f $danspath/init/dansguardian /etc/init.d/dansguardian
+# mise à niveau de la configuration
+$danspath/init_dans.py
+
 
 # Utilisation manage-amon comme shell pour amon
 id amon &>/dev/null

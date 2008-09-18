@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<creole>
+        <files>
+                <file name='/usr/share/eole/dansguardian/dansguardian.conf' />
+        </files>
+        <variables>
+                 <family name='dansguardian' mode='expert'>
+                         <variable name="maxchildren" type="number" description=''>
+                                 <value>80</value>
+                         </variable>
+                        <variable name="minchildren" type="number" description=''>
+                                <value>8</value>
+                        </variable>
+                        <variable name="minsparechildren" type="number" description=''>
+                                <value>4</value>
+                        </variable>
+                        <variable name="maxsparechildren" type="number" description=''>
+                                <value>32</value>
+                        </variable>
+                        <variable name="preforkchildren" type="number" description=''>
+                                <value>6</value>
+                        </variable>
+                        <variable name="maxagechildren" type="number" description=''>
+                                <value>500</value>
+                        </variable>
+                </family>
+        </variables>
+        <constraints>
+                <check name='obligatoire' target='maxchildren'/>
+                <check name='obligatoire' target='minchildren'/>
+                <check name='obligatoire' target='minsparechildren'/>
+                <check name='obligatoire' target='maxsparechildren'/>
+                <check name='obligatoire' target='preforkchildren'/>
+                <check name='obligatoire' target='maxagechildren'/>
+        </constraints>
+        <help>
+        </help>
+</creole>
+
