@@ -1,3 +1,11 @@
+conf-amon (2.2-eole15) eole-2.2; urgency=low
+
+  * conf-amon : gestion de parametres dansguardian dans gen_config
+  * ajout d'un dico pour la gestion des routes statiques + fichier
+    static-routes en templates
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 18 Sep 2008 14:30:10 +0200
+
 conf-amon (2.2-eole14) eole-2.2; urgency=low
 
   * Ajout de la generation des certifs pour rsyslog
