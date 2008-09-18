@@ -33,6 +33,12 @@
                 <check name='obligatoire' target='maxsparechildren'/>
                 <check name='obligatoire' target='preforkchildren'/>
                 <check name='obligatoire' target='maxagechildren'/>
+
+                <check name="valid_entier" target="maxchildren">
+                    <param name="mini">60</param>
+                    <param name="maxi">255</param>
+                </check>
+
         </constraints>
         <help>
         </help>
