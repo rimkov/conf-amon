@@ -3,7 +3,7 @@ Section: base
 Priority: optional
 Maintainer: Equipe Eole <eole@ac-dijon.fr>
 Build-Depends: debhelper (>= 5)
-Standards-Version: 3.7.2
+Standards-Version: 3.7.3
 
 Package: conf-amon
 Architecture: all
