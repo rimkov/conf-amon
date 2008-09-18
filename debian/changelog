@@ -1,3 +1,9 @@
+conf-amon (2.2-eole18) eole-2.2; urgency=low
+
+  * deplacement des separateurs pour les alias
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 18 Sep 2008 16:32:31 +0200
+
 conf-amon (2.2-eole17) eole-2.2; urgency=low
 
   * conf-amon : 2.2 dansguardian
