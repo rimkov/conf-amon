@@ -1,4 +1,7 @@
 Conf-AmonNG
+18/09/08 (sam)
+- ajout d'un dico pour la gestion des routes statiques + fichier static-routes en templates
+
 8/09/08 (sam)
 - interface : 	- ajout paramètres gateway au niveau vlan et alias eth0 pour multi-routeur
 		- alias interface completement parametrable
