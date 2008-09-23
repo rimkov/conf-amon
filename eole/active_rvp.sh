@@ -49,10 +49,6 @@ ModeZephir=0
 Question()
 {
 	InputBox "$1" Rep "$3"
-	if [ "$Rep" == "oui" -o "$Rep" == "o" -o "$Rep" == "O" ] 
-	then
-		exit 1
-	fi
 	eval $2=$Rep
 }
 
