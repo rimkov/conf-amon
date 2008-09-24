@@ -16,13 +16,10 @@ HOME=/
 42 4 1 * * root run-parts /etc/cron.monthly
 #Zephir
 */10 * * * *    root    /usr/share/zephir/scripts/cron-zephir.sh
-## rotation des logs pour l'ead
-50 23 * * 1-6 www-data /usr/share/ead/cron-soir.sh >/dev/null 2>&1
-50 23 * * 7   www-data /usr/share/ead/cron-dimanche.sh >/dev/null 2>&1
 # Mise à jour des backlists toutes les nuits
 00 00 * * * root /usr/share/eole/lance-Maj-blacklist.sh >/dev/null 2>&1
 # rrdtools
-*/5 * * * *    root    /usr/share/eole/recup-rrd.sh >/dev/null 2>&1
+#*/5 * * * *    root    /usr/share/eole/recup-rrd.sh >/dev/null 2>&1
 # Fwlogwatch
 #00 1 * * 7 root /usr/share/eole/lance-fwlogwatch 
 %if %%install_rvp == 'oui'
