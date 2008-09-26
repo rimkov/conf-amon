@@ -1,3 +1,11 @@
+conf-amon (2.2-eole19) eole-2.2; urgency=low
+
+  * correction du postupgrade (dansguardian)
+  * menage config ead1 dans sudoers & crontab
+  * bug 908 : suppression exit dans active_rvp.sh
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 26 Sep 2008 10:32:15 +0200
+
 conf-amon (2.2-eole18) eole-2.2; urgency=low
 
   * deplacement des separateurs pour les alias
