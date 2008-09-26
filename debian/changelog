@@ -1,3 +1,12 @@
+conf-amon (2.2-eole20) eole-2.2; urgency=low
+
+  * Modification lie a nufw (ne demarre pas si pas configure,
+    configuration adapte au besoin de eole)
+  * Ajoute le support de eclair en DMZ pour amonecole
+  * Le fichier hosts genere l'adresse de scribe dans amonecole
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 26 Sep 2008 13:49:55 +0200
+
 conf-amon (2.2-eole19) eole-2.2; urgency=low
 
   * correction du postupgrade (dansguardian)
