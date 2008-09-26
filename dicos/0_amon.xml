@@ -39,11 +39,13 @@
 	<file name='/usr/lib/cgi-bin/filtre.cgi'/>
 	<file name='/etc/sysconfig/eole/services/0_services.srv' source='services'/>
 	<file name='/etc/default/dhcp3-relay'/>
-	<file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
 	<file name='/etc/nsswitch.conf'/>
 	<file name='/etc/ldap.conf'/>
+	<file name='/etc/default/nuauth'/>
+	<file name='/etc/default/nufw'/>
+	<file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
 	<file filelist='nufw' name='/etc/pam.d/nuauth' source='nuauth.pamd'/>
-	<file filelist='nufw' name='/etc/default/nuauth'/>
+	<file filelist='nufw' name='/etc/init.d/nufw' source='nufw.init'/>
 
 	</files>
 	<!--************************************************************************************************* -->
@@ -833,7 +835,7 @@
                 </check>
 	<!-- **** Conditions **** -->
 		<condition name='hidden_if_in' source='eole_module'>
-			<param>amonecole</param>
+			<param>amonecole2</param>
 			<target type='variable'>install_scribe_dmz</target>
 		</condition>
                 <condition name='hidden_if_in' source='nombre_interfaces'>
