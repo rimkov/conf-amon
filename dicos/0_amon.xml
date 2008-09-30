@@ -835,7 +835,7 @@
                 </check>
 	<!-- **** Conditions **** -->
 		<condition name='hidden_if_in' source='eole_module'>
-			<param>amonecole2</param>
+			<param>amonecole</param>
 			<target type='variable'>install_scribe_dmz</target>
 		</condition>
                 <condition name='hidden_if_in' source='nombre_interfaces'>

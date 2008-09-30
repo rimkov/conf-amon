@@ -63,6 +63,9 @@ acl "intra" {
 	%%vlan1.adresse_ip_vlan_eth1;
 %end for
 %end if 
+%if %%is_defined('nom_dmz')
+        %%adresse_ip_dmz;
+%end if
 };
 
 acl "reseaueth1" {

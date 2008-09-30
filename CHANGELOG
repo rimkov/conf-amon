@@ -3,6 +3,9 @@ Conf-AmonNG
 30/09/2008:
 - dicos/3_dansguardian.xml : ajout de configuration separee pour les zones 1 et 2 de dansguardian
 - tmpls/dansguardian1 et 2.conf : fichier separe par zone (lie a la modification du 30/09/2008 de amon-backend)
+- tmpl/spcl.options : support de la carte "dmz" pour amonecole
+- eole/gen_dns : ajoute le support d'amonecole
+
 
 24/09/2008
 - eole/amon-postupgrade : test sur la version NG de départ pour l'upgrade des configs dansguardian

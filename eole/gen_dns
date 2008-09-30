@@ -34,4 +34,9 @@ done
 
 Cmd=$Cmd" -M -v 8 -y -b $NAMEDCONF"
 
+if [ ! $adresse_network_dmz = "" ]
+then
+        Cmd=$Cmd" -n ${adresse_network_dmz}:${adresse_netmask_dmz} "
+fi
+
 exec $Cmd
