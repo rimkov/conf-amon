@@ -1,3 +1,9 @@
+conf-amon (2.2-eole21) eole-2.2; urgency=low
+
+  * conf-amon : gestion separee des zones dansguardian dans gen_config
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 30 Sep 2008 13:51:57 +0200
+
 conf-amon (2.2-eole20) eole-2.2; urgency=low
 
   * Modification lie a nufw (ne demarre pas si pas configure,
