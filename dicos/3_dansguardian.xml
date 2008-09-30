@@ -2,43 +2,92 @@
 
 <creole>
         <files>
-                <file name='/usr/share/eole/dansguardian/dansguardian.conf' />
+                <file name='/usr/share/eole/dansguardian/dansguardian1.conf' />
+                <file name='/usr/share/eole/dansguardian/dansguardian2.conf' />
         </files>
         <variables>
                  <family name='dansguardian' mode='expert'>
-                         <variable name="maxchildren" type="number" description=''>
+	                    <separators>
+                	    	<separator name='maxchildren1'>Configuration de la zone 1</separator>
+                	    	<separator name='maxchildren2'>Configuration de la zone 2</separator>
+                    	</separators>
+                         <variable name="maxchildren1" type="number" description=''>
                                  <value>80</value>
                          </variable>
-                        <variable name="minchildren" type="number" description=''>
+                        <variable name="minchildren1" type="number" description=''>
                                 <value>8</value>
                         </variable>
-                        <variable name="minsparechildren" type="number" description=''>
+                        <variable name="minsparechildren1" type="number" description=''>
                                 <value>4</value>
                         </variable>
-                        <variable name="maxsparechildren" type="number" description=''>
+                        <variable name="maxsparechildren1" type="number" description=''>
                                 <value>32</value>
                         </variable>
-                        <variable name="preforkchildren" type="number" description=''>
+                        <variable name="preforkchildren1" type="number" description=''>
                                 <value>6</value>
                         </variable>
-                        <variable name="maxagechildren" type="number" description=''>
+                        <variable name="maxagechildren1" type="number" description=''>
                                 <value>500</value>
                         </variable>
+                        <variable name="unactive_dansguardian_auth1" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 1">
+                            <value>non</value>
+                         </variable>
+
+                         <variable name="maxchildren2" type="number" description=''>
+                                 <value>80</value>
+                         </variable>
+                        <variable name="minchildren2" type="number" description=''>
+                                <value>8</value>
+                        </variable>
+                        <variable name="minsparechildren2" type="number" description=''>
+                                <value>4</value>
+                        </variable>
+                        <variable name="maxsparechildren2" type="number" description=''>
+                                <value>32</value>
+                        </variable>
+                        <variable name="preforkchildren2" type="number" description=''>
+                                <value>6</value>
+                        </variable>
+                        <variable name="maxagechildren2" type="number" description=''>
+                                <value>500</value>
+                        </variable>
+                        <variable name="unactive_dansguardian_auth2" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 2">
+                            <value>non</value>
+                         </variable>
                 </family>
         </variables>
         <constraints>
-                <check name='obligatoire' target='maxchildren'/>
-                <check name='obligatoire' target='minchildren'/>
-                <check name='obligatoire' target='minsparechildren'/>
-                <check name='obligatoire' target='maxsparechildren'/>
-                <check name='obligatoire' target='preforkchildren'/>
-                <check name='obligatoire' target='maxagechildren'/>
-
-                <check name="valid_entier" target="maxchildren">
+            <!--variables de la zone 1 ( 0)-->
+                <check name='obligatoire' target='maxchildren1'/>
+                <check name='obligatoire' target='minchildren1'/>
+                <check name='obligatoire' target='minsparechildren1'/>
+                <check name='obligatoire' target='maxsparechildren1'/>
+                <check name='obligatoire' target='preforkchildren1'/>
+                <check name='obligatoire' target='maxagechildren1'/>
+                <check name='obligatoire' target='unactive_dansguardian_auth1'/>
+                <check name="valid_entier" target="maxchildren1">
                     <param name="mini">60</param>
                     <param name="maxi">255</param>
                 </check>
+                <check name="valid_enum" target="unactive_dansguardian_auth1" >
+                    <param>['oui','non']</param>
+                </check>
 
+            <!--variables de la zone 2 ( 1) -->
+                <check name='obligatoire' target='maxchildren2'/>
+                <check name='obligatoire' target='minchildren2'/>
+                <check name='obligatoire' target='minsparechildren2'/>
+                <check name='obligatoire' target='maxsparechildren2'/>
+                <check name='obligatoire' target='preforkchildren2'/>
+                <check name='obligatoire' target='maxagechildren2'/>
+                <check name='obligatoire' target='unactive_dansguardian_auth2'/>
+                <check name="valid_entier" target="maxchildren2">
+                    <param name="mini">60</param>
+                    <param name="maxi">255</param>
+                </check>
+                <check name="valid_enum" target="unactive_dansguardian_auth2" >
+                    <param>['oui','non']</param>
+                </check>
         </constraints>
         <help>
         </help>
