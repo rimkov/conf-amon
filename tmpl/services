@@ -24,5 +24,6 @@ ulogd
 ntp
 %if %%active_nufw == 'oui'
 nufw
+nuauth
 %end if
 z_stats
