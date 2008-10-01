@@ -1,3 +1,9 @@
+conf-amon (2.2-eole23) eole-2.2; urgency=low
+
+  * Modification du template rsyslog
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 01 Oct 2008 14:51:13 +0200
+
 conf-amon (2.2-eole22) eole-2.2; urgency=low
 
   * Ajoute le support d'amonecole pour bind
