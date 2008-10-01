@@ -1,3 +1,9 @@
+conf-amon (2.2-eole24) eole-2.2; urgency=low
+
+  * certifications nuauth
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 01 Oct 2008 15:41:58 +0200
+
 conf-amon (2.2-eole23) eole-2.2; urgency=low
 
   * Modification du template rsyslog
