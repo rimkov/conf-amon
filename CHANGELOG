@@ -1,5 +1,8 @@
 Conf-AmonNG
 
+01/10/2008
+- support de certs_nuauth (key_nuauth, cert_nuauth, cacert_nuauth) pour les certifications nuauth
+
 30/09/2008:
 - dicos/3_dansguardian.xml : ajout de configuration separee pour les zones 1 et 2 de dansguardian
 - tmpls/dansguardian1 et 2.conf : fichier separe par zone (lie a la modification du 30/09/2008 de amon-backend)

@@ -52,6 +52,9 @@
 	<variables>
 		<family name='general'>
 			<variable name='eole_module' type='string' description="module installé" hidden='True'/>
+			<variable name='nuauth_tls_key' type='string' description="clef privee pour nuauth" hidden='True'/>
+			<variable name='nuauth_tls_cert' type='string' description="certificat pour nuauth" hidden='True'/>
+			<variable name='nuauth_tls_cacert' type='string' description="certification pour nuauth" hidden='True'/>
 			<variable name='numero_etab' type='string' description="identifiant de l'établissement (RNE)" />
 		<!--**** Reseau Global **** -->
 			<variable name='type_amon' type='string' description='Modèle de filtrage' />
@@ -94,9 +97,6 @@
 			<variable name='active_nufw' type='string' description="Activer NuFw" >
 				<value>non</value>
 			</variable>
-<!--			<variable name='nuauth_nss_ldap_host' type='string' description="Adresse du serveur LDAP pour l'authentification NuFw" >
-				<value></value>
-			</variable>-->
 			<variable name='serveur_maj' type='string' description='serveur de mise à jour' >
 				<value>eoleng.ac-dijon.fr</value>
 			</variable>
@@ -611,6 +611,9 @@
 			<param type='eole' name='valeur'>adresse_netmask_eth4</param>
 		</fill>
 		<auto name='auto_module' target='eole_module'/>
+		<auto name='key_nuauth' target='nuauth_tls_key'/>
+		<auto name='cert_nuauth' target='nuauth_tls_cert'/>
+		<auto name='cacert_nuauth' target='nuauth_tls_cacert'/>
 		<auto name='auto_eth' target='adresse_ip_eth0'>
 			<param>eth0</param>
 			<param name='condition'>dhcp</param>
