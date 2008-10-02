@@ -211,7 +211,7 @@
 			<variable name='dansguardian_eth1' type='string' description='Filtre WEB à appliquer sur cette interface' >
 				<value>1</value>
 			</variable>
-			<variable name='auth_eth1' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
+			<variable name='squid_auth_eth1' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
 				<value>non</value>
 			</variable>
 		</family>
@@ -263,7 +263,7 @@
 			<variable name='dansguardian_eth2' type='string' description='Filtre WEB à appliquer sur cette interface' >
 				<value>1</value>
 			</variable>
-			<variable name='auth_eth2' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
+			<variable name='squid_auth_eth2' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
 				<value>non</value>
 			</variable>
 		</family>
@@ -315,7 +315,7 @@
 			<variable name='dansguardian_eth3' type='string' description='Filtre WEB à appliquer sur cette interface' >
 				<value>1</value>
 			</variable>
-			<variable name='auth_eth3' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
+			<variable name='squid_auth_eth3' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
 				<value>non</value>
 			</variable>
 		</family>
@@ -366,7 +366,7 @@
 			<!-- variable de configuration pour dansguardian (choix de l'instance) -->
 			<variable name='dansguardian_eth4' type='string' description='Filtre WEB à appliquer sur cette interface' >
 				<value>1</value>
-			<variable name='auth_eth4' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
+			<variable name='squid_auth_eth4' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
 				<value>non</value>
 			</variable>
 			</variable>
@@ -749,7 +749,7 @@
 		<check name="valid_enum" target='dansguardian_eth1'>
 			<param>['1','2']</param>
 		</check>
-		<check name="valid_enum" target='auth_eth1'>
+		<check name="valid_enum" target='squid_auth_eth1'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target="eth2_method">
@@ -774,7 +774,7 @@
 		<check name="valid_enum" target='dansguardian_eth2'>
 			<param>['1','2']</param>
 		</check>
-		<check name="valid_enum" target='auth_eth2'>
+		<check name="valid_enum" target='squid_auth_eth2'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target="eth3_method">
@@ -799,6 +799,9 @@
 		<check name="valid_enum" target='dansguardian_eth3'>
 			<param>['1','2']</param>
 		</check>
+		<check name="valid_enum" target='squid_auth_eth3'>
+			<param>['oui','non']</param>
+		</check>
 		<check name="valid_enum" target="eth4_method">
 			<!-- <param>['statique','dhcp']</param> -->
                   <param>['statique']</param>
@@ -821,7 +824,7 @@
 		<check name="valid_enum" target='dansguardian_eth4'>
 			<param>['1','2']</param>
 		</check>
-		<check name="valid_enum" target='auth_eth4'>
+		<check name="valid_enum" target='squid_auth_eth4'>
 			<param>['oui','non']</param>
 		</check>
                 <check name="valid_enum" target="autoriser_rvp_autres">
@@ -887,10 +890,10 @@
                 <condition name='hidden_if_in' source='activer_squid_auth'>
                 	<param>non</param>
 			<target type='family'>Authentification</target>
-			<target type='variable'>auth_eth1</target>
-			<target type='variable'>auth_eth2</target>
-			<target type='variable'>auth_eth3</target>
-			<target type='variable'>auth_eth4</target>
+			<target type='variable'>squid_auth_eth1</target>
+			<target type='variable'>squid_auth_eth2</target>
+			<target type='variable'>squid_auth_eth3</target>
+			<target type='variable'>squid_auth_eth4</target>
 		</condition>
                 <condition name='hidden_if_in' source='activer_log_distant'>
                 	<param>non</param>
