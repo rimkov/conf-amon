@@ -212,7 +212,7 @@
 				<value>1</value>
 			</variable>
 			<variable name='squid_auth_eth1' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
-				<value>non</value>
+				<value>oui</value>
 			</variable>
 		</family>
 
@@ -264,7 +264,7 @@
 				<value>1</value>
 			</variable>
 			<variable name='squid_auth_eth2' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
-				<value>non</value>
+				<value>oui</value>
 			</variable>
 		</family>
 
@@ -316,7 +316,7 @@
 				<value>1</value>
 			</variable>
 			<variable name='squid_auth_eth3' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
-				<value>non</value>
+				<value>oui</value>
 			</variable>
 		</family>
 
@@ -367,7 +367,7 @@
 			<variable name='dansguardian_eth4' type='string' description='Filtre WEB à appliquer sur cette interface' >
 				<value>1</value>
 			<variable name='squid_auth_eth4' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
-				<value>non</value>
+				<value>oui</value>
 			</variable>
 			</variable>
 		</family>
