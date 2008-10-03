@@ -1,3 +1,11 @@
+conf-amon (2.2-eole25) eole-2.2; urgency=low
+
+  * activer squid auth par defaut sur toutes les interfaces
+  * gestion de l'authentification en fonction des interfaces
+  * Modification du template rsyslog (logs dans syslog)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 03 Oct 2008 11:36:43 +0200
+
 conf-amon (2.2-eole24) eole-2.2; urgency=low
 
   * certifications nuauth
