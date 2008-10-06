@@ -1,4 +1,7 @@
 Conf-AmonNG
+06/10/2008
+- domain_noauth : ajout de .archive.ubuntu.com
+
 2/10/2008 (sam)
 - dico + squid.conf : gestion de l'authentification en fonction des interfaces
  
