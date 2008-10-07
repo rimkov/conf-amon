@@ -30,7 +30,7 @@
                                 <value>500</value>
                         </variable>
                         <variable name="unactive_dansguardian_auth1" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 1">
-                            <value>non</value>
+                            <value>---</value>
                          </variable>
 
                          <variable name="maxchildren2" type="number" description=''>
@@ -52,7 +52,7 @@
                                 <value>500</value>
                         </variable>
                         <variable name="unactive_dansguardian_auth2" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 2">
-                            <value>non</value>
+                            <value>---</value>
                          </variable>
                 </family>
         </variables>
@@ -70,7 +70,7 @@
                     <param name="maxi">255</param>
                 </check>
                 <check name="valid_enum" target="unactive_dansguardian_auth1" >
-                    <param>['oui','non']</param>
+                    <param>['---', 'oui','non']</param>
                 </check>
 
             <!--variables de la zone 2 ( 1) -->
@@ -86,7 +86,7 @@
                     <param name="maxi">255</param>
                 </check>
                 <check name="valid_enum" target="unactive_dansguardian_auth2" >
-                    <param>['oui','non']</param>
+                    <param>['---','oui','non']</param>
                 </check>
         </constraints>
         <help>
