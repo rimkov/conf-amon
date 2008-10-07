@@ -1,3 +1,9 @@
+conf-amon (2.2-eole27) eole-2.2; urgency=low
+
+  * correction erreur dans 0_amon.xml (dansguardian_eth4)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 07 Oct 2008 11:29:43 +0200
+
 conf-amon (2.2-eole26) eole-2.2; urgency=low
 
   * conf-amon : modification du dico dansguardian (activation des
