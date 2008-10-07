@@ -366,9 +366,9 @@
 			<!-- variable de configuration pour dansguardian (choix de l'instance) -->
 			<variable name='dansguardian_eth4' type='string' description='Filtre WEB à appliquer sur cette interface' >
 				<value>1</value>
+			</variable>
 			<variable name='squid_auth_eth4' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux vlans)" >
 				<value>oui</value>
-			</variable>
 			</variable>
 		</family>
 	<!--************************************************************************************************* -->
