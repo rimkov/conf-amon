@@ -1,3 +1,13 @@
+conf-amon (2.2-eole26) eole-2.2; urgency=low
+
+  * conf-amon : modification du dico dansguardian (activation des
+    plugins d'auth)
+  * ajout du port 4200 dans les port reserve + modif acl reserved
+    (passage de port a myport)
+  * ajout de archive.ubuntu.com
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 07 Oct 2008 09:25:34 +0200
+
 conf-amon (2.2-eole25) eole-2.2; urgency=low
 
   * activer squid auth par defaut sur toutes les interfaces
