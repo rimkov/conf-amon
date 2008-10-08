@@ -1,3 +1,9 @@
+conf-amon (2.2-eole28) eole-2.2; urgency=low
+
+  * Changement du nombre minimum d'instance du module d'authentification
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 08 Oct 2008 14:08:52 +0200
+
 conf-amon (2.2-eole27) eole-2.2; urgency=low
 
   * correction erreur dans 0_amon.xml (dansguardian_eth4)
