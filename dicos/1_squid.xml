@@ -244,7 +244,7 @@
 		    <value>30</value>
             </variable>
             <variable name='number_of_children' type='number' description="nombre d'instance du module d'authentification">
-		    <value>5</value>
+		    <value>20</value>
             </variable>
             </family>
         </variables>
@@ -342,7 +342,7 @@
 	  <check name="valid_enum" target="cache_replacement_policy">
  		<param>['lru','heap GDSF','heap LFUDA','heap LRU']</param>
           </check>
-							  
+
 	  <check name="valid_enum" target="memory_replacement_policy">
  		<param>['lru','heap GDSF','heap LFUDA','heap LRU']</param>
           </check>
