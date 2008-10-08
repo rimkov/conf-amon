@@ -38,7 +38,7 @@ if os.path.isfile('/etc/apache2/sites-enabled/apache-ead.conf'):
 os.system('/usr/bin/crontab -u root -r 2>/dev/null')
 
 # Gestion des zones de configuration
-if os.path.isfile('/etc/eole/dicos/0_amon.xml') and not isdir("/var/lib/blacklists/dansguardian0/"):
+if os.path.isfile('/etc/eole/dicos/0_amon.xml') and not os.path.isdir("/var/lib/blacklists/dansguardian0/"):
     print "====> Migration des configurations utilisateurs (pare-feu, filtrage de sites web et groupe de machine."
     try:
         print "++++ Mise en place automatique de données de configuration."
