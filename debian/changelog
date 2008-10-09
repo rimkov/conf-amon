@@ -1,3 +1,11 @@
+conf-amon (2.2-eole29) eole-2.2; urgency=low
+
+  * remodification des acls reserved
+  * support des postes non-identifies dans nufw
+  * conf-amon : 2.2 amon post upgrade
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 09 Oct 2008 17:15:15 +0200
+
 conf-amon (2.2-eole28) eole-2.2; urgency=low
 
   * Changement du nombre minimum d'instance du module d'authentification
