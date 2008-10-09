@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# creation de l'utilisateur nufwguest pour nuauth
+
+if ! getent passwd nufwguest >/dev/null; then
+	adduser --quiet --ingroup nogroup --system --no-create-home nufwguest
+fi
+
+#DEBHELPER#
