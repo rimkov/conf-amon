@@ -7,7 +7,7 @@ if ! getent group nufwguest >/dev/null; then
 fi
 
 if ! getent passwd nufwguest >/dev/null; then
-	adduser --uid 253 --gid 253 --no-create-home nufwguest
+	useradd -u 253 -g 253 -s /dev/null nufwguest
 fi
 
 #DEBHELPER#
