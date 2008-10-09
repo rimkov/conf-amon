@@ -2,8 +2,12 @@
 
 # creation de l'utilisateur nufwguest pour nuauth
 
+if ! getent group nufwguest >/dev/null; then
+	addgroup --gid 253 nufwguest
+fi
+
 if ! getent passwd nufwguest >/dev/null; then
-	adduser --quiet --ingroup nogroup --system --no-create-home nufwguest
+	adduser --uid 253 --gid 253 --no-create-home nufwguest
 fi
 
 #DEBHELPER#
