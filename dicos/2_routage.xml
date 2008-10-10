@@ -26,6 +26,12 @@
 			<param></param>
 			<target type='filelist'>routes</target>
 		</condition>
+		<group master='route_adresse'>
+                        <slave>route_netmask</slave>
+                        <slave>route_gw</slave>
+                        <slave>route_int</slave>
+                 </group>
+
 	</constraints>
 
 
