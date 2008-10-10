@@ -1,5 +1,5 @@
 %for routes in %%route_adresse
-%if %%routes.route_int != ""
+%if %%routes.route_int == ""
 %if %%routes.route_netmask == "255.255.255.255"
 any host %%routes gw %%routes.route_gw
 %else
