@@ -1,3 +1,10 @@
+conf-amon (2.2-eole31) eole-2.2; urgency=low
+
+  * modif gen_ipsec-policy pour prise en compte routes statiques
+  * corrections sur squid
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 10 Oct 2008 15:20:52 +0200
+
 conf-amon (2.2-eole30) eole-2.2; urgency=low
 
   * correction squid.conf
