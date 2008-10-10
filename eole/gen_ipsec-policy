@@ -28,6 +28,12 @@ for interface in range(int(dico['nombre_interfaces'])):
         for vlan in range(len(dico['adresse_network_vlan_eth%d' % interface])):
             Reseau.append("%s/%s" % (dico['adresse_network_vlan_eth%d' % interface][vlan],
                            calc_classe(dico['adresse_netmask_vlan_eth%d'% interface][vlan])))
+for index in range(len(dico['route_adresse'])):
+    if dico['route_adresse'][index] != "" :
+        #if dico['route_netmask'][index] != "255.255.255.255" :
+        Reseau.append("%s/%s" % (dico['route_adresse'][index],
+        calc_classe(dico['route_netmask'][index])))
+
 for res1 in Reseau :
     for res2 in Reseau :
         data.append('spdadd %s %s any -P in none;' % (res1, res2)) 
