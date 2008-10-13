@@ -1,3 +1,11 @@
+conf-amon (2.2-eole32) eole-2.2; urgency=low
+
+  * Passe l'authentification ldap en ldapv3 et non ldapv2 (compatibilite
+    horus)
+  * squid.conf : utilisation de fonction cheetah
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 13 Oct 2008 11:38:31 +0200
+
 conf-amon (2.2-eole31) eole-2.2; urgency=low
 
   * modif gen_ipsec-policy pour prise en compte routes statiques
