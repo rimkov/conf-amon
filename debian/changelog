@@ -1,3 +1,9 @@
+conf-amon (2.2-eole33) eole-2.2; urgency=low
+
+  * Support du TLS pour ldap
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 15 Oct 2008 13:34:42 +0200
+
 conf-amon (2.2-eole32) eole-2.2; urgency=low
 
   * Passe l'authentification ldap en ldapv3 et non ldapv2 (compatibilite
