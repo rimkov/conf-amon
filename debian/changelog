@@ -1,3 +1,9 @@
+conf-amon (2.2-eole34) eole-2.2; urgency=low
+
+  * correction sur squid
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 20 Oct 2008 10:24:23 +0200
+
 conf-amon (2.2-eole33) eole-2.2; urgency=low
 
   * Support du TLS pour ldap
