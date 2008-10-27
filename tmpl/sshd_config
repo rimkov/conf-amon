@@ -32,6 +32,11 @@ ListenAddress %%adresse_ip_eth3
 %if %%ssh_eth4 == "oui"
 ListenAddress %%adresse_ip_eth4
 %end if
+%if %%is_defined('nom_dmz')
+%if %%ssh_dmz == "oui"
+ListenAddress %%adresse_ip_dmz
+%end if
+%end if
 
 #ListenAddress ::
 
