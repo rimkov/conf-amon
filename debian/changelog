@@ -1,3 +1,9 @@
+conf-amon (2.2-eole35) eole-2.2; urgency=low
+
+  * Ajout du support dmz d'amonecole a sshd_config
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 27 Oct 2008 10:59:11 +0100
+
 conf-amon (2.2-eole34) eole-2.2; urgency=low
 
   * correction sur squid
