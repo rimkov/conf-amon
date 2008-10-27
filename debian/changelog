@@ -1,3 +1,9 @@
+conf-amon (2.2-eole36) eole-2.2; urgency=low
+
+  * Support complet du proxy dans la dmz d'amonecole
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 27 Oct 2008 15:50:31 +0100
+
 conf-amon (2.2-eole35) eole-2.2; urgency=low
 
   * Ajout du support dmz d'amonecole a sshd_config
