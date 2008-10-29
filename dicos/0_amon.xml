@@ -3,6 +3,7 @@
 <creole>
 	<files>
         <file name='/etc/sysctl.conf'/>
+        <file name='/etc/chkrootkit.conf'/>
         <file name='/etc/crontab'/>
         <file name='/etc/fwlogwatch.config'/>
         <file name='/etc/hostname'/>

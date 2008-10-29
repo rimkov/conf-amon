@@ -1,4 +1,7 @@
 Conf-AmonNG
+29/10/08 (sam)
+- ajout conf pour chkrootkit
+
 9/10/08 (sam)
 - squid.conf : remodification des acl reserved (myport fonctionne pas)
 
