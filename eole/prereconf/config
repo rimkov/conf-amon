@@ -3,9 +3,7 @@
 # pre-reconfiguration pour Amon
 touch "/etc/squid/domaines_noauth_user"
 touch "/etc/squid/domaines_nocache_user"
-touch "/etc/squid/src_noauth"
 touch "/etc/squid/src_noauth_user"
-touch "/etc/squid/src_nocache"
 touch "/etc/squid/src_nocache_user"
 
 exit 0

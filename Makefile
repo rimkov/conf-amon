@@ -44,6 +44,8 @@ install:
 	cp -f config/filtres-opt $(DESTDIR)/etc/squid/
 	cp -f config/domaines_noauth $(DESTDIR)/etc/squid/
 	cp -f config/domaines_nocache $(DESTDIR)/etc/squid/
+	cp -f config/src_noauth $(DESTDIR)/etc/squid/
+	cp -f config/src_nocache $(DESTDIR)/etc/squid/
 	cp -f config/disabled.srv $(DESTDIR)/etc/sysconfig/eole
 
 	mkdir -p $(EOLE_DIR)/diagnose/module
