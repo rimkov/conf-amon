@@ -1,3 +1,10 @@
+conf-amon (2.2-eole37) eole-2.2; urgency=low
+
+  * ajout de src_noauth et src_nocache
+  * ajout conf chkrootkit
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 30 Oct 2008 10:19:07 +0100
+
 conf-amon (2.2-eole36) eole-2.2; urgency=low
 
   * Support complet du proxy dans la dmz d'amonecole
