@@ -1,3 +1,9 @@
+conf-amon (2.2-eole38) eole-2.2; urgency=low
+
+  * correction de src_noauth/nocache
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 30 Oct 2008 11:52:22 +0100
+
 conf-amon (2.2-eole37) eole-2.2; urgency=low
 
   * ajout de src_noauth et src_nocache
