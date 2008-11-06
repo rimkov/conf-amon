@@ -1,3 +1,10 @@
+conf-amon (2.2-eole39) eole-2.2; urgency=low
+
+  * ne verifie plus la presence du fichier qoseole.conf a l'arret.
+    Permet d'arreter qoseole si on ne l'utilise plus
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 06 Nov 2008 14:23:07 +0100
+
 conf-amon (2.2-eole38) eole-2.2; urgency=low
 
   * correction de src_noauth/nocache
