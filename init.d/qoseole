@@ -28,17 +28,12 @@ start() {
 }
 
 stop() {
-	if [ -e /etc/qoseole.conf ]
-	then
-		log_begin_msg  "Arret  de la QOS   " 
-		/usr/bin/StopQos.sh  2>&1 > /dev/null
-		RETVAL=$?
-		log_end_msg $RETVAL
-		[ $RETVAL -eq 0 ] && rm -f /var/lock/qoseole
-		return $RETVAL
-	else
-		exit 1
-	fi
+	log_begin_msg  "Arret  de la QOS   " 
+	/usr/bin/StopQos.sh  2>&1 > /dev/null
+	RETVAL=$?
+	log_end_msg $RETVAL
+	[ $RETVAL -eq 0 ] && rm -f /var/lock/qoseole
+	return $RETVAL
 }	
 
 

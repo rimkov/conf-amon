@@ -1,4 +1,8 @@
 Conf-AmonNG
+
+06/11/08
+- ne verifie plus la presence du fichier qoseole.conf a l'arret. Permet d'arreter qoseole si on ne l'utilise plus
+
 30/10/08
 - ajout de src_noauth et src_nocache
 
