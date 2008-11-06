@@ -671,6 +671,8 @@
 		<check name='obligatoire' target='nom_domaine_academique' />
 		<check name='obligatoire' target='serveur_ntp'/>
 		<check name='obligatoire' target='serveur_maj'/>
+		<check name='obligatoire' target='nuauth_nss_ldap_host'/>
+		<check name='obligatoire' target='nuauth_nss_ldap_dn'/>
 
 	<!-- **** Listes deroulantes **** -->
                 <check name="valid_enum" target="type_amon">
