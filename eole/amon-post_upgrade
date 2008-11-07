@@ -3,6 +3,7 @@
 
 from creole.cfgparser import EoleDict
 from creole.config import eoledirs
+from creole.creolecat import instance
 import os
 
 d = EoleDict()
@@ -50,7 +51,15 @@ if os.path.isfile('/etc/eole/dicos/0_amon.xml') and not os.path.isdir("/var/lib/
                 print "++++ L'interface eth2 est désormais gérée par la politique de filtrage 2"
             except:
                 print ("---- Erreur lors de la mise en place des politiques de filtrage sur l'interface eth2")
-
+        
+        # Upgrade 2.0 -> 2.2 (fichier non instanciés)
+        dans1 = '/usr/share/eole/dansguardian/dansguardian1.conf'
+        if not os.path.isfile(dans1):
+            instance('/etc/eole/distrib/dansguardian1.conf', None, dans1, '/etc/eole/config.eol')
+        dans2 = '/usr/share/eole/dansguardian/dansguardian2.conf'
+        if not os.path.isfile(dans2):
+            instance('/etc/eole/distrib/dansguardian2.conf', None, dans2, '/etc/eole/config.eol')
+        
         # initialisation de la configuration dansguardian
         from amon.backend import get_zones
         from amon.dansguardian import init_dans
