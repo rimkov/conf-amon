@@ -1,3 +1,10 @@
+conf-amon (2.2-eole40) eole-2.2; urgency=low
+
+  * maj post_upgrade
+  * variables obligatoires pour nuauth
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 07 Nov 2008 14:30:57 +0100
+
 conf-amon (2.2-eole39) eole-2.2; urgency=low
 
   * ne verifie plus la presence du fichier qoseole.conf a l'arret.
