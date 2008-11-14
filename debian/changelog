@@ -1,3 +1,9 @@
+conf-amon (2.2-eole41) eole-2.2; urgency=low
+
+  * Correction dans l'aide de 0_amon.xml (serveur_maj -> serveur_maj2)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 14 Nov 2008 11:29:11 +0100
+
 conf-amon (2.2-eole40) eole-2.2; urgency=low
 
   * maj post_upgrade
