@@ -1,3 +1,10 @@
+conf-amon (2.2-eole42) eole-2.2; urgency=low
+
+  * Modification pour l'envoi des logs centralises
+  * correction orthographique
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 19 Nov 2008 12:10:48 +0100
+
 conf-amon (2.2-eole41) eole-2.2; urgency=low
 
   * Correction dans l'aide de 0_amon.xml (serveur_maj -> serveur_maj2)
