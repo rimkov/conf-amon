@@ -59,7 +59,7 @@
 			<variable name='numero_etab' type='string' description="identifiant de l'établissement (RNE)" />
 		<!--**** Reseau Global **** -->
 			<variable name='type_amon' type='string' description='Modèle de filtrage' />
-                        <variable name='nombre_interfaces' type='string' description="nombre d'interface à activer sur le parefeu" >
+                        <variable name='nombre_interfaces' type='string' description="Nombre d'interfaces à activer sur le parefeu" >
  				<value>2</value>
  			</variable>
 			<variable name='nom_machine' type='string' description='Nom de la machine' >
@@ -69,12 +69,12 @@
 				<value>monreseau.lan</value>
 			</variable>
 			<variable name='nom_domaine_academique' type='string' description='Nom de domaine académique (ex : ac-dijon.fr)' />
- 			<variable name='adresse_ip_gw' type='ip' description='Adresse ip de la passerelle' />
+ 			<variable name='adresse_ip_gw' type='ip' description='Adresse IP de la passerelle' />
                         <variable name='interface_gw' type='string' description='Interface de sortie'>
                 	        <value>eth0</value>
                         </variable>
-			<variable name='adresse_ip_dns' type='ip' description='Adresse ip du DNS de forward (ou rien)' multi='True'/>
-			<variable name='serveur_ntp' type='string' description='adresse serveur NTP' >
+			<variable name='adresse_ip_dns' type='ip' description='Adresse IP du DNS de forward (ou rien)' multi='True'/>
+			<variable name='serveur_ntp' type='string' description='Adresse serveur NTP' >
 				<value>pool.ntp.org</value>
 			</variable>
                         <variable name='activer_log_distant' type='string' description="Gestion des logs centralisés" >
@@ -98,7 +98,7 @@
 			<variable name='active_nufw' type='string' description="Activer NuFw" >
 				<value>non</value>
 			</variable>
-			<variable name='serveur_maj' type='string' description='serveur de mise à jour' >
+			<variable name='serveur_maj' type='string' description='Serveur de mise à jour' >
 				<value>eoleng.ac-dijon.fr</value>
 			</variable>
 			<variable name='serveur_maj2' type='string' description='Second serveur de mise à jour' >
@@ -107,7 +107,7 @@
 			<variable name='type_maj' type='string' description='Niveau de mise à jour' >
 				<value>minimum</value>
 			</variable>
-			<variable name='url_maj_blacklist' type='string' description='url mise à jour des blacklists' >
+			<variable name='url_maj_blacklist' type='string' description='URL mise à jour des blacklists' >
 				<value>http://eole.orion.education.fr/maj/blacklists</value>
 			</variable>
 		</family>
@@ -126,24 +126,24 @@
 	<!--************************************************************************************************* -->
 		<family name='Interface-ext'>
 			<!-- **** Interface externe **** -->
- 			<variable name='eth0_method' type='string' description="methode d'attribution de l'adressage pour l'interface" >
+ 			<variable name='eth0_method' type='string' description="Methode d'attribution de l'adressage pour l'interface" >
  				<value>statique</value>
  			</variable>
- 			<variable name='adresse_ip_eth0' type='ip' description='Adresse ip de la carte externe' />
+ 			<variable name='adresse_ip_eth0' type='ip' description='Adresse IP de la carte externe' />
  			<variable name='adresse_netmask_eth0' type='netmask' description='Masque de sous reseau de la carte externe' >
 				<value>255.255.255.0</value>
 			</variable>
 			<variable name='adresse_network_eth0' type='ip' description='Adresse réseau de la carte externe' />
 			<variable name='adresse_broadcast_eth0' type='ip' description='Adresse Broadcast de sous reseau de la carte externe' />
- 			<variable name='ssh_eth0' type='string' description='autoriser les connexions pour administrer le serveur sur cette interface (ead, ssh)' >
+ 			<variable name='ssh_eth0' type='string' description='Autoriser les connexions pour administrer le serveur sur cette interface (Ead, ssh)' >
 				<value>oui</value>
 			</variable>
-			<variable name='ip_ssh_eth0' type='ip' description="Adresse ip reseau autorise à se connecter a l'interface externe" multi='True' />
-			<variable name='netmask_ssh_eth0' type='netmask' description="Masque du sous reseau associe a l'ip" />
-			<variable name='alias_eth0' type='string' description="Ajouter des ip alias sur l'interface" >
+			<variable name='ip_ssh_eth0' type='ip' description="Adresse IP reseau autorise à se connecter a l'interface externe" multi='True' />
+			<variable name='netmask_ssh_eth0' type='netmask' description="Masque du sous reseau associe a l'IP" />
+			<variable name='alias_eth0' type='string' description="Ajouter des IP alias sur l'interface" >
 				<value>non</value>
 			</variable>
-			<variable name='alias_ip_eth0' type='ip' description="Adresse ip Alias pour l'interface externe" multi='True' />
+			<variable name='alias_ip_eth0' type='ip' description="Adresse IP Alias pour l'interface externe" multi='True' />
 			<variable name='alias_netmask_eth0' type='netmask' description="Masque de sous reseau correspondant a cet alias" >
 			</variable>
 			<variable name='alias_network_eth0' type='ip' description="Adresse reseau correspondant a cet alias" />
@@ -152,8 +152,8 @@
 			<variable name='vlan_eth0' type='string' description="Activer le support des vlan sur l'interface" >
 				<value>non</value>
 			</variable>
-			<variable name='id_vlan_eth0' type='string' description="numero d'identifiant du vlan" multi='True' />
-			<variable name='adresse_ip_vlan_eth0' type='ip' description="Adresse ip de l'interface dans ce vlan" />
+			<variable name='id_vlan_eth0' type='string' description="Numéro d'identifiant du vlan" multi='True' />
+			<variable name='adresse_ip_vlan_eth0' type='ip' description="Adresse IP de l'interface dans ce vlan" />
 			<variable name='adresse_netmask_vlan_eth0' type='netmask' description="Masque de sous reseau de l'interface dans ce vlan" >
 				<value>255.255.255.0</value>
 			</variable>
@@ -167,36 +167,36 @@
 
 		<!-- **** Interface interne 1 **** -->
 		<family name='Interface-1'>
-                        <variable name='eth1_method' type='string' description="methode d'attribution de l'adressage pour l'interface" >
+                        <variable name='eth1_method' type='string' description="Méthode d'attribution de l'adressage pour l'interface" >
  				<value>statique</value>
  			</variable>
- 			<variable name='adresse_ip_eth1' type='ip' description='Adresse ip de la carte interne 1' />
+ 			<variable name='adresse_ip_eth1' type='ip' description='Adresse IP de la carte interne 1' />
  			<variable name='adresse_netmask_eth1' type='netmask' description='Masque de sous reseau de la carte interne 1' >
  				<value>255.255.255.0</value>
  			</variable>
 			<variable name='adresse_network_eth1' type='ip' description='Adresse réseau de la carte interne 1' />
 			<variable name='adresse_broadcast_eth1' type='ip' description='Adresse Broadcast de sous reseau de la carte interne 1' />
- 			<variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour resolution dns)" >
+ 			<variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>admin</value>
  			</variable>
-			<variable name='ssh_eth1' type='string' description='autoriser les connexions pour administrer le serveur sur cette interface (ead, ssh)' >
+			<variable name='ssh_eth1' type='string' description='Autoriser les connexions pour administrer le serveur sur cette interface (Ead, ssh)' >
 				<value>oui</value>
 			</variable>
-			<variable name='ip_ssh_eth1' type='ip' description="Adresse ip reseau autorise à se connecter a l'interface interne 1" multi='True' />
-			<variable name='netmask_ssh_eth1' type='netmask' description="Masque du sous reseau associe a l'ip" />
-			<variable name='alias_eth1' type='string' description="Ajouter des ip alias sur l'interface" >
+			<variable name='ip_ssh_eth1' type='ip' description="Adresse IP reseau autorise à se connecter à l'interface interne 1" multi='True' />
+			<variable name='netmask_ssh_eth1' type='netmask' description="Masque du sous reseau associe à l'IP" />
+			<variable name='alias_eth1' type='string' description="Ajouter des IP alias sur l'interface" >
 				<value>non</value>
 			</variable>
-			<variable name='alias_ip_eth1' type='ip' description="Adresse ip Alias pour l'interface interne 1 (ou rien)" multi='True' />
-			<variable name='alias_netmask_eth1' type='netmask' description="Masque de sous reseau correspondant a cet alias" >
+			<variable name='alias_ip_eth1' type='ip' description="Adresse IP Alias pour l'interface interne 1 (ou rien)" multi='True' />
+			<variable name='alias_netmask_eth1' type='netmask' description="Masque de sous reseau correspondant à cet alias" >
 			</variable>
-			<variable name='alias_network_eth1' type='ip' description="Adresse reseau correspondant a cet alias" />
-			<variable name='alias_broadcast_eth1' type='ip' description="Adresse broadcast correspondant a cet alias" />
+			<variable name='alias_network_eth1' type='ip' description="Adresse reseau correspondant à cet alias" />
+			<variable name='alias_broadcast_eth1' type='ip' description="Adresse broadcast correspondant à cet alias" />
 			<variable name='vlan_eth1' type='string' description="Activer le support des vlan sur l'interface" >
 				<value>non</value>
 			</variable>
-			<variable name='id_vlan_eth1' type='string' description="numero d'identifiant du vlan" multi='True' />
-			<variable name='adresse_ip_vlan_eth1' type='ip' description="Adresse ip de l'interface dans ce vlan" />
+			<variable name='id_vlan_eth1' type='string' description="Numéro d'identifiant du vlan" multi='True' />
+			<variable name='adresse_ip_vlan_eth1' type='ip' description="Adresse IP de l'interface dans ce vlan" />
 			<variable name='adresse_netmask_vlan_eth1' type='netmask' description="Masque de sous reseau de l'interface dans ce vlan" >
 				<value>255.255.255.0</value>
 			</variable>
@@ -219,7 +219,7 @@
 
 		<!--**** Interfaces 2 **** -->
 		<family name='Interface-2' hidden='True'>
-                        <variable name='eth2_method' type='string' description="methode d'attribution de l'adressage pour l'interface" >
+                        <variable name='eth2_method' type='string' description="Méthode d'attribution de l'adressage pour l'interface" >
  				<value>statique</value>
  			</variable>
  			<variable name='adresse_ip_eth2' type='ip' description="Adresse ip de l'interface" />
@@ -228,27 +228,27 @@
  			</variable>
 			<variable name='adresse_network_eth2' type='ip' description="Adresse réseau de l'interface" />
 			<variable name='adresse_broadcast_eth2' type='ip' description="Adresse Broadcast de sous reseau de l'interface" />
- 			<variable name='nom_machine_eth2' type='string' description="Nom à donner à l'interface (pour resolution dns)" >
+ 			<variable name='nom_machine_eth2' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>pedago</value>
  			</variable>
-			<variable name='ssh_eth2' type='string' description='autoriser les connexions pour administrer le serveur sur cette interface (ead, ssh)' >
+			<variable name='ssh_eth2' type='string' description='Autoriser les connexions pour administrer le serveur sur cette interface (Ead, ssh)' >
 				<value>non</value>
 			</variable>
-			<variable name='ip_ssh_eth2' type='ip' description="Adresse ip reseau autorise à se connecter a l'interface" multi='True' />
-			<variable name='netmask_ssh_eth2' type='netmask' description="Masque du sous reseau associe a l'ip" />
-			<variable name='alias_eth2' type='string' description="Ajouter des ip alias sur l'interface" >
+			<variable name='ip_ssh_eth2' type='ip' description="Adresse IP reseau autorisé à se connecter à l'interface" multi='True' />
+			<variable name='netmask_ssh_eth2' type='netmask' description="Masque du sous reseau associe à l'IP" />
+			<variable name='alias_eth2' type='string' description="Ajouter des IP alias sur l'interface" >
 				<value>non</value>
 			</variable>
-			<variable name='alias_ip_eth2' type='ip' description="Adresse ip Alias pour l'interface (ou rien)" multi='True' />
-			<variable name='alias_netmask_eth2' type='netmask' description="Masque de sous reseau correspondant a cet alias" >
+			<variable name='alias_ip_eth2' type='ip' description="Adresse IP Alias pour l'interface (ou rien)" multi='True' />
+			<variable name='alias_netmask_eth2' type='netmask' description="Masque de sous reseau correspondant à cet alias" >
 			</variable>
-			<variable name='alias_network_eth2' type='ip' description="Adresse reseau correspondant a cet alias" />
-			<variable name='alias_broadcast_eth2' type='ip' description="Adresse broadcast correspondant a cet alias" />
+			<variable name='alias_network_eth2' type='ip' description="Adresse réseau correspondant à cet alias" />
+			<variable name='alias_broadcast_eth2' type='ip' description="Adresse broadcast correspondant à cet alias" />
 			<variable name='vlan_eth2' type='string' description="Activer le support des vlan sur l'interface" >
 				<value>non</value>
 			</variable>
-			<variable name='id_vlan_eth2' type='string' description="numero d'identifiant du vlan" multi='True' />
-			<variable name='adresse_ip_vlan_eth2' type='ip' description="Adresse ip de l'interface dans ce vlan" />
+			<variable name='id_vlan_eth2' type='string' description="Numéro d'identifiant du vlan" multi='True' />
+			<variable name='adresse_ip_vlan_eth2' type='ip' description="Adresse IP de l'interface dans ce vlan" />
 			<variable name='adresse_netmask_vlan_eth2' type='netmask' description="Masque de sous reseau de l'interface dans ce vlan" >
 				<value>255.255.255.0</value>
 			</variable>
@@ -271,36 +271,36 @@
 
 		<!--**** Interfaces 3 **** -->
 		<family name='Interface-3' hidden='True'>
-                        <variable name='eth3_method' type='string' description="methode d'attribution de l'adressage pour l'interface" >
+                        <variable name='eth3_method' type='string' description="Méthode d'attribution de l'adressage pour l'interface" >
  				<value>statique</value>
  			</variable>
- 			<variable name='adresse_ip_eth3' type='ip' description="Adresse ip de l'interface" />
- 			<variable name='adresse_netmask_eth3' type='netmask' description="Masque de sous reseau de l'interface" >
+ 			<variable name='adresse_ip_eth3' type='ip' description="Adresse IP de l'interface" />
+ 			<variable name='adresse_netmask_eth3' type='netmask' description="Masque de sous réseau de l'interface" >
  				<value>255.255.255.0</value>
  			</variable>
 			<variable name='adresse_network_eth3' type='ip' description="Adresse réseau de l'interface" />
-			<variable name='adresse_broadcast_eth3' type='ip' description="Adresse Broadcast de sous reseau de l'interface" />
- 			<variable name='nom_machine_eth3' type='string' description="Nom à donner à l'interface (pour resolution dns)" >
+			<variable name='adresse_broadcast_eth3' type='ip' description="Adresse Broadcast de sous réseau de l'interface" />
+ 			<variable name='nom_machine_eth3' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>dmz-priv</value>
  			</variable>
-			<variable name='ssh_eth3' type='string' description='autoriser les connexions pour administrer le serveur sur cette interface (ead, ssh)' >
+			<variable name='ssh_eth3' type='string' description='Autoriser les connexions pour administrer le serveur sur cette interface (Ead, ssh)' >
 				<value>non</value>
 			</variable>
-			<variable name='ip_ssh_eth3' type='ip' description="Adresse ip reseau autorise à se connecter a l'interface" multi='True' />
-			<variable name='netmask_ssh_eth3' type='netmask' description="Masque du sous reseau associe a l'ip" />
-			<variable name='alias_eth3' type='string' description="Ajouter des ip alias sur l'interface" >
+			<variable name='ip_ssh_eth3' type='ip' description="Adresse IP reseau autorise à se connecter à l'interface" multi='True' />
+			<variable name='netmask_ssh_eth3' type='netmask' description="Masque du sous reseau associé à l'ip" />
+			<variable name='alias_eth3' type='string' description="Ajouter des IP alias sur l'interface" >
 				<value>non</value>
 			</variable>
-			<variable name='alias_ip_eth3' type='ip' description="Adresse ip Alias pour l'interface (ou rien)" multi='True' />
-			<variable name='alias_netmask_eth3' type='netmask' description="Masque de sous reseau correspondant a cet alias" >
+			<variable name='alias_ip_eth3' type='ip' description="Adresse IP Alias pour l'interface (ou rien)" multi='True' />
+			<variable name='alias_netmask_eth3' type='netmask' description="Masque de sous réseau correspondant à cet alias" >
 			</variable>
-			<variable name='alias_network_eth3' type='ip' description="Adresse reseau correspondant a cet alias" />
-			<variable name='alias_broadcast_eth3' type='ip' description="Adresse broadcast correspondant a cet alias" />
+			<variable name='alias_network_eth3' type='ip' description="Adresse réseau correspondant à cet alias" />
+			<variable name='alias_broadcast_eth3' type='ip' description="Adresse broadcast correspondant à cet alias" />
 			<variable name='vlan_eth3' type='string' description="Activer le support des vlan sur l'interface" >
 				<value>non</value>
 			</variable>
-			<variable name='id_vlan_eth3' type='string' description="numero d'identifiant du vlan" multi='True' />
-			<variable name='adresse_ip_vlan_eth3' type='ip' description="Adresse ip de l'interface dans ce vlan" />
+			<variable name='id_vlan_eth3' type='string' description="Numéro d'identifiant du vlan" multi='True' />
+			<variable name='adresse_ip_vlan_eth3' type='ip' description="Adresse IP de l'interface dans ce vlan" />
 			<variable name='adresse_netmask_vlan_eth3' type='netmask' description="Masque de sous reseau de l'interface dans ce vlan" >
 				<value>255.255.255.0</value>
 			</variable>
