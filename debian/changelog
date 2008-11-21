@@ -1,3 +1,9 @@
+conf-amon (2.2-eole43) eole-2.2; urgency=low
+
+  * Correction d'une faute de typo dans conf-amon
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 21 Nov 2008 11:28:37 +0100
+
 conf-amon (2.2-eole42) eole-2.2; urgency=low
 
   * Modification pour l'envoi des logs centralises
