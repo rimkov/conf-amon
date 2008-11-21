@@ -52,11 +52,11 @@
 	<!--************************************************************************************************* -->
 	<variables>
 		<family name='general'>
-			<variable name='eole_module' type='string' description="module installé" hidden='True'/>
-			<variable name='nuauth_tls_key' type='string' description="clef privee pour nuauth" hidden='True'/>
-			<variable name='nuauth_tls_cert' type='string' description="certificat pour nuauth" hidden='True'/>
-			<variable name='nuauth_tls_cacert' type='string' description="certification pour nuauth" hidden='True'/>
-			<variable name='numero_etab' type='string' description="identifiant de l'établissement (RNE)" />
+			<variable name='eole_module' type='string' description="Module installé" hidden='True'/>
+			<variable name='nuauth_tls_key' type='string' description="Clef privee pour nuauth" hidden='True'/>
+			<variable name='nuauth_tls_cert' type='string' description="Certificat pour nuauth" hidden='True'/>
+			<variable name='nuauth_tls_cacert' type='string' description="Certification pour nuauth" hidden='True'/>
+			<variable name='numero_etab' type='string' description="Identifiant de l'établissement (RNE)" />
 		<!--**** Reseau Global **** -->
 			<variable name='type_amon' type='string' description='Modèle de filtrage' />
                         <variable name='nombre_interfaces' type='string' description="Nombre d'interfaces à activer sur le parefeu" >
