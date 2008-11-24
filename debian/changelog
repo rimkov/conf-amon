@@ -1,3 +1,9 @@
+conf-amon (2.2-eole44) eole-2.2; urgency=low
+
+  * corrections cosmetiques
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 24 Nov 2008 17:45:40 +0100
+
 conf-amon (2.2-eole43) eole-2.2; urgency=low
 
   * Correction d'une faute de typo dans conf-amon
