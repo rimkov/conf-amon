@@ -35,7 +35,15 @@ stop() {
 	/etc/init.d/ipsec stop >/dev/null 2>&1
 	RETVAL=$?
 	log_end_msg $RETVAL
-	[ $RETVAL -eq 0 ] && rm -f /var/lock/rvp
+	#[ $RETVAL -eq 0 ] && rm -f /var/lock/rvp
+	if [ $RETVAL -eq 0 ]; then
+                rm -f /var/lock/rvp
+                sleep 3
+                if [ -e /var/run/pluto.pid ]; then
+                       rm -f /var/run/pluto.pid
+                       logger "Pluto HS mais /var/run/pluto.pid existait encore"
+               fi
+        fi
 	return $RETVAL
 }
 

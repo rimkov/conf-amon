@@ -1,5 +1,7 @@
 Conf-AmonNG
-
+26/11/08 (sam)
+- rvp : correction bug 953. test de l'existance du pid au moment du stop.
+ 
 26/11/08
 - dans le template hosts : verifie si nom_dmz n'est pas définit (spécifique amonecole/eolevz)
 
