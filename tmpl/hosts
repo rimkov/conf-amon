@@ -38,7 +38,7 @@
 %if %%activer_squid_auth == 'oui' and %%type_squid_auth == 'NTLM/SMB'
 # Si ScribeDMZ et le serveur d'authentification sont le même serveur mais renseignés avec des noms différents, ajouter un alias
  %for %%smb in %%nom_serveur_smb
-  %if %%smb.ip_serveur_smb == %%ip_serveur_scribe_dmz and %%install_scribe_dmz == 'oui'
+  %if %%smb.ip_serveur_smb == %%ip_serveur_scribe_dmz and %%install_scribe_dmz == 'oui' and not %%is_defined('nom_dmz')
 %%smb.ip_serveur_smb            %%smb.%%nom_domaine_local %%smb %%nom_serveur_scribe_dmz
   %else
     %if %%is_defined('nom_dmz')
@@ -50,7 +50,7 @@
     %end if
   %end if
  %end for
-%else if %%install_scribe_dmz == 'oui'
+%else if %%install_scribe_dmz == 'oui' and not %%is_defined('nom_dmz')
  %%ip_serveur_scribe_dmz		%%nom_serveur_scribe_dmz.%%nom_domaine_local %%nom_serveur_scribe_dmz
 %end if
 
