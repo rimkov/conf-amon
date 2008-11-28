@@ -91,6 +91,6 @@ if res != 0:
         res = os.system('passwd amon2')
 
 # standardisation du compte amon
-os.system("sed -i '/manage-amon.sh/d' /home/amon/.profile")
-os.system("usermod -s /usr/share/eole/manage-amon.sh amon")
-
+if os.path.isfile('/home/amon/.profile'):
+    os.system("sed -i '/manage-amon.sh/d' /home/amon/.profile")
+    os.system("usermod -s /usr/share/eole/manage-amon.sh amon")
