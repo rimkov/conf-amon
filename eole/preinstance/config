@@ -26,9 +26,14 @@ then
   then
         echo ""
         echo "############################################################"
-        echo "#     Création d'un deuxième compte local ead2 (amon2)     #"
+        echo "#     Création d'un deuxième compte local (amon2)     #"
         echo "############################################################"
-        useradd 'amon2'
+	echo "Voulez-vous ajouter cet utilisateur ? 
+	read Rep
+	if [ "$Rep" = "oui" -o "$Rep" = "o" -o "$Rep" = "O" ]
+	then
+        	useradd 'amon2'
+	fi
         res=1
         while [ $res -ne 0 ]
         do

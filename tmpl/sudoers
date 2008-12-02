@@ -12,23 +12,23 @@
 # Host alias specification
 
 # User alias specification
-
+User_Alias	GRPADM = amon, amon2 
 # Cmnd alias specification
 # User privilege specification
 root	ALL=(ALL) ALL
 
 # interface semi-graphique & MAJ
-amon ALL=NOPASSWD : /usr/bin/diagnose
-amon ALL=NOPASSWD : /usr/share/eole/ControlRpm-Cd
-amon ALL=NOPASSWD : /usr/share/eole/ControlRpm-Net
-amon ALL=NOPASSWD : /usr/bin/Maj-Cd
-amon ALL=NOPASSWD : /usr/bin/Maj-Auto
-amon ALL=NOPASSWD : /usr/sbin/fping
-amon ALL=NOPASSWD : /usr/bin/reconfigure
-amon ALL=NOPASSWD : /sbin/halt
-amon ALL=NOPASSWD : /usr/share/eole/test-rvp
-amon ALL=NOPASSWD : /usr/share/eole/Maj-blacklist.sh
-amon ALL=NOPASSWD : /usr/bin/Query-Auto
+GRPADM ALL=NOPASSWD : /usr/bin/diagnose
+GRPADM ALL=NOPASSWD : /usr/share/eole/ControlRpm-Cd
+GRPADM ALL=NOPASSWD : /usr/share/eole/ControlRpm-Net
+GRPADM ALL=NOPASSWD : /usr/bin/Maj-Cd
+GRPADM ALL=NOPASSWD : /usr/bin/Maj-Auto
+GRPADM ALL=NOPASSWD : /usr/sbin/fping
+GRPADM ALL=NOPASSWD : /usr/bin/reconfigure
+GRPADM ALL=NOPASSWD : /sbin/halt
+GRPADM ALL=NOPASSWD : /usr/share/eole/test-rvp
+GRPADM ALL=NOPASSWD : /usr/share/eole/Maj-blacklist.sh
+GRPADM ALL=NOPASSWD : /usr/bin/Query-Auto
 
 # outils zephir
 uucp	ALL=NOPASSWD :  /usr/share/zephir/scripts/*.zephir

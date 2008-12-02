@@ -1,4 +1,8 @@
 Conf-AmonNG
+2/12/08 (sam)
+- utilisateur amon2 pas obligatoire + même proprietés et droits que l'utilisateur amon (accès à manage-amon)
+sudoers : creation d'un groupe d'utilisateur comprenant amon et amon2
+ 
 26/11/08 (sam)
 - rvp : correction bug 953. test de l'existance du pid au moment du stop.
  
