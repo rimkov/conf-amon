@@ -383,6 +383,9 @@
   	                <variable name='autoriser_rvp_autres' type='string' description="Autoriser réseaux autres qu'eth1 à accéder à ce réseau">
   	                        <value>non</value>
   	                </variable>
+			<variable name='magic_rvp_inter' type='number' mode='expert' description='intervalle (en min) entre deux tests de bon fonctionnement du rvp (magic-rvp)'>
+				<value>10</value>
+			</variable>
 		</family>
 		<family name='Scribe-DMZ' hidden='True'>
 			<variable name='nom_serveur_scribe_dmz' type='string' description='Nom du Scribe dans la DMZ (pour enregistrement DNS)' />

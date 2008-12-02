@@ -1,5 +1,6 @@
 Conf-AmonNG
 2/12/08 (sam)
+- crontab : temps de relancement de magiv-rvp templatisé en paramètres avancés.
 - utilisateur amon2 pas obligatoire + même proprietés et droits que l'utilisateur amon (accès à manage-amon)
 sudoers : creation d'un groupe d'utilisateur comprenant amon et amon2
  

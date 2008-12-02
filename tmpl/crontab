@@ -24,6 +24,6 @@ HOME=/
 #00 1 * * 7 root /usr/share/eole/lance-fwlogwatch 
 %if %%install_rvp == 'oui'
 # test du rvp
-*/10 * * * *    root    /usr/share/eole/magic-rvp >/dev/null 2>&1
+*/%%magic_rvp_inter * * * *    root    /usr/share/eole/magic-rvp >/dev/null 2>&1
 %end if
 
