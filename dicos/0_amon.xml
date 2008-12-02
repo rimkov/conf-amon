@@ -397,10 +397,10 @@
 		<family name='Nufw' hidden='True'>
 			<variable name='nuauth_nss_ldap_host' type='ip' description="Adresse du serveur LDAP pour l'authentification NuFw" />
 			<variable name='nuauth_nss_ldap_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN)">
-				<param>o=gouv,c=fr</param>
+              			<value>o=gouv,c=fr</value>
 			</variable>
 			<variable name='nuauth_nss_ldap_tls' type='string' description="Utilisation de TLS">
-				<param>oui</param>
+				<value>oui</value>
 			</variable>
 		</family>
 

@@ -28,7 +28,7 @@ then
         echo "############################################################"
         echo "#     Création d'un deuxième compte local (amon2)     #"
         echo "############################################################"
-	echo "Voulez-vous ajouter cet utilisateur ? 
+	echo "Voulez-vous ajouter cet utilisateur ? "
 	read Rep
 	if [ "$Rep" = "oui" -o "$Rep" = "o" -o "$Rep" = "O" ]
 	then
