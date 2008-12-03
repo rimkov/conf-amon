@@ -19,13 +19,12 @@ root	ALL=(ALL) ALL
 
 # interface semi-graphique & MAJ
 GRPADM ALL=NOPASSWD : /usr/bin/diagnose
-GRPADM ALL=NOPASSWD : /usr/share/eole/ControlRpm-Cd
-GRPADM ALL=NOPASSWD : /usr/share/eole/ControlRpm-Net
 GRPADM ALL=NOPASSWD : /usr/bin/Maj-Cd
 GRPADM ALL=NOPASSWD : /usr/bin/Maj-Auto
 GRPADM ALL=NOPASSWD : /usr/sbin/fping
 GRPADM ALL=NOPASSWD : /usr/bin/reconfigure
 GRPADM ALL=NOPASSWD : /sbin/halt
+GRPADM ALL=NOPASSWD : /sbin/reboot
 GRPADM ALL=NOPASSWD : /usr/share/eole/test-rvp
 GRPADM ALL=NOPASSWD : /usr/share/eole/Maj-blacklist.sh
 GRPADM ALL=NOPASSWD : /usr/bin/Query-Auto

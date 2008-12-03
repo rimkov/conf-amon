@@ -72,7 +72,7 @@ touch $FileCpt
 Rep=""
 while [ 1 ]
 do
-MenuBox "Votre Choix"  Rep "1 Diagnostique_Amon 2 Reconfiguration 3 Paquets_en_Maj 4 Mise_A_Jour 5 Maj_blacklists 9 Arret_Serveur ! Shell_Linux  Q Quitter"
+MenuBox "Votre Choix"  Rep "1 Diagnostique_Amon 2 Reconfiguration 3 Paquets_en_Maj 4 Mise_A_Jour 5 Maj_blacklists 8 Redemarrer_Serveur 9 Arret_Serveur ! Shell_Linux  Q Quitter"
 
 if [ "$Rep" == "CANCEL" ] 
 then
@@ -83,11 +83,11 @@ fi
 case $Rep in
 	1) 
 	echo "En cours ..."
-	sudo diagnose 
+	sudo /usr/bin/diagnose 
 	Entree
 	;;
 	2) 
-	sudo  reconfigure 
+	sudo /usr/bin/reconfigure 
 	Entree
 	;;
 	3)
@@ -102,10 +102,14 @@ case $Rep in
 	sudo /usr/share/eole/Maj-blacklist.sh
 	Entree
 	;;
-	!)
-	echo "exit pour revenir au Menu"
-        /bin/bash	
-        ;;
+	8)
+	QuestionBox "Vous avez demandé le redémarrage du serveur\nEtes vous sur ?" Rep
+	if [ "$Rep" == "OUI" ] 
+	then
+	sudo /sbin/reboot
+	exit 0
+	fi
+	;;
 	9)
 	QuestionBox "Vous avez demandé un arret total du serveur\nEtes vous sur ?" Rep
 	if [ "$Rep" == "OUI" ] 
@@ -114,6 +118,10 @@ case $Rep in
 	exit 0
 	fi
 	;;
+	!)
+	echo "exit pour revenir au Menu"
+        /bin/bash	
+        ;;
 	Q)
 	exit 0
 	;;
