@@ -1,4 +1,7 @@
 Conf-AmonNG
+4/12/08 (sam)
+-squid.conf : suppression d'une directive qui etait en double
+
 2/12/08 (sam)
 - crontab : temps de relancement de magiv-rvp templatisé en paramètres avancés.
 - utilisateur amon2 pas obligatoire + même proprietés et droits que l'utilisateur amon (accès à manage-amon)
