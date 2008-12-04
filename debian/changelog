@@ -1,3 +1,9 @@
+conf-amon (2.2-eole50) eole-2.2; urgency=low
+
+  * suppression directive en double
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 04 Dec 2008 16:18:48 +0100
+
 conf-amon (2.2-eole49) eole-2.2; urgency=low
 
   * menage sudoers + ajout action reboot dans manage
