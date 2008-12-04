@@ -1,3 +1,10 @@
+conf-amon (2.2-eole49) eole-2.2; urgency=low
+
+  * menage sudoers + ajout action reboot dans manage
+  * correction preinstance/config et valeur par defaut LDAP/NuFw
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 04 Dec 2008 11:25:09 +0100
+
 conf-amon (2.2-eole48) eole-2.2; urgency=low
 
   * temps entre 2 relancement magic-rvp en parametres avances dans le
