@@ -1,3 +1,9 @@
+conf-amon (2.2-eole51) eole-2.2; urgency=low
+
+  * modif acl maj
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 05 Dec 2008 10:35:24 +0100
+
 conf-amon (2.2-eole50) eole-2.2; urgency=low
 
   * suppression directive en double
