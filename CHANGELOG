@@ -1,4 +1,7 @@
 Conf-AmonNG
+8/12/08 (sam)
+- instance : correction bug (1011) dans la creation de l'utilisateur amon2 (erreur au niveau de la boucle)
+
 4/12/08 (sam)
 -squid.conf : suppression d'une directive qui etait en double
 

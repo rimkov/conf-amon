@@ -21,26 +21,29 @@ chmod 600 /etc/nufw/certs/nuauth-key.pem
 id amon &>/dev/null
 if [ $? -eq 0 ]
 then
-  id amon2 &>/dev/null
-  if [ $? -ne 0 ]
-  then
-        echo ""
-        echo "############################################################"
-        echo "#     Création d'un deuxième compte local (amon2)     #"
-        echo "############################################################"
-	echo "Voulez-vous ajouter cet utilisateur ? "
-	read Rep
-	if [ "$Rep" = "oui" -o "$Rep" = "o" -o "$Rep" = "O" ]
+	id amon2 &>/dev/null
+	if [ $? -ne 0 ]
 	then
-        	useradd 'amon2'
+		echo ""
+		echo "############################################################"
+		echo "#     Création d'un deuxième compte local (amon2)     #"
+		echo "############################################################"
+		echo "Voulez-vous ajouter cet utilisateur (oui/non) ? "
+		read Rep
+		case $Rep in
+		[yYoO]*) 
+        		useradd 'amon2'
+        		res=1
+        		while [ $res -ne 0 ]
+       	 		do
+                		passwd amon2
+                		res=$?
+        		done
+		echo
+		;;
+		[nN]*)  
+		;;
+		esac
 	fi
-        res=1
-        while [ $res -ne 0 ]
-        do
-                passwd amon2
-                res=$?
-        done
-	echo
-  fi
 fi
 exit 0
