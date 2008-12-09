@@ -57,7 +57,8 @@
 			<variable name='nuauth_tls_cert' type='string' description="Certificat pour nuauth" hidden='True'/>
 			<variable name='nuauth_tls_cacert' type='string' description="Certification pour nuauth" hidden='True'/>
 			<variable name='numero_etab' type='string' description="Identifiant de l'établissement (RNE)" />
-		<!--**** Reseau Global **** -->
+			<variable name='libelle_etab' type='string' description="Nom de l'établissement" />
+      <!--**** Reseau Global **** -->
 			<variable name='type_amon' type='string' description='Modèle de filtrage' />
                         <variable name='nombre_interfaces' type='string' description="Nombre d'interfaces à activer sur le parefeu" >
  				<value>2</value>
@@ -651,6 +652,8 @@
 			<param type='eole' name='parametre'>eth0_method</param>
 		</auto>
 	<!-- **** champs obligatoires **** -->
+		<check name='obligatoire' target='numero_etab' />
+		<check name='obligatoire' target='libelle_etab' />
 		<check name='obligatoire' target='adresse_ip_eth0'/>
 		<check name='obligatoire' target='adresse_netmask_eth0'/>
 		<check name='obligatoire' target='adresse_network_eth0'/>
