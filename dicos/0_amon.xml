@@ -653,7 +653,6 @@
 		</auto>
 	<!-- **** champs obligatoires **** -->
 		<check name='obligatoire' target='numero_etab' />
-		<check name='obligatoire' target='libelle_etab' />
 		<check name='obligatoire' target='adresse_ip_eth0'/>
 		<check name='obligatoire' target='adresse_netmask_eth0'/>
 		<check name='obligatoire' target='adresse_network_eth0'/>

@@ -10,6 +10,10 @@ d = EoleDict()
 d.read_dir(eoledirs)
 d.load_values('/etc/eole/config.eol')
 
+# Ajout du libelle_etab
+if d.get_value('libelle_etab') == ['']:
+    d.set_value('libelle_etab', d.get_value('numero_etab'))
+
 # gestion de l'activation du sso sur eole 2.1 : nouvelle variable 'sso' à positionner à 'oui'
 if os.path.isfile('/etc/eole/dicos/2_sso.xml'):
     ip_eth0 = d.get_final_value('adresse_ip_eth0')
@@ -18,18 +22,19 @@ if os.path.isfile('/etc/eole/dicos/2_sso.xml'):
     if ip_sso in ["127.0.0.1","localhost"]:
         try:
             d.set_value('adresse_ip_sso', ip_eth0)
-            d.save_values('/etc/eole/config.eol')
             print ("\n l'adresse du serveur sso doit être différente de %s, valeur forcée à %s\nVous pouvez la modifier via gen_config\n" % (ip_sso, ip_eth0))
         except:
             print ("\n! Erreur lors de la modification de la variable adresse_ip_sso !\n lancez gen_config pour vérifier sa valeur\n")
     if ip_eth0 == ip_sso:
         try:
             d.set_value('sso','oui')
-            d.save_values('/etc/eole/config.eol')
         except:
             print ("\n! erreur lors de l'activation du service sso, vérifiez l'onglet 'services' dans gen_config !\n")
         else:
             print ("\nPour information: Le service eole-sso a été activé. Vous pouvez le configurer via gen_config.\n")
+
+# Enregistrement des modifs
+d.save_values('/etc/eole/config.eol')
 
 # désactivation Apache2/Ead1
 if os.path.isfile('/etc/apache2/sites-enabled/apache-ead.conf'):
