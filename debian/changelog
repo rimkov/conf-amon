@@ -1,3 +1,9 @@
+conf-amon (2.2-eole53) eole-2.2; urgency=low
+
+  * ajout nom etab (libelle_etab)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 09 Dec 2008 15:44:18 +0100
+
 conf-amon (2.2-eole52) eole-2.2; urgency=low
 
   * correction bug (1011) dans la creation de l'utilisateur amon2
