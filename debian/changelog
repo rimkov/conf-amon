@@ -1,3 +1,10 @@
+conf-amon (2.2-eole54) eole-2.2; urgency=low
+
+  * evolution diagnose
+  * prise en compte de libelle_etab dans la migration
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 10 Dec 2008 16:56:20 +0100
+
 conf-amon (2.2-eole53) eole-2.2; urgency=low
 
   * ajout nom etab (libelle_etab)
