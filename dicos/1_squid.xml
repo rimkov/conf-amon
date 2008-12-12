@@ -3,6 +3,8 @@
 <creole>
         <files>
 		<file name='/etc/squid/squid.conf'/>
+		<file name='/etc/squid/domaines_nocache'/>
+		<file name='/etc/squid/domaines_noauth'/>
         </files>
         <variables>
             <family name='squid' mode='expert'>
