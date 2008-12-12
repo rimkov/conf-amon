@@ -4,6 +4,7 @@
 %if %%serveur_maj2 != ""
 %%serveur_maj2
 %end if
+.archive.ubuntu.com
 .windowsupdate.microsoft.com
 .update.microsoft.com
 .c.microsoft.com
