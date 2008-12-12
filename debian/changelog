@@ -1,3 +1,13 @@
+conf-amon (2.2-eole55) eole-2.2; urgency=low
+
+  * ajout de .archive.ubuntu.com dans nocache et noauth
+  * deplacement des site de MAJ dans domaines_noauth et domaines_nocache
+  * templatisation de domaines_noauth et domaines_nocache
+  * suppression de <file = /etc/squid/squid.conf> dans 0_amon.xml (deja
+    present dans 1_squid.xml)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 12 Dec 2008 16:53:22 +0100
+
 conf-amon (2.2-eole54) eole-2.2; urgency=low
 
   * evolution diagnose
