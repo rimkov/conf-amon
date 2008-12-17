@@ -1,3 +1,10 @@
+conf-amon (2.2-eole58) eole-2.2; urgency=low
+
+  * correction bug dans Makfile lie au deplacement des fichiers
+    domaines_noauth et domaines_nocache
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 17 Dec 2008 16:36:34 +0100
+
 conf-amon (2.2-eole57) eole-2.2; urgency=low
 
   * intergation de la conf multi-routeurs de Gabriel Corgne de Nantes
