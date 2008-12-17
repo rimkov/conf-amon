@@ -27,3 +27,6 @@ nufw
 nuauth
 %end if
 z_stats
+%if %%agregation == 'oui'
+agregation
+%end if
