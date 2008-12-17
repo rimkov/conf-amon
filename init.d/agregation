@@ -1,0 +1,80 @@
+#! /bin/bash
+#################################
+# Script d'Agregation de lien   #
+# by GC (ac-nantes)		#
+#################################
+
+RETVAL=0
+
+. /lib/lsb/init-functions
+
+prog="agregation"
+
+start() {
+	if [ -e /var/lock/agregation ]; then
+		echo "Le service Agregation est déjà démarré"
+		exit 1
+	fi
+	if [ -e /etc/agregation.conf ]
+	then
+		. /etc/agregation.conf
+		if [ -n "$PAUSE" ]; then
+			log_daemon_msg  "Démarrage du service Agregation" 
+			/usr/bin/agregation.sh & 2>&1 > /dev/null
+	       	RETVAL=$?
+			log_end_msg $RETVAL
+			[ $RETVAL -eq 0 ] && touch /var/lock/agregation
+			return $RETVAL
+		else
+			exit 1
+		fi
+	fi
+}
+
+stop() {
+	if [ -e /etc/agregation.conf ]
+	then
+		log_daemon_msg  "Arret du service Agregation" 
+		rm -f /var/lock/agregation
+		[ "`ps ax|grep agregation.sh|grep /bin/bash| awk '{print $1}'`" != "" ] && /bin/kill -9 "`ps ax|grep agregation.sh|grep /bin/bash| awk '{print $1}'`"  2>&1 > /dev/null
+		RETVAL=$?
+		log_end_msg $RETVAL
+		return $RETVAL
+	else
+		exit 1
+	fi
+}	
+
+
+restart() {
+  	stop
+	sleep 1
+	start
+}	
+status() {
+	if [ -z "`ps ax|grep agregation.sh|grep /bin/bash| awk '{print $1}'`" ]; then
+  		echo "le service Agregation n'est pas démarré"
+	else
+  		echo "le service Agregation est démarré"
+	fi
+}	
+
+case "$1" in
+  start)
+  	start
+	;;
+  stop)
+  	stop
+	;;
+  status)
+        status
+	;;
+  restart)
+  	[ -f /var/lock/agregation ] && restart || :
+	;;
+  *)
+	printf "Usage: %s {start|stop|status|restart}\n" "$0"
+	exit 1
+esac
+
+exit $?
