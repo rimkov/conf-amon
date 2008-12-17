@@ -1,3 +1,9 @@
+conf-amon (2.2-eole56) eole-2.2; urgency=low
+
+  * intergation de la conf multi-routeurs de Gabriel Corgne de Nantes
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 17 Dec 2008 11:42:32 +0100
+
 conf-amon (2.2-eole55) eole-2.2; urgency=low
 
   * ajout de .archive.ubuntu.com dans nocache et noauth
