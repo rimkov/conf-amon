@@ -1,3 +1,10 @@
+conf-amon (2.2-eole59) eole-2.2; urgency=low
+
+  * domaines_noauth : archive.ubuntu.com en double
+  * Retire un warning de nuauth
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 17 Dec 2008 17:21:48 +0100
+
 conf-amon (2.2-eole58) eole-2.2; urgency=low
 
   * correction bug dans Makfile lie au deplacement des fichiers
