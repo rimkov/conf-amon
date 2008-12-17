@@ -31,6 +31,7 @@ configure-stamp:
 build: build-stamp
 
 build-stamp: configure-stamp 
+
 	dh_testdir
 
 	# Add here commands to compile the package.
@@ -40,16 +41,18 @@ build-stamp: configure-stamp
 	touch $@
 
 clean:
+
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
 
 	# Add here commands to clean up after the build process.
-	-$(MAKE) clean
+	#-$(MAKE) clean
 
 	dh_clean 
 
 install: build
+
 	dh_testdir
 	dh_testroot
 	dh_clean -k 
@@ -65,6 +68,7 @@ binary-indep: build install
 
 # Build architecture-dependent files here.
 binary-arch: build install
+
 	dh_testdir
 	dh_testroot
 	dh_installchangelogs 
