@@ -8,13 +8,9 @@
         <variables>
                  <family name='dansguardian' mode='expert'>
 	                    <separators>
-                	    	<separator name='dans_num_opt_filters'>Configuration commune aux deux zones</separator>
                 	    	<separator name='maxchildren1'>Configuration de la zone 1</separator>
                 	    	<separator name='maxchildren2'>Configuration de la zone 2</separator>
-                        </separators>
-                         <variable name="dans_num_opt_filters" type="string" description='Nombre de politiques optionnelles par zone'>
-                                 <value>3</value>
-                         </variable>
+                    	</separators>
                          <variable name="maxchildren1" type="number" description=''>
                                  <value>80</value>
                          </variable>
@@ -61,11 +57,6 @@
                 </family>
         </variables>
         <constraints>
-            <!--variables communes aux deux zones-->
-                <check name='obligatoire' target='dans_num_opt_filters'/>
-                <check name="valid_enum" target="dans_num_opt_filters">
-                    <param>['1','2','3','4']</param>
-                </check>
             <!--variables de la zone 1 ( 0)-->
                 <check name='obligatoire' target='maxchildren1'/>
                 <check name='obligatoire' target='minchildren1'/>
