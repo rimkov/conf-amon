@@ -1,3 +1,15 @@
+conf-amon (2.2-eole60) eole-2.2; urgency=low
+
+  * conf-amon : dansguardian suppression de mes modifs avant passage en
+    stable
+  * Ajout du support de nginx
+  * Conf-amon 2.2 : dansguardian-template.html informations(rne,
+    user...) au sein du mail
+  * Conf-amon 2.2 : choix du nombre de politiques de filtrages
+    dansguardian depuis gen_config
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 22 Dec 2008 15:08:01 +0100
+
 conf-amon (2.2-eole59) eole-2.2; urgency=low
 
   * domaines_noauth : archive.ubuntu.com en double
