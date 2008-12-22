@@ -1,0 +1,100 @@
+%if %%revprox_sso != ''
+# Redirection SSO
+server {
+        listen 8443;
+        ssl    on;
+        ssl_certificate    /etc/ssl/certs/eole.crt;
+        ssl_certificate_key     /etc/ssl/certs/eole.key;
+        access_log  /var/log/nginx/localhost.access-sso.log;
+        location / {
+                proxy_pass              https://%%revprox_sso:8443/;
+                proxy_set_header        Host $host;
+                proxy_set_header        X-Real-IP $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        Destination   $dest;
+                set                     $dest  $http_destination;
+        }
+}
+
+%end if
+%if %%revprox_domainname != ''
+%set %%http=False
+%for %%revprox in %%revprox_domainname
+%if %%revprox.revprox_http != 'non'
+%set %%http=True
+%end if
+%end for
+%if %%http == True
+# Configuration HTTP
+server {
+	listen 80;
+%for %%revprox in %%revprox_domainname
+%if %%revprox.revprox_http == 'redirige vers https'
+	if ($host = "%%revprox" ) {
+		rewrite     ^(.*)   https://%%revprox$1 permanent;
+		break;
+	}
+%end if
+%end for
+        access_log  /var/log/nginx/access.log;
+        location / {
+%for %%revprox in %%revprox_domainname
+%if %%revprox.revprox_http == 'oui'
+		if ($host = "%%revprox" ) {
+%if %%revprox.revprox_url != ''
+                	proxy_pass              %%revprox.revprox_url;
+%else
+			proxy_pass              http://%%revprox;
+%end if
+		}
+%end if
+%end for
+                proxy_set_header        Host $host;
+                proxy_set_header        X-Real-IP $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        Destination   $dest;
+                set                     $dest  $http_destination;
+		index  50x.html;
+		root /var/www/nginx-default/;
+        }
+}
+
+%end if
+
+%set %%https=False
+%for %%revprox in %%revprox_domainname
+%if %%revprox.revprox_https != 'non'
+%set %%https=True
+%end if
+%end for
+%if %%https == True
+# Configuration HTTPS
+server {
+        listen   443;
+	ssl    on;
+	ssl_certificate    /etc/ssl/certs/eole.crt;
+	ssl_certificate_key     /etc/ssl/certs/eole.key;
+        access_log  /var/log/nginx/revprox.revprox_http.access-ssl.log;
+        location / {
+%for %%revprox in %%revprox_domainname
+%if %%revprox.revprox_https == 'oui'
+		if ($host = "%%revprox" ) {
+%if %%revprox.revprox_url != ''
+	                proxy_pass              %%revprox.revprox_url;
+%else
+			proxy_pass              https://%%revprox;
+%end if
+		}
+%end if
+%end for
+                proxy_set_header        Host $host;
+                proxy_set_header        X-Real-IP $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        Destination   $dest;
+                set                     $dest  $http_destination;
+		index  50x.html;
+		root /var/www/nginx-default/;
+        }
+}
+%end if
+%end if
