@@ -30,3 +30,4 @@ z_stats
 %if %%agregation == 'oui'
 agregation
 %end if
+nginx

@@ -46,7 +46,7 @@
 	<file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
 	<file filelist='nufw' name='/etc/pam.d/nuauth' source='nuauth.pamd'/>
 	<file filelist='nufw' name='/etc/init.d/nufw' source='nufw.init'/>
-	<file filelist='revpro' name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
+	<file name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
 
 	</files>
 	<!--************************************************************************************************* -->
