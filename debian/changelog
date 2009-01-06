@@ -1,3 +1,10 @@
+conf-amon (2.2-eole61) eole-2.2; urgency=low
+
+  * dem 1035 : amelioration de Maj-blacklist.sh
+  * configuration de 'service' pour nginx
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 06 Jan 2009 11:53:53 +0100
+
 conf-amon (2.2-eole60) eole-2.2; urgency=low
 
   * conf-amon : dansguardian suppression de mes modifs avant passage en
