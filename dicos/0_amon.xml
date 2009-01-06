@@ -117,13 +117,13 @@
 			<variable name='ead_web' type='string' description="Activation du frontend Ead2" >
 				<value>oui</value>
 			</variable>
- 			<variable name='activer_bacula' type='string' description='Activation du service de sauvegardes Bacula' >
+ 			<variable name='activer_bacula' type='string' description='Activation du client Bacula (sauvegardes)' >
  				<value>non</value>
 			</variable>
 			<variable name='num_dansguardian_instance' type='string' description="Nombre de politique de filtrage (dansguardian et pare-feu) configurables" hidden='True'>
 				<value>2</value>
 			</variable>
-			<variable name='activer_revprox' type='string' description='Activation du service de reverse proxy'>
+			<variable name='activer_revprox' type='string' description='Activation du Reverse Proxy'>
 				<value>non</value>
 			</variable>
 
@@ -409,7 +409,7 @@
 			</variable>
 		<family name='Reverse proxy' hidden='True'>
 			<variable name='revprox_sso' type='string' description="IP du serveur SSO redirigé" />
-			<variable name='revprox_domainname' type='string' description="Nom de domaine utiliser pour accèder à la page" multi='True' />
+			<variable name='revprox_domainname' type='string' description="Nom de domaine utilisé pour accèder à la page" multi='True' />
 			<variable name='revprox_url' type='string' description="URL racine de destination (avec http ou https)" />
 			<variable name='revprox_http' type='string' description="Proxy HTTP">
 				<value>redirige vers https</value>
