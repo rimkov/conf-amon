@@ -1,4 +1,7 @@
 Conf-AmonNG
+6/01/09 (sam)
+- active-rvp : ajout d'une option pour renouveller le certificat.
+
 09/12/08
 - ajout du nom de l'établissement ("libelle_etab") dans 0_amon.xml
 

@@ -49,6 +49,10 @@ ModeZephir=0
 Question()
 {
 	InputBox "$1" Rep "$3"
+	if [ "$Rep" == "oui" -o "$Rep" == "o" -o "$Rep" == "O" ] 
+	then
+		exit 1
+	fi
 	eval $2=$Rep
 }
 
@@ -179,6 +183,157 @@ DefSupport()
 		fi
 	fi
 }
+RenewCert()
+{
+	#on test la presence d'un certificat
+	find /etc/freeswan/ipsec.d/ -maxdepth 1 -name "*.pem" >/dev/null
+	if [ $? != 0 ]
+	then
+		echo "Pas de certificat présent sur ce serveur"
+		echo "La procédure est stoppée !"
+		exit 1
+	fi
+	Cn=`find /etc/freeswan/ipsec.d/ -maxdepth 1 -name "*.pem" -exec basename {} \; |awk -F "." '{print $1}'`
+	MenuBox "Support comportant le fichier pkcs7 et la clef privée" Rep "/media/floppy Disquette /root Choix_Manuel zephir zephir" #/media/removable USB 
+	if [ "$Rep" == "CANCEL" ]
+	then
+		echo  "La procédure est stoppée!"
+		exit 1
+	fi
+	if [ "$Rep" == "zephir" ]
+	then
+		ModeZephir=1
+		if [ ! $ZephirActif -eq 0 ]
+		then
+			Zecho "Ce serveur n'est pas enregistré sur zephir !"
+			exit 1
+		fi
+		if [ ! -d /root/tmp/ConfIpsec ]
+		then
+			mkdir -p /root/tmp/ConfIpsec
+		fi
+		SupportConf="/root/tmp/ConfIpsec"
+		rc=1
+		while [ $rc -ne 0 ]
+		do
+			Question "login zephir (rien pour annuler)" "login"
+			if [ "$login" == "" ]
+			then
+				exit 1
+			fi
+			Question "mot de passe" "passwd" "secret"
+			Question "identifiant zephir du serveur sphynx" "id_sphynx"
+			$RepEole/zephir_rvp.py "$login" "$passwd" "$id_sphynx" "$SupportConf" > /tmp/retour 2>&1
+			rc=$?
+                        if [ $rc -ne 0 ]
+			then
+				dialog $NOMOUSE --title "Récupération de configuration" --exit-label "Quitter" --textbox /tmp/retour 0 0
+				exit 1
+			fi
+		done
+		RepConfIpsec=$SupportConf
+	else	
+		SupportConf=$Rep
+		## On monte la disquette si support = floppy
+		if [ "$SupportConf" == "/media/floppy" ]
+		then
+			umount /media/floppy > /dev/null 2>&1
+			mount /media/floppy > /dev/null 2>&1
+			if [ $? -ne 0 ]
+			then
+				Zecho "Problème disquette"
+				echo  "La procédure est stoppée!"
+				exit 1
+			fi
+		fi
+		## On monte le repertoire removable si support = usb
+		if [ "$SupportConf" == "/media/removable" ]
+		then
+			umount /media/removable > /dev/null 2>&1
+			mount /media/removable > /dev/null 2>&1
+			if [ $? -ne 0 ]
+			then
+				Zecho "Problème usb"
+				echo  "La procédure est stoppée!"
+				exit 1
+			fi
+		fi
+		## Si support autre que disquette on ouvre un menu permettant de selectionner le repertoire contenant les fichiers de conf
+		if [ "$SupportConf" != "/media/floppy" ]
+		then
+			#Zecho "reponse : $Rep"
+			#read Pause
+			if [ $ModeZephir -eq 1 ]
+			then
+				RepConfIpsec=$SupportConf
+			else
+				Fichier=`dialog $NOMOUSE --stdout --fselect $SupportConf 0 0 `
+				if [ $? -eq 0 ]
+				then
+					RepConfIpsec=$Fichier
+				else
+					echo  "La procédure est stoppée!"
+					exit 1
+				fi
+			fi
+		else 
+			## On initialise RepConfIpsec avec la valeur /media/floppy si on utilise floppy
+			RepConfIpsec=$SupportConf
+		fi
+	fi
+	#On test la présence du fichier pkcs7 sur le support
+	if [ ! -e $RepConfIpsec/$Cn.pkcs7 ] && {
+        [ ! -e $RepConfIpsec/certif.pkcs7 ]
+	}
+	then
+		Zecho "Fichier pkcs7 non trouvé\nAu revoir! "
+		exit 1
+	fi
+			
+	# Procedure d'extraction des certifs pkcs7 -> x509
+	Zecho "Extraction des Certificats"
+	if [ -e $RepConfIpsec/$Cn.pkcs7 ]
+	then
+		FicPKCS7="$Cn.pkcs7"
+	else
+	        FicPKCS7="certif.pkcs7"
+	fi
+			
+	openssl pkcs7 -in $RepConfIpsec/$FicPKCS7 -print_certs | \
+	/usr/share/eole/ParsePEM.py   -o $SupportConf >/dev/null 2>&1
+	if [ $? -ne 0 ]
+	then
+		Zecho "Problème d'extraction du certificat"
+		exit 1
+	fi
+	if [ ! -e $SupportConf/${Cn}.pem ]
+	then
+		Zecho "Fichier ${Cn}.pem non trouvé "
+		exit 1
+	fi
+	InfoBox2 "Mise en Place des Certificats"
+	RepSecret=""
+	InputBox "Donnez la phrase secrete associée à la clé privée" RepSecret secret
+	if [ "$RepSecret" == "CANCEL" ] 
+	then
+		Zecho "Abandon"	
+		exit 1
+	fi
+	openssl rsa -in $RepConfIpsec/privkey.pem -passin pass:"$RepSecret" -out $RepIpsec/ipsec.d/private/privkey.pem > /dev/null 2>&1
+	if [ "$?" -ne 0 ]
+	then
+		Zecho "Mauvais Mot de Passe"
+		exit 1
+	fi
+	cp -f $RepConfIpsec/CertifCa.pem $RepIpsec/ipsec.d/cacerts
+	cp -f $RepConfIpsec/${Cn}.pem $RepIpsec/ipsec.d/
+	## On demonte le support
+	if [ $SupportConf == "/media/floppy" ]
+	then
+		umount $SupportConf >/dev/null 2>&1
+	fi
+
+}
 #################################
 ## Passage de paramètres en options
 if [ "$Param" == "" ]
@@ -227,6 +382,8 @@ case $Param in
 		fi
 		RepConfIpsec=$SupportConf ;;
 
+	--renew)
+		RenewCert;;	
 	Normal)
 		DefSupport;;
 esac
