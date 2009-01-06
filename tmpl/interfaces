@@ -33,7 +33,7 @@ netmask %%alias_addr_eth0.alias_netmask_eth0
 broadcast %%alias_addr_eth0.alias_broadcast_eth0
 network %%alias_addr_eth0.alias_network_eth0
 %if %%alias_addr_eth0.alias_gw_eth0 != ""
-gateway %%alias_addr_eth0.alias_gw_eth0
+##gateway %%alias_addr_eth0.alias_gw_eth0
 %end if
 %end for
 %end if
