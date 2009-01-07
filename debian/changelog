@@ -1,3 +1,9 @@
+conf-amon (2.2-eole63) eole-2.2-dev; urgency=low
+
+  * modification dansguardian
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 07 Jan 2009 15:55:48 +0100
+
 conf-amon (2.2-eole62) eole-2.2-dev; urgency=low
 
   * conf amon 2.2: modif pour paquets de dev ( dansguardian )
