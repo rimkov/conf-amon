@@ -1,3 +1,12 @@
+conf-amon (2.2-eole62) eole-2.2-dev; urgency=low
+
+  * conf amon 2.2: modif pour paquets de dev ( dansguardian )
+  * amon : cosmetique dico
+  * suppression de l'otion gw pour les alias
+  * option de renouvellement du certificat
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 07 Jan 2009 15:54:59 +0100
+
 conf-amon (2.2-eole61) eole-2.2; urgency=low
 
   * dem 1035 : amelioration de Maj-blacklist.sh
