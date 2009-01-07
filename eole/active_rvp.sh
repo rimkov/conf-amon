@@ -319,19 +319,22 @@ RenewCert()
 		Zecho "Abandon"	
 		exit 1
 	fi
-	openssl rsa -in $RepConfIpsec/privkey.pem -passin pass:"$RepSecret" -out $RepIpsec/ipsec.d/private/privkey.pem > /dev/null 2>&1
+	openssl rsa -in $RepConfIpsec/privkey.pem -passin pass:"$RepSecret" -out $IpSecRep/ipsec.d/private/priv$Cn.pem > /dev/null 2>&1
 	if [ "$?" -ne 0 ]
 	then
 		Zecho "Mauvais Mot de Passe"
 		exit 1
 	fi
-	mv -f $RepConfIpsec/CertifCa.pem $RepIpsec/ipsec.d/cacerts
-	mv -f $RepConfIpsec/${Cn}.pem $RepIpsec/ipsec.d/
+	mv -f $RepConfIpsec/CertifCa.pem $IpSecRep/ipsec.d/cacerts
+	mv -f $RepConfIpsec/${Cn}.pem $IpSecRep/ipsec.d/
 	## On demonte le support
 	if [ $SupportConf == "/media/floppy" ]
 	then
 		umount $SupportConf >/dev/null 2>&1
 	fi
+	rm -f $RepConfIpsec/*
+	/etc/init.d/rvp restart
+	exit 1
 
 }
 #################################
