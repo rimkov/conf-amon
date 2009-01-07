@@ -332,7 +332,8 @@ RenewCert()
 	then
 		umount $SupportConf >/dev/null 2>&1
 	fi
-	rm -f $RepConfIpsec/*
+	rm -f $RepConfIpsec/*.pem
+	rm -f $RepConfIpsec/*.pkcs7
 	/etc/init.d/rvp restart
 	exit 1
 
