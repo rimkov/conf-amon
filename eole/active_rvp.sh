@@ -300,13 +300,13 @@ RenewCert()
 	fi
 			
 	openssl pkcs7 -in $RepConfIpsec/$FicPKCS7 -print_certs | \
-	/usr/share/eole/ParsePEM.py   -o $SupportConf >/dev/null 2>&1
+	/usr/share/eole/ParsePEM.py   -o $RepConfIpsec >/dev/null 2>&1
 	if [ $? -ne 0 ]
 	then
 		Zecho "Problème d'extraction du certificat"
 		exit 1
 	fi
-	if [ ! -e $SupportConf/${Cn}.pem ]
+	if [ ! -e $RepConfIpsec/${Cn}.pem ]
 	then
 		Zecho "Fichier ${Cn}.pem non trouvé "
 		exit 1
@@ -325,8 +325,8 @@ RenewCert()
 		Zecho "Mauvais Mot de Passe"
 		exit 1
 	fi
-	cp -f $RepConfIpsec/CertifCa.pem $RepIpsec/ipsec.d/cacerts
-	cp -f $RepConfIpsec/${Cn}.pem $RepIpsec/ipsec.d/
+	mv -f $RepConfIpsec/CertifCa.pem $RepIpsec/ipsec.d/cacerts
+	mv -f $RepConfIpsec/${Cn}.pem $RepIpsec/ipsec.d/
 	## On demonte le support
 	if [ $SupportConf == "/media/floppy" ]
 	then
