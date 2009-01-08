@@ -1,3 +1,9 @@
+conf-amon (2.2-eole64) eole-2.2; urgency=low
+
+  * conf-amon : ajout des modifications dansguardian dans le trunk
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 08 Jan 2009 15:43:38 +0100
+
 conf-amon (2.2-eole63) eole-2.2-dev; urgency=low
 
   * modification dansguardian
