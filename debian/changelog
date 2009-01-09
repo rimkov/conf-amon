@@ -1,3 +1,11 @@
+conf-amon (2.2-eole66) eole-2.2; urgency=low
+
+  * correction du pb sur les variables alias_gw_eth0 et
+    adresse_gw_vlan_eth0
+  * reverseproxy port 7070
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 09 Jan 2009 17:20:02 +0100
+
 conf-amon (2.2-eole65) eole-2.2; urgency=low
 
   * active_rvp : install_rvp mis a oui lors de la mise en place d'un
