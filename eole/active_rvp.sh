@@ -509,5 +509,16 @@ then
 	Zecho "Impossible d'activer Freeswan Ipsec"
 	exit 1
 fi
+. ParseDico
+if [ "$install_rvp" == "non" ];then
+	echo "Activation du RVP dans le dictionnaire"
+	python -c "from creole.cfgparser import EoleDict;
+from creole.config import eoledirs
+d = EoleDict()
+d.read_dir(eoledirs)
+d.load_values('/etc/eole/config.eol')
+d.set_value('install_rvp','oui')
+d.save_values('/etc/eole/config.eol')"
+fi
 /etc/init.d/z_stats restart
 Zecho "Le Vpn est configuré"
