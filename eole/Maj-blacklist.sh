@@ -1,7 +1,5 @@
 #!/bin/bash
 
-LANG="fr_FR.UTF-8" # dates en français
-
 . ParseDico
 . /usr/share/eole/FonctionsEoleNg
 
@@ -12,7 +10,7 @@ DB_PATH="/var/lib/blacklists"
 F_LOG="/usr/share/ead2/backend/tmp/blacklist-date.txt"
 
 echo -n "Mise à jour le " > $F_LOG
-date '+%x à %H:%M :' >> $F_LOG
+date '+%d.%m.%Y à %H:%M :' >> $F_LOG
 
 ServBlacklist=`echo "$url_maj_blacklist" |awk -F "/" '{print $3}'`
 echo "Contact du serveur de Maj $ServBlacklist"
