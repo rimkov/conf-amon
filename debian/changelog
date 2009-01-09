@@ -1,3 +1,11 @@
+conf-amon (2.2-eole65) eole-2.2; urgency=low
+
+  * active_rvp : install_rvp mis a oui lors de la mise en place d'un
+    tunnel
+  * Maj-blacklist : formattage date
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 09 Jan 2009 14:30:08 +0100
+
 conf-amon (2.2-eole64) eole-2.2; urgency=low
 
   * conf-amon : ajout des modifications dansguardian dans le trunk
