@@ -32,7 +32,7 @@ address %%alias_addr_eth0
 netmask %%alias_addr_eth0.alias_netmask_eth0
 broadcast %%alias_addr_eth0.alias_broadcast_eth0
 network %%alias_addr_eth0.alias_network_eth0
-%if %%alias_addr_eth0.alias_gw_eth0 != ""
+%if %%alias_addr_eth0.alias_gw_eth0 != "aucun"
 ##gateway %%alias_addr_eth0.alias_gw_eth0
 %end if
 %end for
@@ -46,7 +46,7 @@ address %%vlan0.adresse_ip_vlan_eth0
 netmask %%vlan0.adresse_netmask_vlan_eth0
 network %%vlan0.adresse_network_vlan_eth0
 broadcast %%vlan0.adresse_broadcast_vlan_eth0
-%if %%vlan0.adresse_gw_vlan_eth0 != ""
+%if %%vlan0.adresse_gw_vlan_eth0 != "aucun"
 gateway %%vlan0.adresse_gw_vlan_eth0
 %end if
 %end for
