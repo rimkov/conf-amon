@@ -1,3 +1,10 @@
+conf-amon (2.2-eole67) eole-2.2; urgency=low
+
+  * conf-amon : configuration de reverseproxy
+  * suppression de la branche eole61 apres merge
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 12 Jan 2009 09:43:04 +0100
+
 conf-amon (2.2-eole66) eole-2.2; urgency=low
 
   * correction du pb sur les variables alias_gw_eth0 et
