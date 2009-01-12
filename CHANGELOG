@@ -1,5 +1,8 @@
 Conf-AmonNG
-6/01/09 (sam)
+12/01/09
+- bug 1016 ajout de "[src|dst]_no*_acad" pour squid
+
+06/01/09 (sam)
 - active-rvp : ajout d'une option pour renouveller le certificat.
 
 09/12/08

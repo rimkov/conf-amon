@@ -13,6 +13,10 @@ touch "/etc/squid/domaines_noauth_user"
 touch "/etc/squid/domaines_nocache_user"
 touch "/etc/squid/src_noauth_user"
 touch "/etc/squid/src_nocache_user"
+touch "/etc/squid/domaines_noauth_acad"
+touch "/etc/squid/domaines_nocache_acad"
+touch "/etc/squid/src_noauth_acad"
+touch "/etc/squid/src_nocache_acad"
 
 # FIX pour nuauth
 chmod 600 /etc/nufw/certs/nuauth-key.pem
