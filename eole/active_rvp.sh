@@ -62,7 +62,7 @@ SuppConf()
 	echo "suppression des fichiers de configuration et des certificats"
 	echo "Voulez-vous continuer O/N"
 	read Rep
-	if [ $Rep == O ]
+	if [ "$Rep" == "O" -o "$Rep" == "o" ]
 	then
 		/etc/init.d/rvp stop
 		rm -f /etc/eole/Tunnel.conf
@@ -77,6 +77,7 @@ SuppConf()
 		/usr/sbin/update-rc.d -f rvp remove >/dev/null 2>&1
 		exit 1
 	else
+		echo Abandon
 		exit 1
 	fi
 }
