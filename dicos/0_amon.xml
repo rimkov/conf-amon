@@ -153,7 +153,7 @@
 			</variable>
 			<variable name='alias_network_eth0' type='ip' description="Adresse réseau correspondant à cet alias" />
 			<variable name='alias_broadcast_eth0' type='ip' description="Adresse broadcast correspondant à cet alias" />
-			<variable name='alias_gw_eth0' type='string' description='Adresse de la passerelle pour cet alias. Optionnelle, uniquement si multi-routeur ("aucun" si rien)'  />
+			<variable name='alias_gw_eth0' type='string' description='Adresse de la passerelle pour cet alias. Optionnelle, uniquement si multi-routeur ("aucun" si rien)'>
 				<value>aucun</value>
 			</variable>
 			<variable name='vlan_eth0' type='string' description="Activer le support des vlan sur l'interface" >
@@ -166,7 +166,7 @@
 			</variable>
             		<variable name='adresse_network_vlan_eth0' type='ip' description="Adresse réseau de l'interface dans ce vlan" />
 			<variable name='adresse_broadcast_vlan_eth0' type='ip' description="Adresse de broadcast de l'interface dans ce vlan" />
-			<variable name='adresse_gw_vlan_eth0' type='string' description='Adresse de la passerelle pour ce vlan. Optionnelle, uniquement si multi-routeur ("Aucun" si rien)' />
+			<variable name='adresse_gw_vlan_eth0' type='string' description='Adresse de la passerelle pour ce vlan. Optionnelle, uniquement si multi-routeur ("Aucun" si rien)'>
 				<value>aucun</value>
 			</variable>
 			<variable name='dns_master_eth0' type='string' description="Amon master DNS de cette zone ?" >
