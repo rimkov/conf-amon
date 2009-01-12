@@ -1,3 +1,9 @@
+conf-amon (2.2-eole69) eole-2.2; urgency=low
+
+  * conf-amon : correction
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 12 Jan 2009 10:47:02 +0100
+
 conf-amon (2.2-eole68) eole-2.2; urgency=low
 
   * conf-amon : fix dico
