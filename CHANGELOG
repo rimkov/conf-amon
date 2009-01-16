@@ -1,4 +1,8 @@
 Conf-AmonNG
+
+16/01/09
+- ajout d'un point pour les adresses de serveur de maj dans les domaine_no* squid
+
 12/01/09
 - bug 1016 ajout de "[src|dst]_no*_acad" pour squid
 
@@ -18,10 +22,10 @@ Conf-AmonNG
 - crontab : temps de relancement de magiv-rvp templatisé en paramètres avancés.
 - utilisateur amon2 pas obligatoire + même proprietés et droits que l'utilisateur amon (accès à manage-amon)
 sudoers : creation d'un groupe d'utilisateur comprenant amon et amon2
- 
+
 26/11/08 (sam)
 - rvp : correction bug 953. test de l'existance du pid au moment du stop.
- 
+
 26/11/08
 - dans le template hosts : verifie si nom_dmz n'est pas définit (spécifique amonecole/eolevz)
 
@@ -44,7 +48,7 @@ sudoers : creation d'un groupe d'utilisateur comprenant amon et amon2
 
 2/10/2008 (sam)
 - dico + squid.conf : gestion de l'authentification en fonction des interfaces
- 
+
 01/10/2008
 - support de certs_nuauth (key_nuauth, cert_nuauth, cacert_nuauth) pour les certifications nuauth
 

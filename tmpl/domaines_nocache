@@ -1,7 +1,7 @@
 %if %%serveur_maj != ""
-%%serveur_maj
+.%%serveur_maj
 %end if
 %if %%serveur_maj2 != ""
-%%serveur_maj2
+.%%serveur_maj2
 %end if
 .archive.ubuntu.com
