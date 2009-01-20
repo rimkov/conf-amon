@@ -30,23 +30,35 @@ server {
 	listen 80;
 %for %%revprox in %%revprox_domainname
 %if %%revprox.revprox_http == 'redirige vers https'
+%if %%revprox != ''
 	if ($host = "%%revprox" ) {
-		rewrite     ^(.*)   https://%%revprox$1 permanent;
+%end if
+		rewrite     ^(.*)   https://$host$1 permanent;
+%if %%revprox != ''
 		break;
 	}
 %end if
+%end if
 %end for
         access_log  /var/log/nginx/access.log;
+%if %%revprox.revprox_rep != ''
+	location %%revprox.revprox_rep {
+%else
         location / {
+%end if
 %for %%revprox in %%revprox_domainname
 %if %%revprox.revprox_http == 'oui'
+%if %%revprox != ''
 		if ($host = "%%revprox" ) {
+%end if
 %if %%revprox.revprox_url != ''
                 	proxy_pass              %%revprox.revprox_url;
 %else
 			proxy_pass              http://%%revprox;
 %end if
+%if %%revprox != ''
 		}
+%end if
 %end if
 %end for
                 proxy_set_header        Host $host;
@@ -75,16 +87,24 @@ server {
 	ssl_certificate    /etc/ssl/certs/eole.crt;
 	ssl_certificate_key     /etc/ssl/certs/eole.key;
         access_log  /var/log/nginx/revprox.revprox_http.access-ssl.log;
+%if %%revprox.revprox_rep != ''
+        location %%revprox.revprox_rep {
+%else
         location / {
+%end if
 %for %%revprox in %%revprox_domainname
 %if %%revprox.revprox_https == 'oui'
+%if %%revprox != ''
 		if ($host = "%%revprox" ) {
+%end if
 %if %%revprox.revprox_url != ''
 	                proxy_pass              %%revprox.revprox_url;
 %else
 			proxy_pass              https://%%revprox;
 %end if
+%if %%revprox != ''
 		}
+%end if
 %end if
 %end for
                 proxy_set_header        Host $host;
@@ -98,18 +118,20 @@ server {
 }
 %end if
 %end if
-# POSH
 %if %%revprox_sso != ''
-server {
-        listen 7070;
-        access_log  /var/log/nginx/localhost.access-poshadmin.log;
-        location / {
-                proxy_pass              http://%%revprox_sso:7070/;
-                proxy_set_header        Host $host;
-                proxy_set_header        X-Real-IP $remote_addr;
-                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header        Destination   $dest;
-                set                     $dest  $http_destination;
-        }
-}
+
+# POSH
+#server {
+#        listen 7070;
+#        access_log  /var/log/nginx/localhost.access-poshadmin.log;
+#        location / {
+#                proxy_pass              http://%%revprox_sso:7070/;
+#                proxy_set_header        Host $host;
+#                proxy_set_header        X-Real-IP $remote_addr;
+#                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+#                proxy_set_header        Destination   $dest;
+#                set                     $dest  $http_destination;
+#        }
+#}
 %end if
+

@@ -123,7 +123,7 @@
 			<variable name='num_dansguardian_instance' type='string' description="Nombre de politique de filtrage (dansguardian et pare-feu) configurables" hidden='True'>
 				<value>2</value>
 			</variable>
-			<variable name='activer_revprox' type='string' description='Activation du Reverse Proxy'>
+			<variable name='activer_revprox' type='string' description='Activation du reverse proxy'>
 				<value>non</value>
 			</variable>
 
@@ -413,14 +413,15 @@
 			</variable>
 		<family name='Reverse proxy' hidden='True'>
 			<variable name='revprox_sso' type='string' description="IP du serveur SSO redirigé" />
-			<variable name='revprox_domainname' type='string' description="Nom de domaine utilisé pour accèder à la page" multi='True' />
-			<variable name='revprox_url' type='string' description="URL racine de destination (avec http ou https)" />
-			<variable name='revprox_http' type='string' description="Proxy HTTP">
+			<variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
+			<variable name='revprox_rep' type='string' description='Répertoire ou nom de la page à rediriger' />
+			<variable name='revprox_http' type='string' description="Reverse proxy HTTP">
 				<value>redirige vers https</value>
 			</variable>
-			<variable name='revprox_https' type='string' description="Proxy HTTPS">
+			<variable name='revprox_https' type='string' description="Reverse proxy HTTPS">
 				<value>oui</value>
 			</variable>
+			<variable name='revprox_url' type='string' description="URL racine de destination (avec http ou https)" />
 		</family>
 
 		</family>
@@ -508,6 +509,8 @@
 				<separator name='debit_carte_eth2'>Configuration avancée de l'interface interne 2</separator>
 				<separator name='debit_carte_eth3'>Configuration avancée de l'interface interne 3</separator>
 				<separator name='debit_carte_eth4'>Configuration avancée de l'interface interne 4</separator>
+				<separator name='revprox_sso'>Redirection du serveur SSO</separator>
+				<separator name='revprox_domainname'>Redirection http et https</separator>
 			</separators>
 	</variables>
 	<constraints>
@@ -1195,6 +1198,7 @@
                         <slave>autoriser_proxy_autres</slave>
                  </group>
 		 <group master='revprox_domainname'>
+			<slave>revprox_rep</slave>
 			<slave>revprox_url</slave>
 			<slave>revprox_http</slave>
 			<slave>revprox_https</slave>
