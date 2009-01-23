@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<creole>
+	<files>
+	<file name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
+	</files>
+	<!--************************************************************************************************* -->
+	<variables>
+	<!--************************************************************************************************* -->
+		<family name='services'>
+			<variable name='activer_revprox' type='string' description='Activation du reverse proxy'>
+				<value>non</value>
+			</variable>
+		</family>
+		<family name='Reverse proxy' hidden='True'>
+			<variable name='revprox_sso' type='string' description="IP du serveur SSO redirigé" />
+			<variable name='revprox_poshadmin' type='string' description="IP du serveur posh admin a redirigé" />
+			<variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
+			<variable name='revprox_rep' type='string' description="Répertoire ou non de la page à rediriger" />
+			<variable name='revprox_http' type='string' description="Reverse proxy HTTP">
+				<value>redirige vers https</value>
+			</variable>
+			<variable name='revprox_https' type='string' description="Reverse proxy HTTPS">
+				<value>oui</value>
+			</variable>
+			<variable name='revprox_url' type='string' description="URL racine de destination (avec http ou https)" />
+		</family>
+		<separators>
+			<separator name='revprox_sso'>Redirection du serveur SSO</separator>
+			<separator name='revprox_domainname'>Redirection http et https</separator>
+		</separators>
+	</variables>
+	<constraints>
+	<!--************************************************************************************************* -->
+	<!-- **** Listes deroulantes **** -->
+		<check name='valid_enum' target='activer_revprox'>
+			<param>['oui','non']</param>
+		</check>
+		<check name='valid_enum' target='revprox_http'>
+			<param>['oui','non', 'redirige vers https']</param>
+		</check>
+		<check name='valid_enum' target='revprox_https'>
+			<param>['oui','non']</param>
+		</check>
+	<!-- **** Conditions **** -->
+		<condition name='hidden_if_in' source='activer_revprox'>
+			<param>non</param>
+			<target type='family'>Reverse proxy</target>
+			<target type='filelist'>revpro</target>
+                </condition>
+	<!-- **** Groupes **** -->
+		 <group master='revprox_domainname'>
+			<slave>revprox_rep</slave>
+			<slave>revprox_url</slave>
+			<slave>revprox_http</slave>
+			<slave>revprox_https</slave>
+		 </group>
+	</constraints>
+	<!--************************************************************************************************* -->
+	<help>
+<!--		<variable name='adresse_broadcast_eth0'>Adresse de broadcast (diffusion) de la carte int0 (ex: 10.21.5.255)</variable>-->
+	</help>
+</creole>

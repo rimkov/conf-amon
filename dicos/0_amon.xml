@@ -46,7 +46,6 @@
 	<file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
 	<file filelist='nufw' name='/etc/pam.d/nuauth' source='nuauth.pamd'/>
 	<file filelist='nufw' name='/etc/init.d/nufw' source='nufw.init'/>
-	<file name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
 
 	</files>
 	<!--************************************************************************************************* -->
@@ -123,10 +122,6 @@
 			<variable name='num_dansguardian_instance' type='string' description="Nombre de politique de filtrage (dansguardian et pare-feu) configurables" hidden='True'>
 				<value>2</value>
 			</variable>
-			<variable name='activer_revprox' type='string' description='Activation du reverse proxy'>
-				<value>non</value>
-			</variable>
-
 		</family>
 	<!--************************************************************************************************* -->
 		<family name='Interface-ext'>
@@ -411,19 +406,6 @@
 			<variable name='nuauth_nss_ldap_tls' type='string' description="Utilisation de TLS">
 				<value>oui</value>
 			</variable>
-		<family name='Reverse proxy' hidden='True'>
-			<variable name='revprox_sso' type='string' description="IP du serveur SSO redirigé" />
-			<variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
-			<variable name='revprox_rep' type='string' description='Répertoire ou nom de la page à rediriger' />
-			<variable name='revprox_http' type='string' description="Reverse proxy HTTP">
-				<value>redirige vers https</value>
-			</variable>
-			<variable name='revprox_https' type='string' description="Reverse proxy HTTPS">
-				<value>oui</value>
-			</variable>
-			<variable name='revprox_url' type='string' description="URL racine de destination (avec http ou https)" />
-		</family>
-
 		</family>
 
 	<!--************************************************************************************************* -->
@@ -509,8 +491,6 @@
 				<separator name='debit_carte_eth2'>Configuration avancée de l'interface interne 2</separator>
 				<separator name='debit_carte_eth3'>Configuration avancée de l'interface interne 3</separator>
 				<separator name='debit_carte_eth4'>Configuration avancée de l'interface interne 4</separator>
-				<separator name='revprox_sso'>Redirection du serveur SSO</separator>
-				<separator name='revprox_domainname'>Redirection http et https</separator>
 			</separators>
 	</variables>
 	<constraints>
@@ -892,15 +872,6 @@
 	        <check name='valid_enum' target='debit_carte_eth4'>
                 	<param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
                 </check>
-		<check name='valid_enum' target='activer_revprox'>
-			<param>['oui','non']</param>
-		</check>
-		<check name='valid_enum' target='revprox_http'>
-			<param>['oui','non', 'redirige vers https']</param>
-		</check>
-		<check name='valid_enum' target='revprox_https'>
-			<param>['oui','non']</param>
-		</check>
 
 	<!-- **** Conditions **** -->
 		<condition name='hidden_if_in' source='eole_module'>
@@ -1109,11 +1080,6 @@
 			<param>non</param>
 			<target type='variable'>nuauth_verbosity</target>
 		</condition>
-		<condition name='hidden_if_in' source='activer_revprox'>
-			<param>non</param>
-			<target type='family'>Reverse proxy</target>
-			<target type='filelist'>revpro</target>
-                </condition>
 
 	<!-- **** Groupes **** -->
 		 <group master='ip_ssh_eth0'>
@@ -1197,12 +1163,6 @@
                         <slave>nom_zone_dns_cache</slave>
                         <slave>autoriser_proxy_autres</slave>
                  </group>
-		 <group master='revprox_domainname'>
-			<slave>revprox_rep</slave>
-			<slave>revprox_url</slave>
-			<slave>revprox_http</slave>
-			<slave>revprox_https</slave>
-		 </group>
 		 <group master='nom_zone_forward'>
                         <slave>ip_dns_zone_forward</slave>
                  </group>

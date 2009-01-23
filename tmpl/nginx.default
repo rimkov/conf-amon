@@ -1,3 +1,36 @@
+%def locationDomain (%%revprox_domainname, %%revprox, %%redirect=False)
+%for %%location in %%revprox_domainname
+%if %%location.value == %%revprox
+%if %%location.revprox_rep != ""
+	location %%location.revprox_rep {
+%else
+        location / {
+%end if % if %%location.revprox_rep != ""
+%if %%redirect == True
+		if ($host = "%%location" ) {
+			rewrite     ^(.*)   https://$host$1 permanent;
+			break;
+		}
+%else
+		if ($host = "%%revprox" ) {
+%if %%location.revprox_url != ''
+                	proxy_pass              %%location.revprox_url;
+%else
+			proxy_pass              http://%%location;
+%end if % if %%revprox.revprox_url != ''
+		}
+                proxy_set_header        Host $host;
+                proxy_set_header        X-Real-IP $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        Destination   $dest;
+                set                     $dest  $http_destination;
+%end if % if %%redirect == True
+		index  50x.html;
+		root /var/www/nginx-default/;
+        }
+%end if % if %%location.value == %%revprox
+%end for % for %%location in %%revprox_domainname
+%end def 
 %if %%revprox_sso != ''
 # Redirection SSO
 server {
@@ -15,123 +48,61 @@ server {
                 set                     $dest  $http_destination;
         }
 }
-
 %end if
 %if %%revprox_domainname != ''
-%set %%http=False
+%set %%buffer=[]
 %for %%revprox in %%revprox_domainname
-%if %%revprox.revprox_http != 'non'
-%set %%http=True
-%end if
-%end for
-%if %%http == True
-# Configuration HTTP
+%if %%revprox.value not in %%buffer
+%%buffer.append(%%revprox.value)
+%if %%revprox.revprox_http == 'oui' or %%revprox.revprox_http == 'redirige vers https'
+
+# Configuration HTTP %%revprox
 server {
 	listen 80;
-%for %%revprox in %%revprox_domainname
+	server_name %%revprox;
+	access_log  /var/log/nginx/access.log;
+	root /var/www/nginx-default/;
+	error_page   403 404      /40x.html;
+	error_page   502 503 504  /50x.html;
 %if %%revprox.revprox_http == 'redirige vers https'
-%if %%revprox != ''
-	if ($host = "%%revprox" ) {
-%end if
-		rewrite     ^(.*)   https://$host$1 permanent;
-%if %%revprox != ''
-		break;
-	}
-%end if
-%end if
-%end for
-        access_log  /var/log/nginx/access.log;
-%if %%revprox.revprox_rep != ''
-	location %%revprox.revprox_rep {
+	%%locationDomain(%%revprox_domainname, %%revprox.value, True)
 %else
-        location / {
-%end if
-%for %%revprox in %%revprox_domainname
-%if %%revprox.revprox_http == 'oui'
-%if %%revprox != ''
-		if ($host = "%%revprox" ) {
-%end if
-%if %%revprox.revprox_url != ''
-                	proxy_pass              %%revprox.revprox_url;
-%else
-			proxy_pass              http://%%revprox;
-%end if
-%if %%revprox != ''
-		}
-%end if
-%end if
-%end for
-                proxy_set_header        Host $host;
-                proxy_set_header        X-Real-IP $remote_addr;
-                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header        Destination   $dest;
-                set                     $dest  $http_destination;
-		index  50x.html;
-		root /var/www/nginx-default/;
-        }
+%%locationDomain(%%revprox_domainname, %%revprox.value)
+%end if % if %%revprox.revprox_http == 'redirige vers https'
 }
-
-%end if
-
-%set %%https=False
-%for %%revprox in %%revprox_domainname
-%if %%revprox.revprox_https != 'non'
-%set %%https=True
-%end if
-%end for
-%if %%https == True
-# Configuration HTTPS
-server {
-        listen   443;
-	ssl    on;
-	ssl_certificate    /etc/ssl/certs/eole.crt;
-	ssl_certificate_key     /etc/ssl/certs/eole.key;
-        access_log  /var/log/nginx/revprox.revprox_http.access-ssl.log;
-%if %%revprox.revprox_rep != ''
-        location %%revprox.revprox_rep {
-%else
-        location / {
-%end if
-%for %%revprox in %%revprox_domainname
+%end if % if %%revprox.revprox_http == 'oui' or %%revprox.revprox_http == 'redirige vers https'
 %if %%revprox.revprox_https == 'oui'
-%if %%revprox != ''
-		if ($host = "%%revprox" ) {
-%end if
-%if %%revprox.revprox_url != ''
-	                proxy_pass              %%revprox.revprox_url;
-%else
-			proxy_pass              https://%%revprox;
-%end if
-%if %%revprox != ''
-		}
-%end if
-%end if
-%end for
-                proxy_set_header        Host $host;
-                proxy_set_header        X-Real-IP $remote_addr;
-                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header        Destination   $dest;
-                set                     $dest  $http_destination;
-		index  50x.html;
-		root /var/www/nginx-default/;
-        }
+
+# Configuration HTTPS %%revprox
+server {
+	listen 443;
+        ssl    on;
+        ssl_certificate    /etc/ssl/certs/eole.crt;
+        ssl_certificate_key     /etc/ssl/certs/eole.key;
+        access_log  /var/log/nginx/revprox.revprox_http.access-ssl.log;
+	server_name %%revprox;
+	root /var/www/nginx-default/;
+	error_page   403 404      /40x.html;
+	error_page   502 503 504  /50x.html;
+%%locationDomain(%%revprox_domainname, %%revprox.value)
 }
-%end if
-%end if
-%if %%revprox_sso != ''
+%end if % if %%revprox.revprox_http == 'oui'
+%end if % if %%revprox.value not in %%buffer
+%end for % for %%revprox in %%revprox_domainname
+%end if % if %%revprox_domainname != ''
+%if %%revprox_poshadmin != ''
 
 # POSH
-#server {
-#        listen 7070;
-#        access_log  /var/log/nginx/localhost.access-poshadmin.log;
-#        location / {
-#                proxy_pass              http://%%revprox_sso:7070/;
-#                proxy_set_header        Host $host;
-#                proxy_set_header        X-Real-IP $remote_addr;
-#                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-#                proxy_set_header        Destination   $dest;
-#                set                     $dest  $http_destination;
-#        }
-#}
+server {
+        listen 7070;
+        access_log  /var/log/nginx/localhost.access-poshadmin.log;
+        location / {
+                proxy_pass              http://%%revprox_poshadmin:7070/;
+                proxy_set_header        Host $host;
+                proxy_set_header        X-Real-IP $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        Destination   $dest;
+                set                     $dest  $http_destination;
+        }
+}
 %end if
-
