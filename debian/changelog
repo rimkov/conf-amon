@@ -1,3 +1,16 @@
+conf-amon (2.2-eole70) eole-2.2-proposed; urgency=low
+
+  * Separation du dicos amon.xml et nginx.xml + redirection des
+    repertoires
+  * Support des repertoires dans nginx
+  * conf-amon 2.2 : ajout d'un point dans les domaines_no* devant les
+    adresses des serveurs de maj
+  * amon : cosmetique sur active_rvp.sh --delete
+  * 2 x acad => user acad
+  * bug 1016 : ajout de [dst|src]_no*_acad pour squid.conf
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 27 Jan 2009 10:49:57 +0100
+
 conf-amon (2.2-eole69) eole-2.2; urgency=low
 
   * conf-amon : correction
