@@ -1,3 +1,9 @@
+conf-amon (2.2-eole71) eole-2.2-proposed; urgency=low
+
+  * Correction nginx pour migration
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 28 Jan 2009 16:47:59 +0100
+
 conf-amon (2.2-eole70) eole-2.2-proposed; urgency=low
 
   * Separation du dicos amon.xml et nginx.xml + redirection des
