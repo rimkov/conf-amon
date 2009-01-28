@@ -16,7 +16,9 @@
 			<variable name='revprox_sso' type='string' description="IP du serveur SSO redirigé" />
 			<variable name='revprox_poshadmin' type='string' description="IP du serveur posh admin a redirigé" />
 			<variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
-			<variable name='revprox_rep' type='string' description="Répertoire ou non de la page à rediriger" />
+			<variable name='revprox_rep' type='string' description="Répertoire ou non de la page à rediriger">
+				<value></value>
+			</variable>
 			<variable name='revprox_http' type='string' description="Reverse proxy HTTP">
 				<value>redirige vers https</value>
 			</variable>
