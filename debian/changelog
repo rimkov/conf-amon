@@ -1,3 +1,9 @@
+conf-amon (2.2-eole73) eole-2.2-proposed; urgency=low
+
+  * mauvaise manipulation !
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 29 Jan 2009 10:49:47 +0100
+
 conf-amon (2.2-eole72) eole-2.2-proposed; urgency=low
 
   * Compilation en eole-2.2-proposed a partir du tag eole63
