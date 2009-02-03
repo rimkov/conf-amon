@@ -1,3 +1,10 @@
+conf-amon (2.2-eole75) eole-2.2-proposed; urgency=low
+
+  * Resolution temporaire #0001084 : possible conflit entre nginx et
+    eole-sso
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 03 Feb 2009 14:59:04 +0100
+
 conf-amon (2.2-eole74) eole-2.2-proposed; urgency=low
 
   * Correction url par defaut pour nginx
