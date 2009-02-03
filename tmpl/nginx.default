@@ -31,7 +31,13 @@
 %end if % if %%location.value == %%revprox
 %end for % for %%location in %%revprox_domainname
 %end def 
-%if %%revprox_sso != ''
+%set %%sso_local=False
+%if %%sso == 'oui'
+%if %%adresse_ip_eth0 == %%adresse_ip_sso
+%set %%sso_local=True
+%end if % if %%adresse_ip_eth0 == %%adresse_ip_sso
+%end if % if %%sso == 'oui'
+%if %%revprox_sso != '' and %%sso_local == False
 # Redirection SSO
 server {
         listen 8443;
@@ -48,7 +54,7 @@ server {
                 set                     $dest  $http_destination;
         }
 }
-%end if
+%end if % if %%revprox_sso != '' and %%sso_local == False
 %if %%revprox_domainname != ''
 %set %%buffer=[]
 %for %%revprox in %%revprox_domainname
