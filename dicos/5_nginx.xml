@@ -25,7 +25,9 @@
 			<variable name='revprox_https' type='string' description="Reverse proxy HTTPS">
 				<value>oui</value>
 			</variable>
-			<variable name='revprox_url' type='string' description="URL racine de destination (avec http ou https)" />
+			<variable name='revprox_url' type='string' description="URL racine de destination (avec http ou https)">
+				<value></value>
+			</variable>
 		</family>
 		<separators>
 			<separator name='revprox_sso'>Redirection du serveur SSO</separator>
