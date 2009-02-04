@@ -1,3 +1,9 @@
+conf-amon (2.2-eole77) eole-2.2-dev; urgency=low
+
+  * Nginx : verifie tous les cas sso
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 04 Feb 2009 14:46:26 +0100
+
 conf-amon (2.2-eole76) eole-2.2-dev; urgency=low
 
   * Suppression de la configuration de ntp (centralisation)
