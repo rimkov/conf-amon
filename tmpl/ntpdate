@@ -1,7 +1,0 @@
-# servers to check.   (Separate multiple servers with spaces.)
-#NTPSERVERS="pool.ntp.org"
-NTPSERVERS="%%serveur_ntp"
-#
-# additional options for ntpdate
-#NTPOPTIONS="-v"
-NTPOPTIONS="-u"

@@ -11,8 +11,6 @@
         <file name='/etc/host.conf'/>
         <file name='/etc/hosts.allow'/>
 	<file name='/etc/logrotate.conf'/>
-        <file name='/etc/ntp.conf'/>
-	<file name='/etc/default/ntpdate'/>
         <file name='/etc/resolv.conf'/>
         <file name='/etc/sudoers' mode="0440"/>
         <file name='/etc/ulogd.conf'/>
@@ -74,9 +72,6 @@
                 	        <value>eth0</value>
                         </variable>
 			<variable name='adresse_ip_dns' type='ip' description='Adresse IP du DNS de forward (ou rien)' multi='True'/>
-			<variable name='serveur_ntp' type='string' description='Adresse serveur NTP' >
-				<value>pool.ntp.org</value>
-			</variable>
                         <variable name='activer_log_distant' type='string' description="Gestion des logs centralisés" >
                                 <value>non</value>
                         </variable>
@@ -677,7 +672,6 @@
 		<check name='obligatoire' target='nom_machine'/>
 		<check name='obligatoire' target='nom_domaine_local'/>
 		<check name='obligatoire' target='nom_domaine_academique' />
-		<check name='obligatoire' target='serveur_ntp'/>
 		<check name='obligatoire' target='serveur_maj'/>
 		<check name='obligatoire' target='nuauth_nss_ldap_host'/>
 		<check name='obligatoire' target='nuauth_nss_ldap_dn'/>
@@ -1181,7 +1175,6 @@
 		<variable name='nom_machine'>Nom de la machine</variable>
 		<variable name='nom_domaine_local'>Nom de domaine prive du réseau local</variable>
 		<variable name='nom_domaine_academique'>Nom de domaine académique (ex : ac-dijon.fr)</variable>
-		<variable name='serveur_ntp'>Nom ou adresse IP du serveur de temps</variable>
 		<variable name='serveur_maj'>Nom ou adresse IP du serveur de mise à jour</variable>
 		<variable name='serveur_maj2'>Nom ou adresse IP du serveur de mise à jour de secours</variable>
         <variable name='dansguardian_eth1'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth1 (1=admin, 2=pedago)</variable>
