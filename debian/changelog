@@ -1,3 +1,9 @@
+conf-amon (2.2-eole76) eole-2.2-dev; urgency=low
+
+  * Suppression de la configuration de ntp (centralisation)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 04 Feb 2009 11:29:20 +0100
+
 conf-amon (2.2-eole75) eole-2.2-proposed; urgency=low
 
   * Resolution temporaire #0001084 : possible conflit entre nginx et
