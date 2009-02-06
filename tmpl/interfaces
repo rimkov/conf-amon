@@ -64,7 +64,7 @@ network %%adresse_network_eth1
 up ethtool -s eth1 %%debit_carte_eth1
 %end if
 %else if %%eth1_method == "dhcp"
-iface eth0 inet dhcp
+iface eth1 inet dhcp
 %end if
 ##
 %if %%alias_eth1 == "oui"
@@ -102,7 +102,7 @@ network %%adresse_network_eth2
 up ethtool -s eth2 %%debit_carte_eth2
 %end if
 %else if %%eth2_method == "dhcp"
-iface eth0 inet dhcp
+iface eth2 inet dhcp
 %end if
 ##
 %if %%alias_eth2 == "oui"
@@ -140,7 +140,7 @@ network %%adresse_network_eth3
 up ethtool -s eth3 %%debit_carte_eth3
 %end if
 %else if %%eth3_method == "dhcp"
-iface eth0 inet dhcp
+iface eth3 inet dhcp
 %end if
 ##
 %if %%alias_eth3 == "oui"
@@ -178,7 +178,7 @@ network %%adresse_network_eth4
 up ethtool -s eth4 %%debit_carte_eth4
 %end if
 %else if %%eth4_method == "dhcp"
-iface eth0 inet dhcp
+iface eth4 inet dhcp
 %end if
 ##
 %if %%alias_eth4 == "oui"
