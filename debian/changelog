@@ -1,3 +1,10 @@
+conf-amon (2.2-eole81) eole-2.2-dev; urgency=low
+
+  * (pas de commit depuis :  Nouveau paquet : conf-amon (2.2-eole80)
+    eole-2.2-proposed (depuis tags eole73) )
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 06 Feb 2009 15:19:13 +0100
+
 conf-amon (2.2-eole80) eole-2.2-proposed; urgency=low
 
   * refait depuis tag eole73
