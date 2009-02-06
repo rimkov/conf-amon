@@ -1,3 +1,11 @@
+conf-amon (2.2-eole80) eole-2.2-proposed; urgency=low
+
+  * refait depuis tag eole73
+  * (pas de commit depuis :  Nouveau paquet : conf-amon (2.2-eole79)
+    eole-2.2-proposed (depuis trunk) )
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 06 Feb 2009 15:18:48 +0100
+
 conf-amon (2.2-eole79) eole-2.2-proposed; urgency=low
 
   * Correction dans le template nginx
