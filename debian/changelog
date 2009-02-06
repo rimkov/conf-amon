@@ -1,3 +1,14 @@
+conf-amon (2.2-eole78) eole-2.2-dev; urgency=low
+
+  * changelog
+  * suppression de /usr/bin/era
+  * #1092 : Correction sur le dhcp sur eth1 eth2 et eth3
+  * Support des vlan + alias
+  * Support initial de pppoe
+  * Test du support de pppoe
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 06 Feb 2009 13:31:25 +0100
+
 conf-amon (2.2-eole77) eole-2.2-dev; urgency=low
 
   * Nginx : verifie tous les cas sso
