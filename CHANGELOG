@@ -1,5 +1,8 @@
 Conf-AmonNG
 
+05/02/09
+- suppression de /usr/bin/era
+
 16/01/09
 - ajout d'un point pour les adresses de serveur de maj dans les domaine_no* squid
 
