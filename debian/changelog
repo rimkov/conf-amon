@@ -1,3 +1,9 @@
+conf-amon (2.2-eole82) eole-2.2-dev; urgency=low
+
+  * rebuild
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 10 Feb 2009 11:00:12 +0100
+
 conf-amon (2.2-eole81) eole-2.2-dev; urgency=low
 
   * (pas de commit depuis :  Nouveau paquet : conf-amon (2.2-eole80)
