@@ -30,7 +30,7 @@
 			</variable>
 		</family>
 		<separators>
-			<separator name='revprox_sso'>Redirection du serveur SSO</separator>
+			<separator name='revprox_sso'>Redirection de services particuliers</separator>
 			<separator name='revprox_domainname'>Redirection http et https</separator>
 		</separators>
 	</variables>
