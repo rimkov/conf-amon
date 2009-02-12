@@ -13,8 +13,8 @@
 			</variable>
 		</family>
 		<family name='Reverse proxy' hidden='True'>
-			<variable name='revprox_sso' type='string' description="IP du serveur SSO redirigé" />
-			<variable name='revprox_poshadmin' type='string' description="IP du serveur posh admin a redirigé" />
+			<variable name='revprox_sso' type='string' description="IP ou domaine du serveur SSO redirigé" />
+			<variable name='revprox_poshadmin' type='string' description="IP ou domaine du serveur EnvOLE 2 admin a redirigé" />
 			<variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
 			<variable name='revprox_rep' type='string' description="Répertoire ou non de la page à rediriger">
 				<value></value>
@@ -31,7 +31,7 @@
 		</family>
 		<separators>
 			<separator name='revprox_sso'>Redirection de services particuliers</separator>
-			<separator name='revprox_domainname'>Redirection http et https</separator>
+			<separator name='revprox_domainname'>Redirection HTTP et HTTPS</separator>
 		</separators>
 	</variables>
 	<constraints>
@@ -62,6 +62,11 @@
 	</constraints>
 	<!--************************************************************************************************* -->
 	<help>
-<!--		<variable name='adresse_broadcast_eth0'>Adresse de broadcast (diffusion) de la carte int0 (ex: 10.21.5.255)</variable>-->
+                <variable name='revprox_sso'>Pour rediriger vers le SSO de la machine "domainelocal", taper "domainelocal"</variable>
+                <variable name='revprox_poshadmin'>Pour rediriger vers le POSHAdmin de la machine "domainelocal", taper "domainelocal"</variable>
+                <variable name='revprox_domainname'>Exemple pour rediriger "http://domaine/", taper "domaine"</variable>
+                <variable name='revprox_rep'>URL relative (sans le nom de domaine) redirigé pour l'adresse définie dans la variable ci-dessus (exemple "/mail")</variable>
+                <variable name='revprox_url'>Nom de domaine ou IP de destination, par exemple "http://domainelocal"</variable>
+
 	</help>
 </creole>
