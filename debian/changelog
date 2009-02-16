@@ -1,3 +1,9 @@
+conf-amon (2.2-eole83) eole-2.2-security; urgency=low
+
+  * Compilation en eole-2.2-security a partir du tag eole80
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 16 Feb 2009 11:54:11 +0100
+
 conf-amon (2.2-eole82) eole-2.2-dev; urgency=low
 
   * rebuild
