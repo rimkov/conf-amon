@@ -1,3 +1,9 @@
+conf-amon (2.2-eole88) eole-2.2-security; urgency=low
+
+  * Recompilation en security depuis le tags 83
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 20 Feb 2009 10:51:56 +0100
+
 conf-amon (2.2-eole87) eole-2.2-security; urgency=low
 
   * Passage en security
