@@ -1,3 +1,11 @@
+conf-amon (2.2-eole89) eole-2.2-security; urgency=low
+
+  * Ajout d'un exit 0 a la fin du postinst
+  * #0001133 Ecrasement du fichier /etc/eole/version par conf-amon sur
+    amonecole
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 20 Feb 2009 15:05:01 +0100
+
 conf-amon (2.2-eole88) eole-2.2-security; urgency=low
 
   * Recompilation en security depuis le tags 83
