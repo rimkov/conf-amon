@@ -1,3 +1,10 @@
+conf-amon (2.2-eole84) eole-2.2-proposed; urgency=low
+
+  * Verifie si c'est un amonecole pour modifier le fichier
+    /etc/eole/version
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 20 Feb 2009 09:11:37 +0100
+
 conf-amon (2.2-eole83) eole-2.2-security; urgency=low
 
   * Compilation en eole-2.2-security a partir du tag eole80
