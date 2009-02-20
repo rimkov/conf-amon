@@ -14,4 +14,5 @@ fi
 
 [ -d /etc/vz ] && echo "amonecole-$VERSION" > /etc/eole/version || echo "amon-$VERSION" > /etc/eole/version
 
+exit 0
 #DEBHELPER#
