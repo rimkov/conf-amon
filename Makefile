@@ -26,9 +26,6 @@ install:
 	mkdir -p $(INIT_DIR)
 	mkdir -p $(DESTDIR)/var/lib/blacklists/tmp
 
-	# fichier d'identification du module
-	cp -f version $(EOLE_CONF_DIR)
-
 	# copie des dictionnaires
 	cp -rf dicos/* $(EOLE_CONF_DIR)/dicos/
 	# copie des templates

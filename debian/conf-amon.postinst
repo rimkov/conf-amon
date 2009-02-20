@@ -2,6 +2,8 @@
 
 # creation de l'utilisateur nufwguest pour nuauth
 
+VERSION="2.2"
+
 if ! getent group nufwguest >/dev/null; then
 	addgroup --gid 253 nufwguest
 fi
@@ -9,5 +11,7 @@ fi
 if ! getent passwd nufwguest >/dev/null; then
 	useradd -u 253 -g 253 -s /dev/null nufwguest
 fi
+
+[ -d /etc/vz ] && echo "amonecole-$VERSION" > /etc/eole/version || echo "amon-$VERSION" > /etc/eole/version
 
 #DEBHELPER#
