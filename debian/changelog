@@ -1,3 +1,14 @@
+conf-amon (2.2-eole90) eole-2.2-proposed; urgency=low
+
+  * Deplacement configuration vim, ntp vers eole-common
+  * Cosmetique template page d'interdiction
+  * Verifie si c'est un amonecole pour modifier le fichier
+    /etc/eole/version
+  * Correction de la gestion du DHCP pour les interfaces internes
+  * Nginx : amelioration de la prise en compte du serveur SSO
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 20 Feb 2009 15:41:42 +0100
+
 conf-amon (2.2-eole89) eole-2.2-security; urgency=low
 
   * Ajout d'un exit 0 a la fin du postinst
