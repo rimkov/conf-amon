@@ -1,3 +1,9 @@
+conf-amon (2.2-eole92) eole-2.2-proposed; urgency=low
+
+  * Compilation en eole-2.2-proposed a partir du tag eole91
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 24 Feb 2009 10:02:45 +0100
+
 conf-amon (2.2-eole91) eole-2.2-dev; urgency=low
 
   * conf-amon : correction d'orthographe dans 5_nginx.xml
