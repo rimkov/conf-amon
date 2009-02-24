@@ -1,3 +1,9 @@
+conf-amon (2.2-eole91) eole-2.2-dev; urgency=low
+
+  * conf-amon : correction d'orthographe dans 5_nginx.xml
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 24 Feb 2009 10:01:35 +0100
+
 conf-amon (2.2-eole90) eole-2.2-proposed; urgency=low
 
   * Deplacement configuration vim, ntp vers eole-common
