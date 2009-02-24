@@ -14,7 +14,7 @@
 		</family>
 		<family name='Reverse proxy' hidden='True'>
 			<variable name='revprox_sso' type='string' description="IP ou domaine du serveur SSO redirigé" />
-			<variable name='revprox_poshadmin' type='string' description="IP ou domaine du serveur EnvOLE 2 admin a redirigé" />
+			<variable name='revprox_poshadmin' type='string' description="IP ou domaine du serveur EnvOLE 2 admin à rediriger" />
 			<variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
 			<variable name='revprox_rep' type='string' description="Répertoire ou non de la page à rediriger">
 				<value>/</value>
@@ -67,6 +67,5 @@
                 <variable name='revprox_domainname'>Exemple pour rediriger "http://domaine/", taper "domaine"</variable>
                 <variable name='revprox_rep'>URL relative (sans le nom de domaine) redirigé pour l'adresse définie dans la variable ci-dessus (exemple "/mail")</variable>
                 <variable name='revprox_url'>Nom de domaine ou IP de destination, par exemple "http://domainelocal"</variable>
-
 	</help>
 </creole>
