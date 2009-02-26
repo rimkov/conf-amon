@@ -1,4 +1,7 @@
 Conf-AmonNG
+26/02/09 (sam)
+- agregation.conf : correction d'une erreur dans la conf (correction effectuée par GC de Nantes)
+
 20/02/09 (sam)
 -dansguardian-template.html : correction cosmétqiue. un ac-djon.fr trainait encore dans le fichier
 
