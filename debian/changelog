@@ -1,3 +1,10 @@
+conf-amon (2.2-eole93) eole-2.2-proposed; urgency=low
+
+  * #0001002 Suppression des patchs amonecole
+  * correction erreur dans la conf
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 27 Feb 2009 14:00:55 +0100
+
 conf-amon (2.2-eole92) eole-2.2-proposed; urgency=low
 
   * Compilation en eole-2.2-proposed a partir du tag eole91
