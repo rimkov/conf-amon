@@ -4,3 +4,11 @@ adm_eth2
 %if %%active_nufw == "oui"
 auth_nufw
 %end if
+%if %%test_vz(master=True)
+%if %%activate_virt_eclair == "oui"
+eclair-dmz
+%end if
+%if %%activate_virt_scribe == "oui"
+scribe-dmz
+%end if
+%end if

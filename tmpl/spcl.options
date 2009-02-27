@@ -29,6 +29,11 @@ allow-query {localnets;};
 acl "intra" {
 	127.0.0.1;
 	%%adresse_ip_eth1;
+%if %%test_vz(master=True)
+%if %%adresse_ip_dmz  != ['']
+       %%adresse_ip_dmz;
+%end if
+%end if
 %if %%nombre_interfaces >= "3"
 	%%adresse_ip_eth2;
 %if %%vlan_eth2 == "oui"

@@ -2,11 +2,40 @@
 # DHCP packets are to be relayed to and from.  This is mandatory.
 #SERVERS="10.11.12.13 10.9.8.7"
 
+%if %%test_vz(master=True)
+%if %%active_dhcp == 'scribe'
+       %if %%ip_virt_scribe != ''
+SERVERS="%%ip_virt_scribe"
+OPTIONS="-i eth1 -i %%nom_dmz"
+       %end if
+%end if
+
+%if %%active_dhcp == 'eclair'
+       %if %%ip_virt_eclair != ''
+SERVERS="%%ip_virt_eclair"
+OPTIONS="-i eth1 -i %%nom_dmz"
+       %end if
+%end if
+
+%if %%active_dhcp == 'horus'
+       %if %%ip_virt_horus != ''
+SERVERS="%%ip_virt_horus"
+OPTIONS="-i eth1 -i %%nom_dmz"
+       %end if
+%end if
+
+%if %%active_dhcp == 'eolebase'
+       %if %%ip_virt_eolebase != ''
+SERVERS="%%ip_virt_eolebase"
+OPTIONS="-i eth1 -i %%nom_dmz"
+       %end if
+%end if
+%else
 %if %%ip_serveur_scribe_dmz != ''
 SERVERS="%%ip_serveur_scribe_dmz"
 OPTIONS="-i eth2 -i eth3"
 %end if
-
+%end if
 # Define OPTIONS with any other options to pass to the dhcrelay server.
 # See dhcrelay(8) for available options and syntax.
 #OPTIONS="-q -i eth0 -i eth1"

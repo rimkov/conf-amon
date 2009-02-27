@@ -12,8 +12,14 @@ bacula-fd
 bind9
 squid
 dansguardian
+%if %%test_vz(master=True)
+%if %%active_dhcp != 'aucun'
+dhcp3-relay
+%end if
+%else
 %if %%activer_dhcprelay == 'oui'
 dhcp3-relay
+%end if
 %end if
 ead-server
 %if %%ead_web == 'oui'

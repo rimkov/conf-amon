@@ -204,3 +204,37 @@ broadcast %%vlan4.adresse_broadcast_vlan_eth4
 %end if
 %end if
 ##
+%if %%test_vz(master=True)
+auto %%nom_dmz
+iface %%nom_dmz inet static
+address %%adresse_ip_dmz
+netmask %%adresse_netmask_dmz
+network %%adresse_network_dmz
+pre-up /usr/sbin/brctl addbr %%nom_dmz
+%if %%activate_virt_eclair == "oui"
+%for i in %%range(1,%%len(%%name_virt_eclair)+1)
+pre-up [ ! "`ifconfig veth%%{i}13 2> /dev/null`" == "" ] && /usr/sbin/brctl addif %%nom_dmz veth%%{i}13 || echo "veth%%{i}13 inexistant"
+%end for
+%end if
+%if %%activate_virt_scribe == "oui"
+%for i in %%range(1,%%len(%%name_virt_scribe)+1)
+pre-up [ ! "`ifconfig veth%%{i}11 2> /dev/null`" == "" ] && /usr/sbin/brctl addif %%nom_dmz veth%%{i}11 || echo "veth%%{i}11 inexistant"
+%end for
+%end if
+%if %%activate_virt_horus == "oui"
+%for i in %%range(1,%%len(%%name_virt_horus)+1)
+pre-up [ ! "`ifconfig veth%%{i}12 2> /dev/null`" == "" ] && /usr/sbin/brctl addif %%nom_dmz veth%%{i}12 || echo "veth%%{i}12 inexistant"
+%end for
+%end if
+%if %%activate_virt_eolebase == "oui"
+%for i in %%range(1,%%len(%%name_virt_eolebase)+1)
+pre-up [ ! "`ifconfig veth%%{i}14 2> /dev/null`" == "" ] && /usr/sbin/brctl addif %%nom_dmz veth%%{i}14 || echo "veth%%{i}14 inexistant"
+%end for
+%end if
+pre-up /sbin/sysctl -w net.ipv4.conf.%%{nom_dmz}.proxy_arp=100
+post-up /etc/init.d/bind9 restart
+post-up /etc/init.d/bastion restart
+post-up /etc/init.d/dhcp3-relay restart
+post-down /usr/sbin/brctl delbr %%nom_dmz
+##
+%end if
