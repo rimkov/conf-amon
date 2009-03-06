@@ -1,4 +1,7 @@
 Conf-AmonNG
+
+06/02/09 (emmanuel)
+- diagnose/15-AmonServices : ajout des tests d'expiration des certificats 
 26/02/09 (sam)
 - agregation.conf : correction d'une erreur dans la conf (correction effectuée par GC de Nantes)
 
