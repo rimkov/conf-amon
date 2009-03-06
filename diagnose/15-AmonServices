@@ -54,7 +54,7 @@ else
 fi
 echo
 
-EchoGras "*** Test des certificats"
+EchoGras "*** Validité des certificats"
 if [ $active_nufw == 'oui' ] && [ ! $nuauth_tls_cert = '' ]; then
 	TestCerts $nuauth_tls_cert 10 "certificat expiré"
 fi
