@@ -1,3 +1,10 @@
+conf-amon (2.2-eole97) eole-2.2-proposed; urgency=low
+
+  * 0001148: Verifie l'expiration du certificat nufw et le certificat
+    eole dans diagnose
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 06 Mar 2009 14:26:42 +0100
+
 conf-amon (2.2-eole96) eole-2.2-proposed; urgency=low
 
   * #0001147 : ajout de l'option -s a nufw
