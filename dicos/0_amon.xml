@@ -22,8 +22,6 @@
 	<file name='/etc/logrotate.d/ulogd' source='ulogd.logrotate'/>
 	<file name='/etc/network/interfaces'/>
 	<file name='/etc/pam.d/squid' source='squid.pam'/>
-	<file name='/etc/ssh/ssh_config'/>
-	<file name='/etc/ssh/sshd_config'/>
 	<file name='/etc/rsyslog.conf'/>
 	<file name='/usr/share/dansguardian/languages/french/template.html' source='dansguardian-template.html'/>
 	<file name='/usr/share/dansguardian/languages/french/template-liste_blanche.html' source='dansguardian-template-liste_blanche.html'/>
