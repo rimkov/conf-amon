@@ -1,3 +1,11 @@
+conf-amon (2.2-eole98) eole-2.2-proposed; urgency=low
+
+  * Deplace les templates ssh_config sshd_config vers eole-common
+  * amon : cosmetique sur init.d/qoseole
+  * Typo dans agregation.sh
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 18 Mar 2009 11:33:05 +0100
+
 conf-amon (2.2-eole97) eole-2.2-proposed; urgency=low
 
   * 0001148: Verifie l'expiration du certificat nufw et le certificat
