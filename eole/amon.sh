@@ -7,6 +7,17 @@
 
 . ParseDico
 
+## Test si une adresse reseau est bien spécifié
+#identique a reconf-amon.sh
+if [ "$adresse_ip_eth0" = "" ]; then
+        echo "Impossible de déterminer l'adresse réseau \"adresse_ip_eth0\"."
+        echo "Essayer de le relancer :"
+        echo "/etc/init.d/networking restart"
+        echo "Et relancer le reconfigure"
+        exit 1
+fi
+#
+
 echo "Initialisation DNS "
 e=/usr/share/eole/gen_dns
 if [ ! -e /var/run/bind/run ]
