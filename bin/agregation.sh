@@ -6,7 +6,7 @@
 
 [ -e /etc/agregation.conf ] || {
     # Pas de fichier de configuration
-    echo "Fichier de configuration /etc/qoseole.conf  non trouve"
+    echo "Fichier de configuration /etc/agregation.conf  non trouve"
     exit 1
 }
 . /etc/agregation.conf
