@@ -1,0 +1,20 @@
+# Minimalistic default options file for DSL/PPPoE connections
+
+noipdefault
+defaultroute
+replacedefaultroute
+hide-password
+#lcp-echo-interval 30
+#lcp-echo-failure 4
+noauth
+persist
+#mtu 1492
+#persist
+#maxfail 0
+#holdoff 20
+plugin rp-pppoe.so %%pppoe_interface
+usepeerdns
+#pty "pppoe -I eth0 -T 80"
+#pty "pppoe -I eth0 -T 80 -m 1412"
+#pty "pppoe -I eth0 -T 80 -m 1452"
+user "%%pppoe_user"
