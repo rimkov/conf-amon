@@ -5,8 +5,9 @@
 auto lo
 iface lo inet loopback
 ##
-auto eth0
 %if %%eth0_method == "statique"
+#support static
+auto eth0
 iface eth0 inet static
 address %%adresse_ip_eth0
 netmask %%adresse_netmask_eth0
@@ -16,7 +17,17 @@ network %%adresse_network_eth0
 up ethtool -s eth0 %%debit_carte_eth0
 %end if
 %else if %%eth0_method == "dhcp"
+#support dhcp
+auto eth0
 iface eth0 inet dhcp
+%else if %%eth0_method == "pppoe"
+#support pppoe
+auto dsl-provider
+iface dsl-provider inet ppp
+pre-up /sbin/ifconfig %%pppoe_interface up
+provider dsl-provider
+
+iface %%pppoe_interface inet manual
 %end if
 ##
 %if %%valeur_mtu_eth0 != ""
@@ -26,8 +37,14 @@ gateway %%adresse_ip_gw
 ##
 %if %%alias_eth0 == "oui"
 %for %%alias_addr_eth0 in %%alias_ip_eth0
-auto eth0:%%alias_addr_eth0.index
-iface eth0:%%alias_addr_eth0.index inet static
+%if %%eth0_method == "pppoe"
+%set %%name_int="ppp0"
+%else
+%set %%name_int="eth0"
+%end if
+auto %%name_int:%%alias_addr_eth0.index
+iface %%name_int:%%alias_addr_eth0.index inet static
+
 address %%alias_addr_eth0 
 netmask %%alias_addr_eth0.alias_netmask_eth0
 broadcast %%alias_addr_eth0.alias_broadcast_eth0
@@ -40,8 +57,13 @@ network %%alias_addr_eth0.alias_network_eth0
 ##
 %if %%vlan_eth0 == "oui"
 %for vlan0 in %%id_vlan_eth0
-auto eth0.%%vlan0
-iface eth0.%%vlan0 inet static
+%if %%eth0_method == "pppoe"
+%set %%name_int="ppp0"
+%else
+%set %%name_int="eth0"
+%end if
+auto %%name_int.%%vlan0
+iface %%name_int.%%vlan0 inet static
 address %%vlan0.adresse_ip_vlan_eth0
 netmask %%vlan0.adresse_netmask_vlan_eth0
 network %%vlan0.adresse_network_vlan_eth0
