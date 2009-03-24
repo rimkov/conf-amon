@@ -1,3 +1,12 @@
+conf-amon (2.2-eole99) eole-2.2-proposed; urgency=low
+
+  * 0001167: autorise les URI dans la variable revprox_url
+  * Typo dans agregation
+  * Ajout des fichiers necessaire au pppoe + dans le fichier interface
+  * Test a l'instance et au reconfigure si adresse_ip_eth0 existe
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 24 Mar 2009 10:21:06 +0100
+
 conf-amon (2.2-eole98) eole-2.2-proposed; urgency=low
 
   * Deplace les templates ssh_config sshd_config vers eole-common
