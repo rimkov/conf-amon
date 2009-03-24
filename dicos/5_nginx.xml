@@ -25,7 +25,7 @@
 			<variable name='revprox_https' type='string' description="Reverse proxy HTTPS">
 				<value>oui</value>
 			</variable>
-			<variable name='revprox_url' type='string' description="IP ou domaine de destination (avec http ou https)">
+			<variable name='revprox_url' type='string' description="IP ou domaine de destination (avec http ou https) ou URI complète">
 				<value></value>
 			</variable>
 		</family>
@@ -66,6 +66,6 @@
                 <variable name='revprox_poshadmin'>Pour rediriger vers le POSHAdmin de la machine "domainelocal", taper "domainelocal"</variable>
                 <variable name='revprox_domainname'>Exemple pour rediriger "http://domaine/", taper "domaine"</variable>
                 <variable name='revprox_rep'>URL relative (sans le nom de domaine) redirigé pour l'adresse définie dans la variable ci-dessus (exemple "/mail")</variable>
-                <variable name='revprox_url'>Nom de domaine ou IP de destination, par exemple "http://domainelocal"</variable>
+		<variable name='revprox_url'>Nom de domaine ou IP de destination, par exemple "http://domainelocal" ou URI, par exemple "http://domainelocal/ftp/"</variable>
 	</help>
 </creole>
