@@ -1,3 +1,14 @@
+%set %%lendom=0
+%for %%location in %%revprox_domainname
+%set %%lendom=%%max(%%lendom,%%len(%%location.value))
+%end for
+%if %%lendom < 24
+server_names_hash_bucket_size 32;
+%elif %%lendom < 56
+server_names_hash_bucket_size 64;
+%else
+server_names_hash_bucket_size 128;
+%end if
 %def locationDomain (%%revprox_domainname, %%revprox, %%redirect=False)
 %for %%location in %%revprox_domainname
 %if %%location.value == %%revprox
