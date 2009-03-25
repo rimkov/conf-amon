@@ -1,3 +1,10 @@
+conf-amon (2.2-eole100) eole-2.2-proposed; urgency=low
+
+  * #0001170 : nginx : calcul la taille du nom de domaine et renseigne
+    server_names_hash_bucket_size
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 25 Mar 2009 15:43:03 +0100
+
 conf-amon (2.2-eole99) eole-2.2-proposed; urgency=low
 
   * 0001167: autorise les URI dans la variable revprox_url
