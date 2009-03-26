@@ -71,11 +71,12 @@ cp -f $danspath/init/dansguardian /etc/init.d/dansguardian
 $danspath/init_dans.py
 
 
-# Utilisation manage-amon comme shell pour amon et amon2 s'il existe
-id amon &>/dev/null
+# Utilisation manage-amon comme shell pour amon/amonecole et amon2 s'il existe
+user=`cat /etc/eole/version | awk -F "-" '{ print $NR }'`
+id $user &>/dev/null
 if [ $? -eq 0 ]
 then
-	usermod -s /usr/share/eole/manage-amon.sh amon
+	usermod -s /usr/share/eole/manage-amon.sh $user
 fi
 id amon2 &>/dev/null
 if [ $? -eq 0 ]

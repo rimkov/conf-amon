@@ -12,7 +12,7 @@
 # Host alias specification
 
 # User alias specification
-User_Alias	GRPADM = amon, amon2 
+User_Alias	GRPADM = %%auto_module, amon2 
 # Cmnd alias specification
 # User privilege specification
 root	ALL=(ALL) ALL
