@@ -254,9 +254,9 @@ pre-up [ ! "`ifconfig veth%%{i}14 2> /dev/null`" == "" ] && /usr/sbin/brctl addi
 %end for
 %end if
 pre-up /sbin/sysctl -w net.ipv4.conf.%%{nom_dmz}.proxy_arp=100
-post-up /etc/init.d/bind9 restart
-post-up /etc/init.d/bastion restart
-post-up /etc/init.d/dhcp3-relay restart
+post-up /etc/init.d/bind9 restart > /dev/null 2>&1
+post-up /etc/init.d/bastion restart > /dev/null 2>&1
+post-up /etc/init.d/dhcp3-relay restart > /dev/null 2>&1
 post-down /usr/sbin/brctl delbr %%nom_dmz
 ##
 %end if
