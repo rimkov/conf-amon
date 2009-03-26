@@ -6,14 +6,14 @@ if [ -f /usr/share/era/modeles/${type_amon}.xml ]; then
     ## lancement du script de generation du firewall
     /usr/share/era/bastion.sh
     if [ $? -eq 0 ]; then
-    	log_begin_msg "Parefeu en fonction : modèle \"${type_amon}\" appliqué"
+    	log_begin_msg "\033[01;31mParefeu en fonction : modèle \"${type_amon}\" appliqué\033[0m"
 	return 0
     else
-	log_begin_msg "Regles du parefeu non appliquées !"
+	log_begin_msg "\033[01;31mRegles du parefeu non appliquées !\033[0m"
 	return 1
     fi
 else
-    log_begin_msg "Fichier ${type_amon}.xml non trouvé !"
+    log_begin_msg "\033[01;31mFichier ${type_amon}.xml non trouvé !\033[0m"
     return 1
 fi
 
