@@ -1,3 +1,12 @@
+conf-amon (2.2-eole101) eole-2.2-proposed; urgency=low
+
+  * ajout manage pour l'utilisateur amonecole a l'instance + droits sudo
+  * #1145: amonecole : suppression des erreurs bastion/bind9/dhcp au
+    redemarrage du reseau
+  * firewall.start : Ajout des couleurs si le fichier n'existe pas
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 27 Mar 2009 10:29:40 +0100
+
 conf-amon (2.2-eole100) eole-2.2-proposed; urgency=low
 
   * #0001170 : nginx : calcul la taille du nom de domaine et renseigne
