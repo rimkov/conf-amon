@@ -1,3 +1,9 @@
+conf-amon (2.2-eole102) eole-2.2-proposed; urgency=low
+
+  * Suppression du rouge quand applique
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 27 Mar 2009 11:05:15 +0100
+
 conf-amon (2.2-eole101) eole-2.2-proposed; urgency=low
 
   * ajout manage pour l'utilisateur amonecole a l'instance + droits sudo
