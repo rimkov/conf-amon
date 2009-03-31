@@ -1,3 +1,9 @@
+conf-amon (2.2-eole103) eole-2.2-security; urgency=low
+
+  * Compilation en eole-2.2-security a partir du tag eole102
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 31 Mar 2009 16:07:04 +0200
+
 conf-amon (2.2-eole102) eole-2.2-proposed; urgency=low
 
   * Suppression du rouge quand applique
