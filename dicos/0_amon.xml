@@ -631,9 +631,6 @@
 		<fill name='calc_val' target='alias_netmask_eth4'>
 			<param type='eole' name='valeur'>adresse_netmask_eth4</param>
 		</fill>
-		<fill name='calc_val' target='adresse_ip_gw'>
-			<param>eth0_method</param>
-		</fill>
 
 		<auto name='auto_module' target='eole_module'/>
 		<auto name='key_nuauth' target='nuauth_tls_key'/>
@@ -658,12 +655,6 @@
 			<param>eth0</param>
 			<param name='condition'>dhcp</param>
 			<param type='eole' name='parametre'>eth0_method</param>
-		</auto>
-		<auto name='auto_defaultroute_ip' target='adresse_ip_gw'>
-			<param>eth0_method</param>
-		</auto>
-		<auto name='auto_defaultroute_int' target='interface_gw'>
-			<param>eth0_method</param>
 		</auto>
 		
 	<!-- **** champs obligatoires **** -->
