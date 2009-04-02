@@ -1,3 +1,11 @@
+conf-amon (2.2-eole104) eole-2.2-proposed; urgency=low
+
+  * #0001179 : dhcrelay relance sur d'autre interface
+  * corrections
+  * #0000748 : Support pppoe
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 02 Apr 2009 15:43:48 +0200
+
 conf-amon (2.2-eole103) eole-2.2-security; urgency=low
 
   * Compilation en eole-2.2-security a partir du tag eole102
