@@ -1,3 +1,11 @@
+conf-amon (2.2-eole105) eole-2.2-dev; urgency=low
+
+  * re-activation des plugins ntlm/basic pour DansGuardian
+  * conditionnement du demarrage de NGINX sur sa variable creole :
+    activer_revprox
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 06 Apr 2009 15:14:55 +0200
+
 conf-amon (2.2-eole104) eole-2.2-proposed; urgency=low
 
   * #0001179 : dhcrelay relance sur d'autre interface
