@@ -25,7 +25,6 @@ ead-server
 %if %%ead_web == 'oui'
 ead-web
 %end if
-killp2p
 ulogd
 ntp
 %if %%active_nufw == 'oui'
