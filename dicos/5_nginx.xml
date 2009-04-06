@@ -13,8 +13,8 @@
 			</variable>
 		</family>
 		<family name='Reverse proxy' hidden='True'>
-			<variable name='revprox_sso' type='string' description="IP ou domaine du serveur SSO redirigé" />
-			<variable name='revprox_poshadmin' type='string' description="IP ou domaine du serveur EnvOLE 2 admin à rediriger" />
+			<variable name='revprox_sso' type='string' description="IP ou domaine du serveur SSO" />
+			<variable name='revprox_poshadmin' type='string' description="IP ou domaine du serveur d'administration EnvOLE 2" />
 			<variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
 			<variable name='revprox_rep' type='string' description="Répertoire ou nom de la page à rediriger">
 				<value>/</value>
@@ -25,7 +25,7 @@
 			<variable name='revprox_https' type='string' description="Reverse proxy HTTPS">
 				<value>oui</value>
 			</variable>
-			<variable name='revprox_url' type='string' description="IP ou domaine de destination (avec http ou https) ou URI complète">
+			<variable name='revprox_url' type='string' description="IP ou domaine de destination (avec http:// ou https://) ou URI complète">
 				<value></value>
 			</variable>
 		</family>

@@ -1,5 +1,9 @@
 Conf-AmonNG
 
+06/04/09 (emmanuel)
+- ré-activation des plugins ntlm/basic pour DansGuardian
+- conditionnement du démarrage de NGINX sur sa variable creole : "activer_revprox"
+
 06/02/09 (emmanuel)
 - diagnose/15-AmonServices : ajout des tests d'expiration des certificats 
 26/02/09 (sam)
