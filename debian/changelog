@@ -1,3 +1,9 @@
+conf-amon (2.2-eole107) eole-2.2-security; urgency=low
+
+  * remise a l'origine pre-bug https
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 07 Apr 2009 14:06:30 +0200
+
 conf-amon (2.2-eole106) eole-2.2-proposed; urgency=low
 
   * Suppression de set -x dans le script d'init
