@@ -33,7 +33,7 @@
                         <variable name="maxagechildren1" type="number" description=''>
                                 <value>500</value>
                         </variable>
-                        <variable name="unactive_dansguardian_auth1" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 1">
+                        <variable name="unactive_dansguardian_auth1" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 1" hidden="True">
                             <value>---</value>
                          </variable>
 
@@ -55,7 +55,7 @@
                         <variable name="maxagechildren2" type="number" description=''>
                                 <value>500</value>
                         </variable>
-                        <variable name="unactive_dansguardian_auth2" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 2">
+                        <variable name="unactive_dansguardian_auth2" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 2" hidden="True">
                             <value>---</value>
                          </variable>
                 </family>
