@@ -1,3 +1,9 @@
+conf-amon (2.2-eole108) eole-2.2-proposed; urgency=low
+
+  * recompilation depuis trunk pour proposed > security
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 07 Apr 2009 16:09:00 +0200
+
 conf-amon (2.2-eole107) eole-2.2-security; urgency=low
 
   * remise a l'origine pre-bug https
