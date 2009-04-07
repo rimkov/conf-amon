@@ -3,9 +3,6 @@ networking
 cron
 bastion
 ssh
-%if %%install_rvp == 'oui'
-rvp
-%end if
 %if %%activer_bacula == 'oui'
 bacula-fd
 %end if
