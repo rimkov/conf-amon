@@ -1,3 +1,10 @@
+conf-amon (2.2-eole109) eole-2.2-proposed; urgency=low
+
+  * Supprime le demarrage de rvp, c'est bastion qui s'en charge
+  * conditionnement de l'activation des plugins
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 07 Apr 2009 17:11:26 +0200
+
 conf-amon (2.2-eole108) eole-2.2-proposed; urgency=low
 
   * recompilation depuis trunk pour proposed > security
