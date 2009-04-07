@@ -38,7 +38,8 @@
 	<file name='/etc/nsswitch.conf'/>
 	<file name='/etc/ldap.conf'/>
 	<file name='/etc/default/nuauth'/>
-	<file name='/etc/default/nufw'/>
+        <file name='/etc/default/nufw'/>
+        <file name='/etc/sysconfig/killp2p'/>
 	<file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
 	<file filelist='nufw' name='/etc/pam.d/nuauth' source='nuauth.pamd'/>
 	<file filelist='nufw' name='/etc/init.d/nufw' source='nufw.init'/>
@@ -94,7 +95,10 @@
 			<variable name='active_nufw' type='string' description="Activer NuFw" >
 				<value>non</value>
 			</variable>
-			<variable name='serveur_maj' type='string' description='Serveur de mise à jour' >
+                        <variable name='filtrage_p2p' type='string' description="Système de filtrage P2P" >
+                                <value>l7filter</value>
+                        </variable>
+                        <variable name='serveur_maj' type='string' description='Serveur de mise à jour' >
 				<value>eoleng.ac-dijon.fr</value>
 			</variable>
 			<variable name='serveur_maj2' type='string' description='Second serveur de mise à jour' >
@@ -451,6 +455,7 @@
 				<separator name='type_amon'>Paramètres réseau globaux</separator>
 				<separator name='ssh_permit_root'>Configuration SSH</separator>
 				<separator name='active_nufw'>NuFw (Now User Filtering Works)</separator>
+                                <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
 				<separator name='serveur_maj'>Global Eole</separator>
 				<separator name='eth0_method'>Configuration de l'interface externe</separator>
 				<separator name='ssh_eth0'>Administration distante sur l'interface</separator>
@@ -656,7 +661,7 @@
 			<param name='condition'>dhcp</param>
 			<param type='eole' name='parametre'>eth0_method</param>
 		</auto>
-		
+
 	<!-- **** champs obligatoires **** -->
 		<check name='obligatoire' target='numero_etab' />
 		<check name='obligatoire' target='adresse_ip_eth0'/>
@@ -725,6 +730,9 @@
 		<check name="valid_enum" target='active_nufw'>
 			<param>['oui','non']</param>
 		</check>
+                <check name="valid_enum" target='filtrage_p2p'>
+                        <param>['l7filter','ipp2p']</param>
+                </check>
 		<check name="valid_enum" target='nuauth_nss_ldap_tls'>
 			<param>['oui','non']</param>
 		</check>

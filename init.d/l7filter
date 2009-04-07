@@ -1,0 +1,91 @@
+#!/bin/bash
+#
+# chkconfig: 2345 85 15
+# description: l7filter is a program which detect and prevent some protocols
+# processname: l7filter
+# pidfile: /var/run/l7filter.pid
+
+
+RETVAL=0
+
+. /lib/lsb/init-functions
+
+#prog="ipp2p"
+module="xt_layer7"
+protocol="edonkey bittorrent gnutella fasttrack imesh napster soulseek xunlei"
+
+start() {
+	log_begin_msg "Starting l7filter"
+	/sbin/iptables -L -n |grep layer7 >/dev/null
+	if [ $? == "0" ]
+	then
+		for i in $procotol; do
+		/sbin/iptables -D FORWARD -m limit --limit 12/min -p tcp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FITLER-LOG"
+		/sbin/iptables -D FORWARD -m limit --limit 12/min -p udp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FILTER-LOG"
+		/sbin/iptables -D FORWARD -p tcp -m layer7 --l7proto $i -j DROP
+		/sbin/iptables -D FORWARD -p udp -m layer7 --l7proto $i -j DROP
+		done
+		echo
+		rm -f /var/lock/layer7
+	fi
+	for i in $protocol; do
+	/sbin/iptables -I FORWARD 1 -m limit --limit 12/min -p tcp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FITLER-LOG"
+	/sbin/iptables -I FORWARD 2 -m limit --limit 12/min -p udp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FILTER-LOG"
+	/sbin/iptables -I FORWARD 3 -p tcp -m layer7 --l7proto $i -j DROP
+	/sbin/iptables -I FORWARD 4 -p udp -m layer7 --l7proto $i -j DROP
+	done
+	RETVAL=$?
+	log_end_msg $RETVAL
+	[ $RETVAL -eq 0 ] && touch /var/lock/layer7
+	return $RETVAL
+
+}
+
+stop() {
+	log_begin_msg "Stop l7filter"
+	for i in $protocol; do
+	/sbin/iptables -D FORWARD -m limit --limit 12/min -p tcp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FITLER-LOG"
+	/sbin/iptables -D FORWARD -m limit --limit 12/min -p udp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FILTER-LOG"
+	/sbin/iptables -D FORWARD -p tcp -m layer7 --l7proto $i -j DROP
+	/sbin/iptables -D FORWARD -p udp -m layer7 --l7proto $i -j DROP
+	done
+	RETVAL=$?
+	log_end_msg $RETVAL
+	echo
+	[ $RETVAL -eq 0 ] && rm -f /var/lock/layer7
+	return $RETVAL
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart|reload)
+	/sbin/iptables -L -n |grep layer7 >/dev/null
+	if [ $? == "0" ]
+	then
+        	stop
+	fi
+        start
+        RETVAL=$?
+        ;;
+  condrestart)
+        if [ -f /var/lock/layer7 ]; then
+            stop
+            start
+            RETVAL=$?
+        fi
+        ;;
+  status)
+  	/sbin/iptables -L -n |grep "layer7"
+        RETVAL=$?
+        ;;
+  *)
+        gprintf "Usage: %s {start|stop|restart|condrestart|status}\n" "$0"
+        exit 1
+esac
+
+exit $RETVAL
