@@ -1,3 +1,11 @@
+conf-amon (2.2-eole106) eole-2.2-proposed; urgency=low
+
+  * Suppression de set -x dans le script d'init
+  * Ajout de la fonctionnalite l7filter pour le filtrage p2p
+  * relance killp2p au redemarrage de bastion
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 07 Apr 2009 11:43:16 +0200
+
 conf-amon (2.2-eole105) eole-2.2-dev; urgency=low
 
   * re-activation des plugins ntlm/basic pour DansGuardian
