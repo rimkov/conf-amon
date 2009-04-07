@@ -1,6 +1,6 @@
 #! /bin/bash
 #
-# killp2p          Start/Stop le filtrage p2p  
+# killp2p          Start/Stop le filtrage p2p
 #
 # chkconfig: 2345 35 60
 # description:  lance p2p si activé depuis l'ead
@@ -20,12 +20,11 @@ fi
 DAEMON=/etc/init.d/$PROG
 
 set -e
-set -x
 
 start() {
         if [ -e /var/www/ead/tmp/kill-p2p ]
         then
-                log_begin_msg "Lancement du filtrage P2P ($PROG): " 
+                log_begin_msg "Lancement du filtrage P2P ($PROG): "
                 $DAEMON start >/dev/null 2>&1
                 RETVAL=$?
                 log_end_msg $RETVAL
@@ -39,18 +38,18 @@ start() {
 stop() {
         if [ -e /var/lock/killp2p ]
         then
-                log_begin_msg "Arret du filtrage P2P ($PROG): " 
+                log_begin_msg "Arret du filtrage P2P ($PROG): "
                 $DAEMON stop >/dev/null 2>&1
                 rm -f /var/lock/killp2p
                 log_end_msg 0
         fi
-}	
+}
 
 
 restart() {
           stop
         start
-}	
+}
 
 case "$1" in
   start)
