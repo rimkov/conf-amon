@@ -40,6 +40,7 @@
 	<file name='/etc/default/nuauth'/>
         <file name='/etc/default/nufw'/>
         <file name='/etc/sysconfig/killp2p'/>
+        <file name='/etc/init.d/l7filter' />
 	<file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
 	<file filelist='nufw' name='/etc/pam.d/nuauth' source='nuauth.pamd'/>
 	<file filelist='nufw' name='/etc/init.d/nufw' source='nufw.init'/>
