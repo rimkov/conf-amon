@@ -1,3 +1,11 @@
+conf-amon (2.2-eole110) eole-2.2-proposed; urgency=low
+
+  * Fix dicos
+  * Fix templating
+  * workaround concernant le filtrage edonkey et ntp
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 08 Apr 2009 10:49:21 +0200
+
 conf-amon (2.2-eole109) eole-2.2-proposed; urgency=low
 
   * Supprime le demarrage de rvp, c'est bastion qui s'en charge
