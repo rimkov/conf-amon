@@ -10,9 +10,8 @@ RETVAL=0
 
 . /lib/lsb/init-functions
 
-#prog="ipp2p"
 module="xt_layer7"
-protocol="edonkey bittorrent gnutella fasttrack imesh napster soulseek xunlei"
+protocol="bittorrent edonkey"
 
 start() {
 	log_begin_msg "Starting l7filter"
@@ -20,20 +19,18 @@ start() {
 	if [ $? == "0" ]
 	then
 		for i in $procotol; do
-		/sbin/iptables -D FORWARD -m limit --limit 12/min -p tcp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FITLER-LOG"
-		/sbin/iptables -D FORWARD -m limit --limit 12/min -p udp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FILTER-LOG"
-		/sbin/iptables -D FORWARD -p tcp -m layer7 --l7proto $i -j DROP
-		/sbin/iptables -D FORWARD -p udp -m layer7 --l7proto $i -j DROP
+		/sbin/iptables -D FORWARD -m limit --limit 12/min -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FITLER-LOG"
+		/sbin/iptables -D FORWARD -m layer7 --l7proto $i -j DROP
 		done
+		/sbin/iptables -D FORWARD -p udp -d 192.168.232.2 --dport 123 -j ACCEPT
 		echo
 		rm -f /var/lock/layer7
 	fi
 	for i in $protocol; do
-	/sbin/iptables -I FORWARD 1 -m limit --limit 12/min -p tcp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FITLER-LOG"
-	/sbin/iptables -I FORWARD 2 -m limit --limit 12/min -p udp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FILTER-LOG"
-	/sbin/iptables -I FORWARD 3 -p tcp -m layer7 --l7proto $i -j DROP
-	/sbin/iptables -I FORWARD 4 -p udp -m layer7 --l7proto $i -j DROP
+	/sbin/iptables -I FORWARD 2 -m limit --limit 12/min -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FITLER-LOG"
+	/sbin/iptables -I FORWARD 3 -m layer7 --l7proto $i -j DROP
 	done
+	/sbin/iptables -I FORWARD 1 -p udp -d 192.168.232.2 --dport 123 -j ACCEPT
 	RETVAL=$?
 	log_end_msg $RETVAL
 	[ $RETVAL -eq 0 ] && touch /var/lock/layer7
@@ -44,11 +41,10 @@ start() {
 stop() {
 	log_begin_msg "Stop l7filter"
 	for i in $protocol; do
-	/sbin/iptables -D FORWARD -m limit --limit 12/min -p tcp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FITLER-LOG"
-	/sbin/iptables -D FORWARD -m limit --limit 12/min -p udp -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FILTER-LOG"
-	/sbin/iptables -D FORWARD -p tcp -m layer7 --l7proto $i -j DROP
-	/sbin/iptables -D FORWARD -p udp -m layer7 --l7proto $i -j DROP
+	/sbin/iptables -D FORWARD -m limit --limit 12/min -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FILTER-LOG"
+	/sbin/iptables -D FORWARD -m layer7 --l7proto $i -j DROP
 	done
+	/sbin/iptables -D FORWARD -p udp -d 192.168.232.2 --dport 123 -j ACCEPT
 	RETVAL=$?
 	log_end_msg $RETVAL
 	echo
