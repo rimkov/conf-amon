@@ -1,5 +1,8 @@
 Conf-AmonNG
 
+09/04/09
+- ajout configuration clamd/freshclam
+
 06/04/09 (emmanuel)
 - ré-activation des plugins ntlm/basic pour DansGuardian
 - conditionnement du démarrage de NGINX sur sa variable creole : "activer_revprox"
