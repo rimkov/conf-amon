@@ -8,6 +8,11 @@
     </files>
         
     <variables>
+	<family name='services'>
+		<variable name='enable_clamd' type='string' description="Activation de l'anti-virus sur le proxy" >
+			<value>non</value>
+		</variable>
+	</family>
         <family name='clamav' mode='expert'>
             <variable name='clam_max_file_size' type='number' description='Taille maximum pour un fichier à scanner (en Mo)'>
                 <value>5</value>
@@ -34,6 +39,9 @@
     </variables>
     
     <constraints>
+        <check name='valid_enum' target='enable_clamd'>
+            <param>['oui','non']</param>
+        </check>
         <check name='obligatoire' target='clam_max_file_size'/>
         <check name='obligatoire' target='clam_max_scan_size'/>
         <check name='obligatoire' target='clam_max_recursion'/>

@@ -8,6 +8,10 @@ bacula-fd
 %end if
 bind9
 squid
+%if %%enable_clamd == 'oui'
+clamav-freshclam
+clamav-daemon
+%end if
 dansguardian
 %if %%test_vz(master=True)
 %if %%active_dhcp != 'aucun'
