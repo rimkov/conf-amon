@@ -1,3 +1,9 @@
+conf-amon (2.2-eole115) eole-2.2-dev; urgency=low
+
+  * correction des variables proxy => proxy_pere
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 09 Apr 2009 17:20:07 +0200
+
 conf-amon (2.2-eole114) eole-2.2-proposed; urgency=low
 
   * cosmetique dictionnaires
