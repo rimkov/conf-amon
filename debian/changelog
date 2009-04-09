@@ -1,3 +1,11 @@
+conf-amon (2.2-eole116) eole-2.2-proposed; urgency=low
+
+  * CHANGELOG
+  * degageage
+  * branche
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 09 Apr 2009 17:33:38 +0200
+
 conf-amon (2.2-eole115) eole-2.2-dev; urgency=low
 
   * correction des variables proxy => proxy_pere
