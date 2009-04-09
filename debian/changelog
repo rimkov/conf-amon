@@ -1,3 +1,10 @@
+conf-amon (2.2-eole113) eole-2.2-dev; urgency=low
+
+  * (pas de commit depuis :  Nouveau paquet : conf-amon (2.2-eole112)
+    eole-2.2-security (depuis branches eole107) )
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 09 Apr 2009 15:33:55 +0200
+
 conf-amon (2.2-eole112) eole-2.2-security; urgency=low
 
   * retour a la branche 107 suite a erreur de compil
