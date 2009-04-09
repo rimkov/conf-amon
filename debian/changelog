@@ -1,3 +1,11 @@
+conf-amon (2.2-eole111) eole-2.2-security; urgency=low
+
+  * ajout de la question activer antivirus
+  * conditionnement du demarrage clamav (services)
+  * ajout configuration clamd/freshclam
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 09 Apr 2009 15:07:55 +0200
+
 conf-amon (2.2-eole110) eole-2.2-proposed; urgency=low
 
   * Fix dicos
