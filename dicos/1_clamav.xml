@@ -3,8 +3,8 @@
 <creole>
 
     <files>
-        <file name='/etc/clamav/clamd.conf'/>
-        <file name='/etc/clamav/freshclam.conf'/>
+        <file filelist='enable_clamd' name='/etc/clamav/clamd.conf'/>
+        <file filelist='enable_clamd' name='/etc/clamav/freshclam.conf'/>
     </files>
         
     <variables>
@@ -55,6 +55,11 @@
         <check name='valid_enum' target='clam_broken_exe'>
             <param>['yes','no']</param>
         </check>
+        <condition name='hidden_if_in' source='enable_clamd'>
+            <param>non</param>
+            <target type='filelist'>enable_clamd</target>
+            <target type='family'>clamav</target>
+        </condition>
     </constraints>
  
     <help>

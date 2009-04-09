@@ -75,15 +75,6 @@
 				<value>eth0</value>
 			</variable>
 			<variable name='adresse_ip_dns' type='ip' description='Adresse IP du DNS de forward (ou rien)' multi='True'/>
-                        <variable name='activer_log_distant' type='string' description="Gestion des logs centralisés" >
-                                <value>non</value>
-                        </variable>
- 			<variable name='activer_squid_auth' type='string' description="Activation de l'authentification squid" >
- 				<value>non</value>
- 			</variable>
- 			<variable name='install_rvp' type='string' description='Activation du RVP' >
- 				<value>non</value>
- 			</variable>
  			<variable name='install_scribe_dmz' type='string' description="Activer la gestion d'un Scribe dans la DMZ" >
  				<value>non</value>
  			</variable>
@@ -93,12 +84,6 @@
  			<variable name='ssh_allow_passwd' type='string' description="Autoriser les connexions ssh par mot de passe (si non clef RSA obligatoire)" >
  				<value>oui</value>
  			</variable>
-			<variable name='active_nufw' type='string' description="Activer NuFw" >
-				<value>non</value>
-			</variable>
-                        <variable name='filtrage_p2p' type='string' description="Système de filtrage P2P" >
-                                <value>l7filter</value>
-                        </variable>
                         <variable name='serveur_maj' type='string' description='Serveur de mise à jour' >
 				<value>eoleng.ac-dijon.fr</value>
 			</variable>
@@ -114,12 +99,27 @@
 		</family>
 	<!--************************************************************************************************* -->
 		<family name='services'>
+                        <variable name='activer_log_distant' type='string' description="Gestion des logs centralisés" >
+                                <value>non</value>
+                        </variable>
+ 			<variable name='install_rvp' type='string' description='Activation du RVP' >
+ 				<value>non</value>
+ 			</variable>
+			<variable name='active_nufw' type='string' description="Activer NuFw" >
+				<value>non</value>
+			</variable>
+                        <variable name='filtrage_p2p' type='string' description="Système de filtrage P2P" >
+                                <value>l7filter</value>
+                        </variable>
 			<variable name='ead_web' type='string' description="Activation du frontend Ead2" >
 				<value>oui</value>
 			</variable>
  			<variable name='activer_bacula' type='string' description='Activation du client Bacula (sauvegardes)' >
  				<value>non</value>
 			</variable>
+ 			<variable name='activer_squid_auth' type='string' description="Activation de l'authentification du proxy" >
+ 				<value>non</value>
+ 			</variable>
 			<variable name='num_dansguardian_instance' type='string' description="Nombre de politique de filtrage (dansguardian et pare-feu) configurables" hidden='True'>
 				<value>2</value>
 			</variable>
@@ -498,6 +498,11 @@
 				<separator name='debit_carte_eth2'>Configuration avancée de l'interface interne 2</separator>
 				<separator name='debit_carte_eth3'>Configuration avancée de l'interface interne 3</separator>
 				<separator name='debit_carte_eth4'>Configuration avancée de l'interface interne 4</separator>
+				<separator name='ead_web'>EAD Web</separator>
+				<separator name='activer_bacula'>Sauvegardes</separator>
+				<separator name='activer_squid_auth'>Proxy</separator>
+				<separator name='activer_log_distant'>Journalisation (log) centralisée</separator>
+				<separator name='install_rvp'>Réseau Virtuel Privé</separator>
 			</separators>
 	</variables>
 	<constraints>
