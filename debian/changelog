@@ -1,3 +1,11 @@
+conf-amon (2.2-eole114) eole-2.2-proposed; urgency=low
+
+  * cosmetique dictionnaires
+  * conditionnement de la copie des fichiers clamav
+  * ParsePEM.py installe par creole
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 09 Apr 2009 16:34:40 +0200
+
 conf-amon (2.2-eole113) eole-2.2-dev; urgency=low
 
   * (pas de commit depuis :  Nouveau paquet : conf-amon (2.2-eole112)
