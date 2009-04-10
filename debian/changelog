@@ -1,3 +1,10 @@
+conf-amon (2.2-eole117) eole-2.2-dev; urgency=low
+
+  * (pas de commit depuis :  Nouveau paquet : conf-amon (2.2-eole116)
+    eole-2.2-proposed (depuis trunk) )
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 10 Apr 2009 10:33:57 +0200
+
 conf-amon (2.2-eole116) eole-2.2-proposed; urgency=low
 
   * CHANGELOG
