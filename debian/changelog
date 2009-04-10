@@ -1,3 +1,10 @@
+conf-amon (2.2-eole119) eole-2.2-dev; urgency=low
+
+  * (pas de commit depuis :  Nouveau paquet : conf-amon (2.2-eole118)
+    eole-2.2-dev (depuis trunk) )
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 10 Apr 2009 18:11:16 +0200
+
 conf-amon (2.2-eole118) eole-2.2-dev; urgency=low
 
   * ajout fancy, taille fich et repcache
