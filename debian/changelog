@@ -1,3 +1,9 @@
+conf-amon (2.2-eole120) eole-2.2-proposed; urgency=low
+
+  * adresse_ip_gw est maintenant une variable calcule pour pppoe et dhcp
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 14 Apr 2009 16:41:29 +0200
+
 conf-amon (2.2-eole119) eole-2.2-dev; urgency=low
 
   * (pas de commit depuis :  Nouveau paquet : conf-amon (2.2-eole118)
