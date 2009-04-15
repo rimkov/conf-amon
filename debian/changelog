@@ -1,3 +1,10 @@
+conf-amon (2.2-eole121) eole-2.2-proposed; urgency=low
+
+  * Modification du script ipp2p
+  * Modification du script d'init de l7filter
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 15 Apr 2009 11:11:17 +0200
+
 conf-amon (2.2-eole120) eole-2.2-proposed; urgency=low
 
   * adresse_ip_gw est maintenant une variable calcule pour pppoe et dhcp
