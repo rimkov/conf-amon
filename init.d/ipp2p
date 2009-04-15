@@ -12,6 +12,7 @@ RETVAL=0
 
 prog="ipp2p"
 module="ipt_ipp2p"
+protocol="edk bit"
 
 start() {
 	log_begin_msg "Starting ipp2p"
@@ -19,17 +20,17 @@ start() {
 	/sbin/iptables -L -n |grep ipp2p >/dev/null
 	if [ $? == "0" ]
 	then
-		/sbin/iptables -D FORWARD -m limit --limit 12/min -p tcp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
-		/sbin/iptables -D FORWARD -m limit --limit 12/min -p udp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
-		/sbin/iptables -D FORWARD -p tcp -m ipp2p --ipp2p -j DROP
-		/sbin/iptables -D FORWARD -p udp -m ipp2p --ipp2p -j DROP
+	for i in $procotol; do
+		/sbin/iptables -D FORWARD -m limit --limit 12/min -m ipp2p --$i -j ULOG --ulog-prefix "IPP2P-$i-LOG"
+		/sbin/iptables -D FORWARD -m ipp2p --$i -j DROP
+	done
 		echo
 		rm -f /var/lock/ipp2p
 	fi
-	/sbin/iptables -I FORWARD 1 -m limit --limit 12/min -p tcp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
-	/sbin/iptables -I FORWARD 2 -m limit --limit 12/min -p udp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
-	/sbin/iptables -I FORWARD 3 -p tcp -m ipp2p --ipp2p -j DROP
-	/sbin/iptables -I FORWARD 4 -p udp -m ipp2p --ipp2p -j DROP
+	for i in $protocol; do
+	/sbin/iptables -I FORWARD 1 -m limit --limit 12/min -m ipp2p --$i -j ULOG --ulog-prefix "IPP2P-$i-LOG"
+	/sbin/iptables -I FORWARD 2 -m ipp2p --$i -j DROP
+	done
 	RETVAL=$?
 	log_end_msg $RETVAL
 	[ $RETVAL -eq 0 ] && touch /var/lock/ipp2p
@@ -39,10 +40,10 @@ start() {
 
 stop() {
 	log_begin_msg "Stop ipp2p"
-	/sbin/iptables -D FORWARD -m limit --limit 12/min -p tcp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
-	/sbin/iptables -D FORWARD -m limit --limit 12/min -p udp -m ipp2p --ipp2p -j ULOG --ulog-prefix "IPP2P-LOG"
-	/sbin/iptables -D FORWARD -p tcp -m ipp2p --ipp2p -j DROP
-	/sbin/iptables -D FORWARD -p udp -m ipp2p --ipp2p -j DROP
+for i in $protocol; do
+	/sbin/iptables -D FORWARD -m limit --limit 12/min -m ipp2p --$i -j ULOG --ulog-prefix "IPP2P-$i-LOG"
+	/sbin/iptables -D FORWARD -m ipp2p --$i -j DROP
+done
         /sbin/rmmod $module
 	RETVAL=$?
 	log_end_msg $RETVAL
