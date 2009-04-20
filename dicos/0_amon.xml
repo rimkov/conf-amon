@@ -667,7 +667,12 @@
 			<param name='condition'>dhcp</param>
 			<param type='eole' name='parametre'>eth0_method</param>
 		</auto>
-                <auto name='auto_defaultroute' target='adresse_ip_gw'>
+                <auto name='auto_defaultroute_ip' target='adresse_ip_gw'>
+                        <param>eth0</param>
+                        <param name='condition'>dhcp</param>
+                        <param type='eole' name='parametre'>eth0_method</param>
+                </auto>
+		<auto name='auto_defaultroute_int' target='interface_gw'>
                         <param>eth0</param>
                         <param name='condition'>dhcp</param>
                         <param type='eole' name='parametre'>eth0_method</param>
