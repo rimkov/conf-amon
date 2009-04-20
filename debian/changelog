@@ -1,3 +1,10 @@
+conf-amon (2.2-eole124) eole-2.2-dev; urgency=low
+
+  * (pas de commit depuis :  Nouveau paquet : conf-amon (2.2-eole123)
+    eole-2.2-proposed (depuis trunk) )
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 20 Apr 2009 17:18:34 +0200
+
 conf-amon (2.2-eole123) eole-2.2-proposed; urgency=low
 
   * correction dans la route par defaut
