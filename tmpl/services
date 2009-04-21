@@ -35,3 +35,6 @@ agregation
 %if %%activer_revprox == 'oui'
 nginx
 %end if
+%if %%freeradius == 'oui'
+freeradius
+%end if
