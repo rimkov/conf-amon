@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<creole>
+	<files>
+		<file name='/etc/squid/sarg1.conf'/>
+		<file name='/etc/squid/sarg2.conf'/>
+		<file name='/etc/squid/sarg-reports1.conf'/>
+		<file name='/etc/squid/sarg-reports2.conf'/>
+		<file name='/usr/sbin/sarg-reports1'/>
+		<file name='/usr/sbin/sarg-reports2'/>
+		<file name='/etc/cron.daily/sarg' source='sarg_cron_daily'/>
+		<file name='/etc/cron.weekly/sarg' source='sarg_cron_weekly'/>
+		<file name='/etc/cron.monthly/sarg' source='sarg_cron_monthly'/>
+	</files>
+        <variables>
+                 <family name='sarg' mode='expert'>
+                         <variable name='language' type='string' description=''>
+                             <value>French</value>
+                         </variable>
+                         <variable name='title' type='string' description=''>
+                             <value>Squid User Access Reports</value>
+                         </variable>
+                         <variable name='graphs' type='string' description=''>
+                             <value>yes</value>
+                         </variable>
+                         <variable name='graph_days_bytes_bar_color' type='string' description=''>
+                             <value>orange</value>
+                         </variable>
+                         <variable name='header_color' type='string' description=''>
+                             <value>darkblue</value>
+                         </variable>
+                         <variable name='header_bgcolor' type='string' description=''>
+                             <value>blanchedalmond</value>
+                         </variable>
+                         <variable name='font_face' type='string' description=''>
+                             <value>Tahoma,Verdana,Arial</value>
+                         </variable>
+                         <variable name='font_size' type='string' description=''>
+                             <value>9px</value>
+                         </variable>
+                         <variable name='header_font_size' type='string' description=''>
+                             <value>9px</value>
+                         </variable>
+                         <variable name='title_font_size' type='string' description=''>
+				 <value>11px</value>
+                         </variable>
+                         <variable name='background_color' type='string' description=''>
+                             <value>white</value>
+                         </variable>
+                         <variable name='text_color' type='string' description=''>
+                             <value>#000000</value>
+                         </variable>
+                         <variable name='text_bgcolor' type='string' description=''>
+                             <value>lavender</value>
+                         </variable>
+                         <variable name='title_color' type='string' description=''>
+                             <value>green</value>
+                         </variable>
+                         <variable name='logo_image' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='logo_text' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='logo_text_color' type='string' description=''>
+                             <value>#000000</value>
+                         </variable>
+                         <variable name='logo_image_size' type='string' description=''>
+                             <value>80 45</value>
+                         </variable>
+                         <variable name='background_image' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='temporary_dir' type='string' description=''>
+				 <value>/tmp</value>
+                         </variable>
+                         <variable name='output_email' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='resolve_ip' type='string' description=''>
+                             <value>no</value>
+                         </variable>
+                         <variable name='user_ip' type='string' description=''>
+                             <value>no</value>
+                         </variable>
+                         <variable name='topuser_sort_field' type='string' description=''>
+                             <value>BYTES reverse</value>
+                         </variable>
+                         <variable name='user_sort_field' type='string' description=''>
+                             <value>BYTES reverse</value>
+                         </variable>
+                         <variable name='useragent_log' type='string' description=''>
+                             <value></value>
+                         </variable>
+			 <variable name='date_format' type='string' description='Date format : e (European=dd/mm/yy), u (American=mm/dd/yy), w (Weekly=yy.ww)'>
+                             <value>e</value>
+                         </variable>
+                         <variable name='per_user_limit' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='lastlog' type='string' description=''>
+                             <value>31</value>
+                         </variable>
+                         <variable name='remove_temp_files' type='string' description=''>
+                             <value>yes</value>
+                         </variable>
+                         <variable name='index' type='string' description=''>
+                             <value>yes</value>
+                         </variable>
+                         <variable name='index_tree' type='string' description=''>
+                             <value>file</value>
+                         </variable>
+                         <variable name='overwrite_report' type='string' description=''>
+                             <value>yes</value>
+                         </variable>
+                         <variable name='records_without_userid' type='string' description=''>
+                             <value>ip</value>
+                         </variable>
+                         <variable name='use_comma' type='string' description=''>
+                             <value>yes</value>
+                         </variable>
+                         <variable name='mail_utility' type='string' description=''>
+                             <value>mail</value>
+                         </variable>
+                         <variable name='topsites_num' type='string' description=''>
+                             <value>100</value>
+                         </variable>
+                         <variable name='topsites_sort_order' type='string' description=''>
+                             <value>CONNECT D</value>
+                         </variable>
+                         <variable name='index_sort_order' type='string' description=''>
+                             <value>D</value>
+                         </variable>
+                         <variable name='replace_index' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='max_elapsed' type='string' description=''>
+                             <value>28800000</value>
+                         </variable>
+                         <variable name='report_type' type='string' description=''>
+                             <value>topusers topsites sites_users users_sites date_time denied auth_failures site_user_time_date downloads</value>
+                         </variable>
+                         <variable name='long_url' type='string' description=''>
+                             <value>no</value>
+                         </variable>
+                         <variable name='date_time_by' type='string' description=''>
+                             <value>bytes</value>
+                         </variable>
+                         <variable name='charset' type='string' description=''>
+                             <value>Latin1</value>
+                         </variable>
+                         <variable name='show_successful_message' type='string' description=''>
+                             <value>no</value>
+                         </variable>
+                         <variable name='show_read_statistics' type='string' description=''>
+                             <value>no</value>
+                         </variable>
+                         <variable name='topuser_fields' type='string' description=''>
+                             <value>NUM DATE_TIME USERID CONNECT BYTES %BYTES IN-CACHE-OUT USED_TIME MILISEC %TIME TOTAL AVERAGE</value>
+                         </variable>
+                         <variable name='user_report_fields' type='string' description=''>
+                             <value>CONNECT BYTES %BYTES IN-CACHE-OUT USED_TIME MILISEC %TIME TOTAL AVERAGE</value>
+                         </variable>
+                         <variable name='topuser_num' type='string' description=''>
+                             <value>0</value>
+                         </variable>
+                         <variable name='site_user_time_date_type' type='string' description=''>
+                             <value>table</value>
+                         </variable>
+                         <variable name='datafile' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='datafile_delimiter' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='datafile_fields' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='datafile_url' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='weekdays' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='hours' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='dansguardian_conf' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='dansguardian_ignore_date' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='squidguard_conf' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='squidguard_ignore_date' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='squidguard_log_format' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='show_sarg_info' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='show_sarg_logo' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='parsed_output_log' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='parsed_output_log_compress' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='displayed_values' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='authfail_report_limit' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='denied_report_limit' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='siteusers_report_limit' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='squidguard_report_limit' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='user_report_limit' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='dansguardian_report_limit' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='download_report_limit' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='www_document_root' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='block_it' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='external_css_file' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='user_authentication' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='download_suffix' type='string' description=''>
+                             <value>zip,arj,bzip,gz,ace,doc,iso,adt,bin,cab,com,dot,drv$,lha,lzh,mdb,mso,ppt,rtf,src,shs,sys,exe,dll,mp3,avi,mpg,mpeg</value>
+                         </variable>
+                         <variable name='ulimit' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='ntlm_user_format' type='string' description=''>
+                             <value>domainname+username</value>
+                         </variable>
+                         <variable name='realtime_refresh_time' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='realtime_access_log_lines' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='realtime_types' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='realtime_unauthenticated_records' type='string' description=''>
+                             <value></value>
+                         </variable>
+                         <variable name='byte_cost' type='string' description=''>
+                             <value></value>
+                         </variable>
+                </family>
+        </variables>
+	<constraints/>
+	<help/>
+</creole>
