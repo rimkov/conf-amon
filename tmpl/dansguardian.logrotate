@@ -1,6 +1,6 @@
 /var/log/dansguardian/*.log {
-  rotate 365
-  daily
+  weekly
+  rotate 52
   sharedscripts
   prerotate
     killall dansguardian > /dev/null

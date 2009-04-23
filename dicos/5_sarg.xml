@@ -8,9 +8,9 @@
 		<file name='/etc/squid/sarg-reports2.conf'/>
 		<file name='/usr/sbin/sarg-reports1'/>
 		<file name='/usr/sbin/sarg-reports2'/>
-		<file name='/etc/cron.daily/sarg' source='sarg_cron_daily'/>
-		<file name='/etc/cron.weekly/sarg' source='sarg_cron_weekly'/>
-		<file name='/etc/cron.monthly/sarg' source='sarg_cron_monthly'/>
+		<file name='/etc/cron.daily/01sarg' source='sarg_cron_daily'/>
+		<file name='/etc/cron.weekly/01sarg' source='sarg_cron_weekly'/>
+		<file name='/etc/cron.monthly/01sarg' source='sarg_cron_monthly'/>
 	</files>
         <variables>
                  <family name='sarg' mode='expert'>
