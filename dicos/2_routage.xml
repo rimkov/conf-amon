@@ -7,10 +7,10 @@
         <variables>
 	    <family hidden="False" mode="expert" name="reseau-avance">
 		    <!--<family name='routage' mode='expert'>-->
-		    <variable name='route_adresse' type='ip' description='Adresse ip ou réseau à ajouter dans la table de routage' multi='True'/>
-		    <variable name='route_netmask' type='netmask' description='Masque de sous reseau (mettre à 255.255.255.255 si adresse host)' />
-		    <variable name='route_gw' type='ip' description='Adresse ip de la passerelle pour accéder à ce réseau' />
-		    <variable name='route_int' type='string' description="interface reseau permettant d'accéder à la passerelle" />
+		    <variable name='route_adresse' type='ip' description='Adresse IP ou réseau à ajouter dans la table de routage' multi='True'/>
+		    <variable name='route_netmask' type='netmask' description='Masque de sous réseau (mettre à 255.255.255.255 si adresse host)' />
+		    <variable name='route_gw' type='ip' description='Adresse IP de la passerelle pour accéder à ce réseau' />
+		    <variable name='route_int' type='string' description="Interface réseau reliée à la passerelle" />
 	    </family>
 	   <separators>
 	    	<separator name='route_adresse'>Ajout de routes statiques</separator>

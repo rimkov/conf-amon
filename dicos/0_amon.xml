@@ -78,10 +78,10 @@
  			<variable name='install_scribe_dmz' type='string' description="Activer la gestion d'un Scribe dans la DMZ" >
  				<value>non</value>
  			</variable>
- 			<variable name='ssh_permit_root' type='string' description="Autoriser les connexions ssh pour l'utilisateur root" >
+ 			<variable name='ssh_permit_root' type='string' description="Autoriser les connexions SSH pour l'utilisateur root" >
  				<value>oui</value>
  			</variable>
- 			<variable name='ssh_allow_passwd' type='string' description="Autoriser les connexions ssh par mot de passe (si non clef RSA obligatoire)" >
+ 			<variable name='ssh_allow_passwd' type='string' description="Autoriser les connexions SSH par mot de passe (si non clef RSA obligatoire)" >
  				<value>oui</value>
  			</variable>
                         <variable name='serveur_maj' type='string' description='Serveur de mise à jour' >
@@ -105,7 +105,7 @@
  			<variable name='install_rvp' type='string' description='Activation du RVP' >
  				<value>non</value>
  			</variable>
-			<variable name='active_nufw' type='string' description="Activer NuFw" >
+			<variable name='active_nufw' type='string' description="Activation de l'authentification NuFw" >
 				<value>non</value>
 			</variable>
                         <variable name='filtrage_p2p' type='string' description="Système de filtrage P2P" >
@@ -389,8 +389,8 @@
  			</variable>
 			<variable name='adresse_dns_agriates' type='ip' description='Adresse du DNS permettant de resoudre les in.ac-acad.fr' />
  	                <variable name='adresse_network_zone_rvp' type='ip' description='Adresse réseau de la zone rvp' multi='True' />
-  	                <variable name='adresse_netmask_zone_rvp' type='netmask' description='Adresse netmask de la zone rvp' />
-  	                <variable name='autoriser_rvp_autres' type='string' description="Autoriser réseaux autres qu'eth1 à accéder à ce réseau">
+  	                <variable name='adresse_netmask_zone_rvp' type='netmask' description='Masque de sous-réseau de la zone rvp' />
+  	                <variable name='autoriser_rvp_autres' type='string' description="Autoriser d'autres zones que eth1 à accéder à ce réseau">
   	                        <value>non</value>
   	                </variable>
 			<variable name='magic_rvp_inter' type='number' mode='expert' description='intervalle (en min) entre deux tests de bon fonctionnement du rvp (magic-rvp)'>
@@ -409,28 +409,28 @@
 			<variable name='nuauth_nss_ldap_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN)">
               			<value>o=gouv,c=fr</value>
 			</variable>
-			<variable name='nuauth_nss_ldap_tls' type='string' description="Utilisation de TLS">
+			<variable name='nuauth_nss_ldap_tls' type='string' description="Activation du chiffrement de l'authentification (TLS)">
 				<value>oui</value>
 			</variable>
 		</family>
 
 	<!--************************************************************************************************* -->
 		<family name='Proxy-pere' mode='expert'>
- 			<variable name='nom_cache_pere' type='string' description='Mandataire Web parent'/>
- 			<variable name='port_cache_pere' type='string' description='Port du mandataire Web parent'/>
- 			<variable name='nom_cache_pere_zone' type='string' description='Mandataire Web parent pour la zone' multi='True' />
- 			<variable name='port_cache_pere_zone' type='string' description='Port du mandataire Web parent pour la zone'/>
- 			<variable name='nom_zone_dns_cache' type='string' description='Nom de la zone accessible via ce cache pere'/>
- 			<variable name='autoriser_proxy_autres' type='string' description="Autoriser utilisation mandataire WEB parent pour réseaux autres qu'eth1">
+ 			<variable name='nom_cache_pere' type='string' description='Nom ou adresse IP du serveur mandataire Web parent'/>
+ 			<variable name='port_cache_pere' type='string' description='Port du serveur mandataire Web parent'/>
+ 			<variable name='nom_cache_pere_zone' type='string' description='Utiliser le serveur mandataire Web parent pour la zone' multi='True' />
+ 			<variable name='port_cache_pere_zone' type='string' description='Port du serveur mandataire Web parent pour la zone'/>
+ 			<variable name='nom_zone_dns_cache' type='string' description='Nom DNS de la zone accessible via ce cache père'/>
+ 			<variable name='autoriser_proxy_autres' type='string' description="Autoriser l'utilisation de ce cache père par d'autres zones que eth1">
 				<value>non</value>
 			</variable>
 		</family>
 	<!--************************************************************************************************* -->
 		<family name='zones-dns' mode='expert'>
-			<variable name='nom_domaine_local_supp' type='string' description='nom domaine du local supplémentaire ou rien' multi='True' />
-			<variable name='nom_zone_forward' type='string' description='nom DNS de la zone' multi='True' />
- 			<variable name='ip_dns_zone_forward' type='ip' description='Adresse du DNS de la zone' />
-			<variable name='nom_host_dns' type='string' description='nom DNS complet de la machine à ajouter dans le DNS' multi='True' />
+			<variable name='nom_domaine_local_supp' type='string' description='Nom domaine local supplémentaire ou rien' multi='True' />
+			<variable name='nom_zone_forward' type='string' description='Nom DNS de la zone' multi='True' />
+ 			<variable name='ip_dns_zone_forward' type='ip' description='Adresse IP du serveur DNS de la zone' />
+			<variable name='nom_host_dns' type='string' description='Nom DNS complet de la machine à ajouter dans le DNS' multi='True' />
  			<variable name='ip_host_dns' type='ip' description='Adresse IP de la machine à ajouter dans le DNS' />
 		</family>
 	<!--************************************************************************************************* -->
@@ -441,15 +441,15 @@
 		</family>
 	<!--************************************************************************************************* -->
 		<family hidden="False" mode="expert" name="reseau-avance">
-			<variable description="desactiver le path mtu discovery le bit DF n'est pas positionne à 1" hidden="False" multi="False" name="ip_no_pmtu_disc" type="string">
+			<variable description="Désactiver le path MTU discovery, le bit DF est positionné à 0" hidden="False" multi="False" name="ip_no_pmtu_disc" type="string">
 				<value>oui</value>
 			</variable>
-			<variable description="valeur du MTU pour l'interface eth0 : rien = valeur par defaut de l'interface" hidden="False" multi="False" name="valeur_mtu_eth0" type="Number" />
-			<variable name='debit_carte_eth0' type='string' mode="expert" description="mode de connexion pour l'interface exterieur" />
-			<variable name='debit_carte_eth1' type='string' mode="expert" description="mode de connexion pour l'interface interne 1" />
-			<variable name='debit_carte_eth2' type='string' mode="expert" description="mode de connexion pour l'interface interne 2" />
-			<variable name='debit_carte_eth3' type='string' mode="expert" description="mode de connexion pour l'interface interne 3" />
-			<variable name='debit_carte_eth4' type='string' mode="expert" description="mode de connexion pour l'interface interne 4" />
+			<variable description="Valeur du MTU pour l'interface eth0 : rien = valeur par defaut de l'interface" hidden="False" multi="False" name="valeur_mtu_eth0" type="Number" />
+			<variable name='debit_carte_eth0' type='string' mode="expert" description="Mode de connexion pour l'interface exterieur" />
+			<variable name='debit_carte_eth1' type='string' mode="expert" description="Mode de connexion pour l'interface interne 1" />
+			<variable name='debit_carte_eth2' type='string' mode="expert" description="Mode de connexion pour l'interface interne 2" />
+			<variable name='debit_carte_eth3' type='string' mode="expert" description="Mode de connexion pour l'interface interne 3" />
+			<variable name='debit_carte_eth4' type='string' mode="expert" description="Mode de connexion pour l'interface interne 4" />
 		</family>
 	<!--************************************************************************************************* -->
 			<separators>
@@ -490,9 +490,9 @@
 				<separator name='nom_cache_pere'>Proxy pere general</separator>
 				<separator name='nom_cache_pere_zone'>Proxy pere par zone</separator>
 				<separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
-				<separator name='nom_zone_forward'>forward de zone DNS</separator>
-				<separator name='nom_host_dns'>ajout d'hosts dans le DNS</separator>
-				<separator name='adresse_network_zone_rvp'>Accés rvp par le proxy</separator>
+				<separator name='nom_zone_forward'>Forward de zone DNS</separator>
+				<separator name='nom_host_dns'>Ajout d'hôtes dans le DNS</separator>
+				<separator name='adresse_network_zone_rvp'>Accès RVP par le proxy</separator>
 				<separator name='debit_carte_eth0'>Configuration avancée de l'interface externe</separator>
 				<separator name='debit_carte_eth1'>Configuration avancée de l'interface interne 1</separator>
 				<separator name='debit_carte_eth2'>Configuration avancée de l'interface interne 2</separator>
@@ -502,7 +502,7 @@
 				<separator name='activer_bacula'>Sauvegardes</separator>
 				<separator name='activer_squid_auth'>Proxy</separator>
 				<separator name='activer_log_distant'>Journalisation (log) centralisée</separator>
-				<separator name='install_rvp'>Réseau Virtuel Privé</separator>
+				<separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>
 			</separators>
 	</variables>
 	<constraints>
@@ -1207,7 +1207,7 @@
 	<help>
 		<variable name='adresse_ip_eth0'>Adresse IP de la premiere carte réseau (ex: 10.21.5.1)</variable>
 		<variable name='adresse_netmask_eth0'>Adresse du masque de sous réseau de la première carte réseau (ex: 255.255.255.0)</variable>
-        <variable name='adresse_network_eth0'>Adresse réseau de la carte int0 (ex: 10.21.5.0)</variable>
+		<variable name='adresse_network_eth0'>Adresse réseau de la carte int0 (ex: 10.21.5.0)</variable>
 		<variable name='adresse_broadcast_eth0'>Adresse de broadcast (diffusion) de la carte int0 (ex: 10.21.5.255)</variable>
 		<variable name='adresse_ip_dns'>Adresse IP du serveur de nom, en général celui de votre fournisseur internet</variable>
 		<variable name='adresse_ip_gw'>Adresse IP de la passerelle par defaut (du routeur par exemple)</variable>
@@ -1216,10 +1216,11 @@
 		<variable name='nom_domaine_academique'>Nom de domaine académique (ex : ac-dijon.fr)</variable>
 		<variable name='serveur_maj'>Nom ou adresse IP du serveur de mise à jour</variable>
 		<variable name='serveur_maj2'>Nom ou adresse IP du serveur de mise à jour de secours</variable>
-        <variable name='dansguardian_eth1'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth1 (1=admin, 2=pedago)</variable>
-        <variable name='dansguardian_eth2'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth2 (1=admin, 2=pedago)</variable>
-        <variable name='dansguardian_eth3'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth3 (1=admin, 2=pedago)</variable>
-        <variable name='dansguardian_eth4'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth4 (1=admin, 2=pedago)</variable>
+		
+		<variable name='dansguardian_eth1'>Instance de DansGuardian à utiliser pour l'interface eth1 (1=Configuration 1, 2=Configuration 2)</variable>
+		<variable name='dansguardian_eth2'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth2 (1=admin, 2=pedago)</variable>
+		<variable name='dansguardian_eth3'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth3 (1=admin, 2=pedago)</variable>
+		<variable name='dansguardian_eth4'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth4 (1=admin, 2=pedago)</variable>
 		<family name='Général'>Paramètres de base du serveur</family>
 	</help>
 </creole>

@@ -14,7 +14,7 @@
 		<family name='prelude' mode='expert'>
 			<variable name='administrateur_email' type='string' description="Adresse courriel de contact"/>
                         <variable name='passerelle_smtp' type='string' description="Passerelle SMTP"/>
-                        <variable name='adresse_ip_prelude_manager' type='ip' description="Adresse ip du serveur prelude-manager "/>
+                        <variable name='adresse_ip_prelude_manager' type='ip' description="Adresse IP du serveur Prelude Manager "/>
 		</family>
 	</variables>
 <!--************************************************************************************************* -->	

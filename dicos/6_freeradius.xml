@@ -20,18 +20,18 @@
 			<variable name='freerad_listen_int' type='string' description='Interface sur laquelle freeradius écoutera'>
 				<value>eth1</value>
 			</variable>
-			<variable name='freerad_nas_ip' type='ip' description='Adresse IP du NAS' multi='True'/>
-			<variable name='freerad_nas_name' type='string' description='Nom court du NAS'/>
-			<variable name='freerad_nas_passwd' type='string' description='Secret partagé avec le NAS'/>
-			<variable name='freerad_nas_type' type='string' description='type NAS'>
+			<variable name='freerad_nas_ip' type='ip' description="Adresse IP du serveur d'accès (NAS)" multi='True'/>
+			<variable name='freerad_nas_name' type='string' description="Nom court du serveur d'accès (NAS)"/>
+			<variable name='freerad_nas_passwd' type='string' description="Secret partagé avec le serveur d'accès (NAS)"/>
+			<variable name='freerad_nas_type' type='string' description="Type du serveur d'accès (NAS)">
 				<value>other</value>
 			</variable>
-			<variable name='freerad_ldap_ip' type='ip' description='Adresse ip du serveur ldap permettant de récupérer les comptes utilisateurs'/>
-			<variable name='freerad_ldap_base_dn' type='string' description="base dn de l'annuaire ldap">
+			<variable name='freerad_ldap_ip' type='ip' description='Adresse IP du serveur LDAP permettant de récupérer les comptes utilisateurs'/>
+			<variable name='freerad_ldap_base_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN)">
 				<value>o=gouv,c=fr</value>
 			</variable>
-			<variable name='freerad_ldap_group' type='string' description="groupes d'utilisateurs à récupérer dans l'annuaire ldap" multi='True'/>
-			<variable name='freerad_group_vlan' type='number' description="Numéro de vlan à attribuer à ce groupe"/>
+			<variable name='freerad_ldap_group' type='string' description="Groupes d'utilisateurs à récupérer dans l'annuaire LDAP" multi='True'/>
+			<variable name='freerad_group_vlan' type='number' description="Numéro de VLAN à attribuer à ce groupe"/>
 		</family>
 			<separators>
 				<separator name='freeradius'>Mise en place de Freeradius</separator>

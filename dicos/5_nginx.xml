@@ -30,6 +30,7 @@
 			</variable>
 		</family>
 		<separators>
+			<separator name='activer_revprox'>Reverse Proxy</separator>
 			<separator name='revprox_sso'>Redirection de services particuliers</separator>
 			<separator name='revprox_domainname'>Redirection HTTP et HTTPS</separator>
 		</separators>
@@ -67,5 +68,6 @@
                 <variable name='revprox_domainname'>Exemple pour rediriger "http://domaine/", taper "domaine"</variable>
                 <variable name='revprox_rep'>URL relative (sans le nom de domaine) redirigé pour l'adresse définie dans la variable ci-dessus (exemple "/mail")</variable>
 		<variable name='revprox_url'>Nom de domaine ou IP de destination, par exemple "http://domainelocal" ou URI, par exemple "http://domainelocal/ftp/"</variable>
+                <variable name='activer_revprox'>Le Reverse Proxy permet de relayer des accès extérieurs vers des serveurs situés derrière le pare-feu</variable>
 	</help>
 </creole>
