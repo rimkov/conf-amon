@@ -1,3 +1,10 @@
+conf-amon (2.2-eole127) eole-2.2-proposed; urgency=low
+
+  * #0001223: amonecole : non prise en compte de l'interface DMZ lors de
+    la mise en place du VPN
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 27 Apr 2009 13:38:26 +0200
+
 conf-amon (2.2-eole126) eole-2.2-dev; urgency=low
 
   * depuis branche
