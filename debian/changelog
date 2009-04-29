@@ -1,3 +1,9 @@
+conf-amon (2.2-eole128) eole-2.2-security; urgency=low
+
+  * Compilation en eole-2.2-security a partir du tag eole127
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 29 Apr 2009 12:11:09 +0200
+
 conf-amon (2.2-eole127) eole-2.2-proposed; urgency=low
 
   * #0001223: amonecole : non prise en compte de l'interface DMZ lors de
