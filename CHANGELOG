@@ -1,5 +1,11 @@
 Conf-AmonNG
 
+13/05/09
+- ajout d'une question pour activer ou non SARG (actif par défaut)
+
+12/05/09
+- correction dansguardian0 dansguardian$z
+
 23/04/09
 - ajout conf SARG
 - suppression des /etc/cron.*/sarg

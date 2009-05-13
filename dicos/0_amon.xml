@@ -120,6 +120,9 @@
  			<variable name='activer_squid_auth' type='string' description="Activation de l'authentification du proxy" >
  				<value>non</value>
  			</variable>
+			<variable  name='active_sarg' type='string' description="Activation de SARG (générateur de rapport d'analyse Squid/DansGuardian)">
+				<value>oui</value>
+      			</variable>
 			<variable name='num_dansguardian_instance' type='string' description="Nombre de politique de filtrage (dansguardian et pare-feu) configurables" hidden='True'>
 				<value>2</value>
 			</variable>
@@ -718,6 +721,9 @@
 		<check name="valid_enum" target="activer_squid_auth">
                   <param>['oui','non']</param>
                 </check>
+		<check name='valid_enum' target='active_sarg'>
+                  <param>['oui','non']</param>
+		</check>
                 <check name="valid_enum" target="activer_log_distant">
                   <param>['oui','non']</param>
                 </check>
