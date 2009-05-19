@@ -1,5 +1,8 @@
 Conf-AmonNG
 
+15/05/09
+- dansguardian1/2.conf logfile format = 3 (format squid pour SARG)
+
 13/05/09
 - ajout d'une question pour activer ou non SARG (actif par défaut)
 
