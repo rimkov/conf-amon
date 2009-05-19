@@ -1,3 +1,13 @@
+conf-amon (2.2-eole132) eole-2.2-dev; urgency=low
+
+  * Dansguardian : ordre des filtres d'authentification (bug 1256)
+  * ajout d'une question pour activer ou non SARG (actif par defaut)
+  * #0001249 redemarrage du reseau sur amonecole plus efficace
+  * Conf-amon : correction de dansguardian (pointe vers dansguardian1 et
+    pas dansguardian0)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 19 May 2009 11:43:46 +0200
+
 conf-amon (2.2-eole131) eole-2.2-dev; urgency=low
 
   * test k
