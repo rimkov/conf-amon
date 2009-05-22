@@ -8,12 +8,10 @@
         </files>
         <variables>
             <family name='squid' mode='expert'>
-            <variable name='http_port' type='string' description='' multi='True'>
+            <variable name='http_port' type='string' description="Port d'écoute http de Squid" multi='True'>
               	<value>127.0.0.1:8080</value>
             </variable>
-            <variable name='https_port' type='string' description=''>
-		<value/>
-            </variable>
+	    <variable name='https_port' type='string' description="Port d'écoute https de Squid"/>
             <variable name='ssl_unclean_shutdown' type='string' description=''>
               	<value>off</value>
             </variable>
@@ -23,9 +21,7 @@
             <variable name='htcp_port' type='number' description=''>
               	<value>4827</value>
             </variable>
-            <variable name='mcast_groups' type='string' description=''>
-		<value/>
-            </variable>
+	    <variable name='mcast_groups' type='string' description=''/>
             <variable name='tcp_outgoing_address' type='string' description=''>
 		    <value>255.255.255.255</value>
             </variable>
@@ -245,9 +241,11 @@
             <variable name='shutdown_lifetime' type='number' description='en sec'>
 		    <value>30</value>
             </variable>
-            <variable name='number_of_children' type='number' description="nombre d'instance du module d'authentification">
+            <variable name='number_of_children' type='number' description="Nombre d'instances du module d'authentification">
 		    <value>20</value>
-            </variable>
+	    </variable>
+	    <variable name='safe_ports' type='number' description='Ajout de Safe_ports supplémentaires' multi='True'/>
+		
             </family>
         </variables>
         <constraints>
