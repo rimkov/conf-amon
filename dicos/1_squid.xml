@@ -12,9 +12,6 @@
               	<value>127.0.0.1:8080</value>
             </variable>
 	    <variable name='https_port' type='string' description="Port d'écoute https de Squid"/>
-            <variable name='ssl_unclean_shutdown' type='string' description=''>
-              	<value>off</value>
-            </variable>
             <variable name='icp_port' type='number' description=''>
               	<value>3130</value>
             </variable>
