@@ -121,7 +121,7 @@
  				<value>non</value>
  			</variable>
 			<variable  name='active_sarg' type='string' description="Activation de SARG (générateur de rapport d'analyse Squid/DansGuardian)">
-				<value>oui</value>
+				<value>non</value>
       			</variable>
 			<variable name='num_dansguardian_instance' type='string' description="Nombre de politique de filtrage (dansguardian et pare-feu) configurables" hidden='True'>
 				<value>2</value>
