@@ -1,3 +1,14 @@
+conf-amon (2.2-eole133) eole-2.2-proposed; urgency=low
+
+  * Activer SARG = non par defaut
+  * conf-amon/squid : suppression definitive de l'option
+    ssl_unclean_shutdown (unrecognized)
+  * conf-amon/squid #1239 : Ajout de Safe_ports dans squid (patch de
+    fabrice b.)
+  * log dansguardian au format squid pour SARG
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 25 May 2009 15:59:39 +0200
+
 conf-amon (2.2-eole132) eole-2.2-dev; urgency=low
 
   * Dansguardian : ordre des filtres d'authentification (bug 1256)
