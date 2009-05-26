@@ -1,5 +1,8 @@
 Conf-AmonNG
 
+26/05/09
+- suppression de SARG
+
 15/05/09
 - dansguardian1/2.conf logfile format = 3 (format squid pour SARG)
 
