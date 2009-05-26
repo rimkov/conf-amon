@@ -1,3 +1,9 @@
+conf-amon (2.2-eole135) eole-2.2-proposed; urgency=low
+
+  * suppression de SARG
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 26 May 2009 13:33:38 +0200
+
 conf-amon (2.2-eole134) eole-2.2-proposed; urgency=low
 
   * Correction des droits des fichiers certificats pour nufw
