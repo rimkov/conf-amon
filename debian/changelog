@@ -1,3 +1,9 @@
+conf-amon (2.2-eole136) eole-2.2-proposed; urgency=low
+
+  * retour sur logrotate=daily  pour Dansguardian
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 26 May 2009 15:56:27 +0200
+
 conf-amon (2.2-eole135) eole-2.2-proposed; urgency=low
 
   * suppression de SARG
