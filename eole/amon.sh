@@ -58,9 +58,9 @@ fi
 #identique a amon.sh
 if [ "$active_nufw" == "oui" ]
 then
-	[ ! "$nuauth_tls_cacert" == "none" ] && chown root.nuauth $nuauth_tls_cacert && chmod 440 $nuauth_tls_cacert
-	[ ! "$nuauth_tls_cert" == "none" ] && chown root.nuauth $nuauth_tls_cert && chmod 440 $nuauth_tls_cert
-	[ ! "$nuauth_tls_key" == "none" ] && chown root.nuauth $nuauth_tls_key && chmod 440 $nuauth_tls_key
+	[ ! "$nuauth_tls_cacert" == "none" ] && chown root:nuauth $nuauth_tls_cacert && chmod 440 $nuauth_tls_cacert
+	[ ! "$nuauth_tls_cert" == "none" ] && chown root:nuauth $nuauth_tls_cert && chmod 440 $nuauth_tls_cert
+	[ ! "$nuauth_tls_key" == "none" ] && chown root:nuauth $nuauth_tls_key && chmod 440 $nuauth_tls_key
 fi
 
 # FIXME : plus utilisé sur 2.2
