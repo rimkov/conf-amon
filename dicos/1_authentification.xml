@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <creole>
-        <variables>
+  <files>
+    <file name='/etc/samba/smb.conf' />
+  </files>
+  <variables>
 		<family name='Authentification' hidden='True'>
 			<variable name='type_squid_auth' type='string' description="Type d'authentification" >
 				<value>NTLM/SMB</value>

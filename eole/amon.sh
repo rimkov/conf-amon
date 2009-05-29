@@ -67,6 +67,9 @@ fi
 if [ "$type_squid_auth" == "NTLM/KERBEROS" ]
 then
   /usr/share/eole/enregistrement_domaine.sh
+elif
+  /usr/sbin/update-rc.d -f samba remove
+  /usr/sbin/update-rc.d -f winbind remove
 fi
 
 #Enregistrement de la sonde snort

@@ -59,7 +59,5 @@
 %end for
 
 %if %%type_squid_auth == 'NTLM/KERBEROS'
-  %for %%krb in %%nom_serveur_krb
-    %%krb.ip_serveur_krb    %%krb.%%nom_domaine_krb %%nom_serveur_krb
-  %end for
+%%ip_serveur_krb    %%nom_serveur_krb.%%nom_domaine_krb %%nom_serveur_krb
 %end if

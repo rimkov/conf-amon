@@ -1233,7 +1233,7 @@
 		<variable name='nom_domaine_academique'>Nom de domaine académique (ex : ac-dijon.fr)</variable>
 		<variable name='serveur_maj'>Nom ou adresse IP du serveur de mise à jour</variable>
 		<variable name='serveur_maj2'>Nom ou adresse IP du serveur de mise à jour de secours</variable>
-		
+
 		<variable name='dansguardian_eth1'>Instance de DansGuardian à utiliser pour l'interface eth1 (1=Configuration 1, 2=Configuration 2)</variable>
 		<variable name='dansguardian_eth2'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth2 (1=admin, 2=pedago)</variable>
 		<variable name='dansguardian_eth3'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth3 (1=admin, 2=pedago)</variable>
