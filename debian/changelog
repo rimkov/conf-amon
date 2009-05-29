@@ -1,3 +1,13 @@
+conf-amon (2.2-eole138) eole-2.2-dev; urgency=low
+
+  * Ajout du support NTLM/KERBEROS et de l'enregistrement de sonde
+    Prelude
+  * Change les root.nuauth en root:nuauth lors des chown au
+    reconfigure/instance
+  * suppression espaces inutiles dans resolv.conf
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 29 May 2009 14:15:10 +0200
+
 conf-amon (2.2-eole137) eole-2.2-dev; urgency=low
 
   * synchro trunk => branche
