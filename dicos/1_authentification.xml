@@ -7,20 +7,24 @@
 				<value>NTLM/SMB</value>
 			</variable>
 			<!-- **** LDAP **** -->
-			<variable name='ip_serveur_ldap1' type='string' description='Adresse du premier serveur LDAP' />
-			<variable name='ip_serveur_ldap2' type='string' description='Adresse du second serveur LDAP (si le 1er ne répond pas)' />
+			<variable name='ip_serveur_ldap1' type='ip' description='Adresse du premier serveur LDAP' />
+			<variable name='ip_serveur_ldap2' type='ip' description='Adresse du second serveur LDAP (si le 1er ne répond pas)' />
 			<variable name='ldap_base_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN)">
 				<value>ou=education,o=gouv,c=fr</value>
 			</variable>
 			<!-- **** NTLM **** -->
 			<variable name='nom_serveur_smb' type='string' description='Nom du Contrôleur de domaine SMB' multi='True'/>
 			<variable name='nom_domaine_smb' type='string' description='Nom du domaine SMB' />
-			<variable name='ip_serveur_smb' type='string' description='Adresse IP du Contrôleur de domaine SMB' />
+			<variable name='ip_serveur_smb' type='ip' description='Adresse IP du Contrôleur de domaine SMB' />
+			<!-- **** KRB **** -->
+			<variable name='nom_serveur_krb' type='string' description='Nom du Contrôleur de domaine KERBEROS' />
+			<variable name='nom_domaine_krb' type='string' description='Nom du domaine KERBEROS' />
+			<variable name='ip_serveur_krb' type='ip' description='Adresse IP du Contrôleur de domaine KERBEROS' />
 		</family>
         </variables>
 	<constraints>
 		<check name='valid_enum' target='type_squid_auth'>
-			<param>['NTLM/SMB','Ldap']</param>
+			<param>['NTLM/SMB','Ldap','NTLM/KERBEROS']</param>
 		</check>
                 <group master='nom_serveur_smb'>
                         <slave>nom_domaine_smb</slave>
@@ -33,6 +37,12 @@
 			<target type='variable'>ip_serveur_smb</target>
 		</condition>
 		<condition name='hidden_if_not_in' source='type_squid_auth'>
+			<param>NTLM/KERBEROS</param>
+			<target type='variable'>nom_serveur_krb</target>
+			<target type='variable'>nom_domaine_krb</target>
+			<target type='variable'>ip_serveur_krb</target>
+		</condition>
+		<condition name='hidden_if_not_in' source='type_squid_auth'>
 			<param>Ldap</param>
 			<target type='variable'>ip_serveur_ldap1</target>
 			<target type='variable'>ip_serveur_ldap2</target>
@@ -41,6 +51,9 @@
 		<check name='obligatoire' target='nom_domaine_smb'/>
 		<check name='obligatoire' target='nom_serveur_smb'/>
 		<check name='obligatoire' target='ip_serveur_smb'/>
+		<check name='obligatoire' target='nom_domaine_krb'/>
+		<check name='obligatoire' target='nom_serveur_krb'/>
+		<check name='obligatoire' target='ip_serveur_krb'/>
 		<check name='obligatoire' target='ip_serveur_ldap1'/>
 		<check name='obligatoire' target='ldap_base_dn'/>
 	</constraints>

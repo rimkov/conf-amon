@@ -24,6 +24,10 @@ ead-web
 %end if
 ulogd
 ntp
+%if %%type_squid_auth == 'NTLM/KERBEROS'
+samba
+winbind
+%end if
 %if %%active_nufw == 'oui'
 nufw
 nuauth

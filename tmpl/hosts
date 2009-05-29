@@ -3,31 +3,31 @@
 %%adresse_ip_eth1		%%nom_machine_eth1.%%nom_domaine_local %%nom_machine_eth1
 %if %%nom_domaine_local_supp != ['']
 %for %%domaines in %%nom_domaine_local_supp
-%%adresse_ip_eth0		%%nom_machine.%%domaines 
-%%adresse_ip_eth1		%%nom_machine_eth1.%%domaines 
+%%adresse_ip_eth0		%%nom_machine.%%domaines
+%%adresse_ip_eth1		%%nom_machine_eth1.%%domaines
 %end for
 %end if
-%if %%nombre_interfaces >= "3" 
+%if %%nombre_interfaces >= "3"
 %%adresse_ip_eth2		%%nom_machine_eth2.%%nom_domaine_local %%nom_machine_eth2
 %if %%nom_domaine_local_supp != ['']
 %for %%domaines in %%nom_domaine_local_supp
-%%adresse_ip_eth2		%%nom_machine_eth2.%%domaines 
+%%adresse_ip_eth2		%%nom_machine_eth2.%%domaines
 %end for
 %end if
 %end if
-%if %%nombre_interfaces >= "4" 
+%if %%nombre_interfaces >= "4"
 %%adresse_ip_eth3		%%nom_machine_eth3.%%nom_domaine_local %%nom_machine_eth3
 %if %%nom_domaine_local_supp != ['']
 %for %%domaines in %%nom_domaine_local_supp
-%%adresse_ip_eth3		%%nom_machine_eth3.%%domaines 
+%%adresse_ip_eth3		%%nom_machine_eth3.%%domaines
 %end for
 %end if
 %end if
-%if %%nombre_interfaces == "5" 
+%if %%nombre_interfaces == "5"
 %%adresse_ip_eth4		%%nom_machine_eth4.%%nom_domaine_local %%nom_machine_eth4
 %if %%nom_domaine_local_supp != ['']
 %for %%domaines in %%nom_domaine_local_supp
-%%adresse_ip_eth4		%%nom_machine_eth4.%%domaines 
+%%adresse_ip_eth4		%%nom_machine_eth4.%%domaines
 %end for
 %end if
 %end if
@@ -57,3 +57,9 @@
 %for %%hosts in %%nom_host_dns
 %%hosts.ip_host_dns		%%hosts
 %end for
+
+%if %%type_squid_auth == 'NTLM/KERBEROS'
+  %for %%krb in %%nom_serveur_krb
+    %%krb.ip_serveur_krb    %%krb.%%nom_domaine_krb %%nom_serveur_krb
+  %end for
+%end if
