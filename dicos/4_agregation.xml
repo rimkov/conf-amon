@@ -22,10 +22,10 @@
 			<variable name='ag_timeout' type='Number' description='Timeout de la requête DNS (en secondes)' >
 				<value>1</value>
 			</variable>
-			<variable name='ag_testdns' type='string' description='Première Adresse DNS testèe' >
+			<variable name='ag_testdns' type='string' description='Première Adresse DNS testée' >
 				<value>www.google.com</value>
 			</variable>
-			<variable name='ag_testdns2' type='string' description='Seconde Adresse DNS testèe' >
+			<variable name='ag_testdns2' type='string' description='Seconde Adresse DNS testée' >
 				<value>www.ac-nantes.fr</value>
 			</variable>
 			<variable name='ag_nbsucces' type='Number' description="Nombre de succès avant changement d'état" >
