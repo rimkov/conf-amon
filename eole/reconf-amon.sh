@@ -52,4 +52,7 @@ then
         [ ! "$nuauth_tls_key" == "none" ] && chown root:nuauth $nuauth_tls_key && chmod 440 $nuauth_tls_key
 fi
 
+# reenregistrement des sondes
+/usr/share/eole/enregistrement_sonde.sh reconfigure
+
 echo
