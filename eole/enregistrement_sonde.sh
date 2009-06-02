@@ -13,6 +13,7 @@ reconf() {
 }
 
 enreg() {
+if [ "$activer_sonde_prelude" == "oui" ]; then
 
   EchoRouge " *** Attention ! Le serveur d'enregistrement Prelude doit être lancé sur Prelude-Manager ***"
 
@@ -52,7 +53,9 @@ enreg() {
     fi
   fi
 
+fi
 }
+
 case "$1" in
         reconf)
                 reconf
