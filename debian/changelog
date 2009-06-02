@@ -1,3 +1,10 @@
+conf-amon (2.2-eole140) eole-2.2-dev; urgency=low
+
+  * Ameliorations des scripts relatif au domaine et a prelude
+  * Fix smb.conf
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 02 Jun 2009 10:32:48 +0200
+
 conf-amon (2.2-eole139) eole-2.2-dev; urgency=low
 
   * Ajout des templates manquants
