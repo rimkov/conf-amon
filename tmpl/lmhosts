@@ -16,5 +16,5 @@
 %%adresse_ip_eth3 AMON
 %end if
 %if %%ip_serveur_krb != ""
-%%ip_serveur_krb  %%upper(nom_serveur_krb)
+%%ip_serveur_krb  %%upper(%%nom_serveur_krb)
 %end if
