@@ -1,3 +1,10 @@
+conf-amon (2.2-eole144) eole-2.2-dev; urgency=low
+
+  * Modification des scripts d'ajout au domaine
+  * Correction typo
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 02 Jun 2009 16:34:25 +0200
+
 conf-amon (2.2-eole143) eole-2.2-dev; urgency=low
 
   * Cosmetic
