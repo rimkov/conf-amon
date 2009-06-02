@@ -1,3 +1,10 @@
+conf-amon (2.2-eole141) eole-2.2-dev; urgency=low
+
+  * Correction script sonde
+  * cosmetique dictionnaire
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 02 Jun 2009 15:05:16 +0200
+
 conf-amon (2.2-eole140) eole-2.2-dev; urgency=low
 
   * Ameliorations des scripts relatif au domaine et a prelude
