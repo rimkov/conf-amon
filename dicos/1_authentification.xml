@@ -3,6 +3,7 @@
 <creole>
   <files>
     <file name='/etc/samba/smb.conf' />
+    <file name='/etc/samba/lmhosts' />
   </files>
   <variables>
 		<family name='Authentification' hidden='True'>
