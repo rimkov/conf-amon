@@ -22,7 +22,8 @@
 			<variable name='ip_serveur_smb' type='ip' description='Adresse IP du Contrôleur de domaine SMB' />
 			<!-- **** KRB **** -->
 			<variable name='nom_serveur_krb' type='string' description='Nom du Contrôleur de domaine KERBEROS' />
-			<variable name='nom_domaine_krb' type='string' description='Nom du domaine KERBEROS' />
+			<variable name='nom_domaine_krb' type='string' description='Nom du domaine KERBEROS (fqdn)' />
+			<variable name='nom_domaine_windows' type='string' description='Nom du domaine Windows' />
 			<variable name='ip_serveur_krb' type='ip' description='Adresse IP du Contrôleur de domaine KERBEROS' />
 		</family>
         </variables>
@@ -44,6 +45,7 @@
 			<param>NTLM/KERBEROS</param>
 			<target type='variable'>nom_serveur_krb</target>
 			<target type='variable'>nom_domaine_krb</target>
+			<target type='variable'>nom_domaine_windows</target>
 			<target type='variable'>ip_serveur_krb</target>
 		</condition>
 		<condition name='hidden_if_not_in' source='type_squid_auth'>
@@ -56,6 +58,7 @@
 		<check name='obligatoire' target='nom_serveur_smb'/>
 		<check name='obligatoire' target='ip_serveur_smb'/>
 		<check name='obligatoire' target='nom_domaine_krb'/>
+		<check name='obligatoire' target='nom_domaine_windows'/>
 		<check name='obligatoire' target='nom_serveur_krb'/>
 		<check name='obligatoire' target='ip_serveur_krb'/>
 		<check name='obligatoire' target='ip_serveur_ldap1'/>
