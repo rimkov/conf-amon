@@ -64,10 +64,9 @@ then
 fi
 
 #enregistrement au domaine dans le cas du NTLM/KERBEROS
-if [ "$type_squid_auth" == "NTLM/KERBEROS" ]
-then
+if [ "$type_squid_auth" == "NTLM/KERBEROS" ]; then
   /usr/share/eole/enregistrement_domaine.sh
-elif
+else
   /usr/sbin/update-rc.d -f samba remove
   /usr/sbin/update-rc.d -f winbind remove
 fi
