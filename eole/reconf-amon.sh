@@ -53,6 +53,6 @@ then
 fi
 
 # reenregistrement des sondes
-/usr/share/eole/enregistrement_sonde.sh reconfigure
+/usr/share/eole/enregistrement_sonde.sh reconf
 
 echo

@@ -73,7 +73,7 @@ elif
 fi
 
 #Enregistrement des sondes
-/usr/share/eole/enregistrement_sonde.sh enregistrement
+/usr/share/eole/enregistrement_sonde.sh enreg
 
 # FIXME : plus utilisé sur 2.2
 # creation base rrdtools

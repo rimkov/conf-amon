@@ -2,25 +2,19 @@
 . ParseDico
 . FonctionsEoleNg
 
-EchoRouge " *** Attention ! Le serveur d'enregistrement Prelude doit être lancé sur Prelude-Manager ***"
-
-if [ -n "$0" ]; then
-  echo "Usage : `basename $0` (reconfigure|enregistrement)"
+if [ -z "$1" ]; then
+  echo "Usage : enregistrement_sonde.sh (reconf|enreg)"
   exit 0
 fi
 
-if [ $0 == "reconfigure" ]; then
-  reconfigure
-else
-  enregistrement
-fi
-
-reconfigure () {
+reconf() {
   /bin/rm -rf /etc/prelude/profile/
-  enregistrement
+  enreg
 }
 
-enregistrement (){
+enreg() {
+
+  EchoRouge " *** Attention ! Le serveur d'enregistrement Prelude doit être lancé sur Prelude-Manager ***"
 
   #Enregistrement de la sonde snort
   if [ "sonde_snort" == "oui" ]; then
@@ -59,3 +53,11 @@ enregistrement (){
   fi
 
 }
+case "$1" in
+        reconf)
+                reconf
+                ;;
+        enreg)
+                enreg
+                ;;
+        esac
