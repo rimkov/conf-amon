@@ -1,0 +1,9 @@
+#
+# Sample Samba lmhosts file.
+#
+
+127.0.0.1 LOCALHOST
+%%adresse_ip_eth0 AMON
+%%adresse_ip_eth1 AMON
+%%adresse_ip_eth2 AMON
+%%ip_serveur_krb  %%upper(nom_serveur_krb)
