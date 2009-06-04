@@ -1,3 +1,9 @@
+conf-amon (2.2-eole146) eole-2.2-dev; urgency=low
+
+  * Fix ntlm_auth
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 04 Jun 2009 16:06:58 +0200
+
 conf-amon (2.2-eole145) eole-2.2-dev; urgency=low
 
   * Prise en compte du kerberos dans squid.conf
