@@ -51,7 +51,7 @@ echo
 echo  "Tapez <Entree>"
 read Bidon
 }
-if [ $nbmanage -ne 1 ]
+if [ $nbmanage -gt 1 ]
 then
 	MenuBox "D'autres instances de manage-amon ont été détectées" Rep "1 Quitter_sans_tuer 2 Quitter_et_tuer"
 	if [ "$Rep" == "2" ]
