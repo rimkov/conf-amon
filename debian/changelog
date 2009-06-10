@@ -1,3 +1,13 @@
+conf-amon (2.2-eole148) eole-2.2-proposed; urgency=low
+
+  * modif du lancement du rvp
+  * ajout dico sarg
+  * correction de manage-amon.sh pour qu'il puisse etre execute depuis
+    un lien symbolique
+  * branche depuis le tag 136
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 10 Jun 2009 13:39:51 +0200
+
 conf-amon (2.2-eole147) eole-2.2-proposed; urgency=low
 
   * le service rvp n'est plus lance directement dans les rc.d
