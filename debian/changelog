@@ -1,3 +1,12 @@
+conf-amon (2.2-eole147) eole-2.2-proposed; urgency=low
+
+  * le service rvp n'est plus lance directement dans les rc.d
+  * ajout du dictionnaire SARG
+  * correction de manage-amon.sh pour qu'il puisse etre execute depuis
+    un lien symbolique
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 10 Jun 2009 11:19:46 +0200
+
 conf-amon (2.2-eole146) eole-2.2-dev; urgency=low
 
   * Fix ntlm_auth
