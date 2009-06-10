@@ -2,6 +2,7 @@ Conf-AmonNG
 10/06/09 (sam)
 - active_rvp.sh : le service rvp n'est plus ajouté dans les services à démarrer au lancement de la machine (suppression du update-rc.d rvp default)
 - amon-reconf.sh : si le service rvp est présent dans rc3.d, alors on le supprime des rc*.d (update-rc.d -f rvp remove)
+	on supprime le lancement de freeradius s'il n'est pas utilisé
 
 26/05/09
 - suppression de SARG
