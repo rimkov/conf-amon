@@ -503,7 +503,7 @@ then
 	chmod 400 $IpSecRep/ipsec.d/*.pem
 fi
 echo "Activation du service Reseau Virtuel Privé"
-/usr/sbin/update-rc.d rvp defaults >/dev/null 2>&1
+#/usr/sbin/update-rc.d rvp defaults >/dev/null 2>&1
 /etc/init.d/rvp start
 if [ $? -ne 0 ]
 then

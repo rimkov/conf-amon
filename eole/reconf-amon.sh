@@ -52,6 +52,12 @@ then
         [ ! "$nuauth_tls_key" == "none" ] && chown root:nuauth $nuauth_tls_key && chmod 440 $nuauth_tls_key
 fi
 
+# On supprime le service rvp au niveau des rc*.d s'il existe...
+if [ -L /etc/rc3.d/S20rvp ]
+then
+	update-rc.d -f rvp remove >/dev/null 2>&1
+fi
+
 # reenregistrement des sondes
 /usr/share/eole/enregistrement_sonde.sh reconf
 

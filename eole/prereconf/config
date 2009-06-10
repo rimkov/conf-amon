@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # pre-reconfiguration pour Amon
 touch "/etc/squid/domaines_noauth_user"
 touch "/etc/squid/domaines_nocache_user"
