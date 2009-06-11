@@ -1,3 +1,11 @@
+conf-amon (2.2-eole151) eole-2.2-dev; urgency=low
+
+  * Ajout du support LDAP (Active Directory) pour l'authentification
+  * report dans trunk de modif branche from136 : desactivation service
+    freeradius si pas utilise
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 11 Jun 2009 11:05:44 +0200
+
 conf-amon (2.2-eole150) eole-2.2-proposed; urgency=low
 
   * desactivation service freeradius si pas utilise
