@@ -16,7 +16,18 @@
 			<variable name='ldap_base_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN)">
 				<value>ou=education,o=gouv,c=fr</value>
 			</variable>
-			<!-- **** NTLM **** -->
+			<!-- **** LDAP (Active Directory)**** -->
+			<variable name='ip_serveur_ldapad' type='ip' description='Adresse ip du serveur LDAP (Active Directory)' />
+			<variable name='ldapad_base_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN Active Directory)">
+				<value></value>
+			</variable>
+			<variable name='ldapad_user' type='string' description="Nom du compte nécessaire pour l'interrogation LDAP (Active Directory)">
+				<value></value>
+                              </variable>
+			<variable name='ldapad_passwd' type='string' description="Mot de passe du compte nécessaire pour l'interrogation LDAP (Active Directory)">
+				<value></value>
+			</variable>
+	<!-- **** NTLM **** -->
 			<variable name='nom_serveur_smb' type='string' description='Nom du Contrôleur de domaine SMB' multi='True'/>
 			<variable name='nom_domaine_smb' type='string' description='Nom du domaine SMB' />
 			<variable name='ip_serveur_smb' type='ip' description='Adresse IP du Contrôleur de domaine SMB' />
@@ -29,7 +40,7 @@
         </variables>
 	<constraints>
 		<check name='valid_enum' target='type_squid_auth'>
-			<param>['NTLM/SMB','Ldap','NTLM/KERBEROS']</param>
+			<param>['NTLM/SMB','Ldap','Ldap (Active Directory)','NTLM/KERBEROS']</param>
 		</check>
                 <group master='nom_serveur_smb'>
                         <slave>nom_domaine_smb</slave>
@@ -53,6 +64,13 @@
 			<target type='variable'>ip_serveur_ldap1</target>
 			<target type='variable'>ip_serveur_ldap2</target>
 			<target type='variable'>ldap_base_dn</target>
+                </condition>
+		<condition name='hidden_if_not_in' source='type_squid_auth'>
+			<param>Ldap (Active Directory)</param>
+			<target type='variable'>ip_serveur_ldapad</target>
+			<target type='variable'>ldapad_base_dn</target>
+			<target type='variable'>ldapad_user</target>
+			<target type='variable'>ldapad_passwd</target>
 		</condition>
 		<check name='obligatoire' target='nom_domaine_smb'/>
 		<check name='obligatoire' target='nom_serveur_smb'/>
@@ -62,7 +80,11 @@
 		<check name='obligatoire' target='nom_serveur_krb'/>
 		<check name='obligatoire' target='ip_serveur_krb'/>
 		<check name='obligatoire' target='ip_serveur_ldap1'/>
+		<check name='obligatoire' target='ip_serveur_ldapad'/>
 		<check name='obligatoire' target='ldap_base_dn'/>
+		<check name='obligatoire' target='ldapad_base_dn'/>
+		<check name='obligatoire' target='ldapad_user'/>
+		<check name='obligatoire' target='ldapad_passwd'/>
 	</constraints>
 	<help>
 	</help>
