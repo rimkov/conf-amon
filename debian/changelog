@@ -1,3 +1,9 @@
+conf-amon (2.2-eole153) eole-2.2-dev; urgency=low
+
+  * ajout de fichiers manquants
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 12 Jun 2009 16:30:02 +0200
+
 conf-amon (2.2-eole152) eole-2.2-dev; urgency=low
 
   * remise branche et synchro <= trunk
