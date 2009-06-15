@@ -23,6 +23,7 @@
 	<file name='/etc/network/interfaces'/>
 	<file name='/etc/pam.d/squid' source='squid.pam'/>
 	<file name='/etc/rsyslog.conf'/>
+	<file name='/etc/rsyslog.d/iptables.conf'/>
 	<file name='/usr/share/dansguardian/languages/french/template.html' source='dansguardian-template.html'/>
 	<file name='/usr/share/dansguardian/languages/french/template-liste_blanche.html' source='dansguardian-template-liste_blanche.html'/>
 	<file name='/usr/share/dansguardian/languages/french/template-moderateur.html' source='dansguardian-template-moderateur.html'/>
