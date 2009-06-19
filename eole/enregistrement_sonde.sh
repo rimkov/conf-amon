@@ -7,7 +7,7 @@ if [ -z "$1" ]; then
   exit 0
 fi
 
-if [ "$2" == "-ead" ]; then
+if [ "-ead" == "$2" ]; then
     EAD="EAD"
 fi
 

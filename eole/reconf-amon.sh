@@ -17,6 +17,14 @@ if [ "$adresse_ip_eth0" = "" ]; then
 fi
 #
 
+for i in $*
+do
+        if [ "-ead" == "$i" ]
+        then
+                EAD='-ead'
+        fi
+done
+
 ## On regénère les db du dns
 /usr/share/eole/gen_dns
 
@@ -66,6 +74,6 @@ then
 fi
 
 # reenregistrement des sondes
-/usr/share/eole/enregistrement_sonde.sh reconf
+/usr/share/eole/enregistrement_sonde.sh reconf $EAD
 
 echo
