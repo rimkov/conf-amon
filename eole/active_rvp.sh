@@ -75,6 +75,7 @@ SuppConf()
 		rm -f /etc/freeswan/ipsec.d/cacerts/*.pem
 		rm -f /usr/share/eole/test-rvp 
 		/usr/sbin/update-rc.d -f rvp remove >/dev/null 2>&1
+		/etc/init.d/z_stats restart
 		exit 1
 	else
 		echo Abandon
