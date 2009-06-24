@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[ ! -d /var/run/samhain ] && mkdir -p /var/run/samhain
+exit 0

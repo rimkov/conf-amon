@@ -18,6 +18,9 @@
 			<variable name='sonde_snort' type='string' description="Activation de la sonde SNORT" >
 				<value>non</value>
 			</variable>
+			<variable name='smtp_snort' type='string' description="Liste des serveurs SMTP sur le réseau" multi="True"/>
+			<variable name='http_snort' type='string' description="Liste des serveurs HTTP sur le réseau" multi="True"/>
+			<variable name='dns_snort' type='string' description="Liste des serveurs DNS sur le réseau" multi="True"/>
 			<variable name='sonde_samhain' type='string' description="Activation de la sonde SAMHAIN" >
 				<value>non</value>
 			</variable>
@@ -27,7 +30,9 @@
 		</family>
 	</variables>
 	<separators>
-		<separator name='sonde_snort'>Configuration des sondes</separator>
+		<separator name='sonde_snort'>Configuration de la sonde SNORT</separator>
+		<separator name='sonde_samhain'>Configuration de la sonde Samhain</separator>
+		<separator name='sonde_nufw'>Configuration de la sonde NuFW</separator>
 	</separators>
 <!--************************************************************************************************* -->	
 	<constraints>
