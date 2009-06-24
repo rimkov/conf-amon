@@ -1,3 +1,9 @@
+conf-amon (2.2-eole157) eole-2.2-dev; urgency=low
+
+  * file = /var/log/*.old mise en commentaire
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 24 Jun 2009 16:47:53 +0200
+
 conf-amon (2.2-eole156) eole-2.2-dev; urgency=low
 
   * templatisation de la configuration snort et samhain
