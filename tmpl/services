@@ -32,6 +32,12 @@ winbind
 nufw
 nuauth
 %end if
+%if %%sonde_snort == 'oui'
+snort
+%end if
+%if %%sonde_samhain == 'oui'
+samhain
+%end if
 z_stats
 %if %%agregation == 'oui'
 agregation

@@ -350,7 +350,7 @@ PrintClass=EVENT
 
 ## Logging to a Prelude-IDS
 ##
-PreludeSeverity = info
+PreludeSeverity = warn
 PreludeClass = EVENT
 
 
@@ -662,11 +662,13 @@ SetFileCheckTime = 7200
 
 ## The IP address of the log server
 #
-# SetLogServer = (default: compiled-in)
+%if %%adresse_ip_zephirlogs != ''
+SetLogServer = %%adresse_ip_prelude_manager
+%end if
 
 ## The IP address of the time server
 #
-# SetTimeServer = (default: compiled-in)
+SetTimeServer = %%serveur_ntp[0]
 
 ## Trusted Users (comma delimited list of user names) 
 #

@@ -50,6 +50,9 @@ if [ "$activer_sonde_prelude" == "oui" ]; then
         if [ $? -ne 0 ]; then
           EchoRouge "L'enregistrement de la sonde Snort a échoué"
         else
+          chown -R snort:snort /etc/prelude/profile/snort/
+	  [ ! -d /var/spool/prelude/snort/ ] && mkdir -p /var/spool/prelude/snort/
+          chown -R snort:snort /var/spool/prelude/snort/
           EchoVert "L'enregistrement de la sonde Snort a réussie"
         fi
       fi
@@ -58,38 +61,45 @@ if [ "$activer_sonde_prelude" == "oui" ]; then
 
   #Enregistrement de la sonde samhain
   if [ "$sonde_samhain" == "oui" ]; then
-    echo
-    echo "*** Enregistrement de la sonde Samhain ***"
-    test_serv
-    if [ "$?" -eq "0" ]; then
-      echo -n "Entrer le mot de passe du serveur d'enregitrement Prelude pour la sonde Samhain : "
-      read -s mdp_prelude
+    if [ ! -f /etc/prelude/profile/samhain/key ]; then
       echo
-      echo "Pour continuer, veuillez accepter l'enregistrement sur le serveur Prelude-Manager ($adresse_ip_prelude_manager)..."
-      /usr/bin/prelude-admin register "samhain" "idmef:w admin:r" $adresse_ip_prelude_manager --uid 0 --gid 0 --passwd=$mdp_prelude &> /dev/null
-      if [ $? -ne 0 ]; then
-        EchoRouge "L'enregistrement de la sonde Samhain a échoué"
-      else
-        EchoVert "L'enregistrement de la sonde Samhain a réussie"
+      echo "*** Enregistrement de la sonde Samhain ***"
+      test_serv
+      if [ "$?" -eq "0" ]; then
+        echo -n "Entrer le mot de passe du serveur d'enregitrement Prelude pour la sonde Samhain : "
+        read -s mdp_prelude
+        echo
+        echo "Pour continuer, veuillez accepter l'enregistrement sur le serveur Prelude-Manager ($adresse_ip_prelude_manager)..."
+        /usr/bin/prelude-admin register "samhain" "idmef:w admin:r" $adresse_ip_prelude_manager --uid 0 --gid 0 --passwd=$mdp_prelude &> /dev/null
+        if [ $? -ne 0 ]; then
+          EchoRouge "L'enregistrement de la sonde Samhain a échoué"
+        else
+          EchoVert "L'enregistrement de la sonde Samhain a réussie"
+        fi
       fi
     fi
   fi
 
   #Enregistrement de la sonde nufw
   if [ "$sonde_nufw" == "oui" ]; then
-    echo
-    echo "*** Enregistrement de la sonde NuFW ***"
-    test_serv
-    if [ "$?" -eq "0" ]; then
-      echo -n "Entrer le mot de passe du serveur d'enregitrement Prelude pour la sonde NuFW : "
-      read -s mdp_prelude
+    if [ ! -f /etc/prelude/profile/nufw/key ]; then
       echo
-      echo "Pour continuer, veuillez accepter l'enregistrement sur le serveur Prelude-Manager ($adresse_ip_prelude_manager)..."
-      /usr/bin/prelude-admin register "nufw" "idmef:w admin:r" $adresse_ip_prelude_manager --uid 0 --gid 0 --passwd=$mdp_prelude &> /dev/null
-      if [ $? -ne 0 ]; then
-        EchoRouge "L'enregistrement de la sonde NuFW a échoué"
-      else
-        EchoVert "L'enregistrement de la sonde NuFW a réussie"
+      echo "*** Enregistrement de la sonde NuFW ***"
+      test_serv
+      if [ "$?" -eq "0" ]; then
+        echo -n "Entrer le mot de passe du serveur d'enregitrement Prelude pour la sonde NuFW : "
+        read -s mdp_prelude
+        echo
+        echo "Pour continuer, veuillez accepter l'enregistrement sur le serveur Prelude-Manager ($adresse_ip_prelude_manager)..."
+        /usr/bin/prelude-admin register "nufw" "idmef:w admin:r" $adresse_ip_prelude_manager --uid 0 --gid 0 --passwd=$mdp_prelude &> /dev/null
+        if [ $? -ne 0 ]; then
+          EchoRouge "L'enregistrement de la sonde NuFW a échoué"
+        else
+	  chown -R nuauth:nuauth /etc/prelude/profile/nufw/
+	  [ ! -d /var/spool/prelude/nufw/ ] && mkdir -p /var/spool/prelude/nufw/
+          chown -R nuauth:nuauth /var/spool/prelude/nufw/
+          EchoVert "L'enregistrement de la sonde NuFW a réussie"
+        fi
       fi
     fi
   fi
