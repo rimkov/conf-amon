@@ -1,3 +1,10 @@
+conf-amon (2.2-eole158) eole-2.2-dev; urgency=low
+
+  * ajout du script d'init samhain suite au bug :
+  * https://bugs.launchpad.net/ubuntu/+source/samhain/+bug/391111
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 24 Jun 2009 17:02:15 +0200
+
 conf-amon (2.2-eole157) eole-2.2-dev; urgency=low
 
   * file = /var/log/*.old mise en commentaire
