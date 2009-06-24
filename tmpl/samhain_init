@@ -1,0 +1,75 @@
+#! /bin/sh
+#
+# skeleton      example file to build /etc/init.d/ scripts.
+#               This file should be used to construct scripts for /etc/init.d.
+#
+#               Written by Miquel van Smoorenburg <miquels@cistron.nl>.
+#               Modified for Debian GNU/Linux
+#               by Ian Murdock <imurdock@gnu.ai.mit.edu>.
+#
+# Version:      @(#)skeleton  1.8  03-Mar-1998  miquels@cistron.nl
+#
+
+prefix="/usr"
+exec_prefix="${prefix}"
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=${exec_prefix}/sbin/samhain
+NAME=samhain
+DESC="file integrity checker"
+
+. /lib/lsb/init-functions
+
+test -f $DAEMON || exit 0
+
+set -e
+
+[ ! -d /var/run/samhain ] && mkdir -p /var/run/samhain
+
+d_start() {
+	log_begin_msg "Starting $DESC: $NAME"
+	if test -f /var/samhain/.samhain_lock; then
+	    rm -f /var/samhain/.samhain_lock
+	fi
+        start-stop-daemon --start --quiet --exec $DAEMON
+	log_end_msg $?
+}
+
+d_stop() {
+	log_begin_msg "Stopping $DESC: $NAME"
+        start-stop-daemon --stop --quiet --oknodo --exec $DAEMON
+        # pour le restart
+        log_end_msg 0
+}
+
+case "$1" in
+  start)
+  	d_start
+        ;;
+  stop)
+  	d_stop
+        ;;
+  reload|force-reload)
+        log_begin_msg "Reloading $DESC configuration files."
+        start-stop-daemon --stop --signal 1 --quiet --exec $DAEMON
+        log_end_msg 0
+  	;;
+  restart)
+        #
+        #       If the "reload" option is implemented, move the "force-reload"
+        #       option to the "reload" entry above. If not, "force-reload" is
+        #       just the same as "restart".
+        #
+  	d_stop
+	sleep 1
+  	d_start
+        ;;
+  *)
+        N=/etc/init.d/$NAME
+        echo "Usage: $N {start|stop|restart|reload|force-reload}" >&2
+        # echo "Usage: $N {start|stop|restart|force-reload}" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

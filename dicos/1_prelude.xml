@@ -2,6 +2,7 @@
 
 <creole>
 	<files>
+	  <file name='/etc/init.d/samhain' source='samhain_init'/>
 	  <file name='/etc/prelude/default/client.conf' source='prelude-client.conf'/>
 	  <file name='/etc/prelude/default/global.conf' source='prelude-global.conf'/>
 	  <file name='/etc/samhain/samhainrc' />
