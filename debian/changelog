@@ -1,3 +1,18 @@
+conf-amon (2.2-eole156) eole-2.2-dev; urgency=low
+
+  * templatisation de la configuration snort et samhain
+  * amelioration enregistrement sondes prelude
+  * configuration nuauth pour prelude
+  * configuration samhain pour prelude
+  * conf-amon : redemarrage z_stats en fin de active_rvp --delete
+  * reconf-amon : ne pas demander l'enregistrement des sondes si
+    'reconfigure' lance avec '-ead'
+  * reconf-amon : ne pas demander l'enregistrement des sondes si
+    'reconfigure' lance avec '-ead'
+  * enregistrement_sonde.sh: correction et amelioration
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 24 Jun 2009 16:28:57 +0200
+
 conf-amon (2.2-eole155) eole-2.2-dev; urgency=low
 
   * synchro trunk => branche
