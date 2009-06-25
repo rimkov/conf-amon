@@ -3,6 +3,7 @@
 <creole>
         <files>
 		<file filelist='agregation' name='/etc/agregation.conf'/>
+		<file filelist='agregation' name='/usr/bin/agregation.sh' mode='755'/>
         </files>
 		<!-- **** Dictionnaire optionnel (Ageregation) de l'Academie de Nantes by GC **** -->
         <variables>
@@ -10,28 +11,28 @@
 			<variable name='agregation' type='string' description='Repartition de charges entre 2 lignes' >
 				<value>non</value>
 			</variable>
-			<variable name='ag_force_eth0' type='ip' description='Destination(s) forcées sur le lien 1' multi='True'/>
+			<variable name='ag_force_eth0' type='ip' description='Destination(s) forcees sur le lien 1' multi='True'/>
 			<variable name='ag_dns_eth0' type='ip' description='Adresse(s) du(des) dns sur le lien 1' multi='True'/>
 			<variable name='ag_weight_eth0' type='string' description='Debit mesure sur le lien 1 (entier en Mbps)' />
-			<variable name='ag_force_eth0_0' type='ip' description='Destination(s) forcées sur le lien 2' multi='True'/>
+			<variable name='ag_force_eth0_0' type='ip' description='Destination(s) forcees sur le lien 2' multi='True'/>
 			<variable name='ag_dns_eth0_0' type='ip' description='Adresse(s) du(des) dns sur le lien 2' multi='True'/>
-			<variable name='ag_weight_eth0_0' type='string' description='Débit mesuré sur le lien 2 (entier en Mbps)' />
-			<variable name='ag_pause' type='Number' description="Délai entre les tests d'état (en secondes)" >
+			<variable name='ag_weight_eth0_0' type='string' description='Debit mesure sur le lien 2 (entier en Mbps)' />
+			<variable name='ag_pause' type='Number' description='Delai entre les tests d etat (en secondes)' >
 				<value>10</value>
 			</variable>
-			<variable name='ag_timeout' type='Number' description='Timeout de la requête DNS (en secondes)' >
+			<variable name='ag_timeout' type='Number' description='TimeOut de la requete DNS (en secondes)' >
 				<value>1</value>
 			</variable>
-			<variable name='ag_testdns' type='string' description='Première Adresse DNS testée' >
+			<variable name='ag_testdns' type='string' description='Premiere Adresse DNS testee' >
 				<value>www.google.com</value>
 			</variable>
-			<variable name='ag_testdns2' type='string' description='Seconde Adresse DNS testée' >
+			<variable name='ag_testdns2' type='string' description='Seconde Adresse DNS testee' >
 				<value>www.ac-nantes.fr</value>
 			</variable>
-			<variable name='ag_nbsucces' type='Number' description="Nombre de succès avant changement d'état" >
+			<variable name='ag_nbsucces' type='Number' description='Nombre de succes avant changement d etat' >
 				<value>4</value>
 			</variable>
-			<variable name='ag_nbechecs' type='Number' description="Nombre d'echecs avant changement d'état" >
+			<variable name='ag_nbechecs' type='Number' description='Nombre d echecs avant changement d etat' >
 				<value>1</value>
 			</variable>
 		</family>

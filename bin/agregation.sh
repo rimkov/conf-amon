@@ -45,7 +45,9 @@ WCO=$[$[$W2*1000]/$[$W1+$W2]]
         exit 1
 }
 . /usr/share/eole/FonctionsEole
-
+#Chargement des dicos
+. ParseDico
+#
 echo "Initialisation de l'agregation de liens"
 
 # Fonction explicitant les messages d'etat
@@ -216,31 +218,31 @@ while : ; do
 			# Iproute2 sur le lien2
 			/sbin/ip route replace default scope global via $GW2 dev eth0
 			# Mangle sur le lien2
-			/sbin/iptables -t mangle -A PREROUTING -i eth1 -s %%adresse_network_eth1/%%adresse_netmask_eth1 -m state --state NEW -j CONNMARK2
-%if %%nombre_interfaces >= "3"
-			/sbin/iptables -t mangle -A PREROUTING -i eth2 -s %%adresse_network_eth2/%%adresse_netmask_eth2 -m state --state NEW -j CONNMARK2
-%end if
-%if %%nombre_interfaces >= "4"
-			/sbin/iptables -t mangle -A PREROUTING -i eth3 -s %%adresse_network_eth3/%%adresse_netmask_eth3 -m state --state NEW -j CONNMARK2
-%end if
-%if %%nombre_interfaces == "5"
-			/sbin/iptables -t mangle -A PREROUTING -i eth4 -s %%adresse_network_eth4/%%adresse_netmask_eth4 -m state --state NEW -j CONNMARK2
-%end if
+			/sbin/iptables -t mangle -A PREROUTING -i eth1 -s $adresse_network_eth1/$adresse_netmask_eth1 -m state --state NEW -j CONNMARK2
+if [ $nombre_interfaces -ge 3 ];then
+			/sbin/iptables -t mangle -A PREROUTING -i eth2 -s $adresse_network_eth2/$adresse_netmask_eth2 -m state --state NEW -j CONNMARK2
+fi
+if [ $nombre_interfaces -ge 4 ];then
+			/sbin/iptables -t mangle -A PREROUTING -i eth3 -s $adresse_network_eth3/$adresse_netmask_eth3 -m state --state NEW -j CONNMARK2
+fi
+if [ $nombre_interfaces -eq 5 ];then
+			/sbin/iptables -t mangle -A PREROUTING -i eth4 -s $adresse_network_eth4/$adresse_netmask_eth4 -m state --state NEW -j CONNMARK2
+fi
 		elif [[ $LLS1 -eq 0 && $LLS2 -eq 1 ]]; then
 			Aecho "Seul le lien 1 est actif, redirection des flux sur ce lien"
 			# Iproute2 sur le lien1
 			/sbin/ip route replace default scope global via $GW1 dev eth0
 			# Mangle sur lien1
-			/sbin/iptables -t mangle -A PREROUTING -i eth1 -s %%adresse_network_eth1/%%adresse_netmask_eth1 -m state --state NEW -j CONNMARK1
-%if %%nombre_interfaces >= "3"
-			/sbin/iptables -t mangle -A PREROUTING -i eth2 -s %%adresse_network_eth2/%%adresse_netmask_eth2 -m state --state NEW -j CONNMARK1
-%end if
-%if %%nombre_interfaces >= "4"
-			/sbin/iptables -t mangle -A PREROUTING -i eth3 -s %%adresse_network_eth3/%%adresse_netmask_eth3 -m state --state NEW -j CONNMARK1
-%end if
-%if %%nombre_interfaces == "5"
-			/sbin/iptables -t mangle -A PREROUTING -i eth4 -s %%adresse_network_eth4/%%adresse_netmask_eth4 -m state --state NEW -j CONNMARK1
-%end if
+			/sbin/iptables -t mangle -A PREROUTING -i eth1 -s $adresse_network_eth1/$adresse_netmask_eth1 -m state --state NEW -j CONNMARK1
+if [ $nombre_interfaces -ge 3 ];then
+			/sbin/iptables -t mangle -A PREROUTING -i eth2 -s $adresse_network_eth2/$adresse_netmask_eth2 -m state --state NEW -j CONNMARK1
+fi
+if [ $nombre_interfaces -ge 4 ];then
+			/sbin/iptables -t mangle -A PREROUTING -i eth3 -s $adresse_network_eth3/$adresse_netmask_eth3 -m state --state NEW -j CONNMARK1
+fi
+if [ $nombre_interfaces -eq 5 ];then
+			/sbin/iptables -t mangle -A PREROUTING -i eth4 -s $adresse_network_eth4/$adresse_netmask_eth4 -m state --state NEW -j CONNMARK1
+fi
 			# rechargement des tunnels
 			/usr/share/eole/magic-rvp &
 		elif [[ $LLS1 -eq 0 && $LLS2 -eq 0 ]]; then
@@ -248,34 +250,34 @@ while : ; do
 			# Iproute2 sur les 2 liens
 			/sbin/ip route replace default scope global nexthop via $GW1 dev eth0 weight $W1 nexthop via $GW2 dev eth0 weight $W2
 			# Mangle sur les 2 liens
-			/sbin/iptables -t mangle -A PREROUTING -i eth1 -s %%adresse_network_eth1/%%adresse_netmask_eth1 -m state --state NEW -j CONNMARK1
-			/sbin/iptables -t mangle -A PREROUTING -i eth1 -s %%adresse_network_eth1/%%adresse_netmask_eth1 -m state --state NEW -m statistic --mode random --probability 0.$WCO -j CONNMARK2
-%if %%nombre_interfaces >= "3"
-			/sbin/iptables -t mangle -A PREROUTING -i eth2 -s %%adresse_network_eth2/%%adresse_netmask_eth2 -m state --state NEW -j CONNMARK1
-			/sbin/iptables -t mangle -A PREROUTING -i eth2 -s %%adresse_network_eth2/%%adresse_netmask_eth2 -m state --state NEW -m statistic --mode random --probability 0.$WCO -j CONNMARK2
-%end if
-%if %%nombre_interfaces >= "4"
-			/sbin/iptables -t mangle -A PREROUTING -i eth3 -s %%adresse_network_eth3/%%adresse_netmask_eth3 -m state --state NEW -j CONNMARK1
-			/sbin/iptables -t mangle -A PREROUTING -i eth3 -s %%adresse_network_eth3/%%adresse_netmask_eth3 -m state --state NEW -m statistic --mode random --probability 0.$WCO -j CONNMARK2
-%end if
-%if %%nombre_interfaces == "5"
-			/sbin/iptables -t mangle -A PREROUTING -i eth4 -s %%adresse_network_eth4/%%adresse_netmask_eth4 -m state --state NEW -j CONNMARK1
-			/sbin/iptables -t mangle -A PREROUTING -i eth4 -s %%adresse_network_eth4/%%adresse_netmask_eth4 -m state --state NEW -m statistic --mode random --probability 0.$WCO -j CONNMARK2
-%end if
+			/sbin/iptables -t mangle -A PREROUTING -i eth1 -s $adresse_network_eth1/$adresse_netmask_eth1 -m state --state NEW -j CONNMARK1
+			/sbin/iptables -t mangle -A PREROUTING -i eth1 -s $adresse_network_eth1/$adresse_netmask_eth1 -m state --state NEW -m statistic --mode random --probability 0.$WCO -j CONNMARK2
+if [ $nombre_interfaces -ge 3 ];then
+			/sbin/iptables -t mangle -A PREROUTING -i eth2 -s $adresse_network_eth2/$adresse_netmask_eth2 -m state --state NEW -j CONNMARK1
+			/sbin/iptables -t mangle -A PREROUTING -i eth2 -s $adresse_network_eth2/$adresse_netmask_eth2 -m state --state NEW -m statistic --mode random --probability 0.$WCO -j CONNMARK2
+fi
+if [ $nombre_interfaces -ge 4 ];then
+			/sbin/iptables -t mangle -A PREROUTING -i eth3 -s $adresse_network_eth3/$adresse_netmask_eth3 -m state --state NEW -j CONNMARK1
+			/sbin/iptables -t mangle -A PREROUTING -i eth3 -s $adresse_network_eth3/$adresse_netmask_eth3 -m state --state NEW -m statistic --mode random --probability 0.$WCO -j CONNMARK2
+fi
+if [ $nombre_interfaces -eq 5 ];then
+			/sbin/iptables -t mangle -A PREROUTING -i eth4 -s $adresse_network_eth4/$adresse_netmask_eth4 -m state --state NEW -j CONNMARK1
+			/sbin/iptables -t mangle -A PREROUTING -i eth4 -s $adresse_network_eth4/$adresse_netmask_eth4 -m state --state NEW -m statistic --mode random --probability 0.$WCO -j CONNMARK2
+fi
 			# rechargement des tunnels
 			/usr/share/eole/magic-rvp &
 		fi
 		# Restauration des marques
-		/sbin/iptables -t mangle -A PREROUTING -i eth1 -s %%adresse_network_eth1/%%adresse_netmask_eth1 -j RESTOREMARK
-%if %%nombre_interfaces >= "3"
-		/sbin/iptables -t mangle -A PREROUTING -i eth2 -s %%adresse_network_eth2/%%adresse_netmask_eth2 -j RESTOREMARK
-%end if
-%if %%nombre_interfaces >= "4"
-		/sbin/iptables -t mangle -A PREROUTING -i eth3 -s %%adresse_network_eth3/%%adresse_netmask_eth3 -j RESTOREMARK
-%end if
-%if %%nombre_interfaces == "5"
-		/sbin/iptables -t mangle -A PREROUTING -i eth4 -s %%adresse_network_eth4/%%adresse_netmask_eth4 -j RESTOREMARK
-%end if
+		/sbin/iptables -t mangle -A PREROUTING -i eth1 -s $adresse_network_eth1/$adresse_netmask_eth1 -j RESTOREMARK
+if [ $nombre_interfaces -ge 3 ];then
+		/sbin/iptables -t mangle -A PREROUTING -i eth2 -s $adresse_network_eth2/$adresse_netmask_eth2 -j RESTOREMARK
+fi
+if [ $nombre_interfaces -ge 4 ];then
+		/sbin/iptables -t mangle -A PREROUTING -i eth3 -s $adresse_network_eth3/$adresse_netmask_eth3 -j RESTOREMARK
+fi
+if [ $nombre_interfaces -eq 5 ];then
+		/sbin/iptables -t mangle -A PREROUTING -i eth4 -s $adresse_network_eth4/$adresse_netmask_eth4 -j RESTOREMARK
+fi
 	fi
 
     if [ $PAUSE -le 5 ];then
