@@ -73,7 +73,4 @@ then
 	/etc/init.d/freeradius stop >/dev/null 2>&1
 fi
 
-# reenregistrement des sondes
-/usr/share/eole/enregistrement_sonde.sh reconf $EAD
-
 echo
