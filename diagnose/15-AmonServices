@@ -57,7 +57,9 @@ echo
 EchoGras "*** Validité des certificats"
 if [ $active_nufw == 'oui' ] && [ ! $nuauth_tls_cert = '' ]; then
 	TestCerts $nuauth_tls_cert 10 "certificat expiré"
+	TestCerts /etc/nufw/certs/nufw-cert.crt 10 "certificat expiré"
 fi
+
 TestCerts /etc/ssl/certs/eole.crt 10 "certificat expiré"
 
 exit 0
