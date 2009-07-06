@@ -1,3 +1,17 @@
+conf-amon (2.2-eole159) eole-2.2-dev; urgency=low
+
+  * dansguardian*.conf : ajout de loguseragent = off
+  * bug #1269 (site re-autorises non logge par DG), logexceptionhits mis
+    a 2 (au lieu de 1)
+  * modif certifs pour freeradius
+  * suppression du re-enregistrement des sondes dans le reconfigure
+  * menage enregistrement_sonde et correction des droits
+  * Changement des certificats nufw + verification
+  * ameliorations du script de gestion de l'agregation de lien
+    (effectuees par Gabriel Corgne de l'academie de Nantes)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 06 Jul 2009 10:46:49 +0200
+
 conf-amon (2.2-eole158) eole-2.2-dev; urgency=low
 
   * ajout du script d'init samhain suite au bug :
