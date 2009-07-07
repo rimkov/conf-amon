@@ -5,7 +5,7 @@
 EchoGras "*** Services Locaux"
 TestService DNS localhost:53    	
 TestService "Proxy"  127.0.0.1:8080    	
-TestService "EAD2 " localhost:4201
+TestService "EAD Server" localhost:4201
 TestService "Filtre Web ($nom_machine_eth1)" $adresse_ip_eth1:3128
 if [ $nombre_interfaces -gt 2 ]
 then
@@ -24,14 +24,14 @@ while [ $Cpt -lt $nombre_interfaces ]; do
 	echo "Sur l'interface réseau $Eth"
 	TestService "SSH" $Adresse:22    
 	if [ $ead_web == 'oui' ];then
-		TestService "EAD-Web" $Adresse:4200   
+		TestService "EAD Web" $Adresse:4200   
 	else
-		Inactif "EAD-Web"
+		Inactif "EAD Web"
 	fi
    else
 	echo "Sur l'interface réseau $Eth"
         Inactif "SSH"
-        Inactif "EAD-Web"
+        Inactif "EAD Web"
    fi
    let Cpt=Cpt+1 
 done
