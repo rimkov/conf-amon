@@ -1,3 +1,14 @@
+conf-amon (2.2-eole161) eole-2.2-proposed; urgency=low
+
+  * Ajout des services kerberos dans le fichier des services
+  * correction erreur commit
+  * suppression des services kerberos quand celui ci est non actif
+  * conf-amon/reconf-amon.sh : suppression test -ead inutilise
+  * conf-amon : suppression desactivation freeradius dans reconf-amon.sh
+    car deja gere par le gestionnaire de services
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 15 Jul 2009 14:22:28 +0200
+
 conf-amon (2.2-eole160) eole-2.2-proposed; urgency=low
 
   * cosmetique diagnose
