@@ -66,11 +66,4 @@ then
 	update-rc.d -f rvp remove >/dev/null 2>&1
 fi
 
-# On supprime le lancement de freeradius s'il n'est pas utilisé
-if [ "freeradius" == "non" ]
-then
-	update-rc.d -f freeradius remove >/dev/null 2>&1
-	/etc/init.d/freeradius stop >/dev/null 2>&1
-fi
-
 echo
