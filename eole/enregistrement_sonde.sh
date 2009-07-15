@@ -23,12 +23,12 @@ test_serv() {
   if [ "$?" -ne "0" ]; then
     EchoRouge " Attention ! Le serveur d'enregistrement Prelude n'est pas joignable ($adresse_ip_prelude_manager:5553)"
     EchoRouge " Il doit être lancé sur le serveur Prelude-Manager"
-    echo -n "Voulez-vous continuer l'enregistrement [O/N] ? "
-    read Rep
-    if [ "oui" != "$Rep" ] && [ "o" != "$Rep" ] && [ "O" != "$Rep" ]; then
-      return 1
-    fi
-    return 0
+    #echo -n "Voulez-vous continuer l'enregistrement [O/N] ? "
+    #read Rep
+    #if [ "oui" != "$Rep" ] && [ "o" != "$Rep" ] && [ "O" != "$Rep" ]; then
+    #  return 1
+    #fi
+    #return 0
   fi
 }
 

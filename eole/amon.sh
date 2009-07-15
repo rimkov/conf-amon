@@ -69,6 +69,8 @@ if [ "$type_squid_auth" == "NTLM/KERBEROS" ]; then
 else
   /usr/sbin/update-rc.d -f samba remove
   /usr/sbin/update-rc.d -f winbind remove
+  /usr/sbin/update-rc.d -f krb5-admin-server remove
+  /usr/sbin/update-rc.d -f krb5-kdc remove
 fi
 
 #Enregistrement des sondes
