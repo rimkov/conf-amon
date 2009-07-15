@@ -27,6 +27,8 @@ ntp
 %if %%type_squid_auth == 'NTLM/KERBEROS'
 samba
 winbind
+krb5-admin-server
+krb5-kdc
 %end if
 %if %%active_nufw == 'oui'
 nufw
