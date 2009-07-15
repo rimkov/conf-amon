@@ -15,15 +15,6 @@ if [ "$adresse_ip_eth0" = "" ]; then
         echo "Et relancer le reconfigure"
         exit 1
 fi
-#
-
-for i in $*
-do
-        if [ "-ead" == "$i" ]
-        then
-                EAD='-ead'
-        fi
-done
 
 ## On regénère les db du dns
 /usr/share/eole/gen_dns
