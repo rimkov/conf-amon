@@ -72,7 +72,7 @@ touch $FileCpt
 Rep=""
 while [ 1 ]
 do
-MenuBox "Votre Choix"  Rep "1 Diagnostique_Amon 2 Reconfiguration 3 Paquets_en_Maj 4 Mise_A_Jour 5 Maj_blacklists 8 Redemarrer_Serveur 9 Arret_Serveur ! Shell_Linux  Q Quitter"
+MenuBox "Votre Choix"  Rep "1 Diagnostic_Amon 2 Reconfiguration 3 Paquets_en_Maj 4 Mise_A_Jour 5 Maj_blacklists 8 Redemarrer_Serveur 9 Arret_Serveur ! Shell_Linux  Q Quitter"
 
 if [ "$Rep" == "CANCEL" ] 
 then
