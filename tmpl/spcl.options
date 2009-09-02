@@ -81,7 +81,10 @@ acl "reseaueth1" {
 zone "in.ac-aix-marseille.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
+
 	}; 
 	forward only;
 };
@@ -90,7 +93,10 @@ zone "in.ac-aix-marseille.fr" in {
 zone "in.ac-amiens.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
+
 	}; 
 	forward only;
 };
@@ -99,7 +105,9 @@ zone "in.ac-amiens.fr" in {
 zone "in.ac-besancon.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -108,7 +116,9 @@ zone "in.ac-besancon.fr" in {
 zone "in.ac-bordeaux.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -117,7 +127,9 @@ zone "in.ac-bordeaux.fr" in {
 zone "in.ac-caen.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -126,7 +138,9 @@ zone "in.ac-caen.fr" in {
 zone "in.ac-clermont.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -135,7 +149,9 @@ zone "in.ac-clermont.fr" in {
 zone "in.ac-corse.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -144,7 +160,9 @@ zone "in.ac-corse.fr" in {
 zone "in.ac-creteil.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -153,7 +171,9 @@ zone "in.ac-creteil.fr" in {
 zone "in.ac-dijon.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -162,7 +182,9 @@ zone "in.ac-dijon.fr" in {
 zone "in.ac-grenoble.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -171,7 +193,9 @@ zone "in.ac-grenoble.fr" in {
 zone "in.ac-guadeloupe.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -180,7 +204,9 @@ zone "in.ac-guadeloupe.fr" in {
 zone "in.ac-guyane.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -189,7 +215,9 @@ zone "in.ac-guyane.fr" in {
 zone "in.ac-lille.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -198,7 +226,9 @@ zone "in.ac-lille.fr" in {
 zone "in.ac-limoges.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -207,7 +237,9 @@ zone "in.ac-limoges.fr" in {
 zone "in.ac-lyon.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -216,7 +248,9 @@ zone "in.ac-lyon.fr" in {
 zone "in.ac-martinique.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -225,7 +259,9 @@ zone "in.ac-martinique.fr" in {
 zone "in.ac-mayotte.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -234,7 +270,9 @@ zone "in.ac-mayotte.fr" in {
 zone "in.ac-montpellier.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -243,7 +281,9 @@ zone "in.ac-montpellier.fr" in {
 zone "in.ac-nancy-metz.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -252,7 +292,9 @@ zone "in.ac-nancy-metz.fr" in {
 zone "in.ac-nantes.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -261,7 +303,9 @@ zone "in.ac-nantes.fr" in {
 zone "in.ac-nice.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -270,7 +314,9 @@ zone "in.ac-nice.fr" in {
 zone "in.ac-noumea.nc" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -279,7 +325,9 @@ zone "in.ac-noumea.nc" in {
 zone "in.ac-orleans-tours.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -288,7 +336,9 @@ zone "in.ac-orleans-tours.fr" in {
 zone "in.ac-paris.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -297,7 +347,9 @@ zone "in.ac-paris.fr" in {
 zone "in.ac-poitiers.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -306,7 +358,9 @@ zone "in.ac-poitiers.fr" in {
 zone "in.ac-polynesie.pf" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -315,7 +369,9 @@ zone "in.ac-polynesie.pf" in {
 zone "in.ac-reims.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -324,7 +380,9 @@ zone "in.ac-reims.fr" in {
 zone "in.ac-rennes.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -333,7 +391,9 @@ zone "in.ac-rennes.fr" in {
 zone "in.ac-reunion.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -342,7 +402,9 @@ zone "in.ac-reunion.fr" in {
 zone "in.ac-rouen.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -351,7 +413,9 @@ zone "in.ac-rouen.fr" in {
 zone "in.ac-strasbourg.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -360,7 +424,9 @@ zone "in.ac-strasbourg.fr" in {
 zone "in.ac-toulouse.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -369,7 +435,9 @@ zone "in.ac-toulouse.fr" in {
 zone "in.ac-versailles.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -378,7 +446,9 @@ zone "in.ac-versailles.fr" in {
 zone "in.acv.orion.education.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -387,7 +457,9 @@ zone "in.acv.orion.education.fr" in {
 zone "in.adc.education.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -396,7 +468,9 @@ zone "in.adc.education.fr" in {
 zone "ader.gouv.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -405,7 +479,9 @@ zone "ader.gouv.fr" in {
 zone "in.orion.education.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -414,7 +490,9 @@ zone "in.orion.education.fr" in {
 zone "intranet.pleiade.education.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 };
@@ -423,7 +501,9 @@ zone "intranet.pleiade.education.fr" in {
 zone "publication.pleiade.education.fr" in {
 	type forward; 
 	forwarders { 
-	%%adresse_dns_agriates;
+%for %%var_iter in %%adresse_dns_agriates
+	%%var_iter;
+%end for
 	}; 
 	forward only;
 %end if

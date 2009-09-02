@@ -394,7 +394,7 @@
  			<variable name='agriates_member' type='string' description='Serveur membre du réseau AGRIATES' >
  				<value>non</value>
  			</variable>
-			<variable name='adresse_dns_agriates' type='ip' description='Adresse du DNS permettant de resoudre les in.ac-acad.fr' />
+			<variable name='adresse_dns_agriates' type='ip' description='Adresse du DNS permettant de resoudre les in.ac-acad.fr' multi='True'/>
  	                <variable name='adresse_network_zone_rvp' type='ip' description='Adresse réseau de la zone rvp' multi='True' />
   	                <variable name='adresse_netmask_zone_rvp' type='netmask' description='Masque de sous-réseau de la zone rvp' />
   	                <variable name='autoriser_rvp_autres' type='string' description="Autoriser d'autres zones que eth1 à accéder à ce réseau">
