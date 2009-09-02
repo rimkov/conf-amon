@@ -425,6 +425,9 @@
 		<family name='Proxy-pere' mode='expert'>
  			<variable name='nom_cache_pere' type='string' description='Nom ou adresse IP du serveur mandataire Web parent'/>
  			<variable name='port_cache_pere' type='string' description='Port du serveur mandataire Web parent'/>
+ 			<variable name='proxy_pere_rvp' type='string' description="Accés aux zone RVP en passant par le proxy père global ?">
+				<value>oui</value>
+			</variable>
  			<variable name='nom_cache_pere_zone' type='string' description='Utiliser le serveur mandataire Web parent pour la zone' multi='True' />
  			<variable name='port_cache_pere_zone' type='string' description='Port du serveur mandataire Web parent pour la zone'/>
  			<variable name='nom_zone_dns_cache' type='string' description='Nom DNS de la zone accessible via ce cache père'/>
@@ -879,6 +882,9 @@
 		</check>
                 <check name="valid_enum" target="autoriser_rvp_autres">
                         <param>['oui','non']</param>
+                </check>
+                <check name="valid_enum" target="proxy_pere_rvp">
+                  <param>['oui','non']</param>
                 </check>
                 <check name="valid_enum" target="autoriser_proxy_autres">
                   <param>['oui','non']</param>

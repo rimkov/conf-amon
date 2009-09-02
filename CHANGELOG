@@ -1,4 +1,7 @@
 Conf-AmonNG
+2/09/09 (sam)
+- squid.conf + dico : ajout d'une variable permettant de faire passer ou non le rvp par le proxy pere global lorsqu'il est défini (Bug 1366)
+
 25/06/09 (sam)
 - améliorations du script de gestion de l'agregation de lien (effectuées par Gabriel Corgne de l'académie de Nantes)
  
