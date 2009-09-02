@@ -1,3 +1,11 @@
+conf-amon (2.2-eole164) eole-2.2-dev; urgency=low
+
+  * adresse dns agriates multi-value (bug 1363)
+  * ajout d'une variable permettant de faire passer ou non le rvp par le
+    proxy pere global lorsqu'il est defini (Bug 1366)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 02 Sep 2009 15:09:02 +0200
+
 conf-amon (2.2-eole163) eole-2.2-security; urgency=low
 
   * branche from_tags_eole162 : report fix sur 4_agregation.xml
