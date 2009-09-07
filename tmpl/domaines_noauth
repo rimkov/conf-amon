@@ -9,6 +9,9 @@
 .update.microsoft.com
 .c.microsoft.com
 .windowsupdate.com
+.genuine.microsoft.com
+.crl.microsoft.com
+.mpa.one.microsoft.com
 .database.clamav.net
 .pool.ntp.org
 .services.openoffice.org
