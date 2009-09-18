@@ -60,6 +60,10 @@ if [ $active_nufw == 'oui' ] && [ ! $nuauth_tls_cert = '' ]; then
 	TestCerts /etc/nufw/certs/nufw-cert.crt 10 "certificat expiré"
 fi
 
+if [ "$server_cert" != "/etc/ssl/certs/eole.crt" ]
+then
+	TestCerts $server_cert 10 "certificat expiré"
+fi
 TestCerts /etc/ssl/certs/eole.crt 10 "certificat expiré"
 
 exit 0
