@@ -51,7 +51,7 @@
   %end if
  %end for
 %else if %%install_scribe_dmz == 'oui' and not %%is_defined('nom_dmz')
- %%ip_serveur_scribe_dmz		%%nom_serveur_scribe_dmz.%%nom_domaine_local %%nom_serveur_scribe_dmz
+%%ip_serveur_scribe_dmz		%%nom_serveur_scribe_dmz.%%nom_domaine_local %%nom_serveur_scribe_dmz
 %end if
 
 %for %%hosts in %%nom_host_dns
@@ -60,4 +60,21 @@
 
 %if %%type_squid_auth == 'NTLM/KERBEROS'
 %%ip_serveur_krb    %%nom_serveur_krb.%%nom_domaine_krb %%nom_serveur_krb
+%end if
+# Configuration pour envole
+%def pop_http(%%url)
+%if %%url.startswith('http://')
+%%url[7:]%slurp
+%else
+%%url[8:]%slurp
+%end if
+%end def
+%if %%is_defined('activer_revprox') and %%activer_revprox == 'oui'
+%set %%buffer=[] 
+%for %%proxied in %%revprox_domainname 
+%if %%proxied.value not in %%buffer and %%proxied.value and %%proxied.revprox_url
+%%proxied.value                %%pop_http(%%proxied.revprox_url)
+%%buffer.append(%%proxied.value)%slurp
+%end if
+%end for
 %end if
