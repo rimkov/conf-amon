@@ -1,3 +1,12 @@
+conf-amon (2.2-eole165) eole-2.2-dev; urgency=low
+
+  * enregistrement dans le /etc/hosts pour les domaines definit dans le
+    reverseproxy (bug 1411)
+  * prise en compte certif definis dans conf dans nginx et diagnose
+  * ajout de domaines microsoft a ne pas authentifier
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 22 Sep 2009 15:13:32 +0200
+
 conf-amon (2.2-eole164) eole-2.2-dev; urgency=low
 
   * adresse dns agriates multi-value (bug 1363)
