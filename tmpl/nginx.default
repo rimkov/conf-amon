@@ -1,3 +1,5 @@
+client_max_body_size 4M;
+client_body_buffer_size 128k;
 %set %%lendom=0
 %for %%location in %%revprox_domainname
 %set %%lendom=%%max(%%lendom,%%len(%%location.value))
@@ -39,7 +41,7 @@ server_names_hash_bucket_size 128;
         }
 %end if % if %%location.value == %%revprox
 %end for % for %%location in %%revprox_domainname
-%end def 
+%end def
 %set %%sso_local=False
 %if %%sso == 'oui'
 %if %%adresse_ip_eth0 == %%adresse_ip_sso
@@ -129,6 +131,23 @@ server {
         location / {
                 proxy_pass              http://%%revprox_poshadmin:7070/;
                 proxy_set_header        Host $host;
+                proxy_set_header        X-Real-IP $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        Destination   $dest;
+                set                     $dest  $http_destination;
+        }
+}
+%end if
+%if %%is_defined('revprox_ead') and %%is_defined('revprox_ead_port')
+server {
+        listen %%revprox_ead_port;
+        ssl    on;
+        ssl_certificate    %%server_cert;
+        ssl_certificate_key     /etc/ssl/certs/eole.key;
+        access_log  /var/log/nginx/localhost.access-eadscribe.log;
+        location / {
+                proxy_pass              https://%%revprox_ead:4200/;
+                proxy_set_header        Host $host:$server_port;
                 proxy_set_header        X-Real-IP $remote_addr;
                 proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header        Destination   $dest;

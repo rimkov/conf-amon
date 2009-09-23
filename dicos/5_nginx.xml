@@ -15,6 +15,10 @@
 		<family name='Reverse proxy' hidden='True'>
 			<variable name='revprox_sso' type='string' description="IP ou domaine du serveur SSO" />
 			<variable name='revprox_poshadmin' type='string' description="IP ou domaine du serveur d'administration EnvOLE 2" />
+            <variable name='revprox_ead' type='string' description="IP du Scribe" hidden='True' />
+            <variable name='revprox_ead_port' type='number' description="Port d'accès à l'ead du scribe depuis l'extérieur" hidden='True'>
+                <value>4203</value>
+            </variable>
 			<variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
 			<variable name='revprox_rep' type='string' description="Répertoire ou nom de la page à rediriger">
 				<value>/</value>
@@ -46,7 +50,11 @@
 		</check>
 		<check name='valid_enum' target='revprox_https'>
 			<param>['oui','non']</param>
-		</check>
+        </check>
+    <!-- **** Remplissage automatique **** -->
+    <fill name="calc_val" target='revprox_ead'>
+        <param type='eole' name='valeur'>revprox_poshadmin</param>
+        </fill>
 	<!-- **** Conditions **** -->
 		<condition name='hidden_if_in' source='activer_revprox'>
 			<param>non</param>
