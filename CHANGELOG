@@ -1,4 +1,7 @@
 Conf-AmonNG
+23/09/09 (sam)
+-squid.conf : modification des http_access lorsqu'on est en mode pas authentifié car la règle !Reserved entre en conflit avec la régle du dessus qui autorise les connexions à Reserved. (bug 1420)
+
 7/09/09 (sam)
 ajout de domaines microsoft à ne pas authentifier
 
