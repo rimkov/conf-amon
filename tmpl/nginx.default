@@ -93,9 +93,10 @@ server {
 	listen 80;
 	server_name %%revprox;
 	access_log  /var/log/nginx/access.log;
-	root /var/www/nginx-default/;
-	error_page   403 404      /40x.html;
-	error_page   502 503 504  /50x.html;
+	error_page   403 404 502 503 504  /nginx.html;
+    location = /nginx.html{
+        root /var/www/nginx-default;
+    }
 %if %%revprox.revprox_http == 'redirige vers https'
 	%%locationDomain(%%revprox_domainname, %%revprox.value, True)
 %else
@@ -113,9 +114,10 @@ server {
         ssl_certificate_key     /etc/ssl/certs/eole.key;
         access_log  /var/log/nginx/revprox.revprox_http.access-ssl.log;
 	server_name %%revprox;
-	root /var/www/nginx-default/;
-	error_page   403 404      /40x.html;
-	error_page   502 503 504  /50x.html;
+	error_page   403 404 502 503 504  /nginx.html;
+    location = /nginx.html{
+        root /var/www/nginx-default;
+    }
 %%locationDomain(%%revprox_domainname, %%revprox.value)
 }
 %end if % if %%revprox.revprox_http == 'oui'
@@ -128,6 +130,10 @@ server {
 server {
         listen 7070;
         access_log  /var/log/nginx/localhost.access-poshadmin.log;
+	    error_page   403 404 502 503 504  /nginx.html;
+        location = /nginx.html{
+            root /var/www/nginx-default;
+        }
         location / {
                 proxy_pass              http://%%revprox_poshadmin:7070/;
                 proxy_set_header        Host $host;
@@ -145,6 +151,10 @@ server {
         ssl_certificate    %%server_cert;
         ssl_certificate_key     /etc/ssl/certs/eole.key;
         access_log  /var/log/nginx/localhost.access-eadscribe.log;
+	    error_page   403 404 502 503 504  /nginx.html;
+        location = /nginx.html{
+            root /var/www/nginx-default;
+        }
         location / {
                 proxy_pass              https://%%revprox_ead:4200/;
                 proxy_set_header        Host $host:$server_port;

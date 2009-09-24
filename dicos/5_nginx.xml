@@ -3,6 +3,7 @@
 <creole>
 	<files>
 	<file name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
+    <file name='/var/www/nginx.default/nginx.html' source='nginx.html'/>
 	</files>
 	<!--************************************************************************************************* -->
 	<variables>
