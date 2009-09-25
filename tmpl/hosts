@@ -70,10 +70,10 @@
 %end if
 %end def
 %if %%is_defined('activer_revprox') and %%activer_revprox == 'oui'
-%set %%buffer=[] 
-%for %%proxied in %%revprox_domainname 
+%set %%buffer=[]
+%for %%proxied in %%revprox_domainname
 %if %%proxied.value not in %%buffer and %%proxied.value and %%proxied.revprox_url
-%%proxied.value                %%pop_http(%%proxied.revprox_url)
+%%pop_http(%%proxied.revprox_url)                %%proxied.value
 %%buffer.append(%%proxied.value)%slurp
 %end if
 %end for
