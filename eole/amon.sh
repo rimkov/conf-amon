@@ -55,7 +55,7 @@ then
 fi
 
 # droit pour ces certificats nufw/nuauth
-#identique a amon.sh
+# identique a reconf-amon.sh
 if [ "$active_nufw" == "oui" ]
 then
 	[ ! "$nuauth_tls_cacert" == "none" ] && chown root:nuauth $nuauth_tls_cacert && chmod 440 $nuauth_tls_cacert

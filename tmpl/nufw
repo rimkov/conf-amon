@@ -21,6 +21,6 @@ NUFW_VERBOSITY="vv"
 #NUFW_TRACK_SIZE=1000
 
 #SSL certificates and keys
-NUFW_SSL_CERTIFICATE="/etc/nufw/certs/nufw-cert.crt"
-NUFW_SSL_KEY="/etc/nufw/certs/nufw-cert.key"
+NUFW_SSL_CERTIFICATE="/etc/nufw/certs/nufw-eole.crt"
+NUFW_SSL_KEY="/etc/nufw/certs/nufw-eole.key"
 

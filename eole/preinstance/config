@@ -18,9 +18,6 @@ touch "/etc/squid/domaines_nocache_acad"
 touch "/etc/squid/src_noauth_acad"
 touch "/etc/squid/src_nocache_acad"
 
-# FIX pour nuauth
-chmod 600 /etc/nufw/certs/nuauth-key.pem
-
 # Creation d'un utilisateur amon2 pour la configuration de la zone 2
 id amon &>/dev/null
 if [ $? -eq 0 ]
