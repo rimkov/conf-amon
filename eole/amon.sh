@@ -44,7 +44,7 @@ then
 	echo "ATTENTION : vous aurez besoin de la disquette"
 	echo "contenant les fichiers de configuration"
 	echo
-	echo "Voulez vous configurer le Reseau Virtuel Privé maintenant ? (oui/non)"
+	echo "Voulez-vous configurer le Réseau Virtuel Privé maintenant ? [oui/non]"
 	read Rep
 
 	if [ "$Rep" = "oui" -o "$Rep" = "o" -o "$Rep" = "O" ]
