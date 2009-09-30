@@ -73,8 +73,8 @@ else
   /usr/sbin/update-rc.d -f krb5-kdc remove
 fi
 
-#Enregistrement des sondes
-/usr/share/eole/enregistrement_sonde.sh enreg
+#Enregistrement des sondes (desactivé si pas de Zephir)
+#/usr/share/eole/enregistrement_sonde.sh enreg
 
 # FIXME : plus utilisé sur 2.2
 # creation base rrdtools
