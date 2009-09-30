@@ -144,24 +144,25 @@ server {
         }
 }
 %end if
-%if %%is_defined('revprox_ead') and %%is_defined('revprox_ead_port')
-server {
-        listen %%revprox_ead_port;
-        ssl    on;
-        ssl_certificate    %%server_cert;
-        ssl_certificate_key     /etc/ssl/certs/eole.key;
-        access_log  /var/log/nginx/localhost.access-eadscribe.log;
-	    error_page   403 404 502 503 504  /nginx.html;
-        location = /nginx.html{
-            root /var/www/nginx-default;
-        }
-        location / {
-                proxy_pass              https://%%revprox_ead:4200/;
-                proxy_set_header        Host $host:$server_port;
-                proxy_set_header        X-Real-IP $remote_addr;
-                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header        Destination   $dest;
-                set                     $dest  $http_destination;
-        }
-}
-%end if
+## Redirection de l'ead d'un scribe sur le port 4203 (à voir pour plus tard)
+##%if %%is_defined('revprox_ead') and %%is_defined('revprox_ead_port')
+##server {
+##        listen %%revprox_ead_port;
+##        ssl    on;
+##        ssl_certificate    %%server_cert;
+##        ssl_certificate_key     /etc/ssl/certs/eole.key;
+##        access_log  /var/log/nginx/localhost.access-eadscribe.log;
+##	    error_page   403 404 502 503 504  /nginx.html;
+##        location = /nginx.html{
+##            root /var/www/nginx-default;
+##        }
+##        location / {
+##                proxy_pass              https://%%revprox_ead:4200/;
+##                proxy_set_header        Host $host:$server_port;
+##                proxy_set_header        X-Real-IP $remote_addr;
+##                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+##                proxy_set_header        Destination   $dest;
+##                set                     $dest  $http_destination;
+##        }
+##}
+##%end if
