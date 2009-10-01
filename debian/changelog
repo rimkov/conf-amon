@@ -1,3 +1,10 @@
+conf-amon (2.2-eole167) eole-2.2-proposed; urgency=low
+
+  * (pas de commit depuis :  Nouveau paquet : conf-amon (2.2-eole166)
+    eole-2.2-dev (depuis trunk) )
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 01 Oct 2009 15:34:12 +0200
+
 conf-amon (2.2-eole166) eole-2.2-dev; urgency=low
 
   * Suppression des fichiers rsyslog et dicos log
