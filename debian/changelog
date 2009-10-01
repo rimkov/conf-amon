@@ -1,3 +1,23 @@
+conf-amon (2.2-eole166) eole-2.2-dev; urgency=low
+
+  * Suppression des fichiers rsyslog et dicos log
+  * typo
+  * Suppression de l'envoie du CA rsyslog maintenant fait par Zephir
+  * Suppression de l'enregistrement des sondes si pas de Zephir
+  * Nginx : commentaire pour la redirection de l'ead scribe
+  * synchro trunk => branche
+  * conf-amon : correction de la gestion des certificats nufw/nuauth
+  * Nginx : correction du dico
+  * Conf amon : correction du host
+  * Nginx : page affichee lors d'une erreur http
+  * squid.conf : ajout du port 7070 dans SSL_Ports
+  * conf-amon : dicos et tmpl nginx, redirection de l'ead d'un scribe
+    sur le port 4203 et elargissement de la taille max de fichier
+  * correction bug 1420 : pb de connexion a l'ead a travers le proxy
+    lorsqu'on est pas en mode authentifie
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 01 Oct 2009 13:57:09 +0200
+
 conf-amon (2.2-eole165) eole-2.2-dev; urgency=low
 
   * enregistrement dans le /etc/hosts pour les domaines definit dans le
