@@ -15,14 +15,14 @@ protocol="bittorrent edonkey"
 
 start() {
 	log_begin_msg "Starting l7filter"
-	/sbin/iptables -L -n |grep layer7 >/dev/null
+	/sbin/iptables -L -n |grep l7proto >/dev/null
 	if [ $? == "0" ]
 	then
-		for i in $procotol; do
-		/sbin/iptables -t mangle -D POSTROUTING -m layer7 --l7dir /etc/l7-protocols/protocols --l7proto $i
-		/sbin/iptables -D FORWARD -m limit --limit 12/min -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FITLER-$i-LOG"
-		/sbin/iptables -D FORWARD -m layer7 --l7dir /etc/l7-protocols/protocols --l7proto $i -j DROP
-		done
+		for i in $protocol; do
+			/sbin/iptables -t mangle -D POSTROUTING -m layer7 --l7dir /etc/l7-protocols/protocols --l7proto $i
+			/sbin/iptables -D FORWARD -m limit --limit 12/min -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FITLER-$i-LOG"
+			/sbin/iptables -D FORWARD -m layer7 --l7dir /etc/l7-protocols/protocols --l7proto $i -j DROP
+			done
 		/sbin/iptables -D FORWARD -p udp --dport 123 -j ACCEPT
 		/sbin/iptables -D FORWARD -p udp --sport 123 -j ACCEPT
 		echo
@@ -46,7 +46,7 @@ stop() {
 	log_begin_msg "Stop l7filter"
 	for i in $protocol; do
 	/sbin/iptables -t mangle -D POSTROUTING -m layer7 --l7dir /etc/l7-protocols/protocols --l7proto $i
-	/sbin/iptables -D FORWARD -m limit --limit 12/min -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FILTER-$i-LOG"
+	/sbin/iptables -D FORWARD -m limit --limit 12/min -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FITLER-$i-LOG"
 	/sbin/iptables -D FORWARD -m layer7 --l7dir /etc/l7-protocols/protocols --l7proto $i -j DROP
 	done
 	%for %%ntp in %%serveur_ntp
