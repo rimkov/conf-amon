@@ -1,3 +1,9 @@
+conf-amon (2.2-eole168) eole-2.2-proposed; urgency=low
+
+  * correction bugs dans script de lancement de l7filter
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 02 Oct 2009 09:59:15 +0200
+
 conf-amon (2.2-eole167) eole-2.2-proposed; urgency=low
 
   * (pas de commit depuis :  Nouveau paquet : conf-amon (2.2-eole166)
