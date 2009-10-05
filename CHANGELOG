@@ -1,4 +1,7 @@
 Conf-AmonNG
+5/10/09 (sam)
+- correction bug (cosmétique) 1450 : faute de frappe dans un intitulé de log pour le p2p.
+
 23/09/09 (sam)
 -squid.conf : modification des http_access lorsqu'on est en mode pas authentifié car la règle !Reserved entre en conflit avec la régle du dessus qui autorise les connexions à Reserved. (bug 1420)
 
