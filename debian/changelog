@@ -1,3 +1,10 @@
+conf-amon (2.2-eole169) eole-2.2-proposed; urgency=low
+
+  * correction bug (cosmetique) 1450 : faute de frappe dans un intitule
+    de log pour le p2p
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 05 Oct 2009 13:15:43 +0200
+
 conf-amon (2.2-eole168) eole-2.2-proposed; urgency=low
 
   * correction bugs dans script de lancement de l7filter
