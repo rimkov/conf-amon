@@ -1,3 +1,9 @@
+conf-amon (2.2-eole171) eole-2.2-dev; urgency=low
+
+  * Suppression des fichiers relatifs a rsyslog
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 06 Oct 2009 10:36:52 +0200
+
 conf-amon (2.2-eole170) eole-2.2-proposed; urgency=low
 
   * correction d'une erreur dans radiusd.conf
