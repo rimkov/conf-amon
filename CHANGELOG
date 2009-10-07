@@ -1,4 +1,7 @@
 Conf-AmonNG
+7/10/09 (sam)
+- correction bug 1404 : problème de prise en compte du mtu si eth0 est en dhcp.
+
 5/10/09 (sam)
 - correction bug (cosmétique) 1450 : faute de frappe dans un intitulé de log pour le p2p.
 

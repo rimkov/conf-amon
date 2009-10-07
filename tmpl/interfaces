@@ -17,10 +17,16 @@ network %%adresse_network_eth0
 up ethtool -s eth0 %%debit_carte_eth0
 %end if
 gateway %%adresse_ip_gw
+%if %%valeur_mtu_eth0 != ""
+mtu %%valeur_mtu_eth0
+%end if
 %else if %%eth0_method == "dhcp"
 #support dhcp
 auto eth0
 iface eth0 inet dhcp
+%if %%valeur_mtu_eth0 != ""
+pre-up /sbin/ifconfig eth0 mtu %%valeur_mtu_eth0
+%end if
 %else if %%eth0_method == "pppoe"
 #support pppoe
 auto dsl-provider
@@ -31,9 +37,6 @@ provider dsl-provider
 iface %%pppoe_interface inet manual
 %end if
 ##
-%if %%valeur_mtu_eth0 != ""
-mtu %%valeur_mtu_eth0
-%end if
 ##
 %if %%alias_eth0 == "oui"
 %for %%alias_addr_eth0 in %%alias_ip_eth0
