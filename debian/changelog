@@ -1,3 +1,13 @@
+conf-amon (2.2-eole174) eole-2.2-proposed; urgency=low
+
+  * Passage de squid et ulogd dans rsyslog
+  * conf-amon, dictionnaires : cosmetique
+  * conf-amon : merge branche => trunk
+  * correction bug 1459 : agregation et freeradius accessible depuis
+    onglet service
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 07 Oct 2009 16:30:44 +0200
+
 conf-amon (2.2-eole173) eole-2.2-proposed; urgency=low
 
   * deplacement 1_log.xml vers eole-common
