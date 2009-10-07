@@ -4,13 +4,14 @@
         <files>
                 <file name='/usr/share/eole/dansguardian/dansguardian1.conf' />
                 <file name='/usr/share/eole/dansguardian/dansguardian2.conf' />
+		<file name='/usr/share/dansguardian/languages/french/fancydmtemplate.html' />
         </files>
         <variables>
                  <family name='dansguardian' mode='expert'>
 	                    <separators>
                 	    	<separator name='dans_num_opt_filters'>Configuration commune aux deux zones</separator>
-                	    	<separator name='maxchildren1'>Configuration de la zone 1</separator>
-                	    	<separator name='maxchildren2'>Configuration de la zone 2</separator>
+                	    	<separator name='maxchildren1'>Configuration 1</separator>
+                	    	<separator name='maxchildren2'>Configuration 2</separator>
                         </separators>
                          <variable name="dans_num_opt_filters" type="string" description='Nombre de politiques optionnelles par zone'>
                                  <value>3</value>
@@ -33,6 +34,15 @@
                         <variable name="maxagechildren1" type="number" description=''>
                                 <value>500</value>
                         </variable>
+                        <variable name="dans_cachedir1" type="string" description=''>
+				<value>/tmp</value>
+                        </variable>
+                        <variable name="dans_maxramsize1" type="number" description=''>
+				<value>5000</value>
+                        </variable>
+                        <variable name="dans_maxfilesize1" type="number" description=''>
+				<value>5000</value>
+                        </variable>
                         <variable name="unactive_dansguardian_auth1" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 1" hidden="True">
                             <value>---</value>
                          </variable>
@@ -54,6 +64,15 @@
                         </variable>
                         <variable name="maxagechildren2" type="number" description=''>
                                 <value>500</value>
+                        </variable>
+                        <variable name="dans_cachedir2" type="string" description=''>
+				<value>/tmp</value>
+                        </variable>
+                        <variable name="dans_maxramsize2" type="number" description=''>
+				<value>5000</value>
+                        </variable>
+                        <variable name="dans_maxfilesize2" type="number" description=''>
+				<value>5000</value>
                         </variable>
                         <variable name="unactive_dansguardian_auth2" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 2" hidden="True">
                             <value>---</value>
