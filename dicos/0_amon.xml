@@ -107,7 +107,7 @@
 			<variable name='install_rvp' type='string' description='Activation du RVP' >
  				<value>non</value>
  			</variable>
-			<variable name='active_nufw' type='string' description="Activation de l'authentification NuFw" >
+			<variable name='active_nufw' type='string' description="Activation de l'authentification réseau (NuFw)" >
 				<value>non</value>
 			</variable>
                         <variable name='filtrage_p2p' type='string' description="Système de filtrage P2P" >
@@ -119,13 +119,13 @@
  			<variable name='activer_bacula' type='string' description='Activation du client Bacula (sauvegardes)' >
  				<value>non</value>
 			</variable>
- 			<variable name='activer_squid_auth' type='string' description="Activation de l'authentification du proxy" >
+ 			<variable name='activer_squid_auth' type='string' description="Activation de l'authentification web (Proxy)" >
  				<value>non</value>
  			</variable>
-			<variable  name='active_sarg' type='string' description="Activation de SARG (générateur de rapport d'analyse Squid/DansGuardian)">
+			<variable  name='active_sarg' type='string' description="Activation de SARG, générateur de statistiques Proxy/filtrage web (Squid/DansGuardian)">
 				<value>non</value>
       			</variable>
-			<variable name='num_dansguardian_instance' type='string' description="Nombre de politique de filtrage (dansguardian et pare-feu) configurables" hidden='True'>
+			<variable name='num_dansguardian_instance' type='string' description="Nombre de filtres web (dansguardian et pare-feu) configurables" hidden='True'>
 				<value>2</value>
 			</variable>
 		</family>

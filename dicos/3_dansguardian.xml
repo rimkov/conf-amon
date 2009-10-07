@@ -10,10 +10,10 @@
                  <family name='dansguardian' mode='expert'>
 	                    <separators>
                 	    	<separator name='dans_num_opt_filters'>Configuration commune aux deux zones</separator>
-                	    	<separator name='maxchildren1'>Configuration 1</separator>
-                	    	<separator name='maxchildren2'>Configuration 2</separator>
+                	    	<separator name='maxchildren1'>Filtre web 1</separator>
+                	    	<separator name='maxchildren2'>Filtre web 2</separator>
                         </separators>
-                         <variable name="dans_num_opt_filters" type="string" description='Nombre de politiques optionnelles par zone'>
+                         <variable name="dans_num_opt_filters" type="string" description='Nombre de politiques optionnelles de filtrage par zone'>
                                  <value>3</value>
                          </variable>
                          <variable name="maxchildren1" type="number" description=''>
