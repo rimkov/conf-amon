@@ -13,10 +13,12 @@
         </files>
 		<!-- **** Dictionnaire optionnel pour freeradius **** -->
         <variables>
-		<family name='freeradius' mode='expert'>
+		<family name='services'>
 			<variable name='freeradius' type='string' description='Activation du service Freeradius'>
 				<value>non</value>
 			</variable>
+		</family>
+		<family name='freeradius' hidden='True'>
 			<variable name='freerad_listen_int' type='string' description='Interface sur laquelle freeradius écoutera'>
 				<value>eth1</value>
 			</variable>

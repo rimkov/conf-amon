@@ -7,10 +7,12 @@
         </files>
 		<!-- **** Dictionnaire optionnel (Agregation) de l'Academie de Nantes by GC **** -->
         <variables>
-			<family name='Agregation' mode='expert'>
+		<family name='services'>
 			<variable name='agregation' type='string' description='Repartition de charges entre 2 lignes' >
 				<value>non</value>
 			</variable>
+		</family>
+		<family name='Agregation' hidden='True'>
 			<variable name='ag_force_eth0' type='ip' description='Destination(s) forcees sur le lien 1' multi='True'/>
 			<variable name='ag_dns_eth0' type='ip' description='Adresse(s) du(des) dns sur le lien 1' multi='True'/>
 			<variable name='ag_weight_eth0' type='string' description='Debit mesure sur le lien 1 (entier en Mbps)' />
