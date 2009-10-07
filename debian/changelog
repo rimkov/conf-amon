@@ -1,3 +1,11 @@
+conf-amon (2.2-eole172) eole-2.2-proposed; urgency=low
+
+  * correction bug 1404 : probleme de prise en compte du mtu si eth0 est
+    en dhcp
+  * antivirus proxy
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 07 Oct 2009 09:39:39 +0200
+
 conf-amon (2.2-eole171) eole-2.2-dev; urgency=low
 
   * Suppression des fichiers relatifs a rsyslog
