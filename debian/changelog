@@ -1,3 +1,10 @@
+conf-amon (2.2-eole176) eole-2.2-proposed; urgency=low
+
+  * correction bug 1469 : deplacement des acls noauth et nocache pour
+    les placer apres les acls interdisant l'acces au rvp
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 08 Oct 2009 16:46:36 +0200
+
 conf-amon (2.2-eole175) eole-2.2-proposed; urgency=low
 
   * correction bug dans un test
