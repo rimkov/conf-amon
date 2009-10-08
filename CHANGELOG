@@ -1,4 +1,7 @@
 Conf-AmonNG
+8/10/09 (sam)
+squid.conf : deplacement des acls noauth et nocache pour les placer après les acls interdisant l'accès au rvp (bug 1469)
+
 7/10/09 (sam)
 - correction bug 1404 : problème de prise en compte du mtu si eth0 est en dhcp.
 - modification des dicos agregation et freeradius -> plus en mode expert (bug 1459)
