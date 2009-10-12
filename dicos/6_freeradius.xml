@@ -45,15 +45,7 @@
         <constraints>
 		<condition name='hidden_if_in' source='freeradius'>
 			<param>non</param> 
-			<target type='variable'>freerad_listen_int</target>
-			<target type='variable'>freerad_nas_ip</target>
-			<target type='variable'>freerad_nas_name</target>
-			<target type='variable'>freerad_nas_passwd</target>
-			<target type='variable'>freerad_nas_type</target>
-			<target type='variable'>freerad_ldap_ip</target>
-			<target type='variable'>freerad_ldap_base_dn</target>
-			<target type='variable'>freerad_ldap_group</target>
-			<target type='variable'>freerad_group_vlan</target>
+			<target type='family'>freeradius</target>
 			<target type='filelist'>freeradius</target>
 		</condition>
 		<check name="valid_enum" target='freeradius'>

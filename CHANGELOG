@@ -1,4 +1,6 @@
 Conf-AmonNG
+12/10/09 (sam)
+- problème au niveau des dicos agregation et freeradius suite à la correction 1459.
 8/10/09 (sam)
 squid.conf : deplacement des acls noauth et nocache pour les placer après les acls interdisant l'accès au rvp (bug 1469)
 
