@@ -1,3 +1,10 @@
+conf-amon (2.2-eole177) eole-2.2-proposed; urgency=low
+
+  * probleme au niveau des dicos agregation et freeradius suite a la
+    correction 1459
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 14 Oct 2009 10:17:58 +0200
+
 conf-amon (2.2-eole176) eole-2.2-proposed; urgency=low
 
   * correction bug 1469 : deplacement des acls noauth et nocache pour
