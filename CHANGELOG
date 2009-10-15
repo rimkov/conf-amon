@@ -1,4 +1,7 @@
 Conf-AmonNG
+15/10/09 (sam)
+- correction bug 1484 : Le script d'init agregation est géré dans bastion mais est toujours dans services. Second problème : lancé un jour -> lancé toujours
+
 12/10/09 (sam)
 - problème au niveau des dicos agregation et freeradius suite à la correction 1459.
 8/10/09 (sam)

@@ -45,9 +45,6 @@ snort
 samhain
 %end if
 z_stats
-%if %%agregation == 'oui'
-agregation
-%end if
 %if %%activer_revprox == 'oui'
 nginx
 %end if
