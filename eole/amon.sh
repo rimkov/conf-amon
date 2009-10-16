@@ -39,11 +39,6 @@ chown proxy.proxy /var/spool/squid
 if [ "$install_rvp" == "oui" -a ! -e /etc/eole/Tunnel.conf ]
 then
 	echo
-	echo "** Configuration du RVP **"
-	echo
-	echo "ATTENTION : vous aurez besoin de la disquette"
-	echo "contenant les fichiers de configuration"
-	echo
 	echo "Voulez-vous configurer le Réseau Virtuel Privé maintenant ? [oui/non]"
 	read Rep
 
@@ -67,10 +62,10 @@ fi
 if [ "$type_squid_auth" == "NTLM/KERBEROS" ]; then
   /usr/share/eole/enregistrement_domaine.sh
 else
-  /usr/sbin/update-rc.d -f samba remove
-  /usr/sbin/update-rc.d -f winbind remove
-  /usr/sbin/update-rc.d -f krb5-admin-server remove
-  /usr/sbin/update-rc.d -f krb5-kdc remove
+  /usr/sbin/update-rc.d -f samba remove >/dev/null
+  /usr/sbin/update-rc.d -f winbind remove >/dev/null
+  /usr/sbin/update-rc.d -f krb5-admin-server remove >/dev/null
+  /usr/sbin/update-rc.d -f krb5-kdc remove >/dev/null
 fi
 
 #Enregistrement des sondes (desactivé si pas de Zephir)
@@ -104,5 +99,13 @@ id amon2 &>/dev/null
 if [ $? -eq 0 ]
 then
 	usermod -s /usr/share/eole/manage-amon.sh amon2
+fi
+echo
+echo "Voulez-vous mettre à jour les bases de filtrage maintenant ? [oui/non]"
+read Rep
+
+if [ "$Rep" = "oui" -o "$Rep" = "o" -o "$Rep" = "O" ]
+then
+	/usr/share/eole/Maj-blacklist.sh
 fi
 echo
