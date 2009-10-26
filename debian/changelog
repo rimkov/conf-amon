@@ -1,3 +1,9 @@
+conf-amon (2.2-eole178) eole-2.2-security; urgency=low
+
+  * Compilation en eole-2.2-security a partir du tag eole177
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 26 Oct 2009 10:23:55 +0100
+
 conf-amon (2.2-eole177) eole-2.2-proposed; urgency=low
 
   * probleme au niveau des dicos agregation et freeradius suite a la
