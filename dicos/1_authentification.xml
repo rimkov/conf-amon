@@ -4,6 +4,7 @@
   <files>
     <file name='/etc/samba/smb.conf' />
     <file name='/etc/samba/lmhosts' />
+    <file name='/etc/krb5.conf' />
   </files>
   <variables>
 		<family name='Authentification' hidden='True'>
