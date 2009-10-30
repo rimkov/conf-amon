@@ -1,3 +1,12 @@
+conf-amon (2.2-eole179) eole-2.2-dev; urgency=low
+
+  * Modification template samhain
+  * Passage de squid en local7
+  * Ajout du fichier krb5.conf dans la filelist
+  * Ajout du support LDAP Windows 2008 dans squid.conf
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 30 Oct 2009 14:40:53 +0100
+
 conf-amon (2.2-eole178) eole-2.2-security; urgency=low
 
   * Compilation en eole-2.2-security a partir du tag eole177
