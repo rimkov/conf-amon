@@ -1,3 +1,9 @@
+conf-amon (2.2-eole183) eole-2.2-proposed; urgency=low
+
+  * correction du template
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 05 Nov 2009 11:55:46 +0100
+
 conf-amon (2.2-eole182) eole-2.2-proposed; urgency=low
 
   * correction du template
