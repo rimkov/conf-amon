@@ -1,3 +1,11 @@
+conf-amon (2.2-eole180) eole-2.2-proposed; urgency=low
+
+  * #1394: Probleme de connexion en pppoe (MTU ?)
+  * #1536: La valeur adresse_ip_eth0 non calculee dans le cas d'une
+    connexion pppoe
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 05 Nov 2009 11:22:49 +0100
+
 conf-amon (2.2-eole179) eole-2.2-dev; urgency=low
 
   * Modification template samhain
