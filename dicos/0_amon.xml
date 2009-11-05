@@ -715,7 +715,7 @@
 
 	<!-- **** Listes deroulantes **** -->
                 <check name="valid_enum" target="type_amon">
-                  <param type="python">eosfunc.list_files('/usr/share/era/modeles','*.xml',True,default=['minimal','2zones','3zones','4zones','4zones-scribe','5zones'])</param>
+                  <param type="python">eosfunc.list_files('/usr/share/era/modeles','*.xml',True,default=['2zones.xml', '3zones-amonecole-eclair-nginx.xml', '3zones-amonecole-eclair.xml', '3zones-amonecole-nginx.xml', '3zones-amonecole.xml', '3zones-scribe-posh-nginx.xml', '3zones-scribe.xml', '3zones.xml', '4zones-scribe-nufw.xml', '4zones-scribe-posh-nginx.xml', '4zones-scribe.xml', '4zones.xml', '5zones.xml', 'minimal.xml'])</param>
 		  <param name="checkval">False</param>
                 </check>
                 <check name='valid_enum' target='type_maj'>
