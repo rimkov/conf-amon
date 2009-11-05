@@ -452,6 +452,7 @@
 				<value>oui</value>
 			</variable>
 			<variable description="Valeur du MTU pour l'interface eth0 : rien = valeur par defaut de l'interface" hidden="False" multi="False" name="valeur_mtu_eth0" type="Number" />
+			<variable description="Valeur du MTU pour l'interface ppp0 : rien = valeur par defaut de l'interface" hidden="False" multi="False" name="valeur_mtu_ppp0" type="Number" />
 			<variable name='debit_carte_eth0' type='string' mode="expert" description="Mode de connexion pour l'interface exterieur" />
 			<variable name='debit_carte_eth1' type='string' mode="expert" description="Mode de connexion pour l'interface interne 1" />
 			<variable name='debit_carte_eth2' type='string' mode="expert" description="Mode de connexion pour l'interface interne 2" />
