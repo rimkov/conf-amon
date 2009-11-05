@@ -16,7 +16,7 @@ persist
 updetach
 usepeerdns
 %if %%valeur_mtu_eth0 == ""
-pty "pppoe -I eth0 -T 80"
+pty "pppoe -I %%pppoe_interface -T 80"
 %else
 pty "pppoe -I %%pppoe_interface -T 80 -m %%valeur_mtu_ppp0"
 %end if
