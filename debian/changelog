@@ -1,3 +1,9 @@
+conf-amon (2.2-eole186) eole-2.2-dev; urgency=low
+
+  * Modification NTLM/Kerberos
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 10 Nov 2009 10:34:42 +0100
+
 conf-amon (2.2-eole185) eole-2.2-dev; urgency=low
 
   * Passage des logs iptables en local5
