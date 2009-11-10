@@ -12,6 +12,11 @@ echo "*** Redémarrage des services pour l'enregistrement au domaine ***"
 /sbin/invoke-rc.d samba restart &> /dev/null
 /sbin/invoke-rc.d winbind start &> /dev/null
 
+if [ -e /var/run/samba/winbindd_privileged]; then
+	/bin/chgrp proxy /var/run/samba/winbindd_privileged
+	/sbin/invoke-rc.d squid restart
+fi
+
 #inscription de la station dans un domaine
 echo
 echo "Entrer le nom de l'administrateur du serveur Windows :"
