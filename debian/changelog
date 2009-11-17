@@ -1,3 +1,10 @@
+conf-amon (2.2-eole187) eole-2.2-dev; urgency=low
+
+  * 5_nginx.xml : utilisation de la fonction copy_val
+  * Conf amon : nginx, redirection de l'ead du scribe sur le port 4203
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 17 Nov 2009 13:42:16 +0100
+
 conf-amon (2.2-eole186) eole-2.2-dev; urgency=low
 
   * Modification NTLM/Kerberos
