@@ -53,9 +53,9 @@
 			<param>['oui','non']</param>
         </check>
     <!-- **** Remplissage automatique **** -->
-    <fill name="calc_val" target='revprox_ead'>
-        <param type='eole' name='valeur'>revprox_poshadmin</param>
-        </fill>
+    <auto target='revprox_ead' name='auto_copy_val'>
+        <param type='eole'>revprox_poshadmin</param>
+    </auto>
 	<!-- **** Conditions **** -->
 		<condition name='hidden_if_in' source='activer_revprox'>
 			<param>non</param>
