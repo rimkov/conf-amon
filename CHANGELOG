@@ -1,4 +1,7 @@
 Conf-AmonNG
+19/11/09 (sam)
+-snort.conf : tentative amélioration de la conf
+
 15/10/09 (sam)
 - correction bug 1484 : Le script d'init agregation est géré dans bastion mais est toujours dans services. Second problème : lancé un jour -> lancé toujours
 
