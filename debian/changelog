@@ -1,3 +1,12 @@
+conf-amon (2.2-eole189) eole-2.2-proposed; urgency=low
+
+  * ajout parametres pour snort + gestion maj des regles
+  * snort.conf: tentative amelioration conf
+  * Snort.conf : home_net
+  * nginx.default : gestion du cas ou revprox_ead est vide
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 19 Nov 2009 16:24:46 +0100
+
 conf-amon (2.2-eole188) eole-2.2-proposed; urgency=low
 
   * passage en candidate
