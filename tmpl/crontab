@@ -26,4 +26,7 @@ HOME=/
 # test du rvp
 */%%magic_rvp_inter * * * *    root    /usr/share/eole/magic-rvp >/dev/null 2>&1
 %end if
-
+%if %%sonde_snort == 'oui'
+# mise à jour des règles pour snort
+01 00 * * * root /usr/share/eole/lance-Maj-snort.sh >/dev/null 2>&1
+%end if

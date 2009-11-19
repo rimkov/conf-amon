@@ -3,6 +3,7 @@
 <creole>
 	<files>
 	  <file name='/etc/init.d/samhain' source='samhain_init'/>
+	  <file name='/etc/oinkmaster.conf' />
 	  <file name='/etc/prelude/default/client.conf' source='prelude-client.conf'/>
 	  <file name='/etc/prelude/default/global.conf' source='prelude-global.conf'/>
 	  <file name='/etc/samhain/samhainrc' />
@@ -29,6 +30,45 @@
 				<value>non</value>
 			</variable>
 		</family>
+		<family name='Snort' mode='expert'>
+			<variable name='snort_rules_liste' type='string' description="Activation de la sonde NuFW" multi='True'>
+				<value>attack-responses</value>
+				<value>bad-traffic</value>
+				<value>ddos</value>
+				<value>dos</value>
+				<value>experimental</value>
+				<value>exploit</value>
+				<value>finger</value>
+				<value>ftp</value>
+				<value>icmp</value>
+				<value>imap</value>
+				<value>local</value>
+				<value>misc</value>
+				<value>mysql</value>
+				<value>netbios</value>
+				<value>nntp</value>
+				<value>oracle</value>
+				<value>other-ids</value>
+				<value>pop2</value>
+				<value>pop3</value>
+				<value>rpc</value>
+				<value>rservices</value>
+				<value>scan</value>
+				<value>smtp</value>
+				<value>snmp</value>
+				<value>sql</value>
+				<value>telnet</value>
+				<value>tftp</value>
+				<value>web-cgi</value>
+				<value>web-coldfusion</value>
+				<value>web-iis</value>
+				<value>web-frontpage</value>
+				<value>web-misc</value>
+				<value>web-client</value>
+				<value>web-php</value>
+				<value>x11</value>
+			</variable>
+		</family>
 	</variables>
 	<separators>
 		<separator name='sonde_snort'>Configuration de la sonde SNORT</separator>
@@ -46,9 +86,17 @@
 	<check name="valid_enum" target="sonde_nufw" >
                     <param>['oui','non']</param>
 	</check>
+	<check name="valid_enum" target="snort_rules_liste">
+		<param type="python">eosfunc.list_files('/etc/snort/rules','*.rules',True)</param>
+		<param name="checkval">False</param>
+	</check>
 	<check name='obligatoire' target='administrateur_email'/>
 	<check name='obligatoire' target='passerelle_smtp'/>
 	<check name='obligatoire' target='adresse_ip_prelude_manager'/>
+	<condition name='hidden_if_in' source='sonde_snort'>
+		<param>non</param>
+		<target type='family'>Snort</target>
+	</condition>
 	</constraints>
 <!--************************************************************************************************* -->	
 	<help>
