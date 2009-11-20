@@ -1,3 +1,10 @@
+conf-amon (2.2-eole190) eole-2.2-proposed; urgency=low
+
+  * update conf snort
+  * modif conf snort
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 20 Nov 2009 16:00:34 +0100
+
 conf-amon (2.2-eole189) eole-2.2-proposed; urgency=low
 
   * ajout parametres pour snort + gestion maj des regles
