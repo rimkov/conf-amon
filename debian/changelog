@@ -1,3 +1,10 @@
+conf-amon (2.2-eole191) eole-2.2-proposed; urgency=low
+
+  * parametres ssh avances deplaces dans eole-common
+  * modif conf snort
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 24 Nov 2009 13:43:28 +0100
+
 conf-amon (2.2-eole190) eole-2.2-proposed; urgency=low
 
   * update conf snort
