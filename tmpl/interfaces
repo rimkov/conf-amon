@@ -14,7 +14,7 @@ netmask %%adresse_netmask_eth0
 broadcast %%adresse_broadcast_eth0
 network %%adresse_network_eth0
 %if %%debit_carte_eth0 != ""
-up ethtool -s eth0 %%debit_carte_eth0
+pre-up ethtool -s eth0 %%debit_carte_eth0
 %end if
 gateway %%adresse_ip_gw
 %if %%valeur_mtu_eth0 != ""
@@ -86,7 +86,7 @@ netmask %%adresse_netmask_eth1
 broadcast %%adresse_broadcast_eth1
 network %%adresse_network_eth1
 %if %%debit_carte_eth1 != ""
-up ethtool -s eth1 %%debit_carte_eth1
+pre-up ethtool -s eth1 %%debit_carte_eth1
 %end if
 %else if %%eth1_method == "dhcp"
 iface eth1 inet dhcp
@@ -124,7 +124,7 @@ netmask %%adresse_netmask_eth2
 broadcast %%adresse_broadcast_eth2
 network %%adresse_network_eth2
 %if %%debit_carte_eth2 != ""
-up ethtool -s eth2 %%debit_carte_eth2
+pre-up ethtool -s eth2 %%debit_carte_eth2
 %end if
 %else if %%eth2_method == "dhcp"
 iface eth2 inet dhcp
@@ -162,7 +162,7 @@ netmask %%adresse_netmask_eth3
 broadcast %%adresse_broadcast_eth3
 network %%adresse_network_eth3
 %if %%debit_carte_eth3 != ""
-up ethtool -s eth3 %%debit_carte_eth3
+pre-up ethtool -s eth3 %%debit_carte_eth3
 %end if
 %else if %%eth3_method == "dhcp"
 iface eth3 inet dhcp
@@ -200,7 +200,7 @@ netmask %%adresse_netmask_eth4
 broadcast %%adresse_broadcast_eth4
 network %%adresse_network_eth4
 %if %%debit_carte_eth4 != ""
-up ethtool -s eth4 %%debit_carte_eth4
+pre-up ethtool -s eth4 %%debit_carte_eth4
 %end if
 %else if %%eth4_method == "dhcp"
 iface eth4 inet dhcp
