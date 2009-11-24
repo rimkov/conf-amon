@@ -76,12 +76,6 @@
  			<variable name='install_scribe_dmz' type='string' description="Activer la gestion d'un Scribe dans la DMZ" >
  				<value>non</value>
  			</variable>
- 			<variable name='ssh_permit_root' type='string' description="Autoriser les connexions SSH pour l'utilisateur root" >
- 				<value>oui</value>
- 			</variable>
- 			<variable name='ssh_allow_passwd' type='string' description="Autoriser les connexions SSH par mot de passe (si non clef RSA obligatoire)" >
- 				<value>oui</value>
- 			</variable>
                         <variable name='serveur_maj' type='string' description='Serveur de mise à jour' >
 				<value>eoleng.ac-dijon.fr</value>
 			</variable>
@@ -462,7 +456,6 @@
 	<!--************************************************************************************************* -->
 			<separators>
 				<separator name='type_amon'>Paramètres réseau globaux</separator>
-				<separator name='ssh_permit_root'>Configuration SSH</separator>
 				<separator name='active_nufw'>NuFw (Now User Filtering Works)</separator>
                                 <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
 				<separator name='serveur_maj'>Global Eole</separator>
@@ -746,12 +739,6 @@
                   <param>['oui','non']</param>
                 </check>
                 <check name='valid_enum' target='activer_dhcprelay'>
-                  <param>['oui','non']</param>
-                </check>
-                <check name='valid_enum' target='ssh_permit_root'>
-                  <param>['oui','non']</param>
-                </check>
-                <check name='valid_enum' target='ssh_allow_passwd'>
                   <param>['oui','non']</param>
                 </check>
 		<check name="valid_enum" target='active_nufw'>
