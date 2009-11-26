@@ -1,3 +1,11 @@
+conf-amon (2.2-eole192) eole-2.2-proposed; urgency=low
+
+  * correction de /etc/hosts pour la configuration Envole
+  * correction bug 1568 :forcer le debit des cartes reseaux dans la
+    config ne fonctionne pas
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 26 Nov 2009 09:17:29 +0100
+
 conf-amon (2.2-eole191) eole-2.2-proposed; urgency=low
 
   * parametres ssh avances deplaces dans eole-common
