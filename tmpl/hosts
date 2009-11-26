@@ -62,12 +62,13 @@
 %%ip_serveur_krb    %%nom_serveur_krb.%%nom_domaine_krb %%nom_serveur_krb
 %end if
 # Configuration pour envole
-%def pop_http(%%url)
-%if %%url.startswith('http://')
-%%url[7:]%slurp
-%else
-%%url[8:]%slurp
-%end if
+%def pop_http(url)
+    %if url.startswith('http://')
+        %return url[7:].split('/')[0]
+    %end if
+    %if url.startswith('https://')
+        %return url[8:].split('/')[0]
+    %end if
 %end def
 %if %%is_defined('activer_revprox') and %%activer_revprox == 'oui'
 %set %%buffer=[]
