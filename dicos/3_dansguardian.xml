@@ -10,11 +10,14 @@
                  <family name='dansguardian' mode='expert'>
 	                    <separators>
                 	    	<separator name='dans_num_opt_filters'>Configuration commune aux deux zones</separator>
-                	    	<separator name='maxchildren1'>Filtre web 1</separator>
-                	    	<separator name='maxchildren2'>Filtre web 2</separator>
+                	    	<separator name='dansguardian_ead_filtre1'>Filtre web 1</separator>
+                	    	<separator name='dansguardian_ead_filtre2'>Filtre web 2</separator>
                         </separators>
                          <variable name="dans_num_opt_filters" type="string" description='Nombre de politiques optionnelles de filtrage par zone'>
                                  <value>3</value>
+                         </variable>
+                         <variable name="dansguardian_ead_filtre1" type="string" description="Libellé du filtre web 1 dans l'EAD">
+                                 <value>Filtre web 1</value>
                          </variable>
                          <variable name="maxchildren1" type="number" description=''>
                                  <value>80</value>
@@ -45,6 +48,9 @@
                         </variable>
                         <variable name="unactive_dansguardian_auth1" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 1" hidden="True">
                             <value>---</value>
+                         </variable>
+                         <variable name="dansguardian_ead_filtre2" type="string" description="Libellé du filtre web 2 dans l'EAD">
+                                 <value>Filtre web 2</value>
                          </variable>
 
                          <variable name="maxchildren2" type="number" description=''>
