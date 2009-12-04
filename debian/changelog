@@ -1,3 +1,14 @@
+conf-amon (2.2-eole193) eole-2.2-dev; urgency=low
+
+  * Conf-amon : dansguardian - libelle ead
+  * conf-amon : correction de la liste de modeles par defaut (pas de
+    .xml)
+  * Conf amon : retrait du 4203 des les ssl ports (il y est deja en
+    fait)
+  * Conf amon : ajout du port 4203 dans les ssl ports de squid.conf
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 04 Dec 2009 13:04:29 +0100
+
 conf-amon (2.2-eole192) eole-2.2-proposed; urgency=low
 
   * correction de /etc/hosts pour la configuration Envole
