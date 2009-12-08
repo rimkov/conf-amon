@@ -4,6 +4,7 @@
 %if %%serveur_maj2 != "" and %%serveur_maj2 != %%serveur_maj
 .%%serveur_maj2
 %end if
+.archive.canonical.com
 .archive.ubuntu.com
 .windowsupdate.microsoft.com
 .update.microsoft.com
