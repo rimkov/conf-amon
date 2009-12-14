@@ -139,6 +139,10 @@
 			<variable name='pppoe_interface' type='string' description='Interface où pppoe est connecté'>
 				<value>eth0</value>
 			</variable>
+			<variable name='calc_ip_gw' type='string' description="Calculer l'IP de la passerelle en cas de DHCP et pppoe" mode='expert'>
+				<value>non</value>
+			</variable>
+
  			<variable name='ssh_eth0' type='string' description='Autoriser les connexions pour administrer le serveur sur cette interface (Ead, ssh)' >
 				<value>oui</value>
 			</variable>
@@ -671,9 +675,11 @@
 		</auto>
                 <auto name='auto_defaultroute_ip' target='adresse_ip_gw'>
                         <param type='eole'>eth0_method</param>
+			<param type='eole'>calc_ip_gw</param>
                 </auto>
 		<auto name='auto_defaultroute_int' target='interface_gw'>
-                        <param type='eole'>eth0_method</param>
+			<param type='eole'>eth0_method</param>
+			<param type='eole'>calc_ip_gw</param>
                 </auto>
 
 	<!-- **** champs obligatoires **** -->
@@ -704,6 +710,7 @@
 		<check name='obligatoire' target='serveur_maj'/>
 		<check name='obligatoire' target='nuauth_nss_ldap_host'/>
 		<check name='obligatoire' target='nuauth_nss_ldap_dn'/>
+		<check name='obligatoire' target='adresse_ip_gw'/>
 
 
 	<!-- **** Listes deroulantes **** -->
@@ -718,6 +725,9 @@
                   <param>['1','2','3','4','5']</param>
                 </check>
 		<check name="valid_enum" target="activer_squid_auth">
+                  <param>['oui','non']</param>
+                </check>
+		<check name="valid_enum" target="calc_ip_gw">
                   <param>['oui','non']</param>
                 </check>
 		<check name='valid_enum' target='active_sarg'>

@@ -13,7 +13,9 @@ persist
 #maxfail 0
 #holdoff 20
 #plugin rp-pppoe.so %%pppoe_interface
+%if %%calc_ip_gw == "oui"
 updetach
+%end if
 usepeerdns
 %if %%valeur_mtu_ppp0 == ""
 pty "pppoe -I %%pppoe_interface -T 80"
