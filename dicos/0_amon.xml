@@ -125,7 +125,7 @@
 	<!--************************************************************************************************* -->
 		<family name='Interface-ext'>
 			<!-- **** Interface externe **** -->
- 			<variable name='eth0_method' type='string' description="Methode d'attribution de l'adressage pour l'interface" >
+ 			<variable name='eth0_method' type='string' description="Méthode d'attribution de l'adressage pour l'interface" >
  				<value>statique</value>
  			</variable>
  			<variable name='adresse_ip_eth0' type='ip' description='Adresse IP de la carte externe' />
