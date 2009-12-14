@@ -1,3 +1,9 @@
+conf-amon (2.2-eole196) eole-2.2-dev; urgency=low
+
+  * #748 : ajout de l'option calc_ip_gw
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 14 Dec 2009 15:26:10 +0100
+
 conf-amon (2.2-eole195) eole-2.2-security; urgency=low
 
   * Compilation en eole-2.2-security a partir du tag eole194
