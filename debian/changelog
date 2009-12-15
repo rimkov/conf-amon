@@ -1,3 +1,9 @@
+conf-amon (2.2-eole199) eole-2.2-dev; urgency=low
+
+  * ajout d'un separateur pour la variable calc_ip_gw
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 15 Dec 2009 14:08:02 +0100
+
 conf-amon (2.2-eole198) eole-2.2-dev; urgency=low
 
   * Passe calc_ip_gw en mode expert + correction de typo
