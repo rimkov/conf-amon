@@ -509,6 +509,7 @@
 				<separator name='activer_log_distant'>Journalisation (log) centralisée</separator>
 				<separator name='activer_sonde_prelude'>Activation des sondes Prelude</separator>
 				<separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>
+				<separator name='calc_ip_gw'></separator>
 			</separators>
 	</variables>
 	<constraints>
