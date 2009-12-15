@@ -1,3 +1,10 @@
+conf-amon (2.2-eole197) eole-2.2-dev; urgency=low
+
+  * #1551 : test le reverse proxy TestHTTPPage
+  * typo
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 15 Dec 2009 09:33:54 +0100
+
 conf-amon (2.2-eole196) eole-2.2-dev; urgency=low
 
   * #748 : ajout de l'option calc_ip_gw
