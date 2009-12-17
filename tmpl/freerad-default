@@ -128,10 +128,10 @@ authorize {
 	#  for the many packets that go back and forth to set up TTLS
 	#  or PEAP.  The load on those servers will therefore be reduced.
 	#
-	eap {
-		ok = return
-	}
-
+	#	eap {
+	#	ok = return
+	#}
+	eap
 	#
 	#  Pull crypt'd passwords from /etc/passwd or /etc/shadow,
 	#  using the system API's to get the password.  If you want
@@ -142,7 +142,7 @@ authorize {
 
 	#
 	#  Read the 'users' file
-	#files
+	files
 
 	#
 	#  Look in an SQL database.  The schema of the database
@@ -160,7 +160,7 @@ authorize {
 	#
 	#  The ldap module will set Auth-Type to LDAP if it has not
 	#  already been set
-	ldap
+	#ldap
 
 	#
 	#  Enforce daily limits on time spent logged in.
@@ -271,9 +271,9 @@ authenticate {
 	# Note that this means "check plain-text password against
 	# the ldap database", which means that EAP won't work,
 	# as it does not supply a plain-text password.
-	Auth-Type LDAP {
-		ldap
-	}
+	#Auth-Type LDAP {
+	#	ldap
+	#}
 
 	#
 	#  Allow EAP authentication.

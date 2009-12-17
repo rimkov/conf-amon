@@ -8,6 +8,7 @@
 		<file filelist='freeradius' name='/etc/freeradius/radiusd.conf'/>
 		<file filelist='freeradius' name='/etc/freeradius/users' source='freerad-users'/>
 		<file filelist='freeradius' name='/etc/freeradius/modules/ldap' source='freerad-ldap'/>
+		<file filelist='freeradius' name='/etc/freeradius/modules/mschap' source='freerad-mschap'/>
 		<file filelist='freeradius' name='/etc/freeradius/sites-enabled/default' source='freerad-default'/>
 		<file filelist='freeradius' name='/etc/freeradius/sites-enabled/inner-tunnel' source='freerad-inner-tunnel'/>
         </files>

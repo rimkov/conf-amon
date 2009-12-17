@@ -1,4 +1,7 @@
 Conf-AmonNG
+16/12/09 (sam)
+- freeradius : modification de la config qui ne fonctionnait pas correctement
+
 19/11/09 (sam)
 -snort.conf : tentative amélioration de la conf
 

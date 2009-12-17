@@ -169,9 +169,9 @@
 #	by the terminal server in which case there may not be a "P" suffix.
 #	The terminal server sends "Framed-Protocol = PPP" for auto PPP.
 #
-DEFAULT	Framed-Protocol == PPP
-	Framed-Protocol = PPP,
-	Framed-Compression = Van-Jacobson-TCP-IP
+#DEFAULT	Framed-Protocol == PPP
+#	Framed-Protocol = PPP,
+#	Framed-Compression = Van-Jacobson-TCP-IP
 
 #
 # Default for CSLIP: dynamic IP address, SLIP mode, VJ-compression.
@@ -201,7 +201,7 @@ DEFAULT	Framed-Protocol == PPP
 # 	Service-Type = Administrative-User
 
 %for %%groupes in %%freerad_ldap_group
-DEFAULT Ldap-Group == %%groupes
+DEFAULT Ldap-Group == "%%groupes"
 Tunnel-Type = VLAN,
 Tunnel-Medium-Type = IEEE-802,
 Tunnel-Private-Group-ID = %%groupes.freerad_group_vlan
