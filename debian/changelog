@@ -1,3 +1,9 @@
+conf-amon (2.2-eole200) eole-2.2-proposed; urgency=low
+
+  * modif conf freeradius
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 21 Dec 2009 11:38:11 +0100
+
 conf-amon (2.2-eole199) eole-2.2-dev; urgency=low
 
   * ajout d'un separateur pour la variable calc_ip_gw
