@@ -1,3 +1,9 @@
+conf-amon (2.2-eole201) eole-2.2-security; urgency=low
+
+  * passage en security
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 22 Dec 2009 14:48:55 +0100
+
 conf-amon (2.2-eole200) eole-2.2-proposed; urgency=low
 
   * modif conf freeradius
