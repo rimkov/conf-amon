@@ -1,3 +1,9 @@
+conf-amon (2.2-eole203) eole-2.2-proposed; urgency=low
+
+  * recompilation en proposed
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 04 Jan 2010 16:31:18 +0100
+
 conf-amon (2.2-eole202) eole-2.2-dev; urgency=low
 
   * Recompilation
