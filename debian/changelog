@@ -1,3 +1,9 @@
+conf-amon (2.2-eole204) eole-2.2-proposed; urgency=low
+
+  * krb5.conf : refix des lower() et upper()
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 14 Jan 2010 13:45:55 +0100
+
 conf-amon (2.2-eole203) eole-2.2-proposed; urgency=low
 
   * recompilation en proposed
