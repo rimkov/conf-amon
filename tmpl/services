@@ -28,7 +28,7 @@ ead-web
 %end if
 ulogd
 ntp
-%if %%type_squid_auth == 'NTLM/KERBEROS'
+%if %%activer_squid_auth == 'oui' and %%type_squid_auth == 'NTLM/KERBEROS'
 samba
 winbind
 krb5-admin-server
