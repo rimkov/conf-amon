@@ -1,3 +1,13 @@
+conf-amon (2.2-eole206) eole-2.2-proposed; urgency=low
+
+  * amon/services : desactivation effective de kerberos si on laisse
+    type_squid_auth a NTLM/KERBEROS
+  * bug 1689 : parametrage revprox_http mal geree si plusieurs items
+    avec le meme nom de domaine
+  * enregistrement_domain.sh : correction ligne de commande
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 28 Jan 2010 15:44:56 +0100
+
 conf-amon (2.2-eole205) eole-2.2-proposed; urgency=low
 
   * conf-amon/krb5.conf : correction definitive
