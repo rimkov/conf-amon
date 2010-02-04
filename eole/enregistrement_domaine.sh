@@ -32,5 +32,5 @@ echo
 if [ $? -eq 1 ]; then
   EchoRouge "L'intégration au domaine a échoué"
 else
-  EchoVert "L'intégration au domaine a réussie"
+  EchoVert "L'intégration au domaine a réussi"
 fi
