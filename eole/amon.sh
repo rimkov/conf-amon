@@ -61,11 +61,6 @@ fi
 #enregistrement au domaine dans le cas du NTLM/KERBEROS
 if [ "$type_squid_auth" == "NTLM/KERBEROS" ]; then
   /usr/share/eole/enregistrement_domaine.sh
-else
-  /usr/sbin/update-rc.d -f samba remove >/dev/null
-  /usr/sbin/update-rc.d -f winbind remove >/dev/null
-  /usr/sbin/update-rc.d -f krb5-admin-server remove >/dev/null
-  /usr/sbin/update-rc.d -f krb5-kdc remove >/dev/null
 fi
 
 #Enregistrement des sondes (desactivé si pas de Zephir)
