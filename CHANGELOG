@@ -1,4 +1,7 @@
 Conf-AmonNG
+10/02/10 (sam)
+ajout conf logrotate pour les logs de l'agregation (Bug 1473)
+
 16/12/09 (sam)
 - freeradius : modification de la config qui ne fonctionnait pas correctement
 

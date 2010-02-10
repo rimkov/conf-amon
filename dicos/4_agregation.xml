@@ -3,6 +3,7 @@
 <creole>
         <files>
 		<file filelist='agregation' name='/etc/agregation.conf' rm='True'/>
+		<file filelist='agregation' name='/etc/logrotate.d/agregation' source='agregation.logrotate'/>
 		<!--<file filelist='agregation' name='/usr/bin/agregation.sh' mode='755'/>-->
         </files>
 		<!-- **** Dictionnaire optionnel (Agregation) de l'Academie de Nantes by GC **** -->
