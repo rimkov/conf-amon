@@ -129,6 +129,10 @@ server {
         ssl_certificate    %%server_cert;
         ssl_certificate_key     /etc/ssl/certs/eole.key;
         access_log  /var/log/nginx/localhost.access-sso.log;
+        error_page   403 404 502 503 504  /nginx.html;
+        location = /nginx.html{
+            root /var/www/nginx-default;
+        }
         location / {
                 proxy_pass              https://%%revprox_sso:8443/;
                 proxy_set_header        Host $host;
@@ -144,13 +148,16 @@ server {
 # POSH
 server {
         listen 7070;
+        ssl    on;
+        ssl_certificate    %%server_cert;
+        ssl_certificate_key     /etc/ssl/certs/eole.key;
         access_log  /var/log/nginx/localhost.access-poshadmin.log;
 	    error_page   403 404 502 503 504  /nginx.html;
         location = /nginx.html{
             root /var/www/nginx-default;
         }
         location / {
-                proxy_pass              http://%%revprox_poshadmin:7070/;
+                proxy_pass              https://%%revprox_poshadmin:7070/;
                 proxy_set_header        Host $host;
                 proxy_set_header        X-Real-IP $remote_addr;
                 proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -181,4 +188,3 @@ server {
         }
 }
 %end if
-
