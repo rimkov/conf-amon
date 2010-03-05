@@ -1,3 +1,10 @@
+conf-amon (2.2-eole208) eole-2.2-proposed; urgency=low
+
+  [ Gaston ]
+  * Admin Posh Profile en https (fixes #46)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 05 Mar 2010 15:24:31 +0100
+
 conf-amon (2.2-eole207) eole-2.2-security; urgency=low
 
   * Compilation en eole-2.2-security a partir du tag eole206
