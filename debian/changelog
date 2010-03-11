@@ -1,3 +1,28 @@
+conf-amon (2.2-eole210) eole-2.2-proposed; urgency=low
+
+  [ jojo ]
+  * conf-amon/amon.sh : suppression de commandes krb inutiles #1685
+  * conf-amon/enregistrement_domaine.sh : ortho
+  * conf-amon : amelioration dico sarg (ajout de tests hidden sur la
+    famille et les fichiers + deplacement des scripts) #1692
+
+  [ smorin ]
+  * ajout conf logrotate pour les logs de l'agregation (Bug 1473
+
+  [ jojo ]
+  * ## Nouveau paquet : conf-amon (2.2-eole207) eole-2.2-security
+    (depuis tags eole206) ##
+
+  [ Gaston ]
+  * Admin Posh Profile en https (fixes #46)
+
+  [ Equipe Eole ]
+  * ## Nouveau paquet compilé par jojo : conf-amon (2.2-eole208) eole-
+    2.2-proposed
+  * Mise a jour du changelog et creation du paquet eole209
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 11 Mar 2010 14:35:52 +0100
+
 conf-amon (2.2-eole209) eole-2.2-security; urgency=low
 
   [ Joël Cuissinat ]
