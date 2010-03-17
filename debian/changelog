@@ -1,3 +1,10 @@
+conf-amon (2.2-eole211) eole-2.2-proposed; urgency=low
+
+  [ smorin ]
+  * fixes #200 : nginx.default ssl_certificate_key pas templatisé
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 17 Mar 2010 15:11:05 +0100
+
 conf-amon (2.2-eole210) eole-2.2-proposed; urgency=low
 
   [ jojo ]
