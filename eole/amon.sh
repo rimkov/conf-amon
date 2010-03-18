@@ -96,11 +96,3 @@ then
 	usermod -s /usr/share/eole/manage-amon.sh amon2
 fi
 echo
-echo "Voulez-vous mettre à jour les bases de filtrage maintenant ? [oui/non]"
-read Rep
-
-if [ "$Rep" = "oui" -o "$Rep" = "o" -o "$Rep" = "O" ]
-then
-	/usr/share/eole/Maj-blacklist.sh
-fi
-echo
