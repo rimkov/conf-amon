@@ -1,3 +1,10 @@
+conf-amon (2.2-eole212) eole-2.2-proposed; urgency=low
+
+  [ Joël Cuissinat ]
+  * deplacement de l'appel à Maj-blacklist en postinstance (fixes #109)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 18 Mar 2010 16:22:24 +0100
+
 conf-amon (2.2-eole211) eole-2.2-proposed; urgency=low
 
   [ smorin ]
