@@ -67,7 +67,7 @@ server {
 	listen 443;
 	ssl    on;
 	ssl_certificate    %%server_cert;
-	ssl_certificate_key     /etc/ssl/certs/eole.key;
+	ssl_certificate_key     %%server_key;
 	access_log  /var/log/nginx/revprox.revprox_http.access-ssl.log;
 	server_name %%revprox;
 	error_page   403 404 502 503 504  /nginx.html;
@@ -127,7 +127,7 @@ server {
         listen 8443;
         ssl    on;
         ssl_certificate    %%server_cert;
-        ssl_certificate_key     /etc/ssl/certs/eole.key;
+        ssl_certificate_key     %%server_key;
         access_log  /var/log/nginx/localhost.access-sso.log;
         error_page   403 404 502 503 504  /nginx.html;
         location = /nginx.html{
@@ -150,7 +150,7 @@ server {
         listen 7070;
         ssl    on;
         ssl_certificate    %%server_cert;
-        ssl_certificate_key     /etc/ssl/certs/eole.key;
+        ssl_certificate_key     %%server_key;
         access_log  /var/log/nginx/localhost.access-poshadmin.log;
 	    error_page   403 404 502 503 504  /nginx.html;
         location = /nginx.html{
@@ -172,7 +172,7 @@ server {
         listen %%revprox_ead_port;
         ssl    on;
         ssl_certificate    %%server_cert;
-        ssl_certificate_key     /etc/ssl/certs/eole.key;
+        ssl_certificate_key     %%server_key;
         access_log  /var/log/nginx/localhost.access-eadscribe.log;
 	    error_page   403 404 502 503 504  /nginx.html;
         location = /nginx.html{

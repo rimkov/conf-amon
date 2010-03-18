@@ -1,4 +1,7 @@
 Conf-AmonNG
+16/03/10 (sam)
+nginx.default : correction bug #200 : ssl_certificate_key n'est pas templatisée
+
 10/02/10 (sam)
 ajout conf logrotate pour les logs de l'agregation (Bug 1473)
 
