@@ -11,6 +11,9 @@ server_names_hash_bucket_size 64;
 %else
 server_names_hash_bucket_size 128;
 %end if
+proxy_buffer_size   16k;
+proxy_buffers   6 32k;
+proxy_busy_buffers_size   32k;
 
 %set %%domdict={}
 %for %%location in %%revprox_domainname
