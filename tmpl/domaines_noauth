@@ -6,13 +6,16 @@
 %end if
 .archive.canonical.com
 .archive.ubuntu.com
-.windowsupdate.microsoft.com
-.update.microsoft.com
 .c.microsoft.com
-.windowsupdate.com
-.genuine.microsoft.com
 .crl.microsoft.com
-.mpa.one.microsoft.com
 .database.clamav.net
+.download.microsoft.com
+.genuine.microsoft.com
+.mpa.one.microsoft.com
+.ntservicepack.microsoft.com
 .pool.ntp.org
 .services.openoffice.org
+.update.microsoft.com
+.windowsupdate.com
+.windowsupdate.microsoft.com
+.wustat.windows.com
