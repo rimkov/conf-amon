@@ -3,15 +3,21 @@
 . /usr/bin/ParseDico
 
 EchoGras "*** Services Locaux"
-TestService DNS localhost:53    	
-TestService "Proxy"  127.0.0.1:8080    	
+TestService DNS localhost:53
+TestService "Proxy"  127.0.0.1:8080
 TestService "EAD Server" localhost:4201
 TestService "Filtre Web ($nom_machine_eth1)" $adresse_ip_eth1:3128
 if [ $nombre_interfaces -gt 2 ]
 then
    TestService "Filtre Web ($nom_machine_eth2)" $adresse_ip_eth2:3128
 fi
-[ "$activer_revprox" = "oui" ] && TestHTTPPage "Reverse proxy" "http://localhost/50x.html"
+if [ "$activer_revprox" == "oui" ];then
+   if [ -z $revprox_domainname ];then
+	NoConfig "Reverse proxy"
+   else
+        TestHTTPPage "Reverse proxy" "http://localhost/50x.html"
+   fi
+fi
 echo
 Cpt=0;
 while [ $Cpt -lt $nombre_interfaces ]; do
@@ -23,9 +29,9 @@ while [ $Cpt -lt $nombre_interfaces ]; do
    if [  $Actif ==  "oui" ]
    then
 	echo "Sur l'interface réseau $Eth"
-	TestService "SSH" $Adresse:22    
+	TestService "SSH" $Adresse:22
 	if [ $ead_web == 'oui' ];then
-		TestService "EAD Web" $Adresse:4200   
+		TestService "EAD Web" $Adresse:4200
 	else
 		Inactif "EAD Web"
 	fi
@@ -34,24 +40,26 @@ while [ $Cpt -lt $nombre_interfaces ]; do
         Inactif "SSH"
         Inactif "EAD Web"
    fi
-   let Cpt=Cpt+1 
+   let Cpt=Cpt+1
 done
 echo
 
 # test du RVP si configuré
 EchoGras "*** Réseau virtuel privé"
-if [ $install_rvp == 'oui' -a -x "/usr/share/eole/test-rvp" ]
-then
+if [ $install_rvp == 'oui' ];then
+   if [ -x "/usr/share/eole/test-rvp" ];then
 	printf ".  %20s => " "RVP"
 	/usr/share/eole/test-rvp 2>&1 >/dev/null
-	if [ $? -eq 0 ]
-	then
+	if [ $? -eq 0 ];then
 		EchoVert " Ok"
 	else
 		EchoRouge " Erreur"
 	fi
+   else
+	NoConfig "RVP"
+   fi
 else
-	Inactif "RVP"
+   Inactif "RVP"
 fi
 echo
 
