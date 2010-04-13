@@ -1,3 +1,18 @@
+conf-amon (2.2-eole213) eole-2.2-proposed; urgency=low
+
+  [ Klaas TJEBBES ]
+  * ajout de sites à ne pas authentifier FIXES #370
+
+  [ Bruno Boiget ]
+  * augmentation de la taille maximum des buffers (nécessaire pour
+    laisser passer les messages saml en mode redirect)
+
+  [ Joël Cuissinat ]
+  * ajout de l'état "Non configuré" dans le diagnose pour Nginx et le
+    RVP (fixes #253)
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 13 Apr 2010 14:12:05 +0200
+
 conf-amon (2.2-eole212) eole-2.2-proposed; urgency=low
 
   [ Joël Cuissinat ]
