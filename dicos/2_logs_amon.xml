@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<creole>
+	<files/>
+	<variables>
+		<family name='Logs' hidden='True'>
+			<variable name='activate_squid_realtime' type='string' description="Activation du transfet des logs de squid en temps réel">
+				<value>non</value>
+			</variable>
+			<variable name='squid_heure_debut' type='string' description="Heure de debut du transfet des logs">
+				<value></value>
+			</variable>
+			<variable name='squid_heure_fin' type='string' description="Heure de fin de transfert des logs">
+				<value></value>
+			</variable>
+		</family>
+	</variables>
+	<constraints>
+		<check name='valid_enum' target='activate_squid_realtime'>
+			<param>['oui','non']</param>
+		</check>
+		<check name='valid_enum' target='squid_heure_debut'>
+			<param>["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"]</param>
+		</check>
+		<check name='valid_enum' target='squid_heure_fin'>
+			<param>["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"]</param>
+		</check>
+		<condition name='hidden_if_in' source='activate_squid_realtime'>
+			<param>oui</param>
+			<target type='variable'>squid_heure_debut</target>
+			<target type='variable'>squid_heure_fin</target>
+		</condition>
+	</constraints>
+	<help/>
+</creole>
