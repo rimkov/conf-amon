@@ -54,34 +54,20 @@
 			<variable name='nuauth_tls_key' type='string' description="Clef privée pour Nuauth" hidden='True'/>
 			<variable name='nuauth_tls_cert' type='string' description="Certificat pour Nuauth" hidden='True'/>
 			<variable name='nuauth_tls_cacert' type='string' description="Certification pour Nuauth" hidden='True'/>
-			<variable name='numero_etab' type='string' description="Identifiant de l'établissement (RNE)" />
-			<variable name='libelle_etab' type='string' description="Nom de l'établissement" />
       <!--**** Reseau Global **** -->
 			<variable name='type_amon' type='string' description='Modèle de filtrage' />
-                        <variable name='nombre_interfaces' type='string' description="Nombre d'interfaces à activer sur le pare-feu" >
+                        <!--FIXME<variable name='nombre_interfaces' type='string' description="Nombre d'interfaces à activer sur le pare-feu" >
  				<value>2</value>
- 			</variable>
-			<variable name='nom_machine' type='string' description='Nom de la machine' >
+ 			</variable>-->
+			<!--<variable name='nom_machine' type='string' description='Nom de la machine' >
 				<value>pf-amon</value>
-			</variable>
-			<variable name='nom_domaine_local' type='string' description='Nom de domaine privé du réseau local' >
-				<value>monreseau.lan</value>
-			</variable>
-			<variable name='nom_domaine_academique' type='string' description='Nom de domaine académique (ex : ac-dijon.fr)' />
- 			<variable name='adresse_ip_gw' type='ip' description='Adresse IP de la passerelle' />
+			</variable>-->
 			<variable name='interface_gw' type='string' description='Interface de sortie'>
 				<value>eth0</value>
 			</variable>
-			<variable name='adresse_ip_dns' type='ip' description='Adresse IP du DNS de forward (ou rien)' multi='True'/>
  			<variable name='install_scribe_dmz' type='string' description="Activer la gestion d'un Scribe dans la DMZ" >
  				<value>non</value>
  			</variable>
-                        <variable name='serveur_maj' type='string' description='Serveur de mise à jour' >
-				<value>eoleng.ac-dijon.fr</value>
-			</variable>
-			<variable name='serveur_maj2' type='string' description='Second serveur de mise à jour' >
-				<value>ftp.crihan.fr</value>
-			</variable>
 			<variable name='type_maj' type='string' description='Niveau de mise à jour' >
 				<value>minimum</value>
 			</variable>
@@ -91,9 +77,6 @@
 		</family>
 	<!--************************************************************************************************* -->
 		<family name='services'>
-                        <variable name='activer_log_distant' type='string' description="Gestion des logs centralisés" >
-                                <value>non</value>
-                        </variable>
  			<variable name='activer_sonde_prelude' type='string' description="Gestion des sondes Prelude" >
                                 <value>non</value>
                         </variable>
@@ -125,26 +108,12 @@
 	<!--************************************************************************************************* -->
 		<family name='Interface-ext'>
 			<!-- **** Interface externe **** -->
- 			<variable name='eth0_method' type='string' description="Méthode d'attribution de l'adressage pour l'interface" >
- 				<value>statique</value>
- 			</variable>
- 			<variable name='adresse_ip_eth0' type='ip' description='Adresse IP de la carte externe' />
- 			<variable name='adresse_netmask_eth0' type='netmask' description='Masque de sous réseau de la carte externe' >
-				<value>255.255.255.0</value>
-			</variable>
-			<variable name='adresse_network_eth0' type='ip' description='Adresse réseau de la carte externe' />
-			<variable name='adresse_broadcast_eth0' type='ip' description='Adresse broadcast de sous réseau de la carte externe' />
-			<variable name='pppoe_user' type='string' description='Nom du compte PPPoE' />
+			<!--FIXME<variable name='pppoe_user' type='string' description='Nom du compte PPPoE' />
 			<variable name='pppoe_passwd' type='string' description='Mot de passe PPPoE' />
 			<variable name='pppoe_interface' type='string' description='Interface où PPPoE est connecté'>
 				<value>eth0</value>
-			</variable>
+			</variable>-->
 
- 			<variable name='ssh_eth0' type='string' description='Autoriser les connexions pour administrer le serveur sur cette interface (EAD, ssh)' >
-				<value>oui</value>
-			</variable>
-			<variable name='ip_ssh_eth0' type='ip' description="Adresse IP réseau autorisée à se connecter à l'interface externe" multi='True' />
-			<variable name='netmask_ssh_eth0' type='netmask' description="Masque du sous réseau associe à l'IP" />
 			<variable name='alias_eth0' type='string' description="Ajouter des IP alias sur l'interface" >
 				<value>non</value>
 			</variable>
@@ -176,23 +145,9 @@
 
 		<!-- **** Interface interne 1 **** -->
 		<family name='Interface-1'>
-                        <variable name='eth1_method' type='string' description="Méthode d'attribution de l'adressage pour l'interface" >
- 				<value>statique</value>
- 			</variable>
- 			<variable name='adresse_ip_eth1' type='ip' description='Adresse IP de la carte interne 1' />
- 			<variable name='adresse_netmask_eth1' type='netmask' description='Masque de sous réseau de la carte interne 1' >
- 				<value>255.255.255.0</value>
- 			</variable>
-			<variable name='adresse_network_eth1' type='ip' description='Adresse réseau de la carte interne 1' />
-			<variable name='adresse_broadcast_eth1' type='ip' description='Adresse broadcast de sous réseau de la carte interne 1' />
  			<variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" >
  				<value>admin</value>
  			</variable>
-			<variable name='ssh_eth1' type='string' description='Autoriser les connexions pour administrer le serveur sur cette interface (EAD, ssh)' >
-				<value>oui</value>
-			</variable>
-			<variable name='ip_ssh_eth1' type='ip' description="Adresse IP réseau autorisée à se connecter à l'interface interne 1" multi='True' />
-			<variable name='netmask_ssh_eth1' type='netmask' description="Masque du sous réseau associe à l'IP" />
 			<variable name='alias_eth1' type='string' description="Ajouter des IP alias sur l'interface" >
 				<value>non</value>
 			</variable>
@@ -228,23 +183,9 @@
 
 		<!--**** Interfaces 2 **** -->
 		<family name='Interface-2' hidden='True'>
-                        <variable name='eth2_method' type='string' description="Méthode d'attribution de l'adressage pour l'interface" >
- 				<value>statique</value>
- 			</variable>
- 			<variable name='adresse_ip_eth2' type='ip' description="Adresse IP de l'interface" />
- 			<variable name='adresse_netmask_eth2' type='netmask' description="Masque de sous réseau de l'interface" >
- 				<value>255.255.255.0</value>
- 			</variable>
-			<variable name='adresse_network_eth2' type='ip' description="Adresse réseau de l'interface" />
-			<variable name='adresse_broadcast_eth2' type='ip' description="Adresse broadcast de sous réseau de l'interface" />
  			<variable name='nom_machine_eth2' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>pedago</value>
  			</variable>
-			<variable name='ssh_eth2' type='string' description='Autoriser les connexions pour administrer le serveur sur cette interface (EAD, ssh)' >
-				<value>non</value>
-			</variable>
-			<variable name='ip_ssh_eth2' type='ip' description="Adresse IP réseau autorisé à se connecter à l'interface" multi='True' />
-			<variable name='netmask_ssh_eth2' type='netmask' description="Masque du sous réseau associe à l'IP" />
 			<variable name='alias_eth2' type='string' description="Ajouter des IP alias sur l'interface" >
 				<value>non</value>
 			</variable>
@@ -280,23 +221,9 @@
 
 		<!--**** Interfaces 3 **** -->
 		<family name='Interface-3' hidden='True'>
-                        <variable name='eth3_method' type='string' description="Méthode d'attribution de l'adressage pour l'interface" >
- 				<value>statique</value>
- 			</variable>
- 			<variable name='adresse_ip_eth3' type='ip' description="Adresse IP de l'interface" />
- 			<variable name='adresse_netmask_eth3' type='netmask' description="Masque de sous réseau de l'interface" >
- 				<value>255.255.255.0</value>
- 			</variable>
-			<variable name='adresse_network_eth3' type='ip' description="Adresse réseau de l'interface" />
-			<variable name='adresse_broadcast_eth3' type='ip' description="Adresse broadcast de sous réseau de l'interface" />
  			<variable name='nom_machine_eth3' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>dmz-priv</value>
  			</variable>
-			<variable name='ssh_eth3' type='string' description='Autoriser les connexions pour administrer le serveur sur cette interface (EAD, ssh)' >
-				<value>non</value>
-			</variable>
-			<variable name='ip_ssh_eth3' type='ip' description="Adresse IP réseau autorisée à se connecter à l'interface" multi='True' />
-			<variable name='netmask_ssh_eth3' type='netmask' description="Masque du sous réseau associé à l'IP" />
 			<variable name='alias_eth3' type='string' description="Ajouter des IP alias sur l'interface" >
 				<value>non</value>
 			</variable>
@@ -332,23 +259,9 @@
 
 		<!--**** Interfaces 4 **** -->
 		<family name='Interface-4' hidden='True'>
-                        <variable name='eth4_method' type='string' description="Méthode d'attribution de l'adressage pour l'interface" >
- 				<value>statique</value>
- 			</variable>
- 			<variable name='adresse_ip_eth4' type='ip' description="Adresse IP de l'interface" />
- 			<variable name='adresse_netmask_eth4' type='netmask' description="Masque de sous réseau de l'interface" >
- 				<value>255.255.255.0</value>
- 			</variable>
-			<variable name='adresse_network_eth4' type='ip' description="Adresse réseau de l'interface" />
-			<variable name='adresse_broadcast_eth4' type='ip' description="Adresse broadcast de sous réseau de l'interface" />
  			<variable name='nom_machine_eth4' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>dmz-pub</value>
  			</variable>
-			<variable name='ssh_eth4' type='string' description='Autoriser les connexions pour administrer le serveur sur cette interface (EAD, ssh)' >
-				<value>non</value>
-			</variable>
-			<variable name='ip_ssh_eth4' type='ip' description="Adresse IP réseau autorisée à se connecter à l'interface" multi='True' />
-			<variable name='netmask_ssh_eth4' type='netmask' description="Masque du sous réseau associe à l'IP" />
 			<variable name='alias_eth4' type='string' description="Ajouter des IP alias sur l'interface" >
 				<value>non</value>
 			</variable>
@@ -462,32 +375,21 @@
 				<separator name='type_amon'>Paramètres réseau globaux</separator>
 				<separator name='active_nufw'>NuFW (Now User Filtering Works)</separator>
                                 <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
-				<separator name='serveur_maj'>Global EOLE</separator>
-				<separator name='eth0_method'>Configuration de l'interface externe</separator>
-				<separator name='ssh_eth0'>Administration distante sur l'interface</separator>
 				<separator name='alias_eth0'>Configuration des alias sur l'interface</separator>
 				<separator name='vlan_eth0'>Configuration des VLAN sur l'interface</separator>
 				<separator name='dns_master_eth0'>Configuration DNS sur l'interface</separator>
-				<separator name='eth1_method'>Configuration de l'interface interne 1</separator>
-				<separator name='ssh_eth1'>Administration distante sur l'interface</separator>
 				<separator name='alias_eth1'>Configuration des alias sur l'interface</separator>
 				<separator name='vlan_eth1'>Configuration des VLAN sur l'interface</separator>
 				<separator name='dns_master_eth1'>Configuration DNS sur l'interface</separator>
 				<separator name='dansguardian_eth1'>Configuration de la politique de filtrage</separator>
-				<separator name='eth2_method'>Configuration de l'interface interne 2</separator>
-				<separator name='ssh_eth2'>Administration distante sur l'interface</separator>
 				<separator name='alias_eth2'>Configuration des alias sur l'interface</separator>
 				<separator name='dns_master_eth2'>Configuration DNS sur l'interface</separator>
 				<separator name='dansguardian_eth2'>Configuration de la politique de filtrage</separator>
-				<separator name='eth3_method'>Configuration de l'interface interne 3</separator>
 				<separator name='vlan_eth2'>Configuration des VLAN sur l'interface</separator>
-				<separator name='ssh_eth3'>Administration distante sur l'interface</separator>
 				<separator name='alias_eth3'>Configuration des alias sur l'interface</separator>
 				<separator name='vlan_eth3'>Configuration des VLAN sur l'interface</separator>
 				<separator name='dns_master_eth3'>Configuration DNS sur l'interface</separator>
 				<separator name='dansguardian_eth3'>Configuration de la politique de filtrage</separator>
-				<separator name='eth4_method'>Configuration de l'interface interne 4</separator>
-				<separator name='ssh_eth4'>Administration distante sur l'interface</separator>
 				<separator name='alias_eth4'>Configuration des alias sur l'interface</separator>
 				<separator name='vlan_eth4'>Configuration des VLAN sur l'interface</separator>
 				<separator name='dns_master_eth4'>Configuration DNS sur l'interface</separator>
@@ -506,7 +408,6 @@
 				<separator name='ead_web'>EAD web</separator>
 				<separator name='activer_bacula'>Sauvegardes</separator>
 				<separator name='activer_squid_auth'>Proxy</separator>
-				<separator name='activer_log_distant'>Journalisation (log) centralisée</separator>
 				<separator name='activer_sonde_prelude'>Activation des sondes Prelude</separator>
 				<separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>
 				<separator name='calc_ip_gw'></separator>
@@ -514,26 +415,6 @@
 	</variables>
 	<constraints>
 	<!--************************************************************************************************* -->
-		<fill name='calc_network' target='adresse_network_eth0'>
-		<param type='eole' name='ip'>adresse_ip_eth0</param>
-		<param type='eole' name='netmask'>adresse_netmask_eth0</param>
-		</fill>
-		<fill name='calc_network' target='adresse_network_eth1'>
-			<param type='eole' name='ip'>adresse_ip_eth1</param>
-			<param type='eole' name='netmask'>adresse_netmask_eth1</param>
-		</fill>
-		<fill name='calc_network' target='adresse_network_eth2'>
-			<param type='eole' name='ip'>adresse_ip_eth2</param>
-			<param type='eole' name='netmask'>adresse_netmask_eth2</param>
-		</fill>
-		<fill name='calc_network' target='adresse_network_eth3'>
-			<param type='eole' name='ip'>adresse_ip_eth3</param>
-			<param type='eole' name='netmask'>adresse_netmask_eth3</param>
-		</fill>
-		<fill name='calc_network' target='adresse_network_eth4'>
-			<param type='eole' name='ip'>adresse_ip_eth4</param>
-			<param type='eole' name='netmask'>adresse_netmask_eth4</param>
-		</fill>
 		<fill name='calc_network' target='alias_network_eth0'>
 			<param type='eole' name='ip'>alias_ip_eth0</param>
 			<param type='eole' name='netmask'>alias_netmask_eth0</param>
@@ -573,26 +454,6 @@
 		<fill name='calc_network' target='adresse_network_vlan_eth4'>
 			<param type='eole' name='ip'>adresse_ip_vlan_eth4</param>
 			<param type='eole' name='netmask'>adresse_netmask_vlan_eth4</param>
-		</fill>
-		<fill name='calc_broadcast' target='adresse_broadcast_eth0'>
-			<param type='eole' name='ip'>adresse_ip_eth0</param>
-			<param type='eole' name='netmask'>adresse_netmask_eth0</param>
-		</fill>
-		<fill name='calc_broadcast' target='adresse_broadcast_eth1'>
-			<param type='eole' name='ip'>adresse_ip_eth1</param>
-			<param type='eole' name='netmask'>adresse_netmask_eth1</param>
-		</fill>
-		<fill name='calc_broadcast' target='adresse_broadcast_eth2'>
-			<param type='eole' name='ip'>adresse_ip_eth2</param>
-			<param type='eole' name='netmask'>adresse_netmask_eth2</param>
-		</fill>
-		<fill name='calc_broadcast' target='adresse_broadcast_eth3'>
-			<param type='eole' name='ip'>adresse_ip_eth3</param>
-			<param type='eole' name='netmask'>adresse_netmask_eth3</param>
-		</fill>
-		<fill name='calc_broadcast' target='adresse_broadcast_eth4'>
-			<param type='eole' name='ip'>adresse_ip_eth4</param>
-			<param type='eole' name='netmask'>adresse_netmask_eth4</param>
 		</fill>
 		<fill name='calc_broadcast' target='alias_broadcast_eth0'>
 			<param type='eole' name='ip'>alias_ip_eth0</param>
@@ -654,7 +515,7 @@
 		<auto name='key_nuauth' target='nuauth_tls_key'/>
 		<auto name='cert_nuauth' target='nuauth_tls_cert'/>
 		<auto name='cacert_nuauth' target='nuauth_tls_cacert'/>
-		<auto name='auto_eth' target='adresse_ip_eth0'>
+		<!--FIXME<auto name='auto_eth' target='adresse_ip_eth0'>
 			<param>eth0</param>
 			<param name='condition'>dhcp</param>
 			<param type='eole' name='parametre'>eth0_method</param>
@@ -681,37 +542,18 @@
 		<auto name='auto_defaultroute_int' target='interface_gw'>
 			<param type='eole'>eth0_method</param>
 			<param type='eole'>calc_ip_gw</param>
-                </auto>
+                </auto>-->
 
 	<!-- **** champs obligatoires **** -->
-		<check name='obligatoire' target='numero_etab' />
-		<check name='obligatoire' target='adresse_ip_eth0'/>
-		<check name='obligatoire' target='adresse_netmask_eth0'/>
-		<check name='obligatoire' target='adresse_network_eth0'/>
-		<check name='obligatoire' target='adresse_broadcast_eth0'/>
 		<check name='obligatoire' target='pppoe_user'/>
 		<check name='obligatoire' target='pppoe_passwd'/>
 		<check name='obligatoire' target='pppoe_interface'/>
-		<check name='obligatoire' target='ip_ssh_eth0'/>
-		<check name='obligatoire' target='netmask_ssh_eth0'/>
-		<check name='obligatoire' target='adresse_ip_eth1'/>
-		<check name='obligatoire' target='adresse_netmask_eth1'/>
-		<check name='obligatoire' target='adresse_network_eth1'/>
-		<check name='obligatoire' target='adresse_broadcast_eth1'/>
-		<check name='obligatoire' target='ip_ssh_eth1'/>
-		<check name='obligatoire' target='netmask_ssh_eth1'/>
 
 		<check name='obligatoire' target='nom_machine_eth1'/>
 
-		<!--<check name='obligatoire' target='adresse_ip_dns'/> -->
 		<check name='obligatoire' target='interface_gw'/>
-		<check name='obligatoire' target='nom_machine'/>
-		<check name='obligatoire' target='nom_domaine_local'/>
-		<check name='obligatoire' target='nom_domaine_academique' />
-		<check name='obligatoire' target='serveur_maj'/>
 		<check name='obligatoire' target='nuauth_nss_ldap_host'/>
 		<check name='obligatoire' target='nuauth_nss_ldap_dn'/>
-		<check name='obligatoire' target='adresse_ip_gw'/>
 
 
 	<!-- **** Listes deroulantes **** -->
@@ -722,9 +564,6 @@
                 <check name='valid_enum' target='type_maj'>
                   <param>['minimum','complete']</param>
                 </check>
-                <check name="valid_enum" target="nombre_interfaces">
-                  <param>['1','2','3','4','5']</param>
-                </check>
 		<check name="valid_enum" target="activer_squid_auth">
                   <param>['oui','non']</param>
                 </check>
@@ -734,9 +573,6 @@
 		<check name='valid_enum' target='active_sarg'>
                   <param>['oui','non']</param>
 		</check>
-                <check name="valid_enum" target="activer_log_distant">
-                  <param>['oui','non']</param>
-                </check>
 		<check name="valid_enum" target="activer_sonde_prelude">
                   <param>['oui','non']</param>
                 </check>
@@ -761,12 +597,9 @@
 		<check name="valid_enum" target='nuauth_nss_ldap_tls'>
 			<param>['oui','non']</param>
 		</check>
-                <check name="valid_enum" target="eth0_method">
+                <!--FIXME<check name="valid_enum" target="eth0_method">
                   <param>['statique','dhcp','pppoe']</param>
-                </check>
-		<check name="valid_enum" target='ssh_eth0'>
-			<param>['oui','non']</param>
-		</check>
+                </check>-->
 		<check name="valid_enum" target='alias_eth0'>
 			<param>['oui','non']</param>
 		</check>
@@ -774,13 +607,6 @@
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='dns_master_eth0'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target="eth1_method">
-			<!-- <param>['statique','dhcp']</param> -->
-                  <param>['statique']</param>
-                </check>
-		<check name="valid_enum" target='ssh_eth1'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='alias_eth1'>
@@ -801,13 +627,6 @@
 		<check name="valid_enum" target='squid_auth_eth1'>
 			<param>['oui','non']</param>
 		</check>
-		<check name="valid_enum" target="eth2_method">
-			<!-- <param>['statique','dhcp']</param> -->
-                  <param>['statique']</param>
-                </check>
-		<check name="valid_enum" target='ssh_eth2'>
-			<param>['oui','non']</param>
-		</check>
 		<check name="valid_enum" target='alias_eth2'>
 			<param>['oui','non']</param>
 		</check>
@@ -826,13 +645,6 @@
 		<check name="valid_enum" target='squid_auth_eth2'>
 			<param>['oui','non']</param>
 		</check>
-		<check name="valid_enum" target="eth3_method">
-			<!-- <param>['statique','dhcp']</param> -->
-                  <param>['statique']</param>
-                </check>
-		<check name="valid_enum" target='ssh_eth3'>
-			<param>['oui','non']</param>
-		</check>
 		<check name="valid_enum" target='alias_eth3'>
 			<param>['oui','non']</param>
 		</check>
@@ -849,13 +661,6 @@
 			<param>['1','2']</param>
 		</check>
 		<check name="valid_enum" target='squid_auth_eth3'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target="eth4_method">
-			<!-- <param>['statique','dhcp']</param> -->
-                  <param>['statique']</param>
-                </check>
-		<check name="valid_enum" target='ssh_eth4'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='alias_eth4'>
@@ -918,28 +723,6 @@
 			<param>amonecole</param>
 			<target type='variable'>install_scribe_dmz</target>
 		</condition>
-                <condition name='hidden_if_in' source='nombre_interfaces'>
-                        <param>1</param>
-                        <target type='family'>Interface-1</target>
-                </condition>
-		<condition name='hidden_if_in' source='nombre_interfaces'>
-                        <param>1</param>
-	                <param>2</param>
-			<target type='family'>Interface-2</target>
-		</condition>
-		<condition name='hidden_if_in' source='nombre_interfaces'>
-                        <param>1</param>
-	                <param>2</param>
-	                <param>3</param>
-			<target type='family'>Interface-3</target>
-		</condition>
-		<condition name='hidden_if_in' source='nombre_interfaces'>
-                        <param>1</param>
-	                <param>2</param>
-	                <param>3</param>
-	                <param>4</param>
-			<target type='family'>Interface-4</target>
-		</condition>
                 <condition name='hidden_if_in' source='activer_squid_auth'>
                 	<param>non</param>
 			<target type='family'>Authentification</target>
@@ -947,10 +730,6 @@
 			<target type='variable'>squid_auth_eth2</target>
 			<target type='variable'>squid_auth_eth3</target>
 			<target type='variable'>squid_auth_eth4</target>
-		</condition>
-                <condition name='hidden_if_in' source='activer_log_distant'>
-                	<param>non</param>
-			<target type='family'>Logs</target>
 		</condition>
                  <condition name='hidden_if_in' source='activer_sonde_prelude'>
                 	<param>non</param>
@@ -974,7 +753,7 @@
 			<target type='variable'>nuauth_eth4</target>
 			<target type='filelist'>nufw</target>
 		</condition>
-                <condition name='hidden_if_in' source='eth0_method'>
+                <!--FIXME<condition name='hidden_if_in' source='eth0_method'>
                 	<param>dhcp</param>
                 	<param>pppoe</param>
                		<target type='variable'>adresse_ip_eth0</target>
@@ -989,12 +768,7 @@
 			<target type='variable'>pppoe_passwd</target>
 			<target type='variable'>pppoe_interface</target>
 			<target type='filelist'>pppoe</target>
-		</condition>
-		<condition name='hidden_if_in' source='ssh_eth0'>
-			<param>non</param>
-			<target type='variable'>ip_ssh_eth0</target>
-			<target type='variable'>netmask_ssh_eth0</target>
-		</condition>
+		</condition>-->
 		<condition name='hidden_if_in' source='alias_eth0'>
 			<param>non</param>
                 	<target type='variable'>alias_ip_eth0</target>
@@ -1012,18 +786,6 @@
                 	<target type='variable'>adresse_broadcast_vlan_eth0</target>
                 	<target type='variable'>adresse_gw_vlan_eth0</target>
 		</condition>
-		<condition name='hidden_if_in' source='eth1_method'>
-	                <param>dhcp</param>
-        	        <target type='variable'>adresse_ip_eth1</target>
-        	        <target type='variable'>adresse_netmask_eth1</target>
-        	        <target type='variable'>adresse_network_eth1</target>
-               		<target type='variable'>adresse_broadcast_eth1</target>
-                </condition>
-		<condition name='hidden_if_in' source='ssh_eth1'>
-			<param>non</param>
-			<target type='variable'>ip_ssh_eth1</target>
-			<target type='variable'>netmask_ssh_eth1</target>
-		</condition>
 		<condition name='hidden_if_in' source='alias_eth1'>
 			<param>non</param>
                 	<target type='variable'>alias_ip_eth1</target>
@@ -1038,18 +800,6 @@
                 	<target type='variable'>adresse_netmask_vlan_eth1</target>
                 	<target type='variable'>adresse_network_vlan_eth1</target>
                 	<target type='variable'>adresse_broadcast_vlan_eth1</target>
-		</condition>
-		<condition name='hidden_if_in' source='eth2_method'>
-	                <param>dhcp</param>
-        	        <target type='variable'>adresse_ip_eth2</target>
-        	        <target type='variable'>adresse_netmask_eth2</target>
-        	        <target type='variable'>adresse_network_eth2</target>
-               		<target type='variable'>adresse_broadcast_eth2</target>
-                </condition>
-		<condition name='hidden_if_in' source='ssh_eth2'>
-			<param>non</param>
-			<target type='variable'>ip_ssh_eth2</target>
-			<target type='variable'>netmask_ssh_eth2</target>
 		</condition>
 		<condition name='hidden_if_in' source='alias_eth2'>
 			<param>non</param>
@@ -1066,18 +816,6 @@
                 	<target type='variable'>adresse_network_vlan_eth2</target>
                 	<target type='variable'>adresse_broadcast_vlan_eth2</target>
 		</condition>
-		<condition name='hidden_if_in' source='eth3_method'>
-	                <param>dhcp</param>
-        	        <target type='variable'>adresse_ip_eth3</target>
-        	        <target type='variable'>adresse_netmask_eth3</target>
-        	        <target type='variable'>adresse_network_eth3</target>
-               		<target type='variable'>adresse_broadcast_eth3</target>
-                </condition>
-		<condition name='hidden_if_in' source='ssh_eth3'>
-			<param>non</param>
-			<target type='variable'>ip_ssh_eth3</target>
-			<target type='variable'>netmask_ssh_eth3</target>
-		</condition>
 		<condition name='hidden_if_in' source='alias_eth3'>
 			<param>non</param>
                 	<target type='variable'>alias_ip_eth3</target>
@@ -1092,18 +830,6 @@
                 	<target type='variable'>adresse_netmask_vlan_eth3</target>
                 	<target type='variable'>adresse_network_vlan_eth3</target>
                 	<target type='variable'>adresse_broadcast_vlan_eth3</target>
-		</condition>
-		<condition name='hidden_if_in' source='eth4_method'>
-	                <param>dhcp</param>
-        	        <target type='variable'>adresse_ip_eth4</target>
-        	        <target type='variable'>adresse_netmask_eth4</target>
-        	        <target type='variable'>adresse_network_eth4</target>
-               		<target type='variable'>adresse_broadcast_eth4</target>
-                </condition>
-		<condition name='hidden_if_in' source='ssh_eth4'>
-			<param>non</param>
-			<target type='variable'>ip_ssh_eth4</target>
-			<target type='variable'>netmask_ssh_eth4</target>
 		</condition>
 		<condition name='hidden_if_in' source='alias_eth4'>
 			<param>non</param>
@@ -1135,9 +861,6 @@
 		</condition>
 
 	<!-- **** Groupes **** -->
-		 <group master='ip_ssh_eth0'>
-                        <slave>netmask_ssh_eth0</slave>
-                 </group>
 		 <group master='alias_ip_eth0'>
                         <slave>alias_netmask_eth0</slave>
                         <slave>alias_network_eth0</slave>
@@ -1151,9 +874,6 @@
                         <slave>adresse_broadcast_vlan_eth0</slave>
                         <slave>adresse_gw_vlan_eth0</slave>
                  </group>
-		 <group master='ip_ssh_eth1'>
-                        <slave>netmask_ssh_eth1</slave>
-                 </group>
 		 <group master='alias_ip_eth1'>
                         <slave>alias_netmask_eth1</slave>
                         <slave>alias_network_eth1</slave>
@@ -1164,9 +884,6 @@
                         <slave>adresse_netmask_vlan_eth1</slave>
                         <slave>adresse_network_vlan_eth1</slave>
                         <slave>adresse_broadcast_vlan_eth1</slave>
-                 </group>
-		 <group master='ip_ssh_eth2'>
-                        <slave>netmask_ssh_eth2</slave>
                  </group>
 		 <group master='alias_ip_eth2'>
                         <slave>alias_netmask_eth2</slave>
@@ -1179,9 +896,6 @@
                         <slave>adresse_network_vlan_eth2</slave>
                         <slave>adresse_broadcast_vlan_eth2</slave>
                  </group>
-		 <group master='ip_ssh_eth3'>
-                        <slave>netmask_ssh_eth3</slave>
-                 </group>
 		 <group master='alias_ip_eth3'>
                         <slave>alias_netmask_eth3</slave>
                         <slave>alias_network_eth3</slave>
@@ -1192,9 +906,6 @@
                         <slave>adresse_netmask_vlan_eth3</slave>
                         <slave>adresse_network_vlan_eth3</slave>
                         <slave>adresse_broadcast_vlan_eth3</slave>
-                 </group>
-		 <group master='ip_ssh_eth4'>
-                        <slave>netmask_ssh_eth4</slave>
                  </group>
 		 <group master='alias_ip_eth4'>
                         <slave>alias_netmask_eth4</slave>
@@ -1225,22 +936,9 @@
 	</constraints>
 	<!--************************************************************************************************* -->
 	<help>
-		<variable name='adresse_ip_eth0'>Adresse IP de la premiere carte réseau (ex: 10.21.5.1)</variable>
-		<variable name='adresse_netmask_eth0'>Adresse du masque de sous réseau de la première carte réseau (ex: 255.255.255.0)</variable>
-		<variable name='adresse_network_eth0'>Adresse réseau de la carte int0 (ex: 10.21.5.0)</variable>
-		<variable name='adresse_broadcast_eth0'>Adresse de broadcast (diffusion) de la carte int0 (ex: 10.21.5.255)</variable>
-		<variable name='adresse_ip_dns'>Adresse IP du serveur de nom, en général celui de votre fournisseur internet</variable>
-		<variable name='adresse_ip_gw'>Adresse IP de la passerelle par defaut (du routeur par exemple)</variable>
-		<variable name='nom_machine'>Nom de la machine</variable>
-		<variable name='nom_domaine_local'>Nom de domaine prive du réseau local</variable>
-		<variable name='nom_domaine_academique'>Nom de domaine académique (ex : ac-dijon.fr)</variable>
-		<variable name='serveur_maj'>Nom ou adresse IP du serveur de mise à jour</variable>
-		<variable name='serveur_maj2'>Nom ou adresse IP du serveur de mise à jour de secours</variable>
-
 		<variable name='dansguardian_eth1'>Instance de DansGuardian à utiliser pour l'interface eth1 (1=Configuration 1, 2=Configuration 2)</variable>
 		<variable name='dansguardian_eth2'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth2 (1=admin, 2=pedago)</variable>
 		<variable name='dansguardian_eth3'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth3 (1=admin, 2=pedago)</variable>
 		<variable name='dansguardian_eth4'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth4 (1=admin, 2=pedago)</variable>
-		<family name='Général'>Paramètres de base du serveur</family>
 	</help>
 </creole>
