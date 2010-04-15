@@ -372,7 +372,7 @@
 		</family>
 	<!--************************************************************************************************* -->
 			<separators>
-				<separator name='type_amon'>Paramètres réseau globaux</separator>
+				<separator name='type_amon'>Paramètres réseau Amon</separator>
 				<separator name='active_nufw'>NuFW (Now User Filtering Works)</separator>
                                 <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
 				<separator name='alias_eth0'>Configuration des alias sur l'interface</separator>
