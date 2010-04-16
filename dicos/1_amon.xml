@@ -106,13 +106,13 @@
 			</variable>
 		</family>
 	<!--************************************************************************************************* -->
-		<family name='Interface-ext'>
+		<family name='Interface-0'>
 			<!-- **** Interface externe **** -->
-			<!--FIXME<variable name='pppoe_user' type='string' description='Nom du compte PPPoE' />
+			<variable name='pppoe_user' type='string' description='Nom du compte PPPoE' />
 			<variable name='pppoe_passwd' type='string' description='Mot de passe PPPoE' />
 			<variable name='pppoe_interface' type='string' description='Interface où PPPoE est connecté'>
 				<value>eth0</value>
-			</variable>-->
+			</variable>
 
 			<variable name='alias_eth0' type='string' description="Ajouter des IP alias sur l'interface" >
 				<value>non</value>
@@ -372,7 +372,7 @@
 		</family>
 	<!--************************************************************************************************* -->
 			<separators>
-				<separator name='type_amon'>Paramètres réseau Amon</separator>
+				<separator name='type_amon'>Paramètres réseau globaux</separator>
 				<separator name='active_nufw'>NuFW (Now User Filtering Works)</separator>
                                 <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
 				<separator name='alias_eth0'>Configuration des alias sur l'interface</separator>
@@ -760,7 +760,7 @@
                 	<target type='variable'>adresse_netmask_eth0</target>
                 	<target type='variable'>adresse_network_eth0</target>
                 	<target type='variable'>adresse_broadcast_eth0</target>
-                </condition>
+		</condition>-->
 		<condition name='hidden_if_in' source='eth0_method'>
 			<param>statique</param>
 			<param>dhcp</param>
@@ -768,7 +768,7 @@
 			<target type='variable'>pppoe_passwd</target>
 			<target type='variable'>pppoe_interface</target>
 			<target type='filelist'>pppoe</target>
-		</condition>-->
+		</condition>
 		<condition name='hidden_if_in' source='alias_eth0'>
 			<param>non</param>
                 	<target type='variable'>alias_ip_eth0</target>

@@ -1,8 +1,7 @@
-%if %%serveur_maj != ""
-.%%serveur_maj
-%end if
-%if %%serveur_maj2 != ""
-.%%serveur_maj2
+%if %%serveur_maj != ['']
+%for %%serveur_maj_iter in %%serveur_maj
+.%%serveur_maj_iter
+%end for
 %end if
 .archive.canonical.com
 .archive.ubuntu.com
