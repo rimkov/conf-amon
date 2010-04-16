@@ -6,12 +6,9 @@
         <file name='/etc/chkrootkit.conf'/>
         <file name='/etc/crontab'/>
         <file name='/etc/fwlogwatch.config'/>
-        <file name='/etc/hostname'/>
-        <file name='/etc/hosts'/>
         <file name='/etc/host.conf'/>
         <file name='/etc/hosts.allow'/>
 	<file name='/etc/logrotate.conf'/>
-        <file name='/etc/resolv.conf'/>
         <file name='/etc/sudoers' mode="0440"/>
         <file name='/etc/ulogd.conf'/>
 	<file name='/etc/webalizer.conf'/>
@@ -19,7 +16,6 @@
 	<file name='/etc/logrotate.d/dansguardian' source='dansguardian.logrotate'/>
 	<file name='/etc/logrotate.d/squid' source='squid.logrotate'/>
 	<file name='/etc/logrotate.d/ulogd' source='ulogd.logrotate'/>
-	<file name='/etc/network/interfaces'/>
 	<file name='/etc/pam.d/squid' source='squid.pam'/>
 	<file name='/usr/share/dansguardian/languages/french/template.html' source='dansguardian-template.html'/>
 	<file name='/usr/share/dansguardian/languages/french/template-liste_blanche.html' source='dansguardian-template-liste_blanche.html'/>
@@ -42,9 +38,6 @@
 	<file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
 	<file filelist='nufw' name='/etc/pam.d/nuauth' source='nuauth.pamd'/>
 	<file filelist='nufw' name='/etc/init.d/nufw' source='nufw.init'/>
-	<file filelist='pppoe' name='/etc/ppp/peers/dsl-provider'/>
-	<file filelist='pppoe' name='/etc/ppp/pap-secrets'/>
-	<file filelist='pppoe' name='/etc/ppp/chap-secrets'/>
 
 	</files>
 	<!--************************************************************************************************* -->
@@ -108,12 +101,6 @@
 	<!--************************************************************************************************* -->
 		<family name='Interface-0'>
 			<!-- **** Interface externe **** -->
-			<variable name='pppoe_user' type='string' description='Nom du compte PPPoE' />
-			<variable name='pppoe_passwd' type='string' description='Mot de passe PPPoE' />
-			<variable name='pppoe_interface' type='string' description='Interface où PPPoE est connecté'>
-				<value>eth0</value>
-			</variable>
-
 			<variable name='alias_eth0' type='string' description="Ajouter des IP alias sur l'interface" >
 				<value>non</value>
 			</variable>
@@ -515,40 +502,8 @@
 		<auto name='key_nuauth' target='nuauth_tls_key'/>
 		<auto name='cert_nuauth' target='nuauth_tls_cert'/>
 		<auto name='cacert_nuauth' target='nuauth_tls_cacert'/>
-		<!--FIXME<auto name='auto_eth' target='adresse_ip_eth0'>
-			<param>eth0</param>
-			<param name='condition'>dhcp</param>
-			<param type='eole' name='parametre'>eth0_method</param>
-		</auto>
-		<auto name='auto_network' target='adresse_network_eth0'>
-			<param>eth0</param>
-			<param name='condition'>dhcp</param>
-			<param type='eole' name='parametre'>eth0_method</param>
-		</auto>
-		<auto name='auto_netmask' target='adresse_netmask_eth0'>
-			<param>eth0</param>
-			<param name='condition'>dhcp</param>
-			<param type='eole' name='parametre'>eth0_method</param>
-		</auto>
-		<auto name='auto_broadcast' target='adresse_broadcast_eth0'>
-			<param>eth0</param>
-			<param name='condition'>dhcp</param>
-			<param type='eole' name='parametre'>eth0_method</param>
-		</auto>
-                <auto name='auto_defaultroute_ip' target='adresse_ip_gw'>
-                        <param type='eole'>eth0_method</param>
-			<param type='eole'>calc_ip_gw</param>
-                </auto>
-		<auto name='auto_defaultroute_int' target='interface_gw'>
-			<param type='eole'>eth0_method</param>
-			<param type='eole'>calc_ip_gw</param>
-                </auto>-->
 
 	<!-- **** champs obligatoires **** -->
-		<check name='obligatoire' target='pppoe_user'/>
-		<check name='obligatoire' target='pppoe_passwd'/>
-		<check name='obligatoire' target='pppoe_interface'/>
-
 		<check name='obligatoire' target='nom_machine_eth1'/>
 
 		<check name='obligatoire' target='interface_gw'/>
@@ -752,22 +707,6 @@
 			<target type='variable'>nuauth_eth3</target>
 			<target type='variable'>nuauth_eth4</target>
 			<target type='filelist'>nufw</target>
-		</condition>
-                <!--FIXME<condition name='hidden_if_in' source='eth0_method'>
-                	<param>dhcp</param>
-                	<param>pppoe</param>
-               		<target type='variable'>adresse_ip_eth0</target>
-                	<target type='variable'>adresse_netmask_eth0</target>
-                	<target type='variable'>adresse_network_eth0</target>
-                	<target type='variable'>adresse_broadcast_eth0</target>
-		</condition>-->
-		<condition name='hidden_if_in' source='eth0_method'>
-			<param>statique</param>
-			<param>dhcp</param>
-			<target type='variable'>pppoe_user</target>
-			<target type='variable'>pppoe_passwd</target>
-			<target type='variable'>pppoe_interface</target>
-			<target type='filelist'>pppoe</target>
 		</condition>
 		<condition name='hidden_if_in' source='alias_eth0'>
 			<param>non</param>
