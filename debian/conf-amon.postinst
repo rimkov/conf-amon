@@ -2,7 +2,7 @@
 
 # creation de l'utilisateur nufwguest pour nuauth
 
-VERSION="2.2"
+VERSION="2.3"
 
 if ! getent group nufwguest >/dev/null; then
 	addgroup --gid 253 nufwguest
