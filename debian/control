@@ -7,10 +7,10 @@ Standards-Version: 3.7.3
 
 Package: conf-amon
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, python
+Depends: ${shlibs:Depends}, ${misc:Depends}, python, amon-pkg
 Description: Templates et dictionnaires pour Amon 2.x
  Pour toute information complementaire, veuillez vous rendre
- sur le site du Projet a l'adresse suivante : 
+ sur le site du Projet a l'adresse suivante :
  .
  http://eole.orion.education.fr
 
