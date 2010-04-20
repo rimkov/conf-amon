@@ -7,18 +7,14 @@ any net %%routes netmask %%routes.route_netmask gw %%routes.route_gw
 %end if
 %else
 %if %%routes.route_netmask == "255.255.255.255"
-%if %%routes.route_gw == "" and %%routes.route_int != ""
+%if %%routes.route_gw == "0.0.0.0" 
 any host %%routes dev %%routes.route_int
-%else if %%routes.route_gw == "" and %%routes.route_int == ""
-
 %else
 any host %%routes gw %%routes.route_gw dev %%routes.route_int
 %end if
 %else
-%if %%routes.route_gw == "" and %%routes.route_int != ""
+%if %%routes.route_gw == "0.0.0.0" 
 any net %%routes netmask %%routes.route_netmask dev %%routes.route_int
-%else if %%routes.route_gw == "" and %%routes.route_int == ""
-
 %else
 any net %%routes netmask %%routes.route_netmask gw %%routes.route_gw dev %%routes.route_int
 %end if
