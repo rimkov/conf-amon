@@ -1,3 +1,25 @@
+conf-amon (2.3-eole214) eole-2.3-dev; urgency=low
+
+  [ emmanuel ]
+  * deplace 2_logs_amon.xml depuis eole-common
+  * debut du support de eole-common 2.3
+  * debut du support de eole-common 2.3
+  * dico amon apres le dicos commun
+  * typo
+  * typo dans 1_amon.xml + support multi serveur_maj
+  * Change le numero de version
+  * Deplace le support de pppoe
+  * Dependance sur amon-pkg
+  * découpage du paquet
+  * Correction du passage en mode forteresse (fixes #446)
+  * séparation avec eole-dansguardian
+  * séparation conf-amon eole-reverseproxy
+  * deplacement de la mise à jour des blacklists
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 21 Apr 2010 14:13:22 +0000
+
 conf-amon (2.2-eole213) eole-2.2-proposed; urgency=low
 
   [ Klaas TJEBBES ]
