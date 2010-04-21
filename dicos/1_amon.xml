@@ -13,14 +13,6 @@
         <file name='/etc/ulogd.conf'/>
 	<file name='/etc/webalizer.conf'/>
 	<file name='/etc/logrotate.d/ead'/>
-	<file name='/etc/logrotate.d/dansguardian' source='dansguardian.logrotate'/>
-	<file name='/etc/logrotate.d/squid' source='squid.logrotate'/>
-	<file name='/etc/logrotate.d/ulogd' source='ulogd.logrotate'/>
-	<file name='/etc/pam.d/squid' source='squid.pam'/>
-	<file name='/usr/share/dansguardian/languages/french/template.html' source='dansguardian-template.html'/>
-	<file name='/usr/share/dansguardian/languages/french/template-liste_blanche.html' source='dansguardian-template-liste_blanche.html'/>
-	<file name='/usr/share/dansguardian/languages/french/template-moderateur.html' source='dansguardian-template-moderateur.html'/>
-	<file name='/usr/share/dansguardian/languages/french/template-utilisateur_interdits.html' source='dansguardian-template-utilisateur_interdits.html'/>
 	<file name='/usr/share/eole/firewall.stop' mode='755'/>
         <file name='/usr/share/era/backend/data/active_tags'/>
 	<file name='/etc/bind/spcl.options'/>
@@ -88,15 +80,9 @@
  			<variable name='activer_bacula' type='string' description='Activation du client Bacula (sauvegardes)' >
  				<value>non</value>
 			</variable>
- 			<variable name='activer_squid_auth' type='string' description="Activation de l'authentification web (proxy)" >
- 				<value>non</value>
- 			</variable>
 			<variable  name='active_sarg' type='string' description="Activation de SARG, générateur de statistiques Proxy/filtrage web (Squid/DansGuardian)">
 				<value>non</value>
       			</variable>
-			<variable name='num_dansguardian_instance' type='string' description="Nombre de filtres web (Dansguardian et pare-feu) configurables" hidden='True'>
-				<value>2</value>
-			</variable>
 		</family>
 	<!--************************************************************************************************* -->
 		<family name='Interface-0'>
@@ -159,13 +145,6 @@
 			<variable name='nuauth_eth1' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
 			</variable>
-			<!--**** variable de configuration pour dansguardian (choix de l'instance) ****-->
-			<variable name='dansguardian_eth1' type='string' description='Filtre web à appliquer sur cette interface' >
-				<value>1</value>
-			</variable>
-			<variable name='squid_auth_eth1' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
-				<value>oui</value>
-			</variable>
 		</family>
 
 		<!--**** Interfaces 2 **** -->
@@ -196,13 +175,6 @@
 			</variable>
 			<variable name='nuauth_eth2' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
-			</variable>
-			<!-- variable de configuration pour dansguardian (choix de l'instance) -->
-			<variable name='dansguardian_eth2' type='string' description='Filtre web à appliquer sur cette interface' >
-				<value>1</value>
-			</variable>
-			<variable name='squid_auth_eth2' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
-				<value>oui</value>
 			</variable>
 		</family>
 
@@ -235,13 +207,6 @@
 			<variable name='nuauth_eth3' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
 			</variable>
-			<!-- variable de configuration pour dansguardian (choix de l'instance) -->
-			<variable name='dansguardian_eth3' type='string' description='Filtre web à appliquer sur cette interface' >
-				<value>1</value>
-			</variable>
-			<variable name='squid_auth_eth3' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
-				<value>oui</value>
-			</variable>
 		</family>
 
 		<!--**** Interfaces 4 **** -->
@@ -272,13 +237,6 @@
 			</variable>
 			<variable name='nuauth_eth4' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
-			</variable>
-			<!-- variable de configuration pour dansguardian (choix de l'instance) -->
-			<variable name='dansguardian_eth4' type='string' description='Filtre web à appliquer sur cette interface' >
-				<value>1</value>
-			</variable>
-			<variable name='squid_auth_eth4' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
-				<value>oui</value>
 			</variable>
 		</family>
 	<!--************************************************************************************************* -->
@@ -313,20 +271,6 @@
 			</variable>
 		</family>
 
-	<!--************************************************************************************************* -->
-		<family name='Proxy-pere' mode='expert'>
- 			<variable name='nom_cache_pere' type='string' description='Nom ou adresse IP du serveur mandataire web parent'/>
- 			<variable name='port_cache_pere' type='string' description='Port du serveur mandataire web parent'/>
- 			<variable name='proxy_pere_rvp' type='string' description="Accés aux zone RVP en passant par le proxy père global ?">
-				<value>oui</value>
-			</variable>
- 			<variable name='nom_cache_pere_zone' type='string' description='Utiliser le serveur mandataire web parent pour la zone' multi='True' />
- 			<variable name='port_cache_pere_zone' type='string' description='Port du serveur mandataire web parent pour la zone'/>
- 			<variable name='nom_zone_dns_cache' type='string' description='Nom DNS de la zone accessible via ce cache père'/>
- 			<variable name='autoriser_proxy_autres' type='string' description="Autoriser l'utilisation de ce cache père par d'autres zones que eth1">
-				<value>non</value>
-			</variable>
-		</family>
 	<!--************************************************************************************************* -->
 		<family name='zones-dns' mode='expert'>
 			<variable name='nom_domaine_local_supp' type='string' description='Nom domaine local supplémentaire ou rien' multi='True' />
@@ -368,21 +312,16 @@
 				<separator name='alias_eth1'>Configuration des alias sur l'interface</separator>
 				<separator name='vlan_eth1'>Configuration des VLAN sur l'interface</separator>
 				<separator name='dns_master_eth1'>Configuration DNS sur l'interface</separator>
-				<separator name='dansguardian_eth1'>Configuration de la politique de filtrage</separator>
 				<separator name='alias_eth2'>Configuration des alias sur l'interface</separator>
 				<separator name='dns_master_eth2'>Configuration DNS sur l'interface</separator>
-				<separator name='dansguardian_eth2'>Configuration de la politique de filtrage</separator>
 				<separator name='vlan_eth2'>Configuration des VLAN sur l'interface</separator>
 				<separator name='alias_eth3'>Configuration des alias sur l'interface</separator>
 				<separator name='vlan_eth3'>Configuration des VLAN sur l'interface</separator>
 				<separator name='dns_master_eth3'>Configuration DNS sur l'interface</separator>
-				<separator name='dansguardian_eth3'>Configuration de la politique de filtrage</separator>
 				<separator name='alias_eth4'>Configuration des alias sur l'interface</separator>
 				<separator name='vlan_eth4'>Configuration des VLAN sur l'interface</separator>
 				<separator name='dns_master_eth4'>Configuration DNS sur l'interface</separator>
-				<separator name='dansguardian_eth4'>Configuration de la politique de filtrage</separator>
 				<separator name='nom_cache_pere'>Proxy pere general</separator>
-				<separator name='nom_cache_pere_zone'>Proxy pere par zone</separator>
 				<separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
 				<separator name='nom_zone_forward'>Forward de zone DNS</separator>
 				<separator name='nom_host_dns'>Ajout d'hôtes dans le DNS</separator>
@@ -394,7 +333,6 @@
 				<separator name='debit_carte_eth4'>Configuration avancée de l'interface interne 4</separator>
 				<separator name='ead_web'>EAD web</separator>
 				<separator name='activer_bacula'>Sauvegardes</separator>
-				<separator name='activer_squid_auth'>Proxy</separator>
 				<separator name='activer_sonde_prelude'>Activation des sondes Prelude</separator>
 				<separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>
 				<separator name='calc_ip_gw'></separator>
@@ -519,9 +457,6 @@
                 <check name='valid_enum' target='type_maj'>
                   <param>['minimum','complete']</param>
                 </check>
-		<check name="valid_enum" target="activer_squid_auth">
-                  <param>['oui','non']</param>
-                </check>
 		<check name="valid_enum" target="calc_ip_gw">
                   <param>['oui','non']</param>
                 </check>
@@ -576,12 +511,6 @@
 		<check name="valid_enum" target='nuauth_eth1'>
 			<param>['oui','non']</param>
 		</check>
-		<check name="valid_enum" target='dansguardian_eth1'>
-			<param>['1','2']</param>
-		</check>
-		<check name="valid_enum" target='squid_auth_eth1'>
-			<param>['oui','non']</param>
-		</check>
 		<check name="valid_enum" target='alias_eth2'>
 			<param>['oui','non']</param>
 		</check>
@@ -592,12 +521,6 @@
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='nuauth_eth2'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='dansguardian_eth2'>
-			<param>['1','2']</param>
-		</check>
-		<check name="valid_enum" target='squid_auth_eth2'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='alias_eth3'>
@@ -612,12 +535,6 @@
 		<check name="valid_enum" target='nuauth_eth3'>
 			<param>['oui','non']</param>
 		</check>
-		<check name="valid_enum" target='dansguardian_eth3'>
-			<param>['1','2']</param>
-		</check>
-		<check name="valid_enum" target='squid_auth_eth3'>
-			<param>['oui','non']</param>
-		</check>
 		<check name="valid_enum" target='alias_eth4'>
 			<param>['oui','non']</param>
 		</check>
@@ -630,20 +547,8 @@
 		<check name="valid_enum" target='nuauth_eth4'>
 			<param>['oui','non']</param>
 		</check>
-		<check name="valid_enum" target='dansguardian_eth4'>
-			<param>['1','2']</param>
-		</check>
-		<check name="valid_enum" target='squid_auth_eth4'>
-			<param>['oui','non']</param>
-		</check>
                 <check name="valid_enum" target="autoriser_rvp_autres">
                         <param>['oui','non']</param>
-                </check>
-                <check name="valid_enum" target="proxy_pere_rvp">
-                  <param>['oui','non']</param>
-                </check>
-                <check name="valid_enum" target="autoriser_proxy_autres">
-                  <param>['oui','non']</param>
                 </check>
 	     	<check name='valid_enum' target='ead_web'>
 		  <param>['oui','non']</param>
@@ -677,14 +582,6 @@
 		<condition name='hidden_if_in' source='eole_module'>
 			<param>amonecole</param>
 			<target type='variable'>install_scribe_dmz</target>
-		</condition>
-                <condition name='hidden_if_in' source='activer_squid_auth'>
-                	<param>non</param>
-			<target type='family'>Authentification</target>
-			<target type='variable'>squid_auth_eth1</target>
-			<target type='variable'>squid_auth_eth2</target>
-			<target type='variable'>squid_auth_eth3</target>
-			<target type='variable'>squid_auth_eth4</target>
 		</condition>
                  <condition name='hidden_if_in' source='activer_sonde_prelude'>
                 	<param>non</param>
@@ -861,11 +758,6 @@
                         <slave>adresse_netmask_zone_rvp</slave>
                         <slave>autoriser_rvp_autres</slave>
                  </group>
-		 <group master='nom_cache_pere_zone'>
-                        <slave>port_cache_pere_zone</slave>
-                        <slave>nom_zone_dns_cache</slave>
-                        <slave>autoriser_proxy_autres</slave>
-                 </group>
 		 <group master='nom_zone_forward'>
                         <slave>ip_dns_zone_forward</slave>
                  </group>
@@ -875,9 +767,5 @@
 	</constraints>
 	<!--************************************************************************************************* -->
 	<help>
-		<variable name='dansguardian_eth1'>Instance de DansGuardian à utiliser pour l'interface eth1 (1=Configuration 1, 2=Configuration 2)</variable>
-		<variable name='dansguardian_eth2'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth2 (1=admin, 2=pedago)</variable>
-		<variable name='dansguardian_eth3'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth3 (1=admin, 2=pedago)</variable>
-		<variable name='dansguardian_eth4'>Indice de la configuration(filtrage et pare-feu) choisie pour l'interface eth4 (1=admin, 2=pedago)</variable>
 	</help>
 </creole>

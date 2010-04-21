@@ -1,6 +1,0 @@
-#%PAM-1.0
-auth       sufficient /lib/security/pam_ldap.so
-auth       sufficient /lib/security/pam_smb_auth.so nolocal
-#account   sufficient /lib/security/pam_ldap.so
-account    sufficient /lib/security/pam_permit.so
-
