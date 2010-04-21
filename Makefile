@@ -3,14 +3,14 @@
 #########################
 DESTDIR=""
 SRCDIR=""
-EOLE_CONF_DIR=$(DESTDIR)/etc/eole
-EOLE_DIR=$(DESTDIR)/usr/share/eole
-INIT_DIR=$(DESTDIR)/etc/init.d
-SBIN_DIR=$(DESTDIR)/usr/sbin
-BIN_DIR=$(DESTDIR)/usr/bin
+EOLE_CONF_DIR=$(DESTDIR)/conf-amon/etc/eole
+EOLE_DIR=$(DESTDIR)/conf-amon/usr/share/eole
+INIT_DIR=$(DESTDIR)/conf-amon/etc/init.d
+SBIN_DIR=$(DESTDIR)/conf-amon/usr/sbin
+BIN_DIR=$(DESTDIR)/conf-amon/usr/bin
 all: install
 
-install: 
+install:
 
 	# création des répertoires (normalement fait par creole)
 	mkdir -p $(EOLE_DIR)
@@ -20,11 +20,11 @@ install:
 	mkdir -p $(EOLE_CONF_DIR)/modif
 	mkdir -p $(EOLE_CONF_DIR)/patch/variante
 	mkdir -p $(EOLE_CONF_DIR)/template
-	mkdir -p $(DESTDIR)/etc/sysconfig/eole
+	mkdir -p $(DESTDIR)/conf-amon/etc/sysconfig/eole
 	mkdir -p $(SBIN_DIR)
 	mkdir -p $(BIN_DIR)
 	mkdir -p $(INIT_DIR)
-	mkdir -p $(DESTDIR)/var/lib/blacklists/tmp
+	mkdir -p $(DESTDIR)/conf-amon/var/lib/blacklists/tmp
 
 	# copie des dictionnaires
 	cp -rf dicos/* $(EOLE_CONF_DIR)/dicos/
@@ -37,13 +37,13 @@ install:
 	# copie des scripts d''init Eole ...
 	cp -f init.d/* $(INIT_DIR)
 	# copie fichier config
-	mkdir -p $(DESTDIR)/etc/squid/
-	cp -f config/filtres-opt $(DESTDIR)/etc/squid/
-	#cp -f config/domaines_noauth $(DESTDIR)/etc/squid/
-	#cp -f config/domaines_nocache $(DESTDIR)/etc/squid/
-	cp -f config/src_noauth $(DESTDIR)/etc/squid/
-	cp -f config/src_nocache $(DESTDIR)/etc/squid/
-	cp -f config/disabled.srv $(DESTDIR)/etc/sysconfig/eole
+	mkdir -p $(DESTDIR)/conf-amon/etc/squid/
+	cp -f config/filtres-opt $(DESTDIR)/conf-amon/etc/squid/
+	#cp -f config/domaines_noauth $(DESTDIR)/conf-amon/etc/squid/
+	#cp -f config/domaines_nocache $(DESTDIR)/conf-amon/etc/squid/
+	cp -f config/src_noauth $(DESTDIR)/conf-amon/etc/squid/
+	cp -f config/src_nocache $(DESTDIR)/conf-amon/etc/squid/
+	cp -f config/disabled.srv $(DESTDIR)/conf-amon/etc/sysconfig/eole
 
 	mkdir -p $(EOLE_DIR)/diagnose/module
 	cp -f diagnose/* $(EOLE_DIR)/diagnose/module
