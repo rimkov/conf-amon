@@ -52,8 +52,10 @@ install:
 	#reverseproxy
 	mkdir -p $(REV_DIR)/etc/eole/dicos
 	mkdir -p $(REV_DIR)/etc/eole/distrib
+	mkdir -p $(REV_DIR)/usr/share/eole
 	cp -f reverseproxy/dicos/* $(REV_DIR)/etc/eole/dicos
 	cp -f reverseproxy/tmpl/* $(REV_DIR)/etc/eole/distrib
+	cp -rf reverseproxy/eole/* $(REV_DIR)/usr/share/eole
 
 uninstall:
 
