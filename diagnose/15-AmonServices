@@ -11,13 +11,6 @@ if [ $nombre_interfaces -gt 2 ]
 then
    TestService "Filtre Web ($nom_machine_eth2)" $adresse_ip_eth2:3128
 fi
-if [ "$activer_revprox" == "oui" ];then
-   if [ -z $revprox_domainname ];then
-	NoConfig "Reverse proxy"
-   else
-        TestHTTPPage "Reverse proxy" "http://localhost/50x.html"
-   fi
-fi
 echo
 Cpt=0;
 while [ $Cpt -lt $nombre_interfaces ]; do
