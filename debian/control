@@ -14,8 +14,15 @@ Description: Templates et dictionnaires pour Amon
  .
  http://eole.orion.education.fr
 
-Package: eole-proxy
+#Package: eole-proxy
+#Architecture: all
+#Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
+#Conflicts: proxy-pkg
+#Description:  Templates et dictionnaires pour le proxy EOLE
+
+Package: eole-reverseproxy
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
-Conflicts: proxy-pkg
-Description:  Templates et dictionnaires pour le proxy EOLE
+Conflicts: reverseproxy-pkg
+Description: Templates et dictionnaires pour le reverseproxy EOLE
+

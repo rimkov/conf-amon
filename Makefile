@@ -8,6 +8,7 @@ EOLE_DIR=$(DESTDIR)/conf-amon/usr/share/eole
 INIT_DIR=$(DESTDIR)/conf-amon/etc/init.d
 SBIN_DIR=$(DESTDIR)/conf-amon/usr/sbin
 BIN_DIR=$(DESTDIR)/conf-amon/usr/bin
+REV_DIR=$(DESTDIR)/eole-reverseproxy
 all: install
 
 install:
@@ -47,6 +48,12 @@ install:
 
 	mkdir -p $(EOLE_DIR)/diagnose/module
 	cp -f diagnose/* $(EOLE_DIR)/diagnose/module
+
+	#reverseproxy
+	mkdir -p $(REV_DIR)/etc/eole/dicos
+	mkdir -p $(REV_DIR)/etc/eole/distrib
+	cp -f reverseproxy/dicos/* $(REV_DIR)/etc/eole/dicos
+	cp -f reverseproxy/tmpl/* $(REV_DIR)/etc/eole/distrib
 
 uninstall:
 
