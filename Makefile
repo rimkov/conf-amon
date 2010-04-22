@@ -9,6 +9,7 @@ INIT_DIR=$(DESTDIR)/conf-amon/etc/init.d
 SBIN_DIR=$(DESTDIR)/conf-amon/usr/sbin
 BIN_DIR=$(DESTDIR)/conf-amon/usr/bin
 REV_DIR=$(DESTDIR)/eole-reverseproxy
+DNS_DIR=$(DESTDIR)/eole-dns
 all: install
 
 install:
@@ -56,6 +57,10 @@ install:
 	cp -f reverseproxy/dicos/* $(REV_DIR)/etc/eole/dicos
 	cp -f reverseproxy/tmpl/* $(REV_DIR)/etc/eole/distrib
 	cp -rf reverseproxy/eole/* $(REV_DIR)/usr/share/eole
+
+	#dns
+	mkdir -p $(DNS_DIR)/usr/share/eole
+	cp -rf dns/eole/* $(DNS_DIR)/usr/share/eole
 
 uninstall:
 
