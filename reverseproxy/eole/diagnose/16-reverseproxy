@@ -1,0 +1,11 @@
+#!/bin/bash
+. /usr/share/eole/FonctionsEoleNg
+. /usr/bin/ParseDico
+
+if [ "$activer_revprox" == "oui" ];then
+   if [ -z $revprox_domainname ];then
+	NoConfig "Reverse proxy"
+   else
+        TestHTTPPage "Reverse proxy" "http://localhost/50x.html"
+   fi
+fi
