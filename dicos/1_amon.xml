@@ -286,7 +286,7 @@
 			</variable>
 		</family>
 	<!--************************************************************************************************* -->
-		<family hidden="False" mode="expert" name="reseau-avance">
+		<family mode="expert" name="reseau-avance">
 			<variable description="Désactiver le path MTU discovery, le bit DF est positionné à 0" hidden="False" multi="False" name="ip_no_pmtu_disc" type="string">
 				<value>oui</value>
 			</variable>
@@ -297,9 +297,6 @@
 			<variable name='debit_carte_eth2' type='string' description="Mode de connexion pour l'interface interne 2" />
 			<variable name='debit_carte_eth3' type='string' description="Mode de connexion pour l'interface interne 3" />
 			<variable name='debit_carte_eth4' type='string' description="Mode de connexion pour l'interface interne 4" />
-			<variable name='calc_ip_gw' type='string' description="Calculer l'IP de la passerelle en cas de DHCP et PPPoE">
-				<value>non</value>
-			</variable>
 		</family>
 	<!--************************************************************************************************* -->
 			<separators>
@@ -335,7 +332,6 @@
 				<separator name='activer_bacula'>Sauvegardes</separator>
 				<separator name='activer_sonde_prelude'>Activation des sondes Prelude</separator>
 				<separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>
-				<separator name='calc_ip_gw'></separator>
 			</separators>
 	</variables>
 	<constraints>
@@ -456,9 +452,6 @@
                 </check>
                 <check name='valid_enum' target='type_maj'>
                   <param>['minimum','complete']</param>
-                </check>
-		<check name="valid_enum" target="calc_ip_gw">
-                  <param>['oui','non']</param>
                 </check>
 		<check name='valid_enum' target='active_sarg'>
                   <param>['oui','non']</param>
