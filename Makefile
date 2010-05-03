@@ -3,8 +3,8 @@
 #########################
 DESTDIR=""
 SRCDIR=""
-EOLE_CONF_DIR=$(DESTDIR)/conf-amon/usr/share/eole/creole
 EOLE_DIR=$(DESTDIR)/conf-amon/usr/share/eole
+EOLE_CONF_DIR=$(EOLE_DIR)/creole
 INIT_DIR=$(DESTDIR)/conf-amon/etc/init.d
 SBIN_DIR=$(DESTDIR)/conf-amon/usr/sbin
 BIN_DIR=$(DESTDIR)/conf-amon/usr/bin
@@ -21,13 +21,14 @@ install:
 	mkdir -p $(BIN_DIR)
 	mkdir -p $(INIT_DIR)
 	mkdir -p $(DESTDIR)/conf-amon/var/lib/blacklists/tmp
+	mkdir -p $(EOLE_CONF_DIR)
 
-	# copie des dictionnaires
-	cp -rf dicos/* $(EOLE_CONF_DIR)/dicos/
-	# copie des templates
-	cp -f tmpl/* $(EOLE_CONF_DIR)/distrib
-	# copie des scripts eole
 	cp -rf eole/* $(EOLE_DIR)
+	# copie des dictionnaires
+	cp -rf dicos $(EOLE_CONF_DIR)
+	# copie des templates
+	cp -f tmpl $(EOLE_CONF_DIR)/distrib
+	# copie des scripts eole
 	cp -f sbin/* $(SBIN_DIR)
 	cp -f bin/* $(BIN_DIR)
 	# copie des scripts d''init Eole ...
