@@ -3,7 +3,7 @@
 #########################
 DESTDIR=""
 SRCDIR=""
-EOLE_CONF_DIR=$(DESTDIR)/conf-amon/etc/eole
+EOLE_CONF_DIR=$(DESTDIR)/conf-amon/usr/share/eole/creole
 EOLE_DIR=$(DESTDIR)/conf-amon/usr/share/eole
 INIT_DIR=$(DESTDIR)/conf-amon/etc/init.d
 SBIN_DIR=$(DESTDIR)/conf-amon/usr/sbin
@@ -16,12 +16,6 @@ install:
 
 	# création des répertoires (normalement fait par creole)
 	mkdir -p $(EOLE_DIR)
-	mkdir -p $(EOLE_CONF_DIR)/dicos/local
-	mkdir -p $(EOLE_CONF_DIR)/dicos/variante
-	mkdir -p $(EOLE_CONF_DIR)/distrib
-	mkdir -p $(EOLE_CONF_DIR)/modif
-	mkdir -p $(EOLE_CONF_DIR)/patch/variante
-	mkdir -p $(EOLE_CONF_DIR)/template
 	mkdir -p $(DESTDIR)/conf-amon/etc/sysconfig/eole
 	mkdir -p $(SBIN_DIR)
 	mkdir -p $(BIN_DIR)
