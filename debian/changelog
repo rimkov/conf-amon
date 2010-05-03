@@ -1,4 +1,4 @@
-conf-amon (2.3-eole215) eole-2.3; urgency=low
+conf-amon (2.3-eole2) eole-2.3; urgency=low
 
   [ emmanuel ]
   * deplace 2_logs_amon.xml depuis eole-common
@@ -28,7 +28,7 @@ conf-amon (2.3-eole215) eole-2.3; urgency=low
 
  -- Equipe Eole <eole@ac-dijon.fr>  Wed, 21 Apr 2010 15:32:31 +0000
 
-conf-amon (2.3-eole214) eole-2.3-dev; urgency=low
+conf-amon (2.3-eole1) eole-2.3-dev; urgency=low
 
   [ emmanuel ]
   * deplace 2_logs_amon.xml depuis eole-common
@@ -1774,14 +1774,14 @@ conf-amon (2.1-eole20) eole-2.1-proposed; urgency=low
 
 conf-amon (2.1-eole19) eole-2.1-dev; urgency=low
 
-  * maj-blacklists: touch sur urls et domains dans eole (plus db) 
+  * maj-blacklists: touch sur urls et domains dans eole (plus db)
 
  -- Equipe Eole <eole@ac-dijon.fr>  Thu, 13 Mar 2008 17:50:16 +0100
 
 conf-amon (2.1-eole18) eole-2.1-dev; urgency=low
 
   * Amélioration gestion NuFW dans dico
-  * Redemarrage dansguardian 
+  * Redemarrage dansguardian
 
  -- Equipe Eole <eole@ac-dijon.fr>  Wed, 12 Mar 2008 13:27:18 +0100
 
@@ -1793,7 +1793,7 @@ conf-amon (2.1-eole17) eole-2.1-dev; urgency=low
 
 conf-amon (2.1-eole16) eole-2.1-dev; urgency=low
 
-  * Fix bourde 
+  * Fix bourde
 
  -- Equipe Eole <eole@ac-dijon.fr>  Wed, 05 Mar 2008 12:50:54 +0100
 
@@ -1806,7 +1806,7 @@ conf-amon (2.1-eole15) eole-2.1-dev; urgency=low
 
 conf-amon (2.1-eole14) eole-2.1-dev; urgency=low
 
-  * ajout de variables filtrage adpatatif dans 0_amon.xml 
+  * ajout de variables filtrage adpatatif dans 0_amon.xml
 
  -- Equipe Eole <eole@ac-dijon.fr>  Wed, 27 Feb 2008 10:08:36 +0100
 
@@ -1818,13 +1818,13 @@ conf-amon (2.1-eole13) eole-2.1-dev; urgency=low
 
 conf-amon (2.1-eole12) eole-2.1-dev; urgency=low
 
-  * ajout de variable pour dansguardian dans 0_amon.xml 
+  * ajout de variable pour dansguardian dans 0_amon.xml
 
  -- Equipe Eole <eole@ac-dijon.fr>  Mon, 25 Feb 2008 16:37:25 +0100
 
 conf-amon (2.1-eole11) eole-2.1-dev; urgency=low
 
-  * initialisation pour la configuration dansguardian 
+  * initialisation pour la configuration dansguardian
 
  -- Equipe Eole <eole@ac-dijon.fr>  Mon, 25 Feb 2008 09:59:25 +0100
 
@@ -1836,13 +1836,13 @@ conf-amon (2.1-eole10) eole-2.1-dev; urgency=low
 
 conf-amon (2.1-eole9) eole-2.1-dev; urgency=low
 
-  * mise en place de la nouvelle conf dansguardian et menage 
+  * mise en place de la nouvelle conf dansguardian et menage
 
  -- Equipe Eole <eole@ac-dijon.fr>  Fri, 22 Feb 2008 16:17:43 +0100
 
 conf-amon (2.1-eole8) eole-2.1-dev; urgency=low
 
-  * Changement des templates + dicos pour nufw 
+  * Changement des templates + dicos pour nufw
 
  -- Equipe Eole <eole@ac-dijon.fr>  Wed, 20 Feb 2008 14:53:35 +0100
 
@@ -1868,7 +1868,7 @@ conf-amon (2.1-eole5) eole-2.1-dev; urgency=low
 
 conf-amon (2.1-eole4) eole-2.1-dev; urgency=low
 
-  * corrections dansguardian, apache 
+  * corrections dansguardian, apache
 
  -- Equipe Eole <eole@ac-dijon.fr>  Tue, 05 Feb 2008 10:06:52 +0100
 
@@ -1880,7 +1880,7 @@ conf-amon (2.1-eole3) eole-2.1-dev; urgency=low
 
 conf-amon (2.1-eole2) eole-2.1-dev; urgency=low
 
-  * passage en 2.1 
+  * passage en 2.1
 
  -- Equipe Eole <eole@ac-dijon.fr>  Mon, 28 Jan 2008 11:31:15 +0100
 
@@ -1904,7 +1904,7 @@ conf-amon (2.0-eole85) eole-2.0-proposed; urgency=low
 
 conf-amon (2.0-eole84) eole-2.0-proposed; urgency=low
 
-  * suppression des variables nufw  
+  * suppression des variables nufw
 
  -- Equipe Eole <eole@ac-dijon.fr>  Thu, 13 Dec 2007 16:56:40 +0100
 
@@ -1921,44 +1921,44 @@ conf-amon (2.0-eole83) eole-dev; urgency=low
 
 conf-amon (2.0-eole82) eole-2.0-proposed; urgency=low
 
-  * Rebuild from branches 
+  * Rebuild from branches
 
  -- Equipe Eole <eole@ac-dijon.fr>  Fri, 30 Nov 2007 12:15:22 +0100
 
 conf-amon (2.0-eole81) eole-2.0-proposed; urgency=low
 
-  * Correction lors de l'utilisation de deux cartes 
+  * Correction lors de l'utilisation de deux cartes
 
  -- Equipe Eole <eole@ac-dijon.fr>  Tue, 27 Nov 2007 18:10:47 +0100
 
 conf-amon (2.0-eole80) eole-2.0-security; urgency=low
 
-  * MAJ stable  
+  * MAJ stable
 
  -- Equipe Eole <eole@ac-dijon.fr>  Thu,  8 Nov 2007 11:43:32 +0100
 
 conf-amon (2.0-eole79) eole-2.0-proposed; urgency=low
 
   * correction mauvais commit + ajout gestion du mtu + modification gestion
-    alias sur eth0 
+    alias sur eth0
 
  -- Equipe Eole <eole@ac-dijon.fr>  Thu, 25 Oct 2007 11:45:48 +0200
 
 conf-amon (2.0-eole78) eole-2.0-security; urgency=low
 
-  * Proposed vers Security 
+  * Proposed vers Security
 
  -- Equipe Eole <eole@ac-dijon.fr>  Fri, 12 Oct 2007 10:43:21 +0200
 
 conf-amon (2.0-eole77) eole-2.0-proposed; urgency=low
 
-  * Correction variable ip_mtu qui avait disparue 
+  * Correction variable ip_mtu qui avait disparue
 
  -- Equipe Eole <eole@ac-dijon.fr>  Thu, 11 Oct 2007 16:17:14 +0200
 
 conf-amon (2.0-eole76) eole-2.0-proposed; urgency=low
 
-  * Contournement Bug https de DansGuardian 2.9.9 
+  * Contournement Bug https de DansGuardian 2.9.9
 
  -- Equipe Eole <eole@ac-dijon.fr>  Thu, 11 Oct 2007 15:55:24 +0200
 
