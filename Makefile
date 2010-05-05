@@ -46,12 +46,11 @@ install:
 	cp -f diagnose/* $(EOLE_DIR)/diagnose/module
 
 	#reverseproxy
-	mkdir -p $(REV_DIR)/etc/eole/dicos
-	mkdir -p $(REV_DIR)/etc/eole/distrib
-	mkdir -p $(REV_DIR)/usr/share/eole
-	cp -f reverseproxy/dicos/* $(REV_DIR)/etc/eole/dicos
-	cp -f reverseproxy/tmpl/* $(REV_DIR)/etc/eole/distrib
+	mkdir -p $(REV_DIR)/usr/share/eole/creole/dicos
+	mkdir -p $(REV_DIR)/usr/share/eole/creole/distrib
 	cp -rf reverseproxy/eole/* $(REV_DIR)/usr/share/eole
+	cp -f reverseproxy/dicos/* $(REV_DIR)/usr/share/eole/creole/dicos
+	cp -f reverseproxy/tmpl/* $(REV_DIR)/usr/share/eole/creole/distrib
 
 	#dns
 	mkdir -p $(DNS_DIR)/usr/share/eole
