@@ -2,6 +2,7 @@
 
 <creole>
 	<files>
+	<service>bastion</service>
         <file name='/etc/sysctl.conf'/>
         <file name='/etc/chkrootkit.conf'/>
         <file name='/etc/crontab'/>
