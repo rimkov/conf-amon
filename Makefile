@@ -27,7 +27,7 @@ install:
 	# copie des dictionnaires
 	cp -rf dicos $(EOLE_CONF_DIR)
 	# copie des templates
-	cp -f tmpl $(EOLE_CONF_DIR)/distrib
+	cp -rf tmpl $(EOLE_CONF_DIR)/distrib
 	# copie des scripts eole
 	cp -f sbin/* $(SBIN_DIR)
 	cp -f bin/* $(BIN_DIR)
