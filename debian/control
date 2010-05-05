@@ -23,11 +23,9 @@ Description: Templates et dictionnaires pour Amon
 Package: eole-reverseproxy
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
-Conflicts: reverseproxy-pkg
 Description: Templates et dictionnaires pour le reverseproxy EOLE
 
 Package: eole-dns
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
-Conflicts: dns-pkg
 Description: Templates et dictionnaires pour le dns EOLE
