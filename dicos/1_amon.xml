@@ -13,7 +13,6 @@
         <file name='/etc/sudoers' mode="0440"/>
         <file name='/etc/ulogd.conf'/>
 	<file name='/etc/webalizer.conf'/>
-	<file name='/etc/logrotate.d/ead'/>
 	<file name='/usr/share/eole/firewall.stop' mode='755'/>
         <file name='/usr/share/era/backend/data/active_tags'/>
 	<file name='/var/spool/cron/root' source='cron-root'/>
@@ -73,9 +72,6 @@
                         <variable name='filtrage_p2p' type='string' description="Système de filtrage P2P" >
                                 <value>l7filter</value>
                         </variable>
-			<variable name='ead_web' type='string' description="Activation du frontend EAD" >
-				<value>oui</value>
-			</variable>
  			<variable name='activer_bacula' type='string' description='Activation du client Bacula (sauvegardes)' >
  				<value>non</value>
 			</variable>
@@ -296,7 +292,6 @@
 				<separator name='debit_carte_eth2'>Configuration avancée de l'interface interne 2</separator>
 				<separator name='debit_carte_eth3'>Configuration avancée de l'interface interne 3</separator>
 				<separator name='debit_carte_eth4'>Configuration avancée de l'interface interne 4</separator>
-				<separator name='ead_web'>EAD web</separator>
 				<separator name='activer_bacula'>Sauvegardes</separator>
 				<separator name='activer_sonde_prelude'>Activation des sondes Prelude</separator>
 				<separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>
@@ -496,9 +491,6 @@
                 <check name="valid_enum" target="autoriser_rvp_autres">
                         <param>['oui','non']</param>
                 </check>
-	     	<check name='valid_enum' target='ead_web'>
-		  <param>['oui','non']</param>
-		</check>
                 <check name='valid_enum' target='activer_bacula'>
                   <param>['oui','non']</param>
                 </check>
