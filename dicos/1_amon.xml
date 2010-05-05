@@ -16,8 +16,6 @@
 	<file name='/etc/logrotate.d/ead'/>
 	<file name='/usr/share/eole/firewall.stop' mode='755'/>
         <file name='/usr/share/era/backend/data/active_tags'/>
-	<file name='/etc/bind/spcl.options'/>
-	<file filelist='agriates' name='/etc/bind/agriates.zones'/>
 	<file name='/var/spool/cron/root' source='cron-root'/>
 	<file name='/usr/lib/cgi-bin/filtre.cgi'/>
 	<file name='/etc/sysconfig/eole/services/0_services.srv' source='services'/>
@@ -112,9 +110,6 @@
 			<variable name='adresse_gw_vlan_eth0' type='string' description='Adresse de la passerelle pour ce VLAN. Optionnelle, uniquement si multi-routeur ("Aucun" si rien)'>
 				<value>aucun</value>
 			</variable>
-			<variable name='dns_master_eth0' type='string' description="Amon master DNS de cette zone ?" >
-				<value>non</value>
-			</variable>
 		</family>
 
 		<!-- **** Interface interne 1 **** -->
@@ -140,9 +135,6 @@
 			</variable>
             		<variable name='adresse_network_vlan_eth1' type='ip' description="Adresse réseau de l'interface dans ce VLAN" />
 			<variable name='adresse_broadcast_vlan_eth1' type='ip' description="Adresse de broadcast de l'interface dans ce VLAN" />
-			<variable name='dns_master_eth1' type='string' description="Amon master DNS de cette zone ?" >
-				<value>oui</value>
-			</variable>
 			<variable name='nuauth_eth1' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
 			</variable>
@@ -171,9 +163,6 @@
 			</variable>
             		<variable name='adresse_network_vlan_eth2' type='ip' description="Adresse réseau de l'interface dans ce VLAN" />
 			<variable name='adresse_broadcast_vlan_eth2' type='ip' description="Adresse de broadcast de l'interface dans ce VLAN" />
-			<variable name='dns_master_eth2' type='string' description="Amon master DNS de cette zone ?" >
-				<value>oui</value>
-			</variable>
 			<variable name='nuauth_eth2' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
 			</variable>
@@ -202,9 +191,6 @@
 			</variable>
             		<variable name='adresse_network_vlan_eth3' type='ip' description="Adresse réseau de l'interface dans ce VLAN" />
 			<variable name='adresse_broadcast_vlan_eth3' type='ip' description="Adresse de broadcast de l'interface dans ce VLAN" />
-			<variable name='dns_master_eth3' type='string' description="Amon master DNS de cette zone ?" >
-				<value>oui</value>
-			</variable>
 			<variable name='nuauth_eth3' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
 			</variable>
@@ -233,9 +219,6 @@
 			</variable>
             		<variable name='adresse_network_vlan_eth4' type='ip' description="Adresse réseau de l'interface dans ce VLAN" />
 			<variable name='adresse_broadcast_vlan_eth4' type='ip' description="Adresse de broadcast de l'interface dans ce VLAN" />
-			<variable name='dns_master_eth4' type='string' description="Amon master DNS de cette zone ?" >
-				<value>oui</value>
-			</variable>
 			<variable name='nuauth_eth4' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
 			</variable>
@@ -245,7 +228,6 @@
  			<variable name='agriates_member' type='string' description='Serveur membre du réseau AGRIATES' >
  				<value>non</value>
  			</variable>
-			<variable name='adresse_dns_agriates' type='ip' description='Adresse du DNS permettant de resoudre les in.ac-acad.fr' multi='True'/>
  	                <variable name='adresse_network_zone_rvp' type='ip' description='Adresse réseau de la zone RVP' multi='True' />
   	                <variable name='adresse_netmask_zone_rvp' type='netmask' description='Masque de sous-réseau de la zone RVP' />
   	                <variable name='autoriser_rvp_autres' type='string' description="Autoriser d'autres zones que eth1 à accéder à ce réseau">
@@ -273,14 +255,6 @@
 		</family>
 
 	<!--************************************************************************************************* -->
-		<family name='zones-dns' mode='expert'>
-			<variable name='nom_domaine_local_supp' type='string' description='Nom domaine local supplémentaire ou rien' multi='True' />
-			<variable name='nom_zone_forward' type='string' description='Nom DNS de la zone' multi='True' />
- 			<variable name='ip_dns_zone_forward' type='ip' description='Adresse IP du serveur DNS de la zone' />
-			<variable name='nom_host_dns' type='string' description='Nom DNS complet de la machine à ajouter dans le DNS' multi='True' />
- 			<variable name='ip_host_dns' type='ip' description='Adresse IP de la machine à ajouter dans le DNS' />
-		</family>
-	<!--************************************************************************************************* -->
 		<family name='nufw-options' mode='expert'>
 			<variable name='nuauth_verbosity' type='Number' description='Niveau de verbosité du démon Nuauth'>
 				<value>3</value>
@@ -306,23 +280,16 @@
                                 <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
 				<separator name='alias_eth0'>Configuration des alias sur l'interface</separator>
 				<separator name='vlan_eth0'>Configuration des VLAN sur l'interface</separator>
-				<separator name='dns_master_eth0'>Configuration DNS sur l'interface</separator>
 				<separator name='alias_eth1'>Configuration des alias sur l'interface</separator>
 				<separator name='vlan_eth1'>Configuration des VLAN sur l'interface</separator>
-				<separator name='dns_master_eth1'>Configuration DNS sur l'interface</separator>
 				<separator name='alias_eth2'>Configuration des alias sur l'interface</separator>
-				<separator name='dns_master_eth2'>Configuration DNS sur l'interface</separator>
 				<separator name='vlan_eth2'>Configuration des VLAN sur l'interface</separator>
 				<separator name='alias_eth3'>Configuration des alias sur l'interface</separator>
 				<separator name='vlan_eth3'>Configuration des VLAN sur l'interface</separator>
-				<separator name='dns_master_eth3'>Configuration DNS sur l'interface</separator>
 				<separator name='alias_eth4'>Configuration des alias sur l'interface</separator>
 				<separator name='vlan_eth4'>Configuration des VLAN sur l'interface</separator>
-				<separator name='dns_master_eth4'>Configuration DNS sur l'interface</separator>
 				<separator name='nom_cache_pere'>Proxy pere general</separator>
 				<separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
-				<separator name='nom_zone_forward'>Forward de zone DNS</separator>
-				<separator name='nom_host_dns'>Ajout d'hôtes dans le DNS</separator>
 				<separator name='adresse_network_zone_rvp'>Accès RVP par le proxy</separator>
 				<separator name='debit_carte_eth0'>Configuration avancée de l'interface externe</separator>
 				<separator name='debit_carte_eth1'>Configuration avancée de l'interface interne 1</separator>
@@ -490,16 +457,10 @@
 		<check name="valid_enum" target='vlan_eth0'>
 			<param>['oui','non']</param>
 		</check>
-		<check name="valid_enum" target='dns_master_eth0'>
-			<param>['oui','non']</param>
-		</check>
 		<check name="valid_enum" target='alias_eth1'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='vlan_eth1'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='dns_master_eth1'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='nuauth_eth1'>
@@ -511,9 +472,6 @@
 		<check name="valid_enum" target='vlan_eth2'>
 			<param>['oui','non']</param>
 		</check>
-		<check name="valid_enum" target='dns_master_eth2'>
-			<param>['oui','non']</param>
-		</check>
 		<check name="valid_enum" target='nuauth_eth2'>
 			<param>['oui','non']</param>
 		</check>
@@ -523,9 +481,6 @@
 		<check name="valid_enum" target='vlan_eth3'>
 			<param>['oui','non']</param>
 		</check>
-		<check name="valid_enum" target='dns_master_eth3'>
-			<param>['oui','non']</param>
-		</check>
 		<check name="valid_enum" target='nuauth_eth3'>
 			<param>['oui','non']</param>
 		</check>
@@ -533,9 +488,6 @@
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='vlan_eth4'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='dns_master_eth4'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='nuauth_eth4'>
@@ -676,15 +628,6 @@
                 	<target type='variable'>adresse_network_vlan_eth4</target>
                 	<target type='variable'>adresse_broadcast_vlan_eth4</target>
 		</condition>
-		<condition name='hidden_if_in' source='agriates_member'>
-			<param>non</param>
-			<target type='variable'>adresse_dns_agriates</target>
-			<target type='filelist'>agriates</target>
-		</condition>
-		<condition name='hidden_if_in' source='nom_zone_forward'>
-			<param>non</param>
-			<target type='variable'>ip_dns_zone_forward</target>
-		</condition>
 		<condition name='hidden_if_in' source='active_nufw'>
 			<param>non</param>
 			<target type='variable'>nuauth_verbosity</target>
@@ -751,12 +694,6 @@
                  <group master='adresse_network_zone_rvp'>
                         <slave>adresse_netmask_zone_rvp</slave>
                         <slave>autoriser_rvp_autres</slave>
-                 </group>
-		 <group master='nom_zone_forward'>
-                        <slave>ip_dns_zone_forward</slave>
-                 </group>
-		 <group master='nom_host_dns'>
-                        <slave>ip_host_dns</slave>
                  </group>
 	</constraints>
 	<!--************************************************************************************************* -->
