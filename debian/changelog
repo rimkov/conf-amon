@@ -1,3 +1,30 @@
+conf-amon (2.3-eole6) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * suppression de /etc/sysconfig/eole/services/*.srv
+  * separation dictionnaire eole-dns
+  * suppression de la question ead_web + suppression du logrotate ( ref
+    #527 )
+
+  [ Joël Cuissinat ]
+  * Merge branches 'master' and 'master' of
+    http://194.167.18.22/git/conf-amon
+
+  [ Emmanuel Garette ]
+  * mise en commun des alias et des vlan
+  * separation de nuauth
+  * separation de nuauth
+  * separation de authentifcation squid
+  * service clamd et dhcrelay
+  * services sondes + revprox
+  * deplacement de freeradius + deplacement du cron de snort
+  * suppression des scripts devenus inutils
+  * (des)activer bacula
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 06 May 2010 14:34:02 +0000
+
 conf-amon (2.3-eole5) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
