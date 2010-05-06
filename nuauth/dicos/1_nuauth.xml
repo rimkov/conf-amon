@@ -2,6 +2,7 @@
 
 <creole>
 	<files>
+		<service>nufw></service>
 		<service>nuauth></service>
 		<file name='/etc/default/nuauth'/>
 		<file name='/etc/default/nufw'/>
