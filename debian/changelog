@@ -1,3 +1,12 @@
+conf-amon (2.3-eole7) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * typo
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 06 May 2010 14:37:25 +0000
+
 conf-amon (2.3-eole6) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
