@@ -3,6 +3,7 @@
 <creole>
 	<files>
 		<service>bastion</service>
+		<service servicelist='bacula'>bacula</service>
 		<file name='/etc/sysctl.conf'/>
 		<file name='/etc/chkrootkit.conf'/>
 		<file name='/etc/crontab'/>
@@ -220,6 +221,10 @@
 			<param>non</param>
 			<target type='filelist'>dhrelay</target>
 			<target type='servicelist'>dhrelay</target>
+		</condition>
+		<condition name='hidden_if_in' source='activer_bacula'>
+			<param>non</param>
+			<target type='servicelist'>bacula-fd</target>
 		</condition>
                <condition name='hidden_if_in' source='install_rvp'>
                 	<param>non</param>
