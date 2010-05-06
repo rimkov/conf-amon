@@ -11,7 +11,6 @@
         <file name='/etc/hosts.allow'/>
 	<file name='/etc/logrotate.conf'/>
         <file name='/etc/sudoers' mode="0440"/>
-        <file name='/etc/ulogd.conf'/>
 	<file name='/etc/webalizer.conf'/>
 	<file name='/usr/share/eole/firewall.stop' mode='755'/>
         <file name='/usr/share/era/backend/data/active_tags'/>
@@ -78,59 +77,16 @@
 			<variable  name='active_sarg' type='string' description="Activation de SARG, générateur de statistiques Proxy/filtrage web (Squid/DansGuardian)">
 				<value>non</value>
       			</variable>
+			<variable name='activer_ulog' redefine='True' hidden='True'>
+				<value>oui</value>
+			</variable>
 		</family>
 	<!--************************************************************************************************* -->
-		<family name='Interface-0'>
-			<!-- **** Interface externe **** -->
-			<variable name='alias_eth0' type='string' description="Ajouter des IP alias sur l'interface" >
-				<value>non</value>
-			</variable>
-			<variable name='alias_ip_eth0' type='ip' description="Adresse IP alias pour l'interface externe" multi='True' />
-			<variable name='alias_netmask_eth0' type='netmask' description="Masque de sous réseau correspondant à cet alias" >
-			</variable>
-			<variable name='alias_network_eth0' type='ip' description="Adresse réseau correspondant à cet alias" />
-			<variable name='alias_broadcast_eth0' type='ip' description="Adresse broadcast correspondant à cet alias" />
-			<variable name='alias_gw_eth0' type='string' description='Adresse de la passerelle pour cet alias. Optionnelle, uniquement si multi-routeur ("aucun" si rien)'>
-				<value>aucun</value>
-			</variable>
-			<variable name='vlan_eth0' type='string' description="Activer le support des VLAN sur l'interface" >
-				<value>non</value>
-			</variable>
-			<variable name='id_vlan_eth0' type='string' description="Numéro d'identifiant du VLAN" multi='True' />
-			<variable name='adresse_ip_vlan_eth0' type='ip' description="Adresse IP de l'interface dans ce VLAN" />
-			<variable name='adresse_netmask_vlan_eth0' type='netmask' description="Masque de sous réseau de l'interface dans ce VLAN" >
-				<value>255.255.255.0</value>
-			</variable>
-            		<variable name='adresse_network_vlan_eth0' type='ip' description="Adresse réseau de l'interface dans ce VLAN" />
-			<variable name='adresse_broadcast_vlan_eth0' type='ip' description="Adresse de broadcast de l'interface dans ce VLAN" />
-			<variable name='adresse_gw_vlan_eth0' type='string' description='Adresse de la passerelle pour ce VLAN. Optionnelle, uniquement si multi-routeur ("Aucun" si rien)'>
-				<value>aucun</value>
-			</variable>
-		</family>
-
 		<!-- **** Interface interne 1 **** -->
 		<family name='Interface-1'>
  			<variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" >
  				<value>admin</value>
  			</variable>
-			<variable name='alias_eth1' type='string' description="Ajouter des IP alias sur l'interface" >
-				<value>non</value>
-			</variable>
-			<variable name='alias_ip_eth1' type='ip' description="Adresse IP Alias pour l'interface interne 1 (ou rien)" multi='True' />
-			<variable name='alias_netmask_eth1' type='netmask' description="Masque de sous réseau correspondant à cet alias" >
-			</variable>
-			<variable name='alias_network_eth1' type='ip' description="Adresse réseau correspondant à cet alias" />
-			<variable name='alias_broadcast_eth1' type='ip' description="Adresse broadcast correspondant à cet alias" />
-			<variable name='vlan_eth1' type='string' description="Activer le support des VLAN sur l'interface" >
-				<value>non</value>
-			</variable>
-			<variable name='id_vlan_eth1' type='string' description="Numéro d'identifiant du VLAN" multi='True' />
-			<variable name='adresse_ip_vlan_eth1' type='ip' description="Adresse IP de l'interface dans ce VLAN" />
-			<variable name='adresse_netmask_vlan_eth1' type='netmask' description="Masque de sous réseau de l'interface dans ce VLAN" >
-				<value>255.255.255.0</value>
-			</variable>
-            		<variable name='adresse_network_vlan_eth1' type='ip' description="Adresse réseau de l'interface dans ce VLAN" />
-			<variable name='adresse_broadcast_vlan_eth1' type='ip' description="Adresse de broadcast de l'interface dans ce VLAN" />
 			<variable name='nuauth_eth1' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
 			</variable>
@@ -141,24 +97,6 @@
  			<variable name='nom_machine_eth2' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>pedago</value>
  			</variable>
-			<variable name='alias_eth2' type='string' description="Ajouter des IP alias sur l'interface" >
-				<value>non</value>
-			</variable>
-			<variable name='alias_ip_eth2' type='ip' description="Adresse IP alias pour l'interface (ou rien)" multi='True' />
-			<variable name='alias_netmask_eth2' type='netmask' description="Masque de sous réseau correspondant à cet alias" >
-			</variable>
-			<variable name='alias_network_eth2' type='ip' description="Adresse réseau correspondant à cet alias" />
-			<variable name='alias_broadcast_eth2' type='ip' description="Adresse broadcast correspondant à cet alias" />
-			<variable name='vlan_eth2' type='string' description="Activer le support des VLAN sur l'interface" >
-				<value>non</value>
-			</variable>
-			<variable name='id_vlan_eth2' type='string' description="Numéro d'identifiant du VLAN" multi='True' />
-			<variable name='adresse_ip_vlan_eth2' type='ip' description="Adresse IP de l'interface dans ce VLAN" />
-			<variable name='adresse_netmask_vlan_eth2' type='netmask' description="Masque de sous réseau de l'interface dans ce VLAN" >
-				<value>255.255.255.0</value>
-			</variable>
-            		<variable name='adresse_network_vlan_eth2' type='ip' description="Adresse réseau de l'interface dans ce VLAN" />
-			<variable name='adresse_broadcast_vlan_eth2' type='ip' description="Adresse de broadcast de l'interface dans ce VLAN" />
 			<variable name='nuauth_eth2' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
 			</variable>
@@ -169,24 +107,6 @@
  			<variable name='nom_machine_eth3' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>dmz-priv</value>
  			</variable>
-			<variable name='alias_eth3' type='string' description="Ajouter des IP alias sur l'interface" >
-				<value>non</value>
-			</variable>
-			<variable name='alias_ip_eth3' type='ip' description="Adresse IP alias pour l'interface (ou rien)" multi='True' />
-			<variable name='alias_netmask_eth3' type='netmask' description="Masque de sous réseau correspondant à cet alias" >
-			</variable>
-			<variable name='alias_network_eth3' type='ip' description="Adresse réseau correspondant à cet alias" />
-			<variable name='alias_broadcast_eth3' type='ip' description="Adresse broadcast correspondant à cet alias" />
-			<variable name='vlan_eth3' type='string' description="Activer le support des VLAN sur l'interface" >
-				<value>non</value>
-			</variable>
-			<variable name='id_vlan_eth3' type='string' description="Numéro d'identifiant du VLAN" multi='True' />
-			<variable name='adresse_ip_vlan_eth3' type='ip' description="Adresse IP de l'interface dans ce VLAN" />
-			<variable name='adresse_netmask_vlan_eth3' type='netmask' description="Masque de sous réseau de l'interface dans ce VLAN" >
-				<value>255.255.255.0</value>
-			</variable>
-            		<variable name='adresse_network_vlan_eth3' type='ip' description="Adresse réseau de l'interface dans ce VLAN" />
-			<variable name='adresse_broadcast_vlan_eth3' type='ip' description="Adresse de broadcast de l'interface dans ce VLAN" />
 			<variable name='nuauth_eth3' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
 			</variable>
@@ -197,24 +117,6 @@
  			<variable name='nom_machine_eth4' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>dmz-pub</value>
  			</variable>
-			<variable name='alias_eth4' type='string' description="Ajouter des IP alias sur l'interface" >
-				<value>non</value>
-			</variable>
-			<variable name='alias_ip_eth4' type='ip' description="Adresse IP alias pour l'interface (ou rien)" multi='True' />
-			<variable name='alias_netmask_eth4' type='netmask' description="Masque de sous réseau correspondant à cet alias" >
-			</variable>
-			<variable name='alias_network_eth4' type='ip' description="Adresse réseau correspondant à cet alias" />
-			<variable name='alias_broadcast_eth4' type='ip' description="Adresse broadcast correspondant à cet alias" />
-			<variable name='vlan_eth4' type='string' description="Activer le support des VLAN sur l'interface" >
-				<value>non</value>
-			</variable>
-			<variable name='id_vlan_eth4' type='string' description="Numéro d'identifiant du VLAN" multi='True' />
-			<variable name='adresse_ip_vlan_eth4' type='ip' description="Adresse IP de l'interface dans ce VLAN" />
-			<variable name='adresse_netmask_vlan_eth4' type='netmask' description="Masque de sous réseau de l'interface dans ce VLAN" >
-				<value>255.255.255.0</value>
-			</variable>
-            		<variable name='adresse_network_vlan_eth4' type='ip' description="Adresse réseau de l'interface dans ce VLAN" />
-			<variable name='adresse_broadcast_vlan_eth4' type='ip' description="Adresse de broadcast de l'interface dans ce VLAN" />
 			<variable name='nuauth_eth4' type='string' description="Activer l'authentification NuAuth sur cette interface" >
 				<value>non</value>
 			</variable>
@@ -274,16 +176,6 @@
 				<separator name='type_amon'>Paramètres réseau globaux</separator>
 				<separator name='active_nufw'>NuFW (Now User Filtering Works)</separator>
                                 <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
-				<separator name='alias_eth0'>Configuration des alias sur l'interface</separator>
-				<separator name='vlan_eth0'>Configuration des VLAN sur l'interface</separator>
-				<separator name='alias_eth1'>Configuration des alias sur l'interface</separator>
-				<separator name='vlan_eth1'>Configuration des VLAN sur l'interface</separator>
-				<separator name='alias_eth2'>Configuration des alias sur l'interface</separator>
-				<separator name='vlan_eth2'>Configuration des VLAN sur l'interface</separator>
-				<separator name='alias_eth3'>Configuration des alias sur l'interface</separator>
-				<separator name='vlan_eth3'>Configuration des VLAN sur l'interface</separator>
-				<separator name='alias_eth4'>Configuration des alias sur l'interface</separator>
-				<separator name='vlan_eth4'>Configuration des VLAN sur l'interface</separator>
 				<separator name='nom_cache_pere'>Proxy pere general</separator>
 				<separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
 				<separator name='adresse_network_zone_rvp'>Accès RVP par le proxy</separator>
@@ -299,101 +191,6 @@
 	</variables>
 	<constraints>
 	<!--************************************************************************************************* -->
-		<fill name='calc_network' target='alias_network_eth0'>
-			<param type='eole' name='ip'>alias_ip_eth0</param>
-			<param type='eole' name='netmask'>alias_netmask_eth0</param>
-		</fill>
-		<fill name='calc_network' target='alias_network_eth1'>
-			<param type='eole' name='ip'>alias_ip_eth1</param>
-			<param type='eole' name='netmask'>alias_netmask_eth1</param>
-		</fill>
-		<fill name='calc_network' target='alias_network_eth2'>
-			<param type='eole' name='ip'>alias_ip_eth2</param>
-			<param type='eole' name='netmask'>alias_netmask_eth2</param>
-		</fill>
-		<fill name='calc_network' target='alias_network_eth3'>
-			<param type='eole' name='ip'>alias_ip_eth3</param>
-			<param type='eole' name='netmask'>alias_netmask_eth3</param>
-		</fill>
-		<fill name='calc_network' target='alias_network_eth4'>
-			<param type='eole' name='ip'>alias_ip_eth4</param>
-			<param type='eole' name='netmask'>alias_netmask_eth4</param>
-		</fill>
-		<fill name='calc_network' target='adresse_network_vlan_eth0'>
-			<param type='eole' name='ip'>adresse_ip_vlan_eth0</param>
-			<param type='eole' name='netmask'>adresse_netmask_vlan_eth0</param>
-		</fill>
-		<fill name='calc_network' target='adresse_network_vlan_eth1'>
-			<param type='eole' name='ip'>adresse_ip_vlan_eth1</param>
-			<param type='eole' name='netmask'>adresse_netmask_vlan_eth1</param>
-		</fill>
-		<fill name='calc_network' target='adresse_network_vlan_eth2'>
-			<param type='eole' name='ip'>adresse_ip_vlan_eth2</param>
-			<param type='eole' name='netmask'>adresse_netmask_vlan_eth2</param>
-		</fill>
-		<fill name='calc_network' target='adresse_network_vlan_eth3'>
-			<param type='eole' name='ip'>adresse_ip_vlan_eth3</param>
-			<param type='eole' name='netmask'>adresse_netmask_vlan_eth3</param>
-		</fill>
-		<fill name='calc_network' target='adresse_network_vlan_eth4'>
-			<param type='eole' name='ip'>adresse_ip_vlan_eth4</param>
-			<param type='eole' name='netmask'>adresse_netmask_vlan_eth4</param>
-		</fill>
-		<fill name='calc_broadcast' target='alias_broadcast_eth0'>
-			<param type='eole' name='ip'>alias_ip_eth0</param>
-			<param type='eole' name='netmask'>alias_netmask_eth0</param>
-		</fill>
-		<fill name='calc_broadcast' target='alias_broadcast_eth1'>
-			<param type='eole' name='ip'>alias_ip_eth1</param>
-			<param type='eole' name='netmask'>alias_netmask_eth1</param>
-		</fill>
-		<fill name='calc_broadcast' target='alias_broadcast_eth2'>
-			<param type='eole' name='ip'>alias_ip_eth2</param>
-			<param type='eole' name='netmask'>alias_netmask_eth2</param>
-		</fill>
-		<fill name='calc_broadcast' target='alias_broadcast_eth3'>
-			<param type='eole' name='ip'>alias_ip_eth3</param>
-			<param type='eole' name='netmask'>alias_netmask_eth3</param>
-		</fill>
-		<fill name='calc_broadcast' target='alias_broadcast_eth4'>
-			<param type='eole' name='ip'>alias_ip_eth4</param>
-			<param type='eole' name='netmask'>alias_netmask_eth4</param>
-		</fill>
-		<fill name='calc_broadcast' target='adresse_broadcast_vlan_eth0'>
-			<param type='eole' name='ip'>adresse_ip_vlan_eth0</param>
-			<param type='eole' name='netmask'>adresse_netmask_vlan_eth0</param>
-		</fill>
-		<fill name='calc_broadcast' target='adresse_broadcast_vlan_eth1'>
-			<param type='eole' name='ip'>adresse_ip_vlan_eth1</param>
-			<param type='eole' name='netmask'>adresse_netmask_vlan_eth1</param>
-		</fill>
-		<fill name='calc_broadcast' target='adresse_broadcast_vlan_eth2'>
-			<param type='eole' name='ip'>adresse_ip_vlan_eth2</param>
-			<param type='eole' name='netmask'>adresse_netmask_vlan_eth2</param>
-		</fill>
-		<fill name='calc_broadcast' target='adresse_broadcast_vlan_eth3'>
-			<param type='eole' name='ip'>adresse_ip_vlan_eth3</param>
-			<param type='eole' name='netmask'>adresse_netmask_vlan_eth3</param>
-		</fill>
-		<fill name='calc_broadcast' target='adresse_broadcast_vlan_eth4'>
-			<param type='eole' name='ip'>adresse_ip_vlan_eth4</param>
-			<param type='eole' name='netmask'>adresse_netmask_vlan_eth4</param>
-		</fill>
-		<fill name='calc_val' target='alias_netmask_eth0'>
-			<param type='eole' name='valeur'>adresse_netmask_eth0</param>
-		</fill>
-		<fill name='calc_val' target='alias_netmask_eth1'>
-			<param type='eole' name='valeur'>adresse_netmask_eth1</param>
-		</fill>
-		<fill name='calc_val' target='alias_netmask_eth2'>
-			<param type='eole' name='valeur'>adresse_netmask_eth2</param>
-		</fill>
-		<fill name='calc_val' target='alias_netmask_eth3'>
-			<param type='eole' name='valeur'>adresse_netmask_eth3</param>
-		</fill>
-		<fill name='calc_val' target='alias_netmask_eth4'>
-			<param type='eole' name='valeur'>adresse_netmask_eth4</param>
-		</fill>
 
 		<auto name='auto_module' target='eole_module'/>
 		<auto name='key_nuauth' target='nuauth_tls_key'/>
@@ -443,46 +240,17 @@
 		<check name="valid_enum" target='nuauth_nss_ldap_tls'>
 			<param>['oui','non']</param>
 		</check>
-                <!--FIXME<check name="valid_enum" target="eth0_method">
+		<!--FIXME: il faut redéfinir la valeur
+		<check name="valid_enum" target="eth0_method">
                   <param>['statique','dhcp','pppoe']</param>
                 </check>-->
-		<check name="valid_enum" target='alias_eth0'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='vlan_eth0'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='alias_eth1'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='vlan_eth1'>
-			<param>['oui','non']</param>
-		</check>
 		<check name="valid_enum" target='nuauth_eth1'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='alias_eth2'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='vlan_eth2'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='nuauth_eth2'>
 			<param>['oui','non']</param>
 		</check>
-		<check name="valid_enum" target='alias_eth3'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='vlan_eth3'>
-			<param>['oui','non']</param>
-		</check>
 		<check name="valid_enum" target='nuauth_eth3'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='alias_eth4'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='vlan_eth4'>
 			<param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='nuauth_eth4'>
@@ -543,146 +311,12 @@
 			<target type='variable'>nuauth_eth4</target>
 			<target type='filelist'>nufw</target>
 		</condition>
-		<condition name='hidden_if_in' source='alias_eth0'>
-			<param>non</param>
-                	<target type='variable'>alias_ip_eth0</target>
-                	<target type='variable'>alias_netmask_eth0</target>
-                	<target type='variable'>alias_network_eth0</target>
-                	<target type='variable'>alias_broadcast_eth0</target>
-                	<target type='variable'>alias_gw_eth0</target>
-		</condition>
-		<condition name='hidden_if_in' source='vlan_eth0'>
-			<param>non</param>
-               		<target type='variable'>id_vlan_eth0</target>
-                	<target type='variable'>adresse_ip_vlan_eth0</target>
-                	<target type='variable'>adresse_netmask_vlan_eth0</target>
-                	<target type='variable'>adresse_network_vlan_eth0</target>
-                	<target type='variable'>adresse_broadcast_vlan_eth0</target>
-                	<target type='variable'>adresse_gw_vlan_eth0</target>
-		</condition>
-		<condition name='hidden_if_in' source='alias_eth1'>
-			<param>non</param>
-                	<target type='variable'>alias_ip_eth1</target>
-                	<target type='variable'>alias_netmask_eth1</target>
-                	<target type='variable'>alias_network_eth1</target>
-                	<target type='variable'>alias_broadcast_eth1</target>
-		</condition>
-		<condition name='hidden_if_in' source='vlan_eth1'>
-			<param>non</param>
-                	<target type='variable'>id_vlan_eth1</target>
-                	<target type='variable'>adresse_ip_vlan_eth1</target>
-                	<target type='variable'>adresse_netmask_vlan_eth1</target>
-                	<target type='variable'>adresse_network_vlan_eth1</target>
-                	<target type='variable'>adresse_broadcast_vlan_eth1</target>
-		</condition>
-		<condition name='hidden_if_in' source='alias_eth2'>
-			<param>non</param>
-                	<target type='variable'>alias_ip_eth2</target>
-                	<target type='variable'>alias_netmask_eth2</target>
-                	<target type='variable'>alias_network_eth2</target>
-                	<target type='variable'>alias_broadcast_eth2</target>
-		</condition>
-		<condition name='hidden_if_in' source='vlan_eth2'>
-			<param>non</param>
-                	<target type='variable'>id_vlan_eth2</target>
-                	<target type='variable'>adresse_ip_vlan_eth2</target>
-                	<target type='variable'>adresse_netmask_vlan_eth2</target>
-                	<target type='variable'>adresse_network_vlan_eth2</target>
-                	<target type='variable'>adresse_broadcast_vlan_eth2</target>
-		</condition>
-		<condition name='hidden_if_in' source='alias_eth3'>
-			<param>non</param>
-                	<target type='variable'>alias_ip_eth3</target>
-                	<target type='variable'>alias_netmask_eth3</target>
-                	<target type='variable'>alias_network_eth3</target>
-                	<target type='variable'>alias_broadcast_eth3</target>
-		</condition>
-		<condition name='hidden_if_in' source='vlan_eth3'>
-			<param>non</param>
-                	<target type='variable'>id_vlan_eth3</target>
-                	<target type='variable'>adresse_ip_vlan_eth3</target>
-                	<target type='variable'>adresse_netmask_vlan_eth3</target>
-                	<target type='variable'>adresse_network_vlan_eth3</target>
-                	<target type='variable'>adresse_broadcast_vlan_eth3</target>
-		</condition>
-		<condition name='hidden_if_in' source='alias_eth4'>
-			<param>non</param>
-                	<target type='variable'>alias_ip_eth4</target>
-                	<target type='variable'>alias_netmask_eth4</target>
-                	<target type='variable'>alias_network_eth4</target>
-                	<target type='variable'>alias_broadcast_eth4</target>
-		</condition>
-		<condition name='hidden_if_in' source='vlan_eth4'>
-			<param>non</param>
-                	<target type='variable'>id_vlan_eth4</target>
-                	<target type='variable'>adresse_ip_vlan_eth4</target>
-                	<target type='variable'>adresse_netmask_vlan_eth4</target>
-                	<target type='variable'>adresse_network_vlan_eth4</target>
-                	<target type='variable'>adresse_broadcast_vlan_eth4</target>
-		</condition>
 		<condition name='hidden_if_in' source='active_nufw'>
 			<param>non</param>
 			<target type='variable'>nuauth_verbosity</target>
 		</condition>
 
 	<!-- **** Groupes **** -->
-		 <group master='alias_ip_eth0'>
-                        <slave>alias_netmask_eth0</slave>
-                        <slave>alias_network_eth0</slave>
-                        <slave>alias_broadcast_eth0</slave>
-                        <slave>alias_gw_eth0</slave>
-                 </group>
-		 <group master='id_vlan_eth0'>
-                        <slave>adresse_ip_vlan_eth0</slave>
-                        <slave>adresse_netmask_vlan_eth0</slave>
-                        <slave>adresse_network_vlan_eth0</slave>
-                        <slave>adresse_broadcast_vlan_eth0</slave>
-                        <slave>adresse_gw_vlan_eth0</slave>
-                 </group>
-		 <group master='alias_ip_eth1'>
-                        <slave>alias_netmask_eth1</slave>
-                        <slave>alias_network_eth1</slave>
-                        <slave>alias_broadcast_eth1</slave>
-                 </group>
-		 <group master='id_vlan_eth1'>
-                        <slave>adresse_ip_vlan_eth1</slave>
-                        <slave>adresse_netmask_vlan_eth1</slave>
-                        <slave>adresse_network_vlan_eth1</slave>
-                        <slave>adresse_broadcast_vlan_eth1</slave>
-                 </group>
-		 <group master='alias_ip_eth2'>
-                        <slave>alias_netmask_eth2</slave>
-                        <slave>alias_network_eth2</slave>
-                        <slave>alias_broadcast_eth2</slave>
-                 </group>
-		 <group master='id_vlan_eth2'>
-                        <slave>adresse_ip_vlan_eth2</slave>
-                        <slave>adresse_netmask_vlan_eth2</slave>
-                        <slave>adresse_network_vlan_eth2</slave>
-                        <slave>adresse_broadcast_vlan_eth2</slave>
-                 </group>
-		 <group master='alias_ip_eth3'>
-                        <slave>alias_netmask_eth3</slave>
-                        <slave>alias_network_eth3</slave>
-                        <slave>alias_broadcast_eth3</slave>
-                 </group>
-		 <group master='id_vlan_eth3'>
-                        <slave>adresse_ip_vlan_eth3</slave>
-                        <slave>adresse_netmask_vlan_eth3</slave>
-                        <slave>adresse_network_vlan_eth3</slave>
-                        <slave>adresse_broadcast_vlan_eth3</slave>
-                 </group>
-		 <group master='alias_ip_eth4'>
-                        <slave>alias_netmask_eth4</slave>
-                        <slave>alias_network_eth4</slave>
-                        <slave>alias_broadcast_eth4</slave>
-                 </group>
-		 <group master='id_vlan_eth4'>
-                        <slave>adresse_ip_vlan_eth4</slave>
-                        <slave>adresse_netmask_vlan_eth4</slave>
-                        <slave>adresse_network_vlan_eth4</slave>
-                        <slave>adresse_broadcast_vlan_eth4</slave>
-                 </group>
                  <group master='adresse_network_zone_rvp'>
                         <slave>adresse_netmask_zone_rvp</slave>
                         <slave>autoriser_rvp_autres</slave>
