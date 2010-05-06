@@ -3,16 +3,22 @@
 <creole>
 	<files>
 		  <service servicelist='snort'>snort</service>
-		  <file name='/etc/init.d/samhain' source='samhain_init'/>
-		  <file name='/etc/oinkmaster.conf' />
-		  <file name='/etc/prelude/default/client.conf' source='prelude-client.conf'/>
-		  <file name='/etc/prelude/default/global.conf' source='prelude-global.conf'/>
-		  <file name='/etc/samhain/samhainrc' />
+		  <service servicelist='samhain'>samhain</service>
+		  <file filelist='sondes' name='/etc/prelude/default/client.conf' source='prelude-client.conf'/>
+		  <file filelist='sondes' name='/etc/prelude/default/global.conf' source='prelude-global.conf'/>
+		  <file filelist='samhain' name='/etc/init.d/samhain' source='samhain_init'/>
+		  <file filelist='samhain' name='/etc/samhain/samhainrc' />
 		  <file filelist='snort' name='/etc/snort/snort.conf' />
-		  <file filelist='snort'name='/etc/snort/snort.debian.conf' />
+		  <file filelist='snort' name='/etc/snort/snort.debian.conf' />
+		  <file filelist='snort' name='/etc/oinkmaster.conf' />
 	</files>
 <!--************************************************************************************************* -->
 	<variables>
+		<family name='Services'>
+ 			<variable name='activer_sonde_prelude' type='string' description="Gestion des sondes Prelude" >
+                                <value>non</value>
+                        </variable>
+		</family>
 		<family name='Sondes'>
 			<variable name='administrateur_email' type='string' description="Adresse courriel de contact"/>
 			<variable name='adresse_ip_prelude_manager' type='ip' description="Adresse IP du serveur Prelude Manager "/>
@@ -73,30 +79,45 @@
 		<separator name='sonde_snort'>Configuration de la sonde SNORT</separator>
 		<separator name='sonde_samhain'>Configuration de la sonde Samhain</separator>
 		<separator name='sonde_nufw'>Configuration de la sonde NuFW</separator>
+		<separator name='activer_sonde_prelude'>Activation des sondes Prelude</separator>
 	</separators>
 <!--************************************************************************************************* -->
 	<constraints>
-	<check name="valid_enum" target="sonde_snort" >
-                    <param>['oui','non']</param>
-        </check>
-	<check name="valid_enum" target="sonde_samhain" >
-                    <param>['oui','non']</param>
-        </check>
-	<check name="valid_enum" target="sonde_nufw" >
-                    <param>['oui','non']</param>
-	</check>
-	<check name="valid_enum" target="snort_rules_liste">
-		<param type="python">eosfunc.list_files('/etc/snort/rules','*.rules',True)</param>
-		<param name="checkval">False</param>
-	</check>
-	<check name='obligatoire' target='administrateur_email'/>
-	<check name='obligatoire' target='adresse_ip_prelude_manager'/>
-	<condition name='hidden_if_in' source='sonde_snort'>
-		<param>non</param>
-		<target type='family'>Snort</target>
-		<target type='servicelist'>snort</target>
-		<target type='filelist'>snort</target>
-	</condition>
+		<check name="valid_enum" target="activer_sonde_prelude">
+                  <param>['oui','non']</param>
+                </check>
+		<check name="valid_enum" target="sonde_snort" >
+			    <param>['oui','non']</param>
+		</check>
+		<check name="valid_enum" target="sonde_samhain" >
+			    <param>['oui','non']</param>
+		</check>
+		<check name="valid_enum" target="sonde_nufw" >
+			    <param>['oui','non']</param>
+		</check>
+		<check name="valid_enum" target="snort_rules_liste">
+			<param type="python">eosfunc.list_files('/etc/snort/rules','*.rules',True)</param>
+			<param name="checkval">False</param>
+		</check>
+		<check name='obligatoire' target='administrateur_email'/>
+		<check name='obligatoire' target='adresse_ip_prelude_manager'/>
+		<condition name='hidden_if_in' source='sonde_snort'>
+			<param>non</param>
+			<target type='family'>Snort</target>
+			<target type='servicelist'>snort</target>
+			<target type='filelist'>snort</target>
+		</condition>
+		<condition name='hidden_if_in' source='sonde_samhain'>
+			<param>non</param>
+			<target type='servicelist'>samhain</target>
+			<target type='filelist'>samhain</target>
+		</condition>
+                 <condition name='hidden_if_in' source='activer_sonde_prelude'>
+                	<param>non</param>
+			<target type='family'>Sondes</target>
+			<target type='filelist'>sondes</target>
+			<target type='servicelist'>sondes</target>
+		</condition>
 	</constraints>
 <!--************************************************************************************************* -->
 	<help>

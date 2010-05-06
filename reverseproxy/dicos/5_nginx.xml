@@ -2,9 +2,10 @@
 
 <creole>
 	<files>
+		<service servicelist='revprox'>nginx</service>
 		<package>eole-reverseproxy</package>
-		<file name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
-		<file name='/var/www/nginx-default/nginx.html' source='nginx.html'/>
+		<file filelist='revprox' name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
+		<file filelist='revprox' name='/var/www/nginx-default/nginx.html' source='nginx.html'/>
 	</files>
 	<!--************************************************************************************************* -->
 	<variables>
@@ -62,6 +63,7 @@
 			<param>non</param>
 			<target type='family'>Reverse proxy</target>
 			<target type='filelist'>revpro</target>
+			<target type='servicelist'>revpro</target>
                 </condition>
 	<!-- **** Groupes **** -->
 		 <group master='revprox_domainname'>

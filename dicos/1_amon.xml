@@ -49,9 +49,6 @@
 		</family>
 	<!--************************************************************************************************* -->
 		<family name='services'>
- 			<variable name='activer_sonde_prelude' type='string' description="Gestion des sondes Prelude" >
-                                <value>non</value>
-                        </variable>
 			<variable name='install_rvp' type='string' description='Activation du RVP' >
  				<value>non</value>
  			</variable>
@@ -145,7 +142,6 @@
 				<separator name='debit_carte_eth3'>Configuration avancée de l'interface interne 3</separator>
 				<separator name='debit_carte_eth4'>Configuration avancée de l'interface interne 4</separator>
 				<separator name='activer_bacula'>Sauvegardes</separator>
-				<separator name='activer_sonde_prelude'>Activation des sondes Prelude</separator>
 				<separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>
 			</separators>
 	</variables>
@@ -171,9 +167,6 @@
 		<check name='valid_enum' target='active_sarg'>
                   <param>['oui','non']</param>
 		</check>
-		<check name="valid_enum" target="activer_sonde_prelude">
-                  <param>['oui','non']</param>
-                </check>
                 <check name="valid_enum" target="install_rvp">
                   <param>['oui','non']</param>
                 </check>
@@ -227,10 +220,6 @@
 			<param>non</param>
 			<target type='filelist'>dhrelay</target>
 			<target type='servicelist'>dhrelay</target>
-		</condition>
-                 <condition name='hidden_if_in' source='activer_sonde_prelude'>
-                	<param>non</param>
-			<target type='family'>Sondes</target>
 		</condition>
                <condition name='hidden_if_in' source='install_rvp'>
                 	<param>non</param>
