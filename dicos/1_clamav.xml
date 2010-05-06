@@ -3,6 +3,7 @@
 <creole>
 
     <files>
+	<package>antivirus-pkg</service>
 	<service servicelist='enable_clamd'>clamav-freshclam</service>
 	<service servicelist='enable_clamd'>clamav-daemon</service>
         <file filelist='enable_clamd' name='/etc/clamav/clamd.conf'/>

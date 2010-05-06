@@ -54,18 +54,18 @@ install:
 	cp -rf reverseproxy/tmpl $(REV_DIR)/usr/share/eole/creole/distrib
 
 	#dns
-	mkdir -p $(DNS_DIR)/usr/share/eole
+	mkdir -p $(DNS_DIR)/usr/share/eole/creole
 	cp -rf dns/eole/* $(DNS_DIR)/usr/share/eole
 	cp -rf dns/dicos $(DNS_DIR)/usr/share/eole/creole/dicos
 	cp -rf dns/tmpl $(DNS_DIR)/usr/share/eole/creole/distrib
 
 	#nuauth
-	mkdir -p $(NUAUTH_DIR)/usr/share/eole
+	mkdir -p $(NUAUTH_DIR)/usr/share/eole/creole
 	cp -rf nuauth/dicos $(NUAUTH_DIR)/usr/share/eole/creole/dicos
 	cp -rf nuauth/tmpl $(NUAUTH_DIR)/usr/share/eole/creole/distrib
 
 	#nuauth
-	mkdir -p $(RADIUS_DIR)/usr/share/eole
+	mkdir -p $(RADIUS_DIR)/usr/share/eole/creole
 	cp -rf radius/dicos $(RADIUS_DIR)/usr/share/eole/creole/dicos
 	cp -rf radius/tmpl $(RADIUS_DIR)/usr/share/eole/creole/distrib
 
