@@ -20,7 +20,6 @@
 		<file name='/etc/default/dhcp3-relay'/>
 		<file name='/etc/sysconfig/killp2p'/>
 		<file name='/etc/init.d/l7filter' />
-
 	</files>
 	<!--************************************************************************************************* -->
 	<variables>

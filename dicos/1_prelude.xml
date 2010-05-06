@@ -2,20 +2,19 @@
 
 <creole>
 	<files>
-	  <file name='/etc/init.d/samhain' source='samhain_init'/>
-	  <file name='/etc/oinkmaster.conf' />
-	  <file name='/etc/prelude/default/client.conf' source='prelude-client.conf'/>
-	  <file name='/etc/prelude/default/global.conf' source='prelude-global.conf'/>
-	  <file name='/etc/samhain/samhainrc' />
-	  <file name='/etc/snort/snort.conf' />
-          <file name='/etc/snort/snort.debian.conf' />
-          <file name='/etc/ssmtp/ssmtp.conf' />
+		  <service servicelist='snort'>snort</service>
+		  <file name='/etc/init.d/samhain' source='samhain_init'/>
+		  <file name='/etc/oinkmaster.conf' />
+		  <file name='/etc/prelude/default/client.conf' source='prelude-client.conf'/>
+		  <file name='/etc/prelude/default/global.conf' source='prelude-global.conf'/>
+		  <file name='/etc/samhain/samhainrc' />
+		  <file filelist='snort' name='/etc/snort/snort.conf' />
+		  <file filelist='snort'name='/etc/snort/snort.debian.conf' />
 	</files>
 <!--************************************************************************************************* -->
 	<variables>
 		<family name='Sondes'>
 			<variable name='administrateur_email' type='string' description="Adresse courriel de contact"/>
-                        <variable name='passerelle_smtp' type='string' description="Passerelle SMTP"/>
 			<variable name='adresse_ip_prelude_manager' type='ip' description="Adresse IP du serveur Prelude Manager "/>
 			<variable name='sonde_snort' type='string' description="Activation de la sonde SNORT" >
 				<value>non</value>
@@ -75,7 +74,7 @@
 		<separator name='sonde_samhain'>Configuration de la sonde Samhain</separator>
 		<separator name='sonde_nufw'>Configuration de la sonde NuFW</separator>
 	</separators>
-<!--************************************************************************************************* -->	
+<!--************************************************************************************************* -->
 	<constraints>
 	<check name="valid_enum" target="sonde_snort" >
                     <param>['oui','non']</param>
@@ -91,14 +90,15 @@
 		<param name="checkval">False</param>
 	</check>
 	<check name='obligatoire' target='administrateur_email'/>
-	<check name='obligatoire' target='passerelle_smtp'/>
 	<check name='obligatoire' target='adresse_ip_prelude_manager'/>
 	<condition name='hidden_if_in' source='sonde_snort'>
 		<param>non</param>
 		<target type='family'>Snort</target>
+		<target type='servicelist'>snort</target>
+		<target type='filelist'>snort</target>
 	</condition>
 	</constraints>
-<!--************************************************************************************************* -->	
+<!--************************************************************************************************* -->
 	<help>
 	</help>
 </creole>

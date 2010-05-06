@@ -63,6 +63,7 @@ install:
 	cp -rf nuauth/eole/* $(NUAUTH_DIR)/usr/share/eole
 	cp -rf nuauth/dicos $(NUAUTH_DIR)/usr/share/eole/creole/dicos
 	cp -rf nuauth/tmpl $(NUAUTH_DIR)/usr/share/eole/creole/distrib
+
 uninstall:
 
 	# suppression des anciens templates

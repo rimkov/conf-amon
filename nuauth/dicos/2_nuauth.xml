@@ -2,8 +2,8 @@
 
 <creole>
 	<files>
-		<service>nufw></service>
-		<service>nuauth></service>
+		<service servicelist='nufw'>nufw</service>
+		<service servicelist='nufw'>nuauth</service>
 		<file name='/etc/default/nuauth'/>
 		<file name='/etc/default/nufw'/>
 		<file name='/etc/ldap.conf'/>
