@@ -2,6 +2,8 @@
 
 <creole>
         <files>
+		<service>freeradius</service>
+		<package>freeradius-pkg</package>
 		<file filelist='freeradius' name='/etc/freeradius/clients.conf' source='freerad-clients.conf'/>
 		<file filelist='freeradius' name='/etc/freeradius/eap.conf' source='freerad-eap.conf'/>
 		<file filelist='freeradius' name='/etc/freeradius/huntgroups' source='freerad-huntgroups'/>
@@ -41,13 +43,14 @@
 				<separator name='freerad_nas_ip'>Configuration des NAS</separator>
 				<separator name='freerad_ldap_ip'>Configuration LDAP</separator>
 				<separator name='freerad_ldap_group'>Configuration des groupes et des vlans</separator>
-			</separators> 
+			</separators>
         </variables>
         <constraints>
 		<condition name='hidden_if_in' source='freeradius'>
-			<param>non</param> 
+			<param>non</param>
 			<target type='family'>freeradius</target>
 			<target type='filelist'>freeradius</target>
+			<target type='servicelist'>freeradius</target>
 		</condition>
 		<check name="valid_enum" target='freeradius'>
 			<param>['non','oui']</param>
@@ -57,7 +60,7 @@
 		</check>
 		<check name="valid_enum" target='freerad_ldap_group'>
 			<param>['Eleves','professeurs']</param>
-			<param name="checkval">False</param> 
+			<param name="checkval">False</param>
 		</check>
 	<!-- **** Groupes **** -->
 		 <group master='freerad_nas_ip'>

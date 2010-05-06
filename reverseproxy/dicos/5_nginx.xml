@@ -3,7 +3,7 @@
 <creole>
 	<files>
 		<service servicelist='revprox'>nginx</service>
-		<package>eole-reverseproxy</package>
+		<package>reverseproxy-pkg</package>
 		<file filelist='revprox' name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
 		<file filelist='revprox' name='/var/www/nginx-default/nginx.html' source='nginx.html'/>
 	</files>

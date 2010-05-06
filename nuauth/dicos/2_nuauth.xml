@@ -2,6 +2,7 @@
 
 <creole>
 	<files>
+		<package>nuauth-pkg</package>
 		<service servicelist='nufw'>nufw</service>
 		<service servicelist='nufw'>nuauth</service>
 		<file name='/etc/default/nuauth'/>

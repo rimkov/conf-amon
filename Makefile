@@ -11,6 +11,7 @@ BIN_DIR=$(DESTDIR)/conf-amon/usr/bin
 REV_DIR=$(DESTDIR)/eole-reverseproxy
 DNS_DIR=$(DESTDIR)/eole-dns
 NUAUTH_DIR=$(DESTDIR)/eole-nuauth
+RADIUS_DIR=$(DESTDIR)/eole-nuauth
 all: install
 
 install:
@@ -60,9 +61,13 @@ install:
 
 	#nuauth
 	mkdir -p $(NUAUTH_DIR)/usr/share/eole
-	cp -rf nuauth/eole/* $(NUAUTH_DIR)/usr/share/eole
 	cp -rf nuauth/dicos $(NUAUTH_DIR)/usr/share/eole/creole/dicos
 	cp -rf nuauth/tmpl $(NUAUTH_DIR)/usr/share/eole/creole/distrib
+
+	#nuauth
+	mkdir -p $(RADIUS_DIR)/usr/share/eole
+	cp -rf radius/dicos $(RADIUS_DIR)/usr/share/eole/creole/dicos
+	cp -rf radius/tmpl $(RADIUS_DIR)/usr/share/eole/creole/distrib
 
 uninstall:
 
