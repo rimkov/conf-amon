@@ -10,6 +10,7 @@ SBIN_DIR=$(DESTDIR)/conf-amon/usr/sbin
 BIN_DIR=$(DESTDIR)/conf-amon/usr/bin
 REV_DIR=$(DESTDIR)/eole-reverseproxy
 DNS_DIR=$(DESTDIR)/eole-dns
+NUAUTH_DIR=$(DESTDIR)/eole-nuauth
 all: install
 
 install:
@@ -54,9 +55,14 @@ install:
 	#dns
 	mkdir -p $(DNS_DIR)/usr/share/eole
 	cp -rf dns/eole/* $(DNS_DIR)/usr/share/eole
-	cp -rf dns/dicos $(REV_DIR)/usr/share/eole/creole/dicos
-	cp -rf dns/tmpl $(REV_DIR)/usr/share/eole/creole/distrib
+	cp -rf dns/dicos $(DNS_DIR)/usr/share/eole/creole/dicos
+	cp -rf dns/tmpl $(DNS_DIR)/usr/share/eole/creole/distrib
 
+	#nuauth
+	mkdir -p $(NUAUTH_DIR)/usr/share/eole
+	cp -rf nuauth/eole/* $(NUAUTH_DIR)/usr/share/eole
+	cp -rf nuauth/dicos $(NUAUTH_DIR)/usr/share/eole/creole/dicos
+	cp -rf nuauth/tmpl $(NUAUTH_DIR)/usr/share/eole/creole/distrib
 uninstall:
 
 	# suppression des anciens templates

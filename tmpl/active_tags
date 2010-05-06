@@ -1,7 +1,7 @@
 %if %%ssh_eth2 == "oui"
 adm_eth2
 %end if
-%if %%active_nufw == "oui"
+%if %%is_defined('active_nufw') and %%active_nufw == "oui"
 auth_nufw
 %end if
 %if %%test_vz(master=True)

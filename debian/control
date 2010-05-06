@@ -29,3 +29,8 @@ Package: eole-dns
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
 Description: Templates et dictionnaires pour le dns EOLE
+
+Package: eole-nuauth
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
+Description: Templates et dictionnaires pour le nuauth EOLE

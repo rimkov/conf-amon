@@ -2,6 +2,7 @@
 
 <creole>
 	<files>
+		<package>dns-pkg</package>
 		<service>bind9</service>
 		<file name='/etc/bind/spcl.options'/>
 		<file filelist='agriates' name='/etc/bind/agriates.zones'/>

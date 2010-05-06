@@ -2,40 +2,30 @@
 
 <creole>
 	<files>
-	<service>bastion</service>
-        <file name='/etc/sysctl.conf'/>
-        <file name='/etc/chkrootkit.conf'/>
-        <file name='/etc/crontab'/>
-        <file name='/etc/fwlogwatch.config'/>
-        <file name='/etc/host.conf'/>
-        <file name='/etc/hosts.allow'/>
-	<file name='/etc/logrotate.conf'/>
-        <file name='/etc/sudoers' mode="0440"/>
-	<file name='/etc/webalizer.conf'/>
-	<file name='/usr/share/eole/firewall.stop' mode='755'/>
-        <file name='/usr/share/era/backend/data/active_tags'/>
-	<file name='/var/spool/cron/root' source='cron-root'/>
-	<file name='/usr/lib/cgi-bin/filtre.cgi'/>
-	<file name='/etc/sysconfig/eole/services/0_services.srv' source='services'/>
-	<file name='/etc/default/dhcp3-relay'/>
-	<file name='/etc/nsswitch.conf'/>
-	<file name='/etc/ldap.conf'/>
-	<file name='/etc/default/nuauth'/>
-        <file name='/etc/default/nufw'/>
-        <file name='/etc/sysconfig/killp2p'/>
-        <file name='/etc/init.d/l7filter' />
-	<file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
-	<file filelist='nufw' name='/etc/pam.d/nuauth' source='nuauth.pamd'/>
-	<file filelist='nufw' name='/etc/init.d/nufw' source='nufw.init'/>
+		<service>bastion</service>
+		<file name='/etc/sysctl.conf'/>
+		<file name='/etc/chkrootkit.conf'/>
+		<file name='/etc/crontab'/>
+		<file name='/etc/fwlogwatch.config'/>
+		<file name='/etc/host.conf'/>
+		<file name='/etc/hosts.allow'/>
+		<file name='/etc/logrotate.conf'/>
+		<file name='/etc/sudoers' mode="0440"/>
+		<file name='/etc/webalizer.conf'/>
+		<file name='/usr/share/eole/firewall.stop' mode='755'/>
+		<file name='/usr/share/era/backend/data/active_tags'/>
+		<file name='/var/spool/cron/root' source='cron-root'/>
+		<file name='/usr/lib/cgi-bin/filtre.cgi'/>
+		<file name='/etc/sysconfig/eole/services/0_services.srv' source='services'/>
+		<file name='/etc/default/dhcp3-relay'/>
+		<file name='/etc/sysconfig/killp2p'/>
+		<file name='/etc/init.d/l7filter' />
 
 	</files>
 	<!--************************************************************************************************* -->
 	<variables>
 		<family name='general'>
 			<variable name='eole_module' type='string' description="Module installé" hidden='True'/>
-			<variable name='nuauth_tls_key' type='string' description="Clef privée pour Nuauth" hidden='True'/>
-			<variable name='nuauth_tls_cert' type='string' description="Certificat pour Nuauth" hidden='True'/>
-			<variable name='nuauth_tls_cacert' type='string' description="Certification pour Nuauth" hidden='True'/>
       <!--**** Reseau Global **** -->
 			<variable name='type_amon' type='string' description='Modèle de filtrage' />
                         <!--FIXME<variable name='nombre_interfaces' type='string' description="Nombre d'interfaces à activer sur le pare-feu" >
@@ -65,9 +55,6 @@
 			<variable name='install_rvp' type='string' description='Activation du RVP' >
  				<value>non</value>
  			</variable>
-			<variable name='active_nufw' type='string' description="Activation de l'authentification réseau (NuFW)" >
-				<value>non</value>
-			</variable>
                         <variable name='filtrage_p2p' type='string' description="Système de filtrage P2P" >
                                 <value>l7filter</value>
                         </variable>
@@ -87,9 +74,6 @@
  			<variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" >
  				<value>admin</value>
  			</variable>
-			<variable name='nuauth_eth1' type='string' description="Activer l'authentification NuAuth sur cette interface" >
-				<value>non</value>
-			</variable>
 		</family>
 
 		<!--**** Interfaces 2 **** -->
@@ -97,9 +81,6 @@
  			<variable name='nom_machine_eth2' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>pedago</value>
  			</variable>
-			<variable name='nuauth_eth2' type='string' description="Activer l'authentification NuAuth sur cette interface" >
-				<value>non</value>
-			</variable>
 		</family>
 
 		<!--**** Interfaces 3 **** -->
@@ -107,9 +88,6 @@
  			<variable name='nom_machine_eth3' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>dmz-priv</value>
  			</variable>
-			<variable name='nuauth_eth3' type='string' description="Activer l'authentification NuAuth sur cette interface" >
-				<value>non</value>
-			</variable>
 		</family>
 
 		<!--**** Interfaces 4 **** -->
@@ -117,9 +95,6 @@
  			<variable name='nom_machine_eth4' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
  				<value>dmz-pub</value>
  			</variable>
-			<variable name='nuauth_eth4' type='string' description="Activer l'authentification NuAuth sur cette interface" >
-				<value>non</value>
-			</variable>
 		</family>
 	<!--************************************************************************************************* -->
 		<family name='RVP' hidden='True'>
@@ -142,22 +117,8 @@
  				<value>non</value>
  			</variable>
 		</family>
-		<family name='Nufw' hidden='True'>
-			<variable name='nuauth_nss_ldap_host' type='ip' description="Adresse du serveur LDAP pour l'authentification NuFW" />
-			<variable name='nuauth_nss_ldap_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN)">
-              			<value>o=gouv,c=fr</value>
-			</variable>
-			<variable name='nuauth_nss_ldap_tls' type='string' description="Activation du chiffrement de l'authentification (TLS)">
-				<value>oui</value>
-			</variable>
-		</family>
 
 	<!--************************************************************************************************* -->
-		<family name='nufw-options' mode='expert'>
-			<variable name='nuauth_verbosity' type='Number' description='Niveau de verbosité du démon Nuauth'>
-				<value>3</value>
-			</variable>
-		</family>
 	<!--************************************************************************************************* -->
 		<family mode="expert" name="reseau-avance">
 			<variable description="Désactiver le path MTU discovery, le bit DF est positionné à 0" hidden="False" multi="False" name="ip_no_pmtu_disc" type="string">
@@ -174,7 +135,6 @@
 	<!--************************************************************************************************* -->
 			<separators>
 				<separator name='type_amon'>Paramètres réseau globaux</separator>
-				<separator name='active_nufw'>NuFW (Now User Filtering Works)</separator>
                                 <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
 				<separator name='nom_cache_pere'>Proxy pere general</separator>
 				<separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
@@ -193,16 +153,11 @@
 	<!--************************************************************************************************* -->
 
 		<auto name='auto_module' target='eole_module'/>
-		<auto name='key_nuauth' target='nuauth_tls_key'/>
-		<auto name='cert_nuauth' target='nuauth_tls_cert'/>
-		<auto name='cacert_nuauth' target='nuauth_tls_cacert'/>
 
 	<!-- **** champs obligatoires **** -->
 		<check name='obligatoire' target='nom_machine_eth1'/>
 
 		<check name='obligatoire' target='interface_gw'/>
-		<check name='obligatoire' target='nuauth_nss_ldap_host'/>
-		<check name='obligatoire' target='nuauth_nss_ldap_dn'/>
 
 
 	<!-- **** Listes deroulantes **** -->
@@ -231,31 +186,13 @@
                 <check name='valid_enum' target='activer_dhcprelay'>
                   <param>['oui','non']</param>
                 </check>
-		<check name="valid_enum" target='active_nufw'>
-			<param>['oui','non']</param>
-		</check>
                 <check name="valid_enum" target='filtrage_p2p'>
                         <param>['l7filter','ipp2p']</param>
                 </check>
-		<check name="valid_enum" target='nuauth_nss_ldap_tls'>
-			<param>['oui','non']</param>
-		</check>
 		<!--FIXME: il faut redéfinir la valeur
 		<check name="valid_enum" target="eth0_method">
                   <param>['statique','dhcp','pppoe']</param>
                 </check>-->
-		<check name="valid_enum" target='nuauth_eth1'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='nuauth_eth2'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='nuauth_eth3'>
-			<param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target='nuauth_eth4'>
-			<param>['oui','non']</param>
-		</check>
                 <check name="valid_enum" target="autoriser_rvp_autres">
                         <param>['oui','non']</param>
                 </check>
@@ -265,9 +202,6 @@
                <check name="valid_enum" target='ip_no_pmtu_disc'>
                        <param>['oui','non']</param>
                </check>
-                <check name="valid_enum" target="nuauth_verbosity">
-                  <param>['1','2','3','4','5','6','7','8','9']</param>
-                </check>
 	        <check name='valid_enum' target='debit_carte_eth0'>
                 	<param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
                 </check>
@@ -301,20 +235,6 @@
                 	<param>non</param>
 			<target type='family'>Scribe-DMZ</target>
                 </condition>
-		<condition name='hidden_if_in' source='active_nufw'>
-			<param>non</param>
-			<target type='family'>Nufw</target>
-			<target type='family'>nufw-options</target>
-			<target type='variable'>nuauth_eth1</target>
-			<target type='variable'>nuauth_eth2</target>
-			<target type='variable'>nuauth_eth3</target>
-			<target type='variable'>nuauth_eth4</target>
-			<target type='filelist'>nufw</target>
-		</condition>
-		<condition name='hidden_if_in' source='active_nufw'>
-			<param>non</param>
-			<target type='variable'>nuauth_verbosity</target>
-		</condition>
 
 	<!-- **** Groupes **** -->
                  <group master='adresse_network_zone_rvp'>
