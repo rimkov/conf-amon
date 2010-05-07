@@ -17,7 +17,6 @@
 		<file name='/usr/share/era/backend/data/active_tags'/>
 		<file name='/var/spool/cron/root' source='cron-root'/>
 		<file name='/usr/lib/cgi-bin/filtre.cgi'/>
-		<file name='/etc/sysconfig/eole/services/0_services.srv' source='services'/>
 		<file name='/etc/sysconfig/killp2p'/>
 		<file name='/etc/init.d/l7filter' />
 		<service servicelist='dhrelay'>dhcp3-relay</service>
