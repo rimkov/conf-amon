@@ -3,7 +3,7 @@
 <creole>
         <files>
 		<service>freeradius</service>
-		<package>freeradius-pkg</package>
+		<package>radius-pkg</package>
 		<file filelist='freeradius' name='/etc/freeradius/clients.conf' source='freerad-clients.conf'/>
 		<file filelist='freeradius' name='/etc/freeradius/eap.conf' source='freerad-eap.conf'/>
 		<file filelist='freeradius' name='/etc/freeradius/huntgroups' source='freerad-huntgroups'/>
