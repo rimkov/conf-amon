@@ -1,3 +1,15 @@
+conf-amon (2.3-eole9) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * typo
+  * supprimer le template services
+  * supprimer le template services
+  * typo
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 07 May 2010 09:42:41 +0000
+
 conf-amon (2.3-eole8) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
