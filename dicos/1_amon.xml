@@ -3,7 +3,7 @@
 <creole>
 	<files>
 		<service>bastion</service>
-		<service servicelist='bacula'>bacula</service>
+		<service servicelist='bacula'>bacula-fd</service>
 		<file name='/etc/sysctl.conf'/>
 		<file name='/etc/chkrootkit.conf'/>
 		<file name='/etc/crontab'/>
