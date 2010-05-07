@@ -62,8 +62,8 @@
 		<condition name='hidden_if_in' source='activer_revprox'>
 			<param>non</param>
 			<target type='family'>Reverse proxy</target>
-			<target type='filelist'>revpro</target>
-			<target type='servicelist'>revpro</target>
+			<target type='filelist'>revprox</target>
+			<target type='servicelist'>revprox</target>
                 </condition>
 	<!-- **** Groupes **** -->
 		 <group master='revprox_domainname'>
