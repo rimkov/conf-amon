@@ -11,7 +11,7 @@ BIN_DIR=$(DESTDIR)/conf-amon/usr/bin
 REV_DIR=$(DESTDIR)/eole-reverseproxy
 DNS_DIR=$(DESTDIR)/eole-dns
 NUAUTH_DIR=$(DESTDIR)/eole-nuauth
-RADIUS_DIR=$(DESTDIR)/eole-nuauth
+RADIUS_DIR=$(DESTDIR)/eole-radius
 all: install
 
 install:
