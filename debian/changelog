@@ -1,3 +1,13 @@
+conf-amon (2.3-eole13) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * ne pas redemarrer tout le temps freeradius
+  * typos
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 07 May 2010 12:58:01 +0000
+
 conf-amon (2.3-eole12) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
