@@ -507,7 +507,7 @@ zone "publication.pleiade.education.fr" in {
 	}; 
 	forward only;
 %end if
-%if %%ip_dns_zone_forward != ""
+%if %%ip_dns_zone_forward != []
 };
 %for %%zone in %%nom_zone_forward
 %if %%zone.index != %%len(%%nom_zone_forward)-1

@@ -40,9 +40,6 @@
  			<variable name='install_scribe_dmz' type='string' description="Activer la gestion d'un Scribe dans la DMZ" >
  				<value>non</value>
  			</variable>
-			<variable name='type_maj' type='string' description='Niveau de mise à jour' >
-				<value>minimum</value>
-			</variable>
 			<variable name='url_maj_blacklist' type='string' description='URL mise à jour des blacklists' >
 				<value>http://eole.orion.education.fr/maj/blacklists</value>
 			</variable>
@@ -150,9 +147,6 @@
                 <check name="valid_enum" target="type_amon">
                   <param type="python">eosfunc.list_files('/usr/share/era/modeles','*.xml',True,default=['2zones', '3zones-amonecole-eclair-nginx', '3zones-amonecole-eclair', '3zones-amonecole-nginx', '3zones-amonecole', '3zones-scribe-posh-nginx', '3zones-scribe', '3zones', '4zones-scribe-nufw', '4zones-scribe-posh-nginx', '4zones-scribe', '4zones', '5zones', 'minimal'])</param>
 		  <param name="checkval">False</param>
-                </check>
-                <check name='valid_enum' target='type_maj'>
-                  <param>['minimum','complete']</param>
                 </check>
 		<check name='valid_enum' target='active_sarg'>
                   <param>['oui','non']</param>

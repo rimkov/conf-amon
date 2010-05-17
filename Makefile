@@ -18,7 +18,6 @@ install:
 
 	# création des répertoires (normalement fait par creole)
 	mkdir -p $(EOLE_DIR)
-	mkdir -p $(DESTDIR)/conf-amon/etc/sysconfig/eole
 	mkdir -p $(SBIN_DIR)
 	mkdir -p $(BIN_DIR)
 	mkdir -p $(INIT_DIR)
@@ -42,7 +41,6 @@ install:
 	#cp -f config/domaines_nocache $(DESTDIR)/conf-amon/etc/squid/
 	cp -f config/src_noauth $(DESTDIR)/conf-amon/etc/squid/
 	cp -f config/src_nocache $(DESTDIR)/conf-amon/etc/squid/
-	cp -f config/disabled.srv $(DESTDIR)/conf-amon/etc/sysconfig/eole
 
 	mkdir -p $(EOLE_DIR)/diagnose/module
 	cp -f diagnose/* $(EOLE_DIR)/diagnose/module
