@@ -123,11 +123,6 @@
 			</variable>
 			<variable description="Valeur du MTU pour l'interface eth0 : rien = valeur par defaut de l'interface" hidden="False" multi="False" name="valeur_mtu_eth0" type="Number" />
 			<variable description="Valeur du MTU pour l'interface ppp0 : rien = valeur par defaut de l'interface" hidden="False" multi="False" name="valeur_mtu_ppp0" type="Number" />
-			<variable name='debit_carte_eth0' type='string' description="Mode de connexion pour l'interface exterieur" />
-			<variable name='debit_carte_eth1' type='string' description="Mode de connexion pour l'interface interne 1" />
-			<variable name='debit_carte_eth2' type='string' description="Mode de connexion pour l'interface interne 2" />
-			<variable name='debit_carte_eth3' type='string' description="Mode de connexion pour l'interface interne 3" />
-			<variable name='debit_carte_eth4' type='string' description="Mode de connexion pour l'interface interne 4" />
 		</family>
 	<!--************************************************************************************************* -->
 			<separators>
@@ -136,11 +131,6 @@
 				<separator name='nom_cache_pere'>Proxy pere general</separator>
 				<separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
 				<separator name='adresse_network_zone_rvp'>Accès RVP par le proxy</separator>
-				<separator name='debit_carte_eth0'>Configuration avancée de l'interface externe</separator>
-				<separator name='debit_carte_eth1'>Configuration avancée de l'interface interne 1</separator>
-				<separator name='debit_carte_eth2'>Configuration avancée de l'interface interne 2</separator>
-				<separator name='debit_carte_eth3'>Configuration avancée de l'interface interne 3</separator>
-				<separator name='debit_carte_eth4'>Configuration avancée de l'interface interne 4</separator>
 				<separator name='activer_bacula'>Sauvegardes</separator>
 				<separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>
 			</separators>
