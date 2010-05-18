@@ -19,15 +19,12 @@ fi
 #
 
 echo "Initialisation DNS "
-e=/usr/share/eole/gen_dns
 if [ ! -e /var/run/bind/run ]
 then
     mkdir -p /var/run/bind/run
     #chown -R bind:bind /var/run/bind
 fi
-# FIXME
-#TestExe "$e"
-$e
+/usr/share/eole/gen_dns
 cp -f /etc/bind/db.root /etc/bind/db.cache
 
 # modification du lien renvoyant vers les messages d'erreurs de squid
@@ -81,18 +78,3 @@ danspath="/usr/share/eole/dansguardian"
 cp -f $danspath/init/dansguardian /etc/init.d/dansguardian
 # mise à niveau de la configuration
 $danspath/init_dans.py
-
-
-# Utilisation manage-amon comme shell pour amon/amonecole et amon2 s'il existe
-user=`cat /etc/eole/version | awk -F "-" '{ print $NR }'`
-id $user &>/dev/null
-if [ $? -eq 0 ]
-then
-	usermod -s /usr/share/eole/manage-amon.sh $user
-fi
-id amon2 &>/dev/null
-if [ $? -eq 0 ]
-then
-	usermod -s /usr/share/eole/manage-amon.sh amon2
-fi
-echo
