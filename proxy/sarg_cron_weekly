@@ -1,0 +1,12 @@
+#!/bin/sh
+
+%if %%active_sarg == "oui"
+if [ -x /usr/sbin/sarg-reports1 ]; then
+  /usr/sbin/sarg-reports1 weekly
+fi
+if [ -x /usr/sbin/sarg-reports2 ]; then
+  /usr/sbin/sarg-reports2 weekly
+fi
+%else
+# SARG inactif
+%end if
