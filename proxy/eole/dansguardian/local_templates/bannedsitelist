@@ -1,0 +1,17 @@
+#.Include</var/lib/blacklists/eole/agressif/domains>
+#.Include</var/lib/blacklists/eole/audio-video/domains>
+#.Include</var/lib/blacklists/eole/drogue/domains>
+#.Include</var/lib/blacklists/eole/forums/domains>
+#.Include</var/lib/blacklists/eole/gambling/domains>
+#.Include</var/lib/blacklists/eole/games/domains>
+#.Include</var/lib/blacklists/eole/hacking/domains>
+#.Include</var/lib/blacklists/eole/mobile-phone/domains>
+#.Include</var/lib/blacklists/eole/phishing/domains>
+#.Include</var/lib/blacklists/eole/publicite/domains>
+#.Include</var/lib/blacklists/eole/radio/domains>
+#.Include</var/lib/blacklists/eole/tricheur/domains>
+#.Include</var/lib/blacklists/eole/warez/domains>
+#.Include</var/lib/blacklists/eole/webmail/domains>
+#.Include</var/lib/blacklists/eole/strict_redirector/domains>
+#.Include</var/lib/blacklists/eole/strong_redirector/domains>
+#.Include</var/lib/blacklists/eole/mixed_adult/domains>
