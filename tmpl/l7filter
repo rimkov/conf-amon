@@ -49,7 +49,7 @@ stop() {
 	/sbin/iptables -D FORWARD -m limit --limit 12/min -m layer7 --l7proto $i -j ULOG --ulog-prefix "L7FILTER-$i-LOG"
 	/sbin/iptables -D FORWARD -m layer7 --l7dir /etc/l7-protocols/protocols --l7proto $i -j DROP
 	done
-	%for %%ntp in %%serveur_ntp
+	%for %%ntp_iter in %%serveur_ntp
 	/sbin/iptables -D FORWARD -p udp --dport 123 -j ACCEPT
 	/sbin/iptables -D FORWARD -p udp --sport 123 -j ACCEPT
 	%end for
