@@ -185,12 +185,6 @@
     		    <variable name='udp_outgoing_address' type='string' description=''>
     			    <value>255.255.255.255</value>
     		    </variable>
-    		    <variable name='cache_peer' type='string' description='' multi='True'>
-    			    <value></value>
-    		    </variable>
-    		    <variable name='cache_peer_domain' type='string' description='' multi='True'>
-    			    <value></value>
-    		    </variable>
     		    <variable name='icp_query_timeout' type='number' description='en msec'>
     			<value>0</value>
     		    </variable>
@@ -268,9 +262,6 @@
     		    </variable>
     		    <variable name='log_mime_hdrs' type='string' description=''>
     			    <value>off</value>
-    		    </variable>
-    		    <variable name='debug_options' type='string' description=''>
-    			    <value>ALL,1</value>
     		    </variable>
     		    <variable name='log_fqdn' type='string' description=''>
     			    <value>off</value>
@@ -608,7 +599,6 @@
 		 <check name='obligatoire' target='emulate_httpd_log'/>
 		 <check name='obligatoire' target='log_ip_on_direct'/>
 		 <check name='obligatoire' target='log_mime_hdrs'/>
-		 <check name='obligatoire' target='debug_options'/>
 		 <check name='obligatoire' target='log_fqdn'/>
 		 <check name='obligatoire' target='client_netmask'/>
 		 <check name='obligatoire' target='ftp_user'/>

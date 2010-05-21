@@ -103,13 +103,6 @@
 
 	<!--************************************************************************************************* -->
 	<!--************************************************************************************************* -->
-		<family mode="expert" name="reseau-avance">
-			<variable description="Désactiver le path MTU discovery, le bit DF est positionné à 0" hidden="False" multi="False" name="ip_no_pmtu_disc" type="string">
-				<value>oui</value>
-			</variable>
-			<variable description="Valeur du MTU pour l'interface eth0 : rien = valeur par defaut de l'interface" hidden="False" multi="False" name="valeur_mtu_eth0" type="Number" />
-			<variable description="Valeur du MTU pour l'interface ppp0 : rien = valeur par defaut de l'interface" hidden="False" multi="False" name="valeur_mtu_ppp0" type="Number" />
-		</family>
 	<!--************************************************************************************************* -->
 			<separators>
 				<separator name='type_amon'>Paramètres réseau globaux</separator>
@@ -159,9 +152,6 @@
                 <check name='valid_enum' target='activer_bacula'>
                   <param>['oui','non']</param>
                 </check>
-               <check name="valid_enum" target='ip_no_pmtu_disc'>
-                       <param>['oui','non']</param>
-               </check>
 	        <check name='valid_enum' target='debit_carte_eth0'>
                 	<param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
                 </check>

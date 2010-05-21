@@ -170,7 +170,7 @@ server {
 }
 %end if
 ## Redirection de l'ead d'un scribe sur le port 4203
-%if %%is_defined('revprox_ead') and %%is_defined('revprox_ead_port') and %%revprox_ead and %%revprox_ead_port
+%if %%revprox_ead and %%revprox_ead_port
 server {
         listen %%revprox_ead_port;
         ssl    on;

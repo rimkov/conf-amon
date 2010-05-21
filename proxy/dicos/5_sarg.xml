@@ -68,9 +68,6 @@
                          <variable name='logo_text_color' type='string' description=''>
                              <value>#000000</value>
                          </variable>
-                         <variable name='logo_image_size' type='string' description=''>
-                             <value>80 45</value>
-                         </variable>
                          <variable name='background_image' type='string' description=''>
                              <value></value>
                          </variable>
@@ -107,7 +104,7 @@
                          <variable name='remove_temp_files' type='string' description=''>
                              <value>yes</value>
                          </variable>
-                         <variable name='index' type='string' description=''>
+                         <variable name='sarg_index' type='string' description=''>
                              <value>yes</value>
                          </variable>
                          <variable name='index_tree' type='string' description=''>
