@@ -11,6 +11,11 @@
                 <file filelist='sarg' name='/etc/cron.monthly/01sarg' source='sarg_cron_monthly' rm='True'/>
         </files>
         <variables>
+		<family name='services'>
+			<variable  name='active_sarg' type='string' description="Activation de SARG, générateur de statistiques Proxy/filtrage web (Squid/DansGuardian)">
+				<value>non</value>
+      			</variable>
+		</family>
                  <family name='sarg' mode='expert'>
                          <variable name='language' type='string' description=''>
                              <value>French</value>
@@ -281,6 +286,9 @@
                 <check name="valid_enum" target='date_format'>
                     <param>['e','u','w']</param>
                 </check>
+		<check name='valid_enum' target='active_sarg'>
+                  <param>['oui','non']</param>
+		</check>
         </constraints>
         <help/>
 </creole>

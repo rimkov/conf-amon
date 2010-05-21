@@ -32,15 +32,9 @@
 			<!--<variable name='nom_machine' type='string' description='Nom de la machine' >
 				<value>pf-amon</value>
 			</variable>-->
-			<variable name='interface_gw' type='string' description='Interface de sortie'>
-				<value>eth0</value>
-			</variable>
  			<variable name='install_scribe_dmz' type='string' description="Activer la gestion d'un Scribe dans la DMZ" >
  				<value>non</value>
  			</variable>
-			<variable name='url_maj_blacklist' type='string' description='URL mise à jour des blacklists' >
-				<value>http://eole.orion.education.fr/maj/blacklists</value>
-			</variable>
 		</family>
 	<!--************************************************************************************************* -->
 		<family name='services'>
@@ -53,9 +47,6 @@
  			<variable name='activer_bacula' type='string' description='Activation du client Bacula (sauvegardes)' >
  				<value>non</value>
 			</variable>
-			<variable  name='active_sarg' type='string' description="Activation de SARG, générateur de statistiques Proxy/filtrage web (Squid/DansGuardian)">
-				<value>non</value>
-      			</variable>
 			<variable name='activer_ulog' redefine='True' hidden='True'>
 				<value>oui</value>
 			</variable>
@@ -138,17 +129,11 @@
 	<!-- **** champs obligatoires **** -->
 		<check name='obligatoire' target='nom_machine_eth1'/>
 
-		<check name='obligatoire' target='interface_gw'/>
-
-
 	<!-- **** Listes deroulantes **** -->
                 <check name="valid_enum" target="type_amon">
                   <param type="python">eosfunc.list_files('/usr/share/era/modeles','*.xml',True,default=['2zones', '3zones-amonecole-eclair-nginx', '3zones-amonecole-eclair', '3zones-amonecole-nginx', '3zones-amonecole', '3zones-scribe-posh-nginx', '3zones-scribe', '3zones', '4zones-scribe-nufw', '4zones-scribe-posh-nginx', '4zones-scribe', '4zones', '5zones', 'minimal'])</param>
 		  <param name="checkval">False</param>
                 </check>
-		<check name='valid_enum' target='active_sarg'>
-                  <param>['oui','non']</param>
-		</check>
                 <check name="valid_enum" target="install_rvp">
                   <param>['oui','non']</param>
                 </check>

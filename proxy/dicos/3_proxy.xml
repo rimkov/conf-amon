@@ -29,6 +29,11 @@
 		<file filelist='kerberos' name='/etc/krb5.conf' />
         </files>
         <variables>
+		<family name='general'>
+			<variable name='url_maj_blacklist' type='string' description='URL mise à jour des blacklists' >
+				<value>http://eole.orion.education.fr/maj/blacklists</value>
+			</variable>
+		</family>
 		<family name='services'>
 			<variable name='num_dansguardian_instance' type='string' description="Nombre de filtres web (Dansguardian et pare-feu) configurables" hidden='True'>
 				<value>2</value>

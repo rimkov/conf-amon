@@ -20,7 +20,7 @@
 			<variable name='nuauth_tls_cert' type='string' description="Certificat pour Nuauth" hidden='True'/>
 			<variable name='nuauth_tls_cacert' type='string' description="Certification pour Nuauth" hidden='True'/>
 		</family>
-		<family name='general'>
+		<family name='services'>
 			<variable name='active_nufw' type='string' description="Activation de l'authentification réseau (NuFW)" >
 				<value>non</value>
 			</variable>
@@ -57,8 +57,14 @@
 				<value>3</value>
 			</variable>
 		</family>
+		<family name='sondes'>
+			<variable name='sonde_nufw' type='string' description="Activation de la sonde NuFW" >
+				<value>non</value>
+			</variable>
+		</family>
 		<separator>
 			<separator name='active_nufw'>NuFW (Now User Filtering Works)</separator>
+			<separator name='sonde_nufw'>Configuration de la sonde NuFW</separator>
 		</separator>
 	</variables>
 	<constraints>
@@ -69,6 +75,9 @@
 		<check name='obligatoire' target='nuauth_nss_ldap_dn'/>
 		<check name="valid_enum" target='active_nufw'>
 			<param>['oui','non']</param>
+		</check>
+		<check name="valid_enum" target="sonde_nufw" >
+			    <param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target='nuauth_nss_ldap_tls'>
 			<param>['oui','non']</param>

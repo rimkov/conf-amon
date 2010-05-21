@@ -32,9 +32,6 @@
 			<variable name='sonde_samhain' type='string' description="Activation de la sonde SAMHAIN" >
 				<value>non</value>
 			</variable>
-			<variable name='sonde_nufw' type='string' description="Activation de la sonde NuFW" >
-				<value>non</value>
-			</variable>
 		</family>
 		<family name='snort' mode='expert'>
 			<variable name='snort_rules_liste' type='string' description="Activation de la sonde NuFW" multi='True'>
@@ -79,7 +76,6 @@
 	<separators>
 		<separator name='sonde_snort'>Configuration de la sonde SNORT</separator>
 		<separator name='sonde_samhain'>Configuration de la sonde Samhain</separator>
-		<separator name='sonde_nufw'>Configuration de la sonde NuFW</separator>
 		<separator name='activer_sonde_prelude'>Activation des sondes Prelude</separator>
 	</separators>
 <!--************************************************************************************************* -->
@@ -91,9 +87,6 @@
 			    <param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target="sonde_samhain" >
-			    <param>['oui','non']</param>
-		</check>
-		<check name="valid_enum" target="sonde_nufw" >
 			    <param>['oui','non']</param>
 		</check>
 		<check name="valid_enum" target="snort_rules_liste">
