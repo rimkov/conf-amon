@@ -1,0 +1,10 @@
+#URL prefixs based on Regular Expressions
+#
+#When matched the remainder of the URL (after the prefic match) is re-submitted for URL check.
+#
+# Forces URL checks on Google image thumbnails
+(^|[\?+=&/])(images\.google.*/images\?q=tbn:[^:]*:)
+# And on image click-thru page
+(^|[\?+=&/])(images\.google.*/imgres\?imgurl=)
+# Forces URL checks on Google cached results
+(^|[\?+=&/])(www\.google.*/search\?q=cache:[^:]*:)
