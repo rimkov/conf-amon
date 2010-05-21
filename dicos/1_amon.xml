@@ -4,12 +4,10 @@
 	<files>
 		<service>bastion</service>
 		<service servicelist='bacula'>bacula-fd</service>
-		<file name='/etc/sysctl.conf'/>
 		<file name='/etc/chkrootkit.conf'/>
 		<file name='/etc/crontab'/>
 		<file name='/etc/fwlogwatch.config'/>
 		<file name='/etc/host.conf'/>
-		<file name='/etc/hosts.allow'/>
 		<file name='/etc/logrotate.conf'/>
 		<file name='/etc/sudoers.d/amon' source='amon.sudo' mode="0440"/>
 		<file name='/etc/webalizer.conf'/>

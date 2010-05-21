@@ -1,22 +1,22 @@
-%for routes in %%route_adresse
-%if %%routes.route_int == ""
-%if %%routes.route_netmask == "255.255.255.255"
-any host %%routes gw %%routes.route_gw
+%for %%route_iter in %%route_adresse
+%if %%route_iter.route_int == ""
+%if %%route_iter.route_netmask == "255.255.255.255"
+any host %%route_iter gw %%route_iter.route_gw
 %else
-any net %%routes netmask %%routes.route_netmask gw %%routes.route_gw
+any net %%route_iter netmask %%route_iter.route_netmask gw %%route_iter.route_gw
 %end if
 %else
-%if %%routes.route_netmask == "255.255.255.255"
-%if %%routes.route_gw == "0.0.0.0" 
-any host %%routes dev %%routes.route_int
+%if %%route_iter.route_netmask == "255.255.255.255"
+%if %%route_iter.route_gw == "0.0.0.0"
+any host %%route_iter dev %%route_iter.route_int
 %else
-any host %%routes gw %%routes.route_gw dev %%routes.route_int
+any host %%route_iter gw %%route_iter.route_gw dev %%route_iter.route_int
 %end if
 %else
-%if %%routes.route_gw == "0.0.0.0" 
-any net %%routes netmask %%routes.route_netmask dev %%routes.route_int
+%if %%route_iter.route_gw == "0.0.0.0"
+any net %%route_iter netmask %%route_iter.route_netmask dev %%route_iter.route_int
 %else
-any net %%routes netmask %%routes.route_netmask gw %%routes.route_gw dev %%routes.route_int
+any net %%route_iter netmask %%route_iter.route_netmask gw %%route_iter.route_gw dev %%route_iter.route_int
 %end if
 %end if
 %end if
