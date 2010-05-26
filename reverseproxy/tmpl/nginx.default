@@ -1,12 +1,12 @@
 client_max_body_size 4M;
 client_body_buffer_size 128k;
-%set %%lendom=0
-%for %%location in %%revprox_domainname
-%set %%lendom=%%max(%%lendom,%%len(%%location.value))
+%set %%len_dom=0
+%for %%location_iter in %%revprox_domainname
+%set %%len_dom=%%max(%%len_dom,%%len(%%location_iter.value))
 %end for
-%if %%lendom < 24
+%if %%len_dom < 24
 server_names_hash_bucket_size 32;
-%elif %%lendom < 56
+%elif %%len_dom < 56
 server_names_hash_bucket_size 64;
 %else
 server_names_hash_bucket_size 128;
@@ -15,82 +15,82 @@ proxy_buffer_size   16k;
 proxy_buffers   6 32k;
 proxy_busy_buffers_size   32k;
 
-%set %%domdict={}
-%for %%location in %%revprox_domainname
-%%domdict.setdefault(%%location.value, []).append((%%location.revprox_rep, %%location.revprox_http, %%location.revprox_https, %%location.revprox_url))
+%set %%dom_dict={}
+%for %%location_iter in %%revprox_domainname
+%%dom_dict.setdefault(%%location_iter.value, []).append((%%location_iter.revprox_rep, %%location_iter.revprox_http, %%location_iter.revprox_https, %%location_iter.revprox_url))
 %end for
 
-%for %%revprox in %%domdict.keys()
-# Configuration HTTP %%revprox
+%for %%revprox_iter in %%dom_dict.keys()
+# Configuration HTTP %%revprox_iter
 server {
 	listen 80;
-	server_name %%revprox;
+	server_name %%revprox_iter;
 	access_log  /var/log/nginx/access.log;
 	error_page   403 404 502 503 504  /nginx.html;
 	location = /nginx.html{
 	root /var/www/nginx-default;
 	}
-%for %%rep, %%http, %%https, %%url in %%domdict[%%revprox]
-%if %%http == 'non'
+%for %%rep_iter, %%http_iter, %%https_iter, %%url_iter in %%dom_dict[%%revprox_iter]
+%if %%http_iter == 'non'
 %continue
 %end if
-%if %%rep != ""
-	location %%rep {
+%if %%rep_iter != ""
+	location %%rep_iter {
 %else
 	location / {
 %end if
-%if %%http == 'redirige vers https'
-		if ($host = "%%revprox" ) {
+%if %%http_iter == 'redirige vers https'
+		if ($host = "%%revprox_iter" ) {
 			rewrite     ^(.*)   https://$host$1 permanent;
 			break;
 		}
-%elif %%http == 'oui'
-%if %%url != ''
-		proxy_pass              %%url;
+%elif %%http_iter == 'oui'
+%if %%url_iter != ''
+		proxy_pass              %%url_iter;
 %else
-		proxy_pass              http://%%location;
-%end if % if %%url != ''
+		proxy_pass              http://%%location_iter;
+%end if % if %%url_iter != ''
 		proxy_set_header        Host $host;
 		proxy_set_header        X-Real-IP $remote_addr;
 		proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
 		proxy_set_header        Destination   $dest;
 		set                     $dest  $http_destination;
-%end if % if %%http == 'redirige vers https'
+%end if % if %%http_iter == 'redirige vers https'
 		index  50x.html;
 		root /var/www/nginx-default/;
         }
-%end for % for %%rep, %%http, %%https, %%url in %%domdict[%%revprox]
+%end for % for %%rep_ter, %%http_iter, %%https_iter, %%url_iter in %%dom_dict[%%revprox_iter]
 }
-%end for % for %%revprox in %%domdict.keys()
+%end for % for %%revprox_iter in %%dom_dict.keys()
 
 
-%for %%revprox in %%domdict.keys()
-# Configuration HTTPS %%revprox
+%for %%revprox_iter in %%dom_dict.keys()
+# Configuration HTTPS %%revprox_iter
 server {
 	listen 443;
 	ssl    on;
 	ssl_certificate    %%server_cert;
 	ssl_certificate_key     %%server_key;
 	access_log  /var/log/nginx/revprox.revprox_http.access-ssl.log;
-	server_name %%revprox;
+	server_name %%revprox_iter;
 	error_page   403 404 502 503 504  /nginx.html;
 	location = /nginx.html{
 		root /var/www/nginx-default;
 	}
-%for %%rep, %%http, %%https, %%url in %%domdict[%%revprox]
-%if not %%http == 'redirige vers https' and %%https == 'non'
+%for %%rep_iter, %%http_iter, %%https_iter, %%url_iter in %%dom_dict[%%revprox_iter]
+%if not %%http_iter == 'redirige vers https' and %%https_iter == 'non'
 %continue
 %end if
-%if %%rep != ""
-	location %%rep {
+%if %%rep_iter != ""
+	location %%rep_iter {
 %else
 	location / {
 %end if
-%if %%url != ''
-		proxy_pass              %%url;
+%if %%url_iter != ''
+		proxy_pass              %%url_iter;
 %else
-		proxy_pass              http://%%location;
-%end if % if %%url != ''
+		proxy_pass              http://%%location_iter;
+%end if % if %%url_iter != ''
 		proxy_set_header        Host $host;
 		proxy_set_header        X-Real-IP $remote_addr;
 		proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -99,9 +99,9 @@ server {
 		index  50x.html;
 		root /var/www/nginx-default/;
 	}
-%end for % for %%rep, %%http, %%https, %%url in %%domdict[%%revprox]
+%end for % for %%rep_iter, %%http_iter, %%https_iter, %%url_iter in %%dom_dict[%%revprox_iter]
 }
-%end for % for %%revprox in %%domdict.keys()
+%end for % for %%revprox_iter in %%dom_dict.keys()
 
 %set %%sso_local=False
 %if %%sso == 'oui'

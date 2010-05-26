@@ -72,12 +72,12 @@
 				<value>x11</value>
 			</variable>
 		</family>
+		<separators>
+			<separator name='sonde_snort'>Configuration de la sonde SNORT</separator>
+			<separator name='sonde_samhain'>Configuration de la sonde Samhain</separator>
+			<separator name='activer_sonde_prelude'>Activation des sondes Prelude</separator>
+		</separators>
 	</variables>
-	<separators>
-		<separator name='sonde_snort'>Configuration de la sonde SNORT</separator>
-		<separator name='sonde_samhain'>Configuration de la sonde Samhain</separator>
-		<separator name='activer_sonde_prelude'>Activation des sondes Prelude</separator>
-	</separators>
 <!--************************************************************************************************* -->
 	<constraints>
 		<check name="valid_enum" target="activer_sonde_prelude">
