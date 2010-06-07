@@ -27,7 +27,9 @@ install:
 	mkdir -p $(CONFAMON_DIR)/$(INIT_DIR)
 	mkdir -p $(CONFAMON_DIR)/var/lib/blacklists/tmp
 	mkdir -p $(CONFAMON_DIR)/$(EOLE_CONF_DIR)
+	mkdir -p $(CONFAMON_DIR)/etc/eole/
 
+	cp -f version $(CONFAMON_DIR)/etc/eole/
 	cp -rf eole/* $(CONFAMON_DIR)/$(EOLE_DIR)
 	# copie des dictionnaires
 	cp -rf dicos $(CONFAMON_DIR)/$(EOLE_CONF_DIR)
@@ -70,7 +72,7 @@ install:
 	mkdir -p $(RADIUS_DIR)/$(EOLE_CONF_DIR)
 	cp -rf radius/dicos $(RADIUS_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf radius/tmpl $(RADIUS_DIR)/$(EOLE_CONF_DIR)/distrib
-	
+
 	#proxy
 	mkdir -p $(PROXY_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(PROXY_DIR)/var/lib/blacklists
