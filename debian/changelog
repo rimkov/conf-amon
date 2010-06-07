@@ -1,3 +1,39 @@
+conf-amon (2.3-eole15) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * freshclam.conf : fix syntax is_defined
+  * menage Makefile
+  * menage
+  * dégage type_maj
+  * correction test chaine vide en liste vide dans spcl.options
+  * suppression dico 1_authentification.xml (vide)
+
+  [ Emmanuel Garette ]
+  * passe le debit des cartes dans le template commun
+  * suppression des lignes inutiles dans reconf-amon.sh
+  * nettoyage de amon.sh
+
+  [ smorin ]
+  * mv de la conf de DansGuardian et de squid de eole-dansguardian vers
+    conf-amon + refactoring du Makefile
+  * passage de sarg dans rép proxy
+  * passage de sarg dans rép proxy
+  * erreur de mv
+
+  [ Emmanuel Garette ]
+  * deplacement dans eole-common
+  * correction lié à creolelint
+  * le proxy est maintenant global
+  * correction lié à creolelint
+  * deplace de variable (creolelint)
+  * corrections (creolelint)
+  * ajout du fichier creolelint.conf
+  * corrections liées a creolelint
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 02 Jun 2010 15:07:05 +0000
+
 conf-amon (2.3-eole14) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
