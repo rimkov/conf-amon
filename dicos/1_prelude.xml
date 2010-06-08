@@ -11,7 +11,7 @@
 		  <file filelist='snort' name='/etc/snort/snort.conf' />
 		  <file filelist='snort' name='/etc/snort/snort.debian.conf' />
 		  <file filelist='snort' name='/etc/oinkmaster.conf' />
-		  <file filelist='snort' rm='True' name='/etc/cron.daily/snort' source='cron-snort' />
+		  <file filelist='snort' rm='True' name='/etc/cron.d/amon-snort' source='cron-snort' />
 	</files>
 <!--************************************************************************************************* -->
 	<variables>
