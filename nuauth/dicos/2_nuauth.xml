@@ -106,17 +106,10 @@
 			<target type='variable'>nuauth_verbosity</target>
 			<target type='filelist'>nufw</target>
 			<target type='servicelist'>nufw</target>
-		</condition>
-        <auto name='auto_value_if' target='activer_client_ldap'>
-            <param>non</param>
-            <param name='condition'>non</param>
-            <param type='eole'>active_nufw</param>
-        </auto>
-        <auto name='auto_value_if' target='activer_client_ldap'>
-            <param>oui</param>
-            <param name='condition'>oui</param>
-            <param type='eole'>active_nufw</param>
-        </auto>
+        </condition>
+            <auto name='auto_value_if' target='activer_client_ldap'>
+                  <param type='eole'>active_nufw</param>
+            </auto>
 </constraints>
 	<!--************************************************************************************************* -->
 	<help>
