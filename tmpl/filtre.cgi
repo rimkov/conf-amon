@@ -62,7 +62,7 @@ while ($QUERY_STRING =~ /^\&?([^&=]+)=([^&=]*)(.*)/) {
 <B>
 Vous avez fait une tentative d'acc&egrave;s &agrave; un site Web qui ne pr&eacute;sente  aucun int&eacute;r&ecirc;t pour des besoins d'information p&eacute;dagogique  ou technique correspondant &agrave; votre classe d'utilisation 
 <P>Pour toute r&eacute;clamation, adressez un message &agrave;
-       <A HREF="mailto:cachemaster\@%%nom_domaine_academique?subject=[plainte%20squidguard]%20$url">cachemaster\@%%nom_domaine_academique</A> en pr&eacute;cisant l'url :
+       <A HREF="mailto:cachemaster\@%%nom_domaine_academique.%%suffixe_domaine_academique?subject=[plainte%20squidguard]%20$url">cachemaster\@%%nom_domaine_academique</A> en pr&eacute;cisant l'url :
 
 __EOF__
 ; 
