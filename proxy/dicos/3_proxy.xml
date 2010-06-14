@@ -7,14 +7,14 @@
 		<service>dansguardian</service>
                 <file name='/usr/share/eole/dansguardian/dansguardian1.conf' />
                 <file name='/usr/share/eole/dansguardian/dansguardian2.conf' />
-		<file name='/usr/share/dansguardian/languages/french/fancydmtemplate.html' />
+		<file name='/etc/dansguardian/languages/french/fancydmtemplate.html' />
 		<file name='/etc/logrotate.d/dansguardian' source='dansguardian.logrotate'/>
 		<file name='/etc/logrotate.d/squid' source='squid.logrotate'/>
 		<file name='/etc/pam.d/squid' source='squid.pam'/>
-		<file name='/usr/share/dansguardian/languages/french/template.html' source='dansguardian-template.html'/>
-		<file name='/usr/share/dansguardian/languages/french/template-liste_blanche.html' source='dansguardian-template-liste_blanche.html'/>
-		<file name='/usr/share/dansguardian/languages/french/template-moderateur.html' source='dansguardian-template-moderateur.html'/>
-		<file name='/usr/share/dansguardian/languages/french/template-utilisateur_interdits.html' source='dansguardian-template-utilisateur_interdits.html'/>
+		<file name='/etc/dansguardian/languages/french/template.html' source='dansguardian-template.html'/>
+		<file name='/etc/dansguardian/languages/french/template-liste_blanche.html' source='dansguardian-template-liste_blanche.html'/>
+		<file name='/etc/dansguardian/languages/french/template-moderateur.html' source='dansguardian-template-moderateur.html'/>
+		<file name='/etc/dansguardian/languages/french/template-utilisateur_interdits.html' source='dansguardian-template-utilisateur_interdits.html'/>
 		<file name='/etc/squid/squid.conf'/>
 		<file name='/etc/squid/domaines_nocache'/>
 		<file name='/etc/squid/domaines_noauth'/>
@@ -200,6 +200,9 @@
     		    <variable name='hierarchy_stoplist' type='string' description=''>
     			<value>cgi-bin ?</value>
     		    </variable>
+    		    <variable name='cache_vary' type='string' description=''>
+    			<value>on</value>
+    		    </variable>
     		    <variable name='cache_mem' type='number' description='en KB'>
     			<value>16</value>
     		    </variable>
@@ -282,10 +285,13 @@
     			    <value>on</value>
     		    </variable>
     		    <variable name='check_hostname' type='string' description=''>
-    			    <value>off</value>
+    			    <value>on</value>
     		    </variable>
     		    <variable name='allow_underscore' type='string' description=''>
     			    <value>on</value>
+    		    </variable>
+    		    <variable name='cache_dns_program' type='string' description=''>
+    			    <value>/usr/lib/squid/dnsserver</value>
     		    </variable>
     		    <variable name='dns_children' type='number' description=''>
     			<value>5</value>
@@ -304,6 +310,12 @@
     		    </variable>
     		    <variable name='hosts_file' type='string' description=''>
     			    <value>/etc/hosts</value>
+    		    </variable>
+    		    <variable name='wais_relay_host' type='string' description=''>
+    			    <value></value>
+    		    </variable>
+    		    <variable name='wais_relay_port' type='number' description=''>
+    			    <value>0</value>
     		    </variable>
     		    <variable name='request_header_max_size' type='number' description='en KB'>
     			    <value>20</value>
@@ -335,6 +347,12 @@
     		    <variable name='range_offset_limit' type='number' description='en KB'>
     			    <value>0</value>
     		    </variable>
+    		    <variable name='collapsed_forwarding' type='string' description=''>
+    			    <value>off</value>
+    		    </variable>
+    		    <variable name='refresh_stale_hit' type='number' description='en secondes'>
+    			    <value>0</value>
+    		    </variable>
     		    <variable name='forward_timeout' type='number' description='en min'>
     			    <value>4</value>
     		    </variable>
@@ -351,16 +369,16 @@
     			    <value>5</value>
     		    </variable>
     		    <variable name='persistent_request_timeout' type='number' description='en min'>
-    			    <value>2</value>
+    			    <value>1</value>
     		    </variable>
     		    <variable name='client_lifetime' type='number' description='en min'>
     			    <value>120</value>
     		    </variable>
     		    <variable name='half_closed_clients' type='string' description=''>
-    			    <value>off</value>
+    			    <value>on</value>
     		    </variable>
-    		    <variable name='pconn_timeout' type='number' description='en min'>
-    			    <value>1</value>
+    		    <variable name='pconn_timeout' type='number' description='en sec'>
+    			    <value>120</value>
     		    </variable>
     		    <variable name='ident_timeout' type='number' description='en sec'>
     			    <value>10</value>
@@ -381,7 +399,7 @@
 			<!-- **** LDAP **** -->
 			<variable name='ip_serveur_ldap1' type='ip' description='Adresse du premier serveur LDAP' />
 			<variable name='ip_serveur_ldap2' type='ip' description='Adresse du second serveur LDAP (si le 1er ne répond pas)' />
-			<variable name='ldap_base_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN)">
+			<variable name='proxy_ldap_base_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN)">
 				<value>ou=education,o=gouv,c=fr</value>
 			</variable>
 			<!-- **** LDAP (Active Directory)**** -->
@@ -561,6 +579,7 @@
 		 <check name='obligatoire' target='mcast_icp_query_timeout'/>
 		 <check name='obligatoire' target='dead_peer_timeout'/>
 		 <check name='obligatoire' target='hierarchy_stoplist'/>
+		 <check name='obligatoire' target='cache_vary'/>
 		 <check name='obligatoire' target='cache_mem'/>
 		 <check name='obligatoire' target='cache_swap_low'/>
 		 <check name='obligatoire' target='cache_swap_high'/>
@@ -584,11 +603,13 @@
 		 <check name='obligatoire' target='client_netmask'/>
 		 <check name='obligatoire' target='ftp_user'/>
 		 <check name='obligatoire' target='ftp_list_width'/>
+		 <check name='obligatoire' target='cache_dns_program'/>
 		 <check name='obligatoire' target='dns_children'/>
 		 <check name='obligatoire' target='dns_retransmit_interval'/>
 		 <check name='obligatoire' target='dns_timeout'/>
 		 <check name='obligatoire' target='dns_defnames'/>
 		 <check name='obligatoire' target='hosts_file'/>
+		 <check name='obligatoire' target='wais_relay_port'/>
 		 <check name='obligatoire' target='request_header_max_size'/>
 		 <check name='obligatoire' target='request_body_max_size'/>
 		 <check name='obligatoire' target='quick_abort_min'/>
@@ -598,6 +619,8 @@
 		 <check name='obligatoire' target='positive_dns_ttl'/>
 		 <check name='obligatoire' target='negative_dns_ttl'/>
 		 <check name='obligatoire' target='range_offset_limit'/>
+		 <check name='obligatoire' target='collapsed_forwarding'/>
+		 <check name='obligatoire' target='refresh_stale_hit'/>
 		 <check name='obligatoire' target='forward_timeout'/>
 		 <check name='obligatoire' target='connect_timeout'/>
 		 <check name='obligatoire' target='peer_connect_timeout'/>
@@ -622,6 +645,9 @@
 		       <param>['on','off']</param>
 		 </check>
 		 <check name="valid_enum" target='log_fqdn'>
+		       <param>['on','off']</param>
+		 </check>
+		 <check name="valid_enum" target='cache_vary'>
 		       <param>['on','off']</param>
 		 </check>
 		 <check name="valid_enum" target='dns_defnames'>
@@ -653,6 +679,9 @@
 		       <param>['on','off']</param>
 		 </check>
 		 <check name="valid_enum" target='allow_underscore'>
+		       <param>['on','off']</param>
+		 </check>
+		 <check name="valid_enum" target='collapsed_forwarding'>
 		       <param>['on','off']</param>
 		 </check>
 		<group master='cache_dir'>

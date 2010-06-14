@@ -15,7 +15,7 @@
 		<file name='/usr/share/era/backend/data/active_tags'/>
         <file name='/etc/cron.d/amon-firewall' source='cron-root'/>
 		<file name='/usr/lib/cgi-bin/filtre.cgi'/>
-		<file name='/etc/sysconfig/killp2p'/>
+        <file name='/etc/eole/killp2p'/>
 		<file name='/etc/init.d/l7filter' />
 		<service servicelist='dhrelay'>dhcp3-relay</service>
 		<file filelist='dhrelay' name='/etc/default/dhcp3-relay'/>
