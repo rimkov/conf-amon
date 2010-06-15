@@ -13,8 +13,8 @@ RETVAL=0
 . /lib/lsb/init-functions
 
 # Include nufw defaults if available
-if [ -f /etc/sysconfig/killp2p ] ; then
-        . /etc/sysconfig/killp2p
+if [ -f /etc/eole/killp2p ] ; then
+        . /etc/eole/killp2p
 fi
 
 DAEMON=/etc/init.d/$PROG
