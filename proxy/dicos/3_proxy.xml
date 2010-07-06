@@ -3,7 +3,7 @@
 <creole>
         <files>
 		<package>proxy-pkg</package>
-		<service>squid</service>
+		<service>squid3</service>
 		<service>dansguardian</service>
                 <file name='/usr/share/eole/dansguardian/dansguardian1.conf' />
                 <file name='/usr/share/eole/dansguardian/dansguardian2.conf' />
