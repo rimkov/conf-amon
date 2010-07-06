@@ -1,3 +1,18 @@
+conf-amon (2.3-eole21) eole-2.3; urgency=low
+
+  [ smorin ]
+  * squid : passage à la version 3 -> nouveau fichier de conf
+
+  [ Jerome Soyer ]
+  * passage de sysconfig a eole
+
+  [ smorin ]
+  * fixes #672 : amelioration des acls pour le rvp. version 2.3
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 06 Jul 2010 12:24:19 +0000
+
 conf-amon (2.3-eole20) eole-2.3; urgency=low
 
   [ Jerome Soyer ]
