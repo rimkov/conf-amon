@@ -2,7 +2,7 @@
 
 <creole>
         <files>
-		<file filelist='routes' name='/etc/sysconfig/static-routes'/>
+		<file filelist='routes' name='/etc/sysconfig/static-routes' mkdir='True'/>
         </files>
         <variables>
 	    <family hidden="False" mode="expert" name="reseau-avance">

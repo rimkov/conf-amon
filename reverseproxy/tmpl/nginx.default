@@ -104,7 +104,7 @@ server {
 %end for % for %%revprox_iter in %%dom_dict.keys()
 
 %set %%sso_local=False
-%if %%sso == 'oui'
+%if %%activer_sso == 'oui'
 %if %%adresse_ip_eth0 == %%adresse_ip_sso
 %set %%sso_local=True
 %end if
@@ -123,7 +123,7 @@ server {
 %if %%is_defined('adresse_ip_dmz') and %%adresse_ip_dmz == %%adresse_ip_sso
 %set %%sso_local=True
 %end if
-%end if % if %%sso == 'oui'
+%end if % if %%activer_sso == 'oui'
 %if %%revprox_sso != '' and %%sso_local == False
 # Redirection SSO
 server {
