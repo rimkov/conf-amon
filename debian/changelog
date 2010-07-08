@@ -1,3 +1,21 @@
+conf-amon (2.3-eole22) eole-2.3; urgency=low
+
+  [ smorin ]
+  * squid.conf fix erreur sur une variable
+  * fix erreur sur noms de variables dans des templates
+
+  [ Joël Cuissinat ]
+  * divers fix pour instance
+  * répartition des tests diagnose dans les paquets de services
+
+  [ Jerome Soyer ]
+  * Modification dans le dico 2_routage.xml concernant les routes
+    statiques
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 08 Jul 2010 08:12:07 +0000
+
 conf-amon (2.3-eole21) eole-2.3; urgency=low
 
   [ smorin ]
