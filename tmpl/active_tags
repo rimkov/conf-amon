@@ -1,5 +1,17 @@
+%if %%ssh_eth0 == "oui"
+AdminDepuisEth0
+%end if
+%if %%ssh_eth1 == "oui"
+AdminDepuisEth1
+%end if
 %if %%ssh_eth2 == "oui"
-adm_eth2
+AdminDepuisEth2
+%end if
+%if %%ssh_eth3 == "oui"
+AdminDepuisEth3
+%end if
+%if %%ssh_eth4 == "oui"
+AdminDepuisEth4
 %end if
 %if %%is_defined('active_nufw') and %%active_nufw == "oui"
 auth_nufw
