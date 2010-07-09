@@ -1,3 +1,22 @@
+conf-amon (2.3-eole23) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * Fix de filtre.cgi concernant le nom de domaine academique
+
+  [ smorin ]
+  * passage à squid 3.1
+
+  [ Joël Cuissinat ]
+  * active_tags : gestion des directives conditionnées par ssh_ethX
+    (fixes #764)
+
+  [ smorin ]
+  * correction template squid.conf
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 09 Jul 2010 07:14:42 +0000
+
 conf-amon (2.3-eole22) eole-2.3; urgency=low
 
   [ smorin ]
