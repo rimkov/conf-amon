@@ -19,7 +19,7 @@
 <!-- **** Dictionnaire optionnel pour freeradius **** -->
     <variables>
         <family name='services'>
-            <variable name='freeradius' type='string' description='Activation du service Freeradius'>
+            <variable name='activer_freeradius' type='string' description='Activation du service Freeradius'>
                 <value>non</value>
             </variable>
         </family>
@@ -46,20 +46,20 @@
            </variable>
        </family>
         <separators>
-            <separator name='freeradius'>Mise en place de Freeradius</separator>
+            <separator name='activer_freeradius'>Mise en place de Freeradius</separator>
             <separator name='freerad_nas_ip'>Configuration des NAS</separator>
             <separator name='freerad_ldap_ip'>Configuration LDAP</separator>
             <separator name='freerad_ldap_group'>Configuration des groupes et des vlans</separator>
         </separators>
     </variables>
     <constraints>
-        <condition name='hidden_if_in' source='freeradius'>
+        <condition name='hidden_if_in' source='activer_freeradius'>
             <param>non</param>
             <target type='family'>freeradius</target>
             <target type='filelist'>freeradius</target>
             <target type='servicelist'>freeradius</target>
         </condition>
-        <check name="valid_enum" target='freeradius'>
+        <check name="valid_enum" target='activer_freeradius'>
             <param>['non','oui']</param>
         </check>
         <check name="valid_enum" target='freerad_nas_type'>

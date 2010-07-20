@@ -43,7 +43,7 @@
 #		User-Name = henks,
 #		Group = business,
 #		Group = staff
-%for %%nas in %%freerad_nas_ip
-CommutEtab		NAS-IP-Address == %%nas
+%for %%nas_ip in %%freerad_nas_ip
+CommutEtab		NAS-IP-Address == %%nas_ip
 %end for
 
