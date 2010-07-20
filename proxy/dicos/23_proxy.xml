@@ -1,13 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <creole>
+    <files>
+        <file name='/usr/share/eole/dansguardian/dansguardian1.conf' />
+        <file name='/usr/share/eole/dansguardian/dansguardian2.conf' />
+    </files>
     <containers>
         <container name="proxy" ip='adresse_ip_proxy'>
             <package>proxy-pkg</package>
             <service>squid</service>
             <service>dansguardian</service>
-            <file name='/usr/share/eole/dansguardian/dansguardian1.conf' />
-            <file name='/usr/share/eole/dansguardian/dansguardian2.conf' />
             <file name='/etc/dansguardian/languages/french/fancydmtemplate.html' />
             <file name='/etc/logrotate.d/dansguardian' source='dansguardian.logrotate'/>
             <file name='/etc/logrotate.d/squid' source='squid.logrotate'/>
