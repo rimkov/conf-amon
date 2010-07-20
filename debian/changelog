@@ -1,3 +1,18 @@
+conf-amon (2.3-eole24) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * debut support des conteneurs + passage a creolelint
+  * creolelint
+  * creation conteneur radius
+  * creolelint radius
+  * creation conteneur reverseproxy
+  * creolelint reverseproxy
+  * creolelint
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 20 Jul 2010 12:35:46 +0000
+
 conf-amon (2.3-eole23) eole-2.3; urgency=low
 
   [ Jerome Soyer ]
