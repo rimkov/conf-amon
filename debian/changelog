@@ -1,3 +1,13 @@
+conf-amon (2.3-eole25) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * identation
+  * adresse_ip_dns déjà utilisée
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 20 Jul 2010 12:43:10 +0000
+
 conf-amon (2.3-eole24) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
