@@ -59,9 +59,9 @@ server {
 		index  50x.html;
 		root /var/www/nginx-default/;
         }
-%end for % for %%rep_ter, %%http_iter, %%https_iter, %%url_iter in %%dom_dict[%%revprox_iter]
+%end for
 }
-%end for % for %%revprox_iter in %%dom_dict.keys()
+%end for
 
 
 %for %%revprox_iter in %%dom_dict.keys()
@@ -120,10 +120,7 @@ server {
 %if %%is_defined('adresse_ip_eth4') and %%adresse_ip_eth4 == %%adresse_ip_sso
 %set %%sso_local=True
 %end if
-%if %%is_defined('adresse_ip_dmz') and %%adresse_ip_dmz == %%adresse_ip_sso
-%set %%sso_local=True
 %end if
-%end if % if %%sso == 'oui'
 %if %%revprox_sso != '' and %%sso_local == False
 # Redirection SSO
 server {
