@@ -1,85 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <creole>
-	<files>
-		<service servicelist='revprox'>nginx</service>
-		<package>reverseproxy-pkg</package>
-		<file filelist='revprox' name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
-		<file filelist='revprox' name='/var/www/nginx-default/nginx.html' source='nginx.html'/>
-	</files>
-	<!--************************************************************************************************* -->
-	<variables>
-	<!--************************************************************************************************* -->
-		<family name='services'>
-			<variable name='activer_revprox' type='string' description='Activation du reverse proxy'>
-				<value>non</value>
-			</variable>
-		</family>
-		<family name='Reverse proxy' hidden='True'>
-			<variable name='revprox_sso' type='string' description="IP ou domaine du serveur SSO" />
-			<variable name='revprox_poshadmin' type='string' description="IP ou domaine du serveur d'administration EnvOLE 2" />
+    <containers>
+        <container name="reverseproxy" ip='adresse_ip_reverseproxy'>
+            <service servicelist='revprox'>nginx</service>
+            <package>reverseproxy-pkg</package>
+            <file filelist='revprox' name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
+            <file filelist='revprox' name='/var/www/nginx-default/nginx.html' source='nginx.html'/>
+        </container>
+    </containers>
+    <!--************************************************************************************************* -->
+    <variables>
+        <family name='services'>
+            <variable name='activer_revprox' type='string' description='Activation du reverse proxy'>
+                <value>non</value>
+            </variable>
+        </family>
+        <family name='Reverse proxy' hidden='True'>
+            <variable name='revprox_sso' type='string' description="IP ou domaine du serveur SSO" />
+            <variable name='revprox_poshadmin' type='string' description="IP ou domaine du serveur d'administration EnvOLE 2" />
             <variable name='revprox_ead' type='string' description="IP du Scribe" hidden='True' />
             <variable name='revprox_ead_port' type='number' description="Port d'accès à l'ead du scribe depuis l'extérieur" hidden='True'>
                 <value>4203</value>
             </variable>
-			<variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
-			<variable name='revprox_rep' type='string' description="Répertoire ou nom de la page à rediriger">
-				<value>/</value>
-			</variable>
-			<variable name='revprox_http' type='string' description="Reverse proxy HTTP">
-				<value>redirige vers https</value>
-			</variable>
-			<variable name='revprox_https' type='string' description="Reverse proxy HTTPS">
-				<value>oui</value>
-			</variable>
-			<variable name='revprox_url' type='string' description="IP ou domaine de destination (avec http:// ou https://) ou URI complète">
-				<value></value>
-			</variable>
-		</family>
-		<separators>
-			<separator name='activer_revprox'>Reverse Proxy</separator>
-			<separator name='revprox_sso'>Redirection de services particuliers</separator>
-			<separator name='revprox_domainname'>Redirection HTTP et HTTPS</separator>
-		</separators>
-	</variables>
-	<constraints>
-	<!--************************************************************************************************* -->
-	<!-- **** Listes deroulantes **** -->
-		<check name='valid_enum' target='activer_revprox'>
-			<param>['oui','non']</param>
-		</check>
-		<check name='valid_enum' target='revprox_http'>
-			<param>['oui','non', 'redirige vers https']</param>
-		</check>
-		<check name='valid_enum' target='revprox_https'>
-			<param>['oui','non']</param>
+            <variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
+            <variable name='revprox_rep' type='string' description="Répertoire ou nom de la page à rediriger">
+                <value>/</value>
+            </variable>
+            <variable name='revprox_http' type='string' description="Reverse proxy HTTP">
+                <value>redirige vers https</value>
+            </variable>
+            <variable name='revprox_https' type='string' description="Reverse proxy HTTPS">
+                <value>oui</value>
+            </variable>
+            <variable name='revprox_url' type='string' description="IP ou domaine de destination (avec http:// ou https://) ou URI complète">
+                <value></value>
+            </variable>
+        </family>
+       <family name='Interface-Virt' mode='expert'>
+           <variable name='adresse_ip_reverseproxy' type='ip' description="Adresse IP de ReverseProxy">
+               <value>192.168.30.23</value>
+           </variable>
+       </family>
+        <separators>
+            <separator name='activer_revprox'>Reverse Proxy</separator>
+            <separator name='revprox_sso'>Redirection de services particuliers</separator>
+            <separator name='revprox_domainname'>Redirection HTTP et HTTPS</separator>
+        </separators>
+    </variables>
+    <constraints>
+    <!--************************************************************************************************* -->
+    <!-- **** Listes deroulantes **** -->
+        <check name='valid_enum' target='activer_revprox'>
+            <param>['oui','non']</param>
+        </check>
+        <check name='valid_enum' target='revprox_http'>
+            <param>['oui','non', 'redirige vers https']</param>
+        </check>
+        <check name='valid_enum' target='revprox_https'>
+            <param>['oui','non']</param>
         </check>
     <!-- **** Remplissage automatique **** -->
     <auto target='revprox_ead' name='auto_copy_val'>
         <param type='eole'>revprox_poshadmin</param>
     </auto>
-	<!-- **** Conditions **** -->
-		<condition name='hidden_if_in' source='activer_revprox'>
-			<param>non</param>
-			<target type='family'>Reverse proxy</target>
-			<target type='filelist'>revprox</target>
-			<target type='servicelist'>revprox</target>
+    <!-- **** Conditions **** -->
+        <condition name='hidden_if_in' source='activer_revprox'>
+            <param>non</param>
+            <target type='family'>Reverse proxy</target>
+            <target type='filelist'>revprox</target>
+            <target type='servicelist'>revprox</target>
                 </condition>
-	<!-- **** Groupes **** -->
-		 <group master='revprox_domainname'>
-			<slave>revprox_rep</slave>
-			<slave>revprox_url</slave>
-			<slave>revprox_http</slave>
-			<slave>revprox_https</slave>
-		 </group>
-	</constraints>
-	<!--************************************************************************************************* -->
-	<help>
+    <!-- **** Groupes **** -->
+         <group master='revprox_domainname'>
+            <slave>revprox_rep</slave>
+            <slave>revprox_url</slave>
+            <slave>revprox_http</slave>
+            <slave>revprox_https</slave>
+         </group>
+    </constraints>
+    <!--************************************************************************************************* -->
+    <help>
                 <variable name='revprox_sso'>Pour rediriger vers le SSO de la machine "domainelocal", taper "domainelocal"</variable>
                 <variable name='revprox_poshadmin'>Pour rediriger vers le POSHAdmin de la machine "domainelocal", taper "domainelocal"</variable>
                 <variable name='revprox_domainname'>Exemple pour rediriger "http://domaine/", taper "domaine"</variable>
                 <variable name='revprox_rep'>URL relative (sans le nom de domaine) redirigé pour l'adresse définie dans la variable ci-dessus (exemple "/mail")</variable>
-		<variable name='revprox_url'>Nom de domaine ou IP de destination, par exemple "http://domainelocal" ou URI, par exemple "http://domainelocal/ftp/"</variable>
+        <variable name='revprox_url'>Nom de domaine ou IP de destination, par exemple "http://domainelocal" ou URI, par exemple "http://domainelocal/ftp/"</variable>
                 <variable name='activer_revprox'>Le Reverse Proxy permet de relayer des accès extérieurs vers des serveurs situés derrière le pare-feu</variable>
-	</help>
+    </help>
 </creole>
+<!-- vim: ts=4 sw=4 expandtab
+-->
