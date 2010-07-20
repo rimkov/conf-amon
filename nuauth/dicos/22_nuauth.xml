@@ -23,7 +23,7 @@
         </family>
         <family name='services'>
             <variable name='active_nufw' type='string' description="Activation de l'authentification réseau (NuFW)" >
-				<value>non</value>
+                <value>non</value>
             </variable>
             <variable name='activer_client_ldap' redefine='True' hidden='True'>
                 <value>non</value>
@@ -54,8 +54,8 @@
                 <value>3</value>
             </variable>
         </family>
-		<family name='client_ldap'>
- 			<variable name='adresse_ip_ldap' redefine='True' description="Adresse du serveur LDAP pour l'authentification NuFW" />
+        <family name='client_ldap'>
+             <variable name='adresse_ip_ldap' redefine='True' description="Adresse du serveur LDAP pour l'authentification NuFW" />
        </family>
         <family name='sondes'>
             <variable name='sonde_nufw' type='string' description="Activation de la sonde NuFW" >
