@@ -2,7 +2,7 @@
 
 <creole>
     <containers>
-        <container name="dns" ip='adresse_ip_dns'>
+        <container name="dns" ip='adresse_ip_conteneur_dns'>
             <package>dns-pkg</package>
             <service>bind9</service>
             <file name='/etc/bind/spcl.options'/>
@@ -50,7 +50,7 @@
             </variable>
         </family>
         <family name='Interface-Virt' mode='expert'>
-            <variable name='adresse_ip_dns' type='ip' description="Adresse IP de DNS">
+            <variable name='adresse_ip_conteneur_dns' type='ip' description="Adresse IP de DNS">
                 <value>192.168.30.21</value>
             </variable>
         </family>
