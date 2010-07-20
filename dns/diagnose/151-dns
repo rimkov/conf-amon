@@ -1,0 +1,8 @@
+#!/bin/bash
+. /usr/share/eole/FonctionsEoleNg
+. /usr/bin/ParseDico
+
+EchoGras "*** DNS local"
+TestService dns localhost:53
+echo
+exit 0

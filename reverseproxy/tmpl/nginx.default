@@ -104,7 +104,7 @@ server {
 %end for % for %%revprox_iter in %%dom_dict.keys()
 
 %set %%sso_local=False
-%if %%sso == 'oui'
+%if %%activer_sso == 'oui'
 %if %%adresse_ip_eth0 == %%adresse_ip_sso
 %set %%sso_local=True
 %end if

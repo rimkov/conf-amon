@@ -2,10 +2,13 @@
 . /usr/share/eole/FonctionsEoleNg
 . /usr/bin/ParseDico
 
+EchoGras "*** Reverse Proxy"
 if [ "$activer_revprox" == "oui" ];then
    if [ -z $revprox_domainname ];then
-	NoConfig "Reverse proxy"
+	NoConfig "nginx"
    else
-        TestHTTPPage "Reverse proxy" "http://localhost/50x.html"
+        TestHTTPPage "nginx" "http://localhost/50x.html"
    fi
 fi
+echo
+exit 0

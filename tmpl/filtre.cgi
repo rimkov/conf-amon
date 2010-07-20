@@ -25,7 +25,7 @@ while ($QUERY_STRING =~ /^\&?([^&=]+)=([^&=]*)(.*)/) {
   $key = $1;
   $value = $2;
   $QUERY_STRING = $3;
-  if ($key =~ /^(clientaddr|clientname|clientident|srcclass|targetclass|url|etabname|ban)$/) { 
+  if ($key =~ /^(clientaddr|clientname|clientident|srcclass|targetclass|url|etabname|ban)$/) {
     eval "\$$key = \$value";
   }
   if ($QUERY_STRING =~ /^url=(.*)/) {
@@ -53,20 +53,20 @@ while ($QUERY_STRING =~ /^\&?([^&=]+)=([^&=]*)(.*)/) {
                          Votre demande concerne un serveur Non autoris&eacute;. </H3>\n\n";
 		 }
     print "    <TABLE BORDER=0 ALIGN=CENTER>\n";
-    print "      <TR><TH ALIGN=RIGHT>Etablissement:<TH ALIGN=CENTER>=<TH ALIGN=LEFT>$etabname\n"; 
+    print "      <TR><TH ALIGN=RIGHT>Etablissement:<TH ALIGN=CENTER>=<TH ALIGN=LEFT>$etabname\n";
     print "      <TR><TH ALIGN=RIGHT>Votre adresse<TH ALIGN=CENTER>=<TH ALIGN=LEFT>$clientaddr\n";
     print "      <TR><TH ALIGN=RIGHT>Identification<TH ALIGN=CENTER>=<TH ALIGN=LEFT>$clientident\n";
     print "    </TABLE>\n\n";
     print "    </P>\n\n";
- print <<__EOF__ 
+ print <<__EOF__
 <B>
-Vous avez fait une tentative d'acc&egrave;s &agrave; un site Web qui ne pr&eacute;sente  aucun int&eacute;r&ecirc;t pour des besoins d'information p&eacute;dagogique  ou technique correspondant &agrave; votre classe d'utilisation 
+Vous avez fait une tentative d'acc&egrave;s &agrave; un site Web qui ne pr&eacute;sente  aucun int&eacute;r&ecirc;t pour des besoins d'information p&eacute;dagogique  ou technique correspondant &agrave; votre classe d'utilisation
 <P>Pour toute r&eacute;clamation, adressez un message &agrave;
-       <A HREF="mailto:cachemaster\@%%nom_domaine_academique?subject=[plainte%20squidguard]%20$url">cachemaster\@%%nom_domaine_academique</A> en pr&eacute;cisant l'url :
+       <A HREF="mailto:cachemaster\@%%nom_academie.%%suffixe_domaine_academique?subject=[plainte%20squidguard]%20$url">cachemaster\@%%nom_academie.%%suffixe_domaine_academique<?/A> en pr&eacute;cisant l'url :
 
 __EOF__
-; 
-  
+;
+
 print " $url ";
 print "  </BODY>\n\n</HTML>\n";
 exit 0;

@@ -5,7 +5,7 @@
 		<service>bastion</service>
 		<service servicelist='bacula'>bacula-fd</service>
 		<file name='/etc/chkrootkit.conf'/>
-		<file name='/etc/crontab'/>
+        <file name='/etc/cron.d/amon' source='cron-amon'/>
 		<file name='/etc/fwlogwatch.config'/>
 		<file name='/etc/host.conf'/>
 		<file name='/etc/logrotate.conf'/>
@@ -13,9 +13,9 @@
 		<file name='/etc/webalizer.conf'/>
 		<file name='/usr/share/eole/firewall.stop' mode='755'/>
 		<file name='/usr/share/era/backend/data/active_tags'/>
-		<file name='/var/spool/cron/root' source='cron-root'/>
+        <file name='/etc/cron.d/amon-firewall' source='cron-root'/>
 		<file name='/usr/lib/cgi-bin/filtre.cgi'/>
-		<file name='/etc/sysconfig/killp2p'/>
+        <file name='/etc/eole/killp2p'/>
 		<file name='/etc/init.d/l7filter' />
 		<service servicelist='dhrelay'>dhcp3-relay</service>
 		<file filelist='dhrelay' name='/etc/default/dhcp3-relay'/>

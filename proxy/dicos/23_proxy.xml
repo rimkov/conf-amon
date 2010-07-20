@@ -8,14 +8,14 @@
             <service>dansguardian</service>
             <file name='/usr/share/eole/dansguardian/dansguardian1.conf' />
             <file name='/usr/share/eole/dansguardian/dansguardian2.conf' />
-            <file name='/usr/share/dansguardian/languages/french/fancydmtemplate.html' />
+            <file name='/etc/dansguardian/languages/french/fancydmtemplate.html' />
             <file name='/etc/logrotate.d/dansguardian' source='dansguardian.logrotate'/>
             <file name='/etc/logrotate.d/squid' source='squid.logrotate'/>
             <file name='/etc/pam.d/squid' source='squid.pam'/>
-            <file name='/usr/share/dansguardian/languages/french/template.html' source='dansguardian-template.html'/>
-            <file name='/usr/share/dansguardian/languages/french/template-liste_blanche.html' source='dansguardian-template-liste_blanche.html'/>
-            <file name='/usr/share/dansguardian/languages/french/template-moderateur.html' source='dansguardian-template-moderateur.html'/>
-            <file name='/usr/share/dansguardian/languages/french/template-utilisateur_interdits.html' source='dansguardian-template-utilisateur_interdits.html'/>
+            <file name='/etc/dansguardian/languages/french/template.html' source='dansguardian-template.html'/>
+            <file name='/etc/dansguardian/languages/french/template-liste_blanche.html' source='dansguardian-template-liste_blanche.html'/>
+            <file name='/etc/dansguardian/languages/french/template-moderateur.html' source='dansguardian-template-moderateur.html'/>
+            <file name='/etc/dansguardian/languages/french/template-utilisateur_interdits.html' source='dansguardian-template-utilisateur_interdits.html'/>
             <file name='/etc/squid/squid.conf'/>
             <file name='/etc/squid/domaines_nocache'/>
             <file name='/etc/squid/domaines_noauth'/>
@@ -401,7 +401,7 @@
             <!-- **** LDAP **** -->
             <variable name='ip_serveur_ldap1' type='ip' description='Adresse du premier serveur LDAP' />
             <variable name='ip_serveur_ldap2' type='ip' description='Adresse du second serveur LDAP (si le 1er ne répond pas)' />
-            <variable name='ldap_base_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN)">
+            <variable name='proxy_ldap_base_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN)">
                 <value>ou=education,o=gouv,c=fr</value>
             </variable>
             <!-- **** LDAP (Active Directory)**** -->

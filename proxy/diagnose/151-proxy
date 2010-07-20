@@ -1,0 +1,13 @@
+#!/bin/bash
+. /usr/share/eole/FonctionsEoleNg
+. /usr/bin/ParseDico
+
+EchoGras "*** Services Proxy"
+TestService "proxy"  127.0.0.1:8080
+TestService "filtre web ($nom_machine_eth1)" $adresse_ip_eth1:3128
+if [ $nombre_interfaces -gt 2 ]
+then
+   TestService "filtre web ($nom_machine_eth2)" $adresse_ip_eth2:3128
+fi
+echo
+exit 0

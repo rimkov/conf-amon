@@ -1,3 +1,106 @@
+conf-amon (2.3-eole23) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * Fix de filtre.cgi concernant le nom de domaine academique
+
+  [ smorin ]
+  * passage à squid 3.1
+
+  [ Joël Cuissinat ]
+  * active_tags : gestion des directives conditionnées par ssh_ethX
+    (fixes #764)
+
+  [ smorin ]
+  * correction template squid.conf
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 09 Jul 2010 07:14:42 +0000
+
+conf-amon (2.3-eole22) eole-2.3; urgency=low
+
+  [ smorin ]
+  * squid.conf fix erreur sur une variable
+  * fix erreur sur noms de variables dans des templates
+
+  [ Joël Cuissinat ]
+  * divers fix pour instance
+  * répartition des tests diagnose dans les paquets de services
+
+  [ Jerome Soyer ]
+  * Modification dans le dico 2_routage.xml concernant les routes
+    statiques
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 08 Jul 2010 08:12:07 +0000
+
+conf-amon (2.3-eole21) eole-2.3; urgency=low
+
+  [ smorin ]
+  * squid : passage à la version 3 -> nouveau fichier de conf
+
+  [ Jerome Soyer ]
+  * passage de sysconfig a eole
+
+  [ smorin ]
+  * fixes #672 : amelioration des acls pour le rvp. version 2.3
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 06 Jul 2010 12:24:19 +0000
+
+conf-amon (2.3-eole20) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * suppression du conflit sur proxy-pkg
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 09 Jun 2010 08:21:47 +0000
+
+conf-amon (2.3-eole19) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * ajout de eole-proxy dans debian/control
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 09 Jun 2010 08:03:39 +0000
+
+conf-amon (2.3-eole18) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * correction du template de nuauth
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Jun 2010 12:25:34 +0000
+
+conf-amon (2.3-eole17) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * ajout du fichier version
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Jun 2010 09:39:01 +0000
+
+conf-amon (2.3-eole16) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * makefiles
+  * ajout de creolelint.conf
+
+  [ Jerome Soyer ]
+  * réorganisation des crons
+  * gestion du ldap avec le paquet common
+  * correction erreur dicos 2_nuauth.xml
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Jun 2010 09:35:14 +0000
+
 conf-amon (2.3-eole15) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]

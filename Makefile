@@ -53,20 +53,25 @@ install:
 
 	#reverseproxy
 	mkdir -p $(REV_DIR)/$(EOLE_CONF_DIR)
-	cp -rf reverseproxy/eole/* $(REV_DIR)/$(EOLE_DIR)
+	mkdir -p $(REV_DIR)/$(EOLE_DIR)/diagnose/module
 	cp -rf reverseproxy/dicos $(REV_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf reverseproxy/tmpl $(REV_DIR)/$(EOLE_CONF_DIR)/distrib
+	cp -rf reverseproxy/diagnose/* $(REV_DIR)/$(EOLE_DIR)/diagnose/module
 
 	#dns
 	mkdir -p $(DNS_DIR)/$(EOLE_CONF_DIR)
+	mkdir -p $(DNS_DIR)/$(EOLE_DIR)/diagnose/module
 	cp -rf dns/eole/* $(DNS_DIR)/$(EOLE_DIR)
 	cp -rf dns/dicos $(DNS_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf dns/tmpl $(DNS_DIR)/$(EOLE_CONF_DIR)/distrib
+	cp -rf dns/diagnose/* $(DNS_DIR)/$(EOLE_DIR)/diagnose/module
 
 	#nuauth
 	mkdir -p $(NUAUTH_DIR)/$(EOLE_CONF_DIR)
+	mkdir -p $(NUAUTH_DIR)/$(EOLE_DIR)/diagnose/module
 	cp -rf nuauth/dicos $(NUAUTH_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf nuauth/tmpl $(NUAUTH_DIR)/$(EOLE_CONF_DIR)/distrib
+	cp -rf nuauth/diagnose/* $(NUAUTH_DIR)/$(EOLE_DIR)/diagnose/module
 
 	#radius
 	mkdir -p $(RADIUS_DIR)/$(EOLE_CONF_DIR)
@@ -75,10 +80,12 @@ install:
 
 	#proxy
 	mkdir -p $(PROXY_DIR)/$(EOLE_CONF_DIR)
+	mkdir -p $(PROXY_DIR)/$(EOLE_DIR)/diagnose/module
 	mkdir -p $(PROXY_DIR)/var/lib/blacklists
 	cp -rf proxy/eole/* $(PROXY_DIR)/$(EOLE_DIR)
 	cp -rf proxy/dicos $(PROXY_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf proxy/tmpl $(PROXY_DIR)/$(EOLE_CONF_DIR)/distrib
+	cp -rf proxy/diagnose/* $(PROXY_DIR)/$(EOLE_DIR)/diagnose/module
 	cp -rf proxy/blacklists/* $(PROXY_DIR)/var/lib/blacklists
 
 uninstall:
