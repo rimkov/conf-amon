@@ -42,7 +42,7 @@
         </family>
        <family name='Interface-Virt' mode='expert'>
            <variable name='adresse_ip_radius' type='ip' description="Adresse IP de Radius">
-               <value>192.168.30.22</value>
+               <value>192.168.30.24</value>
            </variable>
        </family>
         <separators>
