@@ -1,3 +1,13 @@
+conf-amon (2.3-eole26) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * les templates dansguardian?.conf s'installent sur le maître
+  * change IP de radius
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 20 Jul 2010 14:00:38 +0000
+
 conf-amon (2.3-eole25) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
