@@ -23,71 +23,61 @@
     <variables>
         <family name='general'>
             <variable name='eole_module' type='string' description="Module installé" hidden='True'/>
-      <!--**** Reseau Global **** -->
+            <!--**** Reseau Global **** -->
             <variable name='type_amon' type='string' description='Modèle de filtrage' />
-                        <!--FIXME<variable name='nombre_interfaces' type='string' description="Nombre d'interfaces à activer sur le pare-feu" >
-                 <value>2</value>
-             </variable>-->
-            <!--<variable name='nom_machine' type='string' description='Nom de la machine' >
-                <value>pf-amon</value>
+            <!--FIXME<variable name='nombre_interfaces' type='string' description="Nombre d'interfaces à activer sur le pare-feu" >
+            <value>2</value>
             </variable>-->
-             <variable name='install_scribe_dmz' type='string' description="Activer la gestion d'un Scribe dans la DMZ" >
-                 <value>non</value>
-             </variable>
+            <!--<variable name='nom_machine' type='string' description='Nom de la machine' >
+            <value>pf-amon</value>
+            </variable>-->
+            <variable name='install_scribe_dmz' type='oui/non' description="Activer la gestion d'un Scribe dans la DMZ" >
+                <value>non</value>
+            </variable>
         </family>
-    <!--************************************************************************************************* -->
         <family name='services'>
-            <variable name='install_rvp' type='string' description='Activation du RVP' >
-                 <value>non</value>
-             </variable>
-                        <variable name='filtrage_p2p' type='string' description="Système de filtrage P2P" >
-                                <value>l7filter</value>
-                        </variable>
-             <variable name='activer_bacula' type='string' description='Activation du client Bacula (sauvegardes)' >
-                 <value>non</value>
+            <variable name='install_rvp' type='oui/non' description='Activation du RVP' >
+                <value>non</value>
+            </variable>
+            <variable name='filtrage_p2p' type='string' description="Système de filtrage P2P" >
+                <value>l7filter</value>
+            </variable>
+            <variable name='activer_bacula' type='oui/non' description='Activation du client Bacula (sauvegardes)' >
+                <value>non</value>
             </variable>
             <variable name='activer_ulog' redefine='True' hidden='True'>
                 <value>oui</value>
             </variable>
         </family>
-    <!--************************************************************************************************* -->
-        <!-- **** Interface interne 1 **** -->
         <family name='Interface-1'>
-             <variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" >
-                 <value>admin</value>
-             </variable>
+            <variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" >
+                <value>admin</value>
+            </variable>
         </family>
-
-        <!--**** Interfaces 2 **** -->
         <family name='Interface-2' hidden='True'>
-             <variable name='nom_machine_eth2' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
-                 <value>pedago</value>
-             </variable>
+            <variable name='nom_machine_eth2' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
+                <value>pedago</value>
+            </variable>
         </family>
-
-        <!--**** Interfaces 3 **** -->
         <family name='Interface-3' hidden='True'>
-             <variable name='nom_machine_eth3' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
-                 <value>dmz-priv</value>
-             </variable>
+            <variable name='nom_machine_eth3' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
+                <value>dmz-priv</value>
+            </variable>
         </family>
-
-        <!--**** Interfaces 4 **** -->
         <family name='Interface-4' hidden='True'>
-             <variable name='nom_machine_eth4' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
-                 <value>dmz-pub</value>
-             </variable>
+            <variable name='nom_machine_eth4' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
+                <value>dmz-pub</value>
+            </variable>
         </family>
-    <!--************************************************************************************************* -->
         <family name='RVP' hidden='True'>
-             <variable name='agriates_member' type='string' description='Serveur membre du réseau AGRIATES' >
-                 <value>non</value>
-             </variable>
-                     <variable name='adresse_network_zone_rvp' type='ip' description='Adresse réseau de la zone RVP' multi='True' />
-                      <variable name='adresse_netmask_zone_rvp' type='netmask' description='Masque de sous-réseau de la zone RVP' />
-                      <variable name='autoriser_rvp_autres' type='string' description="Autoriser d'autres zones que eth1 à accéder à ce réseau">
-                              <value>non</value>
-                      </variable>
+            <variable name='agriates_member' type='oui/non' description='Serveur membre du réseau AGRIATES' >
+                <value>non</value>
+            </variable>
+            <variable name='adresse_network_zone_rvp' type='ip' description='Adresse réseau de la zone RVP' multi='True' />
+            <variable name='adresse_netmask_zone_rvp' type='netmask' description='Masque de sous-réseau de la zone RVP' />
+            <variable name='autoriser_rvp_autres' type='oui/non' description="Autoriser d'autres zones que eth1 à accéder à ce réseau">
+                <value>non</value>
+            </variable>
             <variable name='magic_rvp_inter' type='number' description='Intervalle (en min) entre deux tests de bon fonctionnement du RVP (magic-rvp)'>
                 <value>10</value>
             </variable>
@@ -95,79 +85,49 @@
         <family name='Scribe-DMZ' hidden='True'>
             <variable name='nom_serveur_scribe_dmz' type='string' description='Nom du Scribe dans la DMZ (pour enregistrement DNS)' />
             <variable name='ip_serveur_scribe_dmz' type='ip' description='Adresse IP du Scribe dans la DMZ' />
-             <variable name='activer_dhcprelay' type='string' description='Activation du relais DHCP' >
-                 <value>non</value>
-             </variable>
+            <variable name='activer_dhcprelay' type='oui/non' description='Activation du relais DHCP' >
+                <value>non</value>
+            </variable>
         </family>
-
-    <!--************************************************************************************************* -->
-    <!--************************************************************************************************* -->
-    <!--************************************************************************************************* -->
-            <separators>
-                <separator name='type_amon'>Paramètres réseau globaux</separator>
-                                <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
-                <separator name='nom_cache_pere'>Proxy pere general</separator>
-                <separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
-                <separator name='adresse_network_zone_rvp'>Accès RVP par le proxy</separator>
-                <separator name='activer_bacula'>Sauvegardes</separator>
-                <separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>
-            </separators>
+        <separators>
+            <separator name='type_amon'>Paramètres réseau globaux</separator>
+            <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
+            <separator name='nom_cache_pere'>Proxy pere general</separator>
+            <separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
+            <separator name='adresse_network_zone_rvp'>Accès RVP par le proxy</separator>
+            <separator name='activer_bacula'>Sauvegardes</separator>
+            <separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>
+        </separators>
     </variables>
     <constraints>
-    <!--************************************************************************************************* -->
-
         <auto name='auto_module' target='eole_module'/>
-
-    <!-- **** champs obligatoires **** -->
         <check name='obligatoire' target='nom_machine_eth1'/>
-
-    <!-- **** Listes deroulantes **** -->
-                <check name="valid_enum" target="type_amon">
-                  <param type="python">eosfunc.list_files('/usr/share/era/modeles','*.xml',True,default=['2zones', '3zones-amonecole-eclair-nginx', '3zones-amonecole-eclair', '3zones-amonecole-nginx', '3zones-amonecole', '3zones-scribe-posh-nginx', '3zones-scribe', '3zones', '4zones-scribe-nufw', '4zones-scribe-posh-nginx', '4zones-scribe', '4zones', '5zones', 'minimal'])</param>
-          <param name="checkval">False</param>
-                </check>
-                <check name="valid_enum" target="install_rvp">
-                  <param>['oui','non']</param>
-                </check>
-                <check name="valid_enum" target="install_scribe_dmz">
-                  <param>['oui','non']</param>
-                </check>
-                <check name='valid_enum' target='agriates_member'>
-                  <param>['oui','non']</param>
-                </check>
-                <check name='valid_enum' target='activer_dhcprelay'>
-                  <param>['oui','non']</param>
-                </check>
-                <check name="valid_enum" target='filtrage_p2p'>
-                        <param>['l7filter','ipp2p']</param>
-                </check>
+        <check name="valid_enum" target="type_amon">
+            <param type="python">eosfunc.list_files('/usr/share/era/modeles','*.xml',True,default=['2zones', '3zones-amonecole-eclair-nginx', '3zones-amonecole-eclair', '3zones-amonecole-nginx', '3zones-amonecole', '3zones-scribe-posh-nginx', '3zones-scribe', '3zones', '4zones-scribe-nufw', '4zones-scribe-posh-nginx', '4zones-scribe', '4zones', '5zones', 'minimal'])</param>
+            <param name="checkval">False</param>
+        </check>
+        <check name="valid_enum" target='filtrage_p2p'>
+            <param>['l7filter','ipp2p']</param>
+        </check>
         <!--FIXME: il faut redéfinir la valeur
         <check name="valid_enum" target="eth0_method">
-                  <param>['statique','dhcp','pppoe']</param>
-                </check>-->
-                <check name="valid_enum" target="autoriser_rvp_autres">
-                        <param>['oui','non']</param>
-                </check>
-                <check name='valid_enum' target='activer_bacula'>
-                  <param>['oui','non']</param>
-                </check>
-            <check name='valid_enum' target='debit_carte_eth0'>
-                    <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-                </check>
-            <check name='valid_enum' target='debit_carte_eth1'>
-                    <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-                </check>
-            <check name='valid_enum' target='debit_carte_eth2'>
-                    <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-                </check>
-            <check name='valid_enum' target='debit_carte_eth3'>
-                    <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-                </check>
-            <check name='valid_enum' target='debit_carte_eth4'>
-                    <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-                </check>
-
-    <!-- **** Conditions **** -->
+        <param>['statique','dhcp','pppoe']</param>
+        </check>-->
+        <check name='valid_enum' target='debit_carte_eth0'>
+            <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
+        </check>
+        <check name='valid_enum' target='debit_carte_eth1'>
+            <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
+        </check>
+        <check name='valid_enum' target='debit_carte_eth2'>
+            <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
+        </check>
+        <check name='valid_enum' target='debit_carte_eth3'>
+            <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
+        </check>
+        <check name='valid_enum' target='debit_carte_eth4'>
+            <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
+        </check>
         <condition name='hidden_if_in' source='eole_module'>
             <param>amonecole</param>
             <target type='variable'>install_scribe_dmz</target>
@@ -181,22 +141,20 @@
             <param>non</param>
             <target type='servicelist'>bacula-fd</target>
         </condition>
-               <condition name='hidden_if_in' source='install_rvp'>
-                    <param>non</param>
+        <condition name='hidden_if_in' source='install_rvp'>
+            <param>non</param>
             <target type='family'>RVP</target>
-                </condition>
-                <condition name='hidden_if_in' source='install_scribe_dmz'>
-                    <param>non</param>
+        </condition>
+        <condition name='hidden_if_in' source='install_scribe_dmz'>
+            <param>non</param>
             <target type='family'>Scribe-DMZ</target>
-                </condition>
-
-    <!-- **** Groupes **** -->
-                 <group master='adresse_network_zone_rvp'>
-                        <slave>adresse_netmask_zone_rvp</slave>
-                        <slave>autoriser_rvp_autres</slave>
-                 </group>
+        </condition>
+        <group master='adresse_network_zone_rvp'>
+            <slave>adresse_netmask_zone_rvp</slave>
+            <slave>autoriser_rvp_autres</slave>
+        </group>
     </constraints>
-    <!--************************************************************************************************* -->
-    <help>
-    </help>
+    <help/>
 </creole>
+<!-- vim: ts=4 sw=4 expandtab
+-->

@@ -1,61 +1,59 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <creole>
-        <files>
-		<file filelist='agregation' name='/etc/agregation.conf' rm='True'/>
-		<file filelist='agregation' name='/etc/logrotate.d/agregation' source='agregation.logrotate'/>
-		<!--<file filelist='agregation' name='/usr/bin/agregation.sh' mode='755'/>-->
-        </files>
-		<!-- **** Dictionnaire optionnel (Agregation) de l'Academie de Nantes by GC **** -->
-        <variables>
-		<family name='services'>
-			<variable name='agregation' type='string' description='Repartition de charges entre 2 lignes' >
-				<value>non</value>
-			</variable>
-		</family>
-		<family name='Agregation' hidden='True'>
-			<variable name='ag_force_eth0' type='ip' description='Destination(s) forcees sur le lien 1' multi='True'/>
-			<variable name='ag_dns_eth0' type='ip' description='Adresse(s) du(des) dns sur le lien 1' multi='True'/>
-			<variable name='ag_weight_eth0' type='string' description='Debit mesure sur le lien 1 (entier en Mbps)' />
-			<variable name='ag_force_eth0_0' type='ip' description='Destination(s) forcees sur le lien 2' multi='True'/>
-			<variable name='ag_dns_eth0_0' type='ip' description='Adresse(s) du(des) dns sur le lien 2' multi='True'/>
-			<variable name='ag_weight_eth0_0' type='string' description='Debit mesure sur le lien 2 (entier en Mbps)' />
-			<variable name='ag_pause' type='Number' description='Delai entre les tests d etat (en secondes)' >
-				<value>10</value>
-			</variable>
-			<variable name='ag_timeout' type='Number' description='TimeOut de la requete DNS (en secondes)' >
-				<value>1</value>
-			</variable>
-			<variable name='ag_testdns' type='string' description='Premiere Adresse DNS testee' >
-				<value>www.google.com</value>
-			</variable>
-			<variable name='ag_testdns2' type='string' description='Seconde Adresse DNS testee' >
-				<value>www.ac-nantes.fr</value>
-			</variable>
-			<variable name='ag_nbsucces' type='Number' description='Nombre de succes avant changement d etat' >
-				<value>4</value>
-			</variable>
-			<variable name='ag_nbechecs' type='Number' description='Nombre d echecs avant changement d etat' >
-				<value>1</value>
-			</variable>
-		</family>
-			<separators>
-				<separator name='agregation'>Agregation de liens</separator>
-				<separator name='ag_force_eth0'>Lien 1</separator>
-				<separator name='ag_force_eth0_0'>Lien 2</separator>
-				<separator name='ag_pause'>Divers</separator>				
-			</separators> 
-        </variables>
-        <constraints>
-		<condition name='hidden_if_in' source='agregation'>
-			<param>non</param> 
-			<target type='family'>Agregation</target>
-			<target type='filelist'>agregation</target>
-		</condition>
-		<check name="valid_enum" target='agregation'>
-			<param>['non','oui']</param>
-		</check>
-		</constraints>
-		<help>
-        </help>
+    <files>
+        <file filelist='agregation' name='/etc/agregation.conf' rm='True'/>
+        <file filelist='agregation' name='/etc/logrotate.d/agregation' source='agregation.logrotate'/>
+        <!--<file filelist='agregation' name='/usr/bin/agregation.sh' mode='755'/>-->
+    </files>
+    <!-- **** Dictionnaire optionnel (Agregation) de l'Academie de Nantes by GC **** -->
+    <variables>
+        <family name='services'>
+            <variable name='activer_agregation' type='oui/non' description='Repartition de charges entre 2 lignes' >
+                <value>non</value>
+            </variable>
+        </family>
+        <family name='Agregation' hidden='True'>
+            <variable name='ag_force_eth0' type='ip' description='Destination(s) forcees sur le lien 1' multi='True'/>
+            <variable name='ag_dns_eth0' type='ip' description='Adresse(s) du(des) dns sur le lien 1' multi='True'/>
+            <variable name='ag_weight_eth0' type='string' description='Debit mesure sur le lien 1 (entier en Mbps)' />
+            <variable name='ag_force_eth0_0' type='ip' description='Destination(s) forcees sur le lien 2' multi='True'/>
+            <variable name='ag_dns_eth0_0' type='ip' description='Adresse(s) du(des) dns sur le lien 2' multi='True'/>
+            <variable name='ag_weight_eth0_0' type='string' description='Debit mesure sur le lien 2 (entier en Mbps)' />
+            <variable name='ag_pause' type='Number' description='Delai entre les tests d etat (en secondes)' >
+                <value>10</value>
+            </variable>
+            <variable name='ag_timeout' type='Number' description='TimeOut de la requete DNS (en secondes)' >
+                <value>1</value>
+            </variable>
+            <variable name='ag_testdns' type='string' description='Premiere Adresse DNS testee' >
+                <value>www.google.com</value>
+            </variable>
+            <variable name='ag_testdns2' type='string' description='Seconde Adresse DNS testee' >
+                <value>www.ac-nantes.fr</value>
+            </variable>
+            <variable name='ag_nbsucces' type='Number' description='Nombre de succes avant changement d etat' >
+                <value>4</value>
+            </variable>
+            <variable name='ag_nbechecs' type='Number' description='Nombre d echecs avant changement d etat' >
+                <value>1</value>
+            </variable>
+        </family>
+        <separators>
+            <separator name='agregation'>Agregation de liens</separator>
+            <separator name='ag_force_eth0'>Lien 1</separator>
+            <separator name='ag_force_eth0_0'>Lien 2</separator>
+            <separator name='ag_pause'>Divers</separator>
+        </separators>
+    </variables>
+    <constraints>
+        <condition name='hidden_if_in' source='activer_agregation'>
+            <param>non</param>
+            <target type='family'>Agregation</target>
+            <target type='filelist'>agregation</target>
+        </condition>
+    </constraints>
+    <help/>
 </creole>
+<!-- vim: ts=4 sw=4 expandtab
+-->
