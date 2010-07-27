@@ -19,7 +19,7 @@
 <!-- **** Dictionnaire optionnel pour freeradius **** -->
     <variables>
         <family name='services'>
-            <variable name='activer_freeradius' type='string' description='Activation du service Freeradius'>
+            <variable name='activer_freeradius' type='oui/non' description='Activation du service Freeradius'>
                 <value>non</value>
             </variable>
         </family>
@@ -58,9 +58,6 @@
             <target type='filelist'>freeradius</target>
             <target type='servicelist'>freeradius</target>
         </condition>
-        <check name="valid_enum" target='activer_freeradius'>
-            <param>['non','oui']</param>
-        </check>
         <check name="valid_enum" target='freerad_nas_type'>
             <param>['cisco','computone','livingston','max40xx','multitech','netserver','pathras','patton','portslave','tc','usrhiper','other']</param>
         </check>

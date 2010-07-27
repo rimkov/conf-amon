@@ -12,7 +12,7 @@
     <!--************************************************************************************************* -->
     <variables>
         <family name='services'>
-            <variable name='activer_revprox' type='string' description='Activation du reverse proxy'>
+            <variable name='activer_revprox' type='oui/non' description='Activation du reverse proxy'>
                 <value>non</value>
             </variable>
         </family>
@@ -31,7 +31,7 @@
             <variable name='revprox_http' type='string' description="Reverse proxy HTTP">
                 <value>redirige vers https</value>
             </variable>
-            <variable name='revprox_https' type='string' description="Reverse proxy HTTPS">
+            <variable name='revprox_https' type='oui/non' description="Reverse proxy HTTPS">
                 <value>oui</value>
             </variable>
             <variable name='revprox_url' type='string' description="IP ou domaine de destination (avec http:// ou https://) ou URI complète">
@@ -47,14 +47,8 @@
     <constraints>
     <!--************************************************************************************************* -->
     <!-- **** Listes deroulantes **** -->
-        <check name='valid_enum' target='activer_revprox'>
-            <param>['oui','non']</param>
-        </check>
         <check name='valid_enum' target='revprox_http'>
             <param>['oui','non', 'redirige vers https']</param>
-        </check>
-        <check name='valid_enum' target='revprox_https'>
-            <param>['oui','non']</param>
         </check>
         <!-- **** Remplissage automatique **** -->
         <auto target='revprox_ead' name='auto_copy_val'>

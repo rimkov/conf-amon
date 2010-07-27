@@ -14,7 +14,7 @@
     </containers>
     <variables>
     <family name='services'>
-        <variable  name='active_sarg' type='string' description="Activation de SARG, générateur de statistiques Proxy/filtrage web (Squid/DansGuardian)">
+        <variable  name='active_sarg' type='oui/non' description="Activation de SARG, générateur de statistiques Proxy/filtrage web (Squid/DansGuardian)">
             <value>non</value>
         </variable>
     </family>
@@ -285,9 +285,6 @@
         <check name="valid_enum" target='date_format'>
             <param>['e','u','w']</param>
         </check>
-    <check name='valid_enum' target='active_sarg'>
-        <param>['oui','non']</param>
-    </check>
     </constraints>
     <help/>
 </creole>
