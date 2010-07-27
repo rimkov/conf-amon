@@ -1,3 +1,14 @@
+conf-amon (2.3-eole28) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * oui/non + ident
+  * ident
+  * suppression des oui/non
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 27 Jul 2010 10:01:21 +0000
+
 conf-amon (2.3-eole27) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
