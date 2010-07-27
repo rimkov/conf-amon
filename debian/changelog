@@ -1,3 +1,13 @@
+conf-amon (2.3-eole29) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * clean
+  * ajout d'un postinst pour le paquet eole-proxy
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 27 Jul 2010 13:42:02 +0000
+
 conf-amon (2.3-eole28) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
