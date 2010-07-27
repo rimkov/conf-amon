@@ -2,7 +2,7 @@
 
 <creole>
     <containers>
-        <container name="reverseproxy" ip='adresse_ip_reverseproxy'>
+        <container name="reverseproxy" id='21'>
             <service servicelist='revprox'>nginx</service>
             <package>reverseproxy-pkg</package>
             <file filelist='revprox' name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
@@ -17,6 +17,7 @@
             </variable>
         </family>
         <family name='Reverse proxy' hidden='True'>
+            <variable name='adresse_ip_reverseproxy' type='ip' hidden='True' description="Adresse IP du conteneur reverse proxy"/>
             <variable name='revprox_sso' type='string' description="IP ou domaine du serveur SSO" />
             <variable name='revprox_poshadmin' type='string' description="IP ou domaine du serveur d'administration Envole 2" />
             <variable name='revprox_ead' type='string' description="IP du Scribe" hidden='True' />
@@ -37,11 +38,6 @@
                 <value></value>
             </variable>
         </family>
-       <family name='Interface-Virt' mode='expert'>
-           <variable name='adresse_ip_reverseproxy' type='ip' description="Adresse IP de ReverseProxy">
-               <value>192.168.30.23</value>
-           </variable>
-       </family>
         <separators>
             <separator name='activer_revprox'>Reverse Proxy</separator>
             <separator name='revprox_sso'>Redirection de services particuliers</separator>
@@ -60,11 +56,14 @@
         <check name='valid_enum' target='revprox_https'>
             <param>['oui','non']</param>
         </check>
-    <!-- **** Remplissage automatique **** -->
-    <auto target='revprox_ead' name='auto_copy_val'>
-        <param type='eole'>revprox_poshadmin</param>
-    </auto>
-    <!-- **** Conditions **** -->
+        <!-- **** Remplissage automatique **** -->
+        <auto target='revprox_ead' name='auto_copy_val'>
+            <param type='eole'>revprox_poshadmin</param>
+        </auto>
+        <auto name='calc_container' target='adresse_ip_reverseproxy'>
+            <param>container_ip_reverseproxy</param>
+        </auto>
+        <!-- **** Conditions **** -->
         <condition name='hidden_if_in' source='activer_revprox'>
             <param>non</param>
             <target type='family'>Reverse proxy</target>

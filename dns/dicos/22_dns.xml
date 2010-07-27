@@ -2,7 +2,7 @@
 
 <creole>
     <containers>
-        <container name="dns" ip='adresse_ip_conteneur_dns'>
+        <container name="dns" id='18'>
             <package>dns-pkg</package>
             <service>bind9</service>
             <file name='/etc/bind/spcl.options'/>
@@ -37,6 +37,7 @@
             </variable>
         </family>
         <family name='zones-dns' mode='expert'>
+            <variable name='adresse_ip_conteneur_dns' type='ip' hidden='True' description="Adresse IP du conteneur DNS"/>
             <variable name='nom_domaine_local_supp' type='string' description='Nom domaine local supplémentaire ou rien' multi='True' />
             <variable name='nom_zone_forward' type='string' description='Nom DNS de la zone' multi='True' />
             <variable name='ip_dns_zone_forward' type='ip' description='Adresse IP du serveur DNS de la zone' />
@@ -47,11 +48,6 @@
             <variable name='adresse_dns_agriates' type='ip' description='Adresse du DNS permettant de resoudre les in.ac-acad.fr' multi='True'/>
             <variable name='agriates_member' exists='False' type='string' hidden='True'>
                 <value>non</value>
-            </variable>
-        </family>
-        <family name='Interface-Virt' mode='expert'>
-            <variable name='adresse_ip_conteneur_dns' type='ip' description="Adresse IP de DNS">
-                <value>192.168.30.21</value>
             </variable>
         </family>
         <separators>
@@ -65,6 +61,9 @@
         </separators>
     </variables>
     <constraints>
+        <auto name='calc_container' target='adresse_ip_conteneur_dns'>
+            <param>container_ip_dns</param>
+        </auto>
         <check name="valid_enum" target='dns_master_eth0'>
             <param>['oui','non']</param>
         </check>

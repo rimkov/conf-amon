@@ -6,7 +6,7 @@
         <file name='/usr/share/eole/dansguardian/dansguardian2.conf' />
     </files>
     <containers>
-        <container name="proxy" ip='adresse_ip_proxy'>
+        <container name="proxy" id='20'>
             <package>proxy-pkg</package>
             <service>squid</service>
             <service>dansguardian</service>
@@ -21,6 +21,7 @@
             <file name='/etc/squid/squid.conf'/>
             <file name='/etc/squid/domaines_nocache'/>
             <file name='/etc/squid/domaines_noauth'/>
+            <file name='/usr/lib/cgi-bin/filtre.cgi'/>
             <!--authentification-->
             <package>authentification-pkg</package>
             <service servicelist='kerberos'>smbd</service>
@@ -34,6 +35,7 @@
     </containers>
     <variables>
         <family name='general'>
+            <variable name='adresse_ip_proxy' type='ip' hidden='True' description="Adresse IP du conteneur proxy"/>
             <variable name='url_maj_blacklist' type='string' description='URL mise à jour des blacklists' >
                 <value>http://eole.orion.education.fr/maj/blacklists</value>
             </variable>
@@ -427,11 +429,6 @@
             <variable name='nom_domaine_windows' type='string' description='Nom du domaine Windows' />
             <variable name='ip_serveur_krb' type='ip' description='Adresse IP du Contrôleur de domaine KERBEROS' />
         </family>
-        <family name='Interface-Virt' mode='expert'>
-            <variable name='adresse_ip_proxy' type='ip' description="Adresse IP de proxy">
-                <value>192.168.30.22</value>
-            </variable>
-        </family>
         <!--************************************************************************************************* -->
         <separators>
             <separator name='dans_num_opt_filters'>Configuration commune aux deux zones</separator>
@@ -446,6 +443,9 @@
         </separators>
     </variables>
     <constraints>
+        <auto name='calc_container' target='adresse_ip_proxy'>
+            <param>container_ip_nuauth</param>
+        </auto>
         <check name='valid_enum' target='type_squid_auth'>
             <param>['NTLM/SMB','Ldap','Ldap (Active Directory)','NTLM/KERBEROS']</param>
         </check>
