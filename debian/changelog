@@ -1,3 +1,12 @@
+conf-amon (2.3-eole27) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * conteneur IP -> ID
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 27 Jul 2010 08:47:58 +0000
+
 conf-amon (2.3-eole26) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
