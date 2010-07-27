@@ -44,7 +44,7 @@
             <variable name='num_dansguardian_instance' type='string' description="Nombre de filtres web (Dansguardian et pare-feu) configurables" hidden='True'>
                 <value>2</value>
             </variable>
-            <variable name='activer_squid_auth' type='string' description="Activation de l'authentification web (proxy)" >
+            <variable name='activer_squid_auth' type='oui/non' description="Activation de l'authentification web (proxy)" >
                 <value>non</value>
             </variable>
         </family>
@@ -53,7 +53,7 @@
             <variable name='dansguardian_eth1' type='string' description='Filtre web à appliquer sur cette interface' >
                 <value>1</value>
             </variable>
-            <variable name='squid_auth_eth1' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
+            <variable name='squid_auth_eth1' type='oui/non' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
                 <value>oui</value>
             </variable>
         </family>
@@ -62,7 +62,7 @@
             <variable name='dansguardian_eth2' type='string' description='Filtre web à appliquer sur cette interface' >
                 <value>1</value>
             </variable>
-            <variable name='squid_auth_eth2' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
+            <variable name='squid_auth_eth2' type='oui/non' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
                 <value>oui</value>
             </variable>
         </family>
@@ -71,7 +71,7 @@
             <variable name='dansguardian_eth3' type='string' description='Filtre web à appliquer sur cette interface' >
                 <value>1</value>
             </variable>
-            <variable name='squid_auth_eth3' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
+            <variable name='squid_auth_eth3' type='oui/non' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
                 <value>oui</value>
             </variable>
         </family>
@@ -80,7 +80,7 @@
             <variable name='dansguardian_eth4' type='string' description='Filtre web à appliquer sur cette interface' >
                 <value>1</value>
             </variable>
-            <variable name='squid_auth_eth4' type='string' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
+            <variable name='squid_auth_eth4' type='oui/non' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
                 <value>oui</value>
             </variable>
         </family>
@@ -159,13 +159,13 @@
         <family name='Proxy-pere' mode='expert'>
             <variable name='nom_cache_pere' type='string' description='Nom ou adresse IP du serveur mandataire web parent'/>
             <variable name='port_cache_pere' type='string' description='Port du serveur mandataire web parent'/>
-            <variable name='proxy_pere_rvp' type='string' description="Accés aux zone RVP en passant par le proxy père global ?">
+            <variable name='proxy_pere_rvp' type='oui/non' description="Accés aux zone RVP en passant par le proxy père global ?">
                 <value>oui</value>
             </variable>
             <variable name='nom_cache_pere_zone' type='string' description='Utiliser le serveur mandataire web parent pour la zone' multi='True' />
             <variable name='port_cache_pere_zone' type='string' description='Port du serveur mandataire web parent pour la zone'/>
             <variable name='nom_zone_dns_cache' type='string' description='Nom DNS de la zone accessible via ce cache père'/>
-            <variable name='autoriser_proxy_autres' type='string' description="Autoriser l'utilisation de ce cache père par d'autres zones que eth1">
+            <variable name='autoriser_proxy_autres' type='oui/non' description="Autoriser l'utilisation de ce cache père par d'autres zones que eth1">
                 <value>non</value>
             </variable>
         </family>
@@ -525,27 +525,6 @@
         </check>
         <check name="valid_enum" target='dansguardian_eth4'>
             <param>['1','2']</param>
-        </check>
-        <check name="valid_enum" target="activer_squid_auth">
-            <param>['oui','non']</param>
-        </check>
-        <check name="valid_enum" target="proxy_pere_rvp">
-            <param>['oui','non']</param>
-        </check>
-        <check name="valid_enum" target="autoriser_proxy_autres">
-            <param>['oui','non']</param>
-        </check>
-        <check name="valid_enum" target='squid_auth_eth1'>
-        <param>['oui','non']</param>
-            </check>
-        <check name="valid_enum" target='squid_auth_eth2'>
-            <param>['oui','non']</param>
-        </check>
-        <check name="valid_enum" target='squid_auth_eth3'>
-            <param>['oui','non']</param>
-        </check>
-        <check name="valid_enum" target='squid_auth_eth4'>
-            <param>['oui','non']</param>
         </check>
 
         <!--variables de la zone 2 ( 1) -->

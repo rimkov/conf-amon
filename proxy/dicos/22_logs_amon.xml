@@ -4,7 +4,7 @@
     <files/>
     <variables>
         <family name='Logs' hidden='True'>
-            <variable name='activate_squid_realtime' type='string' description="Activation du transfet des logs de squid en temps réel">
+            <variable name='activate_squid_realtime' type='oui/non' description="Activation du transfet des logs de squid en temps réel">
                 <value>non</value>
             </variable>
             <variable name='squid_heure_debut' type='string' description="Heure de debut du transfet des logs">
@@ -16,9 +16,6 @@
         </family>
     </variables>
     <constraints>
-        <check name='valid_enum' target='activate_squid_realtime'>
-            <param>['oui','non']</param>
-        </check>
         <check name='valid_enum' target='squid_heure_debut'>
             <param>["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"]</param>
         </check>

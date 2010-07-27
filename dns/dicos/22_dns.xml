@@ -12,27 +12,27 @@
     <!--************************************************************************************************* -->
     <variables>
         <family name='Interface-0'>
-            <variable name='dns_master_eth0' type='string' description="Amon master DNS de cette zone ?" >
+            <variable name='dns_master_eth0' type='oui/non' description="Amon master DNS de cette zone ?" >
                 <value>non</value>
             </variable>
         </family>
         <family name='Interface-1'>
-            <variable name='dns_master_eth1' type='string' description="Amon master DNS de cette zone ?" >
+            <variable name='dns_master_eth1' type='oui/non' description="Amon master DNS de cette zone ?" >
                 <value>oui</value>
             </variable>
         </family>
         <family name='Interface-2'>
-            <variable name='dns_master_eth2' type='string' description="Amon master DNS de cette zone ?" >
+            <variable name='dns_master_eth2' type='oui/non' description="Amon master DNS de cette zone ?" >
                 <value>oui</value>
             </variable>
         </family>
         <family name='Interface-3'>
-            <variable name='dns_master_eth3' type='string' description="Amon master DNS de cette zone ?" >
+            <variable name='dns_master_eth3' type='oui/non' description="Amon master DNS de cette zone ?" >
                 <value>oui</value>
             </variable>
         </family>
         <family name='Interface-4'>
-            <variable name='dns_master_eth4' type='string' description="Amon master DNS de cette zone ?" >
+            <variable name='dns_master_eth4' type='oui/non' description="Amon master DNS de cette zone ?" >
                 <value>oui</value>
             </variable>
         </family>
@@ -64,21 +64,6 @@
         <auto name='calc_container' target='adresse_ip_conteneur_dns'>
             <param>container_ip_dns</param>
         </auto>
-        <check name="valid_enum" target='dns_master_eth0'>
-            <param>['oui','non']</param>
-        </check>
-        <check name="valid_enum" target='dns_master_eth1'>
-            <param>['oui','non']</param>
-        </check>
-        <check name="valid_enum" target='dns_master_eth2'>
-            <param>['oui','non']</param>
-        </check>
-        <check name="valid_enum" target='dns_master_eth3'>
-            <param>['oui','non']</param>
-        </check>
-        <check name="valid_enum" target='dns_master_eth4'>
-            <param>['oui','non']</param>
-        </check>
         <group master='nom_host_dns'>
             <slave>ip_host_dns</slave>
         </group>

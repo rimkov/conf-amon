@@ -1,39 +1,37 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <creole>
-        <files>
-		<file filelist='routes' name='/etc/eole/static-routes' mkdir='True'/>
-        </files>
-        <variables>
-	    <family hidden="False" mode="expert" name="reseau-avance">
-		    <!--<family name='routage' mode='expert'>-->
-		    <variable name='route_adresse' type='ip' description='Adresse IP ou réseau à ajouter dans la table de routage' multi='True'/>
-		    <variable name='route_netmask' type='netmask' description='Masque de sous réseau (mettre à 255.255.255.255 si adresse host)' />
-		    <variable name='route_gw' type='ip' description='Adresse IP de la passerelle pour accéder à ce réseau' />
-		    <variable name='route_int' type='string' description="Interface réseau reliée à la passerelle" />
-	    </family>
-	   <separators>
-	    	<separator name='route_adresse'>Ajout de routes statiques</separator>
-	</separators>
-        </variables>
-	<constraints>
-		 <check name="valid_enum" target="route_int">
-                  <param>['eth0','eth1','eth2','eth3','eth4']</param>
-		  <param name="checkval">False</param>
-                </check>
-
-		<condition name='hidden_if_in' source='route_adresse'>
-			<param></param>
-			<target type='filelist'>routes</target>
-		</condition>
-		<group master='route_adresse'>
-                        <slave>route_netmask</slave>
-                        <slave>route_gw</slave>
-                        <slave>route_int</slave>
-                 </group>
-
-	</constraints>
-	<help>
-	</help>
-
+    <files>
+        <file filelist='routes' name='/etc/eole/static-routes' mkdir='True'/>
+    </files>
+    <variables>
+        <family hidden="False" mode="expert" name="reseau-avance">
+        <!--<family name='routage' mode='expert'>-->
+            <variable name='route_adresse' type='ip' description='Adresse IP ou réseau à ajouter dans la table de routage' multi='True'/>
+            <variable name='route_netmask' type='netmask' description='Masque de sous réseau (mettre à 255.255.255.255 si adresse host)' />
+            <variable name='route_gw' type='ip' description='Adresse IP de la passerelle pour accéder à ce réseau' />
+            <variable name='route_int' type='string' description="Interface réseau reliée à la passerelle" />
+        </family>
+        <separators>
+            <separator name='route_adresse'>Ajout de routes statiques</separator>
+        </separators>
+    </variables>
+    <constraints>
+        <check name="valid_enum" target="route_int">
+            <param>['eth0','eth1','eth2','eth3','eth4']</param>
+            <param name="checkval">False</param>
+        </check>
+        <condition name='hidden_if_in' source='route_adresse'>
+            <param></param>
+            <target type='filelist'>routes</target>
+        </condition>
+        <group master='route_adresse'>
+            <slave>route_netmask</slave>
+            <slave>route_gw</slave>
+            <slave>route_int</slave>
+        </group>
+    </constraints>
+    <help/>
 </creole>
+<!-- vim: ts=4 sw=4 expandtab
+-->
