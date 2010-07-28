@@ -3,6 +3,6 @@
 . /usr/bin/ParseDico
 
 EchoGras "*** DNS local"
-TestService dns localhost:53
+TestService dns $adresse_ip_conteneur_dns:53
 echo
 exit 0
