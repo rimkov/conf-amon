@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <creole>
+    <files>
+        <service servicelist='nufw'>nufw</service>
+        <file filelist='nufw' name='/etc/default/nufw'/>
+        <file filelist='nufw' name='/etc/init.d/nufw' source='nufw.init'/>
+    </files>
     <containers>
         <container name="nuauth" id='19'>
             <package>nuauth-pkg</package>
-            <service servicelist='nufw'>nufw</service>
             <service servicelist='nufw'>nuauth</service>
-            <file name='/etc/default/nuauth'/>
-            <file name='/etc/default/nufw'/>
             <file name='/etc/nsswitch.conf'/>
+            <file filelist='nufw' name='/etc/default/nuauth'/>
             <file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
             <file filelist='nufw' name='/etc/pam.d/nuauth' source='nuauth.pamd'/>
-            <file filelist='nufw' name='/etc/init.d/nufw' source='nufw.init'/>
         </container>
     </containers>
 <!--************************************************************************************************* -->
@@ -23,7 +25,7 @@
             <variable name='nuauth_tls_cacert' type='string' description="Certification pour Nuauth" hidden='True'/>
         </family>
         <family name='services'>
-            <variable name='active_nufw' type='oui/non' description="Activation de l'authentification réseau (NuFW)" >
+            <variable name='activer_nufw' type='oui/non' description="Activation de l'authentification réseau (NuFW)" >
                 <value>non</value>
             </variable>
             <variable name='activer_client_ldap' redefine='True' hidden='True'>
@@ -51,7 +53,7 @@
             </variable>
         </family>
         <family name='Nufw' mode='expert'>
-            <variable name='nuauth_verbosity' type='Number' description='Niveau de verbosité du démon Nuauth' mode='expert'>
+            <variable name='nuauth_verbosity' type='number' description='Niveau de verbosité du démon Nuauth' mode='expert'>
                 <value>3</value>
             </variable>
         </family>
@@ -64,7 +66,7 @@
             </variable>
         </family>
         <separators>
-            <separator name='active_nufw'>NuFW (Now User Filtering Works)</separator>
+            <separator name='activer_nufw'>NuFW (Now User Filtering Works)</separator>
             <separator name='sonde_nufw'>Configuration de la sonde NuFW</separator>
         </separators>
     </variables>
@@ -78,7 +80,7 @@
         <check name="valid_enum" target="nuauth_verbosity">
             <param>['1','2','3','4','5','6','7','8','9']</param>
         </check>
-        <condition name='hidden_if_in' source='active_nufw'>
+        <condition name='hidden_if_in' source='activer_nufw'>
             <param>non</param>
             <target type='family'>Nufw</target>
             <target type='family'>nufw-options</target>
@@ -91,7 +93,7 @@
             <target type='servicelist'>nufw</target>
         </condition>
             <auto name='auto_value_if' target='activer_client_ldap'>
-                  <param type='eole'>active_nufw</param>
+                  <param type='eole'>activer_nufw</param>
             </auto>
     </constraints>
     <!--************************************************************************************************* -->
