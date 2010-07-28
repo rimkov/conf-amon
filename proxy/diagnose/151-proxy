@@ -1,9 +1,12 @@
 #!/bin/bash
 . /usr/share/eole/FonctionsEoleNg
+#. /etc/eole/containers.conf
 . /usr/bin/ParseDico
 
 EchoGras "*** Services Proxy"
-TestService "proxy"  127.0.0.1:8080
+# FIXME: squid tourne en 127.0.0.1
+#TestService "proxy" $container_ip_proxy:8080
+TestPid "proxy" squid
 TestService "filtre web ($nom_machine_eth1)" $adresse_ip_eth1:3128
 if [ $nombre_interfaces -gt 2 ]
 then
