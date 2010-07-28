@@ -1,11 +1,14 @@
 #!/bin/bash
 
 . ParseDico
+. /etc/eole/containers.conf
 . /usr/share/eole/FonctionsEoleNg
 
 # lieu de stockage des bases
-META_PATH="/var/lib/blacklists/meta/"
-DB_PATH="/var/lib/blacklists"
+SHORT_META_PATH="/var/lib/blacklists/meta/"
+META_PATH="$container_path_proxy$SHORT_META_PATH"
+SHORT_DB_PATH="/var/lib/blacklists"
+DB_PATH="$container_path_proxy$SHORT_DB_PATH"
 # fichier de log spécifique EAD
 F_LOG="/usr/share/ead2/backend/tmp/blacklist-date.txt"
 
@@ -13,25 +16,27 @@ echo -n "Mise à jour le " > $F_LOG
 date '+%d.%m.%Y à %H:%M :' >> $F_LOG
 
 ServBlacklist=`echo "$url_maj_blacklist" |awk -F "/" '{print $3}'`
-echo "Contact du serveur de Maj $ServBlacklist"
-/usr/bin/tcpcheck 3 ${ServBlacklist}:80 | grep -q alive
-if [ $? == 1 ];then
-	# Essai avec Proxy
-	# la variable à utiliser sur Amon est $nom_cache_pere et pas $serveur_proxy 
-	if [ -n "$nom_cache_pere" ];then
-		http_proxy=${http_proxy=http://$nom_cache_pere:$port_cache_pere}
-	else
-		http_proxy=${http_proxy=http://localhost:3128} # Pour Amon
-	fi
-	export http_proxy
-	echo "Utilisation du Proxy: $http_proxy" | tee -a $F_LOG
-	Proxy=` echo $http_proxy | sed -e 's!http://!!' `
-	/usr/bin/tcpcheck 3 $Proxy | grep -q "alive"
-	if [ "$?" == 1 ];then
-		Zephir "ERR" "Le proxy $Proxy ne répond pas !" "Maj-blacklist" 2>&1 | tee -a $F_LOG
-		sed -i 1i"Erreur : impossible d'accéder au site" $F_LOG
-		exit 1
-	fi
+
+#La variable d'environment http_proxy est prioritaire
+if [ "$activer_proxy" == "oui" ];then  # Si variable Dico
+    export http_proxy=${http_proxy=http://$proxy_client_adresse:$proxy_client_port}
+fi
+if [ -n "$http_proxy" ];then
+    # Essai avec Proxy
+    echo "Utilisation du Proxy : $http_proxy" | tee -a $F_LOG
+    Proxy=` echo $http_proxy | sed -e 's!http://!!' `
+    TestService "Serveur Proxy" $Proxy 2>&1
+    if [ $? != 0 ];then
+        Zephir "ERR" "Le proxy $Proxy ne répond pas !" "Maj-blacklist" 2>&1 | tee -a $F_LOG
+	#sed -i 1i"Erreur : impossible d'accéder au site" $F_LOG
+        exit 1
+    fi
+fi
+TestService "Contact avec $ServBlacklist" "${ServBlacklist}:80" 2>&1
+if [ $? != 0 ];then
+    Zephir "ERR" "Impossible d'accéder au site de mise à jour !" "Maj-blacklist" 2>&1 | tee -a $F_LOG
+    #sed -i 1i"Erreur : impossible d'accéder au site" $F_LOG
+    exit 1
 fi
 
 ## on se pose dans /tmp ##
@@ -45,7 +50,7 @@ if [ $? == 1 ];then
 	sed -i 1i"Erreur : blacklists.tar.gz non disponible" $F_LOG
 	exit 1
 fi
-echo "$res" | grep -q -E "pas de récupération.|not retrieving."
+echo "$res" | grep -q -E "non récupéré|not retrieving"
 if [ $? == 0 ];then
 	blacklists="0"
 else
@@ -59,7 +64,7 @@ if [ $? == 1 ];then
 	sed -i 1i"Erreur : fichier weighted non disponible" $F_LOG
 	exit 1
 fi
-echo "$res" | grep -q -E "pas de récupération.|not retrieving."
+echo "$res" | grep -q -E "non récupéré|not retrieving"
 if [ $? == 0 ];then
 	weighted="0"
 else
@@ -116,8 +121,8 @@ if [ "$blacklists" == "1" ];then
 		done
 	done
 
-	chown -R proxy.proxy $DB_PATH/eole/
-	chown -R proxy.proxy $DB_PATH/db/
+	RunCmd "chown -R proxy.proxy $SHORT_DB_PATH/eole/" proxy
+	RunCmd "chown -R proxy.proxy $SHORT_DB_PATH/db/"   proxy
 else
 	echo "Rien à faire pour blacklists.tar.gz"
 fi
@@ -151,5 +156,5 @@ rm -rf $DB_PATH/tmp/blacklists
 
 # redémarrage si au moins une modification
 if [ "$blacklists" == "1" -o $weighted == "1" ];then
-	/etc/init.d/dansguardian restart
+	Service dansguardian restart proxy
 fi

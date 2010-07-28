@@ -25,7 +25,6 @@ install:
 	mkdir -p $(CONFAMON_DIR)/$(SBIN_DIR)
 	mkdir -p $(CONFAMON_DIR)/$(BIN_DIR)
 	mkdir -p $(CONFAMON_DIR)/$(INIT_DIR)
-	mkdir -p $(CONFAMON_DIR)/var/lib/blacklists/tmp
 	mkdir -p $(CONFAMON_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(CONFAMON_DIR)/etc/eole/
 
@@ -82,12 +81,10 @@ install:
 	#proxy
 	mkdir -p $(PROXY_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(PROXY_DIR)/$(EOLE_DIR)/diagnose/module
-	mkdir -p $(PROXY_DIR)/var/lib/blacklists
 	cp -rf proxy/eole/* $(PROXY_DIR)/$(EOLE_DIR)
 	cp -rf proxy/dicos $(PROXY_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf proxy/tmpl $(PROXY_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -rf proxy/diagnose/* $(PROXY_DIR)/$(EOLE_DIR)/diagnose/module
-	cp -rf proxy/blacklists/* $(PROXY_DIR)/var/lib/blacklists
 
 uninstall:
 
