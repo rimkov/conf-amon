@@ -1,9 +1,5 @@
 #Change to "true" for Nufw to be started
-%if %%active_nufw == 'oui'
 NUFW_START="true"
-%else
-NUFW_START="false"
-%end if
 
 #Add "v"s so nufw gets more verbose
 NUFW_VERBOSITY="vv"

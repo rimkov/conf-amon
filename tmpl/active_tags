@@ -13,7 +13,7 @@ AdminDepuisEth3
 %if %%ssh_eth4 == "oui"
 AdminDepuisEth4
 %end if
-%if %%is_defined('active_nufw') and %%active_nufw == "oui"
+%if %%is_defined('activer_nufw') and %%activer_nufw == "oui"
 auth_nufw
 %end if
 %if %%test_vz(master=True)

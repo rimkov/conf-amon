@@ -1,9 +1,5 @@
 #Change to "true" for Nufw to be started
-%if %%active_nufw == 'oui'
 NUAUTH_START="true"
-%else
-NUAUTH_START="false"
-%end if
 
 #Add "v"s so nufw gets more verbose
 NUAUTH_VERBOSITY=%echo '"' + ('v' * int(%%nuauth_verbosity)) + '"'
