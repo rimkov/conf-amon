@@ -1,0 +1,9 @@
+#!/bin/bash
+. /etc/eole/containers.conf
+DEFAULT="$container_path_reverseproxy/etc/nginx/sites-enabled/default"
+# suppression du lien symbolique nginx
+if [ -L $DEFAULT ];then
+    rm -f $DEFAULT
+fi
+
+exit 0

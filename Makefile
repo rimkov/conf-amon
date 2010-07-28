@@ -54,6 +54,7 @@ install:
 	#reverseproxy
 	mkdir -p $(REV_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(REV_DIR)/$(EOLE_DIR)/diagnose/module
+	cp -rf reverseproxy/eole/* $(REV_DIR)/$(EOLE_DIR)
 	cp -rf reverseproxy/dicos $(REV_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf reverseproxy/tmpl $(REV_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -rf reverseproxy/diagnose/* $(REV_DIR)/$(EOLE_DIR)/diagnose/module
