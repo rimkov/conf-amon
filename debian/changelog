@@ -1,3 +1,22 @@
+conf-amon (2.3-eole30) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * fix problème du lien symbolique pour nginx
+  * correction nuaut : nufw->master et nuaut->conteneur
+  * active_nufw --> activer_nufw
+  * ménage (rm -f debian/conf-amon.preinst)
+  * amélioration configuration proxy (fixes #806)
+  * fix tests diagnose
+  * mise à niveau de Maj-blacklist.sh pour les conteneurs + suppression
+    des références à /var/lib/blacklists (ref #808)
+  * abandon du conteneur nuauth + déplacement des chown (ref #806)
+  * un peu de ménage + fix sarg
+  * cosmétique
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 29 Jul 2010 09:06:36 +0000
+
 conf-amon (2.3-eole29) eole-2.3; urgency=low
 
   [ Jerome Soyer ]
