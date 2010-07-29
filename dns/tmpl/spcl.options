@@ -1,4 +1,3 @@
-	 pid-file "/var/run/bind/run/named.pid";
         /*
          * If there is a firewall between you and nameservers you want
          * to talk to, you might need to uncomment the query-source
@@ -28,6 +27,11 @@ allow-query {localnets;};
 
 acl "intra" {
 	127.0.0.1;
+%if %%adresse_ip_conteneur_dns != '127.0.0.1'
+// mode avec conteneur
+	%%adresse_ip_conteneur_dns;
+%else
+// mode sans conteneur
 	%%adresse_ip_eth1;
 %if %%nombre_interfaces >= "3"
 	%%adresse_ip_eth2;
@@ -62,6 +66,8 @@ acl "intra" {
 %for %%id_vlan1 in %%id_vlan_eth1
 	%%id_vlan1.adresse_ip_vlan_eth1;
 %end for
+%end if
+// fin mode sans conteneur
 %end if
 };
 

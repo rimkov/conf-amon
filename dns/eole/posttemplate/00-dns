@@ -1,0 +1,5 @@
+#!/bin/bash
+# génération des fichiers de configuration
+# pour bind9
+/usr/share/eole/gen_dns
+exit 0

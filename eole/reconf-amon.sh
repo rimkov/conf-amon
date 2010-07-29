@@ -16,9 +16,6 @@ if [ "$adresse_ip_eth0" = "" ]; then
         exit 1
 fi
 
-## On regénère les db du dns
-/usr/share/eole/gen_dns
-
 echo "Mise en place de la configuration dansguardian"
 # suppression des données dans /etc/dansguardian/
 /etc/init.d/dansguardian stop > /dev/null

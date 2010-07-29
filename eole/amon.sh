@@ -16,16 +16,6 @@ if [ "$adresse_ip_eth0" = "" ]; then
         echo "Et relancer le reconfigure"
         exit 1
 fi
-#
-
-echo "Initialisation DNS "
-if [ ! -e /var/run/bind/run ]
-then
-    mkdir -p /var/run/bind/run
-    #chown -R bind:bind /var/run/bind
-fi
-/usr/share/eole/gen_dns
-cp -f /etc/bind/db.root /etc/bind/db.cache
 
 # modification du lien renvoyant vers les messages d'erreurs de squid
 rm -f /etc/squid/errors
