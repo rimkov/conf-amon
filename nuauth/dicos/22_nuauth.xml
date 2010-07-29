@@ -2,30 +2,26 @@
 
 <creole>
     <files>
+        <!-- FIXME : plus de conteneur -->
+        <package>nuauth-pkg</package>
         <service servicelist='nufw'>nufw</service>
+        <service servicelist='nufw'>nuauth</service>
         <file filelist='nufw' name='/etc/default/nufw'/>
         <file filelist='nufw' name='/etc/init.d/nufw' source='nufw.init'/>
+        <file name='/etc/nsswitch.conf'/>
+        <file filelist='nufw' name='/etc/default/nuauth'/>
+        <file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
+        <file filelist='nufw' name='/etc/pam.d/nuauth' source='nuauth.pamd'/>
     </files>
-    <containers>
-        <container name="nuauth" id='19'>
-            <package>nuauth-pkg</package>
-            <service servicelist='nufw'>nuauth</service>
-            <file name='/etc/nsswitch.conf'/>
-            <file filelist='nufw' name='/etc/default/nuauth'/>
-            <file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
-            <file filelist='nufw' name='/etc/pam.d/nuauth' source='nuauth.pamd'/>
-        </container>
-    </containers>
 <!--************************************************************************************************* -->
     <variables>
         <family name='general'>
-            <variable name='adresse_ip_nauth' type='ip' hidden='True' description="Adresse IP du conteneur Nuauth"/>
             <variable name='nuauth_tls_key' type='string' description="Clef privée pour Nuauth" hidden='True'/>
             <variable name='nuauth_tls_cert' type='string' description="Certificat pour Nuauth" hidden='True'/>
             <variable name='nuauth_tls_cacert' type='string' description="Certification pour Nuauth" hidden='True'/>
         </family>
         <family name='services'>
-            <variable name='activer_nufw' type='oui/non' description="Activation de l'authentification réseau (NuFW)" >
+            <variable name='activer_nufw' type='oui/non' description="Activation de l'authentification réseau (NuFW)">
                 <value>non</value>
             </variable>
             <variable name='activer_client_ldap' redefine='True' hidden='True'>
@@ -33,22 +29,22 @@
             </variable>
         </family>
         <family name='Interface-1'>
-            <variable name='nuauth_eth1' type='oui/non' description="Activer l'authentification Nuauth sur cette interface" >
+            <variable name='nuauth_eth1' type='oui/non' description="Activer l'authentification Nuauth sur cette interface">
                 <value>non</value>
             </variable>
         </family>
         <family name='Interface-2'>
-            <variable name='nuauth_eth2' type='oui/non' description="Activer l'authentification Nuauth sur cette interface" >
+            <variable name='nuauth_eth2' type='oui/non' description="Activer l'authentification Nuauth sur cette interface">
                 <value>non</value>
             </variable>
         </family>
         <family name='Interface-3'>
-            <variable name='nuauth_eth3' type='oui/non' description="Activer l'authentification Nuauth sur cette interface" >
+            <variable name='nuauth_eth3' type='oui/non' description="Activer l'authentification Nuauth sur cette interface">
                 <value>non</value>
             </variable>
         </family>
         <family name='Interface-4'>
-            <variable name='nuauth_eth4' type='oui/non' description="Activer l'authentification Nuauth sur cette interface" >
+            <variable name='nuauth_eth4' type='oui/non' description="Activer l'authentification Nuauth sur cette interface">
                 <value>non</value>
             </variable>
         </family>
@@ -74,9 +70,6 @@
         <auto name='key_nuauth' target='nuauth_tls_key'/>
         <auto name='cert_nuauth' target='nuauth_tls_cert'/>
         <auto name='cacert_nuauth' target='nuauth_tls_cacert'/>
-        <auto name='calc_container' target='adresse_ip_nauth'>
-            <param>container_ip_nuauth</param>
-        </auto>
         <check name="valid_enum" target="nuauth_verbosity">
             <param>['1','2','3','4','5','6','7','8','9']</param>
         </check>

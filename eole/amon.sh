@@ -46,15 +46,6 @@ then
 	echo
 fi
 
-# droit pour ces certificats nufw/nuauth
-# identique a reconf-amon.sh
-if [ "$active_nufw" == "oui" ]
-then
-	[ ! "$nuauth_tls_cacert" == "none" ] && chown root:nuauth $nuauth_tls_cacert && chmod 440 $nuauth_tls_cacert
-	[ ! "$nuauth_tls_cert" == "none" ] && chown root:nuauth $nuauth_tls_cert && chmod 440 $nuauth_tls_cert
-	[ ! "$nuauth_tls_key" == "none" ] && chown root:nuauth $nuauth_tls_key && chmod 440 $nuauth_tls_key
-fi
-
 #enregistrement au domaine dans le cas du NTLM/KERBEROS
 if [ "$type_squid_auth" == "NTLM/KERBEROS" ]; then
   /usr/share/eole/enregistrement_domaine.sh

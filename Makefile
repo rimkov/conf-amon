@@ -69,6 +69,7 @@ install:
 	#nuauth
 	mkdir -p $(NUAUTH_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(NUAUTH_DIR)/$(EOLE_DIR)/diagnose/module
+	cp -rf eole/* $(NUAUTH_DIR)/$(EOLE_DIR)
 	cp -rf nuauth/dicos $(NUAUTH_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf nuauth/tmpl $(NUAUTH_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -rf nuauth/diagnose/* $(NUAUTH_DIR)/$(EOLE_DIR)/diagnose/module
