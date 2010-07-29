@@ -1,3 +1,18 @@
+conf-amon (2.3-eole31) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * Makefile : typo
+  * squid.conf : /usr/lib/squid/ldap_auth =>
+    /usr/lib/squid3/squid_ldap_auth
+  * squid.conf : /usr/lib/squid/ntlm_auth =>
+    /usr/lib/squid3/ntlm_smb_lm_auth
+  * proxy : mise à niveau du script enregistrement_domaine.sh
+  * mise à niveau dns
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 29 Jul 2010 14:40:45 +0000
+
 conf-amon (2.3-eole30) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
