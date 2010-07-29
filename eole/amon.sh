@@ -46,11 +46,6 @@ then
 	echo
 fi
 
-#enregistrement au domaine dans le cas du NTLM/KERBEROS
-if [ "$type_squid_auth" == "NTLM/KERBEROS" ]; then
-  /usr/share/eole/enregistrement_domaine.sh
-fi
-
 #Enregistrement des sondes (desactivé si pas de Zephir)
 #/usr/share/eole/enregistrement_sonde.sh enreg
 

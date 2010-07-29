@@ -1,5 +1,9 @@
 #!/bin/bash
 if [ "$1" = "instance" ];then
+    #enregistrement au domaine dans le cas du NTLM/KERBEROS
+    if [ "$type_squid_auth" == "NTLM/KERBEROS" ]; then
+        /usr/share/eole/enregistrement_domaine.sh
+    fi
     echo
     echo "Voulez-vous mettre à jour les bases de filtrage maintenant ? (oui/non)"
     echo -n "[non] : "
