@@ -7,9 +7,9 @@
             <file filelist='sarg' name='/etc/squid/sarg2.conf'/>
             <file filelist='sarg' name='/etc/squid/sarg-reports1.conf'/>
             <file filelist='sarg' name='/etc/squid/sarg-reports2.conf'/>
-            <file filelist='sarg' name='/etc/cron.daily/01sarg' source='sarg_cron_daily' rm='True'/>
-            <file filelist='sarg' name='/etc/cron.weekly/01sarg' source='sarg_cron_weekly' rm='True'/>
-            <file filelist='sarg' name='/etc/cron.monthly/01sarg' source='sarg_cron_monthly' rm='True'/>
+            <file filelist='sarg' name='/etc/cron.daily/sarg' source='sarg_cron_daily' mode='755' rm='True'/>
+            <file filelist='sarg' name='/etc/cron.weekly/sarg' source='sarg_cron_weekly' mode='755' rm='True'/>
+            <file filelist='sarg' name='/etc/cron.monthly/sarg' source='sarg_cron_monthly' mode='755' rm='True'/>
         </container>
     </containers>
     <variables>

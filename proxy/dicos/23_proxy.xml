@@ -21,7 +21,7 @@
             <file name='/etc/squid/squid.conf'/>
             <file name='/etc/squid/domaines_nocache'/>
             <file name='/etc/squid/domaines_noauth'/>
-            <file name='/usr/lib/cgi-bin/filtre.cgi'/>
+            <file name='/usr/lib/cgi-bin/filtre.cgi' mode='755'/>
             <!--authentification-->
             <package>authentification-pkg</package>
             <service servicelist='kerberos'>smbd</service>
