@@ -1,3 +1,12 @@
+conf-amon (2.3-eole36) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * debian/control : typo
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 30 Jul 2010 13:12:01 +0000
+
 conf-amon (2.3-eole35) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
