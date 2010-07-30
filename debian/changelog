@@ -1,3 +1,14 @@
+conf-amon (2.3-eole37) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * fix suppression des anciens fichiers dansguardian
+  * suppression de amon.sh et reconf-amon.sh => préparation de eole-rvp
+  * création du paquet eole-rvp
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 30 Jul 2010 15:10:17 +0000
+
 conf-amon (2.3-eole36) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
