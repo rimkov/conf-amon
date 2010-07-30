@@ -31,7 +31,11 @@ Description: Templates et dictionnaires pour le dns EOLE
 
 Package: eole-nuauth
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
+Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal,
+ nuauth-utils, nuauth-extra, libpam-ldap, libnss-ldap,
+ ldap-utils, libsasl2-modules-ldap
+Description: Meta paquet du serveur nuauth EOLE
+
 Description: Templates et dictionnaires pour le nuauth EOLE
 
 Package: eole-radius

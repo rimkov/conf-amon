@@ -2,13 +2,11 @@
 
 <creole>
     <files>
-        <!-- FIXME : plus de conteneur -->
-        <package>nuauth-pkg</package>
         <service servicelist='nufw'>nufw</service>
         <service servicelist='nufw'>nuauth</service>
         <file filelist='nufw' name='/etc/default/nufw'/>
         <file filelist='nufw' name='/etc/init.d/nufw' source='nufw.init'/>
-        <file name='/etc/nsswitch.conf'/>
+        <file name='/etc/nsswitch.conf' source='nuauth.nsswitch'/>
         <file filelist='nufw' name='/etc/default/nuauth'/>
         <file filelist='nufw' name='/etc/nufw/nuauth.conf'/>
         <file filelist='nufw' name='/etc/pam.d/nuauth' source='nuauth.pamd'/>
