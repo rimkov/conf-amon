@@ -2,6 +2,7 @@
 
 . /etc/eole/containers.conf
 
+## SQUID ##
 touch "$container_path_proxy/etc/squid/domaines_noauth_user"
 touch "$container_path_proxy/etc/squid/domaines_nocache_user"
 touch "$container_path_proxy/etc/squid/src_noauth_user"
@@ -10,13 +11,25 @@ touch "$container_path_proxy/etc/squid/domaines_noauth_acad"
 touch "$container_path_proxy/etc/squid/domaines_nocache_acad"
 touch "$container_path_proxy/etc/squid/src_noauth_acad"
 touch "$container_path_proxy/etc/squid/src_nocache_acad"
-
-# FIXME 2.3
 if [ ! -f "$container_path_proxy/etc/squid/src_noauth" ];then
     echo "127.0.0.1" > "$container_path_proxy/etc/squid/src_noauth"
 fi
 if [ ! -f "$container_path_proxy/etc/squid/src_nocache" ];then
     echo "127.0.0.1" > "$container_path_proxy/etc/squid/src_nocache"
 fi
+
+## DANSGUARDIAN ##
+# /!\ ne pas supprimer /etc/dansguardian/languages /!\
+rm -rf "$container_path_proxy/etc/dansguardian/dansguardian*"
+rm -rf "$container_path_proxy/etc/dansguardian/authplugins"
+rm -rf "$container_path_proxy/etc/dansguardian/contentscanners"
+rm -rf "$container_path_proxy/etc/dansguardian/downloadmanagers"
+rm -rf "$container_path_proxy/etc/dansguardian/lists"
+
+danspath="/usr/share/eole/dansguardian"
+# remplacement du script d'init (2 instances)
+cp -f "$danspath/init/dansguardian" "$container_path_proxy/etc/init.d/dansguardian"
+# mise à niveau de la configuration
+$danspath/init_dans.py
 
 exit 0
