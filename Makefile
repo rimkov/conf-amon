@@ -48,8 +48,8 @@ install:
 	#cp -f config/src_noauth $(CONFAMON_DIR)/etc/squid/
 	#cp -f config/src_nocache $(CONFAMON_DIR)/etc/squid/
 
-	mkdir -p $(CONFAMON_DIR)/$(EOLE_DIR)/diagnose/module
-	cp -f diagnose/* $(CONFAMON_DIR)/$(EOLE_DIR)/diagnose/module
+	#mkdir -p $(CONFAMON_DIR)/$(EOLE_DIR)/diagnose/module
+	#cp -f diagnose/* $(CONFAMON_DIR)/$(EOLE_DIR)/diagnose/module
 
 	#reverseproxy
 	mkdir -p $(REV_DIR)/$(EOLE_CONF_DIR)
