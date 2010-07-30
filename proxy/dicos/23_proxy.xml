@@ -8,8 +8,10 @@
     <containers>
         <container name="proxy" id='20'>
             <package>proxy-pkg</package>
+            <package>antivirus-pkg</package>
             <service>squid</service>
             <service>dansguardian</service>
+            <service servicelist='clamav'>clamav-daemon</service>
             <file name='/etc/dansguardian/languages/french/fancydmtemplate.html' />
             <file name='/etc/logrotate.d/dansguardian' source='dansguardian.logrotate'/>
             <file name='/etc/logrotate.d/squid' source='squid.logrotate'/>
@@ -31,6 +33,7 @@
             <file filelist='kerberos' name='/etc/samba/smb.conf' />
             <file filelist='kerberos' name='/etc/samba/lmhosts' />
             <file filelist='kerberos' name='/etc/krb5.conf' />
+            <file filelist='clamav' name='/etc/clamav/clamd.conf'/>
         </container>
     </containers>
     <variables>
@@ -45,6 +48,11 @@
                 <value>2</value>
             </variable>
             <variable name='activer_squid_auth' type='oui/non' description="Activation de l'authentification web (proxy)" >
+                <value>non</value>
+            </variable>
+        </family>
+        <family name='clamav' hidden='True'>
+            <variable name='dansguardian_clam' type='oui/non' description="Activer l'anti-virus sur le proxy">
                 <value>non</value>
             </variable>
         </family>

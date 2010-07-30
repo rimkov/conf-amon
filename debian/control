@@ -16,7 +16,7 @@ Description: Templates et dictionnaires pour Amon
 
 Package: eole-proxy
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
+Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, eole-antivirus
 Description:  Templates et dictionnaires pour le proxy EOLE
 
 Package: eole-reverseproxy
