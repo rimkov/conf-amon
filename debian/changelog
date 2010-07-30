@@ -1,3 +1,19 @@
+conf-amon (2.3-eole35) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * nsswitch.conf => nuauth.nsswitch
+  * eole-nuauth remplace eole-nuauth + nuauth-pkg
+  * chmod -x
+  * réintégration des modifications dansguardian en posttemplate
+  * dansguardian*.conf : fix languagedir
+
+  [ Emmanuel Garette ]
+  * deplace les valid_enum pour le débit
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 30 Jul 2010 13:09:28 +0000
+
 conf-amon (2.3-eole34) eole-2.3; urgency=low
 
   * UNRELEASED
