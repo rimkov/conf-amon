@@ -15,6 +15,7 @@ DNS_DIR=$(DESTDIR)/eole-dns
 NUAUTH_DIR=$(DESTDIR)/eole-nuauth
 RADIUS_DIR=$(DESTDIR)/eole-radius
 PROXY_DIR=$(DESTDIR)/eole-proxy
+RVP_DIR=$(DESTDIR)/eole-rvp
 
 all: install
 
@@ -87,8 +88,10 @@ install:
 	cp -rf proxy/tmpl $(PROXY_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -rf proxy/diagnose/* $(PROXY_DIR)/$(EOLE_DIR)/diagnose/module
 
-uninstall:
+	#rvp
+	mkdir -p $(RVP_DIR)/$(EOLE_CONF_DIR)
+	mkdir -p $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
+	cp -rf rvp/eole/* $(RVP_DIR)/$(EOLE_DIR)
+	cp -rf rvp/dicos $(RVP_DIR)/$(EOLE_CONF_DIR)/dicos
+	cp -rf rvp/diagnose/* $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
 
-	# suppression des anciens templates
-	rm -rf $(EOLE_CONF_DIR)/distrib/*
-	rm -rf $(EOLE_CONF_DIR)/template/*

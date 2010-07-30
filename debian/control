@@ -33,10 +33,16 @@ Package: eole-nuauth
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal,
  nuauth-utils, nuauth-extra, libpam-ldap, libnss-ldap,
- ldap-utils, libsasl2-modules-ldap
+ ldap-utils, libsasl2-modules-ldap, nufw
 Description: Meta paquet du serveur nuauth EOLE
 
 Package: eole-radius
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
 Description: Templates et dictionnaires pour radius EOLE
+
+Package: eole-rvp
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, strongswan,
+ ipsec-tools
+Description: Templates et dictionnaires pour rvp EOLE
