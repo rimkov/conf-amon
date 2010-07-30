@@ -36,8 +36,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal,
  ldap-utils, libsasl2-modules-ldap
 Description: Meta paquet du serveur nuauth EOLE
 
-Description: Templates et dictionnaires pour le nuauth EOLE
-
 Package: eole-radius
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
