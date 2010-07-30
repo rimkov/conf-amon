@@ -113,21 +113,6 @@
         <check name="valid_enum" target="eth0_method">
         <param>['statique','dhcp','pppoe']</param>
         </check>-->
-        <check name='valid_enum' target='debit_carte_eth0'>
-            <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-        </check>
-        <check name='valid_enum' target='debit_carte_eth1'>
-            <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-        </check>
-        <check name='valid_enum' target='debit_carte_eth2'>
-            <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-        </check>
-        <check name='valid_enum' target='debit_carte_eth3'>
-            <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-        </check>
-        <check name='valid_enum' target='debit_carte_eth4'>
-            <param>['','speed 100 duplex full autoneg off','autoneg on','speed 10 duplex half autoneg off','speed 1000 duplex full autoneg off']</param>
-        </check>
         <condition name='hidden_if_in' source='eole_module'>
             <param>amonecole</param>
             <target type='variable'>install_scribe_dmz</target>
