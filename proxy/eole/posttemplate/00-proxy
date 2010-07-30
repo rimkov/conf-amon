@@ -20,7 +20,7 @@ fi
 
 ## DANSGUARDIAN ##
 # /!\ ne pas supprimer /etc/dansguardian/languages /!\
-rm -rf "$container_path_proxy/etc/dansguardian/dansguardian*"
+rm -rf "$container_path_proxy/etc/dansguardian/dansguardian"*
 rm -rf "$container_path_proxy/etc/dansguardian/authplugins"
 rm -rf "$container_path_proxy/etc/dansguardian/contentscanners"
 rm -rf "$container_path_proxy/etc/dansguardian/downloadmanagers"
