@@ -17,6 +17,12 @@ fi
 if [ ! -f "$container_path_proxy/etc/squid/src_nocache" ];then
     echo "127.0.0.1" > "$container_path_proxy/etc/squid/src_nocache"
 fi
+# modification du lien renvoyant vers les messages d'erreurs de squid
+# FIXME : 2.3
+#rm -f /etc/squid/errors
+#ln -s /usr/share/squid/errors/French /etc/squid/errors
+#chown proxy.proxy /var/spool/squid
+
 
 ## DANSGUARDIAN ##
 # /!\ ne pas supprimer /etc/dansguardian/languages /!\

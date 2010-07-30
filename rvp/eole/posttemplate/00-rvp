@@ -1,0 +1,23 @@
+#!/bin/bash
+## Mise en place du VPN ##
+if [ "$1" == "instance" -a "$install_rvp" == "oui" -a ! -e /etc/eole/Tunnel.conf ]
+then
+        echo
+        echo "Voulez-vous configurer le Réseau Virtuel Privé maintenant ? [oui/non]"
+        read Rep
+
+        if [ "$Rep" = "oui" -o "$Rep" = "o" -o "$Rep" = "O" ]
+        then
+                /usr/share/eole/active_rvp.sh
+        fi
+        echo
+fi
+
+# On supprime le service rvp au niveau des rc*.d s'il existe...
+# FIXME 2.3 (+ conteneurs)
+#if [ -L /etc/rc3.d/S20rvp ]
+#then
+#        update-rc.d -f rvp remove >/dev/null 2>&1
+#fi
+
+exit 0
