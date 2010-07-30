@@ -1,3 +1,12 @@
+conf-amon (2.3-eole32) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * support de eole-antivirus
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 29 Jul 2010 15:33:14 +0000
+
 conf-amon (2.3-eole31) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
