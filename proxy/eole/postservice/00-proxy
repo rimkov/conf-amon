@@ -1,7 +1,9 @@
 #!/bin/bash
+. /usr/bin/ParseDico
 if [ "$1" = "instance" ];then
     #enregistrement au domaine dans le cas du NTLM/KERBEROS
-    if [ "$type_squid_auth" == "NTLM/KERBEROS" ]; then
+    if [ "$type_squid_auth" = "NTLM/KERBEROS" -a "$activer_squid_auth" = "oui" ]; then
+        # FIXME : tester si l'enregistrement n'est pas déjà fait et OK
         /usr/share/eole/enregistrement_domaine.sh
     fi
     echo

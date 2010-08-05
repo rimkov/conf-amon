@@ -1,4 +1,5 @@
 #!/bin/bash
+. /usr/bin/ParseDico
 ## Mise en place du VPN ##
 if [ "$1" == "instance" -a "$install_rvp" == "oui" -a ! -e /etc/eole/Tunnel.conf ]
 then
