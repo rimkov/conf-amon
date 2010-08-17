@@ -7,12 +7,10 @@ if [ "$1" = "instance" ];then
         /usr/share/eole/enregistrement_domaine.sh
     fi
     echo
-    echo "Voulez-vous mettre à jour les bases de filtrage maintenant ? (oui/non)"
-    echo -n "[non] : "
-    read Rep
-    if [ "$Rep" = "oui" -o "$Rep" = "o" -o "$Rep" = "O" ]
-    then
-    	/usr/share/eole/Maj-blacklist.sh
+    . /usr/share/eole/FonctionsEoleNg
+    Question_ouinon "Voulez-vous mettre à jour les bases de filtrage maintenant ?" "oui"
+    if [ $? -eq 0 ];then
+        /usr/share/eole/Maj-blacklist.sh
     fi
     echo
 fi

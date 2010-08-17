@@ -1,17 +1,15 @@
 #!/bin/bash
 . /usr/bin/ParseDico
-## Mise en place du VPN ##
 if [ "$1" == "instance" -a "$install_rvp" == "oui" -a ! -e /etc/eole/Tunnel.conf ]
 then
-        echo
-        echo "Voulez-vous configurer le Réseau Virtuel Privé maintenant ? [oui/non]"
-        read Rep
-
-        if [ "$Rep" = "oui" -o "$Rep" = "o" -o "$Rep" = "O" ]
-        then
-                /usr/share/eole/active_rvp.sh
-        fi
-        echo
+    ## Mise en place du VPN ##
+    echo
+    . /usr/share/eole/FonctionsEoleNg
+    Question_ouinon "Voulez-vous configurer le Réseau Virtuel Privé maintenant ?" "non"
+    if [ $? -eq 0 ];then
+        /usr/share/eole/active_rvp.sh
+    fi
+    echo
 fi
 
 # On supprime le service rvp au niveau des rc*.d s'il existe...
