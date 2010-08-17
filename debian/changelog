@@ -1,3 +1,17 @@
+conf-amon (2.3-eole39) eole-2.3; urgency=low
+
+  [ jojo ]
+  * squid.conf : fix nom des itérateurs rvp
+
+  [ Joël Cuissinat ]
+  * ajout des appels à ParseDico manquants (fixes #828)
+  * les services fournissent leur propre fichier ".agent"
+  * les services fournissent leur propre fichier ".agent"
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 17 Aug 2010 13:26:59 +0000
+
 conf-amon (2.3-eole38) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
