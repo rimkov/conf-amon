@@ -71,10 +71,12 @@ install:
 	#nuauth
 	mkdir -p $(NUAUTH_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(NUAUTH_DIR)/$(EOLE_DIR)/diagnose/module
+	mkdir -p $(NUAUTH_DIR)/$(AGENT_DIR)
 	cp -rf nuauth/eole/* $(NUAUTH_DIR)/$(EOLE_DIR)
 	cp -rf nuauth/dicos $(NUAUTH_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf nuauth/tmpl $(NUAUTH_DIR)/$(EOLE_CONF_DIR)/distrib
-	cp -rf nuauth/diagnose/* $(NUAUTH_DIR)/$(EOLE_DIR)/diagnose/module
+	cp -f  nuauth/diagnose/* $(NUAUTH_DIR)/$(EOLE_DIR)/diagnose/module
+	cp -f  nuauth/zephir/* $(NUAUTH_DIR)/$(AGENT_DIR)
 
 	#radius
 	mkdir -p $(RADIUS_DIR)/$(EOLE_CONF_DIR)
@@ -94,7 +96,9 @@ install:
 	#rvp
 	mkdir -p $(RVP_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
+	mkdir -p $(RVP_DIR)/$(AGENT_DIR)
 	cp -rf rvp/eole/* $(RVP_DIR)/$(EOLE_DIR)
 	cp -rf rvp/dicos $(RVP_DIR)/$(EOLE_CONF_DIR)/dicos
-	cp -rf rvp/diagnose/* $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
+	cp -f  rvp/diagnose/* $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
+	cp -f  rvp/zephir/* $(RVP_DIR)/$(AGENT_DIR)
 

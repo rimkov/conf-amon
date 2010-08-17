@@ -1,0 +1,18 @@
+# -*- coding: UTF-8 -*-
+"""
+"""
+
+from os.path import isfile
+from creole.parsedico import parse_dico
+from zephir.monitor.agents.rvp import RvpAmon
+
+# on vérifie si le service rvp est configuré pour fonctionner
+dico = parse_dico()
+if dico['install_rvp'] == 'oui' and isfile('/usr/share/eole/test-rvp'):
+    tunnels = RvpAmon('rvp', period=180,
+                      description='Etat des Tunnels',
+                      section="""Services""")
+    AGENTS = [tunnels]
+else:
+    # on supprime le répertoire des stats rvp si il existe (pour ne pas avoir d'erreur sur zephir)
+    AGENTS = []
