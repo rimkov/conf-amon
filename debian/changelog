@@ -1,3 +1,12 @@
+conf-amon (2.3-eole40) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * utilisation de la fonction Question_ouinon (ref #827)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 26 Aug 2010 15:35:32 +0000
+
 conf-amon (2.3-eole39) eole-2.3; urgency=low
 
   [ jojo ]
