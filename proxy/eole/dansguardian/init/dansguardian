@@ -10,10 +10,10 @@
 # config: /etc/dansguardian/dansguardian.conf
 ### BEGIN INIT INFO
 # Provides:          dansguardian
-# Required-Start:    $network $syslog $squid
-# Required-Stop:     $network $squid
-# Default-Start:     2 3 5
-# Default-Stop:      0 6
+# Required-Start:    $network $remote_fs $syslog $squid
+# Required-Stop:     $network $remote_fs $squid
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
 # Description: Starts dansguardian content proxy
 # short-description: dansguardian configuration
 ### END INIT INFO

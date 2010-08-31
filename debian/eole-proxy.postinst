@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# suppression du fichier de conf dansguardian original
+
+if [ -f /etc/dansguardian/dansguardian.conf ]; then
+    /bin/rm -f /etc/dansguardian/dansguardian.conf
+fi
+
+# remplacement du script d'init
+
+if [ -f /etc/init.d/dansguardian ]; then
+    /bin/rm -f /etc/init.d/dansguardian
+fi
+
+if [ ! -f /etc/init.d/dansguardian ]; then
+    /bin/cp -f /usr/share/eole/dansguardian/init/dansguardian /etc/init.d/dansguardian
+fi
+
+if [ -d /var/log/dansguardian ]; then
+    /bin/chown -R proxy:proxy /var/log/dansguardian
+fi
