@@ -42,9 +42,6 @@
             <variable name='activer_bacula' type='oui/non' description='Activation du client Bacula (sauvegardes)' >
                 <value>non</value>
             </variable>
-            <variable name='activer_ulog' redefine='True' hidden='True'>
-                <value>oui</value>
-            </variable>
         </family>
         <family name='Interface-1'>
             <variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" >

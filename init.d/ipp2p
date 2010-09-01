@@ -21,14 +21,14 @@ start() {
 	if [ $? == "0" ]
 	then
 	for i in $procotol; do
-		/sbin/iptables -D FORWARD -m limit --limit 12/min -m ipp2p --$i -j ULOG --ulog-prefix "IPP2P-$i-LOG"
+		/sbin/iptables -D FORWARD -m limit --limit 12/min -m ipp2p --$i -j LOG --log-prefix "IPP2P-$i-LOG"
 		/sbin/iptables -D FORWARD -m ipp2p --$i -j DROP
 	done
 		echo
 		rm -f /var/lock/ipp2p
 	fi
 	for i in $protocol; do
-	/sbin/iptables -I FORWARD 1 -m limit --limit 12/min -m ipp2p --$i -j ULOG --ulog-prefix "IPP2P-$i-LOG"
+	/sbin/iptables -I FORWARD 1 -m limit --limit 12/min -m ipp2p --$i -j LOG --log-prefix "IPP2P-$i-LOG"
 	/sbin/iptables -I FORWARD 2 -m ipp2p --$i -j DROP
 	done
 	RETVAL=$?
@@ -41,7 +41,7 @@ start() {
 stop() {
 	log_begin_msg "Stop ipp2p"
 for i in $protocol; do
-	/sbin/iptables -D FORWARD -m limit --limit 12/min -m ipp2p --$i -j ULOG --ulog-prefix "IPP2P-$i-LOG"
+	/sbin/iptables -D FORWARD -m limit --limit 12/min -m ipp2p --$i -j LOG --log-prefix "IPP2P-$i-LOG"
 	/sbin/iptables -D FORWARD -m ipp2p --$i -j DROP
 done
         /sbin/rmmod $module
