@@ -1,3 +1,24 @@
+conf-amon (2.3-eole41) eole-2.3; urgency=low
+
+  [ smorin ]
+  * report de la correction du bug 767 de la 2.2 sur le template de
+    squid
+
+  [ Jerome Soyer ]
+  * Fix des permissions sur le répertoire de log de dansguardian
+
+  [ smorin ]
+  * debut fix 826
+  * repport correction 627 + ajout de is_defined dans nuauth.conf
+
+  [ Jerome Soyer ]
+  * fix script d'init dansguardian
+  * Fix configuration DansGuardian
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 01 Sep 2010 13:18:42 +0000
+
 conf-amon (2.3-eole40) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
