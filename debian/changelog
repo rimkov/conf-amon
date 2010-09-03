@@ -1,3 +1,13 @@
+conf-amon (2.3-eole42) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * fix typo
+  * suppression de ulog
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 03 Sep 2010 09:08:19 +0000
+
 conf-amon (2.3-eole41) eole-2.3; urgency=low
 
   [ smorin ]
