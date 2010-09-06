@@ -168,7 +168,7 @@
             <variable name='nom_cache_pere' type='string' description='Nom ou adresse IP du serveur mandataire web parent'/>
             <variable name='port_cache_pere' type='string' description='Port du serveur mandataire web parent'/>
             <variable name='proxy_pere_rvp' type='oui/non' description="Accés aux zone RVP en passant par le proxy père global ?">
-                <value>oui</value>
+                <value>non</value>
             </variable>
             <variable name='nom_cache_pere_zone' type='string' description='Utiliser le serveur mandataire web parent pour la zone' multi='True' />
             <variable name='port_cache_pere_zone' type='string' description='Port du serveur mandataire web parent pour la zone'/>
