@@ -2,6 +2,8 @@
 
 <creole>
     <files>
+	<file filelist='rvp' name='/etc/strongswan.conf' />
+	<file filelist='rvp' name='/etc/ipsec.conf' />
     </files>
     <variables>
         <family name='services'>
@@ -31,6 +33,7 @@
         <condition name='hidden_if_in' source='install_rvp'>
             <param>non</param>
             <target type='family'>rvp</target>
+            <target type='filelist'>rvp</target>
         </condition>
         <group master='adresse_network_zone_rvp'>
             <slave>adresse_netmask_zone_rvp</slave>
