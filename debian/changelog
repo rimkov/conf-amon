@@ -1,3 +1,19 @@
+conf-amon (2.3-eole44) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * amon.sudo : chemin de fping (fixes #549)
+
+  [ Emmanuel Garette ]
+  * mise en commun des routes statiques
+  * deplace template static-routes
+
+  [ Joël Cuissinat ]
+  * correction des messages dansguardian avec un sed (fixes #502)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 22 Sep 2010 09:54:12 +0000
+
 conf-amon (2.3-eole43) eole-2.3; urgency=low
 
   [ smorin ]
