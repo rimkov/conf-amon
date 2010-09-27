@@ -193,12 +193,6 @@
             <variable name='tcp_outgoing_address' type='string' description=''>
                 <value>255.255.255.255</value>
             </variable>
-            <variable name='udp_incoming_address' type='string' description=''>
-                <value>0.0.0.0</value>
-            </variable>
-            <variable name='udp_outgoing_address' type='string' description=''>
-                <value>255.255.255.255</value>
-            </variable>
             <variable name='icp_query_timeout' type='number' description='en msec'>
                 <value>0</value>
             </variable>
