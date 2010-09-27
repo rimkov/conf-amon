@@ -44,6 +44,6 @@ for res1 in Reseau :
 fic = file('/etc/freeswan/ipsec-spd_policy','w')
 fic.write("\n".join(data))
 fic.close()
-os.system('/usr/sbin/setkey -PF')
+##os.system('/usr/sbin/setkey -PF')
 os.system('chmod u+x /etc/freeswan/ipsec-spd_policy')
 os.system('/etc/freeswan/ipsec-spd_policy >/dev/null')
