@@ -1,3 +1,18 @@
+conf-amon (2.3-eole45) eole-2.3; urgency=low
+
+  [ smorin ]
+  * ajout fichier conf strongswan
+  * modif strongswan.conf
+  * fixies #910 : le script gen_ipsec-policy flushait les spd ce qui
+    pouvait entrainer des disfonctionnements si certaines était déjà
+    activée
+  * squid : modification d'options deprecated + correction pb de
+    connexions au dns qui partaient en timeout
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 28 Sep 2010 09:19:02 +0000
+
 conf-amon (2.3-eole44) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
