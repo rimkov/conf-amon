@@ -1,3 +1,12 @@
+conf-amon (2.3-eole48) eole-2.3; urgency=low
+
+  [ smorin ]
+  * correction erreur copier/coller dans le dico de freeradius
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 29 Sep 2010 15:09:57 +0000
+
 conf-amon (2.3-eole47) eole-2.3; urgency=low
 
   [ smorin ]
