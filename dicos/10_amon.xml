@@ -24,9 +24,9 @@
         <family name='general'>
             <variable name='eole_module' type='string' description="Module installé" hidden='True'/>
             <!--**** Reseau Global **** -->
-            <variable name='type_amon' type='string' description='Modèle de filtrage' />
+            <variable name='type_amon' type='string' description='Modèle de filtrage'>
             <value>minimal</value>
-            </variable>-->
+            </variable>
             <!--FIXME<variable name='nombre_interfaces' type='string' description="Nombre d'interfaces à activer sur le pare-feu" >
             <value>2</value>
             </variable>-->
