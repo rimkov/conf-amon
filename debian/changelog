@@ -1,3 +1,19 @@
+conf-amon (2.3-eole47) eole-2.3; urgency=low
+
+  [ smorin ]
+  * fixes #798 : type_amon fixé à minimal par défaut et la variable est
+    rendu obligatoire
+  * fixes #798 : type_amon fixé à minimal par défaut et la variable est
+    rendu obligatoire
+  * fixes #823 : variables rendues obligatoire dans le dico pour
+    freeradius
+  * fixes #708 : squid.conf : ajout d'une acl permettant d'acceder a
+    certains domaines sans passer par 1 cache pere
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 29 Sep 2010 14:42:29 +0000
+
 conf-amon (2.3-eole46) eole-2.3; urgency=low
 
   [ smorin ]
