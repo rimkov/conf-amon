@@ -65,8 +65,10 @@
         <check name='obligatoire' target='freerad_nas_type'/>
         <check name='obligatoire' target='freerad_ldap_ip'/>
         <check name='obligatoire' target='freerad_ldap_base_dn'/>
-        <check name="valid_enum" target='freerad_ldap_group'>
-        <check name="valid_enum" target='freerad_ldap_vlan'>
+        <check name="obligatoire" target='freerad_ldap_group'>
+        <check name="obligatoire" target='freerad_ldap_vlan'>
+
+	 <check name="valid_enum" target='freerad_nas_type'>
             <param>['cisco','computone','livingston','max40xx','multitech','netserver','pathras','patton','portslave','tc','usrhiper','other']</param>
         </check>
         <check name="valid_enum" target='freerad_ldap_group'>
