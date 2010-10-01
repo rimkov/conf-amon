@@ -28,6 +28,8 @@ rm -rf "$container_path_proxy/etc/dansguardian/downloadmanagers"
 rm -rf "$container_path_proxy/etc/dansguardian/lists"
 # correction formatage des accents dansguardian (#502)
 sed -i 's/\&ecute;/\&eacute;/g' "$container_path_proxy/etc/dansguardian/languages/french/messages"
+# FIXME : conteneurs ?
+chown -R proxy.proxy /var/log/dansguardian
 
 danspath="/usr/share/eole/dansguardian"
 # remplacement du script d'init (2 instances)
