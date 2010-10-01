@@ -1,3 +1,12 @@
+conf-amon (2.3-eole50) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * ajout d'un chown pour /var/log/dansguardian (fixes #1037)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 01 Oct 2010 15:27:37 +0000
+
 conf-amon (2.3-eole49) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
