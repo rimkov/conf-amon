@@ -1,3 +1,13 @@
+conf-amon (2.3-eole49) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * 26_freeradius.xml toujours invalide !!!
+  * typo
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 01 Oct 2010 14:27:54 +0000
+
 conf-amon (2.3-eole48) eole-2.3; urgency=low
 
   [ smorin ]
