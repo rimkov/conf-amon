@@ -1,3 +1,12 @@
+conf-amon (2.3-eole51) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * Suppression du template de webalizer
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 05 Oct 2010 07:36:23 +0000
+
 conf-amon (2.3-eole50) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
