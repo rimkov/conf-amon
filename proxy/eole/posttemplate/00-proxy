@@ -18,6 +18,8 @@ fi
 if [ ! -f "$container_path_proxy/etc/squid/src_nocache" ];then
     echo "127.0.0.1" > "$container_path_proxy/etc/squid/src_nocache"
 fi
+# correction des droits sur winbindd_privileged (#699)
+sed -i 's/chgrp winbindd_priv/chgrp proxy/g' "$container_path_proxy/etc/init.d/winbind"
 
 ## DANSGUARDIAN ##
 # /!\ ne pas supprimer /etc/dansguardian/languages /!\
