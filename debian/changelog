@@ -1,3 +1,15 @@
+conf-amon (2.3-eole53) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * correction des droits sur winbindd_privileged [2.3] (fixes #699)
+  * Amon n'a pas vocation à être contrôleur principal [2.3] (fixes
+    #1084)
+  * amélioration du script enregistrement_domaine.sh [2.3] (fixes #992)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 28 Oct 2010 09:19:49 +0000
+
 conf-amon (2.3-eole52) eole-2.3; urgency=low
 
   [ smorin ]
