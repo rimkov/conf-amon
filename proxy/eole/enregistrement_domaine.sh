@@ -29,6 +29,12 @@ read -s mdp_admin
 RunCmd "/usr/bin/net ads join -U $user_admin%$mdp_admin" proxy
 echo
 
+#redemarrage de samba
+echo "*** Redémarrage des services pour confirmer l'enregistrement au domaine ***"
+Service winbind stop proxy &>/dev/null
+Service smbd restart proxy &>/dev/null
+Service winbind start proxy &>/dev/null
+
 #test de l'intégration
 RunCmd "/usr/bin/wbinfo -t" proxy &>/dev/null
 if [ $? -eq 1 ]; then
