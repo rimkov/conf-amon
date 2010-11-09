@@ -26,9 +26,9 @@
             <variable name='type_amon' type='string' description='Modèle de filtrage'>
             <value>minimal</value>
             </variable>
-            <!--FIXME<variable name='nombre_interfaces' type='string' description="Nombre d'interfaces à activer sur le pare-feu" >
-            <value>2</value>
-            </variable>-->
+            <variable name='nombre_interfaces' redefine='True'>
+                <value>2</value>
+            </variable>
             <!--<variable name='nom_machine' type='string' description='Nom de la machine' >
             <value>pf-amon</value>
             </variable>-->
