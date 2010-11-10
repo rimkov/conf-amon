@@ -1,3 +1,18 @@
+conf-amon (2.3-eole54) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * Ajout du redémarrage des services suites a l'enregistrement au
+    domaine (fixes #1156)
+
+  [ Joël Cuissinat ]
+  * redéfinition de la variable nombre_interfaces pour en avoir 2 sur
+    Amon (fixes #1041)
+  * suppression separator (doublon avec eole-common)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 10 Nov 2010 14:04:26 +0000
+
 conf-amon (2.3-eole53) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
