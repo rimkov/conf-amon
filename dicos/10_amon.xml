@@ -72,7 +72,6 @@
             </variable>
         </family>
         <separators>
-            <separator name='type_amon'>Paramètres réseau globaux</separator>
             <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
             <separator name='nom_cache_pere'>Proxy pere general</separator>
             <separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
