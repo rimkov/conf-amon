@@ -100,6 +100,7 @@ install:
 	mkdir -p $(RVP_DIR)/$(AGENT_DIR)
 	cp -rf rvp/eole/* $(RVP_DIR)/$(EOLE_DIR)
 	cp -rf rvp/dicos $(RVP_DIR)/$(EOLE_CONF_DIR)/dicos
+	cp -rf rvp/tmpl $(RVP_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -f  rvp/diagnose/* $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
 	cp -f  rvp/zephir/* $(RVP_DIR)/$(AGENT_DIR)
 

@@ -10,7 +10,6 @@
         <file name='/etc/host.conf'/>
         <file name='/etc/logrotate.conf'/>
         <file name='/etc/sudoers.d/amon' source='amon.sudo' mode="0440"/>
-        <file name='/etc/webalizer.conf'/>
         <file name='/usr/share/eole/firewall.stop' mode='755'/>
         <file name='/usr/share/era/backend/data/active_tags'/>
         <file name='/etc/cron.d/amon-firewall' source='cron-root'/>
@@ -22,10 +21,12 @@
         <family name='general'>
             <variable name='eole_module' type='string' description="Module installé" hidden='True'/>
             <!--**** Reseau Global **** -->
-            <variable name='type_amon' type='string' description='Modèle de filtrage' />
-            <!--FIXME<variable name='nombre_interfaces' type='string' description="Nombre d'interfaces à activer sur le pare-feu" >
-            <value>2</value>
-            </variable>-->
+            <variable name='type_amon' type='string' description='Modèle de filtrage'>
+            <value>minimal</value>
+            </variable>
+            <variable name='nombre_interfaces' redefine='True'>
+                <value>2</value>
+            </variable>
             <!--<variable name='nom_machine' type='string' description='Nom de la machine' >
             <value>pf-amon</value>
             </variable>-->
@@ -66,7 +67,6 @@
             <variable name='ip_serveur_scribe_dmz' type='ip' description='Adresse IP du Scribe dans la DMZ' />
         </family>
         <separators>
-            <separator name='type_amon'>Paramètres réseau globaux</separator>
             <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
             <separator name='nom_cache_pere'>Proxy pere general</separator>
             <separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
@@ -75,6 +75,7 @@
     </variables>
     <constraints>
         <auto name='auto_module' target='eole_module'/>
+        <check name='obligatoire' target='type_amon'/>
         <check name='obligatoire' target='nom_machine_eth1'/>
         <check name="valid_enum" target="type_amon">
             <param type="python">eosfunc.list_files('/usr/share/era/modeles','*.xml',True,default=['2zones', '3zones-amonecole-eclair-nginx', '3zones-amonecole-eclair', '3zones-amonecole-nginx', '3zones-amonecole', '3zones-scribe-posh-nginx', '3zones-scribe', '3zones', '4zones-scribe-nufw', '4zones-scribe-posh-nginx', '4zones-scribe', '4zones', '5zones', 'minimal'])</param>

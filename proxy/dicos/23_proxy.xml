@@ -190,9 +190,6 @@
                 <value>4827</value>
             </variable>
             <variable name='mcast_groups' type='string' description=''/>
-            <variable name='tcp_outgoing_address' type='string' description=''>
-                <value>255.255.255.255</value>
-            </variable>
             <variable name='icp_query_timeout' type='number' description='en msec'>
                 <value>0</value>
             </variable>
@@ -561,9 +558,6 @@
         <check name='obligatoire' target='ssl_unclean_shutdown'/>
         <check name='obligatoire' target='icp_port'/>
         <check name='obligatoire' target='htcp_port'/>
-        <check name='obligatoire' target='tcp_outgoing_address'/>
-        <check name='obligatoire' target='udp_incoming_address'/>
-        <check name='obligatoire' target='udp_outgoing_address'/>
         <check name='obligatoire' target='icp_query_timeout'/>
         <check name='obligatoire' target='maximum_icp_query_timeout'/>
         <check name='obligatoire' target='mcast_icp_query_timeout'/>

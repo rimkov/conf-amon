@@ -1,3 +1,102 @@
+conf-amon (2.3-eole54) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * Ajout du redémarrage des services suites a l'enregistrement au
+    domaine (fixes #1156)
+
+  [ Joël Cuissinat ]
+  * redéfinition de la variable nombre_interfaces pour en avoir 2 sur
+    Amon (fixes #1041)
+  * suppression separator (doublon avec eole-common)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 10 Nov 2010 14:04:26 +0000
+
+conf-amon (2.3-eole53) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * correction des droits sur winbindd_privileged [2.3] (fixes #699)
+  * Amon n'a pas vocation à être contrôleur principal [2.3] (fixes
+    #1084)
+  * amélioration du script enregistrement_domaine.sh [2.3] (fixes #992)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 28 Oct 2010 09:19:49 +0000
+
+conf-amon (2.3-eole52) eole-2.3; urgency=low
+
+  [ smorin ]
+  * les templates du rvp n'étaient pas installé
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 05 Oct 2010 09:34:00 +0000
+
+conf-amon (2.3-eole51) eole-2.3; urgency=low
+
+  [ Jerome Soyer ]
+  * Suppression du template de webalizer
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 05 Oct 2010 07:36:23 +0000
+
+conf-amon (2.3-eole50) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * ajout d'un chown pour /var/log/dansguardian (fixes #1037)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 01 Oct 2010 15:27:37 +0000
+
+conf-amon (2.3-eole49) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * 26_freeradius.xml toujours invalide !!!
+  * typo
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 01 Oct 2010 14:27:54 +0000
+
+conf-amon (2.3-eole48) eole-2.3; urgency=low
+
+  [ smorin ]
+  * correction erreur copier/coller dans le dico de freeradius
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 29 Sep 2010 15:09:57 +0000
+
+conf-amon (2.3-eole47) eole-2.3; urgency=low
+
+  [ smorin ]
+  * fixes #798 : type_amon fixé à minimal par défaut et la variable est
+    rendu obligatoire
+  * fixes #798 : type_amon fixé à minimal par défaut et la variable est
+    rendu obligatoire
+  * fixes #823 : variables rendues obligatoire dans le dico pour
+    freeradius
+  * fixes #708 : squid.conf : ajout d'une acl permettant d'acceder a
+    certains domaines sans passer par 1 cache pere
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 29 Sep 2010 14:42:29 +0000
+
+conf-amon (2.3-eole46) eole-2.3; urgency=low
+
+  [ smorin ]
+  * suppression de variables dans squid
+  * suppression de variables dans squid
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 28 Sep 2010 10:06:49 +0000
+
 conf-amon (2.3-eole45) eole-2.3; urgency=low
 
   [ smorin ]

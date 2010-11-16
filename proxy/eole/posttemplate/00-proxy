@@ -5,6 +5,7 @@
 ## SQUID ##
 touch "$container_path_proxy/etc/squid/domaines_noauth_user"
 touch "$container_path_proxy/etc/squid/domaines_nocache_user"
+touch "$container_path_proxy/etc/squid/domaines_nopeerproxy"
 touch "$container_path_proxy/etc/squid/src_noauth_user"
 touch "$container_path_proxy/etc/squid/src_nocache_user"
 touch "$container_path_proxy/etc/squid/domaines_noauth_acad"
@@ -17,6 +18,8 @@ fi
 if [ ! -f "$container_path_proxy/etc/squid/src_nocache" ];then
     echo "127.0.0.1" > "$container_path_proxy/etc/squid/src_nocache"
 fi
+# correction des droits sur winbindd_privileged (#699)
+sed -i 's/chgrp winbindd_priv/chgrp proxy/g' "$container_path_proxy/etc/init.d/winbind"
 
 ## DANSGUARDIAN ##
 # /!\ ne pas supprimer /etc/dansguardian/languages /!\
@@ -27,6 +30,8 @@ rm -rf "$container_path_proxy/etc/dansguardian/downloadmanagers"
 rm -rf "$container_path_proxy/etc/dansguardian/lists"
 # correction formatage des accents dansguardian (#502)
 sed -i 's/\&ecute;/\&eacute;/g' "$container_path_proxy/etc/dansguardian/languages/french/messages"
+# FIXME : conteneurs ?
+chown -R proxy.proxy /var/log/dansguardian
 
 danspath="/usr/share/eole/dansguardian"
 # remplacement du script d'init (2 instances)

@@ -38,7 +38,7 @@
             <variable name='freerad_ldap_base_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN)">
                 <value>o=gouv,c=fr</value>
             </variable>
-            <variable name='freerad_ldap_group' type='string' description="Groupes d'utilisateurs à récupérer dans l'annuaire LDAP" multi='True'/>
+            <variable name='freerad_ldap_group' type='string' description="Groupe d'utilisateurs à récupérer dans l'annuaire LDAP" multi='True'/>
             <variable name='freerad_group_vlan' type='number' description="Numéro de VLAN à attribuer à ce groupe"/>
         </family>
         <separators>
@@ -58,6 +58,16 @@
             <target type='filelist'>freeradius</target>
             <target type='servicelist'>freeradius</target>
         </condition>
+        <check name='obligatoire' target='freerad_listen_int'/>
+        <check name='obligatoire' target='freerad_nas_ip'/>
+        <check name='obligatoire' target='freerad_nas_name'/>
+        <check name='obligatoire' target='freerad_nas_passwd'/>
+        <check name='obligatoire' target='freerad_nas_type'/>
+        <check name='obligatoire' target='freerad_ldap_ip'/>
+        <check name='obligatoire' target='freerad_ldap_base_dn'/>
+        <check name="obligatoire" target='freerad_ldap_group'/>
+        <check name="obligatoire" target='freerad_ldap_vlan'/>
+
         <check name="valid_enum" target='freerad_nas_type'>
             <param>['cisco','computone','livingston','max40xx','multitech','netserver','pathras','patton','portslave','tc','usrhiper','other']</param>
         </check>
