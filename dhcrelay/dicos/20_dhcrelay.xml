@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<creole>
+    <files>
+        <service servicelist='dhrelay'>dhcp3-relay</service>
+        <file filelist='dhrelay' name='/etc/default/dhcp3-relay'/>
+    </files>
+    <variables>
+        <family name='services'>
+            <variable name='activer_dhcprelay' type='oui/non' description='Activation du relai DHCP' >
+                <value>non</value>
+            </variable>
+        </family>
+    <family name='relai_dhcp'>
+            <variable name='dhcrelay_interfaces' type='string' description='Interface des clients DHCP' multi='True'>
+                <value>eth2</value>
+                <value>eth3</value>
+            </variable>
+        <variable name='adresse_ip_dhcp_dhcrelay' type='string' description='Adresse IP du serveur DHCP à relayer' />
+        <variable name='ip_serveur_scribe_dmz' type='string' hidden='True' exists='False' />
+    </family>
+    <separators/>
+    </variables>
+    <constraints>
+        <check name='obligatoire' target='dhcrelay_interfaces'/>
+        <check name='obligatoire' target='adresse_ip_dhcp_dhcrelay'/>
+        <condition name='hidden_if_in' source='activer_dhcprelay'>
+            <param>non</param>
+            <target type='filelist'>dhrelay</target>
+            <target type='servicelist'>dhrelay</target>
+            <target type='family'>relai_dhcp</target>
+        </condition>
+        <fill name='calc_val' target='adresse_ip_dhcp_dhcrelay'>
+            <param type='eole'>ip_serveur_scribe_dmz</param>
+        </fill>
+    </constraints>
+    <help/>
+</creole>
+<!-- vim: ts=4 sw=4 expandtab
+-->
