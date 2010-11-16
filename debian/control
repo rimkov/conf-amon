@@ -46,3 +46,8 @@ Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, strongswan,
  ipsec-tools
 Description: Templates et dictionnaires pour rvp EOLE
+
+Package: eole-dhcrelay
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, dhcp3-relay
+Description: Templates et dictionnaires pour dhcrelay EOLE

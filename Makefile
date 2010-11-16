@@ -17,6 +17,7 @@ NUAUTH_DIR=$(DESTDIR)/eole-nuauth
 RADIUS_DIR=$(DESTDIR)/eole-radius
 PROXY_DIR=$(DESTDIR)/eole-proxy
 RVP_DIR=$(DESTDIR)/eole-rvp
+DHCRELAY_DIR=$(DESTDIR)/eole-dhcrelay
 
 all: install
 
@@ -91,7 +92,7 @@ install:
 	cp -rf proxy/dicos $(PROXY_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf proxy/tmpl $(PROXY_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -f proxy/diagnose/* $(PROXY_DIR)/$(EOLE_DIR)/diagnose/module
-	cp -f proxy/zephir/* $(PROXY_DIR)/$(AGENT_DIR)	
+	cp -f proxy/zephir/* $(PROXY_DIR)/$(AGENT_DIR)
 
 	#rvp
 	mkdir -p $(RVP_DIR)/$(EOLE_CONF_DIR)
@@ -101,4 +102,13 @@ install:
 	cp -rf rvp/dicos $(RVP_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -f  rvp/diagnose/* $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
 	cp -f  rvp/zephir/* $(RVP_DIR)/$(AGENT_DIR)
+
+	#dhcrelay
+	mkdir -p $(DHCRELAY_DIR)/$(EOLE_CONF_DIR)
+	#mkdir -p $(DHCRELAY_DIR)/$(EOLE_DIR)/diagnose/module
+	#mkdir -p $(DHCRELAY_DIR)/$(AGENT_DIR)
+	#cp -rf dhcrelay/eole/* $(DHCRELAY_DIR)/$(EOLE_DIR)
+	cp -rf dhcrelay/dicos $(DHCRELAY_DIR)/$(EOLE_CONF_DIR)/dicos
+	#cp -f  rvp/diagnose/* $(DHCRELAY_DIR)/$(EOLE_DIR)/diagnose/module
+	cp -rd dhcrelay/tmpl/* $(DHCRELAY_DIR)/$(EOLE_CONF_DIR)/distrib
 

@@ -16,8 +16,6 @@
         <file name='/etc/cron.d/amon-firewall' source='cron-root'/>
         <file name='/etc/eole/killp2p'/>
         <file name='/etc/init.d/l7filter' />
-        <service servicelist='dhrelay'>dhcp3-relay</service>
-        <file filelist='dhrelay' name='/etc/default/dhcp3-relay'/>
     </files>
     <!--************************************************************************************************* -->
     <variables>
@@ -66,9 +64,6 @@
         <family name='Scribe-DMZ' hidden='True'>
             <variable name='nom_serveur_scribe_dmz' type='string' description='Nom du Scribe dans la DMZ (pour enregistrement DNS)' />
             <variable name='ip_serveur_scribe_dmz' type='ip' description='Adresse IP du Scribe dans la DMZ' />
-            <variable name='activer_dhcprelay' type='oui/non' description='Activation du relais DHCP' >
-                <value>non</value>
-            </variable>
         </family>
         <separators>
             <separator name='type_amon'>Paramètres réseau globaux</separator>
@@ -95,11 +90,6 @@
         <condition name='hidden_if_in' source='eole_module'>
             <param>amonecole</param>
             <target type='variable'>install_scribe_dmz</target>
-        </condition>
-        <condition name='hidden_if_in' source='activer_dhcprelay'>
-            <param>non</param>
-            <target type='filelist'>dhrelay</target>
-            <target type='servicelist'>dhrelay</target>
         </condition>
         <condition name='hidden_if_in' source='activer_bacula'>
             <param>non</param>
