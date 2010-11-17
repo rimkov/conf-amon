@@ -1,3 +1,13 @@
+conf-amon (2.3-eole58) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * compatibilité nuauth - client-annuaire
+  * dépendance eole-client-annuaire
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 17 Nov 2010 10:27:04 +0000
+
 conf-amon (2.3-eole57) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
