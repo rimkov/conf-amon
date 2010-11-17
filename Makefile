@@ -105,7 +105,7 @@ install:
 	cp -f  rvp/zephir/* $(RVP_DIR)/$(AGENT_DIR)
 
 	#dhcrelay
-	mkdir -p $(DHCRELAY_DIR)/$(EOLE_CONF_DIR)
+	mkdir -p $(DHCRELAY_DIR)/$(EOLE_CONF_DIR)/distrib
 	#mkdir -p $(DHCRELAY_DIR)/$(EOLE_DIR)/diagnose/module
 	#mkdir -p $(DHCRELAY_DIR)/$(AGENT_DIR)
 	#cp -rf dhcrelay/eole/* $(DHCRELAY_DIR)/$(EOLE_DIR)
