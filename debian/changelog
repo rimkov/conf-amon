@@ -1,3 +1,12 @@
+conf-amon (2.3-eole57) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * erreur au mkdir de eole-dhcrelay
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 17 Nov 2010 08:54:51 +0000
+
 conf-amon (2.3-eole56) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
