@@ -1,5 +1,6 @@
 #!/bin/bash
 
+. /usr/share/eole/FonctionsEoleNg
 . /etc/eole/containers.conf
 
 ## SQUID ##
@@ -30,8 +31,9 @@ rm -rf "$container_path_proxy/etc/dansguardian/downloadmanagers"
 rm -rf "$container_path_proxy/etc/dansguardian/lists"
 # correction formatage des accents dansguardian (#502)
 sed -i 's/\&ecute;/\&eacute;/g' "$container_path_proxy/etc/dansguardian/languages/french/messages"
-# FIXME : conteneurs ?
-chown -R proxy.proxy /var/log/dansguardian
+
+# FIXME : logs dans les conteneurs
+RunCmd "chown -R proxy.proxy /var/log/dansguardian" proxy
 
 danspath="/usr/share/eole/dansguardian"
 # remplacement du script d'init (2 instances)
