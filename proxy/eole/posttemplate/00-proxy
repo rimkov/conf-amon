@@ -6,7 +6,6 @@
 ## SQUID ##
 touch "$container_path_proxy/etc/squid/domaines_noauth_user"
 touch "$container_path_proxy/etc/squid/domaines_nocache_user"
-touch "$container_path_proxy/etc/squid/domaines_nopeerproxy"
 touch "$container_path_proxy/etc/squid/src_noauth_user"
 touch "$container_path_proxy/etc/squid/src_nocache_user"
 touch "$container_path_proxy/etc/squid/domaines_noauth_acad"
@@ -18,6 +17,9 @@ if [ ! -f "$container_path_proxy/etc/squid/src_noauth" ];then
 fi
 if [ ! -f "$container_path_proxy/etc/squid/src_nocache" ];then
     echo "127.0.0.1" > "$container_path_proxy/etc/squid/src_nocache"
+fi
+if [ ! -f "$container_path_proxy/etc/squid/domaines_nopeerproxy" ];then
+    echo "127.0.0.1" > "$container_path_proxy/etc/squid/domaines_nopeerproxy"
 fi
 # correction des droits sur winbindd_privileged (#699)
 sed -i 's/chgrp winbindd_priv/chgrp proxy/g' "$container_path_proxy/etc/init.d/winbind"
