@@ -7,7 +7,19 @@ Standards-Version: 3.7.3
 
 Package: conf-amon
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, python, amon-pkg
+Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase,
+ bacula-fd, ntp, eole-sso, amon-backend, ipset,  pppoe,  snmp, libsnmp-perl,
+#snort, ...
+ snort, oinkmaster, samhain,
+#firewall
+ era, l7-filter-userspace, l7-protocols,
+#eole
+ eole-reverseproxy, eole-dns, eole-nuauth, eole-radius, eole-proxy,
+ eole-antivirus, eole-rvp, eole-dhcrelay,
+#a discuter
+#chkrootkit
+#dépendance historique devenue inutile
+#Depends: make, rddtool
 Description: Templates et dictionnaires pour Amon
  Pour toute information complementaire, veuillez vous rendre
  sur le site du Projet a l'adresse suivante :
