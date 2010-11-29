@@ -57,6 +57,9 @@
             </variable>
         </family>
         <family name='Interface-1'>
+            <variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" exists="False">
+                <value>admin</value>
+            </variable>
             <!--**** variable de configuration pour dansguardian (choix de l'instance) ****-->
             <variable name='dansguardian_eth1' type='string' description='Filtre web à appliquer sur cette interface' >
                 <value>1</value>
