@@ -1,3 +1,16 @@
+conf-amon (2.3-eole59) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * fix droits dansguardian (mode conteneur)
+
+  [ Laurent Flori ]
+  * Suppression Warnings Squid FIXES #1019
+  * Ajout du nom de eth1 dans eole-proxysi pas definie avant
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 29 Nov 2010 12:46:07 +0000
+
 conf-amon (2.3-eole58) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
