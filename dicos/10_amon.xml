@@ -19,7 +19,6 @@
     <!--************************************************************************************************* -->
     <variables>
         <family name='general'>
-            <variable name='eole_module' type='string' description="Module installé" hidden='True'/>
             <!--**** Reseau Global **** -->
             <variable name='type_amon' type='string' description='Modèle de filtrage'>
             <value>minimal</value>
@@ -74,7 +73,6 @@
         </separators>
     </variables>
     <constraints>
-        <auto name='auto_module' target='eole_module'/>
         <check name='obligatoire' target='type_amon'/>
         <check name='obligatoire' target='nom_machine_eth1'/>
         <check name="valid_enum" target="type_amon">
@@ -88,10 +86,6 @@
         <check name="valid_enum" target="eth0_method">
         <param>['statique','dhcp','pppoe']</param>
         </check>-->
-        <condition name='hidden_if_in' source='eole_module'>
-            <param>amonecole</param>
-            <target type='variable'>install_scribe_dmz</target>
-        </condition>
         <condition name='hidden_if_in' source='activer_bacula'>
             <param>non</param>
             <target type='servicelist'>bacula-fd</target>
