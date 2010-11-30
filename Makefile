@@ -31,7 +31,6 @@ install:
 	mkdir -p $(CONFAMON_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(CONFAMON_DIR)/etc/eole/
 
-	cp -f version $(CONFAMON_DIR)/etc/eole/
 	cp -rf eole/* $(CONFAMON_DIR)/$(EOLE_DIR)
 	# copie des dictionnaires
 	cp -rf dicos $(CONFAMON_DIR)/$(EOLE_CONF_DIR)
