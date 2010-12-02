@@ -1,3 +1,12 @@
+conf-amon (2.3-eole61) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * suppression de /etc/eole/version
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 30 Nov 2010 16:04:29 +0000
+
 conf-amon (2.3-eole60) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
