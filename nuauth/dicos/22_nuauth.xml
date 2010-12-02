@@ -82,9 +82,11 @@
             <target type='filelist'>nufw</target>
             <target type='servicelist'>nufw</target>
         </condition>
-        <!--<auto name='calc_val' target='activer_client_ldap'>
-              <param type='eole'>activer_nufw</param>
-          </auto>-->
+        <condition name='hidden_if_in' source='activer_nufw'>
+            <param>non</param>
+            <target type='family'>client_ldap</target>
+            <target type='filelist'>client_ldap</target>
+        </condition>
     </constraints>
     <!--************************************************************************************************* -->
     <help>
