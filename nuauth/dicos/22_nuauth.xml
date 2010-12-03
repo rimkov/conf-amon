@@ -53,7 +53,7 @@
         </family>
         <family name='client_ldap'>
             <variable name='adresse_ip_ldap' redefine='True' description="Adresse du serveur LDAP pour l'authentification NuFW" />
-            <variable name='ldap_pam' redefine='True'>
+            <variable name='ldap_nss' redefine='True'>
                 <value>oui</value>
             </variable>
        </family>
