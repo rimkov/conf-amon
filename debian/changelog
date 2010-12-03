@@ -1,3 +1,19 @@
+conf-amon (2.3-eole62) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * suppression du lin client_ldap/nufw
+  * nufw et activer_nufw
+
+  [ Joël Cuissinat ]
+  * suppression de manage-amon.sh
+
+  [ Emmanuel Garette ]
+  * activer_client_ldap à non
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 03 Dec 2010 13:18:06 +0000
+
 conf-amon (2.3-eole61) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
