@@ -22,7 +22,9 @@
             <variable name='activer_nufw' type='oui/non' description="Activation de l'authentification réseau (NuFW)">
                 <value>non</value>
             </variable>
-            <variable name='activer_client_ldap' redefine='True' hidden='True'/>
+            <variable name='activer_client_ldap' redefine='True' hidden='True'>
+                <value>non</value>
+            </variable>
         </family>
         <family name='Interface-1'>
             <variable name='nuauth_eth1' type='oui/non' description="Activer l'authentification Nuauth sur cette interface">
