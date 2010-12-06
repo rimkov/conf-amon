@@ -87,7 +87,6 @@
         <condition name='hidden_if_in' source='activer_nufw'>
             <param>non</param>
             <target type='family'>client_ldap</target>
-            <target type='filelist'>client_ldap</target>
         </condition>
     </constraints>
     <!--************************************************************************************************* -->
