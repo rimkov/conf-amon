@@ -1,3 +1,15 @@
+conf-amon (2.3-eole64) eole-2.3; urgency=low
+
+  [ Emmanuel Garette ]
+  * bonne gestion des droits pour le certificat nuauth-eole (fixe #1171
+    )
+  * Correction agriates_member et adresse_dns_agriates
+  * remise en place de la gestion du pppoe
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 10 Dec 2010 09:02:48 +0000
+
 conf-amon (2.3-eole63) eole-2.3; urgency=low
 
   [ Emmanuel Garette ]
