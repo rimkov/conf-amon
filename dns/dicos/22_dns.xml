@@ -44,11 +44,11 @@
             <variable name='nom_host_dns' type='string' description='Nom DNS complet de la machine à ajouter dans le DNS' multi='True' />
             <variable name='ip_host_dns' type='ip' description='Adresse IP de la machine à ajouter dans le DNS' />
         </family>
-        <family name='RVP' hidden='True'>
-            <variable name='adresse_dns_agriates' type='ip' description='Adresse du DNS permettant de resoudre les in.ac-acad.fr' multi='True'/>
-            <variable name='agriates_member' exists='False' type='string' hidden='True'>
+        <family name='rvp' hidden='True'>
+            <variable name='agriates_member' exists='False' type='oui/non' hidden='True'>
                 <value>non</value>
             </variable>
+            <variable name='adresse_dns_agriates' type='ip' description='Adresse du DNS permettant de resoudre les in.ac-acad.fr' multi='True'/>
         </family>
         <separators>
             <separator name='dns_master_eth0'>Configuration DNS sur l'interface</separator>
