@@ -41,6 +41,9 @@
                 <value>non</value>
             </variable>
         </family>
+        <family name='Interface-0'>
+            <variable name='eth0_method' redefine='True' />
+        </family>
         <family name='Interface-1'>
             <variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" >
                 <value>admin</value>
@@ -82,10 +85,9 @@
         <check name="valid_enum" target='filtrage_p2p'>
             <param>['l7filter','ipp2p']</param>
         </check>
-        <!--FIXME: il faut redéfinir la valeur
         <check name="valid_enum" target="eth0_method">
-        <param>['statique','dhcp','pppoe']</param>
-        </check>-->
+            <param>['statique','dhcp','pppoe']</param>
+        </check>
         <condition name='hidden_if_in' source='activer_bacula'>
             <param>non</param>
             <target type='servicelist'>bacula-fd</target>
