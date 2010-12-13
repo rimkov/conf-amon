@@ -81,11 +81,13 @@ install:
 	mkdir -p $(PROXY_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(PROXY_DIR)/$(EOLE_DIR)/diagnose/module
 	mkdir -p $(PROXY_DIR)/$(AGENT_DIR)
+	mkdir -p $(PROXY_DIR)/$(EAD_DIR)
 	cp -rf proxy/eole/* $(PROXY_DIR)/$(EOLE_DIR)
 	cp -rf proxy/dicos $(PROXY_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf proxy/tmpl $(PROXY_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -f proxy/diagnose/* $(PROXY_DIR)/$(EOLE_DIR)/diagnose/module
 	cp -f proxy/zephir/* $(PROXY_DIR)/$(AGENT_DIR)
+	cp -rf proxy/ead/* $(PROXY_DIR)/$(EAD_DIR)
 
 	#rvp
 	mkdir -p $(RVP_DIR)/$(EOLE_CONF_DIR)
