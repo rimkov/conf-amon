@@ -6,6 +6,7 @@ SRCDIR=""
 EOLE_DIR=/usr/share/eole
 EOLE_CONF_DIR=$(EOLE_DIR)/creole
 AGENT_DIR=/usr/share/zephir/monitor/configs
+EAD_DIR=/usr/share/ead2/backend/config
 INIT_DIR=/etc/init.d
 SBIN_DIR=/usr/sbin
 BIN_DIR=/usr/bin
@@ -23,13 +24,14 @@ all: install
 
 install:
 
-	# création des répertoires (normalement fait par creole)
+	#conf-amon
 	mkdir -p $(CONFAMON_DIR)/$(EOLE_DIR)
 	mkdir -p $(CONFAMON_DIR)/$(SBIN_DIR)
 	mkdir -p $(CONFAMON_DIR)/$(BIN_DIR)
 	mkdir -p $(CONFAMON_DIR)/$(INIT_DIR)
 	mkdir -p $(CONFAMON_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(CONFAMON_DIR)/etc/eole/
+	mkdir -p $(CONFAMON_DIR)/$(EAD_DIR)
 
 	cp -rf eole/* $(CONFAMON_DIR)/$(EOLE_DIR)
 	# copie des dictionnaires
@@ -41,16 +43,8 @@ install:
 	cp -f bin/* $(CONFAMON_DIR)/$(BIN_DIR)
 	# copie des scripts d''init Eole ...
 	cp -f init.d/* $(CONFAMON_DIR)/$(INIT_DIR)
-	# copie fichier config
-	mkdir -p $(CONFAMON_DIR)/etc/squid/
-	cp -f config/filtres-opt $(CONFAMON_DIR)/etc/squid/
-	#cp -f config/domaines_noauth $(DESTDIR)/conf-amon/etc/squid/
-	#cp -f config/domaines_nocache $(DESTDIR)/conf-amon/etc/squid/
-	#cp -f config/src_noauth $(CONFAMON_DIR)/etc/squid/
-	#cp -f config/src_nocache $(CONFAMON_DIR)/etc/squid/
-
-	#mkdir -p $(CONFAMON_DIR)/$(EOLE_DIR)/diagnose/module
-	#cp -f diagnose/* $(CONFAMON_DIR)/$(EOLE_DIR)/diagnose/module
+	# configuration EAD
+	cp -rf ead/* $(CONFAMON_DIR)/$(EAD_DIR)
 
 	#reverseproxy
 	mkdir -p $(REV_DIR)/$(EOLE_CONF_DIR)
