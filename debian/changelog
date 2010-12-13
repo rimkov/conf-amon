@@ -1,3 +1,12 @@
+conf-amon (2.3-eole68) eole-2.3; urgency=low
+
+  [ Jérôme Soyer ]
+  * Ajout de xtabes
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 13 Dec 2010 10:22:30 +0000
+
 conf-amon (2.3-eole67) eole-2.3; urgency=low
 
   [ Jérôme Soyer ]
