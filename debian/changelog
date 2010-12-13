@@ -1,3 +1,14 @@
+conf-amon (2.3-eole69) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * conf-amon : ajout configuration EAD (ref #1237)
+  * eole-proxy : ajout configuration EAD (ref #1237) + déplacement
+    filtres-opt (fixes #1289)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 13 Dec 2010 15:47:19 +0000
+
 conf-amon (2.3-eole68) eole-2.3; urgency=low
 
   [ Jérôme Soyer ]
