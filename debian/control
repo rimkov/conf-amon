@@ -8,7 +8,7 @@ Standards-Version: 3.7.3
 Package: conf-amon
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase,
- bacula-fd, ntp, eole-sso, amon-backend, pppoe,  snmp, libsnmp-perl,
+ bacula-fd, ntp, eole-sso, amon-backend, pppoe,  snmp, libsnmp-perl, xtables-addons-common,
 #snort, ...
  snort, oinkmaster, samhain,
 #firewall
