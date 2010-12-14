@@ -42,6 +42,14 @@ stop() {
 status() {
         if [ "$KILLP2P" == "on" ];then
             $DAEMON status
+            if [ $? == "0" ]
+            then
+                echo "Le Filtrage P2P est actif"
+                exit 0
+            else
+                echo "Le Filtrage P2P est inactif"
+                exit 1
+            fi
         else
             echo "Le filtrage P2P est désactivé"
             exit 1

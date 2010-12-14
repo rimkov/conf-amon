@@ -3,6 +3,7 @@
 <creole>
     <files>
         <service>bastion</service>
+        <!-- killp2p est lancé par bastion -->
         <service servicelist='bacula'>bacula-fd</service>
         <file name='/etc/chkrootkit.conf'/>
         <file name='/etc/cron.d/amon' source='cron-amon'/>
@@ -13,7 +14,6 @@
         <file name='/usr/share/eole/firewall.stop' mode='755'/>
         <file name='/usr/share/era/backend/data/active_tags'/>
         <file name='/etc/cron.d/amon-firewall' source='cron-root'/>
-        <file name='/etc/init.d/l7filter' />
     </files>
     <!--************************************************************************************************* -->
     <variables>
