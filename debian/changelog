@@ -1,3 +1,17 @@
+conf-amon (2.3-eole70) eole-2.3; urgency=low
+
+  [ smorin ]
+  * modif config strongswan
+
+  [ Joël Cuissinat ]
+  * suppression du choix l7filter/ipp2p dans le dictionnaire (ref #1293)
+  * mise à niveau du script killp2p
+  * refactoring killp2p/l7filter (fixes #1293)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 14 Dec 2010 15:28:46 +0000
+
 conf-amon (2.3-eole69) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
