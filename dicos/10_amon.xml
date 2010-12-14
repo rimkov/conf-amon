@@ -13,7 +13,6 @@
         <file name='/usr/share/eole/firewall.stop' mode='755'/>
         <file name='/usr/share/era/backend/data/active_tags'/>
         <file name='/etc/cron.d/amon-firewall' source='cron-root'/>
-        <file name='/etc/eole/killp2p'/>
         <file name='/etc/init.d/l7filter' />
     </files>
     <!--************************************************************************************************* -->
@@ -34,9 +33,6 @@
             </variable>
         </family>
         <family name='services'>
-            <variable name='filtrage_p2p' type='string' description="Système de filtrage P2P" >
-                <value>l7filter</value>
-            </variable>
             <variable name='activer_bacula' type='oui/non' description='Activation du client Bacula (sauvegardes)' >
                 <value>non</value>
             </variable>
@@ -69,7 +65,6 @@
             <variable name='ip_serveur_scribe_dmz' type='ip' description='Adresse IP du Scribe dans la DMZ' />
         </family>
         <separators>
-            <separator name='filtrage_p2p'>Système de filtrage P2P</separator>
             <separator name='nom_cache_pere'>Proxy pere general</separator>
             <separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
             <separator name='activer_bacula'>Sauvegardes</separator>
@@ -81,9 +76,6 @@
         <check name="valid_enum" target="type_amon">
             <param type="python">eosfunc.list_files('/usr/share/era/modeles','*.xml',True,default=['2zones', '3zones-amonecole-eclair-nginx', '3zones-amonecole-eclair', '3zones-amonecole-nginx', '3zones-amonecole', '3zones-scribe-posh-nginx', '3zones-scribe', '3zones', '4zones-scribe-nufw', '4zones-scribe-posh-nginx', '4zones-scribe', '4zones', '5zones', 'minimal'])</param>
             <param name="checkval">False</param>
-        </check>
-        <check name="valid_enum" target='filtrage_p2p'>
-            <param>['l7filter','ipp2p']</param>
         </check>
         <check name="valid_enum" target="eth0_method">
             <param>['statique','dhcp','pppoe']</param>
