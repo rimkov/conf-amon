@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 #
 # killp2p          Start/Stop le filtrage p2p
 #
@@ -7,48 +7,45 @@
 # $Id
 # config:
 
-
-RETVAL=0
-
 . /lib/lsb/init-functions
 
-# Include nufw defaults if available
-if [ -f /etc/eole/killp2p ] ; then
-        . /etc/eole/killp2p
-fi
-
+PROG="l7filter"
 DAEMON=/etc/init.d/$PROG
 
-set -e
+if [ -f /var/lib/eole/config/killp2p.conf ];then
+    # définit la variable $KILLP2P
+    . /var/lib/eole/config/killp2p.conf
+fi
 
 start() {
-        if [ -e /var/www/ead/tmp/kill-p2p ]
+        if [ "$KILLP2P" == "on" ]
         then
-                log_begin_msg "Lancement du filtrage P2P ($PROG): "
-                $DAEMON start >/dev/null 2>&1
-                RETVAL=$?
-                log_end_msg $RETVAL
-                [ $RETVAL -eq 0 ] && touch /var/lock/killp2p
-                return $RETVAL
+                $DAEMON start
+                #log_begin_msg "Lancement du filtrage P2P ($PROG): "
+                #$DAEMON start >/dev/null 2>&1
+                #RETVAL=$?
+                #log_end_msg $RETVAL
         else
+                echo "Le filtrage P2P est désactivé"
                 exit 0
         fi
 }
 
 stop() {
-        if [ -e /var/lock/killp2p ]
-        then
-                log_begin_msg "Arret du filtrage P2P ($PROG): "
-                $DAEMON stop >/dev/null 2>&1
-                rm -f /var/lock/killp2p
-                log_end_msg 0
+        if [ "$KILLP2P" == "on" ];then
+            $DAEMON stop 2>/dev/null
+        else
+            $DAEMON stop &>/dev/null
         fi
 }
 
-
-restart() {
-          stop
-        start
+status() {
+        if [ "$KILLP2P" == "on" ];then
+            $DAEMON status
+        else
+            echo "Le filtrage P2P est désactivé"
+            exit 1
+        fi
 }
 
 case "$1" in
@@ -59,28 +56,16 @@ case "$1" in
           stop
         ;;
   restart)
-          restart
+          stop
+          start
         ;;
   reload)
           restart
         ;;
   status)
-        /etc/init.d/ipp2p status >/dev/null 2>&1
-        if [ $? == "0" ]
-        then
-                echo -e "\n Service de filtrage du p2p actif \n"
-                exit 0
-        else
-                echo -e "\n Service de filtrage du p2p inactif \n"
-                exit 1
-        fi
-        ;;
-  condrestart)
-          [ -f /var/lock/killp2p ] && restart || :
+          status
         ;;
   *)
-        echo "Usage: %s {start|stop|status|reload|restart|condrestart}\n" "$0"
+        echo "Usage: $0 {start|stop|status|reload|restart}"
         exit 1
 esac
-
-exit $?
