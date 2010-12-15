@@ -1,21 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <creole>
-    <containers>
-        <container name="radius" id='22'>
-            <service servicelist='freeradius'>freeradius</service>
-            <package>radius-pkg</package>
-            <file filelist='freeradius' name='/etc/freeradius/clients.conf' source='freerad-clients.conf'/>
-            <file filelist='freeradius' name='/etc/freeradius/eap.conf' source='freerad-eap.conf'/>
-            <file filelist='freeradius' name='/etc/freeradius/huntgroups' source='freerad-huntgroups'/>
-            <file filelist='freeradius' name='/etc/freeradius/radiusd.conf'/>
-            <file filelist='freeradius' name='/etc/freeradius/users' source='freerad-users'/>
-            <file filelist='freeradius' name='/etc/freeradius/modules/ldap' source='freerad-ldap'/>
-            <file filelist='freeradius' name='/etc/freeradius/modules/mschap' source='freerad-mschap'/>
-            <file filelist='freeradius' name='/etc/freeradius/sites-enabled/default' source='freerad-default'/>
-            <file filelist='freeradius' name='/etc/freeradius/sites-enabled/inner-tunnel' source='freerad-inner-tunnel'/>
-        </container>
-    </containers>
 <!-- **** Dictionnaire optionnel pour freeradius **** -->
     <variables>
         <family name='services'>
@@ -66,7 +51,7 @@
         <check name='obligatoire' target='freerad_ldap_ip'/>
         <check name='obligatoire' target='freerad_ldap_base_dn'/>
         <check name="obligatoire" target='freerad_ldap_group'/>
-        <check name="obligatoire" target='freerad_ldap_vlan'/>
+        <check name="obligatoire" target='freerad_group_vlan'/>
 
         <check name="valid_enum" target='freerad_nas_type'>
             <param>['cisco','computone','livingston','max40xx','multitech','netserver','pathras','patton','portslave','tc','usrhiper','other']</param>
