@@ -26,14 +26,14 @@ start() {
                 #RETVAL=$?
                 #log_end_msg $RETVAL
         else
-                echo "Le filtrage P2P est désactivé"
+                #echo "Le filtrage P2P est désactivé"
                 exit 0
         fi
 }
 
 stop() {
         if [ "$KILLP2P" == "on" ];then
-            $DAEMON stop 2>/dev/null
+            $DAEMON stop
         else
             $DAEMON stop &>/dev/null
         fi
@@ -44,10 +44,10 @@ status() {
             $DAEMON status
             if [ $? == "0" ]
             then
-                echo "Le Filtrage P2P est actif"
+                echo "Le filtrage P2P est actif"
                 exit 0
             else
-                echo "Le Filtrage P2P est inactif"
+                echo "Le filtrage P2P est inactif"
                 exit 1
             fi
         else

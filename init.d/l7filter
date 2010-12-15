@@ -24,7 +24,7 @@ clean() {
 start() {
     log_begin_msg "Starting l7filter"
     /sbin/iptables -L -n |grep -q l7proto
-    if [ $? == "0" ];then
+    if [ $? == 0 ];then
         clean
         rm -f /var/lock/layer7
     fi
@@ -41,9 +41,14 @@ start() {
 }
 
 stop() {
-    log_begin_msg "Stop l7filter"
-    clean
-    RETVAL=$?
+    log_begin_msg "Stopping l7filter"
+    /sbin/iptables -L -n |grep -q l7proto
+    if [ $? == 0 ];then
+        clean
+        RETVAL=$?
+    else
+        RETVAL=0
+    fi
     rm -f /var/lock/layer7
     log_end_msg $RETVAL
 }
