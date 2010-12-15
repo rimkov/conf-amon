@@ -1,3 +1,15 @@
+conf-amon (2.3-eole71) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * cosmétique sur filtrage P2P
+
+  [ Jérôme Soyer ]
+  * Supression du conteneur freeradius et correction de variable
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 15 Dec 2010 14:32:32 +0000
+
 conf-amon (2.3-eole70) eole-2.3; urgency=low
 
   [ smorin ]
