@@ -13,10 +13,6 @@ HOME=/
 */10 * * * *    root    /usr/share/zephir/scripts/cron-zephir.sh
 # Mise à jour des backlists toutes les nuits
 00 00 * * * root /usr/share/eole/lance-Maj-blacklist.sh >/dev/null 2>&1
-# rrdtools
-#*/5 * * * *    root    /usr/share/eole/recup-rrd.sh >/dev/null 2>&1
-# Fwlogwatch
-#00 1 * * 7 root /usr/share/eole/lance-fwlogwatch
 %if %%install_rvp == 'oui'
 # test du rvp
 */%%magic_rvp_inter * * * *    root    /usr/share/eole/magic-rvp >/dev/null 2>&1
