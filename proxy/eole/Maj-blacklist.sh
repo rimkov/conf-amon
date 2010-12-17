@@ -9,8 +9,8 @@ SHORT_META_PATH="/var/lib/blacklists/meta/"
 META_PATH="$container_path_proxy$SHORT_META_PATH"
 SHORT_DB_PATH="/var/lib/blacklists"
 DB_PATH="$container_path_proxy$SHORT_DB_PATH"
-# fichier de log spécifique EAD
-F_LOG="/usr/share/ead2/backend/tmp/blacklist-date.txt"
+# fichier de log spécifique
+F_LOG="/var/lib/eole/reports/maj-blacklist.txt"
 
 echo -n "Mise à jour le " > $F_LOG
 date '+%d.%m.%Y à %H:%M :' >> $F_LOG
