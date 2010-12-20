@@ -1,3 +1,23 @@
+conf-amon (2.3-eole72) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * suppression des références à fwlogwatch qui n'est plus utilisé
+    (fixes #797)
+  * déplacement du fichier de log généré par Maj-blacklist (ref #953)
+
+  [ Emmanuel Garette ]
+  * ajout des interfaces eth1 et eth2 dans le conteneur proxy associée
+    aux eth1 et eth2 du maitre
+  * ajout de 40_amon_conteneurs.xml
+
+  [ Joël Cuissinat ]
+  * suppression des script de postinst (modifications faites en pre/post
+    template)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 20 Dec 2010 15:02:59 +0000
+
 conf-amon (2.3-eole71) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
