@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<creole>
+    <containers>
+        <container name="internet" id="53"/>
+	<container name="reverseproxy" group="internet"/>
+	<container name="dns" group="internet"/>
+    </containers>
+    <variables/>
+
+    <constraints/>
+
+    <help/>
+
+</creole>
