@@ -12,6 +12,8 @@
             <service>squid</service>
             <service>dansguardian</service>
             <service servicelist='clamav'>clamav-daemon</service>
+            <interface linkto="eth1" ip="adresse_ip_eth1_proxy_link" mask="adresse_mask_eth1_proxy_link">eth1</interface>
+            <interface interfacelist='eth2_proxy_link' linkto="eth2" ip="adresse_ip_eth2_proxy_link" mask="adresse_mask_eth2_proxy_link">eth2</interface>
             <file name='/etc/dansguardian/languages/french/fancydmtemplate.html' />
             <file name='/etc/logrotate.d/dansguardian' source='dansguardian.logrotate'/>
             <file name='/etc/logrotate.d/squid' source='squid.logrotate'/>
@@ -67,6 +69,8 @@
             <variable name='squid_auth_eth1' type='oui/non' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
                 <value>oui</value>
             </variable>
+            <variable name='adresse_ip_eth1_proxy_link' type='ip' description="Adresse IP secondaire pour le proxy" />
+            <variable name='adresse_mask_eth1_proxy_link' type='ip' description="Masque de sous réseau du proxy"/>
         </family>
         <family name='Interface-2'>
             <!-- variable de configuration pour dansguardian (choix de l'instance) -->
@@ -76,6 +80,8 @@
             <variable name='squid_auth_eth2' type='oui/non' description="Activer l'authentification sur cette interface (s'applique aussi aux VLAN)" >
                 <value>oui</value>
             </variable>
+            <variable name='adresse_ip_eth2_proxy_link' type='ip' description="Adresse IP secondaire pour le proxy" />
+            <variable name='adresse_mask_eth2_proxy_link' type='ip' description="Masque de sous réseau du proxy"/>
         </family>
         <family name='Interface-3'>
             <!-- variable de configuration pour dansguardian (choix de l'instance) -->
@@ -442,6 +448,8 @@
             <separator name='dansguardian_eth4'>Configuration de la politique de filtrage</separator>
             <separator name='activer_squid_auth'>Proxy</separator>
             <separator name='nom_cache_pere_zone'>Proxy pere par zone</separator>
+            <separator name="adresse_ip_eth1_proxy_link">Adresse secondaire pour le proxy</separator>
+            <separator name="adresse_ip_eth2_proxy_link">Adresse secondaire pour le proxy</separator>
         </separators>
     </variables>
     <constraints>
@@ -455,6 +463,11 @@
             <slave>nom_domaine_smb</slave>
             <slave>ip_serveur_smb</slave>
         </group>
+        <condition name='hidden_if_in' source='nombre_interfaces'>
+            <param>1</param>
+            <param>2</param>
+            <target type='interfacelist'>eth2_proxy_link</target>
+        </condition>
         <condition name='hidden_if_not_in' source='type_squid_auth'>
             <param>NTLM/SMB</param>
             <target type='variable'>nom_serveur_smb</target>
@@ -537,6 +550,7 @@
         <check name='obligatoire' target='preforkchildren2'/>
         <check name='obligatoire' target='maxagechildren2'/>
         <check name='obligatoire' target='unactive_dansguardian_auth2'/>
+
         <check name="valid_entier" target="maxchildren2">
             <param name="mini">60</param>
             <param name="maxi">255</param>
@@ -557,6 +571,19 @@
             <slave>nom_zone_dns_cache</slave>
             <slave>autoriser_proxy_autres</slave>
         </group>
+
+        <check name='obligatoire' target='adresse_ip_eth1_proxy_link'/>
+        <check name='obligatoire' target='adresse_mask_eth1_proxy_link'/>
+        <check name='obligatoire' target='adresse_ip_eth2_proxy_link'/>
+        <check name='obligatoire' target='adresse_mask_eth2_proxy_link'/>
+        <condition name='hidden_if_in' source='mode_conteneur_actif'>
+            <param>non</param>
+            <target>adresse_ip_eth1_proxy_link</target>
+            <target>adresse_mask_eth1_proxy_link</target>
+            <target>adresse_ip_eth2_proxy_link</target>
+            <target>adresse_mask_eth2_proxy_link</target>
+        </condition>
+
         <check name='obligatoire' target='http_port'/>
         <check name='obligatoire' target='ssl_unclean_shutdown'/>
         <check name='obligatoire' target='icp_port'/>
