@@ -4,7 +4,6 @@
     <files>
         <service>bastion</service>
         <!-- killp2p est lancé par bastion -->
-        <service servicelist='bacula'>bacula-fd</service>
         <file name='/etc/chkrootkit.conf'/>
         <file name='/etc/cron.d/amon' source='cron-amon'/>
         <file name='/etc/host.conf'/>
@@ -28,11 +27,6 @@
             <value>pf-amon</value>
             </variable>-->
             <variable name='install_scribe_dmz' type='oui/non' description="Activer la gestion d'un Scribe dans la DMZ" >
-                <value>non</value>
-            </variable>
-        </family>
-        <family name='services'>
-            <variable name='activer_bacula' type='oui/non' description='Activation du client Bacula (sauvegardes)' >
                 <value>non</value>
             </variable>
         </family>
@@ -66,7 +60,6 @@
         <separators>
             <separator name='nom_cache_pere'>Proxy pere general</separator>
             <separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
-            <separator name='activer_bacula'>Sauvegardes</separator>
         </separators>
     </variables>
     <constraints>
@@ -79,10 +72,6 @@
         <check name="valid_enum" target="eth0_method">
             <param>['statique','dhcp','pppoe']</param>
         </check>
-        <condition name='hidden_if_in' source='activer_bacula'>
-            <param>non</param>
-            <target type='servicelist'>bacula-fd</target>
-        </condition>
         <condition name='hidden_if_in' source='install_scribe_dmz'>
             <param>non</param>
             <target type='family'>Scribe-DMZ</target>
