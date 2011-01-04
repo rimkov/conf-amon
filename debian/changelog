@@ -1,3 +1,17 @@
+conf-amon (2.3-eole73~1.gbpbd234c) eole-2.3-proposed; urgency=low
+
+  ** SNAPSHOT build @bd234ccf61e53828afc3b5b53ea8a1df4549b2bb **
+
+  [ Emmanuel Garette ]
+  * retrait de la configuration de la sauvegarde
+  * ajout du cron blacklist + suppression de lance blacklist (fixes
+    #461)
+  * corrections dans postinst et prerm
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 04 Jan 2011 15:55:38 +0000
+
 conf-amon (2.3-eole72) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
