@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr/share/eole/schedule/manage_schedule post majblacklist daily del
+
