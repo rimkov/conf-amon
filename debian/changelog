@@ -1,6 +1,6 @@
-conf-amon (2.3-eole73~1.gbpbd234c) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole73~2.gbp14bf0f) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @bd234ccf61e53828afc3b5b53ea8a1df4549b2bb **
+  ** SNAPSHOT build @14bf0f1bd90e07b60310a1e081f2185af5a677c5 **
 
   [ Emmanuel Garette ]
   * retrait de la configuration de la sauvegarde
@@ -10,7 +10,12 @@ conf-amon (2.3-eole73~1.gbpbd234c) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 04 Jan 2011 15:55:38 +0000
+  [ Bruno Boiget ]
+  * correction conf squid pour accès snmp en mode conteneur
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 13 Jan 2011 11:04:21 +0000
 
 conf-amon (2.3-eole72) eole-2.3; urgency=low
 
