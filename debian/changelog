@@ -1,6 +1,4 @@
-conf-amon (2.3-eole73~2.gbp14bf0f) eole-2.3-proposed; urgency=low
-
-  ** SNAPSHOT build @14bf0f1bd90e07b60310a1e081f2185af5a677c5 **
+conf-amon (2.3-eole73) eole-2.3-proposed; urgency=low
 
   [ Emmanuel Garette ]
   * retrait de la configuration de la sauvegarde
@@ -15,7 +13,12 @@ conf-amon (2.3-eole73~2.gbp14bf0f) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 13 Jan 2011 11:04:21 +0000
+  [ Jérôme Soyer ]
+  * Ajout de vnstat dans les dépendances
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 14 Jan 2011 13:40:16 +0000
 
 conf-amon (2.3-eole72) eole-2.3; urgency=low
 
