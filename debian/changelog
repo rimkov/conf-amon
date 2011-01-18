@@ -1,3 +1,15 @@
+conf-amon (2.3-eole74) eole-2.3; urgency=low
+
+  [ Klaas TJEBBES ]
+  * ajout des sites à ne pas authentifier pour microsoft update/licence
+    FIXES #1351
+  * ajout des sites à ne pas authentifier pour microsoft update/licence
+    FIXES #1351
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 18 Jan 2011 15:18:32 +0000
+
 conf-amon (2.3-eole73) eole-2.3-proposed; urgency=low
 
   [ Emmanuel Garette ]
