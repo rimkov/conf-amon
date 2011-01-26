@@ -39,7 +39,6 @@
             </variable>
         </family>
         <separators>
-            <separator name='activer_revprox'>Reverse Proxy</separator>
             <separator name='revprox_sso'>Redirection de services particuliers</separator>
             <separator name='revprox_domainname'>Redirection HTTP et HTTPS</separator>
         </separators>

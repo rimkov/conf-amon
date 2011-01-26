@@ -18,7 +18,7 @@
             <variable name='nuauth_tls_cert' type='string' description="Certificat pour Nuauth" hidden='True'/>
             <variable name='nuauth_tls_cacert' type='string' description="Certification pour Nuauth" hidden='True'/>
         </family>
-        <family name='services'>
+        <family name='authentification'>
             <variable name='activer_nufw' type='oui/non' description="Activation de l'authentification réseau (NuFW)">
                 <value>non</value>
             </variable>
@@ -63,7 +63,6 @@
             </variable>
         </family>
         <separators>
-            <separator name='activer_nufw'>NuFW (Now User Filtering Works)</separator>
             <separator name='sonde_nufw'>Configuration de la sonde NuFW</separator>
         </separators>
     </variables>

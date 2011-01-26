@@ -6,7 +6,7 @@
 	<file filelist='rvp' name='/etc/ipsec.conf' />
     </files>
     <variables>
-        <family name='services'>
+        <family name='Interface-0'>
             <variable name='install_rvp' type='oui/non' description='Activation du RVP' >
                 <value>non</value>
             </variable>

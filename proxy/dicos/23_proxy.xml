@@ -45,7 +45,7 @@
                 <value>http://eole.orion.education.fr/maj/blacklists</value>
             </variable>
         </family>
-        <family name='services'>
+        <family name='authentification'>
             <variable name='num_dansguardian_instance' type='string' description="Nombre de filtres web (Dansguardian et pare-feu) configurables" hidden='True'>
                 <value>2</value>
             </variable>
@@ -406,7 +406,7 @@
             <variable name='safe_ports' type='number' description='Ajout de Safe_ports supplémentaires' multi='True'/>
 
         </family>
-        <family name='Authentification' hidden='True'>
+        <family name='authentification_proxy' hidden='True'>
             <variable name='type_squid_auth' type='string' description="Type d'authentification" >
                 <value>NTLM/SMB</value>
             </variable>
@@ -446,7 +446,6 @@
             <separator name='dansguardian_eth2'>Configuration de la politique de filtrage</separator>
             <separator name='dansguardian_eth3'>Configuration de la politique de filtrage</separator>
             <separator name='dansguardian_eth4'>Configuration de la politique de filtrage</separator>
-            <separator name='activer_squid_auth'>Proxy</separator>
             <separator name='nom_cache_pere_zone'>Proxy pere par zone</separator>
             <separator name="adresse_ip_eth1_proxy_link">Adresse secondaire pour le proxy</separator>
             <separator name="adresse_ip_eth2_proxy_link">Adresse secondaire pour le proxy</separator>

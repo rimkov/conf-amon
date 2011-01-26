@@ -3,7 +3,7 @@
 <creole>
 <!-- **** Dictionnaire optionnel pour freeradius **** -->
     <variables>
-        <family name='services'>
+        <family name='authentification'>
             <variable name='activer_freeradius' type='oui/non' description='Activation du service Freeradius'>
                 <value>non</value>
             </variable>
@@ -27,7 +27,6 @@
             <variable name='freerad_group_vlan' type='number' description="Numéro de VLAN à attribuer à ce groupe"/>
         </family>
         <separators>
-            <separator name='activer_freeradius'>Mise en place de Freeradius</separator>
             <separator name='freerad_nas_ip'>Configuration des NAS</separator>
             <separator name='freerad_ldap_ip'>Configuration LDAP</separator>
             <separator name='freerad_ldap_group'>Configuration des groupes et des vlans</separator>

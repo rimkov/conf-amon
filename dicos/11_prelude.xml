@@ -16,7 +16,7 @@
 <!--************************************************************************************************* -->
     <variables>
         <family name='services'>
-            <variable name='activer_sonde_prelude' type='oui/non' description="Gestion des sondes Prelude" >
+            <variable name='activer_sonde_prelude' type='oui/non' description="Gestion des sondes Prelude" mode="expert">
                 <value>non</value>
             </variable>
         </family>
@@ -75,7 +75,6 @@
         <separators>
             <separator name='sonde_snort'>Configuration de la sonde SNORT</separator>
             <separator name='sonde_samhain'>Configuration de la sonde Samhain</separator>
-            <separator name='activer_sonde_prelude'>Activation des sondes Prelude</separator>
         </separators>
     </variables>
     <constraints>
