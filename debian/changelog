@@ -1,3 +1,23 @@
+conf-amon (2.3-eole75~1.gbp872ae0) eole-2.3-proposed; urgency=low
+
+  ** SNAPSHOT build @872ae0e81260ebf41745935a68c00bfb88b224e1 **
+
+  [ Emmanuel Garette ]
+  * renomme proxy.* en eole-proxy.*
+  * activation de l'agregation dans interface-0 + corrections
+    sémantiques
+  * simplification de l'onglet services
+  * ajout del_comment + ajout des descriptions + refactor onglet
+    services
+  * refactor onglet services
+  * refactor onglet services
+  * refactor onglet services
+  * refactor onglet services
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 27 Jan 2011 15:21:41 +0000
+
 conf-amon (2.3-eole74) eole-2.3; urgency=low
 
   [ Klaas TJEBBES ]
