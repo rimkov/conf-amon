@@ -7,7 +7,7 @@
     </files>
     <variables>
         <family name='services'>
-            <variable name='activer_dhcprelay' type='oui/non' description='Activation du relai DHCP' >
+            <variable name='activer_dhcprelay' type='oui/non' description='Activer le relai DHCP' >
                 <value>non</value>
             </variable>
         </family>
