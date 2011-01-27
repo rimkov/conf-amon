@@ -22,7 +22,7 @@
             <file name='/etc/dansguardian/languages/french/template-liste_blanche.html' source='dansguardian-template-liste_blanche.html'/>
             <file name='/etc/dansguardian/languages/french/template-moderateur.html' source='dansguardian-template-moderateur.html'/>
             <file name='/etc/dansguardian/languages/french/template-utilisateur_interdits.html' source='dansguardian-template-utilisateur_interdits.html'/>
-            <file name='/etc/squid/squid.conf'/>
+            <file name='/etc/squid/squid.conf' del_comment='#'/>
             <file name='/etc/squid/domaines_nocache'/>
             <file name='/etc/squid/domaines_noauth'/>
             <file name='/usr/lib/cgi-bin/filtre.cgi' mode='755'/>
@@ -46,10 +46,10 @@
             </variable>
         </family>
         <family name='authentification'>
-            <variable name='num_dansguardian_instance' type='string' description="Nombre de filtres web (Dansguardian et pare-feu) configurables" hidden='True'>
+            <variable name='num_dansguardian_instance' type='string' description="Nombre de filtres web (DansGuardian et pare-feu) configurables" hidden='True'>
                 <value>2</value>
             </variable>
-            <variable name='activer_squid_auth' type='oui/non' description="Activation de l'authentification web (proxy)" >
+            <variable name='activer_squid_auth' type='oui/non' description="Activer l'authentification web (proxy)" >
                 <value>non</value>
             </variable>
         </family>
@@ -108,31 +108,31 @@
             <variable name="dansguardian_ead_filtre1" type="string" description="Libellé du filtre web 1 dans l'EAD">
                 <value>Filtre web 1</value>
             </variable>
-            <variable name="maxchildren1" type="number" description=''>
+            <variable name="maxchildren1" type="number" description='Nombre maximum de processus'>
                 <value>80</value>
             </variable>
-            <variable name="minchildren1" type="number" description=''>
+            <variable name="minchildren1" type="number" description='Nombre minimum de processus'>
                 <value>8</value>
             </variable>
-            <variable name="minsparechildren1" type="number" description=''>
+            <variable name="minsparechildren1" type="number" description='Nombre minimum de processus en attente'>
                 <value>4</value>
             </variable>
-            <variable name="maxsparechildren1" type="number" description=''>
+            <variable name="maxsparechildren1" type="number" description='Nombre maximum de processus en attente'>
                 <value>32</value>
             </variable>
-            <variable name="preforkchildren1" type="number" description=''>
+            <variable name="preforkchildren1" type="number" description="Nombre de processus démarré s'il en manque">
                 <value>6</value>
             </variable>
-            <variable name="maxagechildren1" type="number" description=''>
+            <variable name="maxagechildren1" type="number" description="La durée de vie maximum d'un processus avant de se termine">
                 <value>500</value>
             </variable>
-            <variable name="dans_cachedir1" type="string" description=''>
+            <variable name="dans_cachedir1" type="string" description='Répertoire de cache'>
                 <value>/tmp</value>
             </variable>
-            <variable name="dans_maxramsize1" type="number" description=''>
+            <variable name="dans_maxramsize1" type="number" description='Taille maximum de fichier conservé en mémoire'>
                 <value>5000</value>
             </variable>
-            <variable name="dans_maxfilesize1" type="number" description=''>
+            <variable name="dans_maxfilesize1" type="number" description='Taille maximum de fichier conservé sur le disque'>
                 <value>5000</value>
             </variable>
             <variable name="unactive_dansguardian_auth1" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 1" hidden="True">
@@ -142,31 +142,31 @@
                 <value>Filtre web 2</value>
             </variable>
 
-            <variable name="maxchildren2" type="number" description=''>
+            <variable name="maxchildren2" type="number" description='Nombre maximum de processus'>
                 <value>80</value>
             </variable>
-            <variable name="minchildren2" type="number" description=''>
+            <variable name="minchildren2" type="number" description='Nombre minimum de processus'>
                 <value>8</value>
             </variable>
-            <variable name="minsparechildren2" type="number" description=''>
+            <variable name="minsparechildren2" type="number" description='Nombre minimum de processus en attente'>
                 <value>4</value>
             </variable>
-            <variable name="maxsparechildren2" type="number" description=''>
+            <variable name="maxsparechildren2" type="number" description='Nombre maximum de processus en attente'>
                 <value>32</value>
             </variable>
-            <variable name="preforkchildren2" type="number" description=''>
+            <variable name="preforkchildren2" type="number" description="Nombre de processus démarré s'il en manque">
                 <value>6</value>
             </variable>
-            <variable name="maxagechildren2" type="number" description=''>
+            <variable name="maxagechildren2" type="number" description="La durée de vie maximum d'un processus avant de se termine">
                 <value>500</value>
             </variable>
-            <variable name="dans_cachedir2" type="string" description=''>
+            <variable name="dans_cachedir2" type="string" description='Répertoire de cache'>
                 <value>/tmp</value>
             </variable>
-            <variable name="dans_maxramsize2" type="number" description=''>
+            <variable name="dans_maxramsize2" type="number" description='Taille maximum de fichier conservé en mémoire'>
                 <value>5000</value>
             </variable>
-            <variable name="dans_maxfilesize2" type="number" description=''>
+            <variable name="dans_maxfilesize2" type="number" description='Taille maximum de fichier conservé sur le disque'>
                 <value>5000</value>
             </variable>
             <variable name="unactive_dansguardian_auth2" type="string" description="Désactivation des plugins qui logguent l'authentification sur la zone 2" hidden="True">
@@ -417,7 +417,7 @@
                 <value>ou=education,o=gouv,c=fr</value>
             </variable>
             <!-- **** LDAP (Active Directory)**** -->
-            <variable name='ip_serveur_ldapad' type='ip' description='Adresse ip du serveur LDAP (Active Directory)' />
+            <variable name='ip_serveur_ldapad' type='ip' description='Adresse IP du serveur LDAP (Active Directory)' />
             <variable name='ldapad_base_dn' type='string' description="Suffixe racine de l'annuaire LDAP (base DN Active Directory)">
                 <value></value>
             </variable>
