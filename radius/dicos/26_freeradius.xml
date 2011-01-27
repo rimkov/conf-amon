@@ -4,7 +4,7 @@
 <!-- **** Dictionnaire optionnel pour freeradius **** -->
     <variables>
         <family name='authentification'>
-            <variable name='activer_freeradius' type='oui/non' description='Activation du service Freeradius'>
+            <variable name='activer_freeradius' type='oui/non' description='Activer le service Freeradius'>
                 <value>non</value>
             </variable>
         </family>
