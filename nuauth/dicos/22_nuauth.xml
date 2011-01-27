@@ -19,7 +19,7 @@
             <variable name='nuauth_tls_cacert' type='string' description="Certification pour Nuauth" hidden='True'/>
         </family>
         <family name='authentification'>
-            <variable name='activer_nufw' type='oui/non' description="Activation de l'authentification réseau (NuFW)">
+            <variable name='activer_nufw' type='oui/non' description="Activer l'authentification réseau (NuFW)">
                 <value>non</value>
             </variable>
             <variable name='activer_client_ldap' redefine='True' hidden='True'>
@@ -58,7 +58,7 @@
             </variable>
        </family>
         <family name='sondes'>
-            <variable name='sonde_nufw' type='oui/non' description="Activation de la sonde NuFW" >
+            <variable name='sonde_nufw' type='oui/non' description="Activer sonde NuFW" >
                 <value>non</value>
             </variable>
         </family>

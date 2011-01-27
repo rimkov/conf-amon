@@ -23,18 +23,18 @@
         <family name='sondes'>
             <variable name='administrateur_email' type='string' description="Adresse courriel de contact"/>
             <variable name='adresse_ip_prelude_manager' type='ip' description="Adresse IP du serveur Prelude Manager "/>
-            <variable name='sonde_snort' type='oui/non' description="Activation de la sonde SNORT" >
+            <variable name='sonde_snort' type='oui/non' description="Activer la sonde SNORT" >
                 <value>non</value>
             </variable>
             <variable name='smtp_snort' type='string' description="Liste des serveurs SMTP sur le réseau" multi="True"/>
             <variable name='http_snort' type='string' description="Liste des serveurs HTTP sur le réseau" multi="True"/>
             <variable name='dns_snort' type='string' description="Liste des serveurs DNS sur le réseau" multi="True"/>
-            <variable name='sonde_samhain' type='oui/non' description="Activation de la sonde Samhain" >
+            <variable name='sonde_samhain' type='oui/non' description="Activer la sonde Samhain" >
                 <value>non</value>
             </variable>
         </family>
         <family name='snort' mode='expert'>
-            <variable name='snort_rules_liste' type='string' description="Activation de la sonde NuFW" multi='True'>
+            <variable name='snort_rules_liste' type='string' description="Activer sonde NuFW" multi='True'>
                 <value>attack-responses</value>
                 <value>bad-traffic</value>
                 <value>ddos</value>

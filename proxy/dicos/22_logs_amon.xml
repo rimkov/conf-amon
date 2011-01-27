@@ -4,7 +4,7 @@
     <files/>
     <variables>
         <family name='Logs' hidden='True'>
-            <variable name='activate_squid_realtime' type='oui/non' description="Activation du transfet des logs de squid en temps réel">
+            <variable name='activate_squid_realtime' type='oui/non' description="Activer le transfet des logs de Squid en temps réel">
                 <value>non</value>
             </variable>
             <variable name='squid_heure_debut' type='string' description="Heure de debut du transfet des logs">

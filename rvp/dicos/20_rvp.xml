@@ -2,12 +2,12 @@
 
 <creole>
     <files>
-	<file filelist='rvp' name='/etc/strongswan.conf' />
-	<file filelist='rvp' name='/etc/ipsec.conf' />
+        <file filelist='rvp' name='/etc/strongswan.conf' />
+        <file filelist='rvp' name='/etc/ipsec.conf' />
     </files>
     <variables>
         <family name='Interface-0'>
-            <variable name='install_rvp' type='oui/non' description='Activation du RVP' >
+            <variable name='install_rvp' type='oui/non' description='Activer le réseau privé virtuel RVP' >
                 <value>non</value>
             </variable>
         </family>

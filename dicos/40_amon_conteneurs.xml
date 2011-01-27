@@ -3,8 +3,8 @@
 <creole>
     <containers>
         <container name="internet" id="53"/>
-	<container name="reverseproxy" group="internet"/>
-	<container name="dns" group="internet"/>
+        <container name="reverseproxy" group="internet"/>
+        <container name="dns" group="internet"/>
     </containers>
     <variables/>
 
