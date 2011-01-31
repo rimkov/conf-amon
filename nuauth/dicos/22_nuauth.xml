@@ -18,11 +18,13 @@
             <variable name='nuauth_tls_cert' type='string' description="Certificat pour Nuauth" hidden='True'/>
             <variable name='nuauth_tls_cacert' type='string' description="Certification pour Nuauth" hidden='True'/>
         </family>
-        <family name='authentification'>
-            <variable name='activer_nufw' type='oui/non' description="Activer l'authentification réseau (NuFW)">
+        <family name='services'>
+            <variable name='activer_client_ldap' redefine='True' hidden='True'>
                 <value>non</value>
             </variable>
-            <variable name='activer_client_ldap' redefine='True' hidden='True'>
+        </family>
+        <family name='authentification'>
+            <variable name='activer_nufw' type='oui/non' description="Activer l'authentification réseau (NuFW)">
                 <value>non</value>
             </variable>
         </family>
