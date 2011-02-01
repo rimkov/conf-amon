@@ -39,9 +39,9 @@ stop() {
 	if [ $RETVAL -eq 0 ]; then
                 rm -f /var/lock/rvp
                 sleep 3
-                if [ -e /var/run/pluto.pid ]; then
-                       rm -f /var/run/pluto.pid
-                       logger "Pluto HS mais /var/run/pluto.pid existait encore"
+                if [ -e /var/run/charon.pid ]; then
+                       rm -f /var/run/charon.pid
+                       logger "Charon HS mais /var/run/charon.pid existait encore"
                fi
         fi
 	return $RETVAL
