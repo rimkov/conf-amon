@@ -1,6 +1,6 @@
-conf-amon (2.3-eole75~1.gbp872ae0) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole75~2.gbpc5cbc1) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @872ae0e81260ebf41745935a68c00bfb88b224e1 **
+  ** SNAPSHOT build @c5cbc18361e632f108f0bfb75b32e38d87854caf **
 
   [ Emmanuel Garette ]
   * renomme proxy.* en eole-proxy.*
@@ -16,7 +16,18 @@ conf-amon (2.3-eole75~1.gbp872ae0) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 27 Jan 2011 15:21:41 +0000
+  [ Emmanuel Garette ]
+  * redefine de activer_client_ldap dans le bon onglet
+
+  [ Klaas TJEBBES ]
+  * suppression des fichiers cron installés par sarg
+
+  [ Fabrice ]
+  * correction ipsec.conf strongswan.conf rvp
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 01 Feb 2011 12:37:38 +0000
 
 conf-amon (2.3-eole74) eole-2.3; urgency=low
 
