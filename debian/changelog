@@ -1,6 +1,6 @@
-conf-amon (2.3-eole75~4.gbpd12b78) eole-2.3-dev; urgency=low
+conf-amon (2.3-eole75~5.gbpeaca93) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @d12b78deabfe97fc9beb1a804fbb2a32044dc78c **
+  ** SNAPSHOT build @eaca93c4323738d26c10ee3596012363886b2592 **
 
   [ Emmanuel Garette ]
   * renomme proxy.* en eole-proxy.*
@@ -38,7 +38,7 @@ conf-amon (2.3-eole75~4.gbpd12b78) eole-2.3-dev; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 02 Feb 2011 16:36:14 +0000
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 02 Feb 2011 16:37:13 +0000
 
 conf-amon (2.3-eole74) eole-2.3; urgency=low
 
