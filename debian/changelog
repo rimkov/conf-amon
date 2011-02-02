@@ -1,6 +1,6 @@
-conf-amon (2.3-eole75~2.gbpc5cbc1) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole75~3.gbp9a0e7d) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @c5cbc18361e632f108f0bfb75b32e38d87854caf **
+  ** SNAPSHOT build @9a0e7d04d0ff315454c4547cffea239254c52ede **
 
   [ Emmanuel Garette ]
   * renomme proxy.* en eole-proxy.*
@@ -27,7 +27,12 @@ conf-amon (2.3-eole75~2.gbpc5cbc1) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 01 Feb 2011 12:37:38 +0000
+  [ Laurent Flori ]
+  * Suprression de la variable nom_dmz dans squid.conf
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 02 Feb 2011 09:42:59 +0000
 
 conf-amon (2.3-eole74) eole-2.3; urgency=low
 
