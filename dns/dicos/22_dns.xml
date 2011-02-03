@@ -6,6 +6,7 @@
             <package>dns-pkg</package>
             <service>bind9</service>
             <file name='/etc/bind/spcl.options'/>
+            <file name='/usr/share/eole/firewall/00_dns.xml'/>
             <file filelist='agriates' name='/etc/bind/agriates.zones'/>
         </container>
     </containers>
