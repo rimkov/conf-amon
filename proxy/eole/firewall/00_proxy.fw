@@ -1,0 +1,5 @@
+allow_dest(interface='eth0', ip="0/0", port='80')
+allow_dest(interface='eth0', ip="0/0", port='443')
+allow_dest(interface='eth0', ip="0/0", port='21')
+allow_dest(interface='eth0', container="dns", port='53')
+allow_dest(interface='eth0', container="dns", protocole='udp', port='53')
