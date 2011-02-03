@@ -1,7 +1,7 @@
 %if %%adresse_ip_dns != ['']
 %for %%variable_iter in %%adresse_ip_dns
-allow_dest(interface='eth0', ip="variable_iter", port='53')
-allow_dest(interface='eth0', ip="variable_iter", protocole='udp', port='53')
+allow_dest(interface='eth0', ip="%%variable_iter", port='53')
+allow_dest(interface='eth0', ip="%%variable_iter", protocole='udp', port='53')
 %end for
 %else
 allow_dest(interface='eth0', ip="0/0", port='53')
