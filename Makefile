@@ -57,10 +57,12 @@ install:
 	#dns
 	mkdir -p $(DNS_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(DNS_DIR)/$(EOLE_DIR)/diagnose/module
+	mkdir -p $(DNS_DIR)/$(AGENT_DIR)
 	cp -rf dns/eole/* $(DNS_DIR)/$(EOLE_DIR)
 	cp -rf dns/dicos $(DNS_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf dns/tmpl $(DNS_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -rf dns/diagnose/* $(DNS_DIR)/$(EOLE_DIR)/diagnose/module
+	cp -rf dns/zephir/* $(DNS_DIR)/$(AGENT_DIR)
 
 	#nuauth
 	mkdir -p $(NUAUTH_DIR)/$(EOLE_CONF_DIR)
