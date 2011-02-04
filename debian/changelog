@@ -1,6 +1,6 @@
-conf-amon (2.3-eole75~6.gbp8243cc) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole75~7.gbp53259e) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @8243cc71a50b4852faa79eaad3496e0b5d39d020 **
+  ** SNAPSHOT build @53259e97f77827d6db1cc24e8d6cc21802b2a6a8 **
 
   [ Emmanuel Garette ]
   * renomme proxy.* en eole-proxy.*
@@ -43,7 +43,16 @@ conf-amon (2.3-eole75~6.gbp8243cc) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 03 Feb 2011 08:25:36 +0000
+  [ Emmanuel Garette ]
+  * support du firewall pour proxy
+  * support du firewall pour dns
+  * typo
+  * typo
+  * typo
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 04 Feb 2011 09:02:47 +0000
 
 conf-amon (2.3-eole74) eole-2.3; urgency=low
 
