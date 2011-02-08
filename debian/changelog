@@ -1,6 +1,10 @@
-conf-amon (2.3-eole75~6.gbp8243cc) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole76) eole-2.3; urgency=low
 
-  ** SNAPSHOT build @8243cc71a50b4852faa79eaad3496e0b5d39d020 **
+  * UNRELEASED
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Feb 2011 14:29:14 +0000
+
+conf-amon (2.3-eole75) eole-2.3-proposed; urgency=low
 
   [ Emmanuel Garette ]
   * renomme proxy.* en eole-proxy.*
@@ -43,7 +47,40 @@ conf-amon (2.3-eole75~6.gbp8243cc) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 03 Feb 2011 08:25:36 +0000
+  [ Emmanuel Garette ]
+  * support du firewall pour proxy
+  * support du firewall pour dns
+  * typo
+  * typo
+  * typo
+
+  [ Equipe Eole ]
+
+  [ Emmanuel Garette ]
+  * majblacklist en executable
+
+  [ Fabrice ]
+  * strongswan.conf ->reuse_ikesa=yes
+
+  [ Equipe Eole ]
+
+  [ Fabrice ]
+  * désactivation cron magic-rvp
+
+  [ Equipe Eole ]
+
+  [ Jérôme Soyer ]
+  * Ajout d'une dépendance forte sur xtables-common-modules-kernelver
+    (fixes #1401)
+
+  [ Equipe Eole ]
+
+  [ Emmanuel Garette ]
+  * mise à niveau dansguardian avec conteneur
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Feb 2011 14:18:06 +0000
 
 conf-amon (2.3-eole74) eole-2.3; urgency=low
 
