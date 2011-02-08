@@ -1,6 +1,6 @@
-conf-amon (2.3-eole75~9.gbp336191) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole75~10.gbp561355) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @336191855e5a885044d4c7ae3315b2de64dfb3ad **
+  ** SNAPSHOT build @5613554a13523cec2279cbf714a1c3c4269c4482 **
 
   [ Emmanuel Garette ]
   * renomme proxy.* en eole-proxy.*
@@ -65,7 +65,13 @@ conf-amon (2.3-eole75~9.gbp336191) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Feb 2011 09:31:41 +0000
+  [ Jérôme Soyer ]
+  * Ajout d'une dépendance forte sur xtables-common-modules-kernelver
+    (fixes #1401)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Feb 2011 13:47:20 +0000
 
 conf-amon (2.3-eole74) eole-2.3; urgency=low
 
