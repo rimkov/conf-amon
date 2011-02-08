@@ -11,7 +11,7 @@ HOME=/
 
 #Zephir
 */10 * * * *    root    /usr/share/zephir/scripts/cron-zephir.sh
-%if %%install_rvp == 'oui'
+#%if %%install_rvp == 'oui'
 # test du rvp
-*/%%magic_rvp_inter * * * *    root    /usr/share/eole/magic-rvp >/dev/null 2>&1
-%end if
+#*/%%magic_rvp_inter * * * *    root    /usr/share/eole/magic-rvp >/dev/null 2>&1
+#%end if
