@@ -1,6 +1,6 @@
-conf-amon (2.3-eole75~7.gbp53259e) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole75~10.gbp561355) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @53259e97f77827d6db1cc24e8d6cc21802b2a6a8 **
+  ** SNAPSHOT build @5613554a13523cec2279cbf714a1c3c4269c4482 **
 
   [ Emmanuel Garette ]
   * renomme proxy.* en eole-proxy.*
@@ -52,7 +52,26 @@ conf-amon (2.3-eole75~7.gbp53259e) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Fri, 04 Feb 2011 09:02:47 +0000
+  [ Emmanuel Garette ]
+  * majblacklist en executable
+
+  [ Fabrice ]
+  * strongswan.conf ->reuse_ikesa=yes
+
+  [ Equipe Eole ]
+
+  [ Fabrice ]
+  * désactivation cron magic-rvp
+
+  [ Equipe Eole ]
+
+  [ Jérôme Soyer ]
+  * Ajout d'une dépendance forte sur xtables-common-modules-kernelver
+    (fixes #1401)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Feb 2011 13:47:20 +0000
 
 conf-amon (2.3-eole74) eole-2.3; urgency=low
 
