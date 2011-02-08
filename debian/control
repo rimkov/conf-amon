@@ -16,7 +16,7 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase,
  era, l7-filter-userspace, l7-protocols,
 #eole
  eole-reverseproxy, eole-dns, eole-nuauth, eole-radius, eole-proxy,
- eole-antivirus, eole-rvp, eole-dhcrelay
+ eole-antivirus, eole-rvp, eole-dhcrelay, eole-sso-client
 #a discuter
 #chkrootkit
 #dépendance historique devenue inutile
