@@ -1,6 +1,6 @@
-conf-amon (2.3-eole75~10.gbp561355) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole75~11.gbpd5cbc4) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @5613554a13523cec2279cbf714a1c3c4269c4482 **
+  ** SNAPSHOT build @d5cbc400d6067986cd55afac9d4480fb4135b2f1 **
 
   [ Emmanuel Garette ]
   * renomme proxy.* en eole-proxy.*
@@ -71,7 +71,12 @@ conf-amon (2.3-eole75~10.gbp561355) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Feb 2011 13:47:20 +0000
+  [ Emmanuel Garette ]
+  * mise à niveau dansguardian avec conteneur
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Feb 2011 14:03:00 +0000
 
 conf-amon (2.3-eole74) eole-2.3; urgency=low
 
