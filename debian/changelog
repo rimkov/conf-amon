@@ -1,3 +1,16 @@
+conf-amon (2.3-eole77) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * ajout de l'agent de surveillance du service dns (ref #830)
+  * conf-amon : ajout dépendance sur eole-sso-client
+
+  [ Bruno Boiget ]
+  * modification template nginx pour redirection sso (ref #1365)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 09 Feb 2011 14:52:07 +0000
+
 conf-amon (2.3-eole76) eole-2.3; urgency=low
 
   * UNRELEASED
