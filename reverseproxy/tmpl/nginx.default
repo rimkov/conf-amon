@@ -103,25 +103,7 @@ server {
 }
 %end for % for %%revprox_iter in %%dom_dict.keys()
 
-%set %%sso_local=False
-%if %%activer_sso == 'oui'
-%if %%adresse_ip_eth0 == %%adresse_ip_sso
-%set %%sso_local=True
-%end if
-%if %%is_defined('adresse_ip_eth1') and %%adresse_ip_eth1 == %%adresse_ip_sso
-%set %%sso_local=True
-%end if
-%if %%is_defined('adresse_ip_eth2') and %%adresse_ip_eth2 == %%adresse_ip_sso
-%set %%sso_local=True
-%end if
-%if %%is_defined('adresse_ip_eth3') and %%adresse_ip_eth3 == %%adresse_ip_sso
-%set %%sso_local=True
-%end if
-%if %%is_defined('adresse_ip_eth4') and %%adresse_ip_eth4 == %%adresse_ip_sso
-%set %%sso_local=True
-%end if
-%end if
-%if %%revprox_sso != '' and %%sso_local == False
+%if %%revprox_sso != '' and %%activer_sso == 'distant'
 # Redirection SSO
 server {
         listen 8443;
@@ -142,7 +124,7 @@ server {
                 set                     $dest  $http_destination;
         }
 }
-%end if % if %%revprox_sso != '' and %%sso_local == False
+%end if % if %%revprox_sso != '' and %%activer_sso == 'distant'
 
 %if %%revprox_poshadmin != ''
 # POSH
