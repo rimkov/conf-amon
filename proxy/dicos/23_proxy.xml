@@ -28,7 +28,7 @@
             <file name='/usr/lib/cgi-bin/filtre.cgi' mode='755'/>
             <!--authentification-->
             <package>authentification-pkg</package>
-            <service servicelist='kerberos'>smbd</service>
+            <service servicelist='kerberos' method='upstart'>smbd</service>
             <service servicelist='kerberos'>winbind</service>
             <service servicelist='kerberos'>krb5-admin-server</service>
             <service servicelist='kerberos'>krb5-kdc</service>
