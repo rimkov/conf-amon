@@ -2,8 +2,6 @@
 
 <creole>
     <files>
-        <service>bastion</service>
-        <!-- killp2p est lancé par bastion -->
         <file name='/etc/chkrootkit.conf'/>
         <file name='/etc/cron.d/amon' source='cron-amon'/>
         <file name='/etc/host.conf'/>
