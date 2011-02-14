@@ -4,6 +4,7 @@
     <files>
         <file filelist='rvp' name='/etc/strongswan.conf' />
         <file filelist='rvp' name='/etc/ipsec.conf' />
+        <file filelist='rvp' name='/etc/ipsec.d/ipsec_updown' />
     </files>
     <variables>
         <family name='Interface-0'>
