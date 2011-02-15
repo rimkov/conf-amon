@@ -1,6 +1,6 @@
-conf-amon (2.3-eole78~1.gbp848d68) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole78~2.gbpfa9d4f) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @848d687bc1dbb0a3c5d99d3f144642073f35cff5 **
+  ** SNAPSHOT build @fa9d4fd8386a98a77c409bf908f15da9cec14fc2 **
 
   [ Emmanuel Garette ]
   * la méthode smbd doit etre upstart
@@ -14,7 +14,16 @@ conf-amon (2.3-eole78~1.gbp848d68) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Fri, 11 Feb 2011 08:19:59 +0000
+  [ Fabrice ]
+  * ajout ipsec_updown
+
+  [ Emmanuel Garette ]
+  * titre du diagnose du reverse proxy que si activé
+  * diagnose meilleur test pour le proxy
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 15 Feb 2011 10:07:28 +0000
 
 conf-amon (2.3-eole77) eole-2.3; urgency=low
 
