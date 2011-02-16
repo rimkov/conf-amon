@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Copie de la configuration vim pour nginx en postinstall
+if [ -f /usr/share/eole/nginx.vim -a -d /usr/share/vim/vim72/syntax ];then
+    mv -f /usr/share/eole/nginx.vim /usr/share/vim/vim72/syntax
+fi
+exit 0
