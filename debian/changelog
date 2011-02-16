@@ -1,6 +1,6 @@
-conf-amon (2.3-eole78~2.gbpfa9d4f) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole78~3.gbpdfdccb) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @fa9d4fd8386a98a77c409bf908f15da9cec14fc2 **
+  ** SNAPSHOT build @dfdccb4bbbc595b9777ea6330e5a1fe3407d1d34 **
 
   [ Emmanuel Garette ]
   * la méthode smbd doit etre upstart
@@ -23,7 +23,12 @@ conf-amon (2.3-eole78~2.gbpfa9d4f) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 15 Feb 2011 10:07:28 +0000
+  [ Joël Cuissinat ]
+  * copie du nginx.vim en postinstall de eole-reverseproxy
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 16 Feb 2011 10:33:05 +0000
 
 conf-amon (2.3-eole77) eole-2.3; urgency=low
 
