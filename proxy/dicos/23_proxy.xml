@@ -406,7 +406,7 @@
             <variable name='safe_ports' type='number' description='Ajout de Safe_ports supplémentaires' multi='True'/>
 
         </family>
-        <family name='authentification_proxy' hidden='True'>
+        <family name='proxy authentifié'>
             <variable name='type_squid_auth' type='string' description="Type d'authentification" >
                 <value>NTLM/SMB</value>
             </variable>
@@ -432,6 +432,7 @@
             <variable name='nom_domaine_smb' type='string' description='Nom du domaine SMB' />
             <variable name='ip_serveur_smb' type='ip' description='Adresse IP du Contrôleur de domaine SMB' />
             <!-- **** KRB **** -->
+            <variable name='test_activer_kerberos' type='oui/non' hidden='True'/>
             <variable name='nom_serveur_krb' type='string' description='Nom du Contrôleur de domaine KERBEROS' />
             <variable name='nom_domaine_krb' type='string' description='Nom du domaine KERBEROS (fqdn)' />
             <variable name='nom_domaine_windows' type='string' description='Nom du domaine Windows' />
@@ -467,6 +468,19 @@
             <param>2</param>
             <target type='interfacelist'>eth2_proxy_link</target>
         </condition>
+
+        <auto name='calc_multi_condition' target='test_activer_kerberos'>
+            <param>['oui','NTLM/KERBEROS']</param>
+            <param type='eole' name='condition_1'>activer_squid_auth</param>
+            <param type='eole' name='condition_2'>type_squid_auth</param>
+            <param name='match'>oui</param>
+            <param name='mismatch'>non</param>
+        </auto>
+        <condition name='hidden_if_not_in' source='test_activer_kerberos'>
+            <target type='servicelist'>kerberos</target>
+            <target type='filelist'>kerberos</target>
+        </condition>
+
         <condition name='hidden_if_not_in' source='type_squid_auth'>
             <param>NTLM/SMB</param>
             <target type='variable'>nom_serveur_smb</target>
@@ -479,8 +493,6 @@
             <target type='variable'>nom_domaine_krb</target>
             <target type='variable'>nom_domaine_windows</target>
             <target type='variable'>ip_serveur_krb</target>
-            <target type='servicelist'>kerberos</target>
-            <target type='filelist'>kerberos</target>
         </condition>
         <condition name='hidden_if_not_in' source='type_squid_auth'>
             <param>Ldap</param>
@@ -559,7 +571,7 @@
         </check>
         <condition name='hidden_if_in' source='activer_squid_auth'>
             <param>non</param>
-            <target type='family'>Authentification</target>
+            <target type='family'>proxy authentifié</target>
             <target type='variable'>squid_auth_eth1</target>
             <target type='variable'>squid_auth_eth2</target>
             <target type='variable'>squid_auth_eth3</target>
