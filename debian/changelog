@@ -1,6 +1,6 @@
-conf-amon (2.3-eole78~3.gbpdfdccb) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole78~4.gbp0069fc) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @dfdccb4bbbc595b9777ea6330e5a1fe3407d1d34 **
+  ** SNAPSHOT build @0069fc04857cfc84cada10f06bd68679c591cc2b **
 
   [ Emmanuel Garette ]
   * la méthode smbd doit etre upstart
@@ -28,7 +28,13 @@ conf-amon (2.3-eole78~3.gbpdfdccb) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 16 Feb 2011 10:33:05 +0000
+  [ Joël Cuissinat ]
+  * Mise à niveau des tests sur kerberos et l'authentification squid
+    (fixes #817)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 17 Feb 2011 15:31:24 +0000
 
 conf-amon (2.3-eole77) eole-2.3; urgency=low
 
