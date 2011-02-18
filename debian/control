@@ -8,8 +8,8 @@ Standards-Version: 3.7.3
 Package: conf-amon
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase,
- bacula-fd, ntp, eole-sso, amon-backend, pppoe,  snmp, libsnmp-perl, xtables-addons-common,
- xtables-addons-modules-2.6.32-26-eole,vnstat,
+ bacula-fd, ntp, eole-sso, amon-backend, pppoe, snmp, libsnmp-perl, xtables-addons-common,
+ xtables-addons-modules-2.6.32-26-eole, vnstat,
 #snort, ...
  snort, oinkmaster, samhain,
 #firewall
@@ -56,7 +56,8 @@ Description: Templates et dictionnaires pour radius EOLE
 Package: eole-rvp
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, strongswan,
- ipsec-tools
+ python-arv
+#ipsec-tools
 Description: Templates et dictionnaires pour rvp EOLE
 
 Package: eole-dhcrelay
