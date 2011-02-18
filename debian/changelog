@@ -1,6 +1,6 @@
-conf-amon (2.3-eole78~5.gbpc8d027) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole78~6.gbpc99d58) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @c8d027efe64e5021dfcf2bddb4d1e84242ce2397 **
+  ** SNAPSHOT build @c99d587b52fff4e4006e4dd9a242b6d17edf6a58 **
 
   [ Emmanuel Garette ]
   * la méthode smbd doit etre upstart
@@ -45,7 +45,16 @@ conf-amon (2.3-eole78~5.gbpc8d027) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Fri, 18 Feb 2011 13:55:45 +0000
+  [ Joël Cuissinat ]
+  * mise à niveau amon
+  * test_rvp -> test-rvp
+
+  [ Fabrice ]
+  * modif active_rvp test_rvp -> test-rvp
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 18 Feb 2011 14:23:48 +0000
 
 conf-amon (2.3-eole77) eole-2.3; urgency=low
 
