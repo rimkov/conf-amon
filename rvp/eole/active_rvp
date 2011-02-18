@@ -98,7 +98,7 @@ class ActiveRVPCli(Cli):
 
     def do_manuel(self, line):
         """mode manuel"""
-        print "copier les fichiers ipsec.db et test_rvp dans " + ipsec_tmp_path
+        print "copier les fichiers ipsec.db et test-rvp dans " + ipsec_tmp_path
         self.onecmd("start_ipsec")
         return True
 
@@ -114,7 +114,7 @@ class ActiveRVPCli(Cli):
         """
         system("/etc/init.d/ipsec stop")
         unlink(strongswan_database)
-        unlink("/usr/share/eole/test_rvp")
+        unlink("/usr/share/eole/test-rvp")
         return True
 
     def do_get_rvp_from_zephir(self, line):
@@ -165,7 +165,7 @@ class ActiveRVPCli(Cli):
             privkey.data = decrypted_privkey
             session.commit()
             copy(ipsec_tmp_path+sep+"ipsec.db", strongswan_database)
-            copy(ipsec_tmp_path+sep+"test_rvp", "/usr/share/eole/test_rvp")
+            copy(ipsec_tmp_path+sep+"test-rvp", "/usr/share/eole/test-rvp")
             system("/etc/init.d/ipsec restart")
         session.flush()
         return True
