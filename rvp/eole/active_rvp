@@ -1,0 +1,176 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+"""
+utilitaire active_rvp sur l'Amon
+"""
+import sys
+import xmlrpclib
+
+from getpass import getpass
+from os import system, sep, unlink, mkdir
+from os.path import isfile, isdir, dirname
+from commands import getoutput
+from shutil import copy
+
+from zephir.lib_zephir import TransportEole
+from zephir.zephir_conf.zephir_conf import id_serveur, adresse_zephir
+
+from arv.config import strongswan_database, ipsec_tmp_path
+from arv.lib.util import decrypt_privkey
+from arv.lib import cmd2 as cmd
+from arv.db.strongswandb import (PeerConfigs, PrivateKey, PrivateKeyIdentity,
+                                 SharedSecrets, SharedSecretIdentity, Identity,
+                                 CertificateIdentity, Certificates, initialise)
+
+def get_password():
+    if isfile(ipsec_tmp_path+sep+"ipsec.db"):
+        password = getpass("")
+    else:
+        print "archive inexistante"
+        sys.exit()
+        password = None
+    return password
+
+def test_password(password, private_key):
+    retcode = system("""echo "{0}" | openssl rsa -text -passin pass:{1} -noout &> /dev/null""".format(private_key, password))
+    if retcode == 0:
+        return True
+    else:
+        return False
+
+
+#______________________________________________________________________________
+# command line interpreter
+class Cli(cmd.Cmd):
+    "command line interpreter (abstract base class)"
+    def __init__(self):
+        cmd.Cmd.__init__(self)
+        self.doc_header = "Commandes documentées"
+        self.undoc_header = "Commandes non documentées"
+        self.ruler = '-'
+        self.prompt = "#ActiveRVP> "
+        self.intro  = """Console ActiveRVP :
+  tapez help (ou "?") pour avoir la liste des commandes,
+  tapez help <command> pour avoir une aide sur chaque commande"""
+
+    def emptyline(self):
+        print "Type 'exit' to finish withe the session or type ? for help."
+
+#    def postcmd(self, stop, line):
+#        stop = True
+
+    def default(self, line):
+        print "unknown command prefix"
+        print "*** unknown syntax : %s (type 'help' for help for a list of valid commands)"%line
+        self.emptyline()
+
+    def do_exit(self, line):
+        """Exits from the console"""
+        return True
+
+    def do_quit(self, line):
+        return True
+
+    def do_EOF(self, args):
+        """Exit on system end of file character"""
+        return True #self.do_exit(args)
+
+#    def postloop(self):
+#        # put here your post actions
+#        print "exit cli"
+
+
+#_____________________________________________________________________________
+# active_rvp command line interpreter
+class ActiveRVPCli(Cli):
+    """Active RVP Command line interpreter
+    """
+
+    def do_init(self, line):
+        """Mode d'activation rvp
+        """
+        mode = self.select("manuel zephir", "choisissez le mode : ")
+        if mode == "zephir":
+            self.onecmd("zephir")
+        else:
+            self.onecmd("manuel")
+        return True
+
+    def do_manuel(self, line):
+        """mode manuel"""
+        print "copier les fichiers ipsec.db et test_rvp dans " + ipsec_tmp_path
+        self.onecmd("start_ipsec")
+        return True
+
+    def do_zephir(self, line):
+        """activation du rvp par zephir
+        """
+        self.onecmd("get_rvp_from_zephir")
+        self.onecmd("start_ipsec")
+        return True
+
+    def do_delete(self, line):
+        """Désactivation rvp
+        """
+        system("/etc/init.d/ipsec stop")
+        unlink(strongswan_database)
+        unlink("/usr/share/eole/test_rvp")
+        return True
+
+    def do_get_rvp_from_zephir(self, line):
+        """récupération de l'archive rvp sur le Zephir"""
+        #login, passwd, id_sphynx, tmp_ipsec_path
+        login = raw_input("Entrez le login Zephir : ")
+        passwd = getpass("Entrez le mot de passe Zephir : ")
+        id_sphynx = raw_input("Entrez l'identifiant Zephir du serveur sphynx : ")
+        if not isdir(dirname(ipsec_tmp_path)):
+            mkdir(dirname(ipsec_tmp_path))
+        if not isdir(ipsec_tmp_path):
+            mkdir(ipsec_tmp_path)
+        try:
+            zephir_proxy = xmlrpclib.ServerProxy("https://%s:%s@%s:7080" % (login, passwd, adresse_zephir), transport=TransportEole())
+        except xmlrpclib.ProtocolError:
+            sys.exit("Erreur d'authentification zephir")
+        # récupération de l'archive de configuration vpn
+        contenu_b64 = zephir_proxy.uucp.sphynx_get(id_sphynx, id_serveur)
+        contenu = xmlrpclib.base64.decodestring(contenu_b64[1])
+        # écriture du fichier tar
+        archive = ipsec_tmp_path+sep+'vpn_%star.gz' % id_sphynx
+        f=open(archive,"w")
+        f.write(contenu)
+        f.close()
+        # décompression de l'archive
+        system("cd %s;/bin/tar xzf %s" % (ipsec_tmp_path,archive))
+        unlink(archive)
+        print "#->archive récupérée"
+        return True
+
+    def do_start_ipsec(self, line):
+        """Déplombe les clefs privées"""
+        session = initialise("sqlite:///"+ipsec_tmp_path+sep+"ipsec.db")
+        #session = initialise("sqlite:///"+strongswan_database)
+        for privkey, ident in session.query(PrivateKey, Identity).filter(PrivateKey.id == PrivateKeyIdentity.private_key).filter(PeerConfigs.local_id==PrivateKeyIdentity.identity).\
+                filter(PeerConfigs.local_id == Identity.id).filter(Identity.type==9).all():
+    #        name = session.query(PeerConfigs).filter(PeerConfigs.local_id==)
+            certif, certident = session.query(Certificates.data, CertificateIdentity.certificate).filter(Certificates.id == CertificateIdentity.certificate).\
+                                                                 filter(CertificateIdentity.identity == ident.id).first()
+            #print certif
+            certname = getoutput("""echo "{0}" | openssl x509 -text -noout|grep Subject|head -n 1|cut -d "=" -f5""".format(certif))
+            print "Passphrase du certificat {0} : ".format(certname),
+            passwd = get_password()
+            while not test_password(passwd, privkey.data):
+                print "erreur passphrase, veuillez réessayer : ",
+                passwd = get_password()
+            decrypted_privkey = decrypt_privkey(privkey.data, passwd)
+            privkey.data = decrypted_privkey
+            session.commit()
+            copy(ipsec_tmp_path+sep+"ipsec.db", strongswan_database)
+            copy(ipsec_tmp_path+sep+"test_rvp", "/usr/share/eole/test_rvp")
+            system("/etc/init.d/ipsec restart")
+        session.flush()
+        return True
+#_____________________________________________________________________________
+# launch interpreter
+cmd = ActiveRVPCli()
+cmd.cmdloop()
+
