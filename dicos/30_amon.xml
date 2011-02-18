@@ -22,7 +22,7 @@
                 <value>2</value>
             </variable>
             <variable name='nom_machine' type='string' description='Nom de la machine' >
-                <value>pf-amon</value>
+                <value>amon</value>
             </variable>
             <variable name='install_scribe_dmz' type='oui/non' description="Activer la gestion d'un Scribe dans la DMZ" >
                 <value>non</value>
