@@ -1,6 +1,6 @@
-conf-amon (2.3-eole78~4.gbp0069fc) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole78~5.gbpc8d027) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @0069fc04857cfc84cada10f06bd68679c591cc2b **
+  ** SNAPSHOT build @c8d027efe64e5021dfcf2bddb4d1e84242ce2397 **
 
   [ Emmanuel Garette ]
   * la méthode smbd doit etre upstart
@@ -34,7 +34,18 @@ conf-amon (2.3-eole78~4.gbp0069fc) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 17 Feb 2011 15:31:24 +0000
+  [ Joël Cuissinat ]
+  * déplacement des variables *cachées* dans la famille nufw
+
+  [ Fabrice ]
+  * modif initialisation rvp
+
+  [ Joël Cuissinat ]
+  * eole-rvp : dépendance sur python-arv
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 18 Feb 2011 13:55:45 +0000
 
 conf-amon (2.3-eole77) eole-2.3; urgency=low
 
