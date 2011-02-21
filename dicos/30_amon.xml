@@ -24,15 +24,13 @@
             <variable name='nom_machine' redefine='True'>
                 <value>amon</value>
             </variable>
-            <variable name='install_scribe_dmz' type='oui/non' description="Activer la gestion d'un Scribe dans la DMZ" >
-                <value>non</value>
-            </variable>
         </family>
         <family name='Interface-0'>
             <variable name='eth0_method' redefine='True' />
         </family>
         <family name='Interface-1'>
-            <variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" >
+            <!-- exists="False" : cf. eole-proxy -->
+            <variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" exists="False">
                 <value>admin</value>
             </variable>
         </family>
@@ -51,10 +49,6 @@
                 <value>dmz-pub</value>
             </variable>
         </family>
-        <family name='Scribe-DMZ' hidden='True'>
-            <variable name='nom_serveur_scribe_dmz' type='string' description='Nom du Scribe dans la DMZ (pour enregistrement DNS)' />
-            <variable name='ip_serveur_scribe_dmz' type='ip' description='Adresse IP du Scribe dans la DMZ' />
-        </family>
         <separators>
             <separator name='nom_cache_pere'>Proxy pere general</separator>
             <separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
@@ -70,10 +64,6 @@
         <check name="valid_enum" target="eth0_method">
             <param>['statique','dhcp','pppoe']</param>
         </check>
-        <condition name='hidden_if_in' source='install_scribe_dmz'>
-            <param>non</param>
-            <target type='family'>Scribe-DMZ</target>
-        </condition>
     </constraints>
     <help/>
 </creole>
