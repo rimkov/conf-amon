@@ -1,3 +1,13 @@
+conf-amon (2.3-eole81) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * fix sur nom_machine_eth1 + suppression des variables scribe_dmz
+  * 20_dhcrelay : suppression des variables scribe_dmz
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 21 Feb 2011 13:52:25 +0000
+
 conf-amon (2.3-eole80) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
