@@ -1,3 +1,12 @@
+conf-amon (2.3-eole80) eole-2.3; urgency=low
+
+  [ Joël Cuissinat ]
+  * re-fix nom_machine (redefine)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 21 Feb 2011 11:14:36 +0000
+
 conf-amon (2.3-eole79) eole-2.3; urgency=low
 
   * UNRELEASED
