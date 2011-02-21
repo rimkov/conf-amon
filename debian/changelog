@@ -1,6 +1,4 @@
-conf-amon (2.3-eole78~7.gbp4d0d11) eole-2.3-proposed; urgency=low
-
-  ** SNAPSHOT build @4d0d11c2da429b866a5825d4cc0f284b29034436 **
+conf-amon (2.3-eole78) eole-2.3-proposed; urgency=low
 
   [ Emmanuel Garette ]
   * la méthode smbd doit etre upstart
@@ -59,7 +57,7 @@ conf-amon (2.3-eole78~7.gbp4d0d11) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Fri, 18 Feb 2011 15:44:59 +0000
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 21 Feb 2011 09:18:13 +0000
 
 conf-amon (2.3-eole77) eole-2.3; urgency=low
 
