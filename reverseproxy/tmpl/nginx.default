@@ -2,7 +2,7 @@ client_max_body_size 4M;
 client_body_buffer_size 128k;
 %set %%len_dom=0
 %for %%location_iter in %%revprox_domainname
-%set %%len_dom=%%max(%%len_dom,%%len(%%location_iter.value))
+%set %%len_dom=%%max(%%len_dom,%%len(%%location_iter.value)+4)
 %end for
 %if %%len_dom < 24
 server_names_hash_bucket_size 32;
@@ -14,6 +14,32 @@ server_names_hash_bucket_size 128;
 proxy_buffer_size   16k;
 proxy_buffers   6 32k;
 proxy_busy_buffers_size   32k;
+
+server {
+    listen %%adresse_ip_eth1:80;
+    server_name wpad.%%nom_domaine_local;
+    server_name wpad;
+    server_name %%nom_domaine_local;
+    root /var/www/;
+    location /wpad.dat {
+        index wpad.dat;
+        default_type application/x-ns-proxy-autoconfig;
+    }
+}
+
+%if %%nombre_interfaces >= "2"
+server {
+    listen %%adresse_ip_eth2:80;
+    server_name wpad.%%nom_domaine_local;
+    server_name wpad;
+    server_name %%nom_domaine_local;
+    root /var/www/;
+    location /wpad.dat {
+        index wpad.dat;
+        default_type application/x-ns-proxy-autoconfig;
+    }
+}
+%end if
 
 %set %%dom_dict={}
 %for %%location_iter in %%revprox_domainname

@@ -3,10 +3,14 @@
 <creole>
     <containers>
         <container name="reverseproxy" id='21'>
-            <service servicelist='revprox'>nginx</service>
+            <service>nginx</service>
             <package>reverseproxy-pkg</package>
-            <file filelist='revprox' name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
-            <file filelist='revprox' name='/var/www/nginx-default/nginx.html' source='nginx.html'/>
+            <file name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
+            <file name='/var/www/nginx-default/nginx.html' source='nginx.html'/>
+            <file name="/var/www/wpad.dat" mode='775'/>
+            <!--<file name="/etc/squid/domaines_noauth_acad"/>
+            <file name="/etc/squid/domaines_nocache_acad"/>
+            <file name="/etc/nginx/sites-enabled/access_proxy"/>-->
         </container>
     </containers>
     <!--************************************************************************************************* -->
@@ -60,9 +64,7 @@
         <condition name='hidden_if_in' source='activer_revprox'>
             <param>non</param>
             <target type='family'>Reverse proxy</target>
-            <target type='filelist'>revprox</target>
-            <target type='servicelist'>revprox</target>
-                </condition>
+        </condition>
     <!-- **** Groupes **** -->
          <group master='revprox_domainname'>
             <slave>revprox_rep</slave>

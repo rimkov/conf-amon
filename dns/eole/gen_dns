@@ -18,7 +18,13 @@ NAMEDCONF=$container_path_dns/etc/bind/named.conf
 
 declare -i I Max nb_int
 cd $container_path_dns/etc/bind
-Cmd="/usr/share/eole/h2n -h $nom_machine -d $nom_domaine_local -s $nom_machine.$nom_domaine_local"
+if [ "$container_path_dns" = "" ]; then
+DOMAINNAME=$nom_machine.$nom_domaine_local
+else
+cname=`echo $container_path_dns|awk -F/ '{ print $(NF-1) }'`
+DOMAINNAME=$cname.$nom_domaine_local
+fi
+Cmd="/usr/share/eole/h2n -h $nom_machine -d $nom_domaine_local -s $DOMAINNAME"
 Max=`expr $nombre_interfaces - 1`
 I=0
 while [ $I -le $Max ]
@@ -35,10 +41,11 @@ done
 
 Cmd=$Cmd" -M -v 8 -y -b $NAMEDCONF"
 
-if [ ! $adresse_network_dmz = "" ]
-then
-        Cmd=$Cmd" -n ${adresse_network_dmz}:${adresse_netmask_dmz} "
-fi
+#AmonEcole 2.2
+#if [ ! $adresse_network_dmz = "" ]
+#then
+#        Cmd=$Cmd" -n ${adresse_network_dmz}:${adresse_netmask_dmz} "
+#fi
 
 $Cmd
 cp -f "$container_path_dns/etc/bind/db.root" "$container_path_dns/etc/bind/db.cache"
