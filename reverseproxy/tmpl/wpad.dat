@@ -1,0 +1,10 @@
+function FindProxyForURL(url, host) {
+    if ( isInNet(host, "127.0.0.1", "255.255.255.255") ) {
+        return "DIRECT";
+    }
+%if %%container_ip_annuaire == "127.0.0.1"
+    return "PROXY %%adresse_ip_eth1:3128";
+%else
+    return "PROXY %%adresse_ip_proxy_link:3128";
+%end if
+}
