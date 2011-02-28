@@ -11,7 +11,7 @@
             <package>antivirus-pkg</package>
             <service>squid</service>
             <service>dansguardian</service>
-            <service servicelist='clamav'>clamav-daemon</service>
+            <service servicelist='clamav_proxy' in_container='True'>clamav-daemon</service>
             <interface linkto="eth1" ip="adresse_ip_eth1_proxy_link" mask="adresse_mask_eth1_proxy_link">eth1</interface>
             <interface interfacelist='eth2_proxy_link' linkto="eth2" ip="adresse_ip_eth2_proxy_link" mask="adresse_mask_eth2_proxy_link">eth2</interface>
             <file name='/etc/dansguardian/languages/french/fancydmtemplate.html' />
@@ -35,6 +35,7 @@
             <file filelist='kerberos' name='/etc/samba/smb.conf' />
             <file filelist='kerberos' name='/etc/samba/lmhosts' />
             <file filelist='kerberos' name='/etc/krb5.conf' />
+            <!-- clamav : génère même si pas activé pour le mode non conteneur-->
             <file filelist='clamav' name='/etc/clamav/clamd.conf'/>
         </container>
     </containers>
@@ -57,6 +58,7 @@
             <variable name='dansguardian_clam' type='oui/non' description="Activer l'anti-virus sur le proxy">
                 <value>non</value>
             </variable>
+            <variable name='test_activer_clam_proxy' type='oui/non' hidden='True'/>
         </family>
         <family name='Interface-1'>
             <variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" exists="False">
@@ -715,6 +717,17 @@
             <slave>cache_dir_firstLevel</slave>
             <slave>cache_dir_secondLevel</slave>
         </group>
+        <auto name='calc_multi_condition' target='test_activer_clam_proxy'>
+            <param>oui</param>
+            <param type='eole' name='condition_1'>activer_clam</param>
+            <param type='eole' name='condition_2'>dansguardian_clam</param>
+            <param name='match'>oui</param>
+            <param name='mismatch'>non</param>
+        </auto>
+        <condition name='hidden_if_in' source='test_activer_clam_proxy'>
+            <param>non</param>
+            <target type='servicelist'>clamav_proxy</target>
+        </condition>
     </constraints>
     <help>
         <variable name='dansguardian_eth1'>Instance de DansGuardian à utiliser pour l'interface eth1 (1=Configuration 1, 2=Configuration 2)</variable>
