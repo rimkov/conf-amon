@@ -1,3 +1,21 @@
+conf-amon (2.3-eole82~1.gbpbee81d) eole-2.3-proposed; urgency=low
+
+  ** SNAPSHOT build @bee81d97edf44f3a1857bae18abd33e2a4162788 **
+
+  [ Emmanuel Garette ]
+  * support de wpad
+  * ajout du template wpad.dat
+  * cron-root : test si /sbin/matin.firewall ou /sbin/soir.firewall est
+    executable
+
+  [ Joël Cuissinat ]
+  * utilisation du nom de la machine pour initialiser le netbios name
+    samba [2.3] (fixes #1430)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 28 Feb 2011 08:31:48 +0000
+
 conf-amon (2.3-eole81) eole-2.3; urgency=low
 
   [ Joël Cuissinat ]
