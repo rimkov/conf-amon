@@ -1,6 +1,6 @@
-conf-amon (2.3-eole82~1.gbpbee81d) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole82~2.gbp53a80c) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @bee81d97edf44f3a1857bae18abd33e2a4162788 **
+  ** SNAPSHOT build @53a80cfffc0c50d9655cfe27dfb2524e3f8f7ca5 **
 
   [ Emmanuel Garette ]
   * support de wpad
@@ -14,7 +14,15 @@ conf-amon (2.3-eole82~1.gbpbee81d) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 28 Feb 2011 08:31:48 +0000
+  [ Emmanuel Garette ]
+  * ne pas redémarrer clam dans le conteneur si nécessaire
+
+  [ Fabrice ]
+  * ne pas afficher le warning au lancement de strongswan
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 28 Feb 2011 13:32:09 +0000
 
 conf-amon (2.3-eole81) eole-2.3; urgency=low
 
