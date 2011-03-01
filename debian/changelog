@@ -1,6 +1,6 @@
-conf-amon (2.3-eole82~4.gbp3df8cb) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole82~5.gbpa7ecff) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @3df8cbedbd4b9dc4b77ca9a84e50d582007d7e8e **
+  ** SNAPSHOT build @a7ecff6c3720362dd26e3affe7d4df6baa77a131 **
 
   [ Emmanuel Garette ]
   * support de wpad
@@ -46,7 +46,12 @@ conf-amon (2.3-eole82~4.gbp3df8cb) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 01 Mar 2011 16:18:11 +0000
+  [ Joël Cuissinat ]
+  * fix cron-amon toujours dans le dico
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 01 Mar 2011 16:55:05 +0000
 
 conf-amon (2.3-eole81) eole-2.3; urgency=low
 
