@@ -27,7 +27,7 @@ server {
     }
 }
 
-%if %%nombre_interfaces >= "2"
+%if %%nombre_interfaces >= "3"
 server {
     listen %%adresse_ip_eth2:80;
     server_name wpad.%%nom_domaine_local;
