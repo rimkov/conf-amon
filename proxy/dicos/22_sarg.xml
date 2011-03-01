@@ -13,8 +13,8 @@
         </container>
     </containers>
     <variables>
-        <family name='services'>
-            <variable  name='active_sarg' type='oui/non' description="Activation du générateur de statistique proxy SARG">
+        <family name='squid' mode='expert'>
+            <variable  name='active_sarg' type='oui/non' description="Activer le générateur de statistiques proxy SARG">
                 <value>non</value>
             </variable>
         </family>
