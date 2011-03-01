@@ -1,6 +1,6 @@
-conf-amon (2.3-eole82~3.gbpdd5336) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole82~4.gbp3df8cb) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @dd533629b00a68bade56ad12a0351d0acb73b87e **
+  ** SNAPSHOT build @3df8cbedbd4b9dc4b77ca9a84e50d582007d7e8e **
 
   [ Emmanuel Garette ]
   * support de wpad
@@ -28,7 +28,25 @@ conf-amon (2.3-eole82~3.gbpdd5336) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 28 Feb 2011 15:45:32 +0000
+  [ Emmanuel Garette ]
+  * correction dans wpad
+  * nombre d'interface c'est 3
+
+  [ Joël Cuissinat ]
+  * active_rvp : test mode zephir + colorisation (fixes #1460)
+  * suppression du cron spécifique à amon
+  * install_rvp remis dans Services + suppression question sur magic-rvp
+    (fixes #1459)
+  * toiletage de la famille squid
+  * active_sarg dans l'onglet Squid + renommage du dico
+
+  [ Klaas TJEBBES ]
+  * Remettre la gestion d'un Scribe en DMZ pour les règles de parefeu
+    DMZ => PEDAGO (client scribe) FIXES #1485
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 01 Mar 2011 16:18:11 +0000
 
 conf-amon (2.3-eole81) eole-2.3; urgency=low
 
