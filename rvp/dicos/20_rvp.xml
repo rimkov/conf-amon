@@ -7,7 +7,7 @@
         <file filelist='rvp' name='/etc/ipsec.d/ipsec_updown' />
     </files>
     <variables>
-        <family name='Interface-0'>
+        <family name='services'>
             <variable name='install_rvp' type='oui/non' description='Activer le réseau privé virtuel RVP' >
                 <value>non</value>
             </variable>
@@ -18,16 +18,13 @@
             <variable name='autoriser_rvp_autres' type='oui/non' description="Autoriser d'autres zones que eth1 à accéder à ce réseau">
                 <value>non</value>
             </variable>
-            <variable name='magic_rvp_inter' type='number' description='Intervalle (en min) entre deux tests de bon fonctionnement du RVP (magic-rvp)'>
-                <value>10</value>
-            </variable>
             <variable name='agriates_member' type='oui/non' description='Serveur membre du réseau AGRIATES' >
                 <value>non</value>
             </variable>
         </family>
         <separators>
+            <!--<separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>-->
             <separator name='adresse_network_zone_rvp'>Accès RVP par le proxy</separator>
-            <separator name='install_rvp'>Réseau Virtuel Privé (RVP)</separator>
             <separator name='agriates_member'>AGRIATES</separator>
         </separators>
     </variables>
