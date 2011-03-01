@@ -12,9 +12,14 @@ from os.path import isfile, isdir, dirname
 from commands import getoutput
 from shutil import copy
 
+from pyeole.ihm import question_ouinon
+from pyeole.ansiprint import print_orange, print_red
 from zephir.lib_zephir import TransportEole
-from zephir.zephir_conf.zephir_conf import id_serveur, adresse_zephir
-
+try:
+    from zephir.zephir_conf.zephir_conf import id_serveur, adresse_zephir
+    ZEPHIR = True
+except:
+    ZEPHIR = False
 from arv.config import strongswan_database, ipsec_tmp_path
 from arv.lib.util import decrypt_privkey
 from arv.lib import cmd2 as cmd
@@ -26,9 +31,8 @@ def get_password():
     if isfile(ipsec_tmp_path+sep+"ipsec.db"):
         password = getpass("")
     else:
-        print "archive inexistante"
+        print_red("archive inexistante")
         sys.exit()
-        password = None
     return password
 
 def test_password(password, private_key):
@@ -89,22 +93,34 @@ class ActiveRVPCli(Cli):
     def do_init(self, line):
         """Mode d'activation rvp
         """
-        mode = self.select("manuel zephir", "choisissez le mode : ")
-        if mode == "zephir":
-            self.onecmd("zephir")
+        if ZEPHIR:
+            mode = self.select("manuel zephir", "choisissez le mode : ")
+            if mode == "zephir":
+                self.onecmd("zephir")
+            else:
+                self.onecmd("manuel")
         else:
-            self.onecmd("manuel")
+            print_orange("Le serveur n'est pas enregistré sur un Zéphir")
+            rep = question_ouinon("configurer en mode manuel", default='non')
+            if rep == 'oui':
+                self.onecmd("manuel")
+            else:
+                print "Abandon de la configuration RVP"
         return True
 
     def do_manuel(self, line):
         """mode manuel"""
-        print "copier les fichiers ipsec.db et test-rvp dans " + ipsec_tmp_path
+        # FIXME
+        print_red("copier les fichiers ipsec.db et test-rvp dans " + ipsec_tmp_path)
         self.onecmd("start_ipsec")
         return True
 
     def do_zephir(self, line):
         """activation du rvp par zephir
         """
+        if not ZEPHIR:
+            print_red("serveur non enregistré sur Zéphir")
+            return True
         self.onecmd("get_rvp_from_zephir")
         self.onecmd("start_ipsec")
         return True
