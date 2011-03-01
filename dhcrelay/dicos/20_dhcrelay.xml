@@ -13,8 +13,7 @@
         </family>
     <family name='relai_dhcp'>
             <variable name='dhcrelay_interfaces' type='string' description='Interface des clients DHCP' multi='True'>
-                <value>eth2</value>
-                <value>eth3</value>
+                <value>all</value>
             </variable>
         <variable name='adresse_ip_dhcp_dhcrelay' type='string' description='Adresse IP du serveur DHCP à relayer' />
     </family>
@@ -29,6 +28,9 @@
             <target type='servicelist'>dhrelay</target>
             <target type='family'>relai_dhcp</target>
         </condition>
+        <fill name='calc_val' target='adresse_ip_dhcp_dhcrelay'>
+            <param type='eole'>ip_serveur_scribe_dmz</param>
+        </fill>
     </constraints>
     <help/>
 </creole>
