@@ -3,7 +3,6 @@
 <creole>
     <files>
         <!--<file name='/etc/chkrootkit.conf'/>-->
-        <file name='/etc/cron.d/amon' source='cron-amon'/>
         <file name='/etc/host.conf'/>
         <file name='/etc/logrotate.conf'/>
         <file name='/etc/sudoers.d/amon' source='amon.sudo' mode="0440"/>
