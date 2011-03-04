@@ -171,7 +171,7 @@ class ActiveRVPCli(Cli):
             certif, certident = session.query(Certificates.data, CertificateIdentity.certificate).filter(Certificates.id == CertificateIdentity.certificate).\
                                                                  filter(CertificateIdentity.identity == ident.id).first()
             #print certif
-            certname = getoutput("""echo "{0}" | openssl x509 -text -noout|grep Subject|head -n 1|cut -d "=" -f5""".format(certif))
+            certname = getoutput("""echo "{0}" | openssl x509 -text -noout|grep CN|grep Subject|grep -o "[^=]*$" """.format(certif))
             print "Passphrase du certificat {0} : ".format(certname),
             passwd = get_password()
             while not test_password(passwd, privkey.data):
