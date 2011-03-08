@@ -1,6 +1,6 @@
-conf-amon (2.3-eole82~6.gbpd88c21) eole-2.3-dev; urgency=low
+conf-amon (2.3-eole82~7.gbp988cbf) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @d88c21c31bf36ff24cea787638a0b4225c90b450 **
+  ** SNAPSHOT build @988cbf9665d6092894ee47ae6eb9515d6d027b92 **
 
   [ Emmanuel Garette ]
   * support de wpad
@@ -63,7 +63,7 @@ conf-amon (2.3-eole82~6.gbpd88c21) eole-2.3-dev; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Mar 2011 09:33:34 +0000
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Mar 2011 10:33:18 +0000
 
 conf-amon (2.3-eole81) eole-2.3; urgency=low
 
