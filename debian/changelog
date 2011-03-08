@@ -1,6 +1,6 @@
-conf-amon (2.3-eole82~5.gbpa7ecff) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole82~6.gbpd88c21) eole-2.3-dev; urgency=low
 
-  ** SNAPSHOT build @a7ecff6c3720362dd26e3affe7d4df6baa77a131 **
+  ** SNAPSHOT build @d88c21c31bf36ff24cea787638a0b4225c90b450 **
 
   [ Emmanuel Garette ]
   * support de wpad
@@ -51,7 +51,19 @@ conf-amon (2.3-eole82~5.gbpa7ecff) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 01 Mar 2011 16:55:05 +0000
+  [ Fabrice ]
+  * Utilisation de syslogger sinon logrotate non supporté
+  * active_rvp : modif extraction CN dun certificat
+
+  [ Joël Cuissinat ]
+  * enregistrement_domaine : ajout de l'iption -S [2.3] (fixes #1434)
+
+  [ Emmanuel Garette ]
+  * mise à jour de active_tags
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 08 Mar 2011 09:33:34 +0000
 
 conf-amon (2.3-eole81) eole-2.3; urgency=low
 
