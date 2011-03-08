@@ -1,4 +1,19 @@
 %if %%ssh_eth0 == "oui"
+SSHDepuisEth0
+%end if
+%if %%ssh_eth1 == "oui"
+SSHDepuisEth1
+%end if
+%if %%ssh_eth2 == "oui"
+SSHDepuisEth2
+%end if
+%if %%ssh_eth3 == "oui"
+SSHDepuisEth3
+%end if
+%if %%ssh_eth4 == "oui"
+SSHDepuisEth4
+%end if
+%if %%ssh_eth0 == "oui"
 AdminDepuisEth0
 %end if
 %if %%ssh_eth1 == "oui"
@@ -15,12 +30,4 @@ AdminDepuisEth4
 %end if
 %if %%is_defined('activer_nufw') and %%activer_nufw == "oui"
 auth_nufw
-%end if
-%if %%test_vz(master=True)
-%if %%activate_virt_eclair == "oui"
-eclair-dmz
-%end if
-%if %%activate_virt_scribe == "oui"
-scribe-dmz
-%end if
 %end if
