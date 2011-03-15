@@ -21,7 +21,7 @@ try:
 except:
     ZEPHIR = False
 from arv.config import strongswan_database, ipsec_tmp_path
-from arv.lib.util import decrypt_privkey
+from arv.lib.util import decrypt_privkey, test_password
 from arv.lib import cmd2 as cmd
 from arv.db.strongswandb import (PeerConfigs, PrivateKey, PrivateKeyIdentity,
                                  SharedSecrets, SharedSecretIdentity, Identity,
@@ -34,14 +34,6 @@ def get_password():
         print_red("archive inexistante")
         sys.exit()
     return password
-
-def test_password(password, private_key):
-    retcode = system("""echo "{0}" | openssl rsa -text -passin pass:{1} -noout &> /dev/null""".format(private_key, password))
-    if retcode == 0:
-        return True
-    else:
-        return False
-
 
 #______________________________________________________________________________
 # command line interpreter
@@ -174,7 +166,7 @@ class ActiveRVPCli(Cli):
             certname = getoutput("""echo "{0}" | openssl x509 -text -noout|grep CN|grep Subject|grep -o "[^=]*$" """.format(certif))
             print "Passphrase du certificat {0} : ".format(certname),
             passwd = get_password()
-            while not test_password(passwd, privkey.data):
+            while not test_password(privkey.data, passwd):
                 print "erreur passphrase, veuillez réessayer : ",
                 passwd = get_password()
             decrypted_privkey = decrypt_privkey(privkey.data, passwd)
