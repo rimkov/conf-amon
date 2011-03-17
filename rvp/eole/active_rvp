@@ -35,6 +35,7 @@ def get_password():
         sys.exit()
     return password
 
+
 #______________________________________________________________________________
 # command line interpreter
 class Cli(cmd.Cmd):
@@ -50,7 +51,7 @@ class Cli(cmd.Cmd):
   tapez help <command> pour avoir une aide sur chaque commande"""
 
     def emptyline(self):
-        print "Type 'exit' to finish withe the session or type ? for help."
+        print "Type 'exit' to finish with the session or type ? for help."
 
 #    def postcmd(self, stop, line):
 #        stop = True
@@ -120,9 +121,13 @@ class ActiveRVPCli(Cli):
     def do_delete(self, line):
         """Désactivation rvp
         """
-        system("/etc/init.d/ipsec stop")
-        unlink(strongswan_database)
-        unlink("/usr/share/eole/test-rvp")
+        rep = question_ouinon("Etes-vous certain de vouloir désactiver le VPN ?", default='non')
+        if rep == 'oui':
+            system("/etc/init.d/ipsec stop")
+            unlink(strongswan_database)
+            unlink("/usr/share/eole/test-rvp")
+        else:
+            print "Abandon de la suppression du RVP"
         return True
 
     def do_get_rvp_from_zephir(self, line):
@@ -156,13 +161,10 @@ class ActiveRVPCli(Cli):
     def do_start_ipsec(self, line):
         """Déplombe les clefs privées"""
         session = initialise("sqlite:///"+ipsec_tmp_path+sep+"ipsec.db")
-        #session = initialise("sqlite:///"+strongswan_database)
         for privkey, ident in session.query(PrivateKey, Identity).filter(PrivateKey.id == PrivateKeyIdentity.private_key).filter(PeerConfigs.local_id==PrivateKeyIdentity.identity).\
                 filter(PeerConfigs.local_id == Identity.id).filter(Identity.type==9).all():
-    #        name = session.query(PeerConfigs).filter(PeerConfigs.local_id==)
             certif, certident = session.query(Certificates.data, CertificateIdentity.certificate).filter(Certificates.id == CertificateIdentity.certificate).\
                                                                  filter(CertificateIdentity.identity == ident.id).first()
-            #print certif
             certname = getoutput("""echo "{0}" | openssl x509 -text -noout|grep CN|grep Subject|grep -o "[^=]*$" """.format(certif))
             print "Passphrase du certificat {0} : ".format(certname),
             passwd = get_password()
