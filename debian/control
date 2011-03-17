@@ -9,7 +9,7 @@ Package: conf-amon
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase,
  bacula-fd, ntp, eole-sso, amon-backend, pppoe, snmp, libsnmp-perl, xtables-addons-common,
- xtables-addons-modules-2.6.32-26-eole, vnstat,
+ xtables-addons-modules-2.6.32-30-eole, vnstat,
 #snort, ...
  snort, oinkmaster, samhain,
 #firewall
