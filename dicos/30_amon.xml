@@ -67,6 +67,10 @@
             <param type="python">eosfunc.list_files('/usr/share/era/modeles','*.xml',True,default=['2zones', '3zones-amonecole-eclair-nginx', '3zones-amonecole-eclair', '3zones-amonecole-nginx', '3zones-amonecole', '3zones-scribe-posh-nginx', '3zones-scribe', '3zones', '4zones-scribe-nufw', '4zones-scribe-posh-nginx', '4zones-scribe', '4zones', '5zones', 'minimal'])</param>
             <param name="checkval">False</param>
         </check>
+        <!-- Amon >= 2 cartes réseau -->
+        <check name="valid_enum" target="nombre_interfaces">
+            <param>['2','3','4','5']</param>
+        </check>
         <check name="valid_enum" target="eth0_method">
             <param>['statique','dhcp','pppoe']</param>
         </check>
