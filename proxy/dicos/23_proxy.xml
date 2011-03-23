@@ -201,8 +201,11 @@
                 <value>127.0.0.1:8080</value>
             </variable>
             <variable name='https_port' type='string' description="Port d'écoute HTTPS de Squid"/>
-            <variable name='safe_ports' type='number' description='"Safe_ports" supplémentaires' multi='True'/>
-            <variable name='number_of_children' type='number' description="Nombre d'instances associées au module d'authentification">
+            <variable name='safe_ports' type='number' description='"Safe_ports" supplémentaire' multi='True'/>
+            <variable name='number_of_basic_children' type='number' description="Nombre de processus associées au module d'authentification basique">
+                <value>20</value>
+            </variable>
+            <variable name='number_of_ntlm_children' type='number' description="Nombre de processus associées au module d'authentification NTLM">
                 <value>20</value>
             </variable>
             <variable name='icp_port' type='number' description="Port d'écoute pour les requêtes ICP">
@@ -211,16 +214,18 @@
             <variable name='htcp_port' type='number' description="Port d'écoute pour les requêtes HTCP">
                 <value>4827</value>
             </variable>
-            <variable name='mcast_groups' type='string' description="Groupe de serveurs multicast"/>
             <variable name='icp_query_timeout' type='number' description='Timout pour les requêtes ICP (en msec)'>
                 <value>0</value>
             </variable>
             <variable name='maximum_icp_query_timeout' type='number' description='maximum_icp_query_timeout (en msec)'>
                 <value>2000</value>
             </variable>
-            <variable name='mcast_icp_query_timeout' type='number' description='mcast_icp_query_timeout (en msec)'>
+            <!-- FIXME : mcast -->
+            <variable name='mcast_groups' type='string' description="Groupe de serveurs multicast" hidden='True'/>
+            <variable name='mcast_icp_query_timeout' type='number' description='mcast_icp_query_timeout (en msec)' hidden='True'>
                 <value>2000</value>
             </variable>
+            <!-- -->
             <variable name='dead_peer_timeout' type='number' description='dead_peer_timeout (en sec)'>
                 <value>10</value>
             </variable>
@@ -281,16 +286,16 @@
             <variable name='cache_dir_secondLevel' type='string' description='Nombre maximum de répertoires de niveau 2'>
                 <value>256</value>
             </variable>
-            <variable name='emulate_httpd_log' type='string' description='emulate_httpd_log'>
+            <variable name='emulate_httpd_log' type='on/off' description='emulate_httpd_log'>
                 <value>off</value>
             </variable>
-            <variable name='log_ip_on_direct' type='string' description='log_ip_on_direct'>
+            <variable name='log_ip_on_direct' type='on/off' description='log_ip_on_direct'>
                 <value>on</value>
             </variable>
-            <variable name='log_mime_hdrs' type='string' description='log_mime_hdrs'>
+            <variable name='log_mime_hdrs' type='on/off' description='log_mime_hdrs'>
                 <value>off</value>
             </variable>
-            <variable name='log_fqdn' type='string' description='log_fqdn'>
+            <variable name='log_fqdn' type='on/off' description='log_fqdn'>
                 <value>off</value>
             </variable>
             <variable name='client_netmask' type='netmask' description='Masque réseau des clients '>
@@ -302,19 +307,19 @@
             <!--<variable name='ftp_list_width' type='number' description=''>
                 <value>32</value>
             </variable>-->
-            <variable name='ftp_passive' type='string' description='Autoriser les connexions FTP passives'>
+            <variable name='ftp_passive' type='on/off' description='Autoriser les connexions FTP passives'>
                 <value>on</value>
             </variable>
-            <variable name='ftp_sanitycheck' type='string' description='Activer la vérification des connexions FTP'>
+            <variable name='ftp_sanitycheck' type='on/off' description='Activer la vérification des connexions FTP'>
                 <value>on</value>
             </variable>
-            <variable name='ftp_telnet_protocol' type='string' description='ftp_telnet_protocol'>
+            <variable name='ftp_telnet_protocol' type='on/off' description='ftp_telnet_protocol'>
                 <value>on</value>
             </variable>
-            <variable name='check_hostname' type='string' description="Activer la vérification des noms d'hôte">
+            <variable name='check_hostname' type='on/off' description="Activer la vérification des noms d'hôte">
                 <value>on</value>
             </variable>
-            <variable name='allow_underscore' type='string' description="Autoriser les underscore dans les noms d'hôte">
+            <variable name='allow_underscore' type='on/off' description="Autoriser les underscore dans les noms d'hôte">
                 <value>on</value>
             </variable>
             <!--<variable name='cache_dns_program' type='string' description=''>
@@ -335,7 +340,8 @@
             <variable name='dns_nameservers' type='string' description='Utiliser un DNS spécifique' multi='True'>
                 <value></value>
             </variable>
-            <variable name='hosts_file' type='string' description='Emplacement du fichier hosts'>
+            <!-- FIXME 2.3 -->
+            <variable name='hosts_file' type='string' description='Emplacement du fichier hosts' hidden='True'>
                 <value>/etc/hosts</value>
             </variable>
             <!--<variable name='wais_relay_host' type='string' description=''>
@@ -374,7 +380,7 @@
             <variable name='range_offset_limit' type='number' description='range_offset_limit (en KB)'>
                 <value>0</value>
             </variable>
-            <!--<variable name='collapsed_forwarding' type='string' description=''>
+            <!--<variable name='collapsed_forwarding' type='on/off' description=''>
                 <value>off</value>
             </variable>-->
             <!--<variable name='refresh_stale_hit' type='number' description='(en secondes)'>
@@ -607,7 +613,8 @@
         </condition>
 
         <check name='obligatoire' target='http_port'/>
-        <check name='obligatoire' target='ssl_unclean_shutdown'/>
+        <check name='obligatoire' target='number_of_basic_children'/>
+        <check name='obligatoire' target='number_of_ntlm_children'/>
         <check name='obligatoire' target='icp_port'/>
         <check name='obligatoire' target='htcp_port'/>
         <check name='obligatoire' target='icp_query_timeout'/>
@@ -632,10 +639,6 @@
         <check name='obligatoire' target='cache_dir_disk_space'/>
         <check name='obligatoire' target='cache_dir_firstLevel'/>
         <check name='obligatoire' target='cache_dir_secondLevel'/>
-        <check name='obligatoire' target='emulate_httpd_log'/>
-        <check name='obligatoire' target='log_ip_on_direct'/>
-        <check name='obligatoire' target='log_mime_hdrs'/>
-        <check name='obligatoire' target='log_fqdn'/>
         <check name='obligatoire' target='client_netmask'/>
         <check name='obligatoire' target='ftp_user'/>
         <!--<check name='obligatoire' target='ftp_list_width'/>-->
@@ -655,7 +658,6 @@
         <check name='obligatoire' target='positive_dns_ttl'/>
         <check name='obligatoire' target='negative_dns_ttl'/>
         <check name='obligatoire' target='range_offset_limit'/>
-        <!--<check name='obligatoire' target='collapsed_forwarding'/>-->
         <!--<check name='obligatoire' target='refresh_stale_hit'/>-->
         <check name='obligatoire' target='forward_timeout'/>
         <check name='obligatoire' target='connect_timeout'/>
@@ -668,21 +670,6 @@
         <check name='obligatoire' target='pconn_timeout'/>
         <check name='obligatoire' target='ident_timeout'/>
         <check name='obligatoire' target='shutdown_lifetime'/>
-        <check name="valid_enum" target='ssl_unclean_shutdown'>
-            <param>['on','off']</param>
-        </check>
-        <check name="valid_enum" target='emulate_httpd_log'>
-            <param>['on','off']</param>
-        </check>
-        <check name="valid_enum" target='log_ip_on_direct'>
-            <param>['on','off']</param>
-        </check>
-        <check name="valid_enum" target='log_mime_hdrs'>
-            <param>['on','off']</param>
-        </check>
-        <check name="valid_enum" target='log_fqdn'>
-            <param>['on','off']</param>
-        </check>
         <!--<check name="valid_enum" target='cache_vary'>
             <param>['on','off']</param>
         </check>-->
@@ -702,24 +689,6 @@
         <check name="valid_enum" target="cache_dir_type">
             <param>['ufs']</param>
         </check>
-        <check name="valid_enum" target='ftp_passive'>
-            <param>['on','off']</param>
-        </check>
-        <check name="valid_enum" target='ftp_sanitycheck'>
-            <param>['on','off']</param>
-        </check>
-        <check name="valid_enum" target='ftp_telnet_protocol'>
-            <param>['on','off']</param>
-        </check>
-        <check name="valid_enum" target='check_hostname'>
-            <param>['on','off']</param>
-        </check>
-        <check name="valid_enum" target='allow_underscore'>
-            <param>['on','off']</param>
-        </check>
-        <!--<check name="valid_enum" target='collapsed_forwarding'>
-            <param>['on','off']</param>
-        </check>-->
         <group master='cache_dir'>
             <slave>cache_dir_type</slave>
             <slave>cache_dir_disk_space</slave>
