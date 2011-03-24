@@ -11,7 +11,7 @@
 ## Correction bug si nom_domaine_local == local
 if [ -e "$container_path_dns/etc/bind/db.local" ]
 then
-	rm -f "$container_path_dns/etc/bind/db.local"
+    rm -f "$container_path_dns/etc/bind/db.local"
 fi
 ##
 NAMEDCONF=$container_path_dns/etc/bind/named.conf
@@ -29,14 +29,14 @@ Max=`expr $nombre_interfaces - 1`
 I=0
 while [ $I -le $Max ]
 do
-	Master=dns_master_eth${I}
-	if [ ${!Master}  == "oui" ]
-	then
-	   Network=adresse_network_eth${I}
-	   Netmask=adresse_netmask_eth${I}
-           Cmd=$Cmd" -n ${!Network}:${!Netmask} "
-	fi
-	I=$I+1
+    Master=dns_master_eth${I}
+    if [ ${!Master}  == "oui" ]
+    then
+       Network=adresse_network_eth${I}
+       Netmask=adresse_netmask_eth${I}
+       Cmd=$Cmd" -n ${!Network}:${!Netmask} "
+    fi
+    I=$I+1
 done
 
 Cmd=$Cmd" -M -v 8 -y -b $NAMEDCONF"
@@ -46,6 +46,18 @@ Cmd=$Cmd" -M -v 8 -y -b $NAMEDCONF"
 #then
 #        Cmd=$Cmd" -n ${adresse_network_dmz}:${adresse_netmask_dmz} "
 #fi
+
+# routes statiques
+if [ $activer_route = "oui" ];then
+routes=`echo $route_adresse | wc -w`
+if [ $routes -gt 0 ];then
+adresse=($route_adresse)
+netmask=($route_netmask)
+for index in `eval echo "{0..$((routes-1))}"`; do
+    Cmd=$Cmd" -n ${adresse[$index]}:${netmask[$index]} "
+done
+fi
+fi
 
 $Cmd
 cp -f "$container_path_dns/etc/bind/db.root" "$container_path_dns/etc/bind/db.cache"
