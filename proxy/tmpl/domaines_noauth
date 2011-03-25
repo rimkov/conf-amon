@@ -4,10 +4,11 @@
 %end for
 %end if
 .archive.canonical.com
-.archive.ubuntu.com
+.ubuntu.com
 .database.clamav.net
 .pool.ntp.org
 .services.openoffice.org
 .windowsupdate.com
 .wustat.windows.com
 .microsoft.com
+.cache.pack.google.com
