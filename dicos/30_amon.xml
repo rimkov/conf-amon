@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <creole>
+
     <files>
         <!--<file name='/etc/chkrootkit.conf'/>-->
         <file name='/etc/host.conf'/>
@@ -10,8 +11,9 @@
         <file name='/usr/share/era/backend/data/active_tags'/>
         <file name='/etc/cron.d/amon-firewall' source='cron-root'/>
     </files>
-    <!--************************************************************************************************* -->
+
     <variables>
+
         <family name='general'>
             <!--**** Reseau Global **** -->
             <variable name='type_amon' type='string' description='Modèle de filtrage'>
@@ -27,6 +29,7 @@
                 <value>non</value>
             </variable>
         </family>
+
         <family name='Interface-0'>
             <variable name='eth0_method' redefine='True' />
         </family>
@@ -51,16 +54,28 @@
                 <value>dmz-pub</value>
             </variable>
         </family>
+
+        <family name="reseau-avance" mode='expert'>
+            <!-- désactivation du MTU sur Amon et Sphynx -->
+            <variable name="ip_no_pmtu_disc" redefine='True'>
+                <value>oui</value>
+            </variable>
+        </family>
+
         <family name='Scribe-DMZ' hidden='True'>
             <variable name='nom_serveur_scribe_dmz' type='string' description='Nom du Scribe dans la DMZ (pour enregistrement DNS)' />
             <variable name='ip_serveur_scribe_dmz' type='ip' description='Adresse IP du Scribe dans la DMZ' />
         </family>
+
         <separators>
             <separator name='nom_cache_pere'>Proxy pere general</separator>
             <separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
         </separators>
+
     </variables>
+
     <constraints>
+
         <check name='obligatoire' target='type_amon'/>
         <check name='obligatoire' target='nom_machine_eth1'/>
         <check name="valid_enum" target="type_amon">
@@ -78,8 +93,11 @@
             <param>non</param>
             <target type='family'>Scribe-DMZ</target>
         </condition>
+
     </constraints>
+
     <help/>
+
 </creole>
 <!-- vim: ts=4 sw=4 expandtab
 -->
