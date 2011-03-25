@@ -1,6 +1,6 @@
-conf-amon (2.3-eole82~8.gbp409f36) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole82~9.gbp138925) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @409f360a0e306657930677401b0eae6d7b2d101c **
+  ** SNAPSHOT build @138925ee1c2c6c3cb10aedc210f24fdbff80b795 **
 
   [ Emmanuel Garette ]
   * support de wpad
@@ -72,7 +72,17 @@ conf-amon (2.3-eole82~8.gbp409f36) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 17 Mar 2011 13:13:28 +0000
+  [ Joël Cuissinat ]
+  * 30_amon.xml : 2 cartes réseau minimum (fixes #1428)
+  * squid [2.3] : séparation basic_children et ntlm_children +
+    simplification du dico (fixes #1585)
+  * gen_dns : prise en compte des éventuelles routes statiques déclarées
+    [2.3] (fixes #1582)
+  * 30_amon.xml : désactivation du MTU sur Amon (ref #1491)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 25 Mar 2011 10:20:01 +0000
 
 conf-amon (2.3-eole81) eole-2.3; urgency=low
 
