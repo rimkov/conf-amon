@@ -56,10 +56,9 @@
         </family>
 
         <family name="reseau-avance" mode='expert'>
-            <!-- désactivation du MTU sur Amon et Sphynx -->
-            <variable name="ip_no_pmtu_disc" redefine='True'>
+            <!--<variable name="ip_no_pmtu_disc" redefine='True'>
                 <value>oui</value>
-            </variable>
+            </variable>-->
         </family>
 
         <family name='Scribe-DMZ' hidden='True'>
