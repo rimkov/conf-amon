@@ -55,11 +55,11 @@
             </variable>
         </family>
 
-        <family name="reseau-avance" mode='expert'>
-            <!--<variable name="ip_no_pmtu_disc" redefine='True'>
+        <!--<family name="reseau-avance" mode='expert'>
+            <variable name="ip_no_pmtu_disc" redefine='True'>
                 <value>oui</value>
-            </variable>-->
-        </family>
+            </variable>
+        </family>-->
 
         <family name='Scribe-DMZ' hidden='True'>
             <variable name='nom_serveur_scribe_dmz' type='string' description='Nom du Scribe dans la DMZ (pour enregistrement DNS)' />
