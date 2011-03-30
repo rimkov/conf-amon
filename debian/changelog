@@ -1,6 +1,6 @@
-conf-amon (2.3-eole82~9.gbp138925) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole82~10.gbp8c227f) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @138925ee1c2c6c3cb10aedc210f24fdbff80b795 **
+  ** SNAPSHOT build @8c227f7c13d7d948bb57b20a427c0aba00836f3b **
 
   [ Emmanuel Garette ]
   * support de wpad
@@ -82,7 +82,20 @@ conf-amon (2.3-eole82~9.gbp138925) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Fri, 25 Mar 2011 10:20:01 +0000
+  [ Joël Cuissinat ]
+  * domaines_noauth : ajout de domaines [2.3] (fixes #1593)
+
+  [ Emmanuel Garette ]
+  * eole-firewall : protocole -> protocol
+
+  [ Joël Cuissinat ]
+  * 30_amon.xml : suppression du redefine sur ip_no_pmtu_disc (ref
+    #1491)
+  * ip_no_pmtu_disc : déplacement du commentaire au niveau de la famille
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 30 Mar 2011 09:55:03 +0000
 
 conf-amon (2.3-eole81) eole-2.3; urgency=low
 
