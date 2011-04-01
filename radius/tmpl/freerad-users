@@ -202,9 +202,9 @@
 
 %for %%groupes_ldap in %%freerad_ldap_group
 DEFAULT Ldap-Group == "%%groupes_ldap"
-Tunnel-Type = VLAN,
-Tunnel-Medium-Type = IEEE-802,
-Tunnel-Private-Group-ID = %%groupes_ldap.freerad_group_vlan
+	Tunnel-Type = VLAN,
+	Tunnel-Medium-Type = IEEE-802,
+	Tunnel-Private-Group-ID = %%groupes_ldap.freerad_group_vlan
 
 %end for
 # On no match, the user is denied access.
