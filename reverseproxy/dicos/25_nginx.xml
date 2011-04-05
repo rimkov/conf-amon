@@ -28,6 +28,9 @@
             <variable name='revprox_ead_port' type='number' description="Port d'accès à l'EAD du Scribe depuis l'extérieur" hidden='True'>
                 <value>4203</value>
             </variable>
+            <variable name='revprox_activate_http' type='oui/non' description='Activer le reverse proxy Nginx pour http/https'>
+                <value>non</value>
+            </variable>
             <variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
             <variable name='revprox_rep' type='string' description="Répertoire ou nom de la page à rediriger">
                 <value>/</value>
@@ -44,7 +47,7 @@
         </family>
         <separators>
             <separator name='revprox_sso'>Redirection de services particuliers</separator>
-            <separator name='revprox_domainname'>Redirection HTTP et HTTPS</separator>
+            <separator name='revprox_activate_http'>Redirection HTTP et HTTPS</separator>
         </separators>
     </variables>
     <constraints>
@@ -66,12 +69,26 @@
             <target type='family'>Reverse proxy</target>
         </condition>
     <!-- **** Groupes **** -->
-         <group master='revprox_domainname'>
+        <group master='revprox_domainname'>
             <slave>revprox_rep</slave>
             <slave>revprox_url</slave>
             <slave>revprox_http</slave>
             <slave>revprox_https</slave>
-         </group>
+        </group>
+
+        <check name='obligatoire' target='revprox_domainname'/>
+        <check name='obligatoire' target='revprox_rep'/>
+        <check name='obligatoire' target='revprox_http'/>
+        <check name='obligatoire' target='revprox_https'/>
+        <check name='obligatoire' target='revprox_url'/>
+        <condition name='hidden_if_in' source='revprox_activate_http'>
+            <param>non</param>
+            <target type='variable'>revprox_domainname</target>
+            <target type='variable'>revprox_rep</target>
+            <target type='variable'>revprox_http</target>
+            <target type='variable'>revprox_https</target>
+            <target type='variable'>revprox_url</target>
+        </condition>
     </constraints>
     <!--************************************************************************************************* -->
     <help>

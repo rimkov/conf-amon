@@ -15,8 +15,13 @@ proxy_buffer_size   16k;
 proxy_buffers   6 32k;
 proxy_busy_buffers_size   32k;
 
+# wpad
 server {
+%if %%container_ip_reverseproxy != '127.0.0.1'
+    listen %%container_ip_reverseproxy:80;
+%else
     listen %%adresse_ip_eth1:80;
+%end if
     server_name wpad.%%nom_domaine_local;
     server_name wpad;
     server_name %%nom_domaine_local;
@@ -40,6 +45,8 @@ server {
     }
 }
 %end if
+
+%if %%revprox_activate_http == 'oui'
 
 %set %%dom_dict={}
 %for %%location_iter in %%revprox_domainname
@@ -128,6 +135,7 @@ server {
 %end for % for %%rep_iter, %%http_iter, %%https_iter, %%url_iter in %%dom_dict[%%revprox_iter]
 }
 %end for % for %%revprox_iter in %%dom_dict.keys()
+%end if % if %%revprox_activate_http == 'oui'
 
 %if %%revprox_sso != '' and %%activer_sso == 'distant'
 # Redirection SSO
@@ -153,7 +161,7 @@ server {
 %end if % if %%revprox_sso != '' and %%activer_sso == 'distant'
 
 %if %%revprox_poshadmin != ''
-# POSH
+# POSH admin
 server {
         listen 7070;
         ssl    on;
