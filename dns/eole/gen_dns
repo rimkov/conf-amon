@@ -7,6 +7,7 @@
 # appel des fonctions Eole
 . ParseDico
 . /etc/eole/containers.conf
+[ -f /etc/eole/network_containers.conf ] && . /etc/eole/network_containers.conf
 
 ## Correction bug si nom_domaine_local == local
 if [ -e "$container_path_dns/etc/bind/db.local" ]
@@ -19,12 +20,12 @@ NAMEDCONF=$container_path_dns/etc/bind/named.conf
 declare -i I Max nb_int
 cd $container_path_dns/etc/bind
 if [ "$container_path_dns" = "" ]; then
-DOMAINNAME=$nom_machine.$nom_domaine_local
+MACHINNAME=$nom_machine
 else
-cname=`echo $container_path_dns|awk -F/ '{ print $(NF-1) }'`
-DOMAINNAME=$cname.$nom_domaine_local
+MACHINNAME=`echo $container_path_dns|awk -F/ '{ print $(NF-1) }'`
 fi
-Cmd="/usr/share/eole/h2n -h $nom_machine -d $nom_domaine_local -s $DOMAINNAME"
+DOMAINNAME=$MACHINNAME.$nom_domaine_local
+Cmd="/usr/share/eole/h2n -h $MACHINNAME -d $nom_domaine_local -s $DOMAINNAME"
 Max=`expr $nombre_interfaces - 1`
 I=0
 while [ $I -le $Max ]
@@ -39,6 +40,10 @@ do
     I=$I+1
 done
 
+if [ ! "$container_path_dns" = "" ]; then
+    #mode conteneur
+    Cmd=$Cmd" -n $adresse_ip_br0:$adresse_netmask_br0 "
+fi
 Cmd=$Cmd" -M -v 8 -y -b $NAMEDCONF"
 
 #AmonEcole 2.2
