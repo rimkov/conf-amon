@@ -1,6 +1,10 @@
-conf-amon (2.3-eole82~10.gbp8c227f) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole83) eole-2.3; urgency=low
 
-  ** SNAPSHOT build @8c227f7c13d7d948bb57b20a427c0aba00836f3b **
+  * UNRELEASED
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 04 Apr 2011 11:42:27 +0000
+
+conf-amon (2.3-eole82) eole-2.3-proposed; urgency=low
 
   [ Emmanuel Garette ]
   * support de wpad
@@ -95,7 +99,13 @@ conf-amon (2.3-eole82~10.gbp8c227f) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 30 Mar 2011 09:55:03 +0000
+  [ Klaas TJEBBES ]
+  * correction de l'indentation dans le fichier freerad-users FIXES
+    #1622
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 04 Apr 2011 11:32:44 +0000
 
 conf-amon (2.3-eole81) eole-2.3; urgency=low
 
