@@ -2,11 +2,9 @@ function FindProxyForURL(url, host) {
     if ( isInNet(host, "127.0.0.1", "255.255.255.255") ) {
         return "DIRECT";
     }
-%if %%is_defined('container_ip_proxy') and %%adresse_ip_eth1_proxy_link != ""
-    %if %%container_ip_proxy == "127.0.0.1"
-        return "PROXY %%adresse_ip_eth1:3128";
-    %else
-        return "PROXY %%adresse_ip_eth1_proxy_link:3128";
-    %end if
+%if %%adresse_ip_eth1_proxy_link != ""
+    return "PROXY %%adresse_ip_eth1:3128";
+%else
+    return "PROXY %%adresse_ip_eth1_proxy_link:3128";
 %end if
 }

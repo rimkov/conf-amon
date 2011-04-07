@@ -17,11 +17,7 @@ proxy_busy_buffers_size   32k;
 
 # wpad
 server {
-%if %%container_ip_reverseproxy != '127.0.0.1'
-    listen %%container_ip_reverseproxy:80;
-%else
     listen %%adresse_ip_eth1:80;
-%end if
     server_name wpad.%%nom_domaine_local;
     server_name wpad;
     server_name %%nom_domaine_local;
