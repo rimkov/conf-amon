@@ -1,3 +1,27 @@
+conf-amon (2.3-eole84~1.gbpf1e24f) eole-2.3-proposed; urgency=low
+
+  ** SNAPSHOT build @f1e24f5e6f4fff93cf390cc1714e2493cd326474 **
+
+  [ Emmanuel Garette ]
+  * support du conteneur pour eole-dns
+  * support des conteneurs pour nginx + mettre les variables en
+    obligatoire (fixes #1496 )
+
+  [ Laurent Flori ]
+  * Ajout des templates pour faire remonter les logs dans le maitre pour
+    le conteneur proxy
+
+  [ Emmanuel Garette ]
+  * suppression du conteneur reverseproxy (nginx est maintenant sur le
+    maître) + proxy dans le groupe de conteneur internet
+
+  [ Laurent Flori ]
+  * Ajout de template pour la remonte de logs vers le maitre
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 07 Apr 2011 09:20:25 +0000
+
 conf-amon (2.3-eole83) eole-2.3; urgency=low
 
   * UNRELEASED
