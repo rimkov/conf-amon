@@ -10,6 +10,8 @@
             <service>bind9</service>
             <file name='/etc/bind/spcl.options'/>
             <file filelist='agriates' name='/etc/bind/agriates.zones'/>
+            <!-- remonter de logs vers le maitre -->
+            <file name='/etc/rsyslog.d/50-default.conf' source="50-default-conteneur.conf" container_only="True"/>
         </container>
     </containers>
     <!--************************************************************************************************* -->
