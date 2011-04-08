@@ -31,7 +31,7 @@ I=0
 while [ $I -le $Max ]
 do
     Master=dns_master_eth${I}
-    if [ ${!Master}  == "oui" ]
+    if [ ${!Master}  == "oui" -o "$I" == "0" ]
     then
        Network=adresse_network_eth${I}
        Netmask=adresse_netmask_eth${I}

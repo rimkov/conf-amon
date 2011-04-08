@@ -16,11 +16,6 @@
     </containers>
     <!--************************************************************************************************* -->
     <variables>
-        <family name='Interface-0'>
-            <variable name='dns_master_eth0' type='oui/non' description="Amon master DNS de cette zone ?" >
-                <value>non</value>
-            </variable>
-        </family>
         <family name='Interface-1'>
             <variable name='dns_master_eth1' type='oui/non' description="Amon master DNS de cette zone ?" >
                 <value>oui</value>
