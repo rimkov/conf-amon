@@ -1,6 +1,6 @@
-conf-amon (2.3-eole84~1.gbpf1e24f) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole84~2.gbp90bfeb) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @f1e24f5e6f4fff93cf390cc1714e2493cd326474 **
+  ** SNAPSHOT build @90bfeb9e922b4e3a9fe8930099fafc5319b01b24 **
 
   [ Emmanuel Garette ]
   * support du conteneur pour eole-dns
@@ -20,7 +20,16 @@ conf-amon (2.3-eole84~1.gbpf1e24f) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 07 Apr 2011 09:20:25 +0000
+  [ Klaas TJEBBES ]
+  * correction de la gestion des entrées DNS FIXES #1662
+
+  [ Laurent Flori ]
+  * Ajout des templates pour les logs iptable et squid dans le conteneur
+    maitre
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 11 Apr 2011 10:10:21 +0000
 
 conf-amon (2.3-eole83) eole-2.3; urgency=low
 
