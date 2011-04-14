@@ -4,6 +4,8 @@
     <files>
         <file name='/usr/share/eole/dansguardian/dansguardian1.conf' />
         <file name='/usr/share/eole/dansguardian/dansguardian2.conf' />
+        <!--Les logs sont sur le maitre donc ils doivent tourner sur le maitre -->
+        <file name='/etc/logrotate.d/squid3' source='squid.logrotate'/>
     </files>
     <containers>
         <container name="proxy" id='20'>
@@ -15,9 +17,8 @@
             <interface linkto="eth1" ip="adresse_ip_eth1_proxy_link" mask="adresse_mask_eth1_proxy_link">eth1</interface>
             <interface interfacelist='eth2_proxy_link' linkto="eth2" ip="adresse_ip_eth2_proxy_link" mask="adresse_mask_eth2_proxy_link">eth2</interface>
             <file name='/etc/dansguardian/languages/french/fancydmtemplate.html' />
-            <file name='/etc/logrotate.d/dansguardian' source='dansguardian.logrotate'/>
-            <file name='/etc/logrotate.d/squid' source='squid.logrotate'/>
             <file name='/etc/pam.d/squid' source='squid.pam'/>
+            <file name='/etc/logrotate.d/dansguardian' source='dansguardian.logrotate'/>
             <file name='/etc/dansguardian/languages/french/template.html' source='dansguardian-template.html'/>
             <file name='/etc/dansguardian/languages/french/template-liste_blanche.html' source='dansguardian-template-liste_blanche.html'/>
             <file name='/etc/dansguardian/languages/french/template-moderateur.html' source='dansguardian-template-moderateur.html'/>
