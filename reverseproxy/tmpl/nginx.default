@@ -1,9 +1,11 @@
 client_max_body_size 4M;
 client_body_buffer_size 128k;
 %set %%len_dom=0
+%if %%revprox_activate_http == 'oui'
 %for %%location_iter in %%revprox_domainname
 %set %%len_dom=%%max(%%len_dom,%%len(%%location_iter.value)+4)
 %end for
+%end if
 %if %%len_dom < 24
 server_names_hash_bucket_size 32;
 %elif %%len_dom < 56
