@@ -1,6 +1,4 @@
-conf-amon (2.3-eole84~3.gbpcdd3b0) eole-2.3-proposed; urgency=low
-
-  ** SNAPSHOT build @cdd3b04cd01f82d075e77578e15adfb39067c9b3 **
+conf-amon (2.3-eole84) eole-2.3-proposed; urgency=low
 
   [ Emmanuel Garette ]
   * support du conteneur pour eole-dns
@@ -41,7 +39,7 @@ conf-amon (2.3-eole84~3.gbpcdd3b0) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Fri, 15 Apr 2011 08:39:31 +0000
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 15 Apr 2011 14:08:25 +0000
 
 conf-amon (2.3-eole83) eole-2.3; urgency=low
 
