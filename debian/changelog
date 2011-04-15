@@ -1,6 +1,6 @@
-conf-amon (2.3-eole84~2.gbp90bfeb) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole84~3.gbpcdd3b0) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @90bfeb9e922b4e3a9fe8930099fafc5319b01b24 **
+  ** SNAPSHOT build @cdd3b04cd01f82d075e77578e15adfb39067c9b3 **
 
   [ Emmanuel Garette ]
   * support du conteneur pour eole-dns
@@ -29,7 +29,19 @@ conf-amon (2.3-eole84~2.gbp90bfeb) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 11 Apr 2011 10:10:21 +0000
+  [ Klaas TJEBBES ]
+  * correction de gen_dns en cas de chaine vide pour "$Master"
+
+  [ Joël Cuissinat ]
+  * nginx.default : ajout du test manquant (fixes #1496)
+
+  [ Laurent Flori ]
+  * Renommage et mise à niveau du template logrotate pour squid fixes
+    #1594
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 15 Apr 2011 08:39:31 +0000
 
 conf-amon (2.3-eole83) eole-2.3; urgency=low
 
