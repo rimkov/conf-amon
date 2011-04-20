@@ -1,11 +1,9 @@
 client_max_body_size 4M;
 client_body_buffer_size 128k;
 %set %%len_dom=0
-%if %%revprox_activate_http == 'oui'
 %for %%location_iter in %%revprox_domainname
 %set %%len_dom=%%max(%%len_dom,%%len(%%location_iter.value)+4)
 %end for
-%end if
 %if %%len_dom < 24
 server_names_hash_bucket_size 32;
 %elif %%len_dom < 56
@@ -19,7 +17,7 @@ proxy_busy_buffers_size   32k;
 
 # wpad
 server {
-    listen %%adresse_ip_eth1:80;
+    listen %%adresse_ip_eth0:81;
     server_name wpad.%%nom_domaine_local;
     server_name wpad;
     server_name %%nom_domaine_local;
@@ -27,22 +25,62 @@ server {
     location /wpad.dat {
         index wpad.dat;
         default_type application/x-ns-proxy-autoconfig;
-    }
-}
-
-%if %%nombre_interfaces >= "3"
-server {
-    listen %%adresse_ip_eth2:80;
-    server_name wpad.%%nom_domaine_local;
-    server_name wpad;
-    server_name %%nom_domaine_local;
-    root /var/www/;
-    location /wpad.dat {
-        index wpad.dat;
-        default_type application/x-ns-proxy-autoconfig;
-    }
-}
+#        allow %%adresse_network_eth0/%%calc_classe(%%adresse_netmask_eth0)
+%if %%nombre_interfaces >= "2"
+        allow %%adresse_network_eth1/%%calc_classe(%%adresse_netmask_eth1)
+    %if %%alias_eth1 == "oui"
+    %for %%alias_addr_eth1 in %%alias_ip_eth1
+        allow %%alias_addr_eth1.alias_network_eth1/%%alias_addr_eth1.alias_netmask_eth1
+    %end for
+    %end if
+    %if %%vlan_eth1 == "oui"
+    %for %%vlan1_id in %%id_vlan_eth1
+        allow %%vlan1_id.adresse_network_vlan_eth1/%%vlan1_id.adresse_netmask_vlan_eth1
+    %end for
+    %end if
 %end if
+%if %%nombre_interfaces >= "3"
+        allow %%adresse_network_eth2/%%calc_classe(%%adresse_netmask_eth2)
+    %if %%alias_eth2 == "oui"
+    %for %%alias_addr_eth2 in %%alias_ip_eth2
+        allow %%alias_addr_eth2.alias_network_eth2/%%alias_addr_eth2.alias_netmask_eth2
+    %end for
+    %end if
+    %if %%vlan_eth2 == "oui"
+    %for %%vlan1_id in %%id_vlan_eth2
+        allow %%vlan1_id.adresse_network_vlan_eth2/%%vlan1_id.adresse_netmask_vlan_eth2
+    %end for
+    %end if
+%end if
+%if %%nombre_interfaces >= "4"
+        allow %%adresse_network_eth3/%%calc_classe(%%adresse_netmask_eth3)
+    %if %%alias_eth3 == "oui"
+    %for %%alias_addr_eth3 in %%alias_ip_eth3
+        allow %%alias_addr_eth3.alias_network_eth3/%%alias_addr_eth3.alias_netmask_eth3
+    %end for
+    %end if
+    %if %%vlan_eth3 == "oui"
+    %for %%vlan1_id in %%id_vlan_eth3
+        allow %%vlan1_id.adresse_network_vlan_eth3/%%vlan1_id.adresse_netmask_vlan_eth3
+    %end for
+    %end if
+%end if
+%if %%nombre_interfaces >= "5"
+        allow %%adresse_network_eth4/%%calc_classe(%%adresse_netmask_eth4)
+    %if %%alias_eth4 == "oui"
+    %for %%alias_addr_eth4 in %%alias_ip_eth4
+        allow %%alias_addr_eth4.alias_network_eth4/%%alias_addr_eth4.alias_netmask_eth4
+    %end for
+    %end if
+    %if %%vlan_eth4 == "oui"
+    %for %%vlan1_id in %%id_vlan_eth4
+        allow %%vlan1_id.adresse_network_vlan_eth4/%%vlan1_id.adresse_netmask_vlan_eth4
+    %end for
+    %end if
+%end if
+        deny all;
+    }
+}
 
 %if %%revprox_activate_http == 'oui'
 
@@ -54,41 +92,41 @@ server {
 %for %%revprox_iter in %%dom_dict.keys()
 # Configuration HTTP %%revprox_iter
 server {
-	listen 80;
-	server_name %%revprox_iter;
-	access_log  /var/log/nginx/access.log;
-	error_page   403 404 502 503 504  /nginx.html;
-	location = /nginx.html{
-	root /var/www/nginx-default;
-	}
+    listen 80;
+    server_name %%revprox_iter;
+    access_log  /var/log/nginx/access.log;
+    error_page   403 404 502 503 504  /nginx.html;
+    location = /nginx.html{
+        root /var/www/nginx-default;
+    }
 %for %%rep_iter, %%http_iter, %%https_iter, %%url_iter in %%dom_dict[%%revprox_iter]
 %if %%http_iter == 'non'
 %continue
 %end if
 %if %%rep_iter != ""
-	location %%rep_iter {
+    location %%rep_iter {
 %else
-	location / {
+    location / {
 %end if
 %if %%http_iter == 'redirige vers https'
-		if ($host = "%%revprox_iter" ) {
-			rewrite     ^(.*)   https://$host$1 permanent;
-			break;
-		}
+        if ($host = "%%revprox_iter" ) {
+            rewrite     ^(.*)   https://$host$1 permanent;
+            break;
+        }
 %elif %%http_iter == 'oui'
 %if %%url_iter != ''
-		proxy_pass              %%url_iter;
+        proxy_pass              %%url_iter;
 %else
-		proxy_pass              http://%%location_iter;
+        proxy_pass              http://%%location_iter;
 %end if % if %%url_iter != ''
-		proxy_set_header        Host $host;
-		proxy_set_header        X-Real-IP $remote_addr;
-		proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_set_header        Destination   $dest;
-		set                     $dest  $http_destination;
+        proxy_set_header        Host $host;
+        proxy_set_header        X-Real-IP $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        Destination   $dest;
+        set                     $dest  $http_destination;
 %end if % if %%http_iter == 'redirige vers https'
-		index  50x.html;
-		root /var/www/nginx-default/;
+        index  50x.html;
+        root /var/www/nginx-default/;
         }
 %end for
 }
@@ -98,38 +136,38 @@ server {
 %for %%revprox_iter in %%dom_dict.keys()
 # Configuration HTTPS %%revprox_iter
 server {
-	listen 443;
-	ssl    on;
-	ssl_certificate    %%server_cert;
-	ssl_certificate_key     %%server_key;
-	access_log  /var/log/nginx/revprox.revprox_http.access-ssl.log;
-	server_name %%revprox_iter;
-	error_page   403 404 502 503 504  /nginx.html;
-	location = /nginx.html{
-		root /var/www/nginx-default;
-	}
+    listen 443;
+    ssl    on;
+    ssl_certificate    %%server_cert;
+    ssl_certificate_key     %%server_key;
+    access_log  /var/log/nginx/revprox.revprox_http.access-ssl.log;
+    server_name %%revprox_iter;
+    error_page   403 404 502 503 504  /nginx.html;
+    location = /nginx.html{
+        root /var/www/nginx-default;
+    }
 %for %%rep_iter, %%http_iter, %%https_iter, %%url_iter in %%dom_dict[%%revprox_iter]
 %if not %%http_iter == 'redirige vers https' and %%https_iter == 'non'
 %continue
 %end if
 %if %%rep_iter != ""
-	location %%rep_iter {
+    location %%rep_iter {
 %else
-	location / {
+    location / {
 %end if
 %if %%url_iter != ''
-		proxy_pass              %%url_iter;
+        proxy_pass              %%url_iter;
 %else
-		proxy_pass              http://%%location_iter;
+        proxy_pass              http://%%location_iter;
 %end if % if %%url_iter != ''
-		proxy_set_header        Host $host;
-		proxy_set_header        X-Real-IP $remote_addr;
-		proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_set_header        Destination   $dest;
-		set                     $dest  $http_destination;
-		index  50x.html;
-		root /var/www/nginx-default/;
-	}
+        proxy_set_header        Host $host;
+        proxy_set_header        X-Real-IP $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        Destination   $dest;
+        set                     $dest  $http_destination;
+        index  50x.html;
+        root /var/www/nginx-default/;
+    }
 %end for % for %%rep_iter, %%http_iter, %%https_iter, %%url_iter in %%dom_dict[%%revprox_iter]
 }
 %end for % for %%revprox_iter in %%dom_dict.keys()
@@ -166,7 +204,7 @@ server {
         ssl_certificate    %%server_cert;
         ssl_certificate_key     %%server_key;
         access_log  /var/log/nginx/localhost.access-poshadmin.log;
-	    error_page   403 404 502 503 504  /nginx.html;
+        error_page   403 404 502 503 504  /nginx.html;
         location = /nginx.html{
             root /var/www/nginx-default;
         }
@@ -188,7 +226,7 @@ server {
         ssl_certificate    %%server_cert;
         ssl_certificate_key     %%server_key;
         access_log  /var/log/nginx/localhost.access-eadscribe.log;
-	    error_page   403 404 502 503 504  /nginx.html;
+        error_page   403 404 502 503 504  /nginx.html;
         location = /nginx.html{
             root /var/www/nginx-default;
         }
