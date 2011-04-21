@@ -1,17 +1,36 @@
-agressif#contenus agressifs (xenophobie...)
-audio-video#audio/video
-mobile-phone#téléphones mobiles, sonneries
-radio#radios en ligne
+agressif#sites racistes, antisémites, incitant à la haine
+astrology#astrologie
+audio-video#sites orientés vers l'audio et la vidéo
+bank#banques en ligne
+blog#sites hébergeant des blogs
+celebrity#tout ce qui concerne l'actualite dite people
+chat#sites de dialogue et de conversation en ligne
+cleaning#sites pour désinfecter et mettre à jour des ordinateurs
+dangerous_material#sites décrivant des moyens de créer du matériel dangereux (explosif, poison, etc)
+dating#sites de rencontres
 drogue#drogue
-forums#mail et chat
-webmail#webmail les plus connus
-gambling#jeux de hasard et d'argent
-games#jeux en ligne
-hacking#hacking (piratage)
-phishing#phishing
-warez#warez (piratage)
-tricheur#triche aux examens
+filehosting#sites hébergeant des contenus (video, images, son)
+financial#informations financières, bourses
+forums#forums
+gambling#sites de jeux en ligne, casino, etc
+games#sites de jeux en ligne, ou de distribution de jeux
+hacking#sites de piratage et d'agressions informatiques
+malware#sites qui injectent des malwares
+manga#tout ce qui est lié à l'univers des mangas et de la bande dessinée
+marketingware#sites de marketing très spéciaux
+mixed_adult#sites qui contiennent des portions adultes
+mobile-phone#sites pour les mobiles (sonneries, etc)
+phishing#sites de phishing, de piéges bancaires ou autres
 publicite#bandeaux publicitaires
-mixed_adult#divers (humour...)
+radio#sites de radio sur Internet
+reaffected#sites qui ont changé de propriétaire et donc de contenu
+remote-control#sites permettant la prise de contrôle à distance
+sect#sectes
+shopping#sites de vente et d'achat en ligne
+social_networks#sites de réseaux sociaux
+sports#sports
 strict_redirector#utilisation de proxy distants
 strong_redirector#proxy spécifiques
+tricheur#sites qui expliquent comme tricher aux examens
+warez#sites de logiciels pirates
+webmail#webmail que l'on trouve sur internet (hotmail, webmail.univ-tlse1.fr, etc)
