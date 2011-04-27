@@ -26,7 +26,7 @@ echo "Entrer le nom de l'administrateur du serveur Windows :"
 read user_admin
 echo "Entrer le mot de passe de l'administrateur du serveur Windows :"
 read -s mdp_admin
-RunCmd "/usr/bin/net ads join -S $ip_serveur_krb -U $user_admin%$mdp_admin" proxy
+RunCmd "/usr/bin/net ads join -I $ip_serveur_krb -U $user_admin%$mdp_admin" proxy
 echo
 
 #redemarrage de samba
