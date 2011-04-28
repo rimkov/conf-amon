@@ -1,6 +1,6 @@
-conf-amon (2.3-eole86~1.gbpb79c70) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole86~2.gbp077f1d) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @b79c70528bc6cb14b87c24ca6dd8f9a54ea3a9da **
+  ** SNAPSHOT build @077f1d7686bda5c97e06d189996677f8e9bc2a66 **
 
   [ Emmanuel Garette ]
   * meilleure support de wpad et nginx
@@ -15,7 +15,13 @@ conf-amon (2.3-eole86~1.gbpb79c70) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 28 Apr 2011 11:56:27 +0200
+  [ Joël Cuissinat ]
+  * wpad.dat : typo
+  * déplacement du template firewall.stop vers eole-common (ref #1740)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 28 Apr 2011 15:51:42 +0200
 
 conf-amon (2.3-eole85) eole-2.3; urgency=low
 
