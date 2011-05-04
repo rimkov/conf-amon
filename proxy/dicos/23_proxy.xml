@@ -29,6 +29,7 @@
             <file name='/usr/lib/cgi-bin/filtre.cgi' mode='755'/>
             <file name='/etc/rsyslog.d/50-default.conf' source="50-default-conteneur.conf" container_only="True"/>
             <file name='/etc/rsyslog.d/20-squid.conf' source="20-squid-conteneur.conf" container_only="True"/>
+            <!-- remontée des logs pour les adresses interdites dans l'EAD -->
             <file name='/etc/rsyslog.d/20-iptables.conf' source="20-iptables-conteneur.conf" container_only="True"/>
             <!--authentification-->
             <package>authentification-pkg</package>
