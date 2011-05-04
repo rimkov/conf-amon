@@ -1,6 +1,6 @@
-conf-amon (2.3-eole86~2.gbp077f1d) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole86~3.gbp058e4f) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @077f1d7686bda5c97e06d189996677f8e9bc2a66 **
+  ** SNAPSHOT build @058e4fab44d789052b97c6ebcf8f424d137450f7 **
 
   [ Emmanuel Garette ]
   * meilleure support de wpad et nginx
@@ -21,7 +21,16 @@ conf-amon (2.3-eole86~2.gbp077f1d) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 28 Apr 2011 15:51:42 +0200
+  [ Laurent Flori ]
+  * Ajour d'un script dans /usr/share/eole pour reconfigurer squid apres
+    un logrotate fixes #1693
+
+  [ Joël Cuissinat ]
+  * ajout conflit pour maj eole-proxy depuis RC4
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 04 May 2011 10:08:11 +0200
 
 conf-amon (2.3-eole85) eole-2.3; urgency=low
 
