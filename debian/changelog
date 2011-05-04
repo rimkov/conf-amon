@@ -1,6 +1,6 @@
-conf-amon (2.3-eole86~3.gbp058e4f) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole86~4.gbpff1dd2) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @058e4fab44d789052b97c6ebcf8f424d137450f7 **
+  ** SNAPSHOT build @ff1dd29800c74f88a0e0a232bebb8aa1e122e262 **
 
   [ Emmanuel Garette ]
   * meilleure support de wpad et nginx
@@ -30,7 +30,13 @@ conf-amon (2.3-eole86~3.gbp058e4f) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 04 May 2011 10:08:11 +0200
+  [ Emmanuel Garette ]
+  * ajout des templates radius
+  * ajout des dépendances pour radius et reverseproxy
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 04 May 2011 11:51:40 +0200
 
 conf-amon (2.3-eole85) eole-2.3; urgency=low
 
