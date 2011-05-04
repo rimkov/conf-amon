@@ -2,6 +2,19 @@
 
 <creole>
 <!-- **** Dictionnaire optionnel pour freeradius **** -->
+    <files>
+        <service servicelist='freeradius'>freeradius</service>
+        <package>radius-pkg</package>
+        <file filelist='freeradius' name='/etc/freeradius/clients.conf' source='freerad-clients.conf'/>
+        <file filelist='freeradius' name='/etc/freeradius/eap.conf' source='freerad-eap.conf'/>
+        <file filelist='freeradius' name='/etc/freeradius/huntgroups' source='freerad-huntgroups'/>
+        <file filelist='freeradius' name='/etc/freeradius/radiusd.conf'/>
+        <file filelist='freeradius' name='/etc/freeradius/users' source='freerad-users'/>
+        <file filelist='freeradius' name='/etc/freeradius/modules/ldap' source='freerad-ldap'/>
+        <file filelist='freeradius' name='/etc/freeradius/modules/mschap' source='freerad-mschap'/>
+        <file filelist='freeradius' name='/etc/freeradius/sites-enabled/default' source='freerad-default'/>
+        <file filelist='freeradius' name='/etc/freeradius/sites-enabled/inner-tunnel' source='freerad-inner-tunnel'/>
+    </files>
     <variables>
         <family name='authentification'>
             <variable name='activer_freeradius' type='oui/non' description='Activer le service Freeradius'>
@@ -9,7 +22,6 @@
             </variable>
         </family>
         <family name='freeradius' hidden='True'>
-            <variable name='adresse_ip_radius' type='ip' hidden='True' description="Adresse IP du conteneur radius"/>
             <variable name='freerad_listen_int' type='string' description='Interface sur laquelle freeradius écoutera'>
                 <value>eth1</value>
             </variable>
@@ -33,9 +45,6 @@
         </separators>
     </variables>
     <constraints>
-        <auto name='calc_container' target='adresse_ip_radius'>
-            <param>container_ip_radius</param>
-        </auto>
         <condition name='hidden_if_in' source='activer_freeradius'>
             <param>non</param>
             <target type='family'>freeradius</target>
