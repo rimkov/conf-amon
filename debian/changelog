@@ -1,3 +1,37 @@
+conf-amon (2.3-eole86~3.gbp058e4f) eole-2.3-proposed; urgency=low
+
+  ** SNAPSHOT build @058e4fab44d789052b97c6ebcf8f424d137450f7 **
+
+  [ Emmanuel Garette ]
+  * meilleure support de wpad et nginx
+
+  [ Joël Cuissinat ]
+  * ajout des nouvelles bases de filtrage optionnelles pour dansguardian
+    (fixes #1627)
+  * mise à niveau de Maj-blacklist.sh pour #1724
+  * enregistrement_domaine.sh : -S => -I [2.3] (fixes #1642)
+  * ajout des agents de surveillance pour les services squid et
+    dansguardian (ref #830)
+
+  [ Equipe Eole ]
+
+  [ Joël Cuissinat ]
+  * wpad.dat : typo
+  * déplacement du template firewall.stop vers eole-common (ref #1740)
+
+  [ Equipe Eole ]
+
+  [ Laurent Flori ]
+  * Ajour d'un script dans /usr/share/eole pour reconfigurer squid apres
+    un logrotate fixes #1693
+
+  [ Joël Cuissinat ]
+  * ajout conflit pour maj eole-proxy depuis RC4
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 04 May 2011 10:08:11 +0200
+
 conf-amon (2.3-eole85) eole-2.3; urgency=low
 
   * UNRELEASED

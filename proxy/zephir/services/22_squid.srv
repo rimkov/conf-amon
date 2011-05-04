@@ -1,0 +1,10 @@
+# -*- coding: UTF-8 -*-
+"""
+Surveillance du service Squid
+"""
+
+from zephir.monitor.agents.services import PIDService
+
+data = {'squid' : "Cache et filtrage (Squid)"}
+AGENTS.append(PIDService('squid', data, period=115,
+              description="Etat du service de cache et filtrage (Squid)"))

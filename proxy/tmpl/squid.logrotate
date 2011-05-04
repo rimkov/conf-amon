@@ -15,6 +15,6 @@
     notifempty
     missingok
     postrotate
-    /usr/sbin/squid -k reconfigure
+    /usr/share/eole/squid_logrotate.sh
     endscript
 }

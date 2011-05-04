@@ -88,7 +88,7 @@ install:
 	cp -rf proxy/dicos $(PROXY_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf proxy/tmpl $(PROXY_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -f proxy/diagnose/* $(PROXY_DIR)/$(EOLE_DIR)/diagnose/module
-	cp -f proxy/zephir/* $(PROXY_DIR)/$(AGENT_DIR)
+	cp -rf proxy/zephir/* $(PROXY_DIR)/$(AGENT_DIR)
 	cp -rf proxy/ead/* $(PROXY_DIR)/$(EAD_DIR)
 
 	#rvp

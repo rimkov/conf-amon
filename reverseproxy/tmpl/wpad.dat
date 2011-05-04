@@ -4,7 +4,7 @@ function FindProxyForURL(url, host) {
 %if %%nombre_interfaces >= "2"
 //eth1
     } else if ( isInNet(myIpAddress(), "%%adresse_network_eth1", "%%adresse_netmask_eth1")) {
-    %if %%is_defined(adresse_ip_eth1_proxy_link) and %%adresse_ip_eth1_proxy_link != ""
+    %if %%is_defined("adresse_ip_eth1_proxy_link") and %%adresse_ip_eth1_proxy_link != ""
         return "PROXY %%adresse_ip_eth1_proxy_link:3128";
     %else
         return "PROXY %%adresse_ip_eth1:3128";
@@ -26,7 +26,7 @@ function FindProxyForURL(url, host) {
 %end if
 %if %%nombre_interfaces >= "3"
     } else if ( isInNet(myIpAddress(), "%%adresse_network_eth2", "%%adresse_netmask_eth2")) {
-    %if %%is_defined(adresse_ip_eth2_proxy_link) and %%adresse_ip_eth2_proxy_link != ""
+    %if %%is_defined("adresse_ip_eth2_proxy_link") and %%adresse_ip_eth2_proxy_link != ""
         return "PROXY %%adresse_ip_eth2_proxy_link:3128";
     %else
         return "PROXY %%adresse_ip_eth2:3128";
