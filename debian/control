@@ -36,7 +36,7 @@ Description:  Templates et dictionnaires pour le proxy EOLE
 
 Package: eole-reverseproxy
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
+Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, reverseproxy-pkg
 Description: Templates et dictionnaires pour le reverseproxy EOLE
 
 Package: eole-dns
@@ -52,7 +52,7 @@ Description: Meta paquet du serveur nuauth EOLE
 
 Package: eole-radius
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
+Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, radius-pkg
 Description: Templates et dictionnaires pour radius EOLE
 
 Package: eole-rvp
