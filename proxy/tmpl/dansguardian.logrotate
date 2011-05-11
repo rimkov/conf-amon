@@ -1,11 +1,6 @@
 /var/log/dansguardian/*.log {
-%if %%active_sarg == "oui"
-  rotate 52
-  weekly
-%else
   rotate 365
   daily
-%end if
   sharedscripts
   prerotate
     killall dansguardian > /dev/null

@@ -8,7 +8,7 @@ EOLE_CONF_DIR=$(EOLE_DIR)/creole
 AGENT_DIR=/usr/share/zephir/monitor/configs
 EAD_DIR=/usr/share/ead2/backend/config
 INIT_DIR=/etc/init.d
-SBIN_DIR=/usr/sbin
+#SBIN_DIR=/usr/sbin
 BIN_DIR=/usr/bin
 #REP de creation des differents paquets
 CONFAMON_DIR=$(DESTDIR)/conf-amon
@@ -39,7 +39,7 @@ install:
 	# copie des templates
 	cp -rf tmpl $(CONFAMON_DIR)/$(EOLE_CONF_DIR)/distrib
 	# copie des scripts eole
-	cp -f sbin/* $(CONFAMON_DIR)/$(SBIN_DIR)
+	#cp -f sbin/* $(CONFAMON_DIR)/$(SBIN_DIR)
 	cp -f bin/* $(CONFAMON_DIR)/$(BIN_DIR)
 	# copie des scripts d''init Eole ...
 	cp -f init.d/* $(CONFAMON_DIR)/$(INIT_DIR)
