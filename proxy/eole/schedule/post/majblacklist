@@ -1,3 +1,5 @@
 #!/bin/bash
 
+DESC="Mise à jour des listes noires du proxy"
+
 /usr/share/eole/Maj-blacklist.sh
