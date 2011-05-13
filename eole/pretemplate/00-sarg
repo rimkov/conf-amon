@@ -1,6 +1,0 @@
-#!/bin/bash
-
-/bin/rm -f /etc/cron.daily/sarg
-/bin/rm -f /etc/cron.monthly/sarg
-/bin/rm -f /etc/cron.weekly/sarg
-

@@ -1,6 +1,6 @@
-conf-amon (2.3-eole86~3.gbp058e4f) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole86~5.gbp992fa2) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @058e4fab44d789052b97c6ebcf8f424d137450f7 **
+  ** SNAPSHOT build @992fa2a97416ea805e208fbeeaefb8e35f122995 **
 
   [ Emmanuel Garette ]
   * meilleure support de wpad et nginx
@@ -30,7 +30,20 @@ conf-amon (2.3-eole86~3.gbp058e4f) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 04 May 2011 10:08:11 +0200
+  [ Emmanuel Garette ]
+  * ajout des templates radius
+  * ajout des dépendances pour radius et reverseproxy
+
+  [ Equipe Eole ]
+
+  [ Joël Cuissinat ]
+  * squid.conf : correction pour l'accès aux réseaux internes [2.3]
+    (fixes #1295)
+  * Suppression de toute trace de SARG sur 2.3 (fixes #810)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 11 May 2011 15:32:08 +0200
 
 conf-amon (2.3-eole85) eole-2.3; urgency=low
 
