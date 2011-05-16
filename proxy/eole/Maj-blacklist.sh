@@ -32,7 +32,7 @@ if [ -n "$http_proxy" ];then
         exit 1
     fi
 fi
-TestService "Contact avec $ServBlacklist" "${ServBlacklist}:80" 2>&1
+TestService "Test de $ServBlacklist" "${ServBlacklist}:80" 2>&1
 if [ $? != 0 ];then
     Zephir "ERR" "Impossible d'accéder au site de mise à jour !" "Maj-blacklist" 2>&1 | tee -a $F_LOG
     #sed -i 1i"Erreur : impossible d'accéder au site" $F_LOG
