@@ -1,9 +1,6 @@
 #!/bin/bash
 if [ -f /usr/share/era/modeles/${type_amon}.xml ]; then
     echo -n " (modèle \"${type_amon}\")"
-    ## on change la politique par defaut du nat
-    /sbin/iptables -t nat -P PREROUTING ACCEPT
-    /sbin/iptables -t nat -P POSTROUTING ACCEPT
     ## lancement du script de generation du firewall
     /usr/share/era/bastion.sh
     if [ ! $? -eq 0 ]; then
