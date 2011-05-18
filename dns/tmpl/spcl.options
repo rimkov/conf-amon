@@ -30,6 +30,12 @@ acl "intra" {
 %if %%adresse_ip_conteneur_dns != '127.0.0.1'
 // mode avec conteneur
 	%%adresse_ip_conteneur_dns;
+%if %%nombre_interfaces > 1 and %%is_defined('adresse_ip_eth1_proxy_link') and %%adresse_ip_eth1_proxy_link != ''
+    %%adresse_ip_eth1_proxy_link;
+%end if
+%if %%nombre_interfaces > 2 and %%is_defined('adresse_ip_eth2_proxy_link') and %%adresse_ip_eth2_proxy_link != ''
+    %%adresse_ip_eth2_proxy_link;
+%end if
 %else
 // mode sans conteneur
 	%%adresse_ip_eth1;
