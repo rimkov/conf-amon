@@ -16,7 +16,7 @@
         <family name='general'>
             <!--**** Reseau Global **** -->
             <variable name='type_amon' type='string' description='Modèle de filtrage'>
-            <value>minimal</value>
+                <value>2zones</value>
             </variable>
             <variable name='nombre_interfaces' redefine='True'>
                 <value>2</value>
@@ -77,7 +77,7 @@
         <check name='obligatoire' target='type_amon'/>
         <check name='obligatoire' target='nom_machine_eth1'/>
         <check name="valid_enum" target="type_amon">
-            <param type="python">eosfunc.list_files('/usr/share/era/modeles','*.xml',True,default=['2zones', '3zones-amonecole-eclair-nginx', '3zones-amonecole-eclair', '3zones-amonecole-nginx', '3zones-amonecole', '3zones-scribe-posh-nginx', '3zones-scribe', '3zones', '4zones-scribe-nufw', '4zones-scribe-posh-nginx', '4zones-scribe', '4zones', '5zones', 'minimal'])</param>
+            <param type="python">eosfunc.list_files('/usr/share/era/modeles', '*.xml', True, default=['2zones', '2zones-amonecole', '2zones-amonecole-nginx', '3zones', '3zones-scribe', '3zones-scribe-nginx', '4zones', '4zones-scribe', '4zones-scribe-nginx', '4zones-scribe-nufw', '5zones'], exception='minimal')</param>
             <param name="checkval">False</param>
         </check>
         <!-- Amon >= 2 cartes réseau -->
