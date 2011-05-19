@@ -2,6 +2,7 @@
 
 <creole>
     <files>
+        <file name='/usr/share/eole/firewall/00_proxy.fw'/>
         <file name='/usr/share/eole/dansguardian/dansguardian1.conf' />
         <file name='/usr/share/eole/dansguardian/dansguardian2.conf' />
         <!--Les logs sont sur le maitre donc ils doivent tourner sur le maitre -->
