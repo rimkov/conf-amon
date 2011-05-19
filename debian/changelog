@@ -1,6 +1,6 @@
-conf-amon (2.3-eole86~5.gbp992fa2) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole86~6.gbp8042e2) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @992fa2a97416ea805e208fbeeaefb8e35f122995 **
+  ** SNAPSHOT build @8042e2e39249189445414760f5591c34e0db825e **
 
   [ Emmanuel Garette ]
   * meilleure support de wpad et nginx
@@ -43,7 +43,23 @@ conf-amon (2.3-eole86~5.gbp992fa2) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 11 May 2011 15:32:08 +0200
+  [ Emmanuel Garette ]
+  * Message plus explicite pour les planifiées EOLE
+
+  [ gwen ]
+  * on retire les regles de nat du firewall.start
+
+  [ Emmanuel Garette ]
+  * Contact avec => Test de
+  * ajoute la deuxieme et troisieme ip dans le conteneur
+
+  [ Joël Cuissinat ]
+  * 30_amon.xml : modèle par défaut mis sur 2zones + maj de la liste des
+    modèles avec suppression des modèles minimal (ref #1779)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 19 May 2011 14:34:52 +0200
 
 conf-amon (2.3-eole85) eole-2.3; urgency=low
 
