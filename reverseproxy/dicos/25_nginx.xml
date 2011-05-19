@@ -6,6 +6,7 @@
         <package>reverseproxy-pkg</package>
         <file name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
         <file name='/var/www/nginx-default/nginx.html' source='nginx.html'/>
+        <file name='/var/www/index.html' source='nginx.no_proxy.html'/>
         <file name="/var/www/wpad.dat" mode='775'/>
         <!--<file name="/etc/squid/domaines_noauth_acad"/>
         <file name="/etc/squid/domaines_nocache_acad"/>
