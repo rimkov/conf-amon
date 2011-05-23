@@ -15,66 +15,77 @@ proxy_buffer_size   16k;
 proxy_buffers   6 32k;
 proxy_busy_buffers_size   32k;
 
+# erreur pour le proxy
+server {
+%if %%mode_conteneur_actif != 'non'
+    #Ecoute sur le port de dansguardian en mode conteneur
+    listen 0.0.0.0:3128;
+%end if
+    listen 0.0.0.0:82 default ssl;
+    root /var/www/;
+    ssl_certificate %%server_cert;
+    ssl_certificate_key %%server_key;
+    rewrite  ^(.*)$  /index.html  break;
+}
 # wpad
 server {
-    listen %%adresse_ip_eth0:81;
+    listen 0.0.0.0:81;
     server_name wpad.%%nom_domaine_local;
     server_name wpad;
-    server_name %%nom_domaine_local;
     root /var/www/;
+    index wpad.dat;
     location /wpad.dat {
-        index wpad.dat;
         default_type application/x-ns-proxy-autoconfig;
-#        allow %%adresse_network_eth0/%%calc_classe(%%adresse_netmask_eth0)
+#        allow %%adresse_network_eth0/%%calc_classe(%%adresse_netmask_eth0);
 %if %%nombre_interfaces >= "2"
-        allow %%adresse_network_eth1/%%calc_classe(%%adresse_netmask_eth1)
+        allow %%adresse_network_eth1/%%calc_classe(%%adresse_netmask_eth1);
     %if %%alias_eth1 == "oui"
     %for %%alias_addr_eth1 in %%alias_ip_eth1
-        allow %%alias_addr_eth1.alias_network_eth1/%%alias_addr_eth1.alias_netmask_eth1
+        allow %%alias_addr_eth1.alias_network_eth1/%%alias_addr_eth1.alias_netmask_eth1;
     %end for
     %end if
     %if %%vlan_eth1 == "oui"
     %for %%vlan1_id in %%id_vlan_eth1
-        allow %%vlan1_id.adresse_network_vlan_eth1/%%vlan1_id.adresse_netmask_vlan_eth1
+        allow %%vlan1_id.adresse_network_vlan_eth1/%%vlan1_id.adresse_netmask_vlan_eth1;
     %end for
     %end if
 %end if
 %if %%nombre_interfaces >= "3"
-        allow %%adresse_network_eth2/%%calc_classe(%%adresse_netmask_eth2)
+        allow %%adresse_network_eth2/%%calc_classe(%%adresse_netmask_eth2);
     %if %%alias_eth2 == "oui"
     %for %%alias_addr_eth2 in %%alias_ip_eth2
-        allow %%alias_addr_eth2.alias_network_eth2/%%alias_addr_eth2.alias_netmask_eth2
+        allow %%alias_addr_eth2.alias_network_eth2/%%alias_addr_eth2.alias_netmask_eth2;
     %end for
     %end if
     %if %%vlan_eth2 == "oui"
     %for %%vlan1_id in %%id_vlan_eth2
-        allow %%vlan1_id.adresse_network_vlan_eth2/%%vlan1_id.adresse_netmask_vlan_eth2
+        allow %%vlan1_id.adresse_network_vlan_eth2/%%vlan1_id.adresse_netmask_vlan_eth2;
     %end for
     %end if
 %end if
 %if %%nombre_interfaces >= "4"
-        allow %%adresse_network_eth3/%%calc_classe(%%adresse_netmask_eth3)
+        allow %%adresse_network_eth3/%%calc_classe(%%adresse_netmask_eth3);
     %if %%alias_eth3 == "oui"
     %for %%alias_addr_eth3 in %%alias_ip_eth3
-        allow %%alias_addr_eth3.alias_network_eth3/%%alias_addr_eth3.alias_netmask_eth3
+        allow %%alias_addr_eth3.alias_network_eth3/%%alias_addr_eth3.alias_netmask_eth3;
     %end for
     %end if
     %if %%vlan_eth3 == "oui"
     %for %%vlan1_id in %%id_vlan_eth3
-        allow %%vlan1_id.adresse_network_vlan_eth3/%%vlan1_id.adresse_netmask_vlan_eth3
+        allow %%vlan1_id.adresse_network_vlan_eth3/%%vlan1_id.adresse_netmask_vlan_eth3;
     %end for
     %end if
 %end if
 %if %%nombre_interfaces >= "5"
-        allow %%adresse_network_eth4/%%calc_classe(%%adresse_netmask_eth4)
+        allow %%adresse_network_eth4/%%calc_classe(%%adresse_netmask_eth4);
     %if %%alias_eth4 == "oui"
     %for %%alias_addr_eth4 in %%alias_ip_eth4
-        allow %%alias_addr_eth4.alias_network_eth4/%%alias_addr_eth4.alias_netmask_eth4
+        allow %%alias_addr_eth4.alias_network_eth4/%%alias_addr_eth4.alias_netmask_eth4;
     %end for
     %end if
     %if %%vlan_eth4 == "oui"
     %for %%vlan1_id in %%id_vlan_eth4
-        allow %%vlan1_id.adresse_network_vlan_eth4/%%vlan1_id.adresse_netmask_vlan_eth4
+        allow %%vlan1_id.adresse_network_vlan_eth4/%%vlan1_id.adresse_netmask_vlan_eth4;
     %end for
     %end if
 %end if

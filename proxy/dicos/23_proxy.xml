@@ -13,7 +13,7 @@
             <package>proxy-pkg</package>
             <package>antivirus-pkg</package>
             <service>squid</service>
-            <service>dansguardian</service>
+            <service pty="False">dansguardian</service>
             <service servicelist='clamav_proxy' in_container='True'>clamav-daemon</service>
             <interface linkto="eth1" ip="adresse_ip_eth1_proxy_link" mask="adresse_mask_eth1_proxy_link">eth1</interface>
             <interface interfacelist='eth2_proxy_link' linkto="eth2" ip="adresse_ip_eth2_proxy_link" mask="adresse_mask_eth2_proxy_link">eth2</interface>
