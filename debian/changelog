@@ -1,6 +1,6 @@
-conf-amon (2.3-eole86~6.gbp8042e2) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole86~7.gbpd630d8) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @8042e2e39249189445414760f5591c34e0db825e **
+  ** SNAPSHOT build @d630d81a50778324c7a396fdacfa1c4fd71d0f35 **
 
   [ Emmanuel Garette ]
   * meilleure support de wpad et nginx
@@ -59,7 +59,14 @@ conf-amon (2.3-eole86~6.gbp8042e2) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 19 May 2011 14:34:52 +0200
+  [ Emmanuel Garette ]
+  * gestion du fichier wpad + page erreur pour la non configuration du
+    proxy
+  * ajout du pty à False pour le service dansguardian (fixes #1762 )
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 23 May 2011 14:36:36 +0200
 
 conf-amon (2.3-eole85) eole-2.3; urgency=low
 
