@@ -476,6 +476,9 @@
     </variables>
 
     <constraints>
+
+        <check name='obligatoire' target='url_maj_blacklist'/>
+
         <auto name='calc_container' target='adresse_ip_proxy'>
             <param>container_ip_proxy</param>
         </auto>
