@@ -1,3 +1,9 @@
+conf-amon (2.3-eole87) eole-2.3; urgency=low
+
+  * UNRELEASED
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 31 May 2011 09:46:33 +0200
+
 conf-amon (2.3-eole86) eole-2.3-proposed; urgency=low
 
   [ Emmanuel Garette ]
