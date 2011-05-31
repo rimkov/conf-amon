@@ -1,6 +1,10 @@
-conf-amon (2.3-eole86~7.gbpd630d8) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole87) eole-2.3; urgency=low
 
-  ** SNAPSHOT build @d630d81a50778324c7a396fdacfa1c4fd71d0f35 **
+  * UNRELEASED
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 31 May 2011 09:46:33 +0200
+
+conf-amon (2.3-eole86) eole-2.3-proposed; urgency=low
 
   [ Emmanuel Garette ]
   * meilleure support de wpad et nginx
@@ -66,7 +70,21 @@ conf-amon (2.3-eole86~7.gbpd630d8) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 23 May 2011 14:36:36 +0200
+  [ Joël Cuissinat ]
+  * templatisation de 00_proxy.fw + on prévoit le cas sans conteneur dns
+    (ref #1782)
+  * cosmétique sur message
+
+  [ Emmanuel Garette ]
+  * dico proxy : libellé plus clair pour l'IP du conteneur
+
+  [ Fabrice ]
+  * active_rvp : test si l'identifiant zephir est bien un sphynx (FIXES
+    : #1814)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 31 May 2011 09:30:41 +0200
 
 conf-amon (2.3-eole85) eole-2.3; urgency=low
 

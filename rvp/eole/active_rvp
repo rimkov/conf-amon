@@ -114,8 +114,8 @@ class ActiveRVPCli(Cli):
         if not ZEPHIR:
             print_red("serveur non enregistré sur Zéphir")
             return True
-        self.onecmd("get_rvp_from_zephir")
-        self.onecmd("start_ipsec")
+        if self.onecmd("get_rvp_from_zephir"):
+            self.onecmd("start_ipsec")
         return True
 
     def do_delete(self, line):
@@ -146,17 +146,21 @@ class ActiveRVPCli(Cli):
             sys.exit("Erreur d'authentification zephir")
         # récupération de l'archive de configuration vpn
         contenu_b64 = zephir_proxy.uucp.sphynx_get(id_sphynx, id_serveur)
-        contenu = xmlrpclib.base64.decodestring(contenu_b64[1])
-        # écriture du fichier tar
-        archive = ipsec_tmp_path+sep+'vpn_%star.gz' % id_sphynx
-        f=open(archive,"w")
-        f.write(contenu)
-        f.close()
-        # décompression de l'archive
-        system("cd %s;/bin/tar xzf %s" % (ipsec_tmp_path,archive))
-        unlink(archive)
-        print "#->archive récupérée"
-        return True
+        if contenu_b64[0]:
+            contenu = xmlrpclib.base64.decodestring(contenu_b64[1])
+            # écriture du fichier tar
+            archive = ipsec_tmp_path+sep+'vpn_%star.gz' % id_sphynx
+            f=open(archive,"w")
+            f.write(contenu)
+            f.close()
+            # décompression de l'archive
+            system("cd %s;/bin/tar xzf %s" % (ipsec_tmp_path,archive))
+            unlink(archive)
+            print "#->archive récupérée"
+            return True
+        else:
+            print "Serveur non trouvé"
+            return False
 
     def do_start_ipsec(self, line):
         """Déplombe les clefs privées"""
