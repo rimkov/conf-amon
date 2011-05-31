@@ -1,6 +1,4 @@
-conf-amon (2.3-eole86~8.gbpcfafd0) eole-2.3-proposed; urgency=low
-
-  ** SNAPSHOT build @cfafd0e966189abe3b650c03e0e3b5732c326d8b **
+conf-amon (2.3-eole86) eole-2.3-proposed; urgency=low
 
   [ Emmanuel Garette ]
   * meilleure support de wpad et nginx
@@ -80,7 +78,7 @@ conf-amon (2.3-eole86~8.gbpcfafd0) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 30 May 2011 10:16:11 +0200
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 31 May 2011 09:30:41 +0200
 
 conf-amon (2.3-eole85) eole-2.3; urgency=low
 
