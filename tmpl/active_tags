@@ -13,19 +13,19 @@ SSHDepuisEth3
 %if %%ssh_eth4 == "oui"
 SSHDepuisEth4
 %end if
-%if %%ssh_eth0 == "oui"
+%if %%admin_eth0 == "oui"
 AdminDepuisEth0
 %end if
-%if %%ssh_eth1 == "oui"
+%if %%admin_eth1 == "oui"
 AdminDepuisEth1
 %end if
-%if %%ssh_eth2 == "oui"
+%if %%admin_eth2 == "oui"
 AdminDepuisEth2
 %end if
-%if %%ssh_eth3 == "oui"
+%if %%admin_eth3 == "oui"
 AdminDepuisEth3
 %end if
-%if %%ssh_eth4 == "oui"
+%if %%admin_eth4 == "oui"
 AdminDepuisEth4
 %end if
 %if %%is_defined('activer_nufw') and %%activer_nufw == "oui"
