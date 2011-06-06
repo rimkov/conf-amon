@@ -140,14 +140,15 @@ class ActiveRVPCli(Cli):
             mkdir(dirname(ipsec_tmp_path))
         if not isdir(ipsec_tmp_path):
             mkdir(ipsec_tmp_path)
+        zephir_proxy = xmlrpclib.ServerProxy("https://%s:%s@%s:7080" % (login, passwd, adresse_zephir), transport=TransportEole())
         try:
-            zephir_proxy = xmlrpclib.ServerProxy("https://%s:%s@%s:7080" % (login, passwd, adresse_zephir), transport=TransportEole())
+            # récupération de l'archive de configuration vpn
+            ret, contenu_b64 = zephir_proxy.uucp.sphynx_get(id_sphynx, id_serveur)
         except xmlrpclib.ProtocolError:
-            sys.exit("Erreur d'authentification zephir")
-        # récupération de l'archive de configuration vpn
-        contenu_b64 = zephir_proxy.uucp.sphynx_get(id_sphynx, id_serveur)
-        if contenu_b64[0]:
-            contenu = xmlrpclib.base64.decodestring(contenu_b64[1])
+            print "Erreur d'authentification zephir !"
+            return False
+        if ret:
+            contenu = xmlrpclib.base64.decodestring(contenu_b64)
             # écriture du fichier tar
             archive = ipsec_tmp_path+sep+'vpn_%star.gz' % id_sphynx
             f=open(archive,"w")
@@ -159,7 +160,7 @@ class ActiveRVPCli(Cli):
             print "#->archive récupérée"
             return True
         else:
-            print "Serveur non trouvé"
+            print "Erreur :", contenu_b64
             return False
 
     def do_start_ipsec(self, line):
