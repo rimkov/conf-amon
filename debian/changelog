@@ -1,3 +1,21 @@
+conf-amon (2.3-eole88~1.gbpf6bc70) eole-2.3-proposed; urgency=low
+
+  ** SNAPSHOT build @f6bc70ba03ce3f1f24c97800a4e263117fbca70f **
+
+  [ Joël Cuissinat ]
+  * check sur url_maj_blacklist déplacé dans le bon dictionnaire
+
+  [ Emmanuel Garette ]
+  * si admin_eth* desactive, desactive les règles era
+
+  [ Joël Cuissinat ]
+  * active_rvp : déplacement du test de l'authentification Zéphir +
+    affichage du message renvoyé en cas d'erreur (fixes #1826)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 09 Jun 2011 16:06:00 +0200
+
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
   * UNRELEASED
