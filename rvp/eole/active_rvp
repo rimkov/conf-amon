@@ -14,6 +14,7 @@ from shutil import copy
 
 from pyeole.ihm import question_ouinon
 from pyeole.ansiprint import print_orange, print_red
+from creole.parsedico import parse_dico
 from zephir.lib_zephir import TransportEole
 try:
     from zephir.zephir_conf.zephir_conf import id_serveur, adresse_zephir
@@ -86,20 +87,25 @@ class ActiveRVPCli(Cli):
     def do_init(self, line):
         """Mode d'activation rvp
         """
-        if ZEPHIR:
-            mode = self.select("manuel zephir", "choisissez le mode : ")
-            if mode == "zephir":
-                self.onecmd("zephir")
+        conf_eole = parse_dico()
+        if conf_eole['install_rvp'] == 'oui':
+            if ZEPHIR:
+                mode = self.select("manuel zephir", "choisissez le mode : ")
+                if mode == "zephir":
+                    self.onecmd("zephir")
+                else:
+                    self.onecmd("manuel")
             else:
-                self.onecmd("manuel")
+                print_orange("Le serveur n'est pas enregistré sur un Zéphir")
+                rep = question_ouinon("configurer en mode manuel", default='non')
+                if rep == 'oui':
+                    self.onecmd("manuel")
+                else:
+                    print "Abandon de la configuration RVP"
+            return True
         else:
-            print_orange("Le serveur n'est pas enregistré sur un Zéphir")
-            rep = question_ouinon("configurer en mode manuel", default='non')
-            if rep == 'oui':
-                self.onecmd("manuel")
-            else:
-                print "Abandon de la configuration RVP"
-        return True
+            print_orange("Le RVP n'est pas activé dans la configuration du serveur.")
+            return True
 
     def do_manuel(self, line):
         """mode manuel"""
