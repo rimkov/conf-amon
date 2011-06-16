@@ -93,12 +93,16 @@ server {
     }
 }
 
-%if %%revprox_activate_http == 'oui'
-
 %set %%dom_dict={}
+%if %%revprox_activate_http == 'oui'
 %for %%location_iter in %%revprox_domainname
 %%dom_dict.setdefault(%%location_iter.value, []).append((%%location_iter.revprox_rep, %%location_iter.revprox_http, %%location_iter.revprox_https, %%location_iter.revprox_url))
 %end for
+%end if % if %%revprox_activate_http == 'oui'
+
+%if %%is_defined('revprox_container_domain') and %%is_defined('container_ip_web') and %%revprox_container_domain != ''
+%%dom_dict.setdefault(%%revprox_container_domain, []).append(('/', 'redirige vers https', 'oui', 'https://'+%%container_ip_web))
+%end if
 
 %for %%revprox_iter in %%dom_dict.keys()
 # Configuration HTTP %%revprox_iter
@@ -182,7 +186,6 @@ server {
 %end for % for %%rep_iter, %%http_iter, %%https_iter, %%url_iter in %%dom_dict[%%revprox_iter]
 }
 %end for % for %%revprox_iter in %%dom_dict.keys()
-%end if % if %%revprox_activate_http == 'oui'
 
 %if %%revprox_sso != '' and %%activer_sso == 'distant'
 # Redirection SSO
@@ -229,8 +232,8 @@ server {
         }
 }
 %end if
-## Redirection de l'ead d'un scribe sur le port 4203
 %if %%revprox_ead and %%revprox_ead_port
+## Redirection de l'ead d'un scribe sur le port 4203
 server {
         listen %%revprox_ead_port;
         ssl    on;

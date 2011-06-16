@@ -20,8 +20,8 @@
             </variable>
         </family>
         <family name='Reverse proxy' hidden='True'>
-            <variable name='revprox_sso' type='string' description="IP ou domaine du serveur SSO" />
-            <variable name='revprox_poshadmin' type='string' description="IP ou domaine du serveur d'administration Envole 2" />
+            <variable name='revprox_sso' type='string' description="Nom de domaine du serveur SSO" />
+            <variable name='revprox_poshadmin' type='string' description="Nom de domaine du serveur d'administration Envole 2" />
             <variable name='revprox_ead' type='string' description="IP du Scribe" hidden='True' />
             <variable name='revprox_ead_port' type='number' description="Port d'accès à l'EAD du Scribe depuis l'extérieur" hidden='True'>
                 <value>4203</value>
