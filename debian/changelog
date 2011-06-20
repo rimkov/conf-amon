@@ -1,6 +1,6 @@
-conf-amon (2.3-eole88~1.gbpf6bc70) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole88~2.gbp6292ac) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @f6bc70ba03ce3f1f24c97800a4e263117fbca70f **
+  ** SNAPSHOT build @6292ac434b8a92ea1e6dd593fe78d79ff123a5ae **
 
   [ Joël Cuissinat ]
   * check sur url_maj_blacklist déplacé dans le bon dictionnaire
@@ -14,7 +14,16 @@ conf-amon (2.3-eole88~1.gbpf6bc70) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 09 Jun 2011 16:06:00 +0200
+  [ Fabrice ]
+  * active_rvp configure le RVP même si install_rvp=non (FIXES #1841)
+
+  [ Emmanuel Garette ]
+  * utilisation de la variable revprox_container_domain et configuration
+    automatique de Envole (ref #1861)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 20 Jun 2011 09:46:22 +0200
 
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
