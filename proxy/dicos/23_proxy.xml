@@ -5,6 +5,7 @@
         <file name='/usr/share/eole/firewall/00_proxy.fw'/>
         <file name='/usr/share/eole/dansguardian/dansguardian1.conf' />
         <file name='/usr/share/eole/dansguardian/dansguardian2.conf' />
+        <file name='/etc/lightsquid/lightsquid.cfg' />
         <!--Les logs sont sur le maitre donc ils doivent tourner sur le maitre -->
         <file name='/etc/logrotate.d/squid3' source='squid.logrotate'/>
     </files>
