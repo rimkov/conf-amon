@@ -1,6 +1,6 @@
-conf-amon (2.3-eole88~5.gbpa79382) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole88~6.gbp8e72b3) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @a79382e33c17d154900139b818467be535a5e0ba **
+  ** SNAPSHOT build @8e72b37553ff3fb81a9b226555d5eff9d246e8a6 **
 
   [ Joël Cuissinat ]
   * check sur url_maj_blacklist déplacé dans le bon dictionnaire
@@ -38,7 +38,12 @@ conf-amon (2.3-eole88~5.gbpa79382) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 28 Jun 2011 13:31:11 +0200
+  [ Fabrice ]
+  * lancement gen_ip_xfrm_policy par active_rvp
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 28 Jun 2011 14:02:15 +0200
 
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
