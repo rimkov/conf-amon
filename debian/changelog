@@ -1,6 +1,6 @@
-conf-amon (2.3-eole88~3.gbp9dd6a4) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole88~4.gbp8177e5) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @9dd6a490cd5b83dd27e56b897178d40a09f734a8 **
+  ** SNAPSHOT build @8177e54c4a70c2d68c2066a9fd8190166f9d8193 **
 
   [ Joël Cuissinat ]
   * check sur url_maj_blacklist déplacé dans le bon dictionnaire
@@ -28,7 +28,12 @@ conf-amon (2.3-eole88~3.gbp9dd6a4) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 28 Jun 2011 11:20:43 +0200
+  [ Laurent Flori ]
+  * Ajout d'un dependance sur lightsquid dans le paquet eole-proxy
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 28 Jun 2011 12:02:31 +0200
 
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
