@@ -29,7 +29,7 @@ Description: Templates et dictionnaires pour Amon
 
 Package: eole-proxy
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, eole-antivirus
+Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, eole-antivirus, lightsquid
 # conflit pour cause de templates déplacés
 Conflicts: eole-common (<2.3-eole128)
 Description:  Templates et dictionnaires pour le proxy EOLE
