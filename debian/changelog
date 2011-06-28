@@ -1,6 +1,6 @@
-conf-amon (2.3-eole88~4.gbp8177e5) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole88~5.gbpa79382) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @8177e54c4a70c2d68c2066a9fd8190166f9d8193 **
+  ** SNAPSHOT build @a79382e33c17d154900139b818467be535a5e0ba **
 
   [ Joël Cuissinat ]
   * check sur url_maj_blacklist déplacé dans le bon dictionnaire
@@ -33,7 +33,12 @@ conf-amon (2.3-eole88~4.gbp8177e5) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 28 Jun 2011 12:02:31 +0200
+  [ Fabrice ]
+  * RVP : routes manuelles et passthrough ipsec subnets locaux
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 28 Jun 2011 13:31:11 +0200
 
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
