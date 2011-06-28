@@ -1,6 +1,6 @@
-conf-amon (2.3-eole88~2.gbp6292ac) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole88~3.gbp9dd6a4) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @6292ac434b8a92ea1e6dd593fe78d79ff123a5ae **
+  ** SNAPSHOT build @9dd6a490cd5b83dd27e56b897178d40a09f734a8 **
 
   [ Joël Cuissinat ]
   * check sur url_maj_blacklist déplacé dans le bon dictionnaire
@@ -23,7 +23,12 @@ conf-amon (2.3-eole88~2.gbp6292ac) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 20 Jun 2011 09:46:22 +0200
+  [ Laurent Flori ]
+  * Accès à lightsquid depuis l'ead fixes #1802
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 28 Jun 2011 11:20:43 +0200
 
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
