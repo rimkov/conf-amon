@@ -187,7 +187,8 @@ class ActiveRVPCli(Cli):
             session.commit()
             copy(ipsec_tmp_path+sep+"ipsec.db", strongswan_database)
             copy(ipsec_tmp_path+sep+"test-rvp", "/usr/share/eole/test-rvp")
-            system("/etc/init.d/ipsec restart")
+            system("/usr/share/eole/gen_ip_xfrm_policy")
+            system("/etc/init.d/rvp restart")
         session.flush()
         return True
 #_____________________________________________________________________________
