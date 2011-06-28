@@ -129,7 +129,7 @@ class ActiveRVPCli(Cli):
         """
         rep = question_ouinon("Etes-vous certain de vouloir désactiver le VPN ?", default='non')
         if rep == 'oui':
-            system("/etc/init.d/ipsec stop")
+            system("/etc/init.d/rvp stop")
             unlink(strongswan_database)
             unlink("/usr/share/eole/test-rvp")
         else:
