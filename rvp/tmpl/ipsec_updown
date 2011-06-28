@@ -5,12 +5,12 @@
 # Copyright (C) 2003-2004 Tuomo Soini
 # Copyright (C) 2002-2004 Michael Richardson
 # Copyright (C) 2005-2006 Andreas Steffen <andreas.steffen@strongswan.org>
-# 
+#
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the
 # Free Software Foundation; either version 2 of the License, or (at your
 # option) any later version.  See <http://www.fsf.org/copyleft/gpl.txt>.
-# 
+#
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
 # or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
@@ -217,6 +217,8 @@ doroute() {
 		PLUTO_MY_SOURCEIP=$DEFAULTSOURCE
 	    fi
         fi
+	#PLUTO_MY_SOURCEIP=`grep -A 2 "auto eth1" /etc/network/interfaces |grep address|cut -d" " -f2`
+	PLUTO_MY_SOURCEIP=`ifconfig eth1|grep "inet adr"|cut -d":" -f2|cut -d" " -f1`
 
 	parms3=
 	if test "$1" = "add" -a -n "$PLUTO_MY_SOURCEIP"
@@ -228,7 +230,7 @@ doroute() {
 	case "$PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK" in
 	"0.0.0.0/0.0.0.0")
 		# opportunistic encryption work around
-		# need to provide route that eclipses default, without 
+		# need to provide route that eclipses default, without
 		# replacing it.
 		it="ip route $1 0.0.0.0/1 $parms2 $parms3 &&
 			ip route $1 128.0.0.0/1 $parms2 $parms3"
@@ -248,8 +250,8 @@ doroute() {
 	fi
 	return $st
 }
- 
-# in the presence of KLIPS and ipsecN interfaces do not use IPSEC_POLICY 
+
+# in the presence of KLIPS and ipsecN interfaces do not use IPSEC_POLICY
 if [ `echo "$PLUTO_INTERFACE" | grep "ipsec"` ]
 then
 	IPSEC_POLICY_IN=""
@@ -278,7 +280,7 @@ prepare-host:*|prepare-client:*)
 	# delete possibly-existing route (preliminary to adding a route)
 	case "$PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK" in
 	"0.0.0.0/0.0.0.0")
-		# need to provide route that eclipses default, without 
+		# need to provide route that eclipses default, without
 		# replacing it.
 		parms1="0.0.0.0/1"
 		parms2="128.0.0.0/1"
@@ -297,7 +299,7 @@ prepare-host:*|prepare-client:*)
 		oops="silent error, exit status $status"
 	fi
 	case "$oops" in
-	*'RTNETLINK answers: No such process'*)	
+	*'RTNETLINK answers: No such process'*)
 		# This is what route (currently -- not documented!) gives
 		# for "could not find such a route".
 		oops=
@@ -333,8 +335,8 @@ up-client:)
 	/sbin/iptables -t nat -I POSTROUTING -m state --state NEW -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
 	/sbin/iptables -t nat -I POSTROUTING -m state --state ESTABLISHED,RELATED -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
 	#Autoriser les connexions au fw pour les paquets provenant du RVP
-	/sbin/iptables -I INPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i eth0 -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT 
-	/sbin/iptables -I INPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i eth0 -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT 
+	/sbin/iptables -I INPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i eth0 -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
+	/sbin/iptables -I INPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i eth0 -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
 	#Autoriser les paquets provenant du rvp et ceux a destination du rvp a traverser le FW
 	/sbin/iptables -I FORWARD -m state --state NEW -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
 	/sbin/iptables -I FORWARD -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
@@ -344,6 +346,7 @@ up-client:)
 	/sbin/iptables -I OUTPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir out -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
 	/sbin/iptables -I OUTPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
 	# If you are doing a custom version, firewall commands go here.
+    uproute
 
 	;;
 
@@ -353,8 +356,8 @@ down-client:)
 	/sbin/iptables -t nat -D POSTROUTING -m state --state NEW -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
 	/sbin/iptables -t nat -D POSTROUTING -m state --state ESTABLISHED,RELATED -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
 	##
-	/sbin/iptables -D INPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i eth0 -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT 
-	/sbin/iptables -D INPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i eth0 -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT 
+	/sbin/iptables -D INPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i eth0 -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
+	/sbin/iptables -D INPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i eth0 -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
 	##
 	/sbin/iptables -D FORWARD -m state --state NEW -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
 	/sbin/iptables -D FORWARD -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
@@ -363,6 +366,7 @@ down-client:)
 	##
 	/sbin/iptables -D OUTPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir out -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
 	/sbin/iptables -D OUTPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -o eth0 -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
+   downroute
 
 	;;
 	# connection to my client subnet going down
@@ -388,7 +392,7 @@ up-host:iptables)
 	    logger -t $TAG -p $FAC_PRIO \
 	      "+ `echo -e $PLUTO_PEER_ID` $PLUTO_PEER_CLIENT == $PLUTO_PEER -- $PLUTO_ME"
 	  fi
-	fi	
+	fi
 	;;
 down-host:iptables)
 	# connection to me, with (left/right)firewall=yes, going down
