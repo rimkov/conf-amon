@@ -19,10 +19,17 @@
 
 listen-on {intra;};
 allow-notify {none;};
-allow-recursion {localnets;};
+allow-recursion {allnets;};
 allow-transfer {none;};
-allow-query {localnets;};
+allow-query {allnets;};
 
+};
+
+acl "allnets" {
+	localnets;
+%for %%indirectnet in %%route_adresse
+	%%indirectnet/%%calc_classe(%%indirectnet.route_netmask);
+%end for
 };
 
 acl "intra" {
