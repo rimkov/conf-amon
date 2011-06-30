@@ -1,6 +1,6 @@
-conf-amon (2.3-eole88~6.gbp8e72b3) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole88~7.gbp915733) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @8e72b37553ff3fb81a9b226555d5eff9d246e8a6 **
+  ** SNAPSHOT build @91573343dd34dbff4458c1df59de8041823abcf4 **
 
   [ Joël Cuissinat ]
   * check sur url_maj_blacklist déplacé dans le bon dictionnaire
@@ -43,7 +43,14 @@ conf-amon (2.3-eole88~6.gbp8e72b3) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 28 Jun 2011 14:02:15 +0200
+  [ Fabrice ]
+  * active_rvp : arrêt RVP par /etc/init.d/rvp stop
+  * Autoriser accès dns et utilisation squid depuis réseau derrière
+    routage interne (#1847)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 30 Jun 2011 14:51:34 +0200
 
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
