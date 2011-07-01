@@ -1,6 +1,6 @@
-conf-amon (2.3-eole88~7.gbp915733) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole88~8.gbp685cf8) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @91573343dd34dbff4458c1df59de8041823abcf4 **
+  ** SNAPSHOT build @685cf84df5004499880a2811a22db619df74a4f4 **
 
   [ Joël Cuissinat ]
   * check sur url_maj_blacklist déplacé dans le bon dictionnaire
@@ -50,7 +50,20 @@ conf-amon (2.3-eole88~7.gbp915733) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 30 Jun 2011 14:51:34 +0200
+  [ Emmanuel Garette ]
+  * reverseproxy/tmpl/wpad.dat : pas de proxy pour le réseau local
+    (fixes #1815)
+
+  [ Fabrice ]
+  * Correction ipsec_updown pour pppoe
+
+  [ Emmanuel Garette ]
+  * configuration correct des l'interfaces supplémentaires des
+    conteneurs (ref #1806)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 01 Jul 2011 16:30:24 +0200
 
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
