@@ -16,8 +16,8 @@
             <service>squid</service>
             <service pty="False">dansguardian</service>
             <service servicelist='clamav_proxy' in_container='True'>clamav-daemon</service>
-            <interface linkto="eth1" ip="adresse_ip_eth1_proxy_link" mask="adresse_mask_eth1_proxy_link">eth1</interface>
-            <interface interfacelist='eth2_proxy_link' linkto="eth2" ip="adresse_ip_eth2_proxy_link" mask="adresse_mask_eth2_proxy_link">eth2</interface>
+            <interface linkto="eth1" ip="adresse_ip_eth1_proxy_link" mask="adresse_mask_eth1_proxy_link" bcast="adresse_bcast_eth1_proxy_link">eth1</interface>
+            <interface interfacelist='eth2_proxy_link' linkto="eth2" ip="adresse_ip_eth2_proxy_link" mask="adresse_mask_eth2_proxy_link" bcast="adresse_bcast_eth2_proxy_link">eth2</interface>
             <file name='/etc/dansguardian/languages/french/fancydmtemplate.html' />
             <file name='/etc/pam.d/squid' source='squid.pam'/>
             <file name='/etc/logrotate.d/dansguardian' source='dansguardian.logrotate'/>
@@ -85,6 +85,7 @@
             </variable>
             <variable name='adresse_ip_eth1_proxy_link' type='ip' description="Adresse IP pour le proxy" />
             <variable name='adresse_mask_eth1_proxy_link' type='ip' description="Masque de sous réseau du proxy"/>
+            <variable name='adresse_bcast_eth1_proxy_link' type='ip' description="Broadcast pour le proxy"/>
         </family>
         <family name='Interface-2'>
             <!-- variable de configuration pour dansguardian (choix de l'instance) -->
@@ -96,6 +97,7 @@
             </variable>
             <variable name='adresse_ip_eth2_proxy_link' type='ip' description="Adresse IP pour le proxy" />
             <variable name='adresse_mask_eth2_proxy_link' type='ip' description="Masque de sous réseau du proxy"/>
+            <variable name='adresse_bcast_eth2_proxy_link' type='ip' description="Broadcast pour le proxy"/>
         </family>
         <family name='Interface-3'>
             <!-- variable de configuration pour dansguardian (choix de l'instance) -->
@@ -612,15 +614,31 @@
 
         <check name='obligatoire' target='adresse_ip_eth1_proxy_link'/>
         <check name='obligatoire' target='adresse_mask_eth1_proxy_link'/>
+        <check name='obligatoire' target='adresse_bcast_eth1_proxy_link'/>
         <check name='obligatoire' target='adresse_ip_eth2_proxy_link'/>
         <check name='obligatoire' target='adresse_mask_eth2_proxy_link'/>
+        <check name='obligatoire' target='adresse_bcast_eth2_proxy_link'/>
         <condition name='hidden_if_in' source='mode_conteneur_actif'>
             <param>non</param>
             <target>adresse_ip_eth1_proxy_link</target>
             <target>adresse_mask_eth1_proxy_link</target>
+            <target>adresse_bcast_eth1_proxy_link</target>
             <target>adresse_ip_eth2_proxy_link</target>
             <target>adresse_mask_eth2_proxy_link</target>
+            <target>adresse_bcast_eth2_proxy_link</target>
         </condition>
+        <fill name='calc_val' target='adresse_bcast_eth1_proxy_link'>
+            <param type='eole' name='valeur'>adresse_broadcast_eth1</param>
+        </fill>
+        <fill name='calc_val' target='adresse_mask_eth1_proxy_link'>
+            <param type='eole' name='valeur'>adresse_netmask_eth1</param>
+        </fill>
+        <fill name='calc_val' target='adresse_bcast_eth2_proxy_link'>
+            <param type='eole' name='valeur'>adresse_broadcast_eth1</param>
+        </fill>
+        <fill name='calc_val' target='adresse_mask_eth2_proxy_link'>
+            <param type='eole' name='valeur'>adresse_netmask_eth1</param>
+        </fill>
 
         <check name='obligatoire' target='http_port'/>
         <check name='obligatoire' target='number_of_basic_children'/>
