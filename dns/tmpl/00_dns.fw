@@ -1,4 +1,4 @@
-%if %%adresse_ip_dns != ['']
+%if %%adresse_ip_dns != [''] and %%adresse_ip_dns != []
 %for %%variable_iter in %%adresse_ip_dns
 allow_dest(interface='eth0', ip="%%variable_iter", port='53')
 allow_dest(interface='eth0', ip="%%variable_iter", protocol='udp', port='53')
