@@ -4,7 +4,7 @@ allow_dest(interface='eth0', ip="0/0", port='21')
 # accès au conteneur DNS ou aux DNS distants
 %if %%is_defined('adresse_ip_conteneur_dns')
 allow_dest(interface='eth0', container="dns", protocol='udp', port='53')
-%elif %%adresse_ip_dns != ['']
+%elif %%adresse_ip_dns != [''] and %%adresse_ip_dns != []
 %for %%variable_iter in %%adresse_ip_dns
 allow_dest(interface='eth0', ip="%%variable_iter", protocol='udp', port='53')
 %end for
