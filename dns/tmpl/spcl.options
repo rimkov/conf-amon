@@ -8,7 +8,7 @@
 	version "MyVersion";
         // query-source address * port 53;
         // ***   DNS EXTERNE
-%if %%adresse_ip_dns != ['']
+%if %%adresse_ip_dns != [''] and %%adresse_ip_dns != []
         forwarders {
 %for %%variable_iter in %%adresse_ip_dns
                 %%variable_iter;
