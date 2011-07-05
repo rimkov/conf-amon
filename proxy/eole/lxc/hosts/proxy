@@ -1,0 +1,5 @@
+%if %%is_defined('activer_squid_auth') and %%activer_squid_auth == 'oui' and %%type_squid_auth == 'NTLM/SMB'
+ %for %%smb_iter in %%nom_serveur_smb
+%%smb_iter.ip_serveur_smb		%%smb_iter.%%nom_domaine_local %%smb_iter
+ %end for
+%end if

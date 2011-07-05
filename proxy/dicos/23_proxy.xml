@@ -452,15 +452,15 @@
                 <value></value>
             </variable>
             <!-- **** NTLM **** -->
-            <variable name='nom_serveur_smb' type='string' description='Nom du Contrôleur de domaine SMB' multi='True'/>
+            <variable name='nom_serveur_smb' type='string' description='Nom du contrôleur de domaine SMB' multi='True'/>
             <variable name='nom_domaine_smb' type='string' description='Nom du domaine SMB' />
-            <variable name='ip_serveur_smb' type='ip' description='Adresse IP du Contrôleur de domaine SMB' />
+            <variable name='ip_serveur_smb' type='ip' description='Adresse IP du contrôleur de domaine SMB' />
             <!-- **** KRB **** -->
             <variable name='test_activer_kerberos' type='oui/non' hidden='True'/>
-            <variable name='nom_serveur_krb' type='string' description='Nom du Contrôleur de domaine KERBEROS' />
+            <variable name='nom_serveur_krb' type='string' description='Nom du contrôleur de domaine KERBEROS' />
             <variable name='nom_domaine_krb' type='string' description='Nom du domaine KERBEROS (fqdn)' />
             <variable name='nom_domaine_windows' type='string' description='Nom du domaine Windows' />
-            <variable name='ip_serveur_krb' type='ip' description='Adresse IP du Contrôleur de domaine KERBEROS' />
+            <variable name='ip_serveur_krb' type='ip' description='Adresse IP du contrôleur de domaine KERBEROS' />
         </family>
 
         <separators>
