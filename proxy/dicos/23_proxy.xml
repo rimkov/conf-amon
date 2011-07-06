@@ -634,10 +634,10 @@
             <param type='eole' name='valeur'>adresse_netmask_eth1</param>
         </fill>
         <fill name='calc_val' target='adresse_bcast_eth2_proxy_link'>
-            <param type='eole' name='valeur'>adresse_broadcast_eth1</param>
+            <param type='eole' name='valeur'>adresse_broadcast_eth2</param>
         </fill>
         <fill name='calc_val' target='adresse_mask_eth2_proxy_link'>
-            <param type='eole' name='valeur'>adresse_netmask_eth1</param>
+            <param type='eole' name='valeur'>adresse_netmask_eth2</param>
         </fill>
 
         <check name='obligatoire' target='http_port'/>
