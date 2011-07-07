@@ -1,6 +1,6 @@
-conf-amon (2.3-eole88~9.gbp6d8b8b) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole88~10.gbp69cf4d) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @6d8b8bcde6757f4a80e59aef2478b39d3653954e **
+  ** SNAPSHOT build @69cf4d05da0642f9b173fdfe2dfb006aededac67 **
 
   [ Joël Cuissinat ]
   * check sur url_maj_blacklist déplacé dans le bon dictionnaire
@@ -70,7 +70,23 @@ conf-amon (2.3-eole88~9.gbp6d8b8b) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 04 Jul 2011 10:59:10 +0200
+  [ Emmanuel Garette ]
+  * le fichier pid utilisé par le script de démarrage est
+    /var/run/squid.pid
+
+  [ Klaas TJEBBES ]
+  * test
+
+  [ Emmanuel Garette ]
+  * authentification smb en mode conteneur (ref #1912)
+  * authentification ldap/kerberos en mode conteneur (fixes #1912)
+  * proxy/dicos/23_proxy.xml : calcul automatique de
+    adresse_bcast_eth2_proxy_link adresse_mask_eth2_proxy_link erronné
+  * changement des adresses pour squid
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 07 Jul 2011 12:57:50 +0200
 
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
