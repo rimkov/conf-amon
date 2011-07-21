@@ -1,6 +1,6 @@
-conf-amon (2.3-eole88~11.gbp9627bc) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole88~12.gbpca0a83) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @9627bcbfe35369520a4a664e612d3fae5eee17d9 **
+  ** SNAPSHOT build @ca0a833053b79fa1d55f3aa87c0158d8ba3a9d73 **
 
   [ Joël Cuissinat ]
   * check sur url_maj_blacklist déplacé dans le bon dictionnaire
@@ -92,7 +92,12 @@ conf-amon (2.3-eole88~11.gbp9627bc) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 21 Jul 2011 10:35:36 +0200
+  [ Laurent Flori ]
+  * correction lightsquid dans posttemplate/00-proxy
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 21 Jul 2011 10:42:54 +0200
 
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
