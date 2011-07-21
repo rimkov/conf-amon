@@ -44,8 +44,12 @@ cp -f "$danspath/init/dansguardian" "$container_path_proxy/etc/init.d/dansguardi
 $danspath/init_dans.py
 
 #Mise à disposition de lightsquid
-mkdir -p /var/www/html
-ln -s /usr/share/lightsquid /var/www/html/
-mkdir /usr/share/lightsquid/var/www/html/lightsquid/report
+if ! [ -d /var/www/html ];then
+    mkdir -p /var/www/html
+    ln -nsf /usr/share/lightsquid /var/www/html/
+    if ! [ -d /var/www/html/lightsquid/report ];then
+        mkdir /var/www/html/lightsquid/report
+    fi
+fi
 
 exit 0
