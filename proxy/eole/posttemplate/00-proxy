@@ -43,4 +43,9 @@ cp -f "$danspath/init/dansguardian" "$container_path_proxy/etc/init.d/dansguardi
 # mise à niveau de la configuration
 $danspath/init_dans.py
 
+#Mise à disposition de lightsquid
+mkdir -p /var/www/html
+ln -s /usr/share/lightsquid /var/www/html/
+mkdir /usr/share/lightsquid/var/www/html/lightsquid/report
+
 exit 0
