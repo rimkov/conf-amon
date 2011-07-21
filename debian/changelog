@@ -1,6 +1,6 @@
-conf-amon (2.3-eole88~12.gbpca0a83) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole88~13.gbp1f921e) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @ca0a833053b79fa1d55f3aa87c0158d8ba3a9d73 **
+  ** SNAPSHOT build @1f921e211591755f7d9a234d64a2d72bffb21a79 **
 
   [ Joël Cuissinat ]
   * check sur url_maj_blacklist déplacé dans le bon dictionnaire
@@ -97,7 +97,13 @@ conf-amon (2.3-eole88~12.gbpca0a83) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 21 Jul 2011 10:42:54 +0200
+  [ Laurent Flori ]
+  * Separation des tests de creation des repertoires web dans
+    posttemplate/00-proxy
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 21 Jul 2011 12:40:45 +0200
 
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
