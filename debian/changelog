@@ -1,3 +1,9 @@
+conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
+
+  * UNRELEASED
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 16 Aug 2011 14:54:11 +0200
+
 conf-amon (2.3-eole88) eole-2.3-proposed; urgency=low
 
   [ Joël Cuissinat ]
