@@ -1,3 +1,16 @@
+conf-amon (2.3-eole90~1.gbpf04c4f) eole-2.3-dev; urgency=low
+
+  ** SNAPSHOT build @f04c4fdb4e9b50e603e53ce8bde00657ede07d62 **
+
+  [ Emmanuel Garette ]
+  * ajout du support du service nmbd (ref #1938)
+  * ead/perms/perm_amon.ini : ajout de l'utilisateur admin_amon et
+    déplacement des règles admin_pedago (ref #1955)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 19 Aug 2011 11:51:24 +0200
+
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
   * UNRELEASED
