@@ -1,6 +1,10 @@
-conf-amon (2.3-eole88~13.gbp1f921e) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
-  ** SNAPSHOT build @1f921e211591755f7d9a234d64a2d72bffb21a79 **
+  * UNRELEASED
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 16 Aug 2011 14:54:11 +0200
+
+conf-amon (2.3-eole88) eole-2.3-proposed; urgency=low
 
   [ Joël Cuissinat ]
   * check sur url_maj_blacklist déplacé dans le bon dictionnaire
@@ -103,7 +107,7 @@ conf-amon (2.3-eole88~13.gbp1f921e) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 21 Jul 2011 12:40:45 +0200
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 16 Aug 2011 14:52:45 +0200
 
 conf-amon (2.3-eole87) eole-2.3; urgency=low
 
