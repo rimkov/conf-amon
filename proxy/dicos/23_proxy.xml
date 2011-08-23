@@ -506,7 +506,8 @@
             <param name='match'>oui</param>
             <param name='mismatch'>non</param>
         </auto>
-        <condition name='hidden_if_not_in' source='test_activer_kerberos'>
+        <condition name='hidden_if_in' source='test_activer_kerberos'>
+            <param>non</param>
             <target type='servicelist'>kerberos</target>
             <target type='filelist'>kerberos</target>
         </condition>
