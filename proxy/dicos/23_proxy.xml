@@ -344,7 +344,7 @@
             <variable name='dns_timeout' type='number' description='Timeout des requêtes DNS (en minutes)'>
                 <value>2</value>
             </variable>-->
-            <variable name='dns_defnames' type='string' description='dns_defnames'>
+            <variable name='dns_defnames' type='on/off' description='dns_defnames'>
                 <value>off</value>
             </variable>
             <variable name='dns_nameservers' type='string' description='Utiliser un DNS spécifique' multi='True'>
@@ -417,7 +417,7 @@
             <variable name='client_lifetime' type='number' description='client_lifetime (en min)'>
                 <value>120</value>
             </variable>
-            <variable name='half_closed_clients' type='string' description='half_closed_clients'>
+            <variable name='half_closed_clients' type='on/off' description='half_closed_clients'>
                 <value>on</value>
             </variable>
             <variable name='pconn_timeout' type='number' description='Timout pour les connexions persistantes (en sec)'>
@@ -676,7 +676,6 @@
         <!--<check name='obligatoire' target='dns_children'/>-->
         <!--<check name='obligatoire' target='dns_retransmit_interval'/>-->
         <!--<check name='obligatoire' target='dns_timeout'/>-->
-        <check name='obligatoire' target='dns_defnames'/>
         <check name='obligatoire' target='hosts_file'/>
         <!--<check name='obligatoire' target='wais_relay_port'/>-->
         <check name='obligatoire' target='request_header_max_size'/>
@@ -696,19 +695,12 @@
         <check name='obligatoire' target='request_timeout'/>
         <check name='obligatoire' target='persistent_request_timeout'/>
         <check name='obligatoire' target='client_lifetime'/>
-        <check name='obligatoire' target='half_closed_clients'/>
         <check name='obligatoire' target='pconn_timeout'/>
         <check name='obligatoire' target='ident_timeout'/>
         <check name='obligatoire' target='shutdown_lifetime'/>
         <!--<check name="valid_enum" target='cache_vary'>
             <param>['on','off']</param>
         </check>-->
-        <check name="valid_enum" target='dns_defnames'>
-            <param>['on','off']</param>
-        </check>
-        <check name="valid_enum" target='half_closed_clients'>
-            <param>['on','off']</param>
-        </check>
         <check name="valid_enum" target="cache_replacement_policy">
             <param>['lru','heap GDSF','heap LFUDA','heap LRU']</param>
         </check>
