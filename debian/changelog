@@ -1,6 +1,6 @@
-conf-amon (2.3-eole90~1.gbpf04c4f) eole-2.3-dev; urgency=low
+conf-amon (2.3-eole90~2.gbp51e26a) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @f04c4fdb4e9b50e603e53ce8bde00657ede07d62 **
+  ** SNAPSHOT build @51e26afb876edd6bbcbe79a0a2f9ed13015e8016 **
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -9,7 +9,16 @@ conf-amon (2.3-eole90~1.gbpf04c4f) eole-2.3-dev; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Fri, 19 Aug 2011 11:51:24 +0200
+  [ Joël Cuissinat ]
+  * correction du test sur l'activation de kerberos (fixes #1983)
+  * posttemplate/00-rvp : ré-écriture du script avec désactivation
+    d'ipsec (fixes #1937)
+  * 23_proxy.xml : utilisation du type mime 'on/off' pour les variables
+    dns_defnames et half_closed_clients
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 24 Aug 2011 15:11:47 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
