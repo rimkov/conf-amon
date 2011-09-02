@@ -56,15 +56,16 @@
             <variable name='ldap_nss' redefine='True'>
                 <value>oui</value>
             </variable>
-       </family>
-        <family name='sondes'>
+        </family>
+        <!-- FIXME EOLE-2.3 -->
+        <!--<family name='sondes'>
             <variable name='sonde_nufw' type='oui/non' description="Activer sonde NuFW" >
                 <value>non</value>
             </variable>
         </family>
         <separators>
             <separator name='sonde_nufw'>Configuration de la sonde NuFW</separator>
-        </separators>
+        </separators>-->
     </variables>
     <constraints>
         <!-- choix automatique du certificat à utilser (agriate ou auto-signé) -->
