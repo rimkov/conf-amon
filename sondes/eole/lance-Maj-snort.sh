@@ -2,13 +2,13 @@
 
 ############################################################
 #
-## Appel du script de MAJ des régles de snort depuis la crontab
+## Appel du script de MAJ des règles de snort depuis la crontab
 #
 ## Equipe Eole eole@ac-dijon.fr, septembre 2005
 #
 ############################################################
 
-## Tirage aléatoire de l'heure de Maj des blacklists
+## Tirage aléatoire de l'heure de Maj 
 HMAJ=$[( $RANDOM % 5) +1]
 MMAJ=$[( $RANDOM % 60) +1]
 
