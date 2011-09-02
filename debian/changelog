@@ -1,6 +1,6 @@
-conf-amon (2.3-eole90~2.gbp51e26a) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole90~3.gbp33a004) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @51e26afb876edd6bbcbe79a0a2f9ed13015e8016 **
+  ** SNAPSHOT build @33a00438469e0ed95b9d110747dd22060a436625 **
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -18,7 +18,19 @@ conf-amon (2.3-eole90~2.gbp51e26a) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 24 Aug 2011 15:11:47 +0200
+  [ Joël Cuissinat ]
+  * diagnose/16-reverseproxy : correction du test nginx (fixes #2014)
+  * 22_dns.xml : ménage, dns_master_eth0 n'existe plus
+  * debian/control : suppression des dépendances snort et ménage (fixes
+    #2016)
+  * configurations snort sorties de conf-amon => dossier sondes (fixes
+    #2016)
+  * report de la possibilité de configurer les timeout de dansguardian
+    sur 2.3 (fixes #2017)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 02 Sep 2011 16:27:07 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
