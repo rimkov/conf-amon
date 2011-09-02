@@ -123,6 +123,15 @@
             <variable name="dans_num_opt_filters" type="string" description='Nombre de politiques optionnelles de filtrage par zone'>
                 <value>3</value>
             </variable>
+            <variable name="headertimeout" type="number" description='Header Timeout'>
+                <value>14</value>
+            </variable>
+            <variable name="docheadertimeout" type="number" description='Doc Header Timeout'>
+                <value>20</value>
+            </variable>
+            <variable name="docbodytimeout" type="number" description='Doc Body Timeout'>
+                <value>120</value>
+            </variable>
             <variable name="dansguardian_ead_filtre1" type="string" description="Libellé du filtre web 1 dans l'EAD">
                 <value>Filtre web 1</value>
             </variable>
