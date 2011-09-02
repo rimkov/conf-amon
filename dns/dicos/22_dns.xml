@@ -51,7 +51,6 @@
             <variable name='adresse_dns_agriates' type='ip' description='Adresse du DNS permettant de resoudre les in.ac-acad.fr' multi='True'/>
         </family>
         <separators>
-            <separator name='dns_master_eth0'>Configuration DNS sur l'interface</separator>
             <separator name='dns_master_eth1'>Configuration DNS sur l'interface</separator>
             <separator name='dns_master_eth2'>Configuration DNS sur l'interface</separator>
             <separator name='dns_master_eth3'>Configuration DNS sur l'interface</separator>
