@@ -8,19 +8,13 @@ Standards-Version: 3.7.3
 Package: conf-amon
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase,
- bacula-fd, ntp, eole-sso, amon-backend, pppoe, snmp, libsnmp-perl, xtables-addons-common,
+ eole-sso, amon-backend, pppoe, snmp, libsnmp-perl, xtables-addons-common,
  xtables-addons-modules-2.6.32-30-eole, vnstat,
-#snort, ...
- snort, oinkmaster, samhain,
 #firewall
  era, l7-filter-userspace, l7-protocols,
 #eole
  eole-reverseproxy, eole-dns, eole-nuauth, eole-radius, eole-proxy,
  eole-antivirus, eole-rvp, eole-dhcrelay, eole-sso-client
-#a discuter
-#chkrootkit
-#dépendance historique devenue inutile
-#Depends: make, rddtool
 Description: Templates et dictionnaires pour Amon
  Pour toute information complementaire, veuillez vous rendre
  sur le site du Projet a l'adresse suivante :
@@ -66,3 +60,10 @@ Package: eole-dhcrelay
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, dhcp3-relay
 Description: Templates et dictionnaires pour dhcrelay EOLE
+
+# FIXME sondes prelude et snort (cf. #2016)
+#Package: eole-?
+#Architecture: all
+#Depends: ${shlibs:Depends}, ${misc:Depends},
+# snort, oinkmaster, samhain,
+#Description: Templates et dictionnaires pour ...
