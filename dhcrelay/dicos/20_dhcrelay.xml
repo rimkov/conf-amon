@@ -11,7 +11,7 @@
                 <value>non</value>
             </variable>
         </family>
-    <family name='relai_dhcp'>
+    <family name='relai dhcp'>
             <variable name='dhcrelay_interfaces' type='string' description='Interface des clients DHCP' multi='True'>
                 <value>all</value>
             </variable>
@@ -20,7 +20,10 @@
     <separators/>
     </variables>
     <constraints>
-        <check name='obligatoire' target='dhcrelay_interfaces'/>
+        <check name='valid_enum' target='dhcrelay_interfaces'>
+            <param>['all', 'eth1', 'eth2', 'eth3', 'eth4']</param>
+            <param name="checkval">False</param>
+        </check>
         <check name='obligatoire' target='adresse_ip_dhcp_dhcrelay'/>
         <condition name='hidden_if_in' source='activer_dhcprelay'>
             <param>non</param>
