@@ -29,7 +29,7 @@
             <param>non</param>
             <target type='filelist'>dhrelay</target>
             <target type='servicelist'>dhrelay</target>
-            <target type='family'>relai_dhcp</target>
+            <target type='family'>relai dhcp</target>
         </condition>
         <fill name='calc_val' target='adresse_ip_dhcp_dhcrelay'>
             <param type='eole'>ip_serveur_scribe_dmz</param>
