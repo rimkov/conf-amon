@@ -575,7 +575,6 @@
         <check name='obligatoire' target='unactive_dansguardian_auth1'/>
         <check name="valid_entier" target="maxchildren1">
             <param name="mini">60</param>
-            <param name="maxi">255</param>
         </check>
         <check name="valid_enum" target="unactive_dansguardian_auth1" >
             <param>['---', 'oui','non']</param>
@@ -604,7 +603,6 @@
 
         <check name="valid_entier" target="maxchildren2">
             <param name="mini">60</param>
-            <param name="maxi">255</param>
         </check>
         <check name="valid_enum" target="unactive_dansguardian_auth2" >
             <param>['---','oui','non']</param>
