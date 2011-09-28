@@ -356,6 +356,9 @@
             <variable name='dns_defnames' type='on/off' description='dns_defnames'>
                 <value>off</value>
             </variable>
+            <variable name='ignore_expect_100' type='on/off' description='Autoriser les clients non conformes HTTP/1.1'>
+                    <value>off</value>
+            </variable>
             <variable name='dns_nameservers' type='string' description='Utiliser un DNS spécifique' multi='True'>
                 <value></value>
             </variable>
