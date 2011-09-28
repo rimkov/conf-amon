@@ -1,6 +1,6 @@
-conf-amon (2.3-eole90~4.gbpaa517e) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole90~5.gbpcc16e5) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @aa517ef4ecf76a95ae45dc2a9a6a7a257ee760dd **
+  ** SNAPSHOT build @cc16e52563374528957abb57a0951d04146ed71f **
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -40,7 +40,16 @@ conf-amon (2.3-eole90~4.gbpaa517e) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 05 Sep 2011 16:59:50 +0200
+  [ Joël Cuissinat ]
+  * 23_proxy.xml : suppression du bridage sur maxchildren [2.3] (fixes
+    #2097)
+  * nginx.default : application du patch pour wpad sans proxy (fixes
+    #1989)
+  * 23_proxy.xml : ajout variable ignore_expect_100 [2.3] (fixes #2121)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 28 Sep 2011 12:25:09 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
