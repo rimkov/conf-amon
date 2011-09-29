@@ -8,6 +8,7 @@
         <container name="dns" id='18'>
             <package>dns-pkg</package>
             <service>bind9</service>
+            <service method='upstart'>rsyslog</service>
             <file name='/etc/bind/spcl.options'/>
             <file filelist='agriates' name='/etc/bind/agriates.zones'/>
             <!-- remonter de logs vers le maitre -->

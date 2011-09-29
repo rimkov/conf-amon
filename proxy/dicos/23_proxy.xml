@@ -14,6 +14,7 @@
             <package>proxy-pkg</package>
             <package>antivirus-pkg</package>
             <service>squid</service>
+            <service method='upstart'>rsyslog</service>
             <service pty="False">dansguardian</service>
             <service servicelist='clamav_proxy' in_container='True'>clamav-daemon</service>
             <interface linkto="eth1" ip="adresse_ip_eth1_proxy_link" mask="adresse_mask_eth1_proxy_link" bcast="adresse_bcast_eth1_proxy_link">eth1</interface>
