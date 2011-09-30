@@ -1,6 +1,6 @@
-conf-amon (2.3-eole90~5.gbpcc16e5) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole90~6.gbp38b511) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @cc16e52563374528957abb57a0951d04146ed71f **
+  ** SNAPSHOT build @38b511d662e6b9063c631665037efb6ca59f0922 **
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -49,7 +49,13 @@ conf-amon (2.3-eole90~5.gbpcc16e5) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 28 Sep 2011 12:25:09 +0200
+  [ Joël Cuissinat ]
+  * redémarrage de rsyslog dans les conteneurs dns et proxy (fixes
+    #1985)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 30 Sep 2011 11:56:03 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
