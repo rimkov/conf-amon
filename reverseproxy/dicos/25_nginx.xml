@@ -8,6 +8,7 @@
         <file name='/var/www/nginx-default/nginx.html' source='nginx.html'/>
         <file name='/var/www/index.html' source='nginx.no_proxy.html'/>
         <file name="/var/www/wpad.dat" mode='775'/>
+        <file name="/usr/share/eole/firewall/00_root_reverseproxy.fw" />
         <!--<file name="/etc/squid/domaines_noauth_acad"/>
         <file name="/etc/squid/domaines_nocache_acad"/>
         <file name="/etc/nginx/sites-enabled/access_proxy"/>-->
@@ -29,6 +30,9 @@
             <variable name='revprox_activate_http' type='oui/non' description='Activer le reverse proxy Nginx pour http/https'>
                 <value>non</value>
             </variable>
+	    <variable name='revprox_auto_config_local_web' type='oui/non' description='Activer la configuration automatique pour les applications locales'>
+	      <value>non</value>
+	    </variable>
             <variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
             <variable name='revprox_rep' type='string' description="Répertoire ou nom de la page à rediriger">
                 <value>/</value>
@@ -42,6 +46,12 @@
             <variable name='revprox_url' type='string' description="IP ou domaine de destination (avec http:// ou https://) ou URI complète">
                 <value></value>
             </variable>
+
+            <!-- Use for dependency -->
+            <variable name='activer_apache' type='oui/non' description='Activer le serveur web Apache' exists='False'>
+              <value>non</value>
+            </variable>
+
         </family>
         <separators>
             <separator name='revprox_sso'>Redirection de services particuliers</separator>
@@ -63,6 +73,14 @@
             <param>non</param>
             <target type='family'>Reverse proxy</target>
         </condition>
+	<condition name='hidden_if_in' source='revprox_activate_http'>
+	  <param>non</param>
+	  <target type='variable'>revprox_auto_config_local_web</target>
+	</condition>
+	<condition name='hidden_if_in' source='activer_apache'>
+	  <param>non</param>
+	  <target type='variable'>revprox_auto_config_local_web</target>
+	</condition>
     <!-- **** Groupes **** -->
         <group master='revprox_domainname'>
             <slave>revprox_rep</slave>
@@ -89,6 +107,7 @@
     <help>
         <variable name='revprox_sso'>Pour rediriger vers le SSO de la machine "domainelocal", taper "domainelocal"</variable>
         <variable name='revprox_poshadmin'>Pour rediriger vers le POSHAdmin de la machine "domainelocal", taper "domainelocal"</variable>
+	<variable name='revprox_auto_config_local_web'>Configure automatiquement le reverse proxy afin de faire pointer web_url sur le conteneur web</variable>
         <variable name='revprox_domainname'>Exemple pour rediriger "http://domaine/", taper "domaine"</variable>
         <variable name='revprox_rep'>URL relative (sans le nom de domaine) redirigé pour l'adresse définie dans la variable ci-dessus (exemple "/mail")</variable>
         <variable name='revprox_url'>Nom de domaine ou IP de destination, par exemple "http://domainelocal" ou URI, par exemple "http://domainelocal/dir/"</variable>

@@ -104,8 +104,8 @@ server {
 %end for
 %end if % if %%revprox_activate_http == 'oui'
 
-%if %%is_defined('container_ip_web') and %%revprox_container_domain != ''
-%%dom_dict.setdefault(%%revprox_container_domain, []).append(('/', 'redirige vers https', 'oui', 'https://'+%%container_ip_web))
+%if %%is_defined('web_url') and %%revprox_auto_config_local_web == 'oui'
+%%dom_dict.setdefault(%%web_url, []).append(('/', 'redirige vers https', 'oui', 'https://'+%%container_ip_web))
 %end if
 
 %for %%revprox_iter in %%dom_dict.keys()
