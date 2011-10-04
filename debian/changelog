@@ -1,6 +1,6 @@
-conf-amon (2.3-eole90~7.gbpb35448) eole-2.3-dev; urgency=low
+conf-amon (2.3-eole90~8.gbp1db2ec) eole-2.3-dev; urgency=low
 
-  ** SNAPSHOT build @b354489200f15ab5b4b827f6f034c0a8f48c7bff **
+  ** SNAPSHOT build @1db2ec332ee1d2002f2c39846fffb27d85260e11 **
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -61,7 +61,12 @@ conf-amon (2.3-eole90~7.gbpb35448) eole-2.3-dev; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 04 Oct 2011 13:59:25 +0200
+  [ Daniel Dehennin ]
+  * Variable 'activer_apache' appears in 'Reverse proxy' tab.
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 04 Oct 2011 14:29:57 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
