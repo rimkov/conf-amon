@@ -1,6 +1,6 @@
-conf-amon (2.3-eole90~6.gbp38b511) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole90~7.gbpb35448) eole-2.3-dev; urgency=low
 
-  ** SNAPSHOT build @38b511d662e6b9063c631665037efb6ca59f0922 **
+  ** SNAPSHOT build @b354489200f15ab5b4b827f6f034c0a8f48c7bff **
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -55,7 +55,13 @@ conf-amon (2.3-eole90~6.gbp38b511) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Fri, 30 Sep 2011 11:56:03 +0200
+  [ Daniel Dehennin ]
+  * eole-web et eole-reverseproxy ne fonctionne pas par défaut ensemble
+    (Fixes: #1988).
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 04 Oct 2011 13:59:25 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
