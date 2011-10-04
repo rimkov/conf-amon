@@ -19,6 +19,11 @@
             <variable name='activer_revprox' type='oui/non' description='Activer le reverse proxy Nginx'>
                 <value>non</value>
             </variable>
+
+          <!-- Use for dependency -->
+            <variable name='activer_apache' type='oui/non' description='Activer le serveur web Apache' exists='False'>
+              <value>non</value>
+            </variable>
         </family>
         <family name='Reverse proxy' hidden='True'>
             <variable name='revprox_sso' type='string' description="Nom de domaine du serveur SSO" />
@@ -47,12 +52,8 @@
                 <value></value>
             </variable>
 
-            <!-- Use for dependency -->
-            <variable name='activer_apache' type='oui/non' description='Activer le serveur web Apache' exists='False'>
-              <value>non</value>
-            </variable>
-
         </family>
+
         <separators>
             <separator name='revprox_sso'>Redirection de services particuliers</separator>
             <separator name='revprox_activate_http'>Redirection HTTP et HTTPS</separator>
