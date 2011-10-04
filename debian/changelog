@@ -1,6 +1,6 @@
-conf-amon (2.3-eole90~8.gbp1db2ec) eole-2.3-dev; urgency=low
+conf-amon (2.3-eole90~9.gbp18bf05) eole-2.3-dev; urgency=low
 
-  ** SNAPSHOT build @1db2ec332ee1d2002f2c39846fffb27d85260e11 **
+  ** SNAPSHOT build @18bf054e2055da6752a18e535b4c87ccec4b5160 **
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -66,7 +66,12 @@ conf-amon (2.3-eole90~8.gbp1db2ec) eole-2.3-dev; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 04 Oct 2011 14:29:57 +0200
+  [ Daniel Dehennin ]
+  * Fix reverseproxy firewall template.
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 04 Oct 2011 14:45:51 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
