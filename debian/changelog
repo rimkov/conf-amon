@@ -1,6 +1,6 @@
-conf-amon (2.3-eole90~9.gbp18bf05) eole-2.3-dev; urgency=low
+conf-amon (2.3-eole90~10.gbp4429a5) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @18bf054e2055da6752a18e535b4c87ccec4b5160 **
+  ** SNAPSHOT build @4429a50e7b29d5841327108dc57ce9fe131481af **
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -71,7 +71,13 @@ conf-amon (2.3-eole90~9.gbp18bf05) eole-2.3-dev; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 04 Oct 2011 14:45:51 +0200
+  [ Joël Cuissinat ]
+  * log Apache derrière un reverse proxy : partie revprox (fixes #2064)
+    + fix tabs
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 05 Oct 2011 17:06:39 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
