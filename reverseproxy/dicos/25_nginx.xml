@@ -51,10 +51,10 @@
         </family>
         <family name='applications web' hidden='True'>
             <!-- creer si n'existe pas et cache-->
-            <variable name='activer_web_behind_revproxy' type='oui/non' redefine='True' hidden='True'>
+            <variable name='activer_web_behind_revproxy' type='oui/non' exists='False' hidden='True'>
                 <value>oui</value>
             </variable>
-            <variable name='web_behind_revproxy_ip' type='ip' redefine='True' hidden='True'/>
+            <variable name='web_behind_revproxy_ip' type='ip' exists='False' hidden='True'/>
         </family>
         <separators>
             <separator name='revprox_sso'>Redirection de services particuliers</separator>
