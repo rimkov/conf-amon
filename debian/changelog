@@ -1,6 +1,6 @@
-conf-amon (2.3-eole90~10.gbp4429a5) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole90~11.gbp91e5c2) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @4429a50e7b29d5841327108dc57ce9fe131481af **
+  ** SNAPSHOT build @91e5c2361bef90384489a1cb5655b6c660fbaa70 **
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -77,7 +77,12 @@ conf-amon (2.3-eole90~10.gbp4429a5) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 05 Oct 2011 17:06:39 +0200
+  [ Daniel Dehennin ]
+  * Fix redefining undefined variables (Fixes: #2209).
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 13 Oct 2011 10:39:07 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
