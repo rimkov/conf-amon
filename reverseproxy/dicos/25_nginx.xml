@@ -106,7 +106,7 @@
             <target type='variable'>revprox_url</target>
         </condition>
         <condition name='hidden_if_in' source='activer_web_behind_revproxy'>
-            <param>oui</param>
+            <param>non</param>
             <target type='variable'>web_behind_revproxy_ip</target>
         </condition>
         <auto name='calc_container' target='web_behind_revproxy_ip'>
