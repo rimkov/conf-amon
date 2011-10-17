@@ -1,6 +1,6 @@
-conf-amon (2.3-eole90~11.gbp91e5c2) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole90~12.gbp17d4cd) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @91e5c2361bef90384489a1cb5655b6c660fbaa70 **
+  ** SNAPSHOT build @17d4cd398ecde51773f113185bb365b5aafe2ec7 **
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -82,7 +82,12 @@ conf-amon (2.3-eole90~11.gbp91e5c2) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 13 Oct 2011 10:39:07 +0200
+  [ Fabrice ]
+  * modif 25_nging.xml (fixes #2064)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 17 Oct 2011 14:52:04 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
