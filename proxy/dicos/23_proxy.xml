@@ -497,7 +497,9 @@
         <check name='obligatoire' target='url_maj_blacklist'/>
 
         <auto name='calc_container' target='adresse_ip_proxy'>
-            <param>container_ip_proxy</param>
+            <param type='eole'>mode_conteneur_actif</param>
+            <param type='container'>proxy</param>
+            <param type='eole' optional='True'>mode_zephir</param>
         </auto>
         <check name='valid_enum' target='type_squid_auth'>
             <param>['NTLM/SMB','Ldap','Ldap (Active Directory)','NTLM/KERBEROS']</param>

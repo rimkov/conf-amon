@@ -62,7 +62,9 @@
     </variables>
     <constraints>
         <auto name='calc_container' target='adresse_ip_conteneur_dns'>
-            <param>container_ip_dns</param>
+            <param type='eole'>mode_conteneur_actif</param>
+            <param type='container'>dns</param>
+            <param type='eole' optional='True'>mode_zephir</param>
         </auto>
         <group master='nom_host_dns'>
             <slave>ip_host_dns</slave>

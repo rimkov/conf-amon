@@ -106,7 +106,9 @@
             <target type='variable'>web_behind_revproxy_ip</target>
         </condition>
         <auto name='calc_container' target='web_behind_revproxy_ip'>
-            <param>adresse_ip_br0</param>
+            <param type='eole'>mode_conteneur_actif</param>
+            <param type='container'>br0</param>
+            <param type='eole' optional='True'>mode_zephir</param>
         </auto>
     </constraints>
     <!--************************************************************************************************* -->
