@@ -31,10 +31,10 @@
             <variable name='revprox_ead_port' type='number' description="Port d'accès à l'EAD du Scribe depuis l'extérieur" hidden='True'>
                 <value>4203</value>
             </variable>
-            <variable name='revprox_activate_http' type='oui/non' description='Activer le reverse proxy Nginx pour http/https'>
+            <variable name='revprox_auto_config_local_web' type='oui/non' description='Activer la configuration automatique pour les applications locales'>
                 <value>non</value>
             </variable>
-            <variable name='revprox_auto_config_local_web' type='oui/non' description='Activer la configuration automatique pour les applications locales'>
+            <variable name='revprox_activate_http' type='oui/non' description='Activer le reverse proxy Nginx pour http/https'>
                 <value>non</value>
             </variable>
             <variable name='revprox_domainname' type='string' description="Nom de domaine à rediriger" multi='True' />
@@ -75,10 +75,6 @@
         <condition name='hidden_if_in' source='activer_revprox'>
             <param>non</param>
             <target type='family'>Reverse proxy</target>
-        </condition>
-        <condition name='hidden_if_in' source='revprox_activate_http'>
-            <param>non</param>
-            <target type='variable'>revprox_auto_config_local_web</target>
         </condition>
         <condition name='hidden_if_in' source='activer_apache'>
             <param>non</param>
