@@ -1,6 +1,6 @@
-conf-amon (2.3-eole90~12.gbp17d4cd) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole90~13.gbpc89f24) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @17d4cd398ecde51773f113185bb365b5aafe2ec7 **
+  ** SNAPSHOT build @c89f24880de7d5d69ed7ed1d0b4c7344afcb15ee **
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -87,7 +87,16 @@ conf-amon (2.3-eole90~12.gbp17d4cd) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 17 Oct 2011 14:52:04 +0200
+  [ Daniel Dehennin ]
+  * Variable 'revprox_auto_config_local_web' depends only on apache
+    activation.
+
+  [ Bruno Boiget ]
+  * correction de calc_container pour gérer le mode zéphir (ref #2150)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Thu, 20 Oct 2011 10:44:25 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
