@@ -1,6 +1,4 @@
-conf-amon (2.3-eole90~13.gbpc89f24) eole-2.3-proposed; urgency=low
-
-  ** SNAPSHOT build @c89f24880de7d5d69ed7ed1d0b4c7344afcb15ee **
+conf-amon (2.3-eole90) eole-2.3-updates; urgency=low
 
   [ Emmanuel Garette ]
   * ajout du support du service nmbd (ref #1938)
@@ -96,7 +94,7 @@ conf-amon (2.3-eole90~13.gbpc89f24) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Thu, 20 Oct 2011 10:44:25 +0200
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 28 Oct 2011 13:44:50 +0200
 
 conf-amon (2.3-eole89) eole-2.3-updates; urgency=low
 
