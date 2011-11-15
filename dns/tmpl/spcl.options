@@ -86,10 +86,10 @@ acl "intra" {
 
 acl "reseaueth1" {
 	%%adresse_network_eth1/%%calc_classe(%%adresse_netmask_eth1);
-%if %%agriates_member == "oui" and %%adresse_dns_agriates != "" and %%is_file("/etc/bind/agriates.zones")
+%if %%agriates_member == "oui" and %%adresse_dns_agriates != "" and %%is_file(%%container_path_dns+"/etc/bind/agriates.zones")
 };
 
-// include "/etc/bind/agriates.zones"
+// include %%container_path_dns+"/etc/bind/agriates.zones"
 
 // Academie d'Aix-Marseille
 zone "in.ac-aix-marseille.fr" in {
