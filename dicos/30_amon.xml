@@ -5,6 +5,7 @@
     <files>
         <!--<file name='/etc/chkrootkit.conf'/>-->
         <file name='/etc/host.conf'/>
+        <file name='/etc/rsyslog.d/20-charon.conf'/>
         <file name='/etc/logrotate.conf'/>
         <file name='/etc/sudoers.d/amon' source='amon.sudo' mode="0440"/>
         <file name='/usr/share/era/backend/data/active_tags'/>
