@@ -1,0 +1,7 @@
+/var/log/charon.log {
+   rotate 52
+   missingok
+   notifempty
+   weekly
+   compress
+}
