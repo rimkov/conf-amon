@@ -54,7 +54,7 @@
 
         <family name='general'>
             <variable name='adresse_ip_proxy' type='ip' hidden='True' description="Adresse IP du conteneur proxy"/>
-            <variable name='url_maj_blacklist' type='string' description='URL mise à jour des blacklists' >
+            <variable name='url_maj_blacklist' type='string' description='URL mise à jour des blacklists' mode='expert'>
                 <value>http://eole.orion.education.fr/maj/blacklists</value>
             </variable>
         </family>
