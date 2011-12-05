@@ -1,6 +1,6 @@
-conf-amon (2.3-eole91~1.gbp23b024) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole91~2.gbp5eea92) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @23b024098ae423a7f56abbeb96e63c914dd912db **
+  ** SNAPSHOT build @5eea92c5b52a52091eac15e569400b1a02630b7d **
 
   [ Fabrice ]
   * Prise en compte conteneur dans spcl.options (fixes #2346)
@@ -20,7 +20,14 @@ conf-amon (2.3-eole91~1.gbp23b024) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 05 Dec 2011 12:57:04 +0100
+  [ Garette Emmanuel ]
+  * désactivation de l'IPv6 su nécessaire pour bind (fixes #2502)
+  * correction dans la modification du fichier /etc/init/nmbd.conf (ref
+    #2526)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 05 Dec 2011 14:30:37 +0100
 
 conf-amon (2.3-eole90) eole-2.3-updates; urgency=low
 
