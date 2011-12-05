@@ -15,6 +15,7 @@ from shutil import copy
 from pyeole.ihm import question_ouinon
 from pyeole.ansiprint import print_orange, print_red
 from creole.parsedico import parse_dico
+from creole.cert import get_subject
 from zephir.lib_zephir import TransportEole
 try:
     from zephir.zephir_conf.zephir_conf import id_serveur, adresse_zephir
@@ -172,23 +173,30 @@ class ActiveRVPCli(Cli):
     def do_start_ipsec(self, line):
         """Déplombe les clefs privées"""
         session = initialise("sqlite:///"+ipsec_tmp_path+sep+"ipsec.db")
-        for privkey, ident in session.query(PrivateKey, Identity).filter(PrivateKey.id == PrivateKeyIdentity.private_key).filter(PeerConfigs.local_id==PrivateKeyIdentity.identity).\
-                filter(PeerConfigs.local_id == Identity.id).filter(Identity.type==9).all():
-            certif, certident = session.query(Certificates.data, CertificateIdentity.certificate).filter(Certificates.id == CertificateIdentity.certificate).\
-                                                                 filter(CertificateIdentity.identity == ident.id).first()
-            certname = getoutput("""echo "{0}" | openssl x509 -text -noout|grep CN|grep Subject|grep -o "[^=]*$" """.format(certif))
+        for privkey, ident in session.query(PrivateKey, Identity).\
+                                filter(PrivateKey.id == PrivateKeyIdentity.private_key).\
+                                filter(PeerConfigs.local_id==PrivateKeyIdentity.identity).\
+                                filter(PeerConfigs.local_id == Identity.id).\
+                                filter(Identity.type==9).all():
+            certif, certident = session.query(Certificates.data,
+                                CertificateIdentity.certificate).\
+                                filter(Certificates.id == CertificateIdentity.certificate).\
+                                filter(CertificateIdentity.identity == ident.id).first()
+            #certname = getoutput("""echo "{0}" | openssl x509 -text -noout|grep CN|grep Subject|grep -o "[^=]*$" """.format(certif))
+            certname = unicode(get_subject(cert=certif)[1], 'utf-8')
+            print
             print "Passphrase du certificat {0} : ".format(certname),
             tmpkey = '/tmp/pk.pem'
             privatekey_file = open(tmpkey, "w")
             privatekey_file.write(privkey.data)
             privatekey_file.close()
             passwd = get_password()
-            tried = 0
-            while not password_OK(tmpkey, passwd) and tried < 2:
+            tried = 1
+            while not password_OK(tmpkey, passwd) and tried < 3:
                 print "erreur passphrase, veuillez réessayer : ",
                 passwd = get_password()
                 tried +=1
-            if tried == 2:
+            if tried == 3 and not password_OK(tmpkey, passwd):
                 print "Passphrase erronée, trop de tentatives !!!"
                 unlink(tmpkey)
                 exit(1)
