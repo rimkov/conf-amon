@@ -22,7 +22,7 @@ try:
 except:
     ZEPHIR = False
 from arv.config import strongswan_database, ipsec_tmp_path
-from arv.lib.util import decrypt_privkey, test_password
+from arv.lib.util import decrypt_privkey, password_OK
 from arv.lib import cmd2 as cmd
 from arv.db.strongswandb import (PeerConfigs, PrivateKey, PrivateKeyIdentity,
                                  SharedSecrets, SharedSecretIdentity, Identity,
@@ -178,18 +178,29 @@ class ActiveRVPCli(Cli):
                                                                  filter(CertificateIdentity.identity == ident.id).first()
             certname = getoutput("""echo "{0}" | openssl x509 -text -noout|grep CN|grep Subject|grep -o "[^=]*$" """.format(certif))
             print "Passphrase du certificat {0} : ".format(certname),
+            tmpkey = '/tmp/pk.pem'
+            privatekey_file = open(tmpkey, "w")
+            privatekey_file.write(privkey.data)
+            privatekey_file.close()
             passwd = get_password()
-            while not test_password(privkey.data, passwd):
+            tried = 0
+            while not password_OK(tmpkey, passwd) and tried < 2:
                 print "erreur passphrase, veuillez réessayer : ",
                 passwd = get_password()
+                tried +=1
+            if tried == 2:
+                print "Passphrase erronée, trop de tentatives !!!"
+                unlink(tmpkey)
+                exit(1)
+            unlink(tmpkey)
             decrypted_privkey = decrypt_privkey(privkey.data, passwd)
             privkey.data = decrypted_privkey
             session.commit()
-            copy(ipsec_tmp_path+sep+"ipsec.db", strongswan_database)
-            copy(ipsec_tmp_path+sep+"test-rvp", "/usr/share/eole/test-rvp")
-            system("/usr/share/eole/gen_ip_xfrm_policy")
-            system("/etc/init.d/rvp restart")
         session.flush()
+        copy(ipsec_tmp_path+sep+"ipsec.db", strongswan_database)
+        copy(ipsec_tmp_path+sep+"test-rvp", "/usr/share/eole/test-rvp")
+        system("/usr/share/eole/gen_ip_xfrm_policy")
+        system("/etc/init.d/rvp restart")
         return True
 #_____________________________________________________________________________
 # launch interpreter
