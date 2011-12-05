@@ -43,7 +43,7 @@ cp -f "$danspath/init/dansguardian" "$container_path_proxy/etc/init.d/dansguardi
 # mise à niveau de la configuration
 $danspath/init_dans.py
 
-#Mise à disposition de lightsquid
+# mise à disposition de lightsquid
 if ! [ -d /var/www/html ];then
     mkdir -p /var/www/html
 fi
@@ -51,5 +51,13 @@ ln -nsf /usr/share/lightsquid /var/www/html/
 if ! [ -d /var/www/html/lightsquid/report ];then
     mkdir /var/www/html/lightsquid/report
 fi
+
+# gestion du démarrage de nmbd
+upstart_conf=$container_path_proxy/etc/init/nmbd.conf
+if [ -f $upstart_conf ]
+then
+    sed -i "s/^start on (local-filesystems and net-device-up IFACE!=lo)/start o
+fi
+
 
 exit 0
