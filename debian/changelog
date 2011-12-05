@@ -1,3 +1,27 @@
+conf-amon (2.3-eole91~1.gbp23b024) eole-2.3-proposed; urgency=low
+
+  ** SNAPSHOT build @23b024098ae423a7f56abbeb96e63c914dd912db **
+
+  [ Fabrice ]
+  * Prise en compte conteneur dans spcl.options (fixes #2346)
+  * logger charon dans /var/log/charon.log (fixes #2391)
+  * autoriser conteneur dns à interroger les dns agriates (fixes #2347)
+  * logrotate /var/log/charon.log (fixes #2399)
+  * Ajout variable IP eth3 pour proxy si mode conteneur (fixes #2349)
+
+  [ Joël Cuissinat ]
+  * 23_proxy.xml : url_maj_blacklist passé en mode expert
+
+  [ Garette Emmanuel ]
+  * gestion du démarrage de nmbd (fixes #2526)
+
+  [ Fabrice ]
+  * Adaptation active_rvp pour password_OK (fixes #2528)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 05 Dec 2011 12:57:04 +0100
+
 conf-amon (2.3-eole90) eole-2.3-updates; urgency=low
 
   [ Emmanuel Garette ]
