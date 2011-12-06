@@ -13,13 +13,15 @@ BIN_DIR=/usr/bin
 #REP de creation des differents paquets
 CONFAMON_DIR=$(DESTDIR)/conf-amon
 REV_DIR=$(DESTDIR)/eole-reverseproxy
-DNS_DIR=$(DESTDIR)/eole-dns
-# déplacé dans eole-nuauth (#2553)
-#NUAUTH_DIR=$(DESTDIR)/eole-nuauth
 RADIUS_DIR=$(DESTDIR)/eole-radius
 PROXY_DIR=$(DESTDIR)/eole-proxy
 RVP_DIR=$(DESTDIR)/eole-rvp
 DHCRELAY_DIR=$(DESTDIR)/eole-dhcrelay
+
+# déplacé dans eole-dns (#2558)
+#DNS_DIR=$(DESTDIR)/eole-dns
+# déplacé dans eole-nuauth (#2553)
+#NUAUTH_DIR=$(DESTDIR)/eole-nuauth
 
 all: install
 
@@ -54,16 +56,6 @@ install:
 	cp -rf reverseproxy/dicos $(REV_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf reverseproxy/tmpl $(REV_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -rf reverseproxy/diagnose/* $(REV_DIR)/$(EOLE_DIR)/diagnose/module
-
-	#dns
-	mkdir -p $(DNS_DIR)/$(EOLE_CONF_DIR)
-	mkdir -p $(DNS_DIR)/$(EOLE_DIR)/diagnose/module
-	mkdir -p $(DNS_DIR)/$(AGENT_DIR)
-	cp -rf dns/eole/* $(DNS_DIR)/$(EOLE_DIR)
-	cp -rf dns/dicos $(DNS_DIR)/$(EOLE_CONF_DIR)/dicos
-	cp -rf dns/tmpl $(DNS_DIR)/$(EOLE_CONF_DIR)/distrib
-	cp -rf dns/diagnose/* $(DNS_DIR)/$(EOLE_DIR)/diagnose/module
-	cp -rf dns/zephir/* $(DNS_DIR)/$(AGENT_DIR)
 
 	#radius
 	mkdir -p $(RADIUS_DIR)/$(EOLE_CONF_DIR)

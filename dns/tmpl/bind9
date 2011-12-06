@@ -1,9 +1,0 @@
-# run resolvconf?
-RESOLVCONF=yes
-
-# startup options for the server
-%if %%activer_ipv6 == 'oui'
-OPTIONS="-u bind"
-%else
-OPTIONS="-u bind -4"
-%end if

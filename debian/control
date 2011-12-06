@@ -33,11 +33,6 @@ Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, reverseproxy-pkg
 Description: Templates et dictionnaires pour le reverseproxy EOLE
 
-Package: eole-dns
-Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
-Description: Templates et dictionnaires pour le dns EOLE
-
 Package: eole-radius
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal, radius-pkg
