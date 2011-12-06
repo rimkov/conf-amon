@@ -14,7 +14,8 @@ BIN_DIR=/usr/bin
 CONFAMON_DIR=$(DESTDIR)/conf-amon
 REV_DIR=$(DESTDIR)/eole-reverseproxy
 DNS_DIR=$(DESTDIR)/eole-dns
-NUAUTH_DIR=$(DESTDIR)/eole-nuauth
+# déplacé dans eole-nuauth (#2553)
+#NUAUTH_DIR=$(DESTDIR)/eole-nuauth
 RADIUS_DIR=$(DESTDIR)/eole-radius
 PROXY_DIR=$(DESTDIR)/eole-proxy
 RVP_DIR=$(DESTDIR)/eole-rvp
@@ -63,16 +64,6 @@ install:
 	cp -rf dns/tmpl $(DNS_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -rf dns/diagnose/* $(DNS_DIR)/$(EOLE_DIR)/diagnose/module
 	cp -rf dns/zephir/* $(DNS_DIR)/$(AGENT_DIR)
-
-	#nuauth
-	mkdir -p $(NUAUTH_DIR)/$(EOLE_CONF_DIR)
-	mkdir -p $(NUAUTH_DIR)/$(EOLE_DIR)/diagnose/module
-	mkdir -p $(NUAUTH_DIR)/$(AGENT_DIR)
-	cp -rf nuauth/eole/* $(NUAUTH_DIR)/$(EOLE_DIR)
-	cp -rf nuauth/dicos $(NUAUTH_DIR)/$(EOLE_CONF_DIR)/dicos
-	cp -rf nuauth/tmpl $(NUAUTH_DIR)/$(EOLE_CONF_DIR)/distrib
-	cp -f  nuauth/diagnose/* $(NUAUTH_DIR)/$(EOLE_DIR)/diagnose/module
-	cp -f  nuauth/zephir/* $(NUAUTH_DIR)/$(AGENT_DIR)
 
 	#radius
 	mkdir -p $(RADIUS_DIR)/$(EOLE_CONF_DIR)

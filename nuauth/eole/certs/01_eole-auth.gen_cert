@@ -1,2 +1,0 @@
-gen_certif('/etc/nufw/certs/nufw-eole.crt', cert_user='root', cert_grp='root', cert_chmod='400', regen=regen)
-gen_certif('/etc/nufw/certs/nuauth-eole.crt', key_user='nuauth', key_grp='nuauth', key_chmod='400', regen=regen)

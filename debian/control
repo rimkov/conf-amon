@@ -13,7 +13,7 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase,
 #firewall
  era, l7-filter-userspace, l7-protocols,
 #eole
- eole-reverseproxy, eole-dns, eole-nuauth, eole-radius, eole-proxy,
+ eole-reverseproxy, eole-dns, eole-radius, eole-proxy,
  eole-antivirus, eole-rvp, eole-dhcrelay, eole-sso-client
 Description: Templates et dictionnaires pour Amon
  Pour toute information complementaire, veuillez vous rendre
@@ -37,12 +37,6 @@ Package: eole-dns
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal
 Description: Templates et dictionnaires pour le dns EOLE
-
-Package: eole-nuauth
-Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, eolebase-minimal,
- nuauth-utils, nuauth-extra, libsasl2-modules-ldap, nufw, eole-client-annuaire
-Description: Meta paquet du serveur nuauth EOLE
 
 Package: eole-radius
 Architecture: all
