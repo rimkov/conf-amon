@@ -1,6 +1,6 @@
-conf-amon (2.3-eole91~3.gbp846403) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole91~4.gbp9f0c86) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @846403936390a7248dc27ad879e1996f9f48dd15 **
+  ** SNAPSHOT build @9f0c8637c5bac5e8bf49d678d88f5cb6bfa325ac **
 
   [ Fabrice ]
   * Prise en compte conteneur dans spcl.options (fixes #2346)
@@ -32,7 +32,14 @@ conf-amon (2.3-eole91~3.gbp846403) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 05 Dec 2011 16:15:15 +0100
+  [ Joël Cuissinat ]
+  * nuauth sorti de conf-amon (ref #2553) et suppression de la
+    dépendance sur eole-nuauth (fixes #2552)
+  * dns sorti de conf-amon (ref #2558)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Tue, 06 Dec 2011 17:01:11 +0100
 
 conf-amon (2.3-eole90) eole-2.3-updates; urgency=low
 
