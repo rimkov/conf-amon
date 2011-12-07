@@ -225,6 +225,7 @@
                 <value>127.0.0.1:8080</value>
             </variable>
             <variable name='https_port' type='string' description="Port d'écoute HTTPS de Squid"/>
+            <variable name='ssl_ports' type='number' description='"SSL_ports" supplémentaire' multi='True'/>
             <variable name='safe_ports' type='number' description='"Safe_ports" supplémentaire' multi='True'/>
             <variable name='number_of_basic_children' type='number' description="Nombre de processus associées au module d'authentification basique">
                 <value>20</value>
