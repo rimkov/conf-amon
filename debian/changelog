@@ -1,6 +1,6 @@
-conf-amon (2.3-eole91~4.gbp9f0c86) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole91~5.gbp87a30f) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @9f0c8637c5bac5e8bf49d678d88f5cb6bfa325ac **
+  ** SNAPSHOT build @87a30ff01233147efb80bae7ad255036657b0e74 **
 
   [ Fabrice ]
   * Prise en compte conteneur dans spcl.options (fixes #2346)
@@ -39,7 +39,13 @@ conf-amon (2.3-eole91~4.gbp9f0c86) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 06 Dec 2011 17:01:11 +0100
+  [ Joël Cuissinat ]
+  * ajout de la variable ssl_ports pour squid [2.3] (fixes #2486)
+  * radius sorti de conf-amon (ref #2560)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Mon, 12 Dec 2011 15:01:51 +0100
 
 conf-amon (2.3-eole90) eole-2.3-updates; urgency=low
 
