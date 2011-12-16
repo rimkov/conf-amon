@@ -1,6 +1,6 @@
-conf-amon (2.3-eole91~5.gbp87a30f) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole91~6.gbpd8b192) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @87a30ff01233147efb80bae7ad255036657b0e74 **
+  ** SNAPSHOT build @d8b192068ed79260d5db76689add33f63fb31d9e **
 
   [ Fabrice ]
   * Prise en compte conteneur dans spcl.options (fixes #2346)
@@ -45,7 +45,12 @@ conf-amon (2.3-eole91~5.gbp87a30f) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Mon, 12 Dec 2011 15:01:51 +0100
+  [ Fabrice ]
+  * 11 tentatives de dialogues avan le dpd_action
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Fri, 16 Dec 2011 15:34:21 +0100
 
 conf-amon (2.3-eole90) eole-2.3-updates; urgency=low
 
