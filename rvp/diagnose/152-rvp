@@ -1,23 +1,51 @@
-#!/bin/bash
-. /usr/share/eole/FonctionsEoleNg
-. /usr/bin/ParseDico
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+"""
+diagnose du rvp
+"""
+
+from commands import getstatusoutput
+from os.path import isfile
+from zephir.monitor.agents.rvp import parse_ipsec_statusall
+
+TEST_RVP = "/usr/share/eole/test-rvp"
+
+err, ret = getstatusoutput("ipsec statusall")
+tunnels, total, up, down = parse_ipsec_statusall(ret)
+
+cmd = [". /usr/share/eole/FonctionsEoleNg"]
+cmd.append(". /usr/bin/ParseDico")
+cmd.append("""EchoGras "*** Réseau virtuel privé" """)
+
+err, install_rvp = getstatusoutput(""". /usr/bin/ParseDico
+echo $install_rvp """)
+install_rvp = str(install_rvp).strip()
 
 # test du RVP si configuré
-EchoGras "*** Réseau virtuel privé"
-if [ $install_rvp == 'oui' ];then
-   if [ -x "/usr/share/eole/test-rvp" ];then
-	printf ".  %${len_pf}s => " "RVP"
-	/usr/share/eole/test-rvp 2>&1 >/dev/null
-	if [ $? -eq 0 ];then
-		EchoVert " Ok"
-	else
-		EchoRouge " Erreur"
-	fi
-   else
-	NoConfig "RVP"
-   fi
-else
-   Inactif "RVP"
-fi
-echo
-exit 0
+if install_rvp == "oui":
+    if isfile(TEST_RVP):
+        for tunnel in tunnels:
+            if tunnel['child_name'] != '':
+                tested_ip = tunnel['dst'].split('--')
+                if len(tested_ip) > 1:
+                    for ip in tested_ip:
+                        if "injoignable" in ip:
+                            line_cmd = """printf ".  %${len_pf}s => " "RVP """
+                            line_cmd += str(ip.split('injoignable')[0].strip())\
+                                        +'"'+"""\nEchoRouge " Erreur" """
+                            if line_cmd not in cmd:
+                                cmd.append(line_cmd)
+                        elif "joignable" in ip:
+                            line_cmd = """printf ".  %${len_pf}s => " "RVP """
+                            line_cmd += str(ip.split('joignable')[0].strip())\
+                                        +'"'+"""\nEchoVert " OK" """
+                            if line_cmd not in cmd:
+                                cmd.append(line_cmd)
+    else:
+        cmd.append("""NoConfig "RVP" """)
+else:
+    cmd.append("""Inactif "RVP" """)
+cmd_string = "\n".join(cmd)
+err, ret = getstatusoutput(cmd_string)
+print ret
+exit(0)
