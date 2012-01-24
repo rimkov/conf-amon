@@ -4,7 +4,7 @@
 %%smb_iter.ip_serveur_smb		%%smb_iter.%%nom_domaine_local %%smb_iter
  %end for
 %end if
-%if is_defined('web_url') and not is_ip('web_url')
+%if %%is_defined('web_url') and not %%is_ip('web_url')
 # applications web locales
 %%adresse_ip_eth0 %%web_url
 %end if
