@@ -1,6 +1,6 @@
-conf-amon (2.3-eole92~6.gbp065d37) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole92~7.gbp02e8c6) eole-2.3-dev; urgency=low
 
-  ** SNAPSHOT build @065d3772814aa3ea56e5c3c3aafa3a2693b3f56b **
+  ** SNAPSHOT build @02e8c673b60329f7445515d1d9f00ac0910f98ef **
 
   [ Joël Cuissinat ]
   * Corrections pour l'accès au reverse proxy local via le proxy (fixes
@@ -46,7 +46,12 @@ conf-amon (2.3-eole92~6.gbp065d37) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 25 Jan 2012 13:24:48 +0100
+  [ Fabrice ]
+  * Log de bind dans named.log (fixes #2500 @10m)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 25 Jan 2012 15:22:17 +0100
 
 conf-amon (2.3-eole91) eole-2.3-updates; urgency=low
 
