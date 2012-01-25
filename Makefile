@@ -8,6 +8,8 @@ EOLE_CONF_DIR=$(EOLE_DIR)/creole
 AGENT_DIR=/usr/share/zephir/monitor/configs
 EAD_DIR=/usr/share/ead2/backend/config
 INIT_DIR=/etc/init.d
+LOGROTATE_D=/etc/logrotate.d
+RSYSLOG_D=/etc/rsyslog.d
 #SBIN_DIR=/usr/sbin
 BIN_DIR=/usr/bin
 #REP de creation des differents paquets
@@ -16,8 +18,6 @@ REV_DIR=$(DESTDIR)/eole-reverseproxy
 PROXY_DIR=$(DESTDIR)/eole-proxy
 RVP_DIR=$(DESTDIR)/eole-rvp
 DHCRELAY_DIR=$(DESTDIR)/eole-dhcrelay
-LOGROTATE_D=$(DESTDIR)/etc/logrotate.d
-RSYSLOG_D=$(DESTDIR)/etc/rsyslog.d
 LOGROTATE=logrotate
 RSYSLOG=rsyslog
 
