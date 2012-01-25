@@ -1,6 +1,6 @@
-conf-amon (2.3-eole92~3.gbp71dca7) eole-2.3-dev; urgency=low
+conf-amon (2.3-eole92~4.gbpaf0179) eole-2.3-dev; urgency=low
 
-  ** SNAPSHOT build @71dca76940df16704bef9b7eb0b958fb5150e6ac **
+  ** SNAPSHOT build @af017952a198c0f6aad003715f7ff497cb54872b **
 
   [ Joël Cuissinat ]
   * Corrections pour l'accès au reverse proxy local via le proxy (fixes
@@ -31,7 +31,12 @@ conf-amon (2.3-eole92~3.gbp71dca7) eole-2.3-dev; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 25 Jan 2012 11:32:48 +0100
+  [ Fabrice ]
+  * Makefile et dico pour log charon
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 25 Jan 2012 11:54:47 +0100
 
 conf-amon (2.3-eole91) eole-2.3-updates; urgency=low
 
