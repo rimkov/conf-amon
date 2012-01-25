@@ -1,6 +1,6 @@
-conf-amon (2.3-eole92~2.gbp180f69) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole92~3.gbp71dca7) eole-2.3-dev; urgency=low
 
-  ** SNAPSHOT build @180f69492ecf046f376cbaa189d96d5e7d13dff6 **
+  ** SNAPSHOT build @71dca76940df16704bef9b7eb0b958fb5150e6ac **
 
   [ Joël Cuissinat ]
   * Corrections pour l'accès au reverse proxy local via le proxy (fixes
@@ -26,7 +26,12 @@ conf-amon (2.3-eole92~2.gbp180f69) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Wed, 25 Jan 2012 08:51:49 +0100
+  [ Fabrice ]
+  * Sortie charon.log du dico et tmpl (fixes #2415 @15m)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 25 Jan 2012 11:32:48 +0100
 
 conf-amon (2.3-eole91) eole-2.3-updates; urgency=low
 
