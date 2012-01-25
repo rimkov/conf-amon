@@ -16,6 +16,10 @@ REV_DIR=$(DESTDIR)/eole-reverseproxy
 PROXY_DIR=$(DESTDIR)/eole-proxy
 RVP_DIR=$(DESTDIR)/eole-rvp
 DHCRELAY_DIR=$(DESTDIR)/eole-dhcrelay
+LOGROTATE_D=$(DESTDIR)/etc/logrotate.d
+RSYSLOG_D=$(DESTDIR)/etc/rsyslog.d
+LOGROTATE=logrotate
+RSYSLOG=rsyslog
 
 # déplacé dans eole-radius (#2560)
 #RADIUS_DIR=$(DESTDIR)/eole-radius
@@ -23,6 +27,8 @@ DHCRELAY_DIR=$(DESTDIR)/eole-dhcrelay
 #DNS_DIR=$(DESTDIR)/eole-dns
 # déplacé dans eole-nuauth (#2553)
 #NUAUTH_DIR=$(DESTDIR)/eole-nuauth
+
+clean:
 
 all: install
 
@@ -74,13 +80,17 @@ install:
 	mkdir -p $(RVP_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
 	mkdir -p $(RVP_DIR)/$(AGENT_DIR)
-	mkdir -p $(RVP_DIR)/etc/init.d/
+	mkdir -p $(RVP_DIR)/$(INIT_DIR)/
+	mkdir -p $(RVP_DIR)/$(RSYSLOG_D)
+	mkdir -p $(RVP_DIR)/$(LOGROTATE_D)
 	cp -rf rvp/eole/* $(RVP_DIR)/$(EOLE_DIR)
 	cp -rf rvp/dicos $(RVP_DIR)/$(EOLE_CONF_DIR)/dicos
 	cp -rf rvp/tmpl $(RVP_DIR)/$(EOLE_CONF_DIR)/distrib
 	cp -f  rvp/diagnose/* $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
 	cp -f  rvp/zephir/* $(RVP_DIR)/$(AGENT_DIR)
-	cp -f rvp/init.d/* $(RVP_DIR)/etc/init.d/
+	cp -f rvp/init.d/* $(RVP_DIR)/$(INIT_DIR)/
+	cp -f rvp/$(RSYSLOG)/* $(RVP_DIR)/$(RSYSLOG_D)/
+	cp -f rvp/$(LOGROTATE)/* $(RVP_DIR)/$(LOGROTATE_D)/
 
 	#dhcrelay
 	mkdir -p $(DHCRELAY_DIR)/$(EOLE_CONF_DIR)/distrib
@@ -90,5 +100,4 @@ install:
 	cp -rf dhcrelay/dicos $(DHCRELAY_DIR)/$(EOLE_CONF_DIR)/dicos
 	#cp -f  rvp/diagnose/* $(DHCRELAY_DIR)/$(EOLE_DIR)/diagnose/module
 	cp -rd dhcrelay/tmpl/* $(DHCRELAY_DIR)/$(EOLE_CONF_DIR)/distrib
-
 
