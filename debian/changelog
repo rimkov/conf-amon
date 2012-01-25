@@ -1,6 +1,6 @@
-conf-amon (2.3-eole92~1.gbpc99b6d) eole-2.3-proposed; urgency=low
+conf-amon (2.3-eole92~2.gbp180f69) eole-2.3-proposed; urgency=low
 
-  ** SNAPSHOT build @c99b6dca8c2b5d51098205df55c95ba363a296f4 **
+  ** SNAPSHOT build @180f69492ecf046f376cbaa189d96d5e7d13dff6 **
 
   [ Joël Cuissinat ]
   * Corrections pour l'accès au reverse proxy local via le proxy (fixes
@@ -17,7 +17,16 @@ conf-amon (2.3-eole92~1.gbpc99b6d) eole-2.3-proposed; urgency=low
 
   [ Equipe Eole ]
 
- -- Equipe Eole <eole@ac-dijon.fr>  Tue, 17 Jan 2012 15:16:17 +0100
+  [ Joël Cuissinat ]
+  * Erreur dans le template eole/lxc/hosts/proxy (fixes #2725 @10m)
+
+  [ Fabrice ]
+  * Désactivation de la gestion des routes par ipsec_updown et modif
+    conf Strongswan (fixes #2766 @10m)
+
+  [ Equipe Eole ]
+
+ -- Equipe Eole <eole@ac-dijon.fr>  Wed, 25 Jan 2012 08:51:49 +0100
 
 conf-amon (2.3-eole91) eole-2.3-updates; urgency=low
 
