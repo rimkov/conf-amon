@@ -4,7 +4,11 @@
 
 SERVERS="%%adresse_ip_dhcp_dhcrelay"
 %if 'all' not in %%dhcrelay_interfaces
+%if %%dhcrelay_server_interface not in %%dhcrelay_interfaces
+OPTIONS="-i %%custom_join(%%dhcrelay_interfaces, ' -i ') -i %%dhcrelay_server_interface"
+%else
 OPTIONS="-i %%custom_join(%%dhcrelay_interfaces, ' -i ')"
+%end if
 %end if
 
 # Define OPTIONS with any other options to pass to the dhcrelay server.
