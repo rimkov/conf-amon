@@ -15,7 +15,9 @@
         <variable name='dhcrelay_interfaces' type='string' description='Interface des clients DHCP' multi='True'>
             <value>all</value>
         </variable>
-        <variable name='dhcrelay_server_interface' type='string' description='Interface du serveur DHCP' />
+        <variable name='dhcrelay_server_interface' type='string' description='Interface du serveur DHCP'>
+            <value>eth3</value>
+        </variable>
         <variable name='adresse_ip_dhcp_dhcrelay' type='string' description='Adresse IP du serveur DHCP à relayer' />
     </family>
     <separators/>
