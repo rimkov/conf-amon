@@ -54,11 +54,10 @@
             </variable>
         </family>
 
-        <!--<family name="reseau-avance" mode='expert'>
-            <variable name="ip_no_pmtu_disc" redefine='True'>
-                <value>oui</value>
-            </variable>
-        </family>-->
+        <family name='réseau avancé' mode='expert'>
+            <!-- est remplacé par Zones-DNS sur Amon (#2795) -->
+            <variable name='activer_ajout_hosts' redefine='True' hidden='True'/>
+        </family>
 
         <family name='Scribe-DMZ' hidden='True'>
             <variable name='nom_serveur_scribe_dmz' type='string' description='Nom du Scribe dans la DMZ (pour enregistrement DNS)' />
