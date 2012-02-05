@@ -1,6 +1,0 @@
-#!/bin/bash
-
-if [ "$1" = "remove" ]; then
-    /usr/share/eole/schedule/manage_schedule post majblacklist daily del
-fi
-
