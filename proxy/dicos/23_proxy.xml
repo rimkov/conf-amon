@@ -586,7 +586,7 @@
             <param>Ldap</param>
             <target type='variable'>ip_serveur_ldap1</target>
             <target type='variable'>ip_serveur_ldap2</target>
-            <target type='variable'>ldap_base_dn</target>
+            <target type='variable'>proxy_ldap_base_dn</target>
         </condition>
         <condition name='hidden_if_not_in' source='type_squid_auth'>
             <param>Ldap (Active Directory)</param>
@@ -604,7 +604,6 @@
         <check name='obligatoire' target='ip_serveur_krb'/>
         <check name='obligatoire' target='ip_serveur_ldap1'/>
         <check name='obligatoire' target='ip_serveur_ldapad'/>
-        <check name='obligatoire' target='ldap_base_dn'/>
         <check name='obligatoire' target='ldapad_base_dn'/>
         <check name='obligatoire' target='ldapad_user'/>
         <check name='obligatoire' target='ldapad_passwd'/>
