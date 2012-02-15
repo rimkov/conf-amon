@@ -1,5 +1,0 @@
-#Users names, who, if basic
-#proxy authentication is
-#enabled, will automatically
-#be denied web access
-#.Include</usr/share/squidGuard-1.2.0/db/local/users>
