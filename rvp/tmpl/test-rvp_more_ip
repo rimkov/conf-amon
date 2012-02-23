@@ -1,0 +1,7 @@
+%if %%is_defined('ip_test_rvp') and %%ip_test_rvp != []
+%for %%ip in %%ip_test_rvp
+#fping %%ip.value
+%end for
+%else
+exit 0
+%end if
