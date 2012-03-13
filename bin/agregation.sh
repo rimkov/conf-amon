@@ -14,6 +14,15 @@
     exit 1
 }
 . /etc/agregation.conf
+# Chargement de la bibliotheque Eole
+[ -x /usr/share/eole/FonctionsEoleNg ] || {
+        echo "Pas de bibliotheque Eole !"
+        exit 1
+}
+. /usr/share/eole/FonctionsEoleNg
+#Chargement des dicos
+. ParseDico
+#
 
 #Initialisation des variables d'etat
 # Dernier etat du lien
@@ -39,17 +48,6 @@ IM_C=${#MIRE[@]}
 # Calcul du coefficient pour iptables
 WCO=$[$[$W2*1000]/$[$W1+$W2]]
 
-# Chargement de la bibliotheque Eole
-[ -x /usr/share/eole/FonctionsEole ] || {
-        echo "Pas de bibliotheque Eole !"
-        exit 1
-}
-. /usr/share/eole/FonctionsEole
-#Chargement des dicos
-. ParseDico
-#
-echo "Initialisation de l'agregation de liens"
-
 # Fonction explicitant les messages d'etat
 expl() {
 	if [ $1 -eq 0 ];then
@@ -61,9 +59,15 @@ expl() {
 
 # Fonction de Log dans /var/log/agregation.log + Zephir
 Aecho () {
+    if [ -z "$2" ];then
+        level="ERR"
+    else
+        level=$2
+    fi
 	DATE=`date +%Y-%m-%d_%H:%M:%S`
 	echo "$DATE $1" >> /var/log/agregation.log
-	Zecho "$1"
+    [ "$level" != 'ERR' ] && echo "$1"
+    Zephir "$level" "$1" agregation
 }
 
 #Mise à jour des routes $1=T1
@@ -246,7 +250,7 @@ while [ $IM -lt $IM_C ] && [ $SUCCES -eq 1 ] ; do
 done
 
 	if [ $SUCCES -eq 1 ]; then
-		Zecho "Le lien $L est tombe"
+		Aecho "Le lien $L est tombe"
 		eval CHS$L=1
 	else
 		eval CHS$L=0
@@ -277,7 +281,7 @@ done
 
 
 # Log du démarrage
-Aecho "###### Script /usr/bin/agregation.sh START ######"
+Aecho "Initialisation de l'agregation de liens" 'MSG'
 
 while : ; do
 	Checkstate 1
@@ -304,7 +308,7 @@ while : ; do
 			[ $nombre_interfaces -ge 4 ] && wan1 eth3
 			[ $nombre_interfaces -eq 5 ] && wan1 eth4
 		elif [[ $LLS1 -eq 0 && $LLS2 -eq 0 ]]; then
-			Aecho "Rechargement de la repartition sur les 2 liens"
+			Aecho "Rechargement de la repartition sur les 2 liens" 'MSG'
 			# Iproute2 sur les 2 liens
 			#/sbin/ip route replace default scope global nexthop via $GW1 dev eth0 weight $W1 nexthop via $GW2 dev eth0 weight $W2
 			/sbin/ip route replace default proto static nexthop via $GW1 dev eth0 weight $W1 nexthop via $GW2 dev eth0 weight $W2
