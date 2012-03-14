@@ -31,6 +31,6 @@ AdminDepuisEth4
 %if %%is_defined('activer_nufw') and %%activer_nufw == "oui"
 auth_nufw
 %end if
-%if %%active_squid2 == "oui"
+%if %%activer_squid2 == "oui"
 Activer squid2
 %end if
