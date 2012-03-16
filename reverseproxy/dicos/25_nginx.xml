@@ -52,6 +52,16 @@
                 <value>oui</value>
             </variable>
             <variable name='revprox_url' type='string' description="IP ou domaine de destination (avec http:// ou https://) ou URI complète"/>
+            <variable name="activer_revprox_rewrite" type="oui/non" description="Activer la réécriture d'URL" mode="expert">
+                <value>non</value>
+            </variable>
+            <variable name="revprox_rewrite_domaine" type="string" description="Nom de domaine concerné par la réécriture" mode="expert" multi="True" />
+            <variable name="revprox_rewrite_proto" type="string" description="Protocole" mode="expert">
+                <value>http/https</value>
+            </variable>
+            <variable name='revprox_rewrite_location' type='string' description="Répertoire de la réécriture" mode="expert" />
+            <variable name="revprox_rewrite_regex" type="string" description="Regex de la réécriture" mode="expert" />
+            <variable name="revprox_rewrite_replacement" type="string" description="La valeur de remplacement" mode="expert" />
         </family>
         <family name='applications web' hidden='True'>
             <!-- creer si n'existe pas et cache-->
@@ -71,6 +81,9 @@
         <check name='valid_enum' target='revprox_http'>
             <param>['oui','non', 'redirige vers https']</param>
         </check>
+        <check name='valid_enum' target='revprox_rewrite_proto'>
+            <param>['http/https','http', 'https']</param>
+        </check>
         <!-- **** Remplissage automatique **** -->
         <auto target='revprox_ead' name='auto_copy_val'>
             <param type='eole'>revprox_poshadmin</param>
@@ -84,6 +97,14 @@
             <param>non</param>
             <target type='variable'>revprox_auto_config_local_web</target>
         </condition>
+        <condition name='hidden_if_in' source='activer_revprox_rewrite'>
+            <param>non</param>
+            <target type='variable'>revprox_rewrite_proto</target>
+            <target type='variable'>revprox_rewrite_domaine</target>
+            <target type='variable'>revprox_rewrite_location</target>
+            <target type='variable'>revprox_rewrite_regex</target>
+            <target type='variable'>revprox_rewrite_replacement</target>
+        </condition>
     <!-- **** Groupes **** -->
         <group master='revprox_domainname'>
             <slave>revprox_rep</slave>
@@ -91,12 +112,21 @@
             <slave>revprox_http</slave>
             <slave>revprox_https</slave>
         </group>
-
+        <group master='revprox_rewrite_domaine'>
+            <slave>revprox_rewrite_proto</slave>
+            <slave>revprox_rewrite_location</slave>
+            <slave>revprox_rewrite_regex</slave>
+            <slave>revprox_rewrite_replacement</slave>
+        </group>
         <check name='obligatoire' target='revprox_domainname'/>
         <check name='obligatoire' target='revprox_rep'/>
         <check name='obligatoire' target='revprox_http'/>
         <check name='obligatoire' target='revprox_https'/>
         <check name='obligatoire' target='revprox_url'/>
+        <check name='obligatoire' target='revprox_rewrite_domaine'/>
+        <check name='obligatoire' target='revprox_rewrite_location'/>
+        <check name='obligatoire' target='revprox_rewrite_regex'/>
+        <check name='obligatoire' target='revprox_rewrite_replacement'/>
         <condition name='hidden_if_in' source='revprox_activate_http'>
             <param>non</param>
             <target type='variable'>revprox_domainname</target>
