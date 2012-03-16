@@ -1,0 +1,15 @@
+#if $nombre_interfaces > "$nb_int"
+function FindProxyForURL(url, host) {
+    if ( isInNet(host, "127.0.0.1", "255.255.255.255") or
+            isInNet(host, "$getVar('adresse_network_eth' + $nb_int)", "$getVar('adresse_netmask_eth' + $nb_int)") )
+    {
+        return "DIRECT";
+    };
+    #set $proxy_link = 'adresse_ip_eth' + $nb_int + '_proxy_link'
+    #if $is_defined($proxy_link) and $proxy_link != ""
+        return "PROXY $getVar($proxy_link):3128";
+    #else
+        return "PROXY $getVar('adresse_ip_eth' + $nb_int):3128";
+    #end if
+}
+#end if

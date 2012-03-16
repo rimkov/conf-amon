@@ -7,7 +7,10 @@
         <file name='/etc/nginx/sites-enabled/default' source='nginx.default'/>
         <file name='/var/www/nginx-default/nginx.html' source='nginx.html'/>
         <file name='/var/www/index.html' source='nginx.no_proxy.html'/>
-        <file name="/var/www/wpad.dat" mode='775'/>
+        <file name="/var/www/wpad.eth1" mode='644'/>
+        <file name="/var/www/wpad.eth2" mode='644'/>
+        <file name="/var/www/wpad.eth3" mode='644'/>
+        <file name="/var/www/wpad.eth4" mode='644'/>
         <file name="/usr/share/eole/firewall/00_root_reverseproxy.fw" />
         <!--<file name="/etc/squid/domaines_noauth_acad"/>
         <file name="/etc/squid/domaines_nocache_acad"/>

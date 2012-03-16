@@ -30,69 +30,71 @@ server {
     rewrite  ^(.*)$  /index.html  break;
 }
 # wpad
+%def gen_geo_zone(%%nb_zone)
+#FIXME :alias et vlan
+        %%getVar('adresse_network_eth' + %%nb_zone)/%%calc_classe(%%getVar('adresse_netmask_eth' + %%nb_zone)) eth%%nb_zone;
+%end def
+geo $zone_name {
+    default all;
+#gen_geo_zone("0")
+%if %%nombre_interfaces >= "2"
+%%gen_geo_zone("1")
+%end if
+%if %%nombre_interfaces >= "3"
+%%gen_geo_zone("2")
+%end if
+%if %%nombre_interfaces >= "4"
+%%gen_geo_zone("3")
+%end if
+%if %%nombre_interfaces >= "5"
+%%gen_geo_zone("4")
+%end if
+}
+%def gen_wpad(%%nb_zone)
+    location /wpad.eth%%{nb_zone} {
+        default_type application/x-ns-proxy-autoconfig;
+        allow %%getVar('adresse_network_eth' + %%nb_zone)/%%calc_classe(%%getVar('adresse_netmask_eth' + %%nb_zone));
+    %if %%getVar('alias_eth' + %%nb_zone) == "oui"
+        %for %%alias_addr_eth in %%getVar('alias_ip_eth' + %%nb_zone)
+            %set %%alias_net = 'alias_network_eth' + %%nb_zone
+            %set %%alias_mask = 'alias_netmask_eth' + %%nb_zone
+        allow %%getattr(%%alias_addr_eth, %%alias_net)/%%getattr(%%alias_addr_eth, %%alias_mask);
+        %end for
+    %end if
+    %if %%getVar('vlan_eth' + %%nb_zone) == "oui"
+        %for %%vlan_id in %%getVar('id_vlan_eth' + %%nb_zone)
+        allow %%vlan_id.adresse_network_vlan_eth1/%%vlan_id.adresse_netmask_vlan_eth1;
+        %end for
+    %end if
+        deny all;
+    }
+%end def
 server {
     listen 0.0.0.0:81;
     server_name wpad.%%nom_domaine_local;
     server_name wpad;
     root /var/www/;
-    index wpad.dat;
-    location /wpad.dat {
-        default_type application/x-ns-proxy-autoconfig;
-#        allow %%adresse_network_eth0/%%calc_classe(%%adresse_netmask_eth0);
-%if %%nombre_interfaces >= "2"
-        allow %%adresse_network_eth1/%%calc_classe(%%adresse_netmask_eth1);
-    %if %%alias_eth1 == "oui"
-    %for %%alias_addr_eth1 in %%alias_ip_eth1
-        allow %%alias_addr_eth1.alias_network_eth1/%%alias_addr_eth1.alias_netmask_eth1;
-    %end for
-    %end if
-    %if %%vlan_eth1 == "oui"
-    %for %%vlan1_id in %%id_vlan_eth1
-        allow %%vlan1_id.adresse_network_vlan_eth1/%%vlan1_id.adresse_netmask_vlan_eth1;
-    %end for
-    %end if
-%end if
-%if %%nombre_interfaces >= "3"
-        allow %%adresse_network_eth2/%%calc_classe(%%adresse_netmask_eth2);
-    %if %%alias_eth2 == "oui"
-    %for %%alias_addr_eth2 in %%alias_ip_eth2
-        allow %%alias_addr_eth2.alias_network_eth2/%%alias_addr_eth2.alias_netmask_eth2;
-    %end for
-    %end if
-    %if %%vlan_eth2 == "oui"
-    %for %%vlan1_id in %%id_vlan_eth2
-        allow %%vlan1_id.adresse_network_vlan_eth2/%%vlan1_id.adresse_netmask_vlan_eth2;
-    %end for
-    %end if
-%end if
-%if %%nombre_interfaces >= "4"
-        allow %%adresse_network_eth3/%%calc_classe(%%adresse_netmask_eth3);
-    %if %%alias_eth3 == "oui"
-    %for %%alias_addr_eth3 in %%alias_ip_eth3
-        allow %%alias_addr_eth3.alias_network_eth3/%%alias_addr_eth3.alias_netmask_eth3;
-    %end for
-    %end if
-    %if %%vlan_eth3 == "oui"
-    %for %%vlan1_id in %%id_vlan_eth3
-        allow %%vlan1_id.adresse_network_vlan_eth3/%%vlan1_id.adresse_netmask_vlan_eth3;
-    %end for
-    %end if
-%end if
-%if %%nombre_interfaces >= "5"
-        allow %%adresse_network_eth4/%%calc_classe(%%adresse_netmask_eth4);
-    %if %%alias_eth4 == "oui"
-    %for %%alias_addr_eth4 in %%alias_ip_eth4
-        allow %%alias_addr_eth4.alias_network_eth4/%%alias_addr_eth4.alias_netmask_eth4;
-    %end for
-    %end if
-    %if %%vlan_eth4 == "oui"
-    %for %%vlan1_id in %%id_vlan_eth4
-        allow %%vlan1_id.adresse_network_vlan_eth4/%%vlan1_id.adresse_netmask_vlan_eth4;
-    %end for
-    %end if
-%end if
+    #for IE
+    index wpad.$zone_name;
+    #for firefox
+    rewrite  ^/wpad.dat  /wpad.$zone_name  break;
+    #deny all, so wpad.all too
+    location / {
         deny all;
     }
+#gen_wpad("0")
+%if %%nombre_interfaces >= "2"
+%%gen_wpad("1")
+%end if
+%if %%nombre_interfaces >= "3"
+%%gen_wpad("2")
+%end if
+%if %%nombre_interfaces >= "4"
+%%gen_wpad("3")
+%end if
+%if %%nombre_interfaces >= "5"
+%%gen_wpad("4")
+%end if
 }
 
 %end if % if %%is_defined('container_ip_proxy')
