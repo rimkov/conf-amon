@@ -15,6 +15,26 @@ proxy_buffer_size   16k;
 proxy_buffers   6 32k;
 proxy_busy_buffers_size   32k;
 
+%if not %%is_empty(%%revprox_default)
+server {
+    listen 80;
+    server_name _ default;
+    access_log  /var/log/nginx/access.log;
+    rewrite ^(.*) http://%%revprox_default$1;
+    break;
+}
+server {
+    listen 443;
+    ssl    on;
+    ssl_certificate    %%server_cert;
+    ssl_certificate_key     %%server_key;
+    access_log  /var/log/nginx/revprox.revprox_http.access-ssl.log;
+    server_name _ default;
+    rewrite ^(.*) http://%%revprox_default$1;
+    break;
+}
+%end if
+
 %if %%is_defined('container_ip_proxy')
 
 # erreur pour le proxy

@@ -28,6 +28,7 @@
             </variable>
         </family>
         <family name='Reverse proxy' hidden='True'>
+            <variable name='revprox_default' type="string" description="Nom de domaine par défaut" />
             <variable name='revprox_sso' type='string' description="Nom de domaine du serveur SSO" />
             <variable name='revprox_poshadmin' type='string' description="Nom de domaine du serveur d'administration Envole 2" />
             <variable name='revprox_ead' type='string' description="IP du Scribe" hidden='True' />
@@ -116,6 +117,7 @@
     </constraints>
     <!--************************************************************************************************* -->
     <help>
+        <variable name='revprox_default'>Si un client accède au serveur avec un nom de domaine non déclaré, le flux est redirigé vers ce domaine</variable>
         <variable name='revprox_sso'>Pour rediriger vers le SSO de la machine "domainelocal", taper "domainelocal"</variable>
         <variable name='revprox_poshadmin'>Pour rediriger vers le POSHAdmin de la machine "domainelocal", taper "domainelocal"</variable>
         <variable name='revprox_auto_config_local_web'>Configure automatiquement le reverse proxy afin de faire pointer web_url sur le conteneur web</variable>
