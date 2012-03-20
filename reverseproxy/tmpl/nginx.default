@@ -78,12 +78,12 @@ geo $zone_name {
         %for %%alias_addr_eth in %%getVar('alias_ip_eth' + %%nb_zone)
             %set %%alias_net = 'alias_network_eth' + %%nb_zone
             %set %%alias_mask = 'alias_netmask_eth' + %%nb_zone
-        allow %%getattr(%%alias_addr_eth, %%alias_net)/%%getattr(%%alias_addr_eth, %%alias_mask);
+        allow %%getattr(%%alias_addr_eth, %%alias_net)/%%calc_classe(%%getattr(%%alias_addr_eth, %%alias_mask));
         %end for
     %end if
     %if %%getVar('vlan_eth' + %%nb_zone) == "oui"
         %for %%vlan_id in %%getVar('id_vlan_eth' + %%nb_zone)
-        allow %%vlan_id.adresse_network_vlan_eth1/%%vlan_id.adresse_netmask_vlan_eth1;
+        allow %%vlan_id.adresse_network_vlan_eth1/%%calc_classe(%%vlan_id.adresse_netmask_vlan_eth1);
         %end for
     %end if
         deny all;
