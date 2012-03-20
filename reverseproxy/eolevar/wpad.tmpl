@@ -1,6 +1,6 @@
 #if $nombre_interfaces > "$nb_int"
 function FindProxyForURL(url, host) {
-    if ( isInNet(host, "127.0.0.1", "255.255.255.255") or
+    if ( isInNet(host, "127.0.0.1", "255.255.255.255") ||
             isInNet(host, "$getVar('adresse_network_eth' + $nb_int)", "$getVar('adresse_netmask_eth' + $nb_int)") )
     {
         return "DIRECT";
