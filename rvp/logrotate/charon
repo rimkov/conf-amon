@@ -1,4 +1,4 @@
-/var/log/charon.log {
+/var/log/rsyslog/*/charon/*.log {
    rotate 52
    missingok
    notifempty
