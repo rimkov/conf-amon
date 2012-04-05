@@ -17,8 +17,6 @@ CONFAMON_DIR=$(DESTDIR)/conf-amon
 REV_DIR=$(DESTDIR)/eole-reverseproxy
 RVP_DIR=$(DESTDIR)/eole-rvp
 DHCRELAY_DIR=$(DESTDIR)/eole-dhcrelay
-LOGROTATE=logrotate
-RSYSLOG=rsyslog
 
 # déplacé dans eole-radius (#2560)
 #RADIUS_DIR=$(DESTDIR)/eole-radius
@@ -43,8 +41,6 @@ install:
 	mkdir -p $(CONFAMON_DIR)/$(EOLE_CONF_DIR)
 	mkdir -p $(CONFAMON_DIR)/etc/eole/
 	mkdir -p $(CONFAMON_DIR)/$(EAD_DIR)
-	mkdir -p $(CONFAMON_DIR)/$(RSYSLOG_D)
-	mkdir -p $(CONFAMON_DIR)/$(LOGROTATE_D)
 
 	cp -rf eole/* $(CONFAMON_DIR)/$(EOLE_DIR)
 	# copie des dictionnaires
@@ -58,9 +54,6 @@ install:
 	cp -f init.d/* $(CONFAMON_DIR)/$(INIT_DIR)
 	# configuration EAD
 	cp -rf ead/* $(CONFAMON_DIR)/$(EAD_DIR)
-	# gestion des log
-	cp -f $(RSYSLOG)/* $(CONFAMON_DIR)/$(RSYSLOG_D)/
-	cp -f $(LOGROTATE)/* $(CONFAMON_DIR)/$(LOGROTATE_D)/
 
 	#reverseproxy
 	mkdir -p $(REV_DIR)/$(EOLE_CONF_DIR)
