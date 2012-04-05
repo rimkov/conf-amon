@@ -16,6 +16,7 @@ CONFAMON_DIR=$(DESTDIR)/conf-amon
 REV_DIR=$(DESTDIR)/eole-reverseproxy
 RVP_DIR=$(DESTDIR)/eole-rvp
 DHCRELAY_DIR=$(DESTDIR)/eole-dhcrelay
+LOGROTATE=logrotate
 
 # déplacé dans eole-radius (#2560)
 #RADIUS_DIR=$(DESTDIR)/eole-radius
