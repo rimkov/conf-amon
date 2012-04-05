@@ -9,7 +9,6 @@ AGENT_DIR=/usr/share/zephir/monitor/configs
 EAD_DIR=/usr/share/ead2/backend/config
 INIT_DIR=/etc/init.d
 LOGROTATE_D=/etc/logrotate.d
-RSYSLOG_D=/etc/rsyslog.d
 #SBIN_DIR=/usr/sbin
 BIN_DIR=/usr/bin
 #REP de creation des differents paquets
@@ -70,7 +69,6 @@ install:
 	mkdir -p $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
 	mkdir -p $(RVP_DIR)/$(AGENT_DIR)
 	mkdir -p $(RVP_DIR)/$(INIT_DIR)/
-	mkdir -p $(RVP_DIR)/$(RSYSLOG_D)
 	mkdir -p $(RVP_DIR)/$(LOGROTATE_D)
 	cp -rf rvp/eole/* $(RVP_DIR)/$(EOLE_DIR)
 	cp -rf rvp/dicos $(RVP_DIR)/$(EOLE_CONF_DIR)/dicos
@@ -78,7 +76,6 @@ install:
 	cp -f  rvp/diagnose/* $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
 	cp -f  rvp/zephir/* $(RVP_DIR)/$(AGENT_DIR)
 	cp -f rvp/init.d/* $(RVP_DIR)/$(INIT_DIR)/
-	cp -f rvp/$(RSYSLOG)/* $(RVP_DIR)/$(RSYSLOG_D)/
 	cp -f rvp/$(LOGROTATE)/* $(RVP_DIR)/$(LOGROTATE_D)/
 
 	#dhcrelay
