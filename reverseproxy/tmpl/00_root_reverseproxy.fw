@@ -1,4 +1,0 @@
-%if %%revprox_activate_http == 'oui' or (%%activer_apache == 'oui' and %%activer_revprox == 'non')
-allow_dest(interface='eth0', ip='0/0', port='80')
-allow_dest(interface='eth0', ip='0/0', port='443')
-%end if

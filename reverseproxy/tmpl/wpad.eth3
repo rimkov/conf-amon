@@ -1,2 +1,0 @@
-%set global %%nb_int="3"
-%include "/var/lib/eole/wpad.tmpl"

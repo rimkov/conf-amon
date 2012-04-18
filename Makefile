@@ -13,7 +13,6 @@ LOGROTATE_D=/etc/logrotate.d
 BIN_DIR=/usr/bin
 #REP de creation des differents paquets
 CONFAMON_DIR=$(DESTDIR)/conf-amon
-REV_DIR=$(DESTDIR)/eole-reverseproxy
 RVP_DIR=$(DESTDIR)/eole-rvp
 DHCRELAY_DIR=$(DESTDIR)/eole-dhcrelay
 LOGROTATE=logrotate
@@ -26,6 +25,8 @@ LOGROTATE=logrotate
 #NUAUTH_DIR=$(DESTDIR)/eole-nuauth
 # déplacé dans eole-proxy (#2892)
 #PROXY_DIR=$(DESTDIR)/eole-proxy
+# déplacé dans eole-reverseproxy (#3252)
+#REV_DIR=$(DESTDIR)/eole-reverseproxy
 
 clean:
 
@@ -54,16 +55,6 @@ install:
 	cp -f init.d/* $(CONFAMON_DIR)/$(INIT_DIR)
 	# configuration EAD
 	cp -rf ead/* $(CONFAMON_DIR)/$(EAD_DIR)
-
-	#reverseproxy
-	mkdir -p $(REV_DIR)/$(EOLE_CONF_DIR)
-	mkdir -p $(REV_DIR)/$(EOLE_DIR)/diagnose/module
-	mkdir -p $(REV_DIR)/var/lib/eole
-	cp -rf reverseproxy/eole/* $(REV_DIR)/$(EOLE_DIR)
-	cp -rf reverseproxy/dicos $(REV_DIR)/$(EOLE_CONF_DIR)/dicos
-	cp -rf reverseproxy/tmpl $(REV_DIR)/$(EOLE_CONF_DIR)/distrib
-	cp -rf reverseproxy/diagnose/* $(REV_DIR)/$(EOLE_DIR)/diagnose/module
-	cp -rf reverseproxy/eolevar/* $(REV_DIR)/var/lib/eole
 
 	#rvp
 	mkdir -p $(RVP_DIR)/$(EOLE_CONF_DIR)
