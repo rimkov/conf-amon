@@ -24,7 +24,7 @@ start() {
 	log_begin_msg "Lancement du Reseau Virtuel Privé "
 	/etc/init.d/ipsec start >/dev/null 2>&1
 	RETVAL=$?
-	/etc/ipsec.d/ip_xfrm_policy
+	/etc/ipsec.d/ip_xfrm_policy >/dev/null 2>&1
 	log_end_msg $RETVAL
 	[ $RETVAL -eq 0 ] && touch /var/lock/rvp
 	return $RETVAL
