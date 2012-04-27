@@ -31,7 +31,7 @@
 
         <family name='Interface-0'>
             <variable name='eth0_method' redefine='True' />
-            <variable name='activer_proxy_eth0' redefine='True' mode='expert'>
+            <variable name='activer_proxy_eth0' redefine='True' hidden='True'>
                 <value>non</value>
             </variable>
         </family>
