@@ -27,6 +27,8 @@
             <variable name='install_scribe_dmz' type='oui/non' description="Activer la gestion d'un Scribe dans la DMZ" >
                 <value>non</value>
             </variable>
+            <!-- ajoute adresses_ip_clients_nfs pour extermite Era #3594 -->
+            <variable name='adresses_ip_clients_nfs' type='ip' exists='False' hidden='True'/>
         </family>
 
         <family name='Interface-0'>
