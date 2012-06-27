@@ -37,3 +37,6 @@ Activer squid2
 %if %%is_defined('activer_serveur_nfs') and %%activer_serveur_nfs == "oui"
 activer_nfs
 %end if
+%if %%is_defined('activer_ejabberd') and %%activer_ejabberd == "oui"
+activer_xmpp
+%end if
