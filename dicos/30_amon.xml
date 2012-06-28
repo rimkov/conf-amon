@@ -34,27 +34,6 @@
         <family name='Interface-0'>
             <variable name='eth0_method' redefine='True' />
         </family>
-        <family name='Interface-1'>
-            <!-- exists="False" : cf. eole-proxy -->
-            <variable name='nom_machine_eth1' type='string' description="Nom à donner à l'interface (pour résolution DNS)" exists="False">
-                <value>admin</value>
-            </variable>
-        </family>
-        <family name='Interface-2' hidden='True'>
-            <variable name='nom_machine_eth2' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
-                <value>pedago</value>
-            </variable>
-        </family>
-        <family name='Interface-3' hidden='True'>
-            <variable name='nom_machine_eth3' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
-                <value>dmz-priv</value>
-            </variable>
-        </family>
-        <family name='Interface-4' hidden='True'>
-            <variable name='nom_machine_eth4' type='string' description="Nom à donner à l'interface (pour resolution DNS)" >
-                <value>dmz-pub</value>
-            </variable>
-        </family>
 
         <family name='réseau avancé' mode='expert'>
             <!-- est remplacé par Zones-DNS sur Amon (#2795) -->
@@ -76,7 +55,6 @@
     <constraints>
 
         <check name='obligatoire' target='type_amon'/>
-        <check name='obligatoire' target='nom_machine_eth1'/>
         <check name="valid_enum" target="type_amon">
             <param type="python">eosfunc.list_files('/usr/share/era/modeles', '*.xml', True, default=['2zones', '2zones-amonecole', '2zones-amonecole-nginx', '3zones', '3zones-scribe', '3zones-scribe-nginx', '4zones', '4zones-scribe', '4zones-scribe-nginx', '4zones-scribe-nufw', '5zones'], exception='minimal')</param>
             <param name="checkval">False</param>
