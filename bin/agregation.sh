@@ -10,7 +10,7 @@
 
 [ -e /etc/agregation.conf ] || {
     # Pas de fichier de configuration
-    echo "Fichier de configuration /etc/agregation.conf  non trouve"
+    echo "Fichier de configuration /etc/agregation.conf non trouvé"
     exit 1
 }
 . /etc/agregation.conf
@@ -46,12 +46,14 @@ ID2_C=${#DNS2[@]}
 # Nombre de mires a tester
 IM_C=${#MIRE[@]}
 # Calcul du coefficient pour iptables
+if [ -n "$W1" -a -n "$W2" ];then
 WCO=$[$[$W2*1000]/$[$W1+$W2]]
+fi
 
 # Fonction explicitant les messages d'etat
 expl() {
-	if [ $1 -eq 0 ];then
-		echo "actif"
+    if [ $1 -eq 0 ];then
+        echo "actif"
     else
         echo "inactif"
     fi
@@ -64,17 +66,17 @@ Aecho () {
     else
         level=$2
     fi
-	DATE=`date +%Y-%m-%d_%H:%M:%S`
-	echo "$DATE $1" >> /var/log/agregation.log
+    DATE=`date +%Y-%m-%d_%H:%M:%S`
+    echo "$DATE $1" >> /var/log/agregation.log
     [ "$level" != 'ERR' ] && echo "$1"
     Zephir "$level" "$1" agregation
 }
 
 #Mise à jour des routes $1=T1
 ipruleclear () {
-	for r in `ip rule list|grep $1|awk '{print $2"-"$3"-"$4"-"$5"-"$6"-"$7}'`
-		do ip rule del `echo $r|sed "s/-/ /g"`
-	done
+    for r in `ip rule list|grep $1|awk '{print $2"-"$3"-"$4"-"$5"-"$6"-"$7}'`
+        do ip rule del `echo $r|sed "s/-/ /g"`
+    done
 }
 
 #Vidage des règles iptables de SNAT
@@ -186,15 +188,46 @@ for ip_force2 in ${FORCE2[@]}; do /sbin/ip route add $ip_force2 via $GW2 table m
 for ip_dns1 in ${DNS1[@]}; do /sbin/ip route add $ip_dns1 via $GW1 table main ; done
 for ip_dns2 in ${DNS2[@]}; do /sbin/ip route add $ip_dns2 via $GW2 table main ; done
 
-/sbin/ip route add default scope global nexthop via $GW1 dev eth0 weight $W1 nexthop via $GW2 dev eth0 weight $W2
+####################
+# test mode load balancing ou fail-over (actif/passif)
+if [ $ag_mode == "mode_lb" ] ; then
+	/sbin/ip route delete default via $GW1 dev eth0
+	/sbin/ip route delete default via $GW2 dev eth0
+	/sbin/ip route add default scope global nexthop via $GW1 dev eth0 weight $W1 nexthop via $GW2 dev eth0 weight $W2
+fi
+
+if [ $ag_mode == "mode_fo" ] ;then
+    if [ $ag_fo_etat_eth0 == "actif" ] && [ $ag_fo_etat_eth0_0 == "passif" ] ; then
+        /sbin/ip route delete default
+        /sbin/ip route add default via $GW1 dev eth0
+    elif [ $ag_fo_etat_eth0 == "passif" ] && [ $ag_fo_etat_eth0_0 == "actif" ] ; then
+        /sbin/ip route delete default
+        /sbin/ip route add default via $GW2 dev eth0
+    fi
+fi
+####################
 
 # Vidage des chaines MANGLE
+check_T1=$(iptables-save |grep "RESTOREMARK" |wc -l)
+check_T2=$(iptables-save |grep "T2" | wc -l)
+check_RESTOREMARK=$(iptables-save |grep "T1" |wc -l)
+check_PREROUTING=$(iptables-save |grep "T1" |wc -l)
+if [ "$check_PREROUTING" -gt "1" ] ; then
 /sbin/iptables -t mangle -F PREROUTING
+fi
+if [ "$check_T1" -gt "1" ] ; then
 /sbin/iptables -t mangle -F T1
+fi
+if [ "$check_T2" -gt "1" ] ; then
 /sbin/iptables -t mangle -F T2
+fi
+if [ "$check_RESTOREMARK" -gt "1" ] ; then
 /sbin/iptables -t mangle -F RESTOREMARK
+fi
 
 ## creation de la chaine marquage pour agregation de lien
+chaine_T1=$(iptables-save | grep ":T1")
+if [ -z "$chaine_T1" ] ; then
 /sbin/iptables -t mangle -N T1
 /sbin/iptables -t mangle -A T1 -d 10.0.0.0/8 -j RETURN
 /sbin/iptables -t mangle -A T1 -d 172.16.0.0/12 -j RETURN
@@ -202,7 +235,9 @@ for ip_dns2 in ${DNS2[@]}; do /sbin/ip route add $ip_dns2 via $GW2 table main ; 
 /sbin/iptables -t mangle -A T1 -d 161.48.0.0/19 -j RETURN
 /sbin/iptables -t mangle -A T1 -j MARK --set-mark 1
 /sbin/iptables -t mangle -A T1 -j CONNMARK --save-mark
-
+fi
+chaine_T2=$(iptables-save | grep ":T2")
+if [ -z "$chaine_T1" ] ; then
 /sbin/iptables -t mangle -N T2
 /sbin/iptables -t mangle -A T2 -d 10.0.0.0/8 -j RETURN
 /sbin/iptables -t mangle -A T2 -d 172.16.0.0/12 -j RETURN
@@ -210,13 +245,16 @@ for ip_dns2 in ${DNS2[@]}; do /sbin/ip route add $ip_dns2 via $GW2 table main ; 
 /sbin/iptables -t mangle -A T2 -d 161.48.0.0/19 -j RETURN
 /sbin/iptables -t mangle -A T2 -j MARK --set-mark 2
 /sbin/iptables -t mangle -A T2 -j CONNMARK --save-mark
-
+fi
+chaine_RESTOREMARK=$(iptables-save | grep ":RESTOREMARK")
+if [ -z "$chaine_RESTOREMARK" ] ; then
 /sbin/iptables -t mangle -N RESTOREMARK
 /sbin/iptables -t mangle -A RESTOREMARK -d 10.0.0.0/8 -j RETURN
 /sbin/iptables -t mangle -A RESTOREMARK -d 172.16.0.0/12 -j RETURN
 /sbin/iptables -t mangle -A RESTOREMARK -d 192.168.0.0/16 -j RETURN
 /sbin/iptables -t mangle -A RESTOREMARK -d 161.48.0.0/19 -j RETURN
 /sbin/iptables -t mangle -A RESTOREMARK -j CONNMARK --restore-mark
+fi
 
 ## Mise a jour des règles de SNAT
 iptablessnatclear
@@ -287,37 +325,115 @@ while : ; do
 	Checkstate 1
 	Checkstate 2
 
-	if [[ $CLS1 -eq 0 || $CLS2 -eq 0 ]]; then
-		if [[ $LLS1 -eq 1 && $LLS2 -eq 0 ]]; then
+    if [[ $CLS1 -eq 0 || $CLS2 -eq 0 ]]; then
+
+        if [[ $LLS1 -eq 1 && $LLS2 -eq 0 ]]; then
+
 			Aecho "Seul le lien 2 est actif, redirection des flux sur ce lien"
-			# Iproute2 sur le lien2
-			/sbin/ip route replace default via $GW2 dev eth0
-			# Mangle sur le lien2
-			wan2 eth1
-			[ $nombre_interfaces -ge 3 ] && wan2 eth2
-			[ $nombre_interfaces -ge 4 ] && wan2 eth3
-			[ $nombre_interfaces -eq 5 ] && wan2 eth4
-		elif [[ $LLS1 -eq 0 && $LLS2 -eq 1 ]]; then
-			Aecho "Seul le lien 1 est actif, redirection des flux sur ce lien"
-			# Iproute2 sur le lien1
-			#/sbin/ip route replace default scope global via $GW1 dev eth0
-			/sbin/ip route replace default via $GW1 dev eth0
-			# Mangle sur lien1
-			wan1 eth1
-			[ $nombre_interfaces -ge 3 ] && wan1 eth2
-			[ $nombre_interfaces -ge 4 ] && wan1 eth3
-			[ $nombre_interfaces -eq 5 ] && wan1 eth4
-		elif [[ $LLS1 -eq 0 && $LLS2 -eq 0 ]]; then
+
+            if [ "$active_mail" == "oui" ] ; then
+				MssG="Seul le lien 2 est actif, redirection des flux sur ce lien"
+				SubJ="Liaison $nom_domaine_local_supp  ($numero_etab)"
+                if [ -z ${CC[@]} ] ; then
+                    echo "$MssG"|mutt -s "$SubJ" "$DEST" -c "${CC[@]}"
+                else
+                    echo "$MssG"|mutt -s "$SubJ" "$DEST"
+                fi
+	        fi
+
+                # Iproute2 sur le lien2
+	                /sbin/ip route replace default via $GW2 dev eth0
+				# bascule des destinations forcées (lien 1) sur le lien 2
+				for ip_force in ${FORCE1[@]} ; do
+					/sbin/ip route replace $ip_force via $GW2 dev eth0
+				done
+				# Mangle sur le lien2
+	                        wan2 eth1
+	                        [ $nombre_interfaces -ge 3 ] && wan2 eth2
+	                        [ $nombre_interfaces -ge 4 ] && wan2 eth3
+	                        [ $nombre_interfaces -eq 5 ] && wan2 eth4
+
+        elif [[ $LLS1 -eq 0 && $LLS2 -eq 1 ]]; then
+            Aecho "Seul le lien 1 est actif, redirection des flux sur ce lien"
+
+            if [ "$active_mail" == "oui" ] ; then
+				MssG="Seul le lien 1 est actif, redirection des flux sur ce lien"
+				SubJ="Liaison $nom_domaine_local_supp  ($numero_etab)"
+                if [ -z ${CC[@]} ] ; then
+                    echo "$MssG"|mutt -s "$SubJ" "$DEST" -c "${CC[@]}"
+                else
+                    echo "$MssG"|mutt -s "$SubJ" "$DEST"
+                fi
+            fi
+
+                # Iproute2 sur le lien1
+	                /sbin/ip route replace default via $GW1 dev eth0
+				# bascule des destinations forcées (lien 2) sur le lien 1
+				for ip_force in ${FORCE2[@]} ; do
+					/sbin/ip route replace $ip_force via $GW1 dev eth0
+				done
+
+			        # Mangle sur lien1
+                    wan1 eth1
+                    [ $nombre_interfaces -ge 3 ] && wan1 eth2
+                    [ $nombre_interfaces -ge 4 ] && wan1 eth3
+                    [ $nombre_interfaces -eq 5 ] && wan1 eth4
+
+        elif [[ $LLS1 -eq 0 && $LLS2 -eq 0 ]]; then
 			Aecho "Rechargement de la repartition sur les 2 liens" 'MSG'
-			# Iproute2 sur les 2 liens
-			#/sbin/ip route replace default scope global nexthop via $GW1 dev eth0 weight $W1 nexthop via $GW2 dev eth0 weight $W2
-			/sbin/ip route replace default proto static nexthop via $GW1 dev eth0 weight $W1 nexthop via $GW2 dev eth0 weight $W2
-			#/sbin/ip route replace default equalize nexthop via $GW1 dev eth0 weight $W1 nexthop via $GW2 dev eth0 weight $W2
-			# Mangle sur les 2 liens
-			balance eth1
-			[ $nombre_interfaces -ge 3 ] && balance eth2
-			[ $nombre_interfaces -ge 4 ] && wan1 eth3
-			[ $nombre_interfaces -eq 5 ] && wan2 eth4
+
+            if [ "$active_mail" == "oui" ] ; then
+				MssG="Rechargement de la repartition sur les 2 liens"
+				SubJ="Liaison $nom_domaine_local_supp  ($numero_etab)"
+                if [ -z ${CC[@]} ] ; then
+                    echo "$MssG"|mutt -s "$SubJ" "$DEST" -c "${CC[@]}"
+                else
+                    echo "$MssG"|mutt -s "$SubJ" "$DEST"
+                fi
+	        fi
+
+			# Iproute si mode load balancing
+            if [ $ag_mode == "mode_lb" ] ; then
+    	    	# Iproute2 sur les 2 liens
+	    	    /sbin/ip route replace default proto static nexthop via $GW1 dev eth0 weight $W1 nexthop via $GW2 dev eth0 weight $W2
+
+                # retablit les destination forcees lien 1
+	            for ip_force in ${FORCE1[@]} ; do
+                    /sbin/ip route replace $ip_force via $GW1 dev eth0
+                done
+                # retablit les destination forcees lien 2
+	            for ip_force in ${FORCE2[@]} ; do
+                    /sbin/ip route replace $ip_force via $GW2 dev eth0
+                done
+
+                # Mangle sur les 2 liens
+	            balance eth1
+	            [ $nombre_interfaces -ge 3 ] && balance eth2
+	            [ $nombre_interfaces -ge 4 ] && wan2 eth3
+    	        [ $nombre_interfaces -eq 5 ] && wan2 eth4
+			else
+                #mode fail-over
+                # retablit les destination forcees lien 1
+	            for ip_force in ${FORCE1[@]} ; do
+                    /sbin/ip route replace $ip_force via $GW1 dev eth0
+                done
+                # retablit les destination forcees lien 2
+	            for ip_force in ${FORCE2[@]} ; do
+                    /sbin/ip route replace $ip_force via $GW2 dev eth0
+                done
+                if [ $ag_fo_etat_eth0 == "actif" ] && [ $ag_fo_etat_eth0_0 == "passif" ] ; then
+                    /sbin/ip route replace default via $GW1 dev eth0
+                elif [ $ag_fo_etat_eth0 == "passif" ] && [ $ag_fo_etat_eth0_0 == "actif" ] ; then
+                    /sbin/ip route replace default via $GW2 dev eth0
+                fi
+
+	    		# Mangle sur les 2 liens
+	            balance eth1
+	            [ $nombre_interfaces -ge 3 ] && balance eth2
+	            [ $nombre_interfaces -ge 4 ] && wan2 eth3
+	            [ $nombre_interfaces -eq 5 ] && wan2 eth4
+			fi
+
 		fi
 		# rechargement des tunnels
 		/usr/share/eole/magic-rvp &
