@@ -33,6 +33,10 @@
 
         <family name='Interface-0'>
             <variable name='eth0_method' redefine='True' />
+            <variable name='activer_dns_eth0' redefine='True' mode='expert'>
+                <value>non</value>
+            </variable>
+            <variable name='dns_master_eth0' redefine='True' mode='expert'/>
         </family>
 
         <family name='réseau avancé' mode='expert'>
