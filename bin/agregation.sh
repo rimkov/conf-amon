@@ -95,7 +95,7 @@ iptablessnatclear () {
 #Vidage des règles iptables de MANGLE $1 = nom de la carte
 iptablesmangleclear () {
 	i=1
-	while [ $i -le `/sbin/iptables -t mangle -S PREROUTING|wc -l` ]
+	while [ "$i" -le `/sbin/iptables -t mangle -S PREROUTING|wc -l` ]
 	do
 		if [ -n "`/sbin/iptables -t mangle -S PREROUTING $i|grep "i $1"`" ];then
 			/sbin/iptables -t mangle -D PREROUTING $i
@@ -274,7 +274,7 @@ ID=0
 IM=0
 SUCCES=1
 while [ $IM -lt $IM_C ] && [ $SUCCES -eq 1 ] ; do
-	while [ $ID -lt $(eval echo \$ID$L\_C) ] && [ $SUCCES -eq 1 ] ; do
+	while [ "$ID" -lt $(eval echo \$ID$L\_C) ] && [ $SUCCES -eq 1 ] ; do
 		host -W $TIMEOUT ${MIRE[$IM]} $(eval echo \${DNS$L[$ID]})> /dev/null  2>&1
 		if [ $? -ne 0 ]; then
 			[ $(eval echo \$LLS$L) -eq 0 ] && Aecho "Erreur de resolution de $(eval echo \${MIRE[$IM]}) sur le dns $(eval echo \${DNS$L[$ID]}) du lien $L"
@@ -305,7 +305,7 @@ done
 		Aecho "Le lien $L n'est plus $(expl $(eval echo \$LLS$L))"
 		eval CLS$L=0
 		eval COUNT$L=0
-		if [ $(eval echo \$LLS$L) -eq 1 ]; then
+		if [ $(eval echo \$LLS$L) -eq "1" ]; then
 			eval LLS$L=0
 		else
 			eval LLS$L=1
@@ -331,13 +331,13 @@ while : ; do
 
 			Aecho "Seul le lien 2 est actif, redirection des flux sur ce lien"
 
-            if [ "$active_mail" == "oui" ] ; then
+            if [ "$ag_active_mail" == "oui" ] ; then
 				MssG="Seul le lien 2 est actif, redirection des flux sur ce lien"
 				SubJ="Liaison $nom_domaine_local_supp  ($numero_etab)"
-                if [ -z ${CC[@]} ] ; then
-                    echo "$MssG"|mutt -s "$SubJ" "$DEST" -c "${CC[@]}"
-                else
+                if [ -z "${CC[@]}" ] ; then
                     echo "$MssG"|mutt -s "$SubJ" "$DEST"
+                else
+                    echo "$MssG"|mutt -s "$SubJ" "$DEST" -c "${CC[@]}"
                 fi
 	        fi
 
@@ -356,13 +356,13 @@ while : ; do
         elif [[ $LLS1 -eq 0 && $LLS2 -eq 1 ]]; then
             Aecho "Seul le lien 1 est actif, redirection des flux sur ce lien"
 
-            if [ "$active_mail" == "oui" ] ; then
+            if [ "$ag_active_mail" == "oui" ] ; then
 				MssG="Seul le lien 1 est actif, redirection des flux sur ce lien"
 				SubJ="Liaison $nom_domaine_local_supp  ($numero_etab)"
-                if [ -z ${CC[@]} ] ; then
-                    echo "$MssG"|mutt -s "$SubJ" "$DEST" -c "${CC[@]}"
-                else
+                if [ -z "${CC[@]}" ] ; then
                     echo "$MssG"|mutt -s "$SubJ" "$DEST"
+                else
+                    echo "$MssG"|mutt -s "$SubJ" "$DEST" -c "${CC[@]}"
                 fi
             fi
 
@@ -382,13 +382,13 @@ while : ; do
         elif [[ $LLS1 -eq 0 && $LLS2 -eq 0 ]]; then
 			Aecho "Rechargement de la repartition sur les 2 liens" 'MSG'
 
-            if [ "$active_mail" == "oui" ] ; then
+            if [ "$ag_active_mail" == "oui" ] ; then
 				MssG="Rechargement de la repartition sur les 2 liens"
 				SubJ="Liaison $nom_domaine_local_supp  ($numero_etab)"
-                if [ -z ${CC[@]} ] ; then
-                    echo "$MssG"|mutt -s "$SubJ" "$DEST" -c "${CC[@]}"
-                else
+                if [ -z "${CC[@]}" ] ; then
                     echo "$MssG"|mutt -s "$SubJ" "$DEST"
+                else
+                    echo "$MssG"|mutt -s "$SubJ" "$DEST" -c "${CC[@]}"
                 fi
 	        fi
 
@@ -435,8 +435,8 @@ while : ; do
 			fi
 
 		fi
-		# rechargement des tunnels
-		/usr/share/eole/magic-rvp &
+		# rechargement des tunnels, plus utile en 2.3
+		#/usr/share/eole/magic-rvp &
 	fi
 
     if [ $PAUSE -le 5 ];then
