@@ -40,3 +40,16 @@ activer_nfs
 %if %%is_defined('activer_ejabberd') and %%activer_ejabberd == "oui"
 activer_xmpp
 %end if
+%if %%activer_log_distant == 'oui'
+ %if %%activer_reception_logs == 'oui'
+  %if %%activer_reception_logs_relp == 'oui'
+ClientRsyslogRELP
+  %end if
+  %if %%activer_reception_logs_tcp == 'oui'
+ClientRsyslogTCP
+  %end if
+  %if %%activer_reception_logs_udp  == 'oui'
+ClientRsyslogUDP
+  %end if
+ %end if
+%end if
