@@ -4,7 +4,7 @@
     <files>
         <file filelist='rvp' name='/etc/strongswan.conf' />
         <file filelist='rvp' name='/etc/ipsec.conf' />
-        <file filelist='rvp' name='/etc/ipsec.d/ipsec_updown' />
+        <file filelist='rvp' name='/etc/ipsec.d/ipsec_updown' mode='755' />
         <file filelist='rvp' name='/usr/share/eole/test-rvp_more_ip' mode='755' />
     </files>
     <variables>
