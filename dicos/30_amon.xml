@@ -38,6 +38,10 @@
             <variable name='dns_master_eth0' redefine='True' mode='expert'/>
         </family>
 
+        <family name='Interface-1'>
+            <variable name='era_proxy_bypass' type='ip' description='Adresse autorisée à contourner le proxy' multi='True' mode='expert'/>
+        </family>
+
         <family name='réseau avancé' mode='expert'>
             <!-- est remplacé par Zones-DNS sur Amon (#2795) -->
             <variable name='activer_ajout_hosts' redefine='True' hidden='True'/>
