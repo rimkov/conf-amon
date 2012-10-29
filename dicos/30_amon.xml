@@ -39,7 +39,7 @@
         </family>
 
         <family name='Interface-1'>
-            <variable name='era_proxy_bypass' type='ip' description='Adresse autorisée à contourner le proxy' multi='True' mode='expert'/>
+            <variable name='era_proxy_bypass' type='ip' description='Destinations non redirigées sur le proxy' multi='True' mode='expert'/>
         </family>
 
         <family name='réseau avancé' mode='expert'>
