@@ -15,6 +15,7 @@
         <variable name='dhcrelay_interfaces' type='string' description='Interface des clients DHCP' multi='True'>
             <value>all</value>
         </variable>
+        <variable name='dhcrelay_vlan' type='number' description='Numéro de VLAN des clients DHCP' />
         <variable name='dhcrelay_server_interface' type='string' description='Interface du serveur DHCP'>
             <value>eth3</value>
         </variable>
@@ -42,6 +43,9 @@
         <fill name='calc_val' target='adresse_ip_dhcp_dhcrelay'>
             <param type='eole'>ip_serveur_scribe_dmz</param>
         </fill>
+        <group master='dhcrelay_interfaces'>
+            <slave>dhcrelay_vlan</slave>
+        </group>
     </constraints>
     <help/>
 </creole>
