@@ -43,6 +43,10 @@
         </family>
 
         <family name='réseau avancé' mode='expert'>
+            <variable name='activer_routage_ipv4'  redefine='True' hidden='True'>
+                <value>oui</value>
+            </variable>
+
             <!-- est remplacé par Zones-DNS sur Amon (#2795) -->
             <variable name='activer_ajout_hosts' redefine='True' hidden='True'/>
         </family>
@@ -77,6 +81,10 @@
             <param>non</param>
             <target type='family'>Scribe-DMZ</target>
         </condition>
+
+        <auto name='auto_copy_val' target='activer_routage_ipv4'>
+            <param>oui</param>
+        </auto>
 
     </constraints>
 
