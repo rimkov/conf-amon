@@ -91,11 +91,13 @@ class ActiveRVPCli(Cli):
         conf_eole = parse_dico()
         if conf_eole['install_rvp'] == 'oui':
             if ZEPHIR:
-                mode = self.select("manuel zephir", "choisissez le mode : ")
+                mode = self.select("manuel zephir quitter", "choisissez le mode : ")
                 if mode == "zephir":
-                    self.onecmd("zephir")
-                else:
+                   self.onecmd("zephir")
+                elif mode == "manuel":
                     self.onecmd("manuel")
+                else:
+                    self.onecmd("exit")
             else:
                 print_orange("Le serveur n'est pas enregistré sur un Zéphir")
                 rep = question_ouinon("configurer en mode manuel", default='non')
@@ -172,44 +174,48 @@ class ActiveRVPCli(Cli):
 
     def do_start_ipsec(self, line):
         """Déplombe les clefs privées"""
-        session = initialise("sqlite:///"+ipsec_tmp_path+sep+"ipsec.db")
-        for privkey, ident in session.query(PrivateKey, Identity).\
-                                filter(PrivateKey.id == PrivateKeyIdentity.private_key).\
-                                filter(PeerConfigs.local_id==PrivateKeyIdentity.identity).\
-                                filter(PeerConfigs.local_id == Identity.id).\
-                                filter(Identity.type==9).all():
-            certif, certident = session.query(Certificates.data,
-                                CertificateIdentity.certificate).\
-                                filter(Certificates.id == CertificateIdentity.certificate).\
-                                filter(CertificateIdentity.identity == ident.id).first()
-            #certname = getoutput("""echo "{0}" | openssl x509 -text -noout|grep CN|grep Subject|grep -o "[^=]*$" """.format(certif))
-            certname = unicode(get_subject(cert=certif)[1], 'utf-8')
-            print
-            print "Passphrase du certificat {0} : ".format(certname),
-            tmpkey = '/tmp/pk.pem'
-            privatekey_file = open(tmpkey, "w")
-            privatekey_file.write(privkey.data)
-            privatekey_file.close()
-            passwd = get_password()
-            tried = 1
-            while not password_OK(tmpkey, passwd) and tried < 3:
-                print "erreur passphrase, veuillez réessayer : ",
+        try:
+            session = initialise("sqlite:///"+ipsec_tmp_path+sep+"ipsec.db")
+            for privkey, ident in session.query(PrivateKey, Identity).\
+                                    filter(PrivateKey.id == PrivateKeyIdentity.private_key).\
+                                    filter(PeerConfigs.local_id==PrivateKeyIdentity.identity).\
+                                    filter(PeerConfigs.local_id == Identity.id).\
+                                    filter(Identity.type==9).all():
+                certif, certident = session.query(Certificates.data,
+                                    CertificateIdentity.certificate).\
+                                    filter(Certificates.id == CertificateIdentity.certificate).\
+                                    filter(CertificateIdentity.identity == ident.id).first()
+                #certname = getoutput("""echo "{0}" | openssl x509 -text -noout|grep CN|grep Subject|grep -o "[^=]*$" """.format(certif))
+                certname = unicode(get_subject(cert=certif)[1], 'utf-8')
+                print
+                print "Passphrase du certificat {0} : ".format(certname),
+                tmpkey = '/tmp/pk.pem'
+                privatekey_file = open(tmpkey, "w")
+                privatekey_file.write(privkey.data)
+                privatekey_file.close()
                 passwd = get_password()
-                tried +=1
-            if tried == 3 and not password_OK(tmpkey, passwd):
-                print "Passphrase erronée, trop de tentatives !!!"
+                tried = 1
+                while not password_OK(tmpkey, passwd) and tried < 3:
+                    print "erreur passphrase, veuillez réessayer : ",
+                    passwd = get_password()
+                    tried +=1
+                if tried == 3 and not password_OK(tmpkey, passwd):
+                    print "Passphrase erronée, trop de tentatives !!!"
+                    unlink(tmpkey)
+                    exit(1)
                 unlink(tmpkey)
-                exit(1)
-            unlink(tmpkey)
-            decrypted_privkey = decrypt_privkey(privkey.data, passwd)
-            privkey.data = decrypted_privkey
-            session.commit()
-        session.flush()
-        copy(ipsec_tmp_path+sep+"ipsec.db", strongswan_database)
-        copy(ipsec_tmp_path+sep+"test-rvp", "/usr/share/eole/test-rvp")
-        system("/usr/share/eole/gen_ip_xfrm_policy")
-        system("/etc/init.d/rvp restart")
-        return True
+                decrypted_privkey = decrypt_privkey(privkey.data, passwd)
+                privkey.data = decrypted_privkey
+                session.commit()
+            session.flush()
+            copy(ipsec_tmp_path+sep+"ipsec.db", strongswan_database)
+            copy(ipsec_tmp_path+sep+"test-rvp", "/usr/share/eole/test-rvp")
+            system("/usr/share/eole/gen_ip_xfrm_policy")
+            system("/etc/init.d/rvp restart")
+            return True
+        except:
+            print_red("RVP non configuré !!!")
+            self.onecmd("exit")
 #_____________________________________________________________________________
 # launch interpreter
 cmd = ActiveRVPCli()
