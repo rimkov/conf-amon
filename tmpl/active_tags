@@ -28,6 +28,9 @@ AdminDepuisEth3
 %if %%admin_eth4 == "oui"
 AdminDepuisEth4
 %end if
+%if %%install_scribe_dmz == "oui"
+ScribeDMZ
+%end if
 %if %%is_defined('activer_nufw') and %%activer_nufw == "oui"
 auth_nufw
 %end if
