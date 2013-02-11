@@ -37,6 +37,9 @@ auth_nufw
 %if %%activer_squid2 == "oui"
 Activer squid2
 %end if
+%if %%activer_cntlm == "oui"
+cntlm
+%end if
 %if %%is_defined('activer_serveur_nfs') and %%activer_serveur_nfs == "oui"
 activer_nfs
 %end if
