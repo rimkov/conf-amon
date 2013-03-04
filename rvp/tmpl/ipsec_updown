@@ -227,8 +227,8 @@ doroute() {
 	    parms3="$parms3 src ${PLUTO_MY_SOURCEIP%/*}"
 	fi
 
-	case "$PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK" in
-	"0.0.0.0/0.0.0.0")
+	case "$PLUTO_PEER_CLIENT" in
+	"0.0.0.0/0")
 		# opportunistic encryption work around
 		# need to provide route that eclipses default, without
 		# replacing it.
@@ -278,8 +278,8 @@ fi
 case "$PLUTO_VERB:$1" in
 prepare-host:*|prepare-client:*)
 	# delete possibly-existing route (preliminary to adding a route)
-	case "$PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK" in
-	"0.0.0.0/0.0.0.0")
+	case "$PLUTO_PEER_CLIENT" in
+	"0.0.0.0/0")
 		# need to provide route that eclipses default, without
 		# replacing it.
 		parms1="0.0.0.0/1"
@@ -332,19 +332,19 @@ down-host:)
 up-client:)
 	# connection to my client subnet coming up
 	#Passer le POSTROUTING sans SNAT pour le rvp
-	/sbin/iptables -t nat -I POSTROUTING -m state --state NEW -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -t nat -I POSTROUTING -m state --state ESTABLISHED,RELATED -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
+	/sbin/iptables -t nat -I POSTROUTING -m state --state NEW -s $PLUTO_MY_CLIENT -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
+	/sbin/iptables -t nat -I POSTROUTING -m state --state ESTABLISHED,RELATED -s $PLUTO_MY_CLIENT -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
 	#Autoriser les connexions au fw pour les paquets provenant du RVP
-	/sbin/iptables -I INPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -I INPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
+	/sbin/iptables -I INPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT -j ACCEPT
+	/sbin/iptables -I INPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT -j ACCEPT
 	#Autoriser les paquets provenant du rvp et ceux a destination du rvp a traverser le FW
-	/sbin/iptables -I FORWARD -m state --state NEW -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -I FORWARD -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -I FORWARD  -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -d $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -I FORWARD  -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -d $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -j ACCEPT
+	/sbin/iptables -I FORWARD -m state --state NEW -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
+	/sbin/iptables -I FORWARD -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
+	/sbin/iptables -I FORWARD  -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT -d $PLUTO_MY_CLIENT -j ACCEPT
+	/sbin/iptables -I FORWARD  -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT -d $PLUTO_MY_CLIENT -j ACCEPT
 	#Autoriser le FW a acceder au RVP
-	/sbin/iptables -I OUTPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -I OUTPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
+	/sbin/iptables -I OUTPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
+	/sbin/iptables -I OUTPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
 	# If you are doing a custom version, firewall commands go here.
     #uproute
 
@@ -353,19 +353,19 @@ up-client:)
 down-client:)
 	# If you are doing a custom version, firewall commands go here.
 	##
-	/sbin/iptables -t nat -D POSTROUTING -m state --state NEW -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -t nat -D POSTROUTING -m state --state ESTABLISHED,RELATED -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
+	/sbin/iptables -t nat -D POSTROUTING -m state --state NEW -s $PLUTO_MY_CLIENT -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
+	/sbin/iptables -t nat -D POSTROUTING -m state --state ESTABLISHED,RELATED -s $PLUTO_MY_CLIENT -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
 	##
-	/sbin/iptables -D INPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -D INPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
+	/sbin/iptables -D INPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT -j ACCEPT
+	/sbin/iptables -D INPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT -j ACCEPT
 	##
-	/sbin/iptables -D FORWARD -m state --state NEW -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -D FORWARD -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -D FORWARD  -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -d $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -D FORWARD  -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -d $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK -j ACCEPT
+	/sbin/iptables -D FORWARD -m state --state NEW -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
+	/sbin/iptables -D FORWARD -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -s $PLUTO_MY_CLIENT -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
+	/sbin/iptables -D FORWARD  -m state --state NEW -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT -d $PLUTO_MY_CLIENT -j ACCEPT
+	/sbin/iptables -D FORWARD  -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir in -i %%interface_gw -s $PLUTO_PEER_CLIENT -d $PLUTO_MY_CLIENT -j ACCEPT
 	##
-	/sbin/iptables -D OUTPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
-	/sbin/iptables -D OUTPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK -j ACCEPT
+	/sbin/iptables -D OUTPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
+	/sbin/iptables -D OUTPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
    #downroute
 
 	;;
@@ -375,11 +375,11 @@ up-host:iptables)
 	# This is used only by the default updown script, not by your custom
 	# ones, so do not mess with it; see CAUTION comment up at top.
 	iptables -I INPUT 1 -i $PLUTO_INTERFACE -p $PLUTO_MY_PROTOCOL \
-	    -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $S_PEER_PORT \
+	    -s $PLUTO_PEER_CLIENT $S_PEER_PORT \
 	    -d $PLUTO_ME $D_MY_PORT $IPSEC_POLICY_IN -j ACCEPT
 	iptables -I OUTPUT 1 -o $PLUTO_INTERFACE -p $PLUTO_PEER_PROTOCOL \
 	    -s $PLUTO_ME $S_MY_PORT $IPSEC_POLICY_OUT \
-	    -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $D_PEER_PORT -j ACCEPT
+	    -d $PLUTO_PEER_CLIENT $D_PEER_PORT -j ACCEPT
 	#
 	# log IPsec host connection setup
 	if [ $VPN_LOGGING ]
@@ -399,11 +399,11 @@ down-host:iptables)
 	# This is used only by the default updown script, not by your custom
 	# ones, so do not mess with it; see CAUTION comment up at top.
 	iptables -D INPUT -i $PLUTO_INTERFACE -p $PLUTO_MY_PROTOCOL \
-	    -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $S_PEER_PORT \
+	    -s $PLUTO_PEER_CLIENT $S_PEER_PORT \
 	    -d $PLUTO_ME $D_MY_PORT $IPSEC_POLICY_IN -j ACCEPT
 	iptables -D OUTPUT -o $PLUTO_INTERFACE -p $PLUTO_PEER_PROTOCOL \
 	    -s $PLUTO_ME $S_MY_PORT $IPSEC_POLICY_OUT \
-	    -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $D_PEER_PORT -j ACCEPT
+	    -d $PLUTO_PEER_CLIENT $D_PEER_PORT -j ACCEPT
 	#
 	# log IPsec host connection teardown
 	if [ $VPN_LOGGING ]
@@ -425,12 +425,12 @@ up-client:iptables)
 	if [ "$PLUTO_PEER_CLIENT" != "$PLUTO_MY_SOURCEIP/32" ]
 	then
 	  iptables -I FORWARD 1 -o $PLUTO_INTERFACE -p $PLUTO_PEER_PROTOCOL \
-	      -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK $S_MY_PORT \
-	      -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $D_PEER_PORT \
+	      -s $PLUTO_MY_CLIENT $S_MY_PORT \
+	      -d $PLUTO_PEER_CLIENT $D_PEER_PORT \
 	         $IPSEC_POLICY_OUT -j ACCEPT
 	  iptables -I FORWARD 1 -i $PLUTO_INTERFACE -p $PLUTO_MY_PROTOCOL \
-	      -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $S_PEER_PORT \
-	      -d $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK $D_MY_PORT \
+	      -s $PLUTO_PEER_CLIENT $S_PEER_PORT \
+	      -d $PLUTO_MY_CLIENT $D_MY_PORT \
 	         $IPSEC_POLICY_IN -j ACCEPT
 	fi
 	#
@@ -439,12 +439,12 @@ up-client:iptables)
 	if [ -n "$PLUTO_MY_SOURCEIP" -o -n "$PLUTO_HOST_ACCESS" ]
 	then
 	  iptables -I INPUT 1 -i $PLUTO_INTERFACE -p $PLUTO_MY_PROTOCOL \
-	      -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $S_PEER_PORT \
-	      -d $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK $D_MY_PORT \
+	      -s $PLUTO_PEER_CLIENT $S_PEER_PORT \
+	      -d $PLUTO_MY_CLIENT $D_MY_PORT \
 	         $IPSEC_POLICY_IN -j ACCEPT
 	  iptables -I OUTPUT 1 -o $PLUTO_INTERFACE -p $PLUTO_PEER_PROTOCOL \
-	      -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK $S_MY_PORT \
-	      -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $D_PEER_PORT \
+	      -s $PLUTO_MY_CLIENT $S_MY_PORT \
+	      -d $PLUTO_PEER_CLIENT $D_PEER_PORT \
 	         $IPSEC_POLICY_OUT -j ACCEPT
 	fi
 	#
@@ -468,12 +468,12 @@ down-client:iptables)
 	if [ "$PLUTO_PEER_CLIENT" != "$PLUTO_MY_SOURCEIP/32" ]
 	then
 	  iptables -D FORWARD -o $PLUTO_INTERFACE -p $PLUTO_PEER_PROTOCOL \
-	      -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK $S_MY_PORT \
-	      -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $D_PEER_PORT \
+	      -s $PLUTO_MY_CLIENT $S_MY_PORT \
+	      -d $PLUTO_PEER_CLIENT $D_PEER_PORT \
 	         $IPSEC_POLICY_OUT -j ACCEPT
 	  iptables -D FORWARD -i $PLUTO_INTERFACE -p $PLUTO_MY_PROTOCOL \
-	      -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $S_PEER_PORT \
-	      -d $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK $D_MY_PORT \
+	      -s $PLUTO_PEER_CLIENT $S_PEER_PORT \
+	      -d $PLUTO_MY_CLIENT $D_MY_PORT \
 	         $IPSEC_POLICY_IN -j ACCEPT
 	fi
 	#
@@ -482,12 +482,12 @@ down-client:iptables)
 	if [ -n "$PLUTO_MY_SOURCEIP" -o -n "$PLUTO_HOST_ACCESS" ]
 	then
 	  iptables -D INPUT -i $PLUTO_INTERFACE -p $PLUTO_MY_PROTOCOL \
-	      -s $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $S_PEER_PORT \
-	      -d $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK $D_MY_PORT \
+	      -s $PLUTO_PEER_CLIENT $S_PEER_PORT \
+	      -d $PLUTO_MY_CLIENT $D_MY_PORT \
 	         $IPSEC_POLICY_IN -j ACCEPT
 	  iptables -D OUTPUT -o $PLUTO_INTERFACE -p $PLUTO_PEER_PROTOCOL \
-	      -s $PLUTO_MY_CLIENT_NET/$PLUTO_MY_CLIENT_MASK $S_MY_PORT \
-	      -d $PLUTO_PEER_CLIENT_NET/$PLUTO_PEER_CLIENT_MASK $D_PEER_PORT \
+	      -s $PLUTO_MY_CLIENT $S_MY_PORT \
+	      -d $PLUTO_PEER_CLIENT $D_PEER_PORT \
 	         $IPSEC_POLICY_OUT -j ACCEPT
 	fi
 	#
