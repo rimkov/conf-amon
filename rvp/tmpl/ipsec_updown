@@ -346,7 +346,7 @@ up-client:)
 	/sbin/iptables -I OUTPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
 	/sbin/iptables -I OUTPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
 	# If you are doing a custom version, firewall commands go here.
-    #uproute
+    uproute
 
 	;;
 
@@ -366,7 +366,7 @@ down-client:)
 	##
 	/sbin/iptables -D OUTPUT -m state --state NEW -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
 	/sbin/iptables -D OUTPUT -m state --state ESTABLISHED,RELATED -m policy --pol ipsec --proto esp --dir out -o %%interface_gw -d $PLUTO_PEER_CLIENT -j ACCEPT
-   #downroute
+   downroute
 
 	;;
 	# connection to my client subnet going down
