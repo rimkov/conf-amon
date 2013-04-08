@@ -14,7 +14,7 @@ clean() {
     # nettoyage iptables
     for i in $protocol; do
         /sbin/iptables -t mangle -D POSTROUTING -m layer7 --l7dir /etc/l7-protocols/protocols --l7proto $i
-        /sbin/iptables -D FORWARD -m limit --limit 12/min -m layer7 --l7proto $i -j LOG --log-prefix "L7FILTER-$i-LOG"
+        /sbin/iptables -D FORWARD -m limit --limit 12/min -m layer7 --l7proto $i -j LOG --log-prefix "L7FILTER-$i-LOG "
         /sbin/iptables -D FORWARD -m layer7 --l7dir /etc/l7-protocols/protocols --l7proto $i -j DROP
     done
     /sbin/iptables -D FORWARD -p udp --dport 123 -j ACCEPT
@@ -30,7 +30,7 @@ start() {
     fi
     for i in $protocol; do
         /sbin/iptables -t mangle -A POSTROUTING -m layer7 --l7dir /etc/l7-protocols/protocols --l7proto $i
-        /sbin/iptables -I FORWARD 2 -m limit --limit 12/min -m layer7 --l7proto $i -j LOG --log-prefix "L7FILTER-$i-LOG"
+        /sbin/iptables -I FORWARD 2 -m limit --limit 12/min -m layer7 --l7proto $i -j LOG --log-prefix "L7FILTER-$i-LOG "
         /sbin/iptables -I FORWARD 3 -m layer7 --l7dir /etc/l7-protocols/protocols --l7proto $i -j DROP
     done
     /sbin/iptables -I FORWARD 1 -p udp --dport 123 -j ACCEPT
