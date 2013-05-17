@@ -106,9 +106,10 @@
         <group master='ag_force_eth0_0'>
             <slave>ag_force_netmask_eth0_0</slave>
         </group>
-        <fill name='calc_val' target='ag_mail_dest'>
+        <!-- FIXME 2.4 -->
+        <!--<fill name='calc_val' target='ag_mail_dest'>
             <param type='eole' name='valeur'>system_mail_to</param>
-        </fill>
+        </fill>-->
         <condition name='hidden_if_in' source='ag_active_mail'>
             <param>non</param>
             <target type='variable'>ag_mail_dest</target>
