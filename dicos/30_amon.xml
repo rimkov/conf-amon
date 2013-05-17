@@ -14,13 +14,13 @@
 
         <family name='general'>
             <!--**** Reseau Global **** -->
-            <variable name='type_amon' type='string' description='Modèle de filtrage'>
+            <variable name='type_amon' type='string' description='Modèle de filtrage' mandatory='True'>
                 <value>2zones</value>
             </variable>
             <variable name='nombre_interfaces' redefine='True'>
                 <value>2</value>
             </variable>
-            <variable name='nom_machine' redefine='True'>
+            <variable name='eole_module' redefine='True'>
                 <value>amon</value>
             </variable>
             <variable name='install_scribe_dmz' type='oui/non' description="Activer la gestion d'un Scribe dans la DMZ" >
@@ -43,10 +43,9 @@
         </family>
 
         <family name='réseau avancé' mode='expert'>
-            <variable name='activer_routage_ipv4'  redefine='True' hidden='True'>
+            <variable name='activer_routage_ipv4' redefine='True' hidden='True'>
                 <value>oui</value>
             </variable>
-
             <!-- est remplacé par Zones-DNS sur Amon (#2795) -->
             <variable name='activer_ajout_hosts' redefine='True' hidden='True'/>
         </family>
@@ -65,7 +64,6 @@
 
     <constraints>
 
-        <check name='obligatoire' target='type_amon'/>
         <check name="valid_enum" target="type_amon">
             <param type="python">eosfunc.list_files('/usr/share/era/modeles', '*.xml', True, default=['2zones', '2zones-amonecole', '2zones-amonecole-nginx', '3zones', '3zones-scribe', '3zones-scribe-nginx', '4zones', '4zones-scribe', '4zones-scribe-nginx', '4zones-scribe-nufw', '5zones'], exception='minimal')</param>
             <param name="checkval">False</param>
@@ -81,10 +79,6 @@
             <param>non</param>
             <target type='family'>Scribe-DMZ</target>
         </condition>
-
-        <auto name='auto_copy_val' target='activer_routage_ipv4'>
-            <param>oui</param>
-        </auto>
 
     </constraints>
 
