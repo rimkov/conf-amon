@@ -162,7 +162,7 @@ esac
 # utility functions for route manipulation
 # Meddling with this stuff should not be necessary and requires great care.
 uproute() {
-	doroute add
+	doroute replace
 	ip route flush cache
 }
 downroute() {
@@ -221,7 +221,7 @@ doroute() {
 	PLUTO_MY_SOURCEIP=`ifconfig eth1|grep "inet adr"|cut -d":" -f2|cut -d" " -f1`
 
 	parms3=
-	if test "$1" = "add" -a -n "$PLUTO_MY_SOURCEIP"
+	if test "$1" = "replace" -a -n "$PLUTO_MY_SOURCEIP"
 	then
 	    addsource
 	    parms3="$parms3 src ${PLUTO_MY_SOURCEIP%/*}"
