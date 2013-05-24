@@ -218,7 +218,7 @@ doroute() {
 	    fi
         fi
 	#PLUTO_MY_SOURCEIP=`grep -A 2 "auto eth1" /etc/network/interfaces |grep address|cut -d" " -f2`
-	PLUTO_MY_SOURCEIP=`ifconfig eth1|grep "inet adr"|cut -d":" -f2|cut -d" " -f1`
+	PLUTO_MY_SOURCEIP=`ifconfig eth1|grep "inet ad.\?r"|cut -d":" -f2|cut -d" " -f1`
 
 	parms3=
 	if test "$1" = "replace" -a -n "$PLUTO_MY_SOURCEIP"
