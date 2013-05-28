@@ -10,7 +10,7 @@
             </variable>
         </family>
         <family name='rvp'>
-            <variable name='sw_install_vpn_route' redefine='True' >
+            <variable name='sw_install_vpn_route' redefine='True' mode='expert' >
                 <value>non</value>
             </variable>
             <variable name='adresse_network_zone_rvp' type='ip' description='Adresse réseau de la zone RVP' multi='True' />
@@ -39,7 +39,8 @@
             <slave>autoriser_rvp_autres</slave>
         </group>
     </constraints>
-    <help/>
+    <help>
+    </help>
 </creole>
 <!-- vim: ts=4 sw=4 expandtab
 -->
