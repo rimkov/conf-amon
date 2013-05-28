@@ -20,7 +20,7 @@ start() {
 		. /etc/agregation.conf
 		if [ -n "$PAUSE" ]; then
 			log_daemon_msg  "Démarrage du service Agregation"
-			/usr/bin/agregation.sh &>/dev/null &
+			/usr/sbin/agregation.sh &>/dev/null &
 			RETVAL=$?
 			log_end_msg $RETVAL
 			[ $RETVAL -eq 0 ] && touch /var/lock/agregation

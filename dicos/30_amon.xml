@@ -3,31 +3,20 @@
 <creole>
 
     <files>
-        <!--<file name='/etc/chkrootkit.conf'/>-->
         <file name='/etc/host.conf'/>
         <file name='/etc/sudoers.d/amon' source='amon.sudo' mode="0440"/>
-        <file name='/usr/share/era/backend/data/active_tags'/>
         <file name='/etc/cron.d/amon-firewall' source='cron-root'/>
     </files>
 
     <variables>
 
         <family name='general'>
-            <!--**** Reseau Global **** -->
-            <variable name='type_amon' type='string' description='Modèle de filtrage' mandatory='True'>
-                <value>2zones</value>
-            </variable>
             <variable name='nombre_interfaces' redefine='True'>
                 <value>2</value>
             </variable>
             <variable name='eole_module' redefine='True'>
                 <value>amon</value>
             </variable>
-            <variable name='install_scribe_dmz' type='oui/non' description="Activer la gestion d'un Scribe dans la DMZ" >
-                <value>non</value>
-            </variable>
-            <!-- ajoute adresses_ip_clients_nfs pour extermite Era #3594 -->
-            <variable name='adresses_ip_clients_nfs' type='ip' exists='False' hidden='True'/>
         </family>
 
         <family name='Interface-0'>
@@ -38,10 +27,6 @@
             <variable name='dns_master_eth0' redefine='True' mode='expert'/>
         </family>
 
-        <family name='Interface-1'>
-            <variable name='era_proxy_bypass' type='ip' description='Destinations non redirigées sur le proxy' multi='True' mode='expert'/>
-        </family>
-
         <family name='réseau avancé' mode='expert'>
             <variable name='activer_routage_ipv4' redefine='True' hidden='True'>
                 <value>oui</value>
@@ -50,24 +35,12 @@
             <variable name='activer_ajout_hosts' redefine='True' hidden='True'/>
         </family>
 
-        <family name='Scribe-DMZ' hidden='True'>
-            <variable name='nom_serveur_scribe_dmz' type='string' description='Nom du Scribe dans la DMZ (pour enregistrement DNS)' />
-            <variable name='ip_serveur_scribe_dmz' type='ip' description='Adresse IP du Scribe dans la DMZ' />
-        </family>
-
-        <separators>
-            <separator name='nom_cache_pere'>Proxy pere general</separator>
-            <separator name='nom_domaine_local_supp'>Ajout de domaines locaux supplémentaires (DNS master sur ces domaines)</separator>
-        </separators>
+        <separators/>
 
     </variables>
 
     <constraints>
 
-        <check name="valid_enum" target="type_amon">
-            <param type="python">eosfunc.list_files('/usr/share/era/modeles', '*.xml', True, default=['2zones', '2zones-amonecole', '2zones-amonecole-nginx', '3zones', '3zones-scribe', '3zones-scribe-nginx', '4zones', '4zones-scribe', '4zones-scribe-nginx', '4zones-scribe-nufw', '5zones'], exception='minimal')</param>
-            <param name="checkval">False</param>
-        </check>
         <!-- Amon >= 2 cartes réseau -->
         <check name="valid_enum" target="nombre_interfaces">
             <param>['2','3','4','5']</param>
@@ -75,10 +48,6 @@
         <check name="valid_enum" target="eth0_method">
             <param>['statique','dhcp','pppoe']</param>
         </check>
-        <condition name='hidden_if_in' source='install_scribe_dmz'>
-            <param>non</param>
-            <target type='family'>Scribe-DMZ</target>
-        </condition>
 
     </constraints>
 
