@@ -13,7 +13,6 @@ LOGROTATE_D=/etc/logrotate.d
 BIN_DIR=/usr/bin
 #REP de creation des differents paquets
 CONFAMON_DIR=$(DESTDIR)/conf-amon
-RVP_DIR=$(DESTDIR)/eole-rvp
 DHCRELAY_DIR=$(DESTDIR)/eole-dhcrelay
 LOGROTATE=logrotate
 
@@ -55,20 +54,6 @@ install:
 	cp -f init.d/* $(CONFAMON_DIR)/$(INIT_DIR)
 	# configuration EAD
 	cp -rf ead/* $(CONFAMON_DIR)/$(EAD_DIR)
-
-	#rvp
-	mkdir -p $(RVP_DIR)/$(EOLE_CONF_DIR)
-	mkdir -p $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
-	mkdir -p $(RVP_DIR)/$(AGENT_DIR)
-	mkdir -p $(RVP_DIR)/$(INIT_DIR)/
-	mkdir -p $(RVP_DIR)/$(LOGROTATE_D)
-	cp -rf rvp/eole/* $(RVP_DIR)/$(EOLE_DIR)
-	cp -rf rvp/dicos $(RVP_DIR)/$(EOLE_CONF_DIR)/dicos
-	cp -rf rvp/tmpl $(RVP_DIR)/$(EOLE_CONF_DIR)/distrib
-	cp -f  rvp/diagnose/* $(RVP_DIR)/$(EOLE_DIR)/diagnose/module
-	cp -f  rvp/zephir/* $(RVP_DIR)/$(AGENT_DIR)
-	cp -f rvp/init.d/* $(RVP_DIR)/$(INIT_DIR)/
-	cp -f rvp/$(LOGROTATE)/* $(RVP_DIR)/$(LOGROTATE_D)/
 
 	#dhcrelay
 	mkdir -p $(DHCRELAY_DIR)/$(EOLE_CONF_DIR)/distrib
