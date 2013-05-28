@@ -10,6 +10,9 @@
             </variable>
         </family>
         <family name='rvp'>
+            <variable name='sw_install_vpn_route' redefine='True' >
+                <value>non</value>
+            </variable>
             <variable name='adresse_network_zone_rvp' type='ip' description='Adresse réseau de la zone RVP' multi='True' />
             <variable name='adresse_netmask_zone_rvp' type='netmask' description='Masque de sous-réseau de la zone RVP' />
             <variable name='autoriser_rvp_autres' type='oui/non' description="Autoriser d'autres zones que eth1 à accéder à ce réseau">
