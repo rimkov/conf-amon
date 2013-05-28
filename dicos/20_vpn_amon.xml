@@ -5,7 +5,7 @@
     </files>
     <variables>
         <family name='services'>
-            <variable name='install_rvp' redefine='True' >
+            <variable name='install_rvp' redefine='True' hidden='False' >
                 <value>non</value>
             </variable>
         </family>
