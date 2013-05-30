@@ -1,7 +1,0 @@
-#!/bin/bash
-# Création du fichier de configuration P2P
-if [ ! -f /var/lib/eole/config/killp2p.conf ];then
-    echo "Initialisation du filtrage P2P"
-    echo "KILLP2P=on" > /var/lib/eole/config/killp2p.conf
-fi
-exit 0

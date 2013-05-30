@@ -6,7 +6,6 @@ import os, sys, shutil
 LISTE_FICHIERS=[
         '/etc/squid/filtres-users',
         '/var/www/ead/tmp/',
-        '/var/www/ead/serialize_btn.srz',
         '/usr/share/ead/perso/',
         '/usr/share/ead2/backend/config/roles_local.ini',
         '/usr/share/ead2/backend/config/perm_local.ini',
@@ -25,7 +24,6 @@ LISTE_FICHIERS=[
         '/usr/share/ead2/backend/tmp/filtrage-contenu1',
         '/var/lib/blacklists/dansguardian0/',
         '/var/lib/blacklists/dansguardian1/',
-        '/var/www/ead/tmp/kill-p2p'
 ]
 
 def copie_fich(repsauv):
@@ -46,8 +44,6 @@ def copy_modele_parefeu(repsauv):
     os.system('cp -f %s /usr/share/era/modeles/'%os.path.join(repsauv,'*.xml'))
 
 def lance_commandes(init_dans=False):
-    if os.path.isfile('/var/www/ead/tmp/kill-p2p'):
-        os.system('/etc/init.d/killp2p restart')
     if init_dans:
         os.system('/usr/share/eole/prereconf/config >/dev/null 2>&1')
         os.system('/etc/init.d/bastion restart')
