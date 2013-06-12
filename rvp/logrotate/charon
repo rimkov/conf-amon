@@ -1,7 +1,0 @@
-/var/log/rsyslog/local/charon/*.log {
-   rotate 52
-   missingok
-   notifempty
-   weekly
-   compress
-}
