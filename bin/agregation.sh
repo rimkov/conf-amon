@@ -409,7 +409,7 @@ while : ; do
                 # Mangle sur les 2 liens
 	            balance eth1
 	            [ $nombre_interfaces -ge 3 ] && balance eth2
-	            [ $nombre_interfaces -ge 4 ] && wan2 eth3
+	            [ $nombre_interfaces -ge 4 ] && wan1 eth3
     	        [ $nombre_interfaces -eq 5 ] && wan2 eth4
 			else
                 #mode fail-over
@@ -430,7 +430,7 @@ while : ; do
 	    		# Mangle sur les 2 liens
 	            balance eth1
 	            [ $nombre_interfaces -ge 3 ] && balance eth2
-	            [ $nombre_interfaces -ge 4 ] && wan2 eth3
+	            [ $nombre_interfaces -ge 4 ] && wan1 eth3
 	            [ $nombre_interfaces -eq 5 ] && wan2 eth4
 			fi
 
