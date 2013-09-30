@@ -43,7 +43,7 @@
             <variable name='ag_timeout' type='number' description='Timeout de la requête DNS (en secondes)' >
                 <value>1</value>
             </variable>
-            <variable name='ag_testdns' type='string' description='Adresse DNS testée' multi='True' >
+            <variable name='ag_testdns' type='domain_strict' description='Adresse DNS testée' multi='True' >
                 <value>www.google.com</value>
             </variable>
             <variable name='ag_nbsucces' type='number' description="Nombre de succès avant changement d'état">
@@ -56,7 +56,7 @@
             <variable name='ag_active_mail' type='oui/non' description='Activation des alertes mail'>
                 <value>non</value>
             </variable>
-            <variable name='ag_mail_dest' type='string' description="Adresse mail d'alerte" multi='True' mandatory='True'/>
+            <variable name='ag_mail_dest' type='mail' description="Adresse mail d'alerte" multi='True' mandatory='True'/>
         </family>
 
         <separators>
