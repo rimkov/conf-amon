@@ -32,7 +32,7 @@
         </separators>
     </variables>
     <constraints>
-        <condition name='hidden_if_in' source='install_rvp'>
+        <condition name='disabled_if_in' source='install_rvp'>
             <param>non</param>
             <target type='family'>rvp</target>
             <target type='filelist'>rvp</target>

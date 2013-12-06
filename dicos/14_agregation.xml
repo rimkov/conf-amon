@@ -72,11 +72,11 @@
 
     <constraints>
         <!-- FIXME: l'agrégation nécessite un alias sur eth0 -->
-        <condition name='hidden_if_in' source='alias_eth0'>
+        <condition name='disabled_if_in' source='alias_eth0'>
             <param>non</param>
             <target type='variable'>activer_agregation</target>
         </condition>
-        <condition name='hidden_if_in' source='activer_agregation'>
+        <condition name='disabled_if_in' source='activer_agregation'>
             <param>non</param>
             <target type='family'>agregation</target>
             <target type='filelist'>agregation</target>
@@ -84,12 +84,12 @@
         <check name="valid_enum" target='ag_mode'>
             <param>['mode_lb','mode_fo']</param>
         </check>
-        <condition name='hidden_if_in' source='ag_mode'>
+        <condition name='disabled_if_in' source='ag_mode'>
             <param>mode_fo</param>
             <target type='variable'>ag_weight_eth0</target>
             <target type='variable'>ag_weight_eth0_0</target>
         </condition>
-        <condition name='hidden_if_in' source='ag_mode'>
+        <condition name='disabled_if_in' source='ag_mode'>
             <param>mode_lb</param>
             <target type='variable'>ag_fo_etat_eth0</target>
             <target type='variable'>ag_fo_etat_eth0_0</target>
@@ -109,7 +109,7 @@
         <fill name='calc_val' target='ag_mail_dest'>
             <param type='eole' name='valeur'>system_mail_to</param>
         </fill>
-        <condition name='hidden_if_in' source='ag_active_mail'>
+        <condition name='disabled_if_in' source='ag_active_mail'>
             <param>non</param>
             <target type='variable'>ag_mail_dest</target>
         </condition>
