@@ -25,7 +25,7 @@
             <variable name='ag_force_netmask_eth0' type='netmask' description='Masque pour destination forcée sur le lien 1'>
                 <value>255.255.255.255</value>
             </variable>
-            <variable name='ag_dns_eth0' type='ip' description='Adresse du DNS sur le lien 1' multi='True'/>
+            <variable name='ag_dns_eth0' type='ip' description='Adresse du DNS sur le lien 1' multi='True' mandatory='True'/>
             <variable name='ag_fo_etat_eth0' type='string' description='Etat actif ou passif pour fail-over lien 1'/>
             <variable name='ag_weight_eth0' type='number' description='Débit mesuré sur le lien 1 (entier en Mbps)' mandatory='True'/>
             <!-- lien 2 -->
@@ -33,7 +33,7 @@
             <variable name='ag_force_netmask_eth0_0' type='netmask' description='Masque pour destination forcée sur le lien 2'>
                 <value>255.255.255.255</value>
             </variable>
-            <variable name='ag_dns_eth0_0' type='ip' description='Adresse du DNS sur le lien 2' multi='True'/>
+            <variable name='ag_dns_eth0_0' type='ip' description='Adresse du DNS sur le lien 2' multi='True' mandatory='True'/>
             <variable name='ag_fo_etat_eth0_0' type='string' description='Etat actif ou passif pour fail-over lien 2'/>
             <variable name='ag_weight_eth0_0' type='number' description='Débit mesuré sur le lien 2 (entier en Mbps)' mandatory='True'/>
             <!-- divers -->
