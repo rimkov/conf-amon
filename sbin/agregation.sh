@@ -211,7 +211,7 @@ fi
 check_T1=$(iptables-save |grep "RESTOREMARK" |wc -l)
 check_T2=$(iptables-save |grep "T2" | wc -l)
 check_RESTOREMARK=$(iptables-save |grep "T1" |wc -l)
-check_PREROUTING=$(iptables-save |grep "T1" |wc -l)
+check_PREROUTING=$(iptables-save |grep "PREROUTING" |wc -l)
 if [ "$check_PREROUTING" -gt "1" ] ; then
 /sbin/iptables -t mangle -F PREROUTING
 fi
