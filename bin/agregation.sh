@@ -208,9 +208,9 @@ fi
 ####################
 
 # Vidage des chaines MANGLE
-check_T1=$(iptables-save |grep "RESTOREMARK" |wc -l)
+check_T1=$(iptables-save |grep "T1" |wc -l)
 check_T2=$(iptables-save |grep "T2" | wc -l)
-check_RESTOREMARK=$(iptables-save |grep "T1" |wc -l)
+check_RESTOREMARK=$(iptables-save |grep "RESTOREMARK" |wc -l)
 check_PREROUTING=$(iptables-save |grep "PREROUTING" |wc -l)
 if [ "$check_PREROUTING" -gt "1" ] ; then
 /sbin/iptables -t mangle -F PREROUTING
@@ -237,7 +237,7 @@ if [ -z "$chaine_T1" ] ; then
 /sbin/iptables -t mangle -A T1 -j CONNMARK --save-mark
 fi
 chaine_T2=$(iptables-save | grep ":T2")
-if [ -z "$chaine_T1" ] ; then
+if [ -z "$chaine_T2" ] ; then
 /sbin/iptables -t mangle -N T2
 /sbin/iptables -t mangle -A T2 -d 10.0.0.0/8 -j RETURN
 /sbin/iptables -t mangle -A T2 -d 172.16.0.0/12 -j RETURN
