@@ -31,8 +31,6 @@
             <variable name='activer_routage_ipv4' redefine='True' hidden='True'>
                 <value>oui</value>
             </variable>
-            <!-- est remplacé par Zones-DNS sur Amon (#2795) -->
-            <variable name='activer_ajout_hosts' redefine='True' hidden='True'/>
         </family>
 
         <separators/>
