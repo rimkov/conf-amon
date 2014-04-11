@@ -11,7 +11,7 @@
     <variables>
 
         <family name='general'>
-            <variable name='nombre_interfaces' redefine='True'>
+            <variable name='nombre_interfaces' redefine='True' mode='basic'>
                 <value>2</value>
             </variable>
             <variable name='eole_module' redefine='True'>
