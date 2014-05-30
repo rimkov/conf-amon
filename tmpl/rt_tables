@@ -1,0 +1,13 @@
+#
+# reserved values
+#
+255	local
+254	main
+253	default
+0	unspec
+#
+# local
+%if %%getVar('activer_agregation', 'non') == 'oui'
+2 T2
+1 T1
+%end if

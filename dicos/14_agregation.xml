@@ -3,6 +3,7 @@
 <creole>
 
     <files>
+        <file name='/etc/iproute2/rt_tables'/>
         <file filelist='agregation' name='/etc/agregation.conf' rm='True'/>
         <file filelist='agregation' name='/etc/logrotate.d/agregation' source='agregation.logrotate'/>
     </files>
