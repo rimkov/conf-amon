@@ -18,14 +18,14 @@
 
 #Initialisation des variables d'etat
 # Dernier etat du lien (0: OK, 1: NOK)
-LLS1=1
-LLS2=1
+LLS1=0
+LLS2=0
 # Dernier etat du host
-LHS1=1
-LHS2=1
+LHS1=0
+LHS2=0
 # Etat actuel du host
-CHS1=1
-CHS2=1
+CHS1=0
+CHS2=0
 # Le lien doit changer (O:oui , 1:non)
 CLS1=1
 CLS2=1
@@ -155,30 +155,31 @@ active_link_to() {
 # Large recent table
 /sbin/modprobe ipt_recent ip_list_tot=4000
 
-# Vidage du cache
+# Vidage du cache et des regles de routage
 /sbin/ip route flush cache
+/sbin/ip route del default
+/sbin/ip route delete default via $GW1 dev $nom_zone_eth0
+/sbin/ip route delete default via $GW2 dev $nom_zone_eth0
+ipruleclear T1
+ipruleclear T2
 
 # Chargement des regles de routage
-/sbin/ip route del default
-
-ipruleclear T1
 /sbin/ip rule add from $WAN1 table T1
 /sbin/ip route add $NET1 dev $nom_zone_eth0 src $WAN1 table T1
 /sbin/ip route add default via $GW1 table T1
 /sbin/ip rule add fwmark 1 table T1
 
-ipruleclear T2
 /sbin/ip rule add from $WAN2 table T2
 /sbin/ip route add $NET2 dev $nom_zone_eth0 src $WAN2 table T2
 /sbin/ip route add default via $GW2 table T2
 /sbin/ip rule add fwmark 2 table T2
 
-for ip_force1 in ${FORCE1[@]}; do
-    /sbin/ip route add $ip_force1 via $GW1 table main
-done
-for ip_force2 in ${FORCE2[@]}; do
-    /sbin/ip route add $ip_force2 via $GW2 table main
-done
+#for ip_force1 in ${FORCE1[@]}; do
+#    /sbin/ip route add $ip_force1 via $GW1 table main
+#done
+#for ip_force2 in ${FORCE2[@]}; do
+#    /sbin/ip route add $ip_force2 via $GW2 table main
+#done
 
 for ip_dns1 in ${DNS1[@]}; do
     /sbin/ip route add $ip_dns1 via $GW1 table main
@@ -187,23 +188,7 @@ for ip_dns2 in ${DNS2[@]}; do
     /sbin/ip route add $ip_dns2 via $GW2 table main
 done
 
-####################
-# test mode load balancing ou fail-over (actif/passif)
-if [ $ag_mode == "mode_lb" ] ; then
-    /sbin/ip route delete default via $GW1 dev $nom_zone_eth0
-    /sbin/ip route delete default via $GW2 dev $nom_zone_eth0
-    /sbin/ip route add default scope global nexthop via $GW1 dev $nom_zone_eth0 weight $W1 nexthop via $GW2 dev $nom_zone_eth0 weight $W2
-fi
 
-if [ $ag_mode == "mode_fo" ] ;then
-    if [ $ag_fo_etat_eth0 == "actif" ] && [ $ag_fo_etat_eth0_0 == "passif" ] ; then
-        /sbin/ip route delete default
-        /sbin/ip route add default via $GW1 dev $nom_zone_eth0
-    elif [ $ag_fo_etat_eth0 == "passif" ] && [ $ag_fo_etat_eth0_0 == "actif" ] ; then
-        /sbin/ip route delete default
-        /sbin/ip route add default via $GW2 dev $nom_zone_eth0
-    fi
-fi
 ####################
 
 # Vidage des chaines MANGLE
@@ -287,13 +272,16 @@ Checkstate() {
     else
         eval CHS$L=0
     fi
+    essai=$(eval echo \$COUNT$L)
     if [ $(eval echo \$LHS$L) -ne $(eval echo \$CHS$L) ]; then
-        Aecho "L'etat du lien $L a change de $(expl $(eval echo \$LHS$L)) a $(expl $(eval echo \$CHS$L))"
-        eval COUNT$L=1
-    else
-        if [ $(eval echo \$LHS$L) -ne $(eval echo \$LLS$L) ]; then
-            eval COUNT$L=$(( $(eval echo \$COUNT$L) + 1 ))
+        if [ $(eval echo \$LLS$L) -eq 1 ]; then
+            msg=" (essai $essai/$NBSUCCES)"
         fi
+        Aecho "L'etat du lien $L a change de $(expl $(eval echo \$LHS$L)) a $(expl $(eval echo \$CHS$L))$msg"
+        eval COUNT$L=1
+    elif [ $(eval echo \$LHS$L) -ne $(eval echo \$LLS$L) ]; then
+        Aecho "L'etat du lien $L est bien change (essai $essai/$NBSUCCES)"
+        eval COUNT$L=$(( $(eval echo \$COUNT$L) + 1 ))
     fi
     if [[ $(eval echo \$COUNT$L) -ge $NBSUCCES || ($(eval echo \$LLS$L) -eq 0 && $(eval echo \$COUNT$L) -ge $NBECHECS) ]]; then
         Aecho "Le lien $L n'est plus $(expl $(eval echo \$LLS$L))"
@@ -342,8 +330,31 @@ active_forced_links () {
     done
 }
 
+activate() {
+    if [ $ag_mode == "mode_lb" ] ; then
+        # load balancing
+        # Iproute2 sur les 2 liens
+        /sbin/ip route replace default proto static nexthop via $GW1 dev $nom_zone_eth0 weight $W1 nexthop via $GW2 dev $nom_zone_eth0 weight $W2
+        active_forced_links
+        # Mangle sur les 2 liens
+        active_balancing_to 1
+        [ $nombre_interfaces -ge 3 ] && active_balancing_to 2
+        [ $nombre_interfaces -ge 4 ] && active_link_to 3 T1
+        [ $nombre_interfaces -eq 5 ] && active_link_to 4 T2
+    else
+        #mode fail-over
+        active_forced_links
+        if [ $ag_fo_etat_eth0 == "actif" ] && [ $ag_fo_etat_eth0_0 == "passif" ] ; then
+            /sbin/ip route replace default via $GW1 dev $nom_zone_eth0
+        elif [ $ag_fo_etat_eth0 == "passif" ] && [ $ag_fo_etat_eth0_0 == "actif" ] ; then
+            /sbin/ip route replace default via $GW2 dev $nom_zone_eth0
+        fi
+    fi
+}
+
 # Log du démarrage
 Aecho "Initialisation de l'agregation de liens" 'MSG'
+activate
 
 #Boucle infini pour tester les liens
 while : ; do
@@ -361,25 +372,7 @@ while : ; do
         # Dernier état du lien 1 OK et du lien 2 OK
         elif [[ $LLS1 -eq 0 && $LLS2 -eq 0 ]]; then
             Aecho "Rechargement de la repartition sur les 2 liens" 'MSG' 'oui'
-            if [ $ag_mode == "mode_lb" ] ; then
-                # load balancing
-                # Iproute2 sur les 2 liens
-                /sbin/ip route replace default proto static nexthop via $GW1 dev $nom_zone_eth0 weight $W1 nexthop via $GW2 dev $nom_zone_eth0 weight $W2
-                active_forced_links
-                # Mangle sur les 2 liens
-                active_balancing_to 1
-                [ $nombre_interfaces -ge 3 ] && active_balancing_to 2
-                [ $nombre_interfaces -ge 4 ] && active_link_to 3 T1
-                [ $nombre_interfaces -eq 5 ] && active_link_to 4 T2
-            else
-                #mode fail-over
-                active_forced_links
-                if [ $ag_fo_etat_eth0 == "actif" ] && [ $ag_fo_etat_eth0_0 == "passif" ] ; then
-                    /sbin/ip route replace default via $GW1 dev $nom_zone_eth0
-                elif [ $ag_fo_etat_eth0 == "passif" ] && [ $ag_fo_etat_eth0_0 == "actif" ] ; then
-                    /sbin/ip route replace default via $GW2 dev $nom_zone_eth0
-                fi
-            fi
+            activate
         fi
     fi
 
