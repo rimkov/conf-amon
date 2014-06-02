@@ -109,47 +109,84 @@ iptablesmangleclear () {
 }
 
 #Definition de la repartition par interface $1 = nom de la carte
-active_balancing_to() {
-    interface=$(CreoleGet nom_carte_eth${1})
+_active_balancing_to() {
+    interface=$1
+    network=$2
     iptablesmangleclear $interface
-    network=$(CreoleGet adresse_network_eth${1})/$(CreoleGet adresse_netmask_eth${1})
     #Si non NEW
-    /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -m state ! --state NEW -j RESTOREMARK
-    /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -m state ! --state NEW -j RETURN
+    /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state ! --state NEW -j RESTOREMARK
+    /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state ! --state NEW -j RETURN
     #Routes forcees
     for ip_force1 in ${FORCE1[@]}; do
-        /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -d $ip_force1 -m state --state NEW -j T1
-        /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -d $ip_force1 -m state --state NEW -j RETURN
+        /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -d $ip_force1 -m state --state NEW -j T1
+        /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -d $ip_force1 -m state --state NEW -j RETURN
     done
     for ip_force2 in ${FORCE2[@]}; do
-        /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -d $ip_force2 -m state --state NEW -j T2
-        /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -d $ip_force2 -m state --state NEW -j RETURN
+        /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -d $ip_force2 -m state --state NEW -j T2
+        /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -d $ip_force2 -m state --state NEW -j RETURN
     done
     #Si NEW et recent alors Tag puis RETURN
-    /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -m state --state NEW -m recent --name T1 --update --rdest --seconds 3600 -j T1
-    /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -m state --state NEW -m recent --name T1 --update --rdest --seconds 3600 -j RETURN
-    /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -m state --state NEW -m recent --name T2 --update --rdest --seconds 3600 -j T2
-    /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -m state --state NEW -m recent --name T2 --update --rdest --seconds 3600 -j RETURN
+    /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state --state NEW -m recent --name T1 --update --rdest --seconds 3600 -j T1
+    /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state --state NEW -m recent --name T1 --update --rdest --seconds 3600 -j RETURN
+    /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state --state NEW -m recent --name T2 --update --rdest --seconds 3600 -j T2
+    /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state --state NEW -m recent --name T2 --update --rdest --seconds 3600 -j RETURN
     #Si NEW sans recent alors Tag puis RETURN
     #FIXME pas compris a quoi ca sert
-    /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -m state --state NEW -j T2
+    /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state --state NEW -j T2
     #repertition entre lien 1 et 2
-    /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -m state --state NEW -m statistic --mode random --probability 0.$WCO -m recent --name T2 --set --rdest -j RETURN
-    /sbin/iptables -t mangle -A PREROUTING -i $1 -s $network -m state --state NEW -m recent --name T1 --set --rdest -j T1
+    /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state --state NEW -m statistic --mode random --probability 0.$WCO -m recent --name T2 --set --rdest -j RETURN
+    /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state --state NEW -m recent --name T1 --set --rdest -j T1
+}
+active_balancing_to() {
+    ointerface=$(CreoleGet nom_carte_eth${1})
+    network=$(CreoleGet adresse_network_eth${1})/$(CreoleGet adresse_netmask_eth${1})
+    _active_balancing_to $ointerface $network
+    if [ "$(CreoleGet vlan_eth${1})" = "oui" ]; then
+        VLAN_ID=($(CreoleGet vlan_id_eth${1}))
+        VLAN_Network=($(CreoleGet vlan_network_eth${1}))
+        VLAN_Netmask=($(CreoleGet vlan_netmask_eth${1}))
+        NB_VLAN=${#VLAN_ID[*]}
+        for ((id=0; id < $NB_VLAN; id+=1))
+        do
+            interface_vlan="$ointerface:${VLAN_ID[id]}"
+            network_vlan="${VLAN_Network[id]}/${VLAN_Netmask[id]}"
+            _active_balancing_to $interface_vlan $network_vlan
+        done
+    fi
 }
 
 #Definition du flux par interface
 #$1 = numero de la carte (0, 1, 2, ...)
 #$2 = T1 ou T2
-active_link_to() {
-    interface=$(CreoleGet nom_carte_eth${1})
-    network=$(CreoleGet adresse_network_eth{1})/$(CreoleGet adresse_netmask_eth{1})
+
+_active_link_to() {
+    interface=$1
+    network=$2
+    link=$3
     iptablesmangleclear $interface
     #Si non NEW
     /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state ! --state NEW -j RESTOREMARK
     /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state ! --state NEW -j RETURN
     #Marques sur $2
-    /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state --state NEW -j $2
+    /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state --state NEW -j $link
+}
+active_link_to() {
+    ointerface=$(CreoleGet nom_carte_eth${1})
+    network=$(CreoleGet adresse_network_eth${1})/$(CreoleGet adresse_netmask_eth${1})
+    link=$2
+    _active_link_to $ointerface $network $link
+    if [ "$(CreoleGet vlan_eth${1})" = "oui" ]; then
+        VLAN_ID=($(CreoleGet vlan_id_eth${1}))
+        VLAN_Network=($(CreoleGet vlan_network_eth${1}))
+        VLAN_Netmask=($(CreoleGet vlan_netmask_eth${1}))
+        NB_VLAN=${#VLAN_ID[*]}
+        for ((id=0; id < $NB_VLAN; id+=1))
+        do
+            interface_vlan="$ointerface:${VLAN_ID[id]}"
+            network_vlan="${VLAN_Network[id]}/${VLAN_Netmask[id]}"
+            _active_link_to $interface_vlan $network_vlan $link
+        done
+    fi
 }
 ## Initialisation
 # Large recent table
