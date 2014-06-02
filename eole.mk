@@ -1,4 +1,4 @@
-# 
+#
 # NE PAS EDITER CE FICHIER
 #
 # Utiliser <appli>.mk à inclure à la fin de Makefile
@@ -25,6 +25,11 @@ INSTALL_PROGRAM         := install -m 755
 INSTALL_DIRECTORY       := install -m 755 -d
 INSTALL_RECURSIVE       := cp -dr --no-preserve=ownership
 
+# Standard path
+bin_PROG_DIR		:= $(DESTDIR)/usr/bin
+sbin_PROG_DIR		:= $(DESTDIR)/usr/sbin
+man8_DATA_DIR		:= $(DESTDIR)/usr/share/man/fr.UTF-8/man8
+
 # Base
 eole_DIR                := $(DESTDIR)/usr/share/eole
 
@@ -38,20 +43,28 @@ endif
 creole_DIR              := $(eole_DIR)/creole
 dicos_DATA_DIR          := $(creole_DIR)/dicos
 tmpl_DATA_DIR           := $(creole_DIR)/distrib
+preservice_PROG_DIR     := $(eole_DIR)/preservice
 pretemplate_PROG_DIR    := $(eole_DIR)/pretemplate
 posttemplate_PROG_DIR   := $(eole_DIR)/posttemplate
 postservice_PROG_DIR    := $(eole_DIR)/postservice
+ifeq ($(strip $(EOLE_VERSION)), 2.3)
 firewall_DATA_DIR       := $(eole_DIR)/firewall
+endif
 bacula_restore_DATA_DIR := $(eole_DIR)/bacula/restore
 bacula_fichier_DATA_DIR := $(DESTDIR)/etc/bacula/baculafichiers.d
+ifeq ($(strip $(EOLE_VERSION)), 2.3)
 schedule_pre_PROG_DIR   := $(eole_DIR)/schedule/pre
 schedule_post_PROG_DIR  := $(eole_DIR)/schedule/post
+else
+schedule_scripts_PROG_DIR	:= $(eole_DIR)/schedule/scripts
+endif
 extra_REC_DIR		:= $(creole_DIR)/extra
 
 # Zéphir
 zephir_DATA_DIR         := $(DESTDIR)/usr/share/zephir
 zephir_configs_DATA_DIR := $(zephir_DATA_DIR)/monitor/configs
 zephir_srv_DATA_DIR     := $(zephir_configs_DATA_DIR)/services
+zephir_scripts_PROG_DIR := $(zephir_DATA_DIR)/scripts
 
 # SSO
 sso_DATA_DIR            := $(DESTDIR)/usr/share/sso
@@ -94,6 +107,8 @@ certs_DATA_DIR		:= $(eole_DIR)/certs
 # Logrotate
 logrotate_DATA_DIR      := $(DESTDIR)/etc/logrotate.d
 
+# Cron
+cron_PROG_DIR 		:= $(DESTDIR)/etc/cron.daily
 
 # Python modules
 ifneq ($(DESTDIR),)
@@ -111,7 +126,7 @@ install:: install-dirs install-files
 # $1 = command to run
 # $2 = source directory
 # $3 = destination directory
-define fc_install_file  
+define fc_install_file
 	if [ -d $2 ]; then					\
 		for file in `ls -1 $2/`; do			\
 		   $1 $2/$$file $3 || true;			\
@@ -138,7 +153,7 @@ endef
 ##
 
 # $*   : name of variable
-# $($*): value of variable 
+# $($*): value of variable
 %-instdata:
 	$(call fc_install_file, $(INSTALL_DATA), $(subst _,/,$(subst _DATA_DIR,,$*)), $($*))
 
