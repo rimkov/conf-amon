@@ -19,6 +19,12 @@
             </variable>
         </family>
 
+        <family name='services'>
+            <variable name='activer_clam' redefine='True'>
+                <value>non</value>
+            </variable>
+        </family>
+
         <family name='Interface-0'>
             <variable name='eth0_method' redefine='True' />
             <variable name='activer_dns_eth0' redefine='True' mode='expert'>
