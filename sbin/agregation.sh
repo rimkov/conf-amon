@@ -100,7 +100,7 @@ iptablessnatclear () {
 iptablesmangleclear () {
     i=1
     while [ "$i" -le `/sbin/iptables -t mangle -S PREROUTING|wc -l` ]; do
-        if [ -n "`/sbin/iptables -t mangle -S PREROUTING $i|grep "i $1"`" ]; then
+        if [ -n "`/sbin/iptables -t mangle -S PREROUTING $i|grep " -i $1 "`" ]; then
             /sbin/iptables -t mangle -D PREROUTING $i
         else
             let i++
@@ -112,7 +112,6 @@ iptablesmangleclear () {
 _active_balancing_to() {
     interface=$1
     network=$2
-    iptablesmangleclear $interface
     #Si non NEW
     /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state ! --state NEW -j RESTOREMARK
     /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state ! --state NEW -j RETURN
@@ -140,6 +139,7 @@ _active_balancing_to() {
 active_balancing_to() {
     ointerface=$(CreoleGet nom_carte_eth${1})
     network=$(CreoleGet adresse_network_eth${1})/$(CreoleGet adresse_netmask_eth${1})
+    iptablesmangleclear $interface
     _active_balancing_to $ointerface $network
     if [ "$(CreoleGet vlan_eth${1})" = "oui" ]; then
         VLAN_ID=($(CreoleGet vlan_id_eth${1}))
@@ -148,9 +148,22 @@ active_balancing_to() {
         NB_VLAN=${#VLAN_ID[*]}
         for ((id=0; id < $NB_VLAN; id+=1))
         do
-            interface_vlan="$ointerface:${VLAN_ID[id]}"
+            interface_vlan="$ointerface.${VLAN_ID[id]}"
+            iptablesmangleclear $interface_vlan
             network_vlan="${VLAN_Network[id]}/${VLAN_Netmask[id]}"
             _active_balancing_to $interface_vlan $network_vlan
+        done
+    fi
+    if [ "$(CreoleGet alias_eth${1})" = "oui" ]; then
+        ALIAS_IP=($(CreoleGet alias_ip_eth${1}))
+        ALIAS_Network=($(CreoleGet alias_network_eth${1}))
+        ALIAS_Netmask=($(CreoleGet alias_netmask_eth${1}))
+        NB_ALIAS=${#ALIAS_IP[*]}
+        for ((id=0; id < $NB_ALIAS; id+=1))
+        do
+            interface_alias="$ointerface"
+            network_alias="${ALIAS_Network[id]}/${ALIAS_Netmask[id]}"
+            _active_balancing_to $interface_alias $network_alias
         done
     fi
 }
@@ -163,7 +176,6 @@ _active_link_to() {
     interface=$1
     network=$2
     link=$3
-    iptablesmangleclear $interface
     #Si non NEW
     /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state ! --state NEW -j RESTOREMARK
     /sbin/iptables -t mangle -A PREROUTING -i $interface -s $network -m state ! --state NEW -j RETURN
@@ -174,6 +186,7 @@ active_link_to() {
     ointerface=$(CreoleGet nom_carte_eth${1})
     network=$(CreoleGet adresse_network_eth${1})/$(CreoleGet adresse_netmask_eth${1})
     link=$2
+    iptablesmangleclear $interface
     _active_link_to $ointerface $network $link
     if [ "$(CreoleGet vlan_eth${1})" = "oui" ]; then
         VLAN_ID=($(CreoleGet vlan_id_eth${1}))
@@ -182,11 +195,25 @@ active_link_to() {
         NB_VLAN=${#VLAN_ID[*]}
         for ((id=0; id < $NB_VLAN; id+=1))
         do
-            interface_vlan="$ointerface:${VLAN_ID[id]}"
+            interface_vlan="$ointerface.${VLAN_ID[id]}"
+            iptablesmangleclear $interface_vlan
             network_vlan="${VLAN_Network[id]}/${VLAN_Netmask[id]}"
             _active_link_to $interface_vlan $network_vlan $link
         done
     fi
+    if [ "$(CreoleGet alias_eth${1})" = "oui" ]; then
+        ALIAS_IP=($(CreoleGet alias_ip_eth${1}))
+        ALIAS_Network=($(CreoleGet alias_network_eth${1}))
+        ALIAS_Netmask=($(CreoleGet alias_netmask_eth${1}))
+        NB_ALIAS=${#ALIAS_IP[*]}
+        for ((id=0; id < $NB_ALIAS; id+=1))
+        do
+            interface_alias="$ointerface"
+            network_alias="${ALIAS_Network[id]}/${ALIAS_Netmask[id]}"
+            _active_link_to $interface_alias $network_alias
+        done
+    fi
+
 }
 ## Initialisation
 # Large recent table
