@@ -1,0 +1,5 @@
+# EOLE 2.4.1 gitignore
+# Backup and swap files
+*~
+*#
+*.swp
