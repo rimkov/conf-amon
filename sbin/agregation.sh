@@ -139,7 +139,7 @@ _active_balancing_to() {
 active_balancing_to() {
     ointerface=$(CreoleGet nom_carte_eth${1})
     network=$(CreoleGet adresse_network_eth${1})/$(CreoleGet adresse_netmask_eth${1})
-    iptablesmangleclear $interface
+    iptablesmangleclear $ointerface
     _active_balancing_to $ointerface $network
     if [ "$(CreoleGet vlan_eth${1})" = "oui" ]; then
         VLAN_ID=($(CreoleGet vlan_id_eth${1}))
@@ -186,7 +186,7 @@ active_link_to() {
     ointerface=$(CreoleGet nom_carte_eth${1})
     network=$(CreoleGet adresse_network_eth${1})/$(CreoleGet adresse_netmask_eth${1})
     link=$2
-    iptablesmangleclear $interface
+    iptablesmangleclear $ointerface
     _active_link_to $ointerface $network $link
     if [ "$(CreoleGet vlan_eth${1})" = "oui" ]; then
         VLAN_ID=($(CreoleGet vlan_id_eth${1}))
