@@ -16,7 +16,7 @@
             </variable>
         </family>
 
-        <family name='agregation' hidden='True'>
+        <family name='agrégation'>
 
             <variable name='ag_mode' type='string' description='Mode load balancing ou fail-over'>
                 <value>mode_lb</value>
@@ -112,7 +112,10 @@
         </condition>
     </constraints>
 
-    <help/>
+    <help>
+        <family name='agrégation'>Paramétrage de la répartition de charge ou de la haute disponibilité pour les sorties Internet</family>
+        <variable name='activer_agregation'>L'agrégation de liens permet la mise en place d'une répartition de charge ou d'une haute disponibilité pour les sorties Internet</variable>
+    </help>
 
 </creole>
 <!-- vim: ts=4 sw=4 expandtab
