@@ -75,6 +75,7 @@
         </condition>
         <condition name='disabled_if_in' source='activer_agregation'>
             <param>non</param>
+            <target type='variable'>alias_gw_eth0</target>
             <target type='family'>agregation</target>
             <target type='filelist'>agregation</target>
         </condition>
