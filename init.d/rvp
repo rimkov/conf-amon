@@ -22,7 +22,7 @@ fi
 
 start() {
 	log_begin_msg "Lancement du Reseau Virtuel Privé "
-	/etc/init.d/ipsec start >/dev/null 2>&1
+	initctl start strongswan >/dev/null 2>&1
 	RETVAL=$?
 	/etc/ipsec.d/ip_xfrm_policy >/dev/null 2>&1
 	log_end_msg $RETVAL
@@ -32,7 +32,7 @@ start() {
 
 stop() {
 	log_begin_msg "Arret du Reseau Virtuel Privé "
-	/etc/init.d/ipsec stop >/dev/null 2>&1
+	initctl stop strongswan >/dev/null 2>&1
 	RETVAL=$?
 	log_end_msg $RETVAL
 	if [ $RETVAL -eq 0 ]; then
@@ -55,7 +55,7 @@ restart() {
 
 reload() {
 	 log_begin_msg "Rechargement Reseau Virtuel Privé "
-	/etc/init.d/ipsec restart >/dev/null 2>&1
+	initctl restart strongswan >/dev/null 2>&1
 	RETVAL=$?
 	log_end_msg $RETVAL
 	[ $RETVAL -eq 0 ] && touch /var/lock/rvp
@@ -76,7 +76,7 @@ case "$1" in
 	reload
 	;;
   status)
-	/etc/init.d/ipsec status
+	initctl status strongswan
 	[ -x /usr/share/eole/test-rvp ] && /usr/share/eole/test-rvp
 	;;
   condrestart)
