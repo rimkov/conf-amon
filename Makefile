@@ -3,9 +3,9 @@
 ################################
 
 SOURCE=conf-amon
-VERSION=2.4
-EOLE_VERSION=2.4
-EOLE_RELEASE=2.4.2-alpha1
+VERSION=2.5
+EOLE_VERSION=2.5
+EOLE_RELEASE=2.5.0-alpha4
 PKGAPPS=non
 #FLASK_MODULE=<APPLICATION>
 
