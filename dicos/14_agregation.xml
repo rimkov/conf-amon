@@ -11,6 +11,7 @@
     <variables>
 
         <family name='Interface-0'>
+            <variable name='alias_gw_eth0' redefine='True' mandatory='True'/>
             <variable name='activer_agregation' type='oui/non' description='Répartition de charge entre 2 lignes Internet'>
                 <value>non</value>
             </variable>
