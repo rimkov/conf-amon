@@ -14,14 +14,14 @@
                 <value>non</value>
             </variable>
             <variable name='sw_force_ip_src' redefine='True' mode='expert' >
-                <value>eth1</value>
+                <value>1</value>
             </variable>
             <variable name='acces_proxy_zone_rvp' type='oui/non' description="Accès RVP par le proxy" >
                 <value>non</value>
             </variable>
             <variable name='adresse_network_zone_rvp' type='ip' description='Adresse réseau de la zone RVP' multi='True' mandatory='True' />
             <variable name='adresse_netmask_zone_rvp' type='netmask' description='Masque de sous-réseau de la zone RVP' mandatory='True' />
-            <variable name='autoriser_rvp_autres' type='oui/non' description="Autoriser d'autres zones que eth1 à accéder à ce réseau">
+            <variable name='autoriser_rvp_autres' type='oui/non' description="Autoriser d'autres zones que l'interface 1 à accéder à ce réseau">
                 <value>non</value>
             </variable>
             <variable name='agriates_member' type='oui/non' description='Serveur membre du réseau AGRIATES' >
