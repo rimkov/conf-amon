@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# mise à jour des règles pour snort
-/usr/share/eole/lance-Maj-snort.sh >/dev/null 2>&1
