@@ -387,6 +387,9 @@ Checkstate() {
 # $1 : numero du lien (1 ou 2) vers lequel on bascule
 # $2 : numero du lien (1 ou 2) inactif
 active_link () {
+    # 15268 : lien T1/2
+    Tlink=T$link
+    # lien 1 ou 2
     link=$1
     oldlink=$2
     GW=$(eval echo \$GW$link)
@@ -394,12 +397,15 @@ active_link () {
     # Iproute2 sur le lien $link
     /sbin/ip route replace default via $GW dev $nom_zone_eth0
     # bascule des destinations forcées de $oldlink vers le lien $link
-    for ip_force in $(eval echo \${FORCE$oldlink\[@\]\}); do
+    for ip_force in $(eval echo \$\{FORCE$oldlink\[@\]\}); do
         /sbin/ip route replace $ip_force via $GW dev $nom_zone_eth0
     done
-    # Mangle sur le lien $link
-    for num in `seq 1 $((a-1))`; do
-        active_link_to $num T$link
+    # Mangle sur le lien $Tlink
+    # 15268 : mangle sur le lien OK et pas de mangle sur le lien NOK
+    idint=1
+    while [ $idint -le $(CreoleGet nombre_interfaces) ] && [ $idint -ne $(CreoleGet nombre_interfaces) ]; do
+        active_link_to $idint $Tlink
+        let idint++
     done
 }
 
