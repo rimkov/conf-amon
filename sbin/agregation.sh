@@ -427,11 +427,29 @@ activate() {
         /sbin/ip route replace default proto static nexthop via $GW1 dev $nom_zone_eth0 weight $W1 nexthop via $GW2 dev $nom_zone_eth0 weight $W2
         active_forced_links
         # Mangle sur les 2 liens
-        active_balancing_to 1
-        [ $nombre_interfaces -ge 3 ] && active_balancing_to 2
-        [ $nombre_interfaces -ge 4 ] && active_link_to 3 T1
-        [ $nombre_interfaces -eq 5 ] && active_link_to 4 T2
-    else
+        # 14123 : par défaut on balance pour toutes les interfaces sauf eth0
+        if [ "$(CreoleGet ag_force_int_eth0)" == "non" ] ; then
+            idint=1
+            while [ $idint -le $(CreoleGet nombre_interfaces) ] && [ $idint -ne $(CreoleGet nombre_interfaces) ] ; do
+                active_balancing_to $idint
+                let idint++
+            done
+        # 14123 : on balance eth1/eth2 et on force eth3/eth4 sur le lien T1
+        elif [ "$(CreoleGet ag_force_int_eth0)" == "oui" ] && [ "$(CreoleGet ag_force_int_eth0_0)" == "non" ] ; then
+            active_balancing_to 1
+            active_balancing_to 2
+            for int_force_ in ${INT1[@]}; do
+                active_link_to $(echo $int_force_ | cut -d"h" -f2) T1
+            done
+        # 14123 : on balance eth1/eth2 et on force eth3/eth4 sur le lien T2
+        elif [ "$(CreoleGet ag_force_int_eth0_0)" == "oui" ] && [ "$(CreoleGet ag_force_int_eth0)" == "non" ]; then
+            active_balancing_to 1
+            active_balancing_to 2
+            for int_force_ in ${INT2[@]}; do
+                active_link_to $(echo $int_force_ | cut -d"h" -f2) T2
+            done
+        fi
+    elif [ $ag_mode == "mode_fo" ] ; then
         #mode fail-over
         active_forced_links
         if [ $ag_fo_etat_eth0 == "actif" ] && [ $ag_fo_etat_eth0_0 == "passif" ] ; then

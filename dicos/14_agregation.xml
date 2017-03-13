@@ -28,6 +28,14 @@
             <variable name='ag_dns_eth0' type='ip' description='Adresse du DNS sur le lien 1' multi='True' mandatory='True'/>
             <variable name='ag_fo_etat_eth0' type='string' description='Etat actif ou passif pour fail-over lien 1'/>
             <variable name='ag_weight_eth0' type='number' description='Débit mesuré sur le lien 1 (entier en Mbps)' mandatory='True'/>
+            <!--forcer eth3 et eth4 sur T1-->
+            <variable name='ag_force_int_eth0' type='oui/non' description='Forcer une interface sur le lien 1' mandatory='True'>
+              <value>non</value>
+            </variable>
+            <variable name='int_force_eth0' type='string' description='Interfaces à forcer sur le lien 1' multi='True'>
+              <value>eth3</value>
+              <value>eth4</value>
+            </variable>
             <!--ajout des réseaux internes à la table de routage T1-->
             <variable name='net_route_T1' type='oui/non' description='Ajoute les réseaux locaux à la table de routage T1'/>
             <!-- lien 2 -->
@@ -36,6 +44,14 @@
             <variable name='ag_dns_eth0_0' type='ip' description='Adresse du DNS sur le lien 2' multi='True' mandatory='True'/>
             <variable name='ag_fo_etat_eth0_0' type='string' description='Etat actif ou passif pour fail-over lien 2'/>
             <variable name='ag_weight_eth0_0' type='number' description='Débit mesuré sur le lien 2 (entier en Mbps)' mandatory='True'/>
+            <!--forcer eth3 et eth4 sur T2-->
+            <variable name='ag_force_int_eth0_0' type='oui/non' description='Forcer eth3 et eth4 sur le lien 2' mandatory='True'>
+              <value>non</value>
+            </variable>
+            <variable name='int_force_eth0_0' type='string' description='Interfaces à forcer sur le lien 2' multi='True'>
+              <value>eth3</value>
+              <value>eth4</value>
+            <variable/>
             <!--ajout des réseaux internes à la table de routage T2-->
             <variable name='net_route_T2' type='oui/non' description='Ajoute les réseaux locaux à la table de routage T2'/>
             <!-- divers -->
@@ -97,6 +113,14 @@
             <target type='variable'>ag_fo_etat_eth0</target>
             <target type='variable'>ag_fo_etat_eth0_0</target>
         </condition>
+        <condition name='disabled_if_in' source='ag_force_int_eth0'>
+            <param>ag_force_int_eth0</param>
+            <target type='variable'>int_force_eth0</target>
+            </condition>
+        <condition name='disabled_if_in' source='ag_force_int_eth0_0'>
+            <param>ag_force_int_eth0_0</param>
+            <target type='variable'>int_force_eth0_0</target>
+        </condition>
         <check name="valid_enum" target='ag_fo_etat_eth0'>
             <param>['actif','passif']</param>
         </check>
@@ -112,6 +136,14 @@
         <fill name='calc_multi_val' target='ag_mail_dest'>
             <param type='eole'>system_mail_to</param>
         </fill>
+         <condition name='disabled_if_in' source='ag_force_int_eth0'>
+             <param>non</param>
+             <target type='variable'>int_force_eth0</target>
+         </condition>
+         <condition name='disabled_if_in' source='ag_force_int_eth0_0'>
+             <param>non</param>
+             <target type='variable'>int_force_eth0_0</target>
+         </condition>
         <condition name='disabled_if_in' source='ag_active_mail'>
             <param>non</param>
             <target type='variable'>ag_mail_dest</target>
