@@ -232,11 +232,31 @@ ipruleclear T2
 /sbin/ip route add $NET1 dev $nom_zone_eth0 src $WAN1 table T1
 /sbin/ip route add default via $GW1 table T1
 /sbin/ip rule add fwmark 1 table T1
+# 19643 : on ajoute les réseaux internes dans la table de routage T1
+if [ "$(CreoleGet net_route_T1)" == "oui" ] && [ "$(CreoleGet net_route_T2)" == "non" ] ; then
+  id=1
+  while [ $id -le $(CreoleGet nombre_interfaces) ] && [ $id -ne $(CreoleGet nombre_interfaces) ] ; do
+    ointerface=$(CreoleGet nom_carte_eth${id})
+    network=$(CreoleGet adresse_network_eth${id})/$(CreoleGet adresse_netmask_eth${id})
+    /sbin/ip route add $network dev $ointerface via $(CreoleGet adresse_ip_eth$id) table T1
+    let id++
+  done
+fi
 
 /sbin/ip rule add from $WAN2 table T2
 /sbin/ip route add $NET2 dev $nom_zone_eth0 src $WAN2 table T2
 /sbin/ip route add default via $GW2 table T2
 /sbin/ip rule add fwmark 2 table T2
+# 19643 :on ajoute les réseaux internes dans la table de routage T2
+if [ "$(CreoleGet net_route_T2)" == "oui" ] && [ "$(CreoleGet net_route_T1)" == "non" ] ; then
+  id=1
+  while [ $id -le $(CreoleGet nombre_interfaces) ] && [ $id -ne $(CreoleGet nombre_interfaces) ] ; do
+    ointerface=$(CreoleGet nom_carte_eth${id})
+    network=$(CreoleGet adresse_network_eth${id})/$(CreoleGet adresse_netmask_eth${id})
+    /sbin/ip route add $network dev $ointerface via $(CreoleGet adresse_ip_eth$id) table T2
+    let id++
+  done
+fi
 
 #for ip_force1 in ${FORCE1[@]}; do
 #    /sbin/ip route add $ip_force1 via $GW1 table main
