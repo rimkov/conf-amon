@@ -452,10 +452,24 @@ activate() {
     elif [ $ag_mode == "mode_fo" ] ; then
         #mode fail-over
         active_forced_links
+        # T1 actif / T2 passif
         if [ $ag_fo_etat_eth0 == "actif" ] && [ $ag_fo_etat_eth0_0 == "passif" ] ; then
             /sbin/ip route replace default via $GW1 dev $nom_zone_eth0
+            # 18000 : ajout des règles pour le marquage des paquets dans la chaine T1
+            idint=1
+            while [ $idint -le $(CreoleGet nombre_interfaces) ] ; do
+                active_link_to $idint T1
+                let idint++
+            done
+        # T1 passif / T2 actif
         elif [ $ag_fo_etat_eth0 == "passif" ] && [ $ag_fo_etat_eth0_0 == "actif" ] ; then
             /sbin/ip route replace default via $GW2 dev $nom_zone_eth0
+            # 18000 : ajout des règles pour le marquage des paquets dans la chaine T2
+            idint=1
+            while [ $idint -le $(CreoleGet nombre_interfaces) ] ; do
+                active_link_to $idint T2
+                let idint++
+            done
         fi
     fi
 }
