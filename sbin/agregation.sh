@@ -226,6 +226,8 @@ active_link_to() {
 /sbin/ip route delete default via $GW2 dev $nom_zone_eth0
 ipruleclear T1
 ipruleclear T2
+ip route flush table T1
+ip route flush table T2
 
 # Chargement des regles de routage
 /sbin/ip rule add from $WAN1 table T1
