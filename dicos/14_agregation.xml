@@ -51,7 +51,7 @@
             <variable name='int_force_eth0_0' type='string' description='Interfaces à forcer sur le lien 2' multi='True'>
               <value>eth3</value>
               <value>eth4</value>
-            <variable/>
+            </variable>
             <!--ajout des réseaux internes à la table de routage T2-->
             <variable name='net_route_T2' type='oui/non' description='Ajoute les réseaux locaux à la table de routage T2'/>
             <!-- divers -->
@@ -116,7 +116,7 @@
         <condition name='disabled_if_in' source='ag_force_int_eth0'>
             <param>ag_force_int_eth0</param>
             <target type='variable'>int_force_eth0</target>
-            </condition>
+        </condition>
         <condition name='disabled_if_in' source='ag_force_int_eth0_0'>
             <param>ag_force_int_eth0_0</param>
             <target type='variable'>int_force_eth0_0</target>
