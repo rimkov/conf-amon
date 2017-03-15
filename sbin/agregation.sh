@@ -389,11 +389,11 @@ Checkstate() {
 # $1 : numero du lien (1 ou 2) vers lequel on bascule
 # $2 : numero du lien (1 ou 2) inactif
 active_link () {
-    # 15268 : lien T1/2
-    Tlink=T$link
     # lien 1 ou 2
     link=$1
     oldlink=$2
+    # 15268 : lien T1/2
+    Tlink=T$link
     GW=$(eval echo \$GW$link)
     Aecho "Seul le lien $link est actif, redirection des flux sur ce lien" "" "oui"
     # Iproute2 sur le lien $link
