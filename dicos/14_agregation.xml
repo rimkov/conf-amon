@@ -37,7 +37,7 @@
               <value>eth4</value>
             </variable>
             <!--ajout des réseaux internes à la table de routage T1-->
-            <variable name='net_route_T1' type='oui/non' description='Ajoute les réseaux locaux à la table de routage T1'/>
+            <variable name='ag_netroute_eth0' type='oui/non' description='Ajoute les réseaux locaux à la table de routage T1'/>
             <!-- lien 2 -->
             <variable name='ag_force_eth0_0' type='ip' description='Destination forcée sur le lien 2' multi='True'/>
             <variable name='ag_force_netmask_eth0_0' type='netmask' description='Masque pour destination forcée sur le lien 2'/>
@@ -53,7 +53,7 @@
               <value>eth4</value>
             </variable>
             <!--ajout des réseaux internes à la table de routage T2-->
-            <variable name='net_route_T2' type='oui/non' description='Ajoute les réseaux locaux à la table de routage T2'/>
+            <variable name='ag_netroute_eth0_0' type='oui/non' description='Ajoute les réseaux locaux à la table de routage T2'/>
             <!-- divers -->
             <variable name='ag_pause' type='number' description="Délai entre les tests d'état (en secondes)" >
                 <value>10</value>

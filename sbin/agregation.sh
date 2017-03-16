@@ -235,7 +235,7 @@ ip route flush table T2
 /sbin/ip route add default via $GW1 table T1
 /sbin/ip rule add fwmark 1 table T1
 # 19643 : on ajoute les réseaux internes dans la table de routage T1
-if [ "$(CreoleGet net_route_T1)" == "oui" ] && [ "$(CreoleGet net_route_T2)" == "non" ] ; then
+if [ "$(CreoleGet ag_netroute_eth0)" == "oui" ] && [ "$(CreoleGet ag_netroute_eth0_0)" == "non" ] ; then
   id=1
   while [ $id -le $(CreoleGet nombre_interfaces) ] && [ $id -ne $(CreoleGet nombre_interfaces) ] ; do
     ointerface=$(CreoleGet nom_carte_eth${id})
@@ -250,7 +250,7 @@ fi
 /sbin/ip route add default via $GW2 table T2
 /sbin/ip rule add fwmark 2 table T2
 # 19643 :on ajoute les réseaux internes dans la table de routage T2
-if [ "$(CreoleGet net_route_T2)" == "oui" ] && [ "$(CreoleGet net_route_T1)" == "non" ] ; then
+if [ "$(CreoleGet ag_netroute_eth0_0)" == "oui" ] && [ "$(CreoleGet ag_netroute_eth0)" == "non" ] ; then
   id=1
   while [ $id -le $(CreoleGet nombre_interfaces) ] && [ $id -ne $(CreoleGet nombre_interfaces) ] ; do
     ointerface=$(CreoleGet nom_carte_eth${id})
